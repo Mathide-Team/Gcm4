@@ -1387,7 +1387,7 @@ class Wmain(GCMBase, Gtk.Window):
             i = arg.rfind("/")
             if i != -1:
                 group = arg[:i]
-                name = arg[i + 1:]
+                name = arg[i + 1 :]
                 if group != "" and name != "" and group in groups:
                     for h in groups[group]:
                         if h.name == name:
@@ -1936,7 +1936,7 @@ class Wmain(GCMBase, Gtk.Window):
         Returns:
             list[str]: Liste de sous-chaines.
         """
-        return (string[0 + i: length + i] for i in range(0, len(string), length))
+        return (string[0 + i : length + i] for i in range(0, len(string), length))
 
     def on_popupmenu(self, widget, item, *args):
         r"""Gestionnaire d\'action du menu contextuel.
@@ -3880,7 +3880,7 @@ class Wmain(GCMBase, Gtk.Window):
                 if k == src_full or k.startswith(src_full + "/")
             }
             for old_key, hosts in to_move.items():
-                new_key = new_full + old_key[len(src_full):]
+                new_key = new_full + old_key[len(src_full) :]
                 del groups[old_key]
                 groups[new_key] = hosts
                 for h in hosts:
@@ -4957,7 +4957,7 @@ class Wmain(GCMBase, Gtk.Window):
             k: v for k, v in groups.items() if k == old_full or k.startswith(old_full + "/")
         }
         for old_key, hosts in to_rename.items():
-            new_key = new_full + old_key[len(old_full):]
+            new_key = new_full + old_key[len(old_full) :]
             del groups[old_key]
             groups[new_key] = hosts
             for h in hosts:
@@ -4973,7 +4973,7 @@ class Wmain(GCMBase, Gtk.Window):
             if k == old_full or k.startswith(old_full + "/")
         }
         for old_key, color in colors_to_rename.items():
-            new_key = new_full + old_key[len(old_full):]
+            new_key = new_full + old_key[len(old_full) :]
             del self.group_colors[old_key]
             self.group_colors[new_key] = color
 
@@ -7622,8 +7622,11 @@ class Wcluster(GCMBase, Gtk.Dialog):
         scrolled_cmd.show()
         self.txtCommands1 = Gtk.TextView()
         self.txtCommands1.set_tooltip_text(
-            _("Tip: use #P=password to send a password without keeping it "
-              "in clear text in the command history"))
+            _(
+                "Tip: use #P=password to send a password without keeping it "
+                "in clear text in the command history"
+            )
+        )
         self.txtCommands1.show()
         self.txtCommands1.connect("key-press-event", self.on_txtCommands_key_press_event)
         scrolled_cmd.add(self.txtCommands1)
@@ -7919,12 +7922,15 @@ class CheckUpdates(Thread):
                     self.tag = GLib.timeout_add(
                         0,
                         self.msg,
-                        "%s\n\nCURRENT VERSION: %s\nNEW VERSION: %s" %
-                        (_("A new version is available: https://"
-                         "github.com/MathildeDec/gnome-connection-manager/releases"),
-                         app_version,
-                         new_version,
-                         ),
+                        "%s\n\nCURRENT VERSION: %s\nNEW VERSION: %s"
+                        % (
+                            _(
+                                "A new version is available: https://"
+                                "github.com/MathildeDec/gnome-connection-manager/releases"
+                            ),
+                            app_version,
+                            new_version,
+                        ),
                         self.parent.get_widget("wMain"),
                     )
         except Exception:

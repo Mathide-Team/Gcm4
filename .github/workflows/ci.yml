@@ -31,12 +31,11 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y gettext
 
       - name: Lint (ruff check)
-        # `make lint` complet (ruff + flake8 gnome_connection_manager.py)
-        # ne passe pas : flake8 reste rouge sur ce fichier (voir CLAUDE.md,
-        # « Commandes de qualité »). ruff check . est vert depuis la
-        # session 36 et est le seuil exigé ici ; flake8 sera réintégré
-        # quand il sera propre (issue de suivi).
         run: uv run ruff check .
+
+      - name: Lint (flake8 gnome_connection_manager.py)
+        # Réintégré par l'issue #113 : flake8 est vert sur ce fichier.
+        run: uv run --with flake8 flake8 gnome_connection_manager.py
 
       - name: Format (ruff format --check)
         # Parité NetCross : le job Qualité contrôle aussi le format.
