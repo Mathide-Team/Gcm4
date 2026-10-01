@@ -11,6 +11,7 @@ Couvre les fonctions critiques sans dépendance GTK/VTE :
 """
 
 import configparser
+import contextlib
 import os
 import sys
 import tempfile
@@ -2848,6 +2849,10 @@ class TestVncTabEdgeCases(unittest.TestCase):
         self.assertEqual(pwd, "vnc_pass")
         make_passwd.assert_called_once()
         self.assertIn("-passwd", cmd)
+        # Le chemin du fichier passwd (vide ici, make_vnc_passwd simulé) ne doit
+        # pas rester dans /tmp après le test.
+        with contextlib.suppress(OSError):
+            os.remove(cmd[cmd.index("-passwd") + 1])
 
     def test_no_password_second_empty(self):
         """Test no password second empty."""
