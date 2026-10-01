@@ -1,0 +1,68 @@
+# Couverture incrémentale par PR (issue #128, repris de Netcross #224) :
+# commente chaque PR vers `dev` avec la couverture totale, le delta par
+# rapport à la base et les fichiers dont la couverture baisse.
+#
+# La suite étant rapide (quelques secondes), pytest --cov tourne deux fois :
+# sur le ref de fusion de la PR, puis sur le SHA de base. Ensuite,
+# scripts/pr_coverage_comment.py publie (ou met à jour) un commentaire
+# unique. Aucun seuil bloquant ici : il est appliqué par ci.yml. Ici, il est
+# neutralisé (--cov-fail-under=0) pour que le commentaire soit publié même
+# quand la PR passe dessous, car c'est justement là qu'il est utile.
+name: Couverture par PR
+
+"on":
+  pull_request:
+    branches: [dev]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: couverture-pr-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  commentaire-couverture:
+    name: Couverture (delta vs dev)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout de la PR (ref de fusion)
+        uses: actions/checkout@v7
+
+      - name: Installation de uv
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+        with:
+          enable-cache: true
+
+      - name: Installation de Python
+        run: uv python install
+
+      - name: Couverture de la PR
+        run: |
+          uv sync
+          uv run python -m pytest tests/ -q --cov --cov-fail-under=0 \
+            --cov-report=json:coverage-pr.json
+
+      - name: Couverture de la base (SHA de dev)
+        # Une base antérieure à #128 n'a ni pytest-cov ni [tool.coverage] :
+        # --with pytest-cov et --cov=. gardent la mesure possible. Le
+        # périmètre est alors celui de .coveragerc/pyproject de la base.
+        run: |
+          git fetch --no-tags --depth=1 origin ${{ github.event.pull_request.base.sha }}
+          git worktree add ../base ${{ github.event.pull_request.base.sha }}
+          cp pyproject.toml ../base/coverage-pr.toml
+          cd ../base
+          uv sync
+          uv run --with pytest-cov python -m pytest tests/ -q -p no:cacheprovider \
+            --cov --cov-config=coverage-pr.toml --cov-fail-under=0 \
+            --cov-report=json:coverage-base.json
+          mv coverage-base.json "$OLDPWD/"
+
+      - name: Publication du commentaire de couverture
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: >-
+          uv run python scripts/pr_coverage_comment.py
+          --pr-json coverage-pr.json --base-json coverage-base.json
+          --pr-number "${{ github.event.pull_request.number }}"

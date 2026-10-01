@@ -43,10 +43,23 @@ jobs:
         # (cf. issue de format) ; ce verrou empêche toute régression.
         run: uv run ruff format --check .
 
-      - name: Tests (pytest)
+      - name: Tests (pytest + couverture)
         # Toute la suite, y compris tests/test_gcm.py (réintégré, issue #112 :
         # stubs gi complétés et tests resynchronisés avec plugins/).
-        run: uv run python -m pytest tests/ -q
+        # Couverture (issue #128) : périmètre et seuil bloquant (fail_under)
+        # lus dans [tool.coverage.*] de pyproject.toml. L'étape échoue si la
+        # couverture totale passe sous le seuil.
+        run: >-
+          uv run python -m pytest tests/ -q
+          --cov --cov-report=term-missing:skip-covered --cov-report=xml
+
+      - name: Publication du rapport de couverture (artifact)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: coverage.xml
+          if-no-files-found: warn
 
       - name: Catalogues de traduction (.po)
         # Même validation que `make validate` : msgfmt --check sur les
