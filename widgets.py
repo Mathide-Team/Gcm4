@@ -77,30 +77,20 @@ def _setup_app_logger():
     Returns:
         object: Logger configuré (`loguru.logger` ou `logging.Logger`).
     """
+    if _LOGURU_OK:
+        # Issue #130 : configuration unique (logging_config). Idempotent : si
+        # le point d'entrée a déjà configuré les journaux, rien ne change ;
+        # sinon niveau INFO par défaut. Le point d'entrée reconfigure ensuite
+        # avec le vrai dossier (--config) et --debug (force=True) : pas de
+        # fichier ici, ~/.gcm n'est peut-être pas le dossier demandé.
+        import logging_config
+
+        logging_config.configure_logging()
+        return _loguru_logger
+
     log_dir = os.path.join(CONFIG_DIR, "log")
     log_file = os.path.join(log_dir, "gcm-app.log")
     os.makedirs(log_dir, exist_ok=True)
-
-    if _LOGURU_OK:
-        _loguru_logger.remove()
-        _loguru_logger.add(
-            sys.stderr,
-            level="DEBUG",
-            enqueue=True,
-            backtrace=False,
-            diagnose=False,
-        )
-        _loguru_logger.add(
-            log_file,
-            level="DEBUG",
-            rotation="10 MB",
-            retention="14 days",
-            encoding="utf-8",
-            enqueue=True,
-            backtrace=True,
-            diagnose=False,
-        )
-        return _loguru_logger
 
     fallback = logging.getLogger("gcm")
     fallback.setLevel(logging.DEBUG)

@@ -65,7 +65,6 @@ import os
 import random
 import re
 import shutil
-import sys
 from typing import TYPE_CHECKING
 
 from loguru import logger as app_logger
@@ -346,41 +345,33 @@ def bindtextdomain(app_name: str, locale_dir: str | None = None) -> None:
 # ─────────────────────────────────────────────────────────────────────────
 
 
-def setup_app_logger(config_dir: str):
+def setup_app_logger(config_dir: str, debug: bool = False):
     """Initialise le logger applicatif (Loguru) sur le dossier de config donné.
+
+    Délègue à ``logging_config.configure_logging`` (issue #130) : niveau
+    ``INFO`` par défaut, ``DEBUG`` avec ``--debug`` ou ``GCM_DEBUG=1``,
+    ``GCM_LOG_LEVEL`` prioritaire. Le journal permanent
+    ``config_dir/log/gcm-app.log`` suit le même niveau.
 
     Args:
         config_dir (str): Dossier de configuration (voir ``_resolve_config_dir``)
             sous lequel écrire ``log/gcm-app.log``.
+        debug (bool): Option ``--debug`` de la ligne de commande.
 
     Returns:
         loguru.Logger: Le logger configuré (``app_logger`` de ce module).
     """
-    app_logger.debug(f"setup_app_logger() called | config_dir={config_dir!r}")
-    log_dir = os.path.join(config_dir, "log")
-    log_file = os.path.join(log_dir, "gcm-app.log")
-    os.makedirs(log_dir, exist_ok=True)
+    import logging_config
 
-    app_logger.remove()
-    app_logger.add(
-        sys.stderr,
-        level="DEBUG",
-        enqueue=True,
-        backtrace=False,
-        diagnose=False,
+    logger_ = logging_config.configure_logging(
+        "DEBUG" if debug else None, config_dir=config_dir, force=True
     )
-    app_logger.add(
-        log_file,
-        level="DEBUG",
-        rotation="10 MB",
-        retention="14 days",
-        encoding="utf-8",
-        enqueue=True,
-        backtrace=True,
-        diagnose=False,
+    app_logger.debug(
+        "setup_app_logger() returning | niveau={} fichiers={}",
+        logging_config.current_level(),
+        logging_config.log_files(),
     )
-    app_logger.debug(f"setup_app_logger() returning | log_file={log_file!r}")
-    return app_logger
+    return logger_
 
 
 # ─────────────────────────────────────────────────────────────────────────
