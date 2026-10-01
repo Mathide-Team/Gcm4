@@ -18,6 +18,7 @@ from __future__ import annotations
 import configparser
 import json
 import os
+import re
 import shlex
 import shutil
 import subprocess
@@ -86,6 +87,21 @@ else:
         f"SpiceTab | libvirt-python indisponible (pip install libvirt-python) | mode libvirt → fallback subprocess "
         f"{SPICE_BIN}",
     )
+
+
+_PASSWORD_RE = re.compile(r"(password=)[^&\s'\"]*")
+
+
+def mask_password(text) -> str:
+    """Masque les ``password=...`` d'une URI ou d'une commande avant journalisation.
+
+    Args:
+        text: URI SPICE, liste d'arguments ou toute valeur convertible en str.
+
+    Returns:
+        str: Texte ou tout mot de passe est remplace par ``***``.
+    """
+    return _PASSWORD_RE.sub(r"\1***", str(text))
 
 
 def parse_spice_hosts(conf_path: Path) -> list[tuple[str, str]]:
@@ -498,7 +514,7 @@ class SpiceTab(Gtk.Box):
         if tls_port:
             uri += f"&tls-port={tls_port}"
 
-        app_logger.debug(f"SpiceTab._build_spice_uri | uri={uri}")
+        app_logger.debug(f"SpiceTab._build_spice_uri | uri={mask_password(uri)}")
         return uri
 
     def _fetch_proxmox_ticket(self) -> dict | None:
@@ -753,7 +769,7 @@ class SpiceTab(Gtk.Box):
             if ca_cert and hasattr(SpiceClientGLib.Session.props, "ca_file"):
                 session.set_property("ca-file", ca_cert)
 
-            app_logger.debug(f"SpiceTab._connect_native | uri | uri={uri}")
+            app_logger.debug(f"SpiceTab._connect_native | uri | uri={mask_password(uri)}")
 
         # ── Création couplée display → connexion (commun à tous les modes) ──
         # session.connect(signal, cb) est ambigu : SpiceSession.connect() est la
@@ -1018,8 +1034,8 @@ class SpiceTab(Gtk.Box):
             with os.fdopen(vv_fd, "w") as vv_f:
                 vv_f.write(d.join(vv_lines) + d)
 
-            app_logger.debug(f"SPICE: file = {d.join(vv_lines) + d}")
-            app_logger.debug(f"SPICE: vv_lines = {vv_lines}")
+            # Le contenu du .vv (mot de passe du ticket) n'est jamais journalise.
+            app_logger.debug(f"SPICE: fichier .vv ecrit ({len(vv_lines)} lignes)")
             app_logger.debug(f"SPICE: lancement remote-viewer {SPICE_BIN} {vv_path}")
             return [SPICE_BIN, vv_path]
 
@@ -1036,7 +1052,7 @@ class SpiceTab(Gtk.Box):
                 cmd.append(vm_name)
             if opts_str:
                 cmd += shlex.split(opts_str)
-            app_logger.debug(f"SPICE: libvirt command = {cmd}")
+            app_logger.debug(f"SPICE: libvirt command = {mask_password(cmd)}")
             return cmd
 
         # ── Mode URI directe : spice://host:port avec TLS optionnel
@@ -1054,7 +1070,7 @@ class SpiceTab(Gtk.Box):
             cmd.append(f"--spice-ca-file={ca_cert}")
         if opts_str:
             cmd += shlex.split(opts_str)
-        app_logger.debug(f"SPICE: direct URI command = {cmd}")
+        app_logger.debug(f"SPICE: direct URI command = {mask_password(cmd)}")
         return cmd
 
     def _on_connect(self, widget):
@@ -1072,7 +1088,7 @@ class SpiceTab(Gtk.Box):
             return
         self.host.extra_params = self._entry_opts.get_text().strip()
         cmd = self._build_cmd()
-        app_logger.debug(f"SpiceTab._on_connect | fallback cmd={cmd}")
+        app_logger.debug(f"SpiceTab._on_connect | fallback cmd={mask_password(cmd)}")
         if cmd is None:
             return
         try:

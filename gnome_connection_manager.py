@@ -2370,7 +2370,9 @@ class Wmain(GCMBase, Gtk.Window):
 
         def get_pwd():
             try:
-                app_logger.debug(f"Decrypting password for host {host.name} ({host.password})")
+                app_logger.debug(
+                    f"Password requested for host {host.name} (provided={bool(host.password)})"
+                )
                 return host.password
             except Exception as e:
                 app_logger.debug(f"Failed to decrypt password for host {host.name}: {e}")

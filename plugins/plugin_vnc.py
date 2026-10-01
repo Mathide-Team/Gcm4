@@ -21,6 +21,7 @@ import os
 import shlex
 import shutil
 import subprocess
+import tempfile
 import threading
 from collections.abc import Callable
 from gettext import gettext as _
@@ -88,6 +89,9 @@ class VncTab(Gtk.Box):
         self._get_password = get_password_fn
         app_logger.debug(f"VncTab | init | mode={'gtk-vnc' if _GTKVNC_OK else 'subprocess'}")
         self._proc = None  # mode fallback uniquement
+        # Fichier passwd RFB du viewer (fallback TigerVNC) : unique par
+        # connexion (mkstemp, 0600), supprime a la fin du processus.
+        self._passwd_path = None
         self._vnc_display = None  # mode gtk-vnc uniquement
         self.set_margin_start(16)
         self.set_margin_end(16)
@@ -337,7 +341,8 @@ class VncTab(Gtk.Box):
         h = self.host
         port = str(getattr(h, "port", "5900+") or "5900")
         pwd = self._get_password() or ""
-        app_logger.debug(f"VNC 1 password for host {h.name} is '{pwd}'")
+        # Jamais le mot de passe lui-meme dans le journal : seulement sa presence.
+        app_logger.debug(f"VNC password for host {h.name} provided={bool(pwd)}")
         opts_str = self._entry_opts.get_text().strip()
         truthy = (True, "True", "true", "1", "yes")
 
@@ -371,9 +376,18 @@ class VncTab(Gtk.Box):
             # tigervnc / xtightvncviewer / vncviewer générique
             cmd = [vnc_bin, f"{h.host}:{effective_port}"]
             if pwd:
-                app_logger.debug(f"VNC password provided for host {h.name} '{pwd}' ")
-                self.make_vnc_passwd(pwd, "/tmp/klfhghzz")
-                cmd += ["-passwd", "/tmp/klfhghzz"]
+                # Chemin unique et non previsible (avant : un nom fixe dans /tmp,
+                # partage entre utilisateurs -> lien symbolique pre-pose possible).
+                self._remove_passwd_file()
+                fd, passwd_path = tempfile.mkstemp(prefix="gcm-vnc-", suffix=".passwd")
+                os.close(fd)
+                self._passwd_path = passwd_path
+                try:
+                    self.make_vnc_passwd(pwd, passwd_path)
+                except Exception:
+                    self._remove_passwd_file()
+                    raise
+                cmd += ["-passwd", passwd_path]
             if getattr(h, "vnc_view_only", False) in truthy:
                 cmd.append("-ViewOnly")
             if getattr(h, "vnc_fullscreen", False) in truthy:
@@ -417,10 +431,21 @@ class VncTab(Gtk.Box):
         """
         return int(f"{b:08b}"[::-1], 2)
 
+    def _remove_passwd_file(self):
+        """Supprime le fichier passwd RFB de la connexion precedente, s'il existe."""
+        path = getattr(self, "_passwd_path", None)
+        self._passwd_path = None
+        if path:
+            try:
+                os.remove(path)
+            except OSError as exc:
+                app_logger.debug(f"VNC passwd file already removed: {exc}")
+
     def _wait_proc(self):
         """Attend la fin du processus VNC en arriere-plan (mode fallback)."""
         if self._proc:
             rc = self._proc.wait()
+            self._remove_passwd_file()
             if rc != 0:
                 GLib.idle_add(self._set_status, _("Ended (code {rc})").format(rc=rc))
             else:
@@ -467,6 +492,7 @@ class VncTab(Gtk.Box):
                     stderr=subprocess.DEVNULL,
                 )
         except FileNotFoundError:
+            self._remove_passwd_file()  # viewer absent : _wait_proc ne tournera pas
             self._set_status(_("xfreerdp not found"))
             return
         self._set_status(_("Connecting…"))
