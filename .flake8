@@ -8,3 +8,7 @@
 # (E711/E721/E722/F841/F824...) ne sont pas concernées par ce fichier —
 # voir docs/architecture.md §2.8 et docs/sessions/session-36.md.
 max-line-length = 99
+# Issue #113 : E203 (espace avant « : » dans les tranches) est incompatible
+# avec `ruff format` (style Black), que la CI impose — ignoré, comme le
+# recommandent Black et ruff.
+extend-ignore = E203
