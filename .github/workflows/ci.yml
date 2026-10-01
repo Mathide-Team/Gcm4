@@ -45,12 +45,9 @@ jobs:
         run: uv run ruff format --check .
 
       - name: Tests (pytest)
-        # tests/test_gcm.py est exclu : ses stubs GTK/VTE sont incomplets
-        # (AttributeError GObject.SignalFlags à la collection, depuis
-        # l'ajout de key_picker_dialog.py) — 280 tests + 100 subtests
-        # passent sans lui. Réparation suivie en issue ; à réintégrer
-        # dès les stubs complétés.
-        run: uv run python -m pytest tests/ -q --ignore=tests/test_gcm.py
+        # Toute la suite, y compris tests/test_gcm.py (réintégré, issue #112 :
+        # stubs gi complétés et tests resynchronisés avec plugins/).
+        run: uv run python -m pytest tests/ -q
 
       - name: Catalogues de traduction (.po)
         # Même validation que `make validate` : msgfmt --check sur les
