@@ -30,7 +30,7 @@ jobs:
       - name: gettext (validation des catalogues .po)
         run: |
           SUDO=""; if [ "$(id -u)" != "0" ]; then SUDO="sudo"; fi
-          command -v msgfmt >/dev/null || { $SUDO apt-get update && $SUDO DEBIAN_FRONTEND=noninteractive apt-get install -y gettext; }
+          command -v msgfmt >/dev/null || { $SUDO apt-get update && $SUDO env DEBIAN_FRONTEND=noninteractive apt-get install -y gettext; }
 
       - name: Lint (ruff check)
         run: uv run ruff check .
