@@ -18,9 +18,12 @@ handling, and plugin system for remote connection protocols.
 # Fork Mathilde Deuscher - FRANCE
 
 # Import en haut du fichier
+import builtins as _builtins
+import configparser
 import operator
 import os
 import re
+import re as _re
 import shutil
 import subprocess
 import sys
@@ -28,6 +31,23 @@ import time
 import types
 from threading import Thread
 from typing import TYPE_CHECKING
+
+from loguru import logger as _loguru_logger
+
+import urlregex
+from gesture_trigger_core import classify_terminal_click, classify_tree_servers_press
+from models import Host, HostUtils
+from popup_menu_core import select_command_shortcuts
+from widgets import (
+    FolderContextMenu,
+    ManagementTabLabel,
+    MultilineCellRenderer,
+    NotebookTabLabel,
+    PopupMenu,
+    TabContextMenu,
+    vte_run,
+)
+from widgets import inputbox as _base_inputbox
 
 # Quand ce fichier est lancé directement (`python3 gnome_connection_manager.py`),
 # Python l'exécute sous le nom de module `__main__`. Or plusieurs plugins font
@@ -51,6 +71,7 @@ if __name__ == "__main__":
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "plugins"))
 
 import gcm4_core  # noqa: E402
+import logging_config  # noqa: E402
 from plugins.plugin_base import BatchPluginRegistry, PluginRegistry  # noqa: E402
 
 if TYPE_CHECKING:
@@ -59,8 +80,6 @@ if TYPE_CHECKING:
     # les faux positifs "_ is not defined" sans affecter le runtime.
     def _(message: str) -> str: ...
 
-
-from loguru import logger as _loguru_logger
 
 try:
     from key_picker_dialog import KeyPickerDialog
@@ -120,7 +139,7 @@ except Exception:
 # Ver si expect esta instalado
 try:
     e = os.system("expect >/dev/null 2>&1 -v")
-except:
+except BaseException:
     e = -1
 if e != 0:
     error = Gtk.MessageDialog(
@@ -134,8 +153,6 @@ if e != 0:
 
 # Gdk.threads_init()
 
-import re as _re
-
 
 def bindtextdomain(app_name, locale_dir=None):
     """Configure le domaine gettext pour les traductions (délègue à gcm4_core).
@@ -147,22 +164,7 @@ def bindtextdomain(app_name, locale_dir=None):
 
 
 # Import des modules refactorisés
-import configparser
 
-import urlregex
-from gesture_trigger_core import classify_terminal_click, classify_tree_servers_press
-from models import Host, HostUtils
-from popup_menu_core import select_command_shortcuts
-from widgets import (
-    FolderContextMenu,
-    ManagementTabLabel,
-    MultilineCellRenderer,
-    NotebookTabLabel,
-    PopupMenu,
-    TabContextMenu,
-    vte_run,
-)
-from widgets import inputbox as _base_inputbox
 
 app_name = "Gnome Connection Manager"
 app_version = "1.3.3"
@@ -174,18 +176,18 @@ BASE_PATH = os.path.dirname(os.path.abspath(sys.argv[0]))
 SSH_BIN = "ssh"
 TEL_BIN = "telnet"
 
-SHELL = os.environ["SHELL"]
+SHELL = os.environ.get("SHELL") or "/bin/sh"  # absent sous cron, systemd, CI
 DEFAULT_TERM_TYPE = "xterm-256color"
 
 SSH_COMMAND = BASE_PATH + "/ssh.expect"
 try:
     USERHOME_DIR = os.getenv("HOME")
-except:
+except BaseException:
     USERHOME_DIR = ""
 if USERHOME_DIR is None or USERHOME_DIR == "":
     try:
         USERHOME_DIR = os.path.expanduser("~")
-    except:
+    except BaseException:
         USERHOME_DIR = ""
 
 assert (USERHOME_DIR is not None) and (USERHOME_DIR != ""), (
@@ -207,7 +209,10 @@ def _resolve_config_dir(argv, default_home):
     return gcm4_core._resolve_config_dir(argv, default_home)
 
 
-CONFIG_DIR, _cli_remaining_args = _resolve_config_dir(sys.argv[1:], USERHOME_DIR)
+# `--debug` (issue #130) : retiré avant `--config` et avant la boucle
+# historique sur sys.argv[1:], qui le prendrait pour un hôte.
+_cli_debug, _cli_args = logging_config.extract_debug_flag(sys.argv[1:])
+CONFIG_DIR, _cli_remaining_args = _resolve_config_dir(_cli_args, USERHOME_DIR)
 # `--config`/`-c` consommé : on ne laisse dans sys.argv que ce qui n'a pas été
 # reconnu (ex. spécificateurs d'hôte "groupe/nom"), pour que la boucle
 # historique sur sys.argv[1:] (Wmain.__init__) continue de fonctionner à
@@ -225,11 +230,36 @@ conf.CONTINUOUS_LOG_PATH = CONFIG_DIR + "/log"
 conf.APP_TITLE = app_name
 
 
-app_logger = gcm4_core.setup_app_logger(CONFIG_DIR)
+app_logger = gcm4_core.setup_app_logger(CONFIG_DIR, debug=_cli_debug)
+
+
+def _gi_version(module):
+    """Version « majeure.mineure.micro » d'une bibliothèque gi, ou « ? »."""
+    try:
+        major, minor = module.get_major_version(), module.get_minor_version()
+        parts = (major, minor, module.get_micro_version())
+        result = ".".join(str(p) for p in parts)
+    except Exception as exc:  # stub de test ou binding ancien
+        app_logger.debug("_gi_version() -> ? ({})", type(exc).__name__)
+        return "?"
+    app_logger.debug("_gi_version() -> {}", result)
+    return result
+
+
+app_logger.debug(
+    "démarrage | version={} python={} gtk={} vte={} config_dir={} debug={}",
+    app_version,
+    sys.version.split()[0],
+    _gi_version(Gtk),
+    _gi_version(Vte),
+    CONFIG_DIR,
+    logging_config.is_debug_enabled(),
+)
 
 domain_name = "gcm-lang"
 
-# these colors are defined in vte sourcecode, but there is no way to read them (vte.cc 0.60.1, line 2371)
+# these colors are defined in vte sourcecode, but there is no way to read
+# them (vte.cc 0.60.1, line 2371)
 DEFAULT_BGCOLOR = "#000000"
 DEFAULT_FGCOLOR = "#C0C0C0"
 
@@ -284,7 +314,6 @@ bindtextdomain(domain_name, locale_dir)
 # modules font `from gnome_connection_manager import _` : un import explicite
 # exige que `_` soit aussi un attribut du module lui-meme, pas seulement des
 # builtins — sinon : ImportError: cannot import name '_' from '__main__'.
-import builtins as _builtins
 
 _ = _builtins.__dict__["_"]
 
@@ -401,7 +430,8 @@ def _launch_hook_command(command, source):
         command (str | None): Commande déjà résolue (marqueurs substitués),
             ou ``None`` si aucun hook n'est configuré (rien à faire).
         source (str): Nom du point d'appel, pour le message de log
-            (ex. ``"run_pre_connect_hook"``, ``"NotebookTabLabel.mark_tab_as_closed (post_connect)"``).
+            (ex. ``"run_pre_connect_hook"``,
+             ``"NotebookTabLabel.mark_tab_as_closed (post_connect)"``).
 
     Returns:
         None: Cette fonction ne retourne rien de significatif.
@@ -547,7 +577,7 @@ def show_font_dialog(parent, title, button):
     if not hasattr(parent, "dlgFont"):
         parent.dlgFont = None
 
-    if parent.dlgFont == None:
+    if parent.dlgFont is None:
         parent.dlgFont = Gtk.FontSelectionDialog(title)
     fontsel = parent.dlgFont.get_font_selection()
     fontsel.set_font_name(button.selected_font.to_string())
@@ -571,7 +601,7 @@ def parse_color_rgba(spec):
         Gdk.RGBA: Objet couleur RGBA parse.
     """
     rgba = Gdk.RGBA()
-    b = rgba.parse(spec)
+    b = rgba.parse(spec)  # noqa: F841
     return rgba
 
 
@@ -1449,7 +1479,9 @@ class Wmain(GCMBase, Gtk.Window):
 
     def enable_window_transparency(self, window):
         # hack to allow transparent widgets inside a opaque window
-        # the key is to set the alpha channel of the window's background color to 0.9999, in that way the window is opaque but still allows transparent children
+        # the key is to set the alpha channel of the window's background color to
+        # 0.9999, in that way the window is opaque but still allows transparent
+        # children
 
         # remove previously addded css to get the background color from the current gtk theme
         """Active ou desactive la transparence de la fenetre si le compositeur le permet.
@@ -1472,7 +1504,8 @@ class Wmain(GCMBase, Gtk.Window):
             color = Gdk.RGBA()
             color.parse("#f0f0f0")
 
-        # set the background color to the same as the gtk theme, but with alpha 0.99999 (it looks opaque but allows to have transparent widgets)
+        # set the background color to the same as the gtk theme, but with alpha
+        # 0.99999 (it looks opaque but allows to have transparent widgets)
         CSS = b"""
         window.background {
             background-color: rgba(%d, %d, %d, %f);
@@ -1642,7 +1675,8 @@ class Wmain(GCMBase, Gtk.Window):
             url = url or widget.hyperlink_check_event(event)
             if url:
                 Gtk.show_uri(Gdk.Screen.get_default(), url, Gtk.get_current_event_time())
-        # terminal doesnt emmit the "focus" signal when there is more than one visible on the screen, so force the focus
+        # terminal doesnt emmit the "focus" signal when there is more than one
+        # visible on the screen, so force the focus
         nb = widget.get_parent().get_parent()
         self.on_tab_focus(nb, nb.get_nth_page(nb.get_current_page()), nb.get_current_page())
         app_logger.debug(f"on_terminal_pressed() returning | outcome={outcome!r}")
@@ -1669,7 +1703,7 @@ class Wmain(GCMBase, Gtk.Window):
             return False
         if get_key_name(event) in shortcuts:
             cmd = shortcuts[get_key_name(event)]
-            if type(cmd) == list:
+            if isinstance(cmd, list):
                 # comandos predefinidos
                 if cmd == _COPY:
                     self.terminal_copy(widget)
@@ -1746,8 +1780,9 @@ class Wmain(GCMBase, Gtk.Window):
                         while Gtk.events_pending():
                             Gtk.main_iteration()
 
-                        # esperar 2 seg antes de enviar el pass para dar tiempo a que se levante expect y prevenir que se muestre el pass
-                        if widget.command[2] != None and widget.command[2] != "":
+                        # esperar 2 seg antes de enviar el pass para dar tiempo a que se levante
+                        # expect y prevenir que se muestre el pass
+                        if widget.command[2] is not None and widget.command[2] != "":
                             GLib.timeout_add(2000, self.send_data, widget, widget.command[2])
                     widget.get_parent().get_parent().get_tab_label(
                         widget.get_parent()
@@ -1854,7 +1889,8 @@ class Wmain(GCMBase, Gtk.Window):
             pos = self.search["lines"][i].find(self.search["word"])
             if pos != -1:
                 self.search["index"] = i if backwards else i + 1
-                # print('found at line %d column %d, index=%d, line: %s' % (i, pos, self.search['index'], self.search['lines'][i]))
+                # print('found at line %d column %d, index=%d, line: %s' %
+                #   (i, pos, self.search['index'], self.search['lines'][i]))
                 GLib.timeout_add(0, lambda: self.search["terminal"].get_vadjustment().set_value(i))
                 # self.search['terminal'].get_vadjustment().set_value(i)
                 self.search["terminal"].queue_draw()
@@ -1873,11 +1909,11 @@ class Wmain(GCMBase, Gtk.Window):
             return True
 
         terminal = self.find_active_terminal(self.hpMain)
-        if terminal == None:
+        if terminal is None:
             terminal = self.current
         else:
             self.current = terminal
-        if terminal == None:
+        if terminal is None:
             return False
 
         self.search = {}
@@ -1976,7 +2012,7 @@ class Wmain(GCMBase, Gtk.Window):
         elif item == "H":  # COPY HOST ADDRESS TO CLIPBOARD
             if self.treeServers.get_selection().get_selected()[
                 1
-            ] != None and not self.treeModel.iter_has_child(
+            ] is not None and not self.treeModel.iter_has_child(
                 self.treeServers.get_selection().get_selected()[1]
             ):
                 host = self.treeModel.get_value(
@@ -1989,7 +2025,7 @@ class Wmain(GCMBase, Gtk.Window):
         elif item == "D":  # DUPLICATE HOST
             if self.treeServers.get_selection().get_selected()[
                 1
-            ] != None and not self.treeModel.iter_has_child(
+            ] is not None and not self.treeModel.iter_has_child(
                 self.treeServers.get_selection().get_selected()[1]
             ):
                 selected = self.treeServers.get_selection().get_selected()[1]
@@ -2011,7 +2047,7 @@ class Wmain(GCMBase, Gtk.Window):
                 _("Enter new name"),
                 self.popupMenuTab.label.get_text().strip(),
             )
-            if text != None and text != "":
+            if text is not None and text != "":
                 self.popupMenuTab.label.set_text("  %s  " % (text))
                 nb = self.popupMenuTab.label.get_parent().get_parent().get_parent()
                 nb.emit(
@@ -2048,8 +2084,9 @@ class Wmain(GCMBase, Gtk.Window):
                 while Gtk.events_pending():
                     Gtk.main_iteration()
 
-                # esperar 2 seg antes de enviar el pass para dar tiempo a que se levante expect y prevenir que se muestre el pass
-                if term.command[2] != None and term.command[2] != "":
+                # esperar 2 seg antes de enviar el pass para dar tiempo a que se levante
+                # expect y prevenir que se muestre el pass
+                if term.command[2] is not None and term.command[2] != "":
                     GLib.timeout_add(2000, self.send_data, term, term.command[2])
             tab.mark_tab_as_active()
             return True
@@ -2370,7 +2407,9 @@ class Wmain(GCMBase, Gtk.Window):
 
         def get_pwd():
             try:
-                app_logger.debug(f"Decrypting password for host {host.name} ({host.password})")
+                app_logger.debug(
+                    f"Password requested for host {host.name} (provided={bool(host.password)})"
+                )
                 return host.password
             except Exception as e:
                 app_logger.debug(f"Failed to decrypt password for host {host.name}: {e}")
@@ -2678,9 +2717,13 @@ class Wmain(GCMBase, Gtk.Window):
                 for h in hosts:
                     writer.writerow(self._host_to_dict(h))
         except Exception as e:
-            msgbox(_(f"CSV export error: {e}"))
+            msgbox(_("CSV export error: {e}").format(e=e))
             return
-        msgbox(_(f"{len(hosts)} connection(s) exported to {filename}."))
+        msgbox(
+            _("{count} connection(s) exported to {filename}.").format(
+                count=len(hosts), filename=filename
+            )
+        )
 
     def on_mnu_export_json_activate(self, widget, *args):
         """Exporte toutes les connexions vers un fichier JSON (sans mot de passe)."""
@@ -2699,9 +2742,13 @@ class Wmain(GCMBase, Gtk.Window):
             with open(filename, "w", encoding="utf-8") as f:
                 _json.dump(data, f, indent=2, ensure_ascii=False)
         except Exception as e:
-            msgbox(_(f"JSON export error: {e}"))
+            msgbox(_("JSON export error: {e}").format(e=e))
             return
-        msgbox(_(f"{len(hosts)} connection(s) exported to {filename}."))
+        msgbox(
+            _("{count} connection(s) exported to {filename}.").format(
+                count=len(hosts), filename=filename
+            )
+        )
 
     # ── Dark mode ─────────────────────────────────────────────────────────────
 
@@ -2984,7 +3031,8 @@ class Wmain(GCMBase, Gtk.Window):
         final_cmd = self._ssh_auth_wrap(host, cmd)
         if final_cmd is None:
             app_logger.warning(
-                f"SSHFS | pas de clé privée ni de sshpass disponible, mkdir distant ignoré pour host {host.name}",
+                f"SSHFS | pas de clé privée ni de sshpass disponible, "
+                f"mkdir distant ignoré pour host {host.name}.",
             )
             return
         try:
@@ -3055,7 +3103,8 @@ class Wmain(GCMBase, Gtk.Window):
         final_cmd = self._ssh_auth_wrap(host, cmd)
         if final_cmd is None:
             app_logger.warning(
-                f"SSHFS | pas de clé privée ni de sshpass disponible, montage ignoré pour host {host.name}",
+                "SSHFS | pas de clé privée ni de sshpass disponible, "
+                f"montage ignoré pour host {host.name}"
             )
             return
 
@@ -3063,7 +3112,8 @@ class Wmain(GCMBase, Gtk.Window):
             subprocess.Popen(final_cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
             terminal.sshfs_mountpoint = local_mount
             app_logger.debug(
-                f"SSHFS | montage lancé host={host.name} remote={remote_path} -> local={local_mount}"
+                f"SSHFS | montage lancé host={host.name}"
+                f" remote={remote_path} -> local={local_mount}"
             )
         except Exception as exc:
             app_logger.error(
@@ -3246,13 +3296,13 @@ class Wmain(GCMBase, Gtk.Window):
         self.nbConsole.set_current_page(self.nbConsole.page_num(content))
         return instance
 
-    def close_management_tab(self, key):
-        """Ferme l'onglet de gestion identifie par ``key``, s'il est ouvert.
+    def close_management_tab(self, tab_key):
+        """Ferme l'onglet de gestion identifie par ``tab_key``, s'il est ouvert.
 
         Args:
-            key (str): Cle logique passee a ``open_management_tab``.
+            tab_key (str): Cle logique passee a ``open_management_tab``.
         """
-        content = self._management_tabs.pop(key, None)
+        content = self._management_tabs.pop(tab_key, None)
         if content is None:
             return
         owner = getattr(content, "_gcm_owner_instance", None)
@@ -3261,7 +3311,7 @@ class Wmain(GCMBase, Gtk.Window):
                 owner.on_tab_will_close()
             except Exception:
                 app_logger.exception(
-                    "close_management_tab | on_tab_will_close a leve | key=%s", key
+                    "close_management_tab | on_tab_will_close a leve | key={}", tab_key
                 )
         page_num = self.nbConsole.page_num(content)
         if page_num != -1:
@@ -3303,7 +3353,7 @@ class Wmain(GCMBase, Gtk.Window):
 
                 fcolor = host.font_color
                 bcolor = host.back_color
-                if fcolor == "" or fcolor == None or bcolor == "" or bcolor == None:
+                if fcolor == "" or fcolor is None or bcolor == "" or bcolor is None:
                     fcolor = conf.FONT_COLOR
                     bcolor = conf.BACK_COLOR
 
@@ -3362,7 +3412,8 @@ class Wmain(GCMBase, Gtk.Window):
             v.connect("selection-changed", self.on_terminal_selection)
 
             if conf.TRANSPARENCY > 0 and self.wMain.transparency:
-                # v.set_opacity(1 - (conf.TRANSPARENCY / 100)) #posibly a bug in gtk3, set_opacity only works if parent is transparent too (worked just fine in gtk2),
+                # v.set_opacity(1 - (conf.TRANSPARENCY / 100)) # possibly a bug in gtk3,
+                # set_opacity only works if parent is transparent too (worked in gtk2),
                 # the workaround is to set the background color with alpha channel
 
                 # if bcolor is not set, then use default background color
@@ -3400,7 +3451,7 @@ class Wmain(GCMBase, Gtk.Window):
             vte_run(v, SHELL)
 
             # esperar 3 seg antes de enviar comandos
-            if host.commands != None and host.commands != "":
+            if host.commands is not None and host.commands != "":
                 basetime = 700 if len(host.host) == 0 else 3000
                 lines = []
                 for line in host.commands.splitlines():
@@ -3433,7 +3484,6 @@ class Wmain(GCMBase, Gtk.Window):
 
     def initLeftPane(self):
         """Initialise le panneau gauche avec l'arbre des serveurs."""
-        global groups
 
         # col 0=name, 1=host_obj, 2=stock_id(connexion), 3=bg_color, 4=proto_icon_name,
         # 5=fg_color (couleur de groupe, features.md §4.2 — None = pas de
@@ -3446,7 +3496,7 @@ class Wmain(GCMBase, Gtk.Window):
         self.treeServers.set_level_indentation(5)
 
         column = Gtk.TreeViewColumn()
-        column.set_title("Servers")
+        column.set_title(_("Servers"))
         self.treeServers.append_column(column)
 
         # Icône connexion (stock gtk-network / gtk-directory)
@@ -3528,7 +3578,7 @@ class Wmain(GCMBase, Gtk.Window):
         """
         try:
             scuts[cp.get("shortcuts", command)] = name
-        except:
+        except BaseException:
             scuts[default] = name
 
     def loadConfig(self):
@@ -3653,7 +3703,7 @@ class Wmain(GCMBase, Gtk.Window):
         for x in range(1, 10):
             try:
                 scuts[cp.get("shortcuts", "console_%d" % (x))] = eval("_CONSOLE_%d" % (x))
-            except:
+            except BaseException:
                 scuts["ALT+%d" % (x)] = eval("_CONSOLE_%d" % (x))
         try:
             i = 1
@@ -3662,7 +3712,7 @@ class Wmain(GCMBase, Gtk.Window):
                     "shortcuts", "command%d" % (i)
                 ).replace("\\n", "\n")
                 i = i + 1
-        except:
+        except BaseException:
             pass
         global shortcuts
         shortcuts = scuts
@@ -3692,9 +3742,9 @@ class Wmain(GCMBase, Gtk.Window):
                     groups[host.group] = []
 
                 groups[host.group].append(host)
-            except:
+            except BaseException:
                 app_logger.exception(
-                    f"{_('Invalid entry in configuration file')}: {sys.exc_info()[1]}"
+                    "{}: {}", _("Invalid entry in configuration file"), sys.exc_info()[1]
                 )
 
         # Restaurer les groupes vides (dossiers créés sans hôtes)
@@ -3719,7 +3769,7 @@ class Wmain(GCMBase, Gtk.Window):
         Returns:
             bool: True si le noeud est reduit, False sinon.
         """
-        if self.treeModel.get_value(iter, 1) == None and not self.treeServers.row_expanded(path):
+        if self.treeModel.get_value(iter, 1) is None and not self.treeServers.row_expanded(path):
             nodes.append(self.treeModel.get_string_from_iter(iter))
 
     def get_collapsed_nodes(self):
@@ -3752,7 +3802,7 @@ class Wmain(GCMBase, Gtk.Window):
             return
 
         src_host = self.treeModel.get_value(src_it, 1)  # None = dossier
-        src_name = self.treeModel.get_value(src_it, 0)
+        src_name = self.treeModel.get_value(src_it, 0)  # noqa: F841
         src_parent = self.treeModel.iter_parent(src_it)
 
         # Groupe source
@@ -3857,7 +3907,11 @@ class Wmain(GCMBase, Gtk.Window):
 
             # Collision de noms ?
             if new_full in groups or any(k.startswith(new_full + "/") for k in groups):
-                msgbox(_(f"A group named '{src_leaf}' already exists in '{dest_full}'."))
+                msgbox(
+                    _("A group named '{src_leaf}' already exists in '{dest_full}'.").format(
+                        src_leaf=src_leaf, dest_full=dest_full
+                    )
+                )
                 Gdk.drag_status(context, 0, time)
                 return
 
@@ -3907,7 +3961,7 @@ class Wmain(GCMBase, Gtk.Window):
             if grupo is None or grupo == "":
                 del groups[grupo]
 
-        if conf.COLLAPSED_FOLDERS == None:
+        if conf.COLLAPSED_FOLDERS is None:
             conf.COLLAPSED_FOLDERS = ",".join(self.get_collapsed_nodes())
 
         self.treeModel.clear()
@@ -3931,7 +3985,7 @@ class Wmain(GCMBase, Gtk.Window):
             for folder in grupo.split("/"):
                 path = path + "/" + folder
                 row = self.get_folder(self.treeModel, "", path)
-                if row == None:
+                if row is None:
                     # path a toujours un "/" en tete (accumule ci-dessus) alors
                     # que les cles de self.group_colors n'en ont pas (meme
                     # convention que "groups"/_iter_full_path) — on l'enleve
@@ -3956,7 +4010,8 @@ class Wmain(GCMBase, Gtk.Window):
         self.update_row_color()
 
     def update_row_color(self, node=None):
-        # custom method to get alternating row colors in treeview, as that is not possible with gtk3
+        # custom method to get alternating row colors in treeview, as that is not
+        # possible with gtk3
         """Met a jour la couleur alternee des lignes de l'arbre.
 
         Args:
@@ -3981,7 +4036,7 @@ class Wmain(GCMBase, Gtk.Window):
         if i:
             self.treeModel[i][3] = self.servers_background_color()
             if (
-                self.treeModel[i][1] == None
+                self.treeModel[i][1] is None
                 and self.treeServers.row_expanded(self.treeModel.get_path(i))
                 and self.treeModel.iter_has_child(i)
             ):
@@ -4015,7 +4070,6 @@ class Wmain(GCMBase, Gtk.Window):
 
     def writeConfig(self):
         """Sauvegarde la configuration courante dans le fichier INI."""
-        global groups
 
         cp = configparser.RawConfigParser()
         cp.read(CONFIG_FILE + ".tmp")
@@ -4114,7 +4168,7 @@ class Wmain(GCMBase, Gtk.Window):
         cp.add_section("shortcuts")
         i = 1
         for s in shortcuts:
-            if type(shortcuts[s]) == list:
+            if isinstance(shortcuts[s], list):
                 cp.set("shortcuts", shortcuts[s][0], s)
             else:
                 cp.set("shortcuts", "shortcut%d" % (i), s)
@@ -4151,8 +4205,10 @@ class Wmain(GCMBase, Gtk.Window):
         # the X/Y deltas of that scroll; the code below uses another syntax
         # that returns a tuple of that bool and X/Y deltas:
         gsdelta = event.get_scroll_deltas()
-        # sys.stderr.write("[D] on_tab_scroll: event.get_scroll_direction(): [%s] [%s]\n" % (gsdir[0], gsdir[1]) )
-        # sys.stderr.write("[D] on_tab_scroll: event.get_scroll_deltas(): [%s] [%s] [%s]\n" % (gsdelta[0], gsdelta[1], gsdelta[2]) )
+        # sys.stderr.write("[D] on_tab_scroll: event.get_scroll_direction(): [%s] [%s]\n" %
+        #   (gsdir[0], gsdir[1]) )
+        # sys.stderr.write("[D] on_tab_scroll: event.get_scroll_deltas(): [%s] [%s] [%s]\n" %
+        #   (gsdelta[0], gsdelta[1], gsdelta[2]) )
 
         scrollPrev = False
         if gsdelta[0]:
@@ -4166,7 +4222,8 @@ class Wmain(GCMBase, Gtk.Window):
             else:
                 # raise ValueError("Unrecognized scroll direction")
                 sys.stderr.write(
-                    "[D] on_tab_scroll: event.get_scroll_direction(): Unrecognized scroll direction\n"
+                    "[D] on_tab_scroll: event.get_scroll_direction(): Unrecognized\n"
+                    " scroll direction\n"
                 )
 
         if scrollPrev:
@@ -4190,12 +4247,12 @@ class Wmain(GCMBase, Gtk.Window):
         """
         if isinstance(widget, Vte.Terminal):
             self.current = widget
-        if conf.UPDATE_TITLE and widget != None:
+        if conf.UPDATE_TITLE and widget is not None:
             if isinstance(widget, Vte.Terminal):
                 tab_text = (
                     widget.get_parent().get_parent().get_tab_label(widget.get_parent()).get_text()
                 )
-            elif tab != None:  # notebok page switched
+            elif tab is not None:  # notebok page switched
                 tab_text = (
                     widget.get_tab_label(tab).get_text() if widget.get_tab_label(tab) else ""
                 )
@@ -4212,11 +4269,11 @@ class Wmain(GCMBase, Gtk.Window):
         Args:
             direction (str): Direction de division ("h" ou "v").
         """
-        csp = self.current.get_parent() if self.current != None else None
-        cnb = csp.get_parent() if csp != None else None
+        csp = self.current.get_parent() if self.current is not None else None
+        cnb = csp.get_parent() if csp is not None else None
 
         # Separar solo si hay mas de 2 tabs en el notebook actual
-        if csp != None and cnb.get_n_pages() > 1:
+        if csp is not None and cnb.get_n_pages() > 1:
             # Crear un hpaned, en el hijo 0 dejar el notebook y en el hijo 1 el nuevo notebook
             # El nuevo hpaned dejarlo como hijo del actual parent
             hp = (
@@ -4326,7 +4383,7 @@ class Wmain(GCMBase, Gtk.Window):
         if widget.get_n_pages() == 0:
             # eliminar el notebook solo si queda otro notebook y no quedan tabs en el actual
             paned = widget.get_parent()
-            if paned == None or paned == self.hpMain:
+            if paned is None or paned == self.hpMain:
                 return
             container = paned.get_parent()
             save = paned.get_child2() if paned.get_child1() == widget else paned.get_child1()
@@ -4362,7 +4419,8 @@ class Wmain(GCMBase, Gtk.Window):
             self.check_notebook_pages(widget)
         else:
             # tab has been moved to another notebook
-            # save a reference to this notebook, on_page_added check if the notebook must be removed
+            # save a reference to this notebook, on_page_added check if the notebook
+            # must be removed
             self.check_notebook = widget
 
     def on_page_added(self, widget, *args):
@@ -4406,7 +4464,7 @@ class Wmain(GCMBase, Gtk.Window):
             self.lastPath = os.path.dirname(filename)
 
             try:
-                buff, b = terminal.get_text_range(
+                buff, _b = terminal.get_text_range(
                     0,
                     0,
                     terminal.get_property("scrollback-lines") - 1,
@@ -4417,7 +4475,7 @@ class Wmain(GCMBase, Gtk.Window):
                 f = open(filename, "w")
                 f.write(buff.strip())
                 f.close()
-            except:
+            except BaseException:
                 dlg.destroy()
                 msgbox("%s: %s" % (_("Can't open file for writting"), filename))
                 return
@@ -4502,9 +4560,9 @@ class Wmain(GCMBase, Gtk.Window):
             *args: Arguments supplémentaires (ignorés).
         """
         term = self.find_active_terminal(self.hpMain)
-        if term == None:
+        if term is None:
             term = self.current
-        if term != None:
+        if term is not None:
             self.show_save_buffer(term)
 
     # -- Wmain.on_guardar_como1_activate }
@@ -4520,9 +4578,9 @@ class Wmain(GCMBase, Gtk.Window):
         filename = show_open_dialog(
             parent=self.wMain, title=_("Open"), action=Gtk.FileChooserAction.OPEN
         )
-        if filename != None:
+        if filename is not None:
             password = inputbox(_("Import Servers"), _("Enter password"), password=True)
-            if password == None:
+            if password is None:
                 return
 
             # abrir archivo con lista de servers y cargarlos en el arbol
@@ -4552,7 +4610,7 @@ class Wmain(GCMBase, Gtk.Window):
                         grupos[host.group] = []
 
                     grupos[host.group].append(host)
-            except:
+            except BaseException:
                 msgbox(_("Invalid file"))
                 return
             # sobreescribir lista de hosts
@@ -4576,9 +4634,9 @@ class Wmain(GCMBase, Gtk.Window):
             title=_("Save as"),
             action=Gtk.FileChooserAction.SAVE,
         )
-        if filename != None:
+        if filename is not None:
             password = inputbox(_("Export Servers"), _("Enter password"), password=True)
-            if password == None:
+            if password is None:
                 return
 
             try:
@@ -4587,7 +4645,6 @@ class Wmain(GCMBase, Gtk.Window):
                 i = 1
                 cp.add_section("gcm")
                 cp.set("gcm", "gcm", encrypt(password, password[::-1]))
-                global groups
                 for grupo in groups:
                     for host in groups[grupo]:
                         section = "host " + str(i)
@@ -4598,7 +4655,7 @@ class Wmain(GCMBase, Gtk.Window):
                 cp.write(f)
                 f.close()
                 os.rename(filename + ".tmp", filename)
-            except:
+            except BaseException:
                 msgbox(_("Invalid file"))
 
     # -- Wmain.on_exportar_servidores1_activate }
@@ -4637,7 +4694,7 @@ class Wmain(GCMBase, Gtk.Window):
             widget (Gtk.Widget): Widget source.
             *args: Arguments additionnels (ignorés).
         """
-        w_about = Wabout()
+        w_about = Wabout()  # noqa: F841
 
     # -- Wmain.on_acerca_de1_activate }
 
@@ -4659,7 +4716,8 @@ class Wmain(GCMBase, Gtk.Window):
                 size = widget.get_tab_label(
                     widget.get_nth_page(widget.get_n_pages() - 1)
                 ).get_allocation()
-                # fix #64: vérifier aussi Y — si clic sous la barre d'onglets, c'est dans le terminal (MC, etc.)
+                # fix #64: vérifier aussi Y — si clic sous la barre d'onglets, c'est dans
+                # le terminal (MC, etc.)
                 if event.y > size.height + 8:
                     return False
                 if (
@@ -4688,8 +4746,8 @@ class Wmain(GCMBase, Gtk.Window):
             *args: Arguments additionnels (ignorés).
         """
         if (
-            self.current != None
-            and self.current.get_parent() != None
+            self.current is not None
+            and self.current.get_parent() is not None
             and isinstance(self.current.get_parent().get_parent(), Gtk.Notebook)
         ):
             ntbk = self.current.get_parent().get_parent()
@@ -4707,7 +4765,7 @@ class Wmain(GCMBase, Gtk.Window):
             widget (Gtk.Widget): Widget source.
             *args: Arguments additionnels (ignorés).
         """
-        if self.treeServers.get_selection().get_selected()[1] != None:
+        if self.treeServers.get_selection().get_selected()[1] is not None:
             if not self.treeModel.iter_has_child(
                 self.treeServers.get_selection().get_selected()[1]
             ):
@@ -4757,7 +4815,7 @@ class Wmain(GCMBase, Gtk.Window):
             inst.init(group)
             return inst
 
-        wHost = self.open_management_tab("host:__new__", _("New host"), _factory)
+        wHost = self.open_management_tab("host:__new__", _("New host"), _factory)  # noqa: F841
         self.updateTree()
 
     # -- Wmain.on_btnAdd_clicked }
@@ -4789,19 +4847,19 @@ class Wmain(GCMBase, Gtk.Window):
         """
         if self.treeServers.get_selection().get_selected()[
             1
-        ] != None and not self.treeModel.iter_has_child(
+        ] is not None and not self.treeModel.iter_has_child(
             self.treeServers.get_selection().get_selected()[1]
         ):
             selected = self.treeServers.get_selection().get_selected()[1]
             host = self.treeModel.get_value(selected, 1)
-            key = "host:%s/%s" % (host.group, host.name)
+            key = "host:%s/%s" % (host.group, host.name)  # noqa: F841
 
             def _factory(host=host):
                 inst = Whost(show=False)
                 inst.init(host.group, host)
                 return inst
 
-            wHost = self.open_management_tab(key, host.name, _factory)
+            wHost = self.open_management_tab(key, host.name, _factory)  # noqa: F841
             # self.updateTree()
 
     # -- Wmain.on_bntEdit_clicked }
@@ -4814,7 +4872,7 @@ class Wmain(GCMBase, Gtk.Window):
             widget (Gtk.Button): Bouton clique.
             *args: Arguments supplémentaires.
         """
-        if self.treeServers.get_selection().get_selected()[1] != None:
+        if self.treeServers.get_selection().get_selected()[1] is not None:
             if not self.treeModel.iter_has_child(
                 self.treeServers.get_selection().get_selected()[1]
             ):
@@ -4850,7 +4908,7 @@ class Wmain(GCMBase, Gtk.Window):
                 ):
                     try:
                         del groups[group]
-                    except:
+                    except BaseException:
                         pass
                     for h in dict(groups):
                         if h.startswith(group + "/"):
@@ -4906,7 +4964,7 @@ class Wmain(GCMBase, Gtk.Window):
         full_name = f"{parent_path}/{name}" if parent_path else name
 
         if full_name in groups:
-            msgbox(_(f"Group '{full_name}' already exists."))
+            msgbox(_("Group '{full_name}' already exists.").format(full_name=full_name))
             return
 
         groups[full_name] = []
@@ -4933,7 +4991,7 @@ class Wmain(GCMBase, Gtk.Window):
         new_full = f"{parent_path}/{new_leaf}" if parent_path else new_leaf
 
         if new_full in groups and new_full != old_full:
-            msgbox(_(f"Group '{new_full}' already exists."))
+            msgbox(_("Group '{new_full}' already exists.").format(new_full=new_full))
             return
 
         # Renommer dans groups : clé principale + tous les sous-groupes
@@ -5040,7 +5098,7 @@ class Wmain(GCMBase, Gtk.Window):
             *args: Arguments supplémentaires.
         """
         wid = self.find_notebook(self.hpMain, self.nbConsole)
-        while wid != None:
+        while wid is not None:
             # Mover los tabs al notebook principal
             while wid.get_n_pages() != 0:
                 csp = wid.get_nth_page(0)
@@ -5206,7 +5264,6 @@ class Wmain(GCMBase, Gtk.Window):
         """
         # obtenir la liste des consoles ouvertes
         consoles = []
-        global wMain
         obj = wMain.hpMain
         s = []
         s.append(obj)
@@ -5862,7 +5919,6 @@ class Whost(GCMBase, Gtk.Dialog):
         Returns:
             instance: Nouvelle instance de la classe.
         """
-        global groups
 
         self.cmbGroup = self.get_widget("cmbGroup")
         # Le groupe est géré via l'arborescence — lecture seule dans le dialogue
@@ -6093,7 +6149,7 @@ class Whost(GCMBase, Gtk.Dialog):
         """Initialise les parametres de configuration avec les valeurs par defaut."""
         self._group_value = group
         self.cmbGroup.get_child().set_text(group)
-        if host == None:
+        if host is None:
             self.isNew = True
             return
 
@@ -6104,7 +6160,7 @@ class Whost(GCMBase, Gtk.Dialog):
         self.txtDescription.set_text(host.description)
         self.txtHost.set_text(host.host)
         i = self.cmbType.get_model().get_iter_first()
-        while i != None:
+        while i is not None:
             if host.type == self.cmbType.get_model()[i][0]:
                 self.cmbType.set_active_iter(i)
                 break
@@ -6137,15 +6193,15 @@ class Whost(GCMBase, Gtk.Dialog):
         wMain.plugin_registry.get("ssh").load_host_fields(host)
         self.txtCommands.set_sensitive(False)
         self.chkCommands.set_active(False)
-        if host.commands != "" and host.commands != None:
+        if host.commands != "" and host.commands is not None:
             self.txtCommands.get_buffer().set_text(host.commands)
             self.txtCommands.set_sensitive(True)
             self.chkCommands.set_active(True)
         if (
             host.font_color != ""
-            and host.font_color != None
+            and host.font_color is not None
             and host.back_color != ""
-            and host.back_color != None
+            and host.back_color is not None
         ):
             self.get_widget("chkDefaultColors").set_active(False)
             self.btnFColor.set_sensitive(True)
@@ -6211,7 +6267,7 @@ class Whost(GCMBase, Gtk.Dialog):
                         plugin.patch_edit_host_dialog(builder_shim, section, cp)
                     break
         except Exception as exc:
-            app_logger.debug("Whost.init | patch_edit_host_dialog skipped | exc=%s", exc)
+            app_logger.debug("Whost.init | patch_edit_host_dialog skipped | exc={}", exc)
 
     def update_texttags(self, *args):
         """Met a jour les tags de texte (couleurs, polices) dans la vue."""
@@ -6252,7 +6308,6 @@ class Whost(GCMBase, Gtk.Dialog):
             widget (Gtk.Button): Bouton clique.
             *args: Arguments supplémentaires.
         """
-        global wMain
         group_txt = self.cmbGroup.get_active_text()
         if (
             not group_txt
@@ -6350,7 +6405,8 @@ class Whost(GCMBase, Gtk.Dialog):
             host.tunnel = list(reversed(host.tunnel))
 
         app_logger.debug(
-            f"Whost.on_okbutton1_clicked | ssh_sshfs_mount={getattr(host, 'ssh_sshfs_mount', None)}"
+            f"Whost.on_okbutton1_clicked | ssh_sshfs_mount="
+            f"{getattr(host, 'ssh_sshfs_mount', None)}"
         )
 
         try:
@@ -6421,7 +6477,7 @@ class Whost(GCMBase, Gtk.Dialog):
                                 index = groups[self.oldGroup].index(h)
                                 groups[self.oldGroup][index] = host
                                 break
-        except:
+        except BaseException:
             msgbox("%s [%s]" % (_("Error saving host. Description"), sys.exc_info()[1]))
 
         wMain.updateTree()
@@ -6580,11 +6636,10 @@ class Whost(GCMBase, Gtk.Dialog):
             widget (Gtk.Button): Bouton clique.
             *args: Arguments supplémentaires.
         """
-        global wMain
         filename = show_open_dialog(
             parent=wMain.wMain, title=_("Open"), action=Gtk.FileChooserAction.OPEN
         )
-        if filename != None:
+        if filename is not None:
             self.txtPrivateKey.set_text(filename)
 
     # -- Whost.on_btnBrowse_clicked }
@@ -7089,10 +7144,10 @@ class Wconfig(GCMBase, Gtk.Dialog):
         slist = sorted(shortcuts.items(), key=lambda i: i[1][0])
 
         for s in slist:
-            if type(s[1]) == list:
+            if isinstance(s[1], list):
                 self.treeModel.append(None, [s[1][0], s[0]])
         for s in slist:
-            if type(s[1]) != list:
+            if not isinstance(s[1], list):
                 self.treeModel2.append(None, [s[1], s[0]])
 
         self.treeModel2.append(None, ["", ""])
@@ -7115,7 +7170,7 @@ class Wconfig(GCMBase, Gtk.Dialog):
                             self._plugin_prefs_tabs.append(_tab)
                 except Exception as _e:
                     app_logger.exception(
-                        "Wconfig.new | impossible de charger l'onglet prefs plugin %s: %s",
+                        "Wconfig.new | impossible de charger l'onglet prefs plugin {}: {}",
                         _module_name,
                         _e,
                     )
@@ -7225,7 +7280,7 @@ class Wconfig(GCMBase, Gtk.Dialog):
         model[rownum][colnum] = value
         if model == self.treeModel2:
             i = self.treeModel2.get_iter_first()
-            while i != None:
+            while i is not None:
                 j = self.treeModel2.iter_next(i)
                 self.treeModel2[i]
                 if self.treeModel2[i][0] == self.treeModel2[i][1] == "":
@@ -7610,7 +7665,8 @@ class Wcluster(GCMBase, Gtk.Dialog):
         self.txtCommands1 = Gtk.TextView()
         self.txtCommands1.set_tooltip_text(
             _(
-                "Tip: use #P=password to send a password without keeping it in clear text in the command history"
+                "Tip: use #P=password to send a password without keeping it "
+                "in clear text in the command history"
             )
         )
         self.txtCommands1.show()
@@ -7675,10 +7731,10 @@ class Wcluster(GCMBase, Gtk.Dialog):
             activate (bool): Etat d'activation du terminal.
         """
         obj = term.get_parent()
-        if obj == None:
+        if obj is None:
             return
         nb = obj.get_parent()
-        if nb == None:
+        if nb is None:
             return
         nb.get_tab_label(obj).set_selected(activate)
 
@@ -7899,7 +7955,8 @@ class CheckUpdates(Thread):
 
             socket.setdefaulttimeout(5)
             web = urllib.urlopen(
-                "https://raw.githubusercontent.com/MathildeDec/gnome-connection-manager/develop/_current.html"
+                "https://raw.githubusercontent.com/MathildeDec/"
+                "gnome-connection-manager/develop/_current.html"
             )
             if web.getcode() == 200:
                 new_version = web.readline().strip().decode("utf-8")
@@ -7910,7 +7967,8 @@ class CheckUpdates(Thread):
                         "%s\n\nCURRENT VERSION: %s\nNEW VERSION: %s"
                         % (
                             _(
-                                "A new version is available: https://github.com/MathildeDec/gnome-connection-manager/releases"
+                                "A new version is available: https://"
+                                "github.com/MathildeDec/gnome-connection-manager/releases"
                             ),
                             app_version,
                             new_version,

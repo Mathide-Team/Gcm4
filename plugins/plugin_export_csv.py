@@ -80,12 +80,15 @@ class CsvExportBatchPlugin(BatchPlugin):
                     writer.writerow(app._host_to_dict(h))
         except Exception as exc:  # noqa: BLE001
             logger.exception(f"CsvExportBatchPlugin.activate | CSV export error: {exc}")
-            msgbox(_(f"CSV export error: {exc}"), parent=app.window)
+            msgbox(_("CSV export error: {exc}").format(exc=exc), parent=app.window)
             return
 
         n = len(hosts)
         logger.info(f"CsvExportBatchPlugin.activate | exported={n} file={filename}")
-        msgbox(_(f"{n} connection(s) exported to {filename}."), parent=app.window)
+        msgbox(
+            _("{n} connection(s) exported to {filename}.").format(n=n, filename=filename),
+            parent=app.window,
+        )
 
 
 def get_batch_plugin() -> CsvExportBatchPlugin:

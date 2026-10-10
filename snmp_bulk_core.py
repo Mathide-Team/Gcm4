@@ -16,7 +16,6 @@ Dépendances::
 from __future__ import annotations
 
 import configparser
-import logging
 import re
 import threading
 import time
@@ -24,6 +23,8 @@ from collections.abc import Callable
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass, field
 from pathlib import Path
+
+from loguru import logger
 
 try:
     from ezsnmp import Session
@@ -42,7 +43,6 @@ except ImportError:
         EasySNMPTimeoutError,
     )
 
-logger = logging.getLogger(__name__)
 
 __all__ = [
     "SNMP_VENDORS",

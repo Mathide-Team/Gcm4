@@ -29,10 +29,11 @@ import json
 import re
 import threading
 import time
-from collections.abc import Callable
+from collections.abc import Callable, Sequence
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass, field
 from pathlib import Path
+from typing import Protocol
 
 __all__ = [
     "VENDOR_DEVICE_TYPES",
@@ -595,7 +596,21 @@ class PushResult:
         return self.status == STATUS_OK
 
 
-def _write_log(log_dir: Path, row: InventoryRow, result: PushResult) -> str:
+class PushResultLike(Protocol):
+    """Forme commune de ``PushResult`` et ``snmp_push_core.SnmpPushResult``
+    (journal, manifeste et synthèse sont partagés par les deux transports).
+    """
+
+    row: InventoryRow
+    status: str
+    output: str
+    error: str
+    config_errors: list[str]
+    log_path: str
+    duration_s: float
+
+
+def _write_log(log_dir: Path, row: InventoryRow, result: PushResultLike) -> str:
     log_dir.mkdir(parents=True, exist_ok=True)
     safe_ip = re.sub(r"[^A-Za-z0-9_.-]", "_", row.ip)
     log_file = log_dir / f"{row.line_no:04d}_{safe_ip}.log"
@@ -752,7 +767,7 @@ def run_bulk_push(
     return results
 
 
-def _write_manifest(log_dir: Path, results: list[PushResult]) -> None:
+def _write_manifest(log_dir: Path, results: Sequence[PushResultLike]) -> None:
     manifest = {
         "generated_at": time.strftime("%Y-%m-%d %H:%M:%S"),
         "summary": summarize_results(results),
@@ -776,7 +791,7 @@ def _write_manifest(log_dir: Path, results: list[PushResult]) -> None:
     )
 
 
-def summarize_results(results: list[PushResult]) -> dict:
+def summarize_results(results: Sequence[PushResultLike]) -> dict:
     """Statistiques d'une exécution, pour affichage dans la phase Résultats."""
     total = len(results)
     by_status = {STATUS_OK: 0, STATUS_REJECTED: 0, STATUS_FAILED: 0, STATUS_SKIPPED: 0}

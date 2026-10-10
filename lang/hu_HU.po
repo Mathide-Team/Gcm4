@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-11 22:14+0200\n"
+"Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
+"POT-Creation-Date: 2026-10-10 20:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,127 +18,1902 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: gnome_connection_manager.py:579 gnome_connection_manager.py:3180
-#: gnome_connection_manager.py:6243 gnome_connection_manager.py:8726
-#: gnome-connection-manager.glade:424 gnome-connection-manager.glade:967
+#: gnome_connection_manager.py
+msgid "+ Add"
+msgstr "+ Hozzáadás"
+
+#: gnome_connection_manager.py
+msgid ""
+"<i>Double-click a cell to edit it.\n"
+"File format: <tt>[serial_templates]</tt> in <tt>gcm.conf</tt>\n"
+"<tt>My device = 9600,n,n,8,1</tt>  (baud,flow,parity,bits,stop)</i>"
+msgstr ""
+"<i>Kattintson duplán egy cellára a szerkesztéshez.\n"
+"Fájlformátum: <tt>[serial_templates]</tt> a <tt>gcm.conf</tt>-ban\n"
+"<tt>Eszközöm = 9600,n,n,8,1</tt>  (baud,folyamvezérlés,paritás,bitek,stop)</i>"
+
+#: gnome_connection_manager.py
+msgid "<span size=\"smaller\">CTRL+UP/CTRL+DOWN for history</span>"
+msgstr "<span size=\"smaller\">CTRL+FEL/CTRL+LE az előzményekhez</span>"
+
+#: gnome_connection_manager.py
+msgid ""
+"<span size='smaller'>Use ##D=milliseconds to add a delay.\n"
+"Ex: ##D=1000</span>"
+msgstr ""
+"<span size='smaller'>Késleltetés hozzáadásához használja a ##D=milliszekundum formátumot.\n"
+"Pl.: ##D=1000</span>"
+
+#: gnome_connection_manager.py
+#, python-brace-format
+msgid "A group named '{src_leaf}' already exists in '{dest_full}'."
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "A new version is available: https://github.com/MathildeDec/gnome-connection-manager/releases"
+msgstr "Új verzió érhető el: https://github.com/MathildeDec/gnome-connection-manager/releases"
+
+#: gnome_connection_manager.py
+msgid "A simple ssh connection manager for gnome"
+msgstr "Egyszerű SSH kapcsolatkezelő a Gnome-hoz"
+
+#: gnome_connection_manager.py
+msgid "ASCII Backspace \t[Ctrl+H 0x08]"
+msgstr "ASCII Backspace \t[Ctrl+H 0x08]"
+
+#: gnome_connection_manager.py
+msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
+msgstr "ASCII Delete    \t[Ctrl+? 0x7F]"
+
+#: gnome_connection_manager.py
+#, fuzzy
+#| msgid "_About"
+msgid "About"
+msgstr "_Névjegy"
+
+#: gnome_connection_manager.py
+msgid "Action"
+msgstr "Művelet"
+
+#: gnome_connection_manager.py
+msgid "Activate"
+msgstr "Aktiválás"
+
+#: gnome_connection_manager.py widgets.py
+msgid "Add Host"
+msgstr "Hoszt hozzáadása"
+
+#: gnome_connection_manager.py
+#, fuzzy
+#| msgid "Disconnect"
+msgid "After disconnecting"
+msgstr "Kapcsolat bontása"
+
+#: gnome_connection_manager.py
+msgid "Always"
+msgstr "Mindig"
+
+#: gnome_connection_manager.py
+msgid "Automatic"
+msgstr "Automatikus"
+
+#: gnome_connection_manager.py
+msgid "Background color:"
+msgstr "Háttérszín:"
+
+#: gnome_connection_manager.py
+msgid "Backspace:"
+msgstr "Backspace:"
+
+#: gnome_connection_manager.py plugins/plugin_serial.py
+msgid "Baud rate"
+msgstr "Átviteli sebesség (baud)"
+
+#: gnome_connection_manager.py
+#, fuzzy
+#| msgid "Error connecting to server"
+msgid "Before connecting"
+msgstr "Hiba a szerverhez csatlakozás során"
+
+#: gnome_connection_manager.py ssh_config_editor.py
+msgid "Browse existing SSH keys in ~/.ssh/"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Browse filesystem for a private key file"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Buffer size"
+msgstr "Puffer mérete"
+
+#: gnome_connection_manager.py
+#, python-brace-format
+msgid "CSV export error: {e}"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Can't open file for writting"
+msgstr "A fájl írásra nem nyitható meg"
+
+#: gnome_connection_manager.py
+msgid "Can't open log file for writting"
+msgstr "A naplófájl írásra nem nyitható meg"
+
+#: gnome_connection_manager.py plugins/plugin_import_libvirt.py
+#: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
+#: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
+#: plugins/plugin_spice.py plugins/plugin_ssh.py utils.py widgets.py
 msgid "Cancel"
 msgstr "Mégse"
 
-#: gnome_connection_manager.py:581 gnome_connection_manager.py:6244
-msgid "Save"
-msgstr "Mentés"
+#: gnome_connection_manager.py
+msgid "Check updates"
+msgstr "Frissítések keresése"
 
-#: gnome_connection_manager.py:581 gnome_connection_manager.py:6372
-#: gnome_connection_manager.py:7862
+#: gnome_connection_manager.py
+msgid "Choose Group Color"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Circle around tabs when going to the previous/next tab"
+msgstr "Körkörös navigáció a lapok között az előző/következő lapra lépéskor"
+
+#: gnome_connection_manager.py
+msgid "Clear selection"
+msgstr "Kijelölés törlése"
+
+#: gnome_connection_manager.py ssh_config_editor.py ssh_key_manager_dialog.py
+msgid "Close"
+msgstr "Bezárás"
+
+#: gnome_connection_manager.py widgets.py
+msgid "Close console"
+msgstr "Konzol bezárása"
+
+#: gnome_connection_manager.py
+msgid "Cluster"
+msgstr "Klaszter"
+
+#: gnome_connection_manager.py
+#, fuzzy
+#| msgid "Cluster"
+msgid "Cluster…"
+msgstr "Klaszter"
+
+#: gnome_connection_manager.py
+msgid "Colors"
+msgstr "Színek"
+
+#: gnome_connection_manager.py
+msgid "Command"
+msgstr "Parancs"
+
+#: gnome_connection_manager.py
+msgid "Confirm on close console"
+msgstr "Megerősítés konzol bezárásakor"
+
+#: gnome_connection_manager.py
+msgid "Confirm on close console with middle click"
+msgstr "Megerősítés konzol bezárásakor középső kattintással"
+
+#: gnome_connection_manager.py
+msgid "Confirm on exit"
+msgstr "Megerősítés kilépéskor"
+
+#: gnome_connection_manager.py
+msgid "Continuous VTE tab logging mode"
+msgstr "Folyamatos VTE lap naplózási mód"
+
+#: gnome_connection_manager.py
+msgid "Continuous log mode is active and cannot be disabled per tab."
+msgstr "A folyamatos naplózási mód aktív, és lapszintenként nem kapcsolható ki."
+
+#: gnome_connection_manager.py widgets.py
+msgid "Copy"
+msgstr "Másolás"
+
+#: gnome_connection_manager.py widgets.py
+msgid "Copy all"
+msgstr "Mindent másol"
+
+#: gnome_connection_manager.py widgets.py
+msgid "Copy and Paste"
+msgstr "Másolás és beillesztés"
+
+#: gnome_connection_manager.py
+msgid "Copy selection to clipboard"
+msgstr "Kijelölés vágólapra másolása"
+
+#: gnome_connection_manager.py
+msgid "Custom Commands"
+msgstr "Egyéni parancsok"
+
+#: gnome_connection_manager.py
+#, fuzzy
+#| msgid "Custom commands"
+msgid "Custom commands…"
+msgstr "Egyéni parancsok"
+
+#: gnome_connection_manager.py
+msgid "Dark"
+msgstr ""
+
+#: gnome_connection_manager.py plugins/plugin_serial.py
+msgid "Data bits"
+msgstr "Adatbitek"
+
+#: gnome_connection_manager.py
+msgid "Default colors"
+msgstr "Alapértelmezett színek"
+
+#: gnome_connection_manager.py
+msgid "Delete Sequence \t[@7]"
+msgstr "Delete sorozat \t[@7]"
+
+#: gnome_connection_manager.py
+msgid "Delete:"
+msgstr "Delete:"
+
+#: gnome_connection_manager.py
+msgid "Description"
+msgstr "Leírás"
+
+#: gnome_connection_manager.py
+msgid "Disable alternating stripes in hosts window"
+msgstr "Váltakozó csíkozás kikapcsolása a hosztok ablakában"
+
+#: gnome_connection_manager.py
+msgid "Disable desktop notifications when a terminal disconnects"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Disable keyboard shortcuts in terminals (pass every key through)"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Do you really want to remove all hosts in group"
+msgstr "Biztosan eltávolítja az összes hosztot a csoportból"
+
+#: gnome_connection_manager.py
+msgid "Do you really want to remove host"
+msgstr "Biztosan eltávolítja a hosztot"
+
+#: gnome_connection_manager.py
+msgid "Dynamic title"
+msgstr "Dinamikus cím"
+
+#: gnome_connection_manager.py widgets.py
+msgid "Edit"
+msgstr "Szerkesztés"
+
+#: gnome_connection_manager.py
+msgid "Edit Host"
+msgstr "Hoszt szerkesztése"
+
+#: gnome_connection_manager.py
+msgid "Enable Logging"
+msgstr "Naplózás engedélyezése"
+
+#: gnome_connection_manager.py
+msgid "Enter new name"
+msgstr "Adja meg az új nevet"
+
+#: gnome_connection_manager.py
+msgid "Enter password"
+msgstr "Adja meg a jelszót"
+
+#: gnome_connection_manager.py
+msgid "Enter the text to send to consoles: "
+msgstr "Adja meg a konzoloknak küldendő szöveget: "
+
+#: gnome_connection_manager.py
+msgid "Error connecting to server"
+msgstr "Hiba a szerverhez csatlakozás során"
+
+#: gnome_connection_manager.py
+msgid "Error saving host. Description"
+msgstr "Hiba a hoszt mentésekor. Leírás"
+
+#: gnome_connection_manager.py
+msgid "Execute"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Export Servers"
+msgstr "Szerverek exportálása"
+
+#: gnome_connection_manager.py
+#, fuzzy
+#| msgid "_Export servers"
+msgid "Export servers"
+msgstr "Szerverek _exportálása"
+
+#: gnome_connection_manager.py plugins/plugin_export_csv.py
+msgid "Export to CSV"
+msgstr ""
+
+#: gnome_connection_manager.py plugins/plugin_export_csv.py
+msgid "Export to CSV…"
+msgstr ""
+
+#: gnome_connection_manager.py plugins/plugin_export_json.py
+msgid "Export to JSON"
+msgstr ""
+
+#: gnome_connection_manager.py plugins/plugin_export_json.py
+msgid "Export to JSON…"
+msgstr ""
+
+#: gnome_connection_manager.py
+#, fuzzy
+#| msgid "Export Servers"
+msgid "Exports"
+msgstr "Szerverek exportálása"
+
+#: gnome_connection_manager.py
+msgid "Fields group, name and host are required"
+msgstr "A csoport, név és hoszt mezők kötelezők"
+
+#: gnome_connection_manager.py
+#, fuzzy
+#| msgid "_File"
+msgid "File"
+msgstr "_Fájl"
+
+#: gnome_connection_manager.py
+msgid "Flow"
+msgstr "Folyamvezérlés"
+
+#: gnome_connection_manager.py
+msgid "Font:"
+msgstr "Betűtípus:"
+
+#: gnome_connection_manager.py
+msgid "Foreground color:"
+msgstr "Előtérszín:"
+
+#: gnome_connection_manager.py
+msgid "GTK Theme:"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "General"
+msgstr "Általános"
+
+#: gnome_connection_manager.py
+msgid "Gnome Connection Manager"
+msgstr "Gnome Connection Manager"
+
+#: gnome_connection_manager.py plugins/plugin_import_libvirt.py
+#: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
+#: plugins/plugin_import_virtualbox.py
+msgid "Group"
+msgstr "Csoport"
+
+#: gnome_connection_manager.py
+#, python-brace-format
+msgid "Group '{full_name}' already exists."
+msgstr ""
+
+#: gnome_connection_manager.py
+#, python-brace-format
+msgid "Group '{new_full}' already exists."
+msgstr ""
+
+#: gnome_connection_manager.py
+#, fuzzy
+#| msgid "Group"
+msgid "Group name:"
+msgstr "Csoport"
+
+#: gnome_connection_manager.py
+#, fuzzy
+#| msgid "_Help"
+msgid "Help"
+msgstr "_Súgó"
+
+#: gnome_connection_manager.py plugins/plugin_ssh.py ssh_config_editor.py
+#: ssh_key_manager_dialog.py
+msgid "Host"
+msgstr "Hoszt"
+
+#: gnome_connection_manager.py
+msgid "Host name"
+msgstr "Hoszt neve"
+
+#: gnome_connection_manager.py
+msgid "Import Servers"
+msgstr "Szerverek importálása"
+
+#: gnome_connection_manager.py
+#, fuzzy
+#| msgid "_Import servers"
+msgid "Import servers"
+msgstr "Szerverek _importálása"
+
+#: gnome_connection_manager.py
+#, fuzzy
+#| msgid "Imported"
+msgid "Imports"
+msgstr "Importálva"
+
+#: gnome_connection_manager.py
+msgid "Include this host in the workspace (Tools > Open Workspace)"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Invalid entry in configuration file"
+msgstr "Érvénytelen bejegyzés a konfigurációs fájlban"
+
+#: gnome_connection_manager.py
+msgid "Invalid file"
+msgstr "Érvénytelen fájl"
+
+#: gnome_connection_manager.py
+msgid "Invalid password"
+msgstr "Érvénytelen jelszó"
+
+#: gnome_connection_manager.py
+msgid "Invalid port"
+msgstr "Érvénytelen port"
+
+#: gnome_connection_manager.py
+msgid "Invert selection"
+msgstr "Kijelölés megfordítása"
+
+#: gnome_connection_manager.py
+#, python-brace-format
+msgid "JSON export error: {e}"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Key sequences"
+msgstr "Billentyűsorozatok"
+
+#: gnome_connection_manager.py
+#, python-brace-format
+msgid ""
+"L'outil « {name} » n'a pas pu s'ouvrir.\n"
+"\n"
+"Cause : {error}\n"
+"\n"
+"Détails complets dans le journal de l'application."
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Leave blank for passwordless/public key authentication"
+msgstr "Hagyja üresen jelszó nélküli/nyilvános kulcsú hitelesítéshez"
+
+#: gnome_connection_manager.py
+msgid "Light"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Log local console sessions"
+msgstr "Helyi konzol munkamenetek naplózása"
+
+#: gnome_connection_manager.py
+msgid "Logs path"
+msgstr "Naplók útvonala"
+
+#: gnome_connection_manager.py
+msgid "Menu"
+msgstr ""
+
+#: gnome_connection_manager.py ssh_key_manager_dialog.py
+msgid "Name"
+msgstr "Név"
+
+#: gnome_connection_manager.py
+msgid "Never"
+msgstr "Soha"
+
+#: gnome_connection_manager.py
+#, fuzzy
+#| msgid "Group"
+msgid "New Group"
+msgstr "Csoport"
+
+#: gnome_connection_manager.py
+#, fuzzy
+#| msgid "Add new host"
+msgid "New host"
+msgstr "Új hoszt hozzáadása"
+
+#: gnome_connection_manager.py
+#, fuzzy
+#| msgid "VM name"
+msgid "New name:"
+msgstr "VM neve"
+
+#: gnome_connection_manager.py
+msgid "New template"
+msgstr "Új sablon"
+
+#: gnome_connection_manager.py
+msgid "Next match"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "No hosts in the workspace yet — check \"Workspace\" in Edit Host to add one"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "No open consoles"
+msgstr "Nincs nyitott konzol"
+
+#: gnome_connection_manager.py plugins/plugin_netmiko_push.py
+#: plugins/plugin_snmp_push.py plugins/plugin_spice.py widgets.py
+msgid "OK"
+msgstr "OK"
+
+#: gnome_connection_manager.py
+msgid "Only on clean exit"
+msgstr "Csak tiszta kilépéskor"
+
+#: gnome_connection_manager.py plugins/plugin_import_putty.py utils.py
 msgid "Open"
 msgstr "Megnyitás"
 
-#: gnome_connection_manager.py:978 gnome_connection_manager.py:1181
-#: gnome_connection_manager.py:1501 gnome_connection_manager.py:1668
-#: gnome_connection_manager.py:3032
+#: gnome_connection_manager.py ssh_config_editor.py
+msgid "Open SSH Key Manager (generate / import / delete)"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Open Workspace"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Open local console on startup"
+msgstr "Helyi konzol megnyitása induláskor"
+
+#: gnome_connection_manager.py
+msgid "Overrides the global \"Close console\" preference for this host only"
+msgstr ""
+
+#: gnome_connection_manager.py plugins/plugin_serial.py
+msgid "Parity"
+msgstr "Paritás"
+
+#: gnome_connection_manager.py
+msgid "Password"
+msgstr "Jelszó"
+
+#: gnome_connection_manager.py widgets.py
+msgid "Paste"
+msgstr "Beillesztés"
+
+#: gnome_connection_manager.py
+msgid "Paste on right click"
+msgstr "Beillesztés jobb kattintásra"
+
+#: gnome_connection_manager.py ssh_config_editor.py
+msgid "Port"
+msgstr "Port"
+
+#: gnome_connection_manager.py
+msgid "Previous match"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Private key"
+msgstr "Privát kulcs"
+
+#: gnome_connection_manager.py
+msgid "Project's Homepage"
+msgstr "A projekt honlapja"
+
+#: gnome_connection_manager.py
+#, fuzzy
+#| msgid "_Quit"
+msgid "Quit"
+msgstr "_Kilépés"
+
+#: gnome_connection_manager.py
+#, fuzzy
+#| msgid "Rename tab"
+msgid "Rename Group"
+msgstr "Lap átnevezése"
+
+#: gnome_connection_manager.py widgets.py
+msgid "Rename tab"
+msgstr "Lap átnevezése"
+
+#: gnome_connection_manager.py
+msgid "Restore defaults"
+msgstr "Alapértékek visszaállítása"
+
+#: gnome_connection_manager.py
+msgid "Restore open tabs from the previous session on startup"
+msgstr ""
+
+#: gnome_connection_manager.py utils.py
+msgid "Save"
+msgstr "Mentés"
+
+#: gnome_connection_manager.py
+msgid "Save as"
+msgstr "Mentés másként"
+
+#: gnome_connection_manager.py
+msgid "Save buffer as"
+msgstr "Puffer mentése másként"
+
+#: gnome_connection_manager.py widgets.py
+msgid "Select all"
+msgstr "Mindet kijelöli"
+
+#: gnome_connection_manager.py
+msgid "Select background color"
+msgstr "Háttérszín kiválasztása"
+
+#: gnome_connection_manager.py
+msgid "Select consoles to use:"
+msgstr "Válassza ki a használandó konzolokat:"
+
+#: gnome_connection_manager.py
+msgid "Select font"
+msgstr "Betűtípus kiválasztása"
+
+#: gnome_connection_manager.py
+msgid "Select foreground color"
+msgstr "Előtérszín kiválasztása"
+
+#: gnome_connection_manager.py
+msgid "Send commands after login"
+msgstr "Parancsok küldése bejelentkezés után"
+
+#: gnome_connection_manager.py
+msgid "Send the command above to every checked host (same as pressing Enter)"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Serial Templates"
+msgstr "Soros sablonok"
+
+#: gnome_connection_manager.py
+msgid "Server list will be overwritten, continue?"
+msgstr "A szerverlista felülíródik, folytatja?"
+
+#: gnome_connection_manager.py
+#, fuzzy
+#| msgid "_Servers"
+msgid "Servers"
+msgstr "_Szerverek"
+
+#: gnome_connection_manager.py
+msgid "Settings"
+msgstr "Beállítások"
+
+#: gnome_connection_manager.py
+#, python-brace-format
+msgid "Shell command run locally, in the background, right after this connection ends. Currently only triggered for terminal-based protocols (SSH/Telnet/Local/Serial/IPMI SOL). Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
+msgstr ""
+
+#: gnome_connection_manager.py
+#, python-brace-format
+msgid "Shell command run locally, in the background, right before this connection opens (any protocol). Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Shortcut"
+msgstr "Gyorsbillentyű"
+
+#: gnome_connection_manager.py
+msgid "Shortcuts"
+msgstr "Gyorsbillentyűk"
+
+#: gnome_connection_manager.py
+msgid "Show Panel"
+msgstr "Panel megjelenítése"
+
+#: gnome_connection_manager.py
+msgid "Standard Commands"
+msgstr "Standard parancsok"
+
+#: gnome_connection_manager.py
+msgid "Stop"
+msgstr "Stop"
+
+#: gnome_connection_manager.py
+msgid "System"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "TERM"
+msgstr "TERM"
+
+#: gnome_connection_manager.py
+msgid "TTY Erase"
+msgstr "TTY törlés"
+
+#: gnome_connection_manager.py
+msgid "Template name"
+msgstr "Sablon neve"
+
+#: gnome_connection_manager.py
+msgid "There are"
+msgstr "Van"
+
+#: gnome_connection_manager.py
+msgid ""
+"This is gnome-connection-manager, written and maintained by\n"
+"Copyright © 2012 Renzo Bertuzzi L. <kuthulu@gmail.com> - Chile"
+msgstr ""
+"Ez a gnome-connection-manager, írta és karbantartja:\n"
+"Copyright © 2012 Renzo Bertuzzi L. <kuthulu@gmail.com> - Chile"
+
+#: gnome_connection_manager.py
+msgid "Tip: use #P=password to send a password without keeping it in clear text in the command history"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Title"
+msgstr "Cím"
+
+#: gnome_connection_manager.py
+msgid "To create subgroups use format group1/group2/group3"
+msgstr "Alcsoportok létrehozásához használja a csoport1/csoport2/csoport3 formátumot"
+
+#: gnome_connection_manager.py
+msgid "Transparency"
+msgstr "Átláthatóság"
+
+#: gnome_connection_manager.py key_picker_dialog.py plugins/plugin_ssh.py
+#: ssh_config_editor.py ssh_key_manager_dialog.py
+msgid "Type"
+msgstr "Típus"
+
+#: gnome_connection_manager.py
+msgid "Use default fixed width font"
+msgstr "Alapértelmezett rögzített szélességű betűtípus használata"
+
+#: gnome_connection_manager.py
+msgid "Use global preference"
+msgstr ""
+
+#: gnome_connection_manager.py ssh_config_editor.py
+msgid "User"
+msgstr "Felhasználó"
+
+#: gnome_connection_manager.py
+#, fuzzy
+#| msgid "_View"
+msgid "View"
+msgstr "_Nézet"
+
+#: gnome_connection_manager.py
+msgid "Word separator"
+msgstr "Szóelválasztó"
+
+#: gnome_connection_manager.py
+#, fuzzy
+#| msgid "Backspace:"
+msgid "Workspace"
+msgstr "Backspace:"
+
+#: gnome_connection_manager.py
+msgid "already exists for group"
+msgstr "már létezik a csoportban"
+
+#: gnome_connection_manager.py
+msgid "open consoles, exit anyway?"
+msgstr "nyitott konzol, mégis kilép?"
+
+#: gnome_connection_manager.py
+msgid "search..."
+msgstr "keresés..."
+
+#: gnome_connection_manager.py
+#, python-brace-format
+msgid "{count} connection(s) exported to {filename}."
+msgstr ""
+
+#: gnome_connection_manager.py
+#, python-brace-format
+msgid ""
+"{n} outil(s) n'ont pas pu se charger au démarrage :\n"
+"\n"
+"{details}\n"
+"\n"
+"L'application continue de fonctionner normalement sans eux. Détails complets dans le journal de l'application."
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "− Remove"
+msgstr "− Eltávolítás"
+
+#: gnome_connection_manager.py ssh_config_editor.py
+msgid "⚙"
+msgstr ""
+
+#: gnome_connection_manager.py ssh_config_editor.py
+msgid "🔑 Pick…"
+msgstr ""
+
+#: key_picker_dialog.py
+msgid ""
+"<i>No SSH key found in ~/.ssh/.\n"
+"Click <b>Generate…</b> to create one.</i>"
+msgstr ""
+
+#: key_picker_dialog.py ssh_key_manager_dialog.py
+msgid "Fingerprint"
+msgstr ""
+
+#: key_picker_dialog.py
+#, fuzzy
+#| msgid "VM name"
+msgid "Key name"
+msgstr "VM neve"
+
+#: key_picker_dialog.py
+msgid "Keys found in <b>~/.ssh/</b> — select one (or several with Ctrl/Shift-click) then click <i>Use</i>:"
+msgstr ""
+
+#: key_picker_dialog.py
+msgid "Permissions"
+msgstr ""
+
+#: key_picker_dialog.py
+msgid "Select SSH Key"
+msgstr ""
+
+#: key_picker_dialog.py ssh_key_manager_dialog.py
+#, fuzzy
+#| msgid "Cancel"
+msgid "_Cancel"
+msgstr "Mégse"
+
+#: key_picker_dialog.py
+msgid "_Use"
+msgstr ""
+
+#: key_picker_dialog.py
+#, fuzzy
+#| msgid "Private key"
+msgid "private"
+msgstr "Privát kulcs"
+
+#: key_picker_dialog.py
+msgid "public"
+msgstr ""
+
+#: key_picker_dialog.py
+msgid "⚙ Generate…"
+msgstr ""
+
+#: plugins/plugin_export_csv.py
+#, python-brace-format
+msgid "CSV export error: {exc}"
+msgstr ""
+
+#: plugins/plugin_export_csv.py plugins/plugin_export_json.py
+#, python-brace-format
+msgid "{n} connection(s) exported to {filename}."
+msgstr ""
+
+#: plugins/plugin_export_json.py
+#, python-brace-format
+msgid "JSON export error: {exc}"
+msgstr ""
+
+#: plugins/plugin_import_csv.py
+#, fuzzy, python-brace-format
+#| msgid "Template name"
+msgid "CSV import error: {exc}"
+msgstr "Sablon neve"
+
+#: plugins/plugin_import_csv.py
+#, fuzzy
+#| msgid "Import from libvirt"
+msgid "Import from CSV"
+msgstr "Importálás libvirtből"
+
+#: plugins/plugin_import_csv.py
+#, fuzzy
+#| msgid "Import from libvirt"
+msgid "Import from CSV…"
+msgstr "Importálás libvirtből"
+
+#: plugins/plugin_import_csv.py
+msgid "No valid entry found in CSV."
+msgstr ""
+
+#: plugins/plugin_import_csv.py
+#, python-brace-format
+msgid "{n} connection(s) imported from CSV."
+msgstr ""
+
+#: plugins/plugin_import_json.py
+#, fuzzy
+#| msgid "Import from libvirt"
+msgid "Import from JSON"
+msgstr "Importálás libvirtből"
+
+#: plugins/plugin_import_json.py
+#, fuzzy
+#| msgid "Import from libvirt"
+msgid "Import from JSON…"
+msgstr "Importálás libvirtből"
+
+#: plugins/plugin_import_json.py
+#, python-brace-format
+msgid "JSON import error: {exc}"
+msgstr ""
+
+#: plugins/plugin_import_json.py
+msgid "No valid entry found in JSON."
+msgstr ""
+
+#: plugins/plugin_import_json.py
+#, python-brace-format
+msgid "{n} connection(s) imported from JSON."
+msgstr ""
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
+#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "1. Configuration"
+msgstr ""
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
+#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "2. Suivi"
+msgstr ""
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
+#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "3. Résultats"
+msgstr ""
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
+#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
+msgid "<b>Connection types to import:</b>"
+msgstr "<b>Importálandó kapcsolattípusok:</b>"
+
+#: plugins/plugin_import_libvirt.py
+msgid "<i>Applies only to the Libvirt import plugin. Can still be overridden per import run.</i>"
+msgstr ""
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_proxmox.py
+#: plugins/plugin_import_virtualbox.py plugins/plugin_ssh.py
+msgid "Add"
+msgstr "Hozzáadás"
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_proxmox.py
+#: plugins/plugin_import_virtualbox.py
+msgid "Default SSH user (VMs):"
+msgstr "Alapértelmezett SSH felhasználó (VM-ek):"
+
+#: plugins/plugin_import_libvirt.py
+msgid "Detected libvirt URI"
+msgstr "Észlelt libvirt URI"
+
+#: plugins/plugin_import_libvirt.py
+msgid "Ex: 192.168.105.41 | root@192.168.105.41 | qemu+ssh://root@192.168.105.41/system"
+msgstr "Pl.: 192.168.105.41 | root@192.168.105.41 | qemu+ssh://root@192.168.105.41/system"
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_proxmox.py
+msgid "Hypervisor SSH user:"
+msgstr "Hipervizor SSH felhasználó:"
+
+#: plugins/plugin_import_libvirt.py
+msgid "Hypervisors (virt-manager / dconf):"
+msgstr "Hipervizorok (virt-manager / dconf):"
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
+#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
+msgid "IP / Host"
+msgstr "IP / Hoszt"
+
+#: plugins/plugin_import_libvirt.py
+msgid "Import from libvirt"
+msgstr "Importálás libvirtből"
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
+#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
+msgid "Imported"
+msgstr "Importálva"
+
+#: plugins/plugin_import_libvirt.py
+msgid "Invalid libvirt target."
+msgstr "Érvénytelen libvirt cél."
+
+#: plugins/plugin_import_libvirt.py
+msgid "Libvirt"
+msgstr "Libvirt"
+
+#: plugins/plugin_import_libvirt.py
+msgid ""
+"No URI found in dconf (virt-manager not configured?).\n"
+"Add your URIs manually below."
+msgstr ""
+"Nem található URI a dconfban (a virt-manager nincs beállítva?).\n"
+"Adja hozzá az URI-kat manuálisan alább."
+
+#: plugins/plugin_import_libvirt.py
+msgid "No URI selected."
+msgstr "Nincs kiválasztott URI."
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
+#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
+msgid "No connection to import (all already exist or none selected)."
+msgstr "Nincs importálandó kapcsolat (mind már létezik, vagy semmi nincs kijelölve)."
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
+#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
+msgid "No connection type selected."
+msgstr "Nincs kiválasztott kapcsolattípus."
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
+#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
+msgid "No host imported."
+msgstr "Nincs importált hoszt."
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
+#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
+msgid "No new host (duplicates ignored)."
+msgstr "Nincs új hoszt (a duplikátumok kihagyva)."
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
+#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
+msgid "Overwrite existing connections with the same name and protocol"
+msgstr "A meglévő, azonos nevű és protokollú kapcsolatok felülírása"
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
+#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
+msgid "Proto"
+msgstr "Proto"
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_proxmox.py
+msgid "RDP  (probe port 3389 from hypervisor via nc/nmap - skipped if port is closed)"
+msgstr "RDP  (3389-os port ellenőrzése a hipervizorról nc/nmap segítségével - kihagyva, ha a port zárva van)"
+
+#: plugins/plugin_import_libvirt.py
+msgid "SPICE  (virt-viewer --connect qemu+ssh://... vm - SSH tunnel handled automatically)"
+msgstr "SPICE  (virt-viewer --connect qemu+ssh://... vm - az SSH tunnel automatikusan kezelve)"
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_proxmox.py
+msgid "SSH  (ProxyJump -J via hypervisor when VM IP is known, otherwise hypervisor shell + -t ssh user@vm)"
+msgstr "SSH  (ProxyJump -J a hipervizoron keresztül, ha a VM IP-je ismert, egyébként hipervizor shell + -t ssh felhasználó@vm)"
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
+#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
+#, python-brace-format
+msgid "Scan failed: {exc}"
+msgstr ""
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
+#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
+msgid "State"
+msgstr "Állapot"
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_proxmox.py
+#: plugins/plugin_import_virtualbox.py
+#, python-brace-format
+msgid "Target added automatically: {pending_uri}"
+msgstr ""
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_proxmox.py
+#: plugins/plugin_import_virtualbox.py
+#, python-brace-format
+msgid "Target added: {uri}"
+msgstr ""
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_proxmox.py
+#: plugins/plugin_import_virtualbox.py
+#, python-brace-format
+msgid "Target already present: {uri}"
+msgstr ""
+
+#: plugins/plugin_import_libvirt.py
+msgid "Used as default user in the Libvirt import dialog."
+msgstr ""
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
+#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
+#: plugins/plugin_spice.py
+msgid "VM name"
+msgstr "VM neve"
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_proxmox.py
+#, fuzzy
+#| msgid "RDP  (probe port 3389 from hypervisor via nc/nmap - skipped if port is closed)"
+msgid "VNC  (probe port 5900 from hypervisor via nc/nmap - skipped if port is closed)"
+msgstr "RDP  (3389-os port ellenőrzése a hipervizorról nc/nmap segítségével - kihagyva, ha a port zárva van)"
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
+#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
+#: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_spice.py
+#: plugins/plugin_vnc.py plugins/plugin_web.py
 msgid "Waiting…"
 msgstr "Várakozás…"
 
-#: gnome_connection_manager.py:982 gnome_connection_manager.py:1185
-#: gnome_connection_manager.py:1223 gnome_connection_manager.py:1505
-#: gnome_connection_manager.py:1672 gnome_connection_manager.py:1962
-#: gnome_connection_manager.py:4605 gnome-connection-manager.glade:2291
+#: plugins/plugin_import_libvirt.py
+#, fuzzy, python-brace-format
+#| msgid "Import from libvirt"
+msgid "{n} connection(s) imported from libvirt."
+msgstr "Importálás libvirtből"
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
+#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
+msgid "✓ Check all"
+msgstr "✓ Mindet kijelöli"
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
+#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
+msgid "✓ Imported"
+msgstr "✓ Importálva"
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
+#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
+msgid "✕  Close"
+msgstr "✕  Bezárás"
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
+#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
+msgid "✗ Uncheck all"
+msgstr "✗ Mindet törli"
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
+#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
+msgid "⬇  Import selected"
+msgstr "⬇  Kijelöltek importálása"
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
+#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
+msgid "🔄  Rescan"
+msgstr "🔄  Újra keresés"
+
+#: plugins/plugin_import_libvirt.py
+#, fuzzy
+#| msgid "🔍  Scan hypervisors"
+msgid "🔍  Scan Libvirt hypervisors"
+msgstr "🔍  Hipervizorok keresése"
+
+#: plugins/plugin_import_ovirt.py
+#, python-brace-format
+msgid ""
+"Could not reach '{vm}' directly, via the oVirt engine, or via its hypervisor.\n"
+"\n"
+"Enter either a direct target — \"ip\" or \"ip:port\" — or a jump proxy — \"-J user@jumphost[:port] target_ip\".\n"
+"Leave empty to skip this VM."
+msgstr ""
+
+#: plugins/plugin_import_ovirt.py
+msgid "Engine URL is required."
+msgstr ""
+
+#: plugins/plugin_import_ovirt.py
+msgid "Engine URL:"
+msgstr ""
+
+#: plugins/plugin_import_ovirt.py
+#, fuzzy
+#| msgid "Import from libvirt"
+msgid "Import from oVirt"
+msgstr "Importálás libvirtből"
+
+#: plugins/plugin_import_ovirt.py
+msgid ""
+"Note: IP resolution requires the oVirt guest agent to be installed in each VM.\n"
+"Reachability is tested automatically (direct, then jump proxy via the engine, then via the VM's hypervisor) — if all three fail, you will be asked for a manual route per VM during the scan."
+msgstr ""
+
+#: plugins/plugin_import_ovirt.py
+#, fuzzy
+#| msgid "Password"
+msgid "Password:"
+msgstr "Jelszó"
+
+#: plugins/plugin_import_ovirt.py
+msgid "RDP  (Windows guests only — port 3389 probed via the resolved route)"
+msgstr ""
+
+#: plugins/plugin_import_ovirt.py
+msgid "SSH  (direct — oVirt VMs are usually directly routable)"
+msgstr ""
+
+#: plugins/plugin_import_ovirt.py
+msgid "SSH user (engine/hypervisor jump):"
+msgstr ""
+
+#: plugins/plugin_import_ovirt.py
+#, python-brace-format
+msgid "Unreachable VM: {vm}"
+msgstr ""
+
+#: plugins/plugin_import_ovirt.py
+msgid "Used only as a fallback when a VM is not directly reachable: SSH user for jump-proxy attempts via the engine machine or the VM's hypervisor, and default SSH user for the VMs themselves (non-Windows guests)."
+msgstr ""
+
+#: plugins/plugin_import_ovirt.py
+#, fuzzy
+#| msgid "User"
+msgid "Username:"
+msgstr "Felhasználó"
+
+#: plugins/plugin_import_ovirt.py
+msgid "Verify TLS certificate"
+msgstr ""
+
+#: plugins/plugin_import_ovirt.py
+#, python-brace-format
+msgid "{n} connection(s) imported from oVirt."
+msgstr ""
+
+#: plugins/plugin_import_ovirt.py
+msgid "🔍  Scan oVirt engine"
+msgstr ""
+
+#: plugins/plugin_import_proxmox.py
+msgid "<i>Applies only to the Proxmox import plugin. Can still be overridden per import run.</i>"
+msgstr ""
+
+#: plugins/plugin_import_proxmox.py
+msgid "Add a Proxmox target:"
+msgstr "Proxmox cél hozzáadása:"
+
+#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
+msgid "Ex: 192.168.105.41 | root@192.168.105.41 | root@192.168.105.41:22"
+msgstr "Pl.: 192.168.105.41 | root@192.168.105.41 | root@192.168.105.41:22"
+
+#: plugins/plugin_import_proxmox.py
+msgid "Import from Proxmox"
+msgstr "Importálás Proxmoxból"
+
+#: plugins/plugin_import_proxmox.py
+msgid "Invalid Proxmox target."
+msgstr "Érvénytelen Proxmox cél."
+
+#: plugins/plugin_import_proxmox.py
+msgid "No Proxmox target selected."
+msgstr "Nincs kiválasztott Proxmox cél."
+
+#: plugins/plugin_import_proxmox.py
+msgid ""
+"No SSH URI found in dconf.\n"
+"Enter an IP/host below and click Add."
+msgstr ""
+"Nem található SSH URI a dconfban.\n"
+"Írjon be alább egy IP-t/hosztot, és kattintson a Hozzáadásra."
+
+#: plugins/plugin_import_proxmox.py
+msgid "Proxmox"
+msgstr ""
+
+#: plugins/plugin_import_proxmox.py
+msgid "Proxmox target (qemu+ssh://user@host/system)"
+msgstr ""
+
+#: plugins/plugin_import_proxmox.py
+#, fuzzy
+#| msgid "Add a Proxmox target:"
+msgid "Proxmox targets:"
+msgstr "Proxmox cél hozzáadása:"
+
+#: plugins/plugin_import_proxmox.py
+msgid "SPICE  (vga:qxl required — ticket generated at connection time via pvesh)"
+msgstr ""
+
+#: plugins/plugin_import_proxmox.py
+#, fuzzy
+#| msgid "Waiting…"
+msgid "Scanning…"
+msgstr "Várakozás…"
+
+#: plugins/plugin_import_proxmox.py
+msgid "Used as default user in the Proxmox import dialog."
+msgstr ""
+
+#: plugins/plugin_import_proxmox.py
+#, fuzzy, python-brace-format
+#| msgid "Import from Proxmox"
+msgid "{n} connection(s) imported from Proxmox."
+msgstr "Importálás Proxmoxból"
+
+#: plugins/plugin_import_proxmox.py
+msgid "🔍  Scan Proxmox hosts"
+msgstr "🔍  Proxmox hosztok keresése"
+
+#: plugins/plugin_import_putty.py
+msgid "Import from PuTTY sessions…"
+msgstr ""
+
+#: plugins/plugin_import_putty.py
+msgid "No importable SSH/Telnet session found in this folder."
+msgstr ""
+
+#: plugins/plugin_import_putty.py
+#, python-brace-format
+msgid "PuTTY import error: {exc}"
+msgstr ""
+
+#: plugins/plugin_import_putty.py
+msgid "Select PuTTY sessions folder"
+msgstr ""
+
+#: plugins/plugin_import_putty.py
+#, python-brace-format
+msgid "{count} session(s) ignored (unsupported protocol or missing host)."
+msgstr ""
+
+#: plugins/plugin_import_putty.py
+#, python-brace-format
+msgid "{n} connection(s) imported from PuTTY."
+msgstr ""
+
+#: plugins/plugin_import_virtualbox.py
+msgid "<i>Applies only to the VirtualBox import plugin. Can still be overridden per import run.</i>"
+msgstr ""
+
+#: plugins/plugin_import_virtualbox.py
+msgid "Add a VirtualBox host:"
+msgstr ""
+
+#: plugins/plugin_import_virtualbox.py
+#, fuzzy
+#| msgid "Hypervisor SSH user:"
+msgid "Host SSH user:"
+msgstr "Hipervizor SSH felhasználó:"
+
+#: plugins/plugin_import_virtualbox.py
+#, fuzzy
+#| msgid "Import from libvirt"
+msgid "Import from VirtualBox"
+msgstr "Importálás libvirtből"
+
+#: plugins/plugin_import_virtualbox.py
+#, fuzzy
+#| msgid "Invalid Proxmox target."
+msgid "Invalid VirtualBox target."
+msgstr "Érvénytelen Proxmox cél."
+
+#: plugins/plugin_import_virtualbox.py
+#, fuzzy
+#| msgid "No URI selected."
+msgid "No host selected."
+msgstr "Nincs kiválasztott URI."
+
+#: plugins/plugin_import_virtualbox.py
+msgid "RDP  (native VirtualBox VRDE if enabled, otherwise guest port 3389 probe)"
+msgstr ""
+
+#: plugins/plugin_import_virtualbox.py
+#, fuzzy
+#| msgid "SSH  (ProxyJump -J via hypervisor when VM IP is known, otherwise hypervisor shell + -t ssh user@vm)"
+msgid "SSH  (ProxyJump -J via host when VM IP is known, otherwise host shell + -t ssh user@vm)"
+msgstr "SSH  (ProxyJump -J a hipervizoron keresztül, ha a VM IP-je ismert, egyébként hipervizor shell + -t ssh felhasználó@vm)"
+
+#: plugins/plugin_import_virtualbox.py
+msgid "Used as default user in the VirtualBox import dialog."
+msgstr ""
+
+#: plugins/plugin_import_virtualbox.py
+msgid "VNC  (probe port 5900 in the guest — off by default)"
+msgstr ""
+
+#: plugins/plugin_import_virtualbox.py
+msgid "VirtualBox"
+msgstr ""
+
+#: plugins/plugin_import_virtualbox.py
+#, fuzzy
+#| msgid ""
+#| "No URI found in dconf (virt-manager not configured?).\n"
+#| "Add your URIs manually below."
+msgid ""
+"VirtualBox has no central registry (unlike virt-manager/dconf).\n"
+"Add your hosts manually below."
+msgstr ""
+"Nem található URI a dconfban (a virt-manager nincs beállítva?).\n"
+"Adja hozzá az URI-kat manuálisan alább."
+
+#: plugins/plugin_import_virtualbox.py
+msgid "VirtualBox host (user@host[:port])"
+msgstr ""
+
+#: plugins/plugin_import_virtualbox.py
+msgid "VirtualBox hosts:"
+msgstr ""
+
+#: plugins/plugin_import_virtualbox.py
+#, fuzzy, python-brace-format
+#| msgid "Import from libvirt"
+msgid "{n} connection(s) imported from VirtualBox."
+msgstr "Importálás libvirtből"
+
+#: plugins/plugin_import_virtualbox.py
+#, fuzzy
+#| msgid "🔍  Scan Proxmox hosts"
+msgid "🔍  Scan VirtualBox hosts"
+msgstr "🔍  Proxmox hosztok keresése"
+
+#: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_serial.py
+#: plugins/plugin_spice.py plugins/plugin_vnc.py plugins/plugin_web.py
+#: widgets.py
 msgid "Connect"
 msgstr "Csatlakozás"
 
-#: gnome_connection_manager.py:986 gnome_connection_manager.py:1077
-#: gnome_connection_manager.py:1190 gnome_connection_manager.py:1323
-#: gnome_connection_manager.py:1509 gnome_connection_manager.py:1614
-#: gnome_connection_manager.py:1676 gnome_connection_manager.py:1769
-#: gnome_connection_manager.py:1964 gnome_connection_manager.py:1990
-#: gnome_connection_manager.py:2156
-msgid "Disconnect"
-msgstr "Kapcsolat bontása"
-
-#: gnome_connection_manager.py:993 gnome_connection_manager.py:1516
-#: gnome_connection_manager.py:1683 gnome_connection_manager.py:1949
-msgid "xfreerdp options:"
-msgstr "xfreerdp beállítások:"
-
-#: gnome_connection_manager.py:1002
-msgid "xfreerdp log:"
-msgstr "xfreerdp napló:"
-
-#: gnome_connection_manager.py:1062 gnome_connection_manager.py:1296
-#: gnome_connection_manager.py:1587 gnome_connection_manager.py:1742
-msgid "xfreerdp not found"
-msgstr "xfreerdp nem található"
-
-#: gnome_connection_manager.py:1064 gnome_connection_manager.py:1298
-#: gnome_connection_manager.py:1589 gnome_connection_manager.py:1744
-#: gnome_connection_manager.py:2141
+#: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_serial.py
+#: plugins/plugin_spice.py plugins/plugin_vnc.py plugins/plugin_web.py
 msgid "Connecting…"
 msgstr "Csatlakozás…"
 
-#: gnome_connection_manager.py:1090 gnome_connection_manager.py:1236
-#: gnome_connection_manager.py:1601 gnome_connection_manager.py:1756
+#: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_serial.py
+#: plugins/plugin_spice.py plugins/plugin_vnc.py widgets.py
+msgid "Disconnect"
+msgstr "Kapcsolat bontása"
+
+#: plugins/plugin_ipmisol.py
+msgid "IPMI (SOL)"
+msgstr ""
+
+#: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_spice.py
+#: plugins/plugin_vnc.py
 msgid "Session ended"
 msgstr "A munkamenet véget ért"
 
-#: gnome_connection_manager.py:1092 gnome_connection_manager.py:1309
-#: gnome_connection_manager.py:1599 gnome_connection_manager.py:1754
+#: plugins/plugin_ipmisol.py
+msgid "ipmitool introuvable"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
 #, python-brace-format
-msgid "Ended (code {rc})"
-msgstr "Befejeződött (kód: {rc})"
+msgid "0 / {n}"
+msgstr ""
 
-#: gnome_connection_manager.py:1838
-msgid "Serial port:"
-msgstr "Soros port:"
+#: plugins/plugin_netmiko_push.py
+msgid "Afficher les mots de passe"
+msgstr ""
 
-#: gnome_connection_manager.py:1842
-msgid "Ex : /dev/ttyUSB0, /dev/ttyS0, /dev/ttyACM0"
-msgstr "Pl.: /dev/ttyUSB0, /dev/ttyS0, /dev/ttyACM0"
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Annuler l'envoi"
+msgstr ""
 
-#: gnome_connection_manager.py:1846
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Aucune exécution pour le moment."
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Aucune ligne cochée."
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Charger l'inventaire"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Chargez d'abord un inventaire."
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py
+msgid "Choisissez d'abord un fichier profiles.ini."
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Choisissez l'inventaire CSV et le gabarit."
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py
+msgid "Choisissez un constructeur et un modèle."
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py
+msgid "Commande de sauvegarde (optionnel, ex. 'save force') :"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py
+msgid "Connexions en parallèle :"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Constructeur"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py
+msgid "Constructeur :"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Durée (s)"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py
+msgid "Déploiement Netmiko…"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Détail"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "En attente"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "En attente : 0"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+#, python-brace-format
+msgid "En attente : {n}"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "En cours"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Enregistrer ce profil"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Envoyer"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+#, python-brace-format
+msgid "Erreur d'écriture : {e}"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+#, python-brace-format
+msgid "Erreur de chargement : {e}"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Fichier :"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+#, fuzzy
+#| msgid "Invalid entry in configuration file"
+msgid "Gabarit de configuration :"
+msgstr "Érvénytelen bejegyzés a konfigurációs fájlban"
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+#, fuzzy
+#| msgid "IP / Host"
+msgid "IP / hôte"
+msgstr "IP / Hoszt"
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Ignoré"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+#, python-brace-format
+msgid "Impossible de lire le journal : {e}"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Inventaire (CSV) :"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Lancer le déploiement →"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Le profil doit avoir un nom."
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Ligne"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py
+msgid "Modèle / device_type netmiko :"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py
+msgid "Mot de passe :"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py
+msgid "Mot de passe enable (si applicable) :"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py
+msgid "Netmiko"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Nom"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Nom du profil (= colonne 'type'/'profile' du CSV) :"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Nouveau"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "OK : 0"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+#, python-brace-format
+msgid "OK : {n}"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Ouvrir le dossier des journaux"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py
+#, fuzzy
+#| msgid "Port"
+msgid "Port :"
+msgstr "Port"
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Profil"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+#, python-brace-format
+msgid "Profil '{n}' mis à jour (en mémoire)."
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py
+#, python-brace-format
+msgid "Profils chargés depuis {p}"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py
+msgid "Profils de connexion (constructeur, identifiants…)"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+#, python-brace-format
+msgid "Profils écrits dans {p}"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Rejeté"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Rejetés : 0"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+#, python-brace-format
+msgid "Rejetés : {n}"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py
+msgid "Sauvegarder la configuration après envoi"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+#, fuzzy
+#| msgid "State"
+msgid "Statut"
+msgstr "Állapot"
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Supprimer"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py
+msgid "Timeout (s) :"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+#, python-brace-format
+msgid "Total : {total}  |  OK : {ok}  |  Rejetés : {rejected}  |  Échecs : {failed}  |  Ignorés : {skipped}"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py
+msgid "Utilisateur"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py
+msgid "Utilisateur :"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+#, python-brace-format
+msgid "Validation : {ok} prêt(s), {err} en erreur."
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py
+msgid "Valider (à blanc, sans se connecter)"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Variables"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Voir les résultats →"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py
+msgid "device_type"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py
+msgid "profiles.ini"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+#, python-brace-format
+msgid "{d} / {n}"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+#, python-brace-format
+msgid "{n} hôte(s) chargé(s) depuis {csv}."
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Échec"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Échecs : 0"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+#, python-brace-format
+msgid "Échecs : {n}"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py
+msgid "Écrire profiles.ini sur disque"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "← Nouveau déploiement"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+#, python-brace-format
+msgid "⚠ Variables absentes du CSV : {v}"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+#, python-brace-format
+msgid "⚠ profil inconnu : {p}"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+#, python-brace-format
+msgid "⚠ variables manquantes : {v}"
+msgstr ""
+
+#: plugins/plugin_rdp.py plugins/plugin_vnc.py
+msgid "Authentication failed"
+msgstr ""
+
+#: plugins/plugin_rdp.py
+msgid "Custom…"
+msgstr ""
+
+#: plugins/plugin_rdp.py
+msgid "Domain"
+msgstr ""
+
+#: plugins/plugin_rdp.py
+#, fuzzy
+#| msgid "Dynamic title"
+msgid "Dynamic resolution"
+msgstr "Dinamikus cím"
+
+#: plugins/plugin_rdp.py plugins/plugin_spice.py
+msgid "Error: could not mount the ISO"
+msgstr ""
+
+#: plugins/plugin_rdp.py
+#, python-brace-format
+msgid "Error: {msg}"
+msgstr ""
+
+#: plugins/plugin_rdp.py plugins/plugin_vnc.py
+msgid "Fullscreen"
+msgstr ""
+
+#: plugins/plugin_rdp.py
+msgid "Geometry"
+msgstr ""
+
+#: plugins/plugin_rdp.py
+msgid "Height"
+msgstr ""
+
+#: plugins/plugin_rdp.py plugins/plugin_web.py
+msgid "Ignore certificate errors"
+msgstr ""
+
+#: plugins/plugin_rdp.py
+msgid "RDP"
+msgstr ""
+
+#: plugins/plugin_rdp.py
+#, fuzzy
+#| msgid "Remote"
+msgid "RemoteApp"
+msgstr "Távoli"
+
+#: plugins/plugin_rdp.py plugins/plugin_spice.py plugins/plugin_vnc.py
+msgid "Share clipboard"
+msgstr ""
+
+#: plugins/plugin_rdp.py plugins/plugin_spice.py
+msgid "Share folder"
+msgstr ""
+
+#: plugins/plugin_rdp.py plugins/plugin_spice.py
+msgid "Shared folder path"
+msgstr ""
+
+#: plugins/plugin_rdp.py
+msgid "Width"
+msgstr ""
+
+#: plugins/plugin_serial.py
+msgid ""
+"Additional raw options passed to the binary\n"
+"Ex: --logfile /tmp/serial.log  (picocom)\n"
+"     -o -x  (minicom)"
+msgstr ""
+"További nyers paraméterek a programnak\n"
+"Pl.: --logfile /tmp/serial.log  (picocom)\n"
+"     -o -x  (minicom)"
+
+#: plugins/plugin_serial.py
+msgid "Aruba (9600 8N1)"
+msgstr ""
+
+#: plugins/plugin_serial.py
+msgid "BMC/iDRAC (115200 8N1)"
+msgstr ""
+
+#: plugins/plugin_serial.py
 msgid "Baud rate:"
 msgstr "Átviteli sebesség (baud):"
 
-#: gnome_connection_manager.py:1864
-msgid "Transmission speed in baud"
-msgstr "Átviteli sebesség baudban"
+#: plugins/plugin_serial.py
+msgid "Cisco IOS (9600 8N1)"
+msgstr ""
 
-#: gnome_connection_manager.py:1869
-msgid "Template:"
-msgstr "Sablon:"
+#: plugins/plugin_serial.py
+msgid "DTR/DSR"
+msgstr ""
 
-#: gnome_connection_manager.py:1875
-msgid "Load vendor-recommended serial settings"
-msgstr "Gyártó által ajánlott soros beállítások betöltése"
-
-#: gnome_connection_manager.py:1899
+#: plugins/plugin_serial.py
 msgid "Data bits:"
 msgstr "Adatbitek:"
 
-#: gnome_connection_manager.py:1905
-msgid "Number of data bits per byte (8 = standard)"
-msgstr "Adatbitek száma byte-onként (8 = standard)"
+#: plugins/plugin_serial.py
+msgid "Even"
+msgstr ""
 
-#: gnome_connection_manager.py:1910
-msgid "Parity:"
-msgstr "Paritás:"
+#: plugins/plugin_serial.py
+msgid "Ex : /dev/ttyUSB0, /dev/ttyS0, /dev/ttyACM0"
+msgstr "Pl.: /dev/ttyUSB0, /dev/ttyS0, /dev/ttyACM0"
 
-#: gnome_connection_manager.py:1916
-msgid "Parity bit: None (N) = standard, Even (E), Odd (O)"
-msgstr "Paritásbit: Nincs (N) = standard, Páros (E), Páratlan (O)"
+#: plugins/plugin_serial.py
+#, fuzzy
+#| msgid "Flow control:"
+msgid "Flow control"
+msgstr "Folyamvezérlés:"
 
-#: gnome_connection_manager.py:1921
-msgid "Stop bits:"
-msgstr "Stopbitek:"
-
-#: gnome_connection_manager.py:1927
-msgid "Stop bits: 1 = standard, 2 = RS-485 / legacy hardware"
-msgstr "Stopbitek: 1 = standard, 2 = RS-485 / régi hardver"
-
-#: gnome_connection_manager.py:1932
+#: plugins/plugin_serial.py
 msgid "Flow control:"
 msgstr "Folyamvezérlés:"
 
-#: gnome_connection_manager.py:1939
+#: plugins/plugin_serial.py
 msgid ""
 "Flow control:\n"
 "  None = standard console\n"
@@ -152,1026 +1927,2148 @@ msgstr ""
 "  RTS/CTS = hardveres (teljes kábel)\n"
 "  DSR/DTR = régi hardver"
 
-#: gnome_connection_manager.py:1955
-msgid ""
-"Additional raw options passed to the binary\n"
-"Ex: --logfile /tmp/serial.log  (picocom)\n"
-"     -o -x  (minicom)"
+#: plugins/plugin_serial.py
+msgid "H3C/HPE Comware (9600 8N1)"
 msgstr ""
-"További nyers paraméterek a programnak\n"
-"Pl.: --logfile /tmp/serial.log  (picocom)\n"
-"     -o -x  (minicom)"
 
-#: gnome_connection_manager.py:2923 gnome_connection_manager.py:2972
-#: gnome_connection_manager.py:3536 gnome-connection-manager.glade:2064
-msgid "Import from libvirt"
-msgstr "Importálás libvirtből"
-
-#: gnome_connection_manager.py:2941
-msgid "Hypervisor SSH user:"
-msgstr "Hipervizor SSH felhasználó:"
-
-#: gnome_connection_manager.py:2949
-msgid "Hypervisors (virt-manager / dconf):"
-msgstr "Hipervizorok (virt-manager / dconf):"
-
-#: gnome_connection_manager.py:2960
-msgid "Detected libvirt URI"
-msgstr "Észlelt libvirt URI"
-
-#: gnome_connection_manager.py:2977
-msgid ""
-"Ex: 192.168.105.41 | root@192.168.105.41 | "
-"qemu+ssh://root@192.168.105.41/system"
+#: plugins/plugin_serial.py
+msgid "Juniper (9600 8N1)"
 msgstr ""
-"Pl.: 192.168.105.41 | root@192.168.105.41 | "
-"qemu+ssh://root@192.168.105.41/system"
 
-#: gnome_connection_manager.py:2981 gnome-connection-manager.glade:2307
-msgid "Add"
+#: plugins/plugin_serial.py
+msgid "Load vendor-recommended serial settings"
+msgstr "Gyártó által ajánlott soros beállítások betöltése"
+
+#: plugins/plugin_serial.py
+msgid "None"
+msgstr ""
+
+#: plugins/plugin_serial.py
+msgid "Number of data bits per byte (8 = standard)"
+msgstr "Adatbitek száma byte-onként (8 = standard)"
+
+#: plugins/plugin_serial.py
+#, fuzzy
+#| msgid "Add"
+msgid "Odd"
 msgstr "Hozzáadás"
 
-#: gnome_connection_manager.py:2988
-msgid "<b>Connection types to import:</b>"
-msgstr "<b>Importálandó kapcsolattípusok:</b>"
+#: plugins/plugin_serial.py
+msgid "Parity bit: None (N) = standard, Even (E), Odd (O)"
+msgstr "Paritásbit: Nincs (N) = standard, Páros (E), Páratlan (O)"
 
-#: gnome_connection_manager.py:2995
-msgid ""
-"SSH  (ProxyJump -J via hypervisor when VM IP is known, otherwise hypervisor "
-"shell + -t ssh user@vm)"
+#: plugins/plugin_serial.py
+msgid "Parity:"
+msgstr "Paritás:"
+
+#: plugins/plugin_serial.py
+msgid "RTS/CTS (hardware)"
 msgstr ""
-"SSH  (ProxyJump -J a hipervizoron keresztül, ha a VM IP-je ismert, egyébként"
-" hipervizor shell + -t ssh felhasználó@vm)"
 
-#: gnome_connection_manager.py:3002
-msgid ""
-"SPICE  (virt-viewer --connect qemu+ssh://... vm - SSH tunnel handled "
-"automatically)"
-msgstr ""
-"SPICE  (virt-viewer --connect qemu+ssh://... vm - az SSH tunnel "
-"automatikusan kezelve)"
-
-#: gnome_connection_manager.py:3008
-msgid ""
-"RDP  (probe port 3389 from hypervisor via nc/nmap - skipped if port is "
-"closed)"
-msgstr ""
-"RDP  (3389-os port ellenőrzése a hipervizorról nc/nmap segítségével - "
-"kihagyva, ha a port zárva van)"
-
-#: gnome_connection_manager.py:3036
-msgid "🔍  Scan hypervisors"
-msgstr "🔍  Hipervizorok keresése"
-
-#: gnome_connection_manager.py:3060
-msgid "Overwrite existing connections with the same name and protocol"
-msgstr "A meglévő, azonos nevű és protokollú kapcsolatok felülírása"
-
-#: gnome_connection_manager.py:3067
-msgid "✓ Check all"
-msgstr "✓ Mindet kijelöli"
-
-#: gnome_connection_manager.py:3069
-msgid "✗ Uncheck all"
-msgstr "✗ Mindet törli"
-
-#: gnome_connection_manager.py:3103
-msgid "Proto"
-msgstr "Proto"
-
-#: gnome_connection_manager.py:3114
-msgid "VM name"
-msgstr "VM neve"
-
-#: gnome_connection_manager.py:3126 gnome-connection-manager.glade:1015
-msgid "Group"
-msgstr "Csoport"
-
-#: gnome_connection_manager.py:3137
-msgid "IP / Host"
-msgstr "IP / Hoszt"
-
-#: gnome_connection_manager.py:3148
-msgid "State"
-msgstr "Állapot"
-
-#: gnome_connection_manager.py:3159
-msgid "Imported"
-msgstr "Importálva"
-
-#: gnome_connection_manager.py:3177
-msgid "⬇  Import selected"
-msgstr "⬇  Kijelöltek importálása"
-
-#: gnome_connection_manager.py:3187
-msgid "✕  Close"
-msgstr "✕  Bezárás"
-
-#: gnome_connection_manager.py:3211
-msgid ""
-"No URI found in dconf (virt-manager not configured?).\n"
-"Add your URIs manually below."
-msgstr ""
-"Nem található URI a dconfban (a virt-manager nincs beállítva?).\n"
-"Adja hozzá az URI-kat manuálisan alább."
-
-#: gnome_connection_manager.py:3266
-msgid "Invalid libvirt target."
-msgstr "Érvénytelen libvirt cél."
-
-#: gnome_connection_manager.py:3358
-msgid "No URI selected."
-msgstr "Nincs kiválasztott URI."
-
-#: gnome_connection_manager.py:3370 gnome_connection_manager.py:3665
-msgid "No connection type selected."
-msgstr "Nincs kiválasztott kapcsolattípus."
-
-#: gnome_connection_manager.py:3452
-msgid "🔄  Rescan"
-msgstr "🔄  Újra keresés"
-
-#: gnome_connection_manager.py:3512
-msgid "No connection to import (all already exist or none selected)."
-msgstr ""
-"Nincs importálandó kapcsolat (mind már létezik, vagy semmi nincs kijelölve)."
-
-#: gnome_connection_manager.py:3518
-msgid "✓ Imported"
-msgstr "✓ Importálva"
-
-#: gnome_connection_manager.py:3537
-msgid "🔍  Scan Proxmox hosts"
-msgstr "🔍  Proxmox hosztok keresése"
-
-#: gnome_connection_manager.py:3538
-msgid "Detected Proxmox targets (dconf):"
-msgstr "Észlelt Proxmox célok (dconf):"
-
-#: gnome_connection_manager.py:3539
-msgid "Detected Proxmox target"
-msgstr "Észlelt Proxmox cél"
-
-#: gnome_connection_manager.py:3540
-msgid "Add a Proxmox target:"
-msgstr "Proxmox cél hozzáadása:"
-
-#: gnome_connection_manager.py:3542
-msgid "Ex: 192.168.105.41 | root@192.168.105.41 | root@192.168.105.41:22"
-msgstr "Pl.: 192.168.105.41 | root@192.168.105.41 | root@192.168.105.41:22"
-
-#: gnome_connection_manager.py:3545
-msgid "SPICE  (not available here: Proxmox requires API ticket/proxy)"
-msgstr "SPICE  (itt nem elérhető: a Proxmox API jegyet/proxyt igényel)"
-
-#: gnome_connection_manager.py:3571
-msgid ""
-"No SSH URI found in dconf.\n"
-"Enter an IP/host below and click Add."
-msgstr ""
-"Nem található SSH URI a dconfban.\n"
-"Írjon be alább egy IP-t/hosztot, és kattintson a Hozzáadásra."
-
-#: gnome_connection_manager.py:3623
-msgid "Invalid Proxmox target."
-msgstr "Érvénytelen Proxmox cél."
-
-#: gnome_connection_manager.py:3653
-msgid "No Proxmox target selected."
-msgstr "Nincs kiválasztott Proxmox cél."
-
-#: gnome_connection_manager.py:3723
-msgid ""
-"<i>Double-click a cell to edit it.\n"
-"File format: <tt>[serial_templates]</tt> in <tt>gcm.conf</tt>\n"
-"<tt>My device = 9600,n,n,8,1</tt>  (baud,flow,parity,bits,stop)</i>"
-msgstr ""
-"<i>Kattintson duplán egy cellára a szerkesztéshez.\n"
-"Fájlformátum: <tt>[serial_templates]</tt> a <tt>gcm.conf</tt>-ban\n"
-"<tt>Eszközöm = 9600,n,n,8,1</tt>  (baud,folyamvezérlés,paritás,bitek,stop)</i>"
-
-#: gnome_connection_manager.py:3740
-msgid "Template name"
-msgstr "Sablon neve"
-
-#: gnome_connection_manager.py:3741
-msgid "Baud rate"
-msgstr "Átviteli sebesség (baud)"
-
-#: gnome_connection_manager.py:3742
-msgid "Flow"
-msgstr "Folyamvezérlés"
-
-#: gnome_connection_manager.py:3743
-msgid "Parity"
-msgstr "Paritás"
-
-#: gnome_connection_manager.py:3744
-msgid "Data bits"
-msgstr "Adatbitek"
-
-#: gnome_connection_manager.py:3745
-msgid "Stop"
-msgstr "Stop"
-
-#: gnome_connection_manager.py:3781
-msgid "+ Add"
-msgstr "+ Hozzáadás"
-
-#: gnome_connection_manager.py:3783
-msgid "− Remove"
-msgstr "− Eltávolítás"
-
-#: gnome_connection_manager.py:3785
-msgid "Restore defaults"
-msgstr "Alapértékek visszaállítása"
-
-#: gnome_connection_manager.py:3791
-msgid "Serial Templates"
-msgstr "Soros sablonok"
-
-#: gnome_connection_manager.py:3805
-msgid "New template"
-msgstr "Új sablon"
-
-#: gnome_connection_manager.py:3858
-msgid "Default SSH user (VMs):"
-msgstr "Alapértelmezett SSH felhasználó (VM-ek):"
-
-#: gnome_connection_manager.py:3876
-msgid "Libvirt"
-msgstr "Libvirt"
-
-#: gnome_connection_manager.py:3993 gnome_connection_manager.py:4313
-msgid "search..."
-msgstr "keresés..."
-
-#: gnome_connection_manager.py:4428 gnome_connection_manager.py:4652
-msgid "Rename tab"
-msgstr "Lap átnevezése"
-
-#: gnome_connection_manager.py:4429
-msgid "Enter new name"
-msgstr "Adja meg az új nevet"
-
-#: gnome_connection_manager.py:4498
-msgid "Continuous log mode is active and cannot be disabled per tab."
-msgstr ""
-"A folyamatos naplózási mód aktív, és lapszintenként nem kapcsolható ki."
-
-#: gnome_connection_manager.py:4520 gnome-connection-manager.glade:2109
-msgid "Copy"
-msgstr "Másolás"
-
-#: gnome_connection_manager.py:4525 gnome-connection-manager.glade:2118
-msgid "Paste"
-msgstr "Beillesztés"
-
-#: gnome_connection_manager.py:4530 gnome-connection-manager.glade:2127
-msgid "Copy and Paste"
-msgstr "Másolás és beillesztés"
-
-#: gnome_connection_manager.py:4535 gnome-connection-manager.glade:178
-#: gnome-connection-manager.glade:2136
-msgid "Select all"
-msgstr "Mindet kijelöli"
-
-#: gnome_connection_manager.py:4540 gnome-connection-manager.glade:2145
-msgid "Copy all"
-msgstr "Mindent másol"
-
-#: gnome_connection_manager.py:4545
-msgid "Save buffer to file"
-msgstr "Puffer mentése fájlba"
-
-#: gnome_connection_manager.py:4550 gnome_connection_manager.py:4684
-msgid "Split H"
-msgstr "Felosztás H"
-
-#: gnome_connection_manager.py:4555 gnome_connection_manager.py:4689
-msgid "Split V"
-msgstr "Felosztás V"
-
-#: gnome_connection_manager.py:4564 gnome_connection_manager.py:4657
-msgid "Reset console"
-msgstr "Konzol visszaállítása"
-
-#: gnome_connection_manager.py:4569 gnome_connection_manager.py:4663
-msgid "Reset and Clear console"
-msgstr "Konzol visszaállítása és törlése"
-
-#: gnome_connection_manager.py:4574 gnome_connection_manager.py:4674
-msgid "Clone console"
-msgstr "Konzol klónozása"
-
-#: gnome_connection_manager.py:4579 gnome_connection_manager.py:4679
-msgid "Enable logging"
-msgstr "Naplózás engedélyezése"
-
-#: gnome_connection_manager.py:4584 gnome_connection_manager.py:7975
-#: gnome_connection_manager.py:8598 gnome_connection_manager.py:8681
-msgid "Close console"
-msgstr "Konzol bezárása"
-
-#: gnome_connection_manager.py:4596 gnome-connection-manager.glade:2160
-msgid "Custom commands"
-msgstr "Egyéni parancsok"
-
-#: gnome_connection_manager.py:4610
-msgid "Copy Address"
-msgstr "Cím másolása"
-
-#: gnome_connection_manager.py:4615
-msgid "Add Host"
-msgstr "Hoszt hozzáadása"
-
-#: gnome_connection_manager.py:4620 gnome-connection-manager.glade:2323
-msgid "Edit"
-msgstr "Szerkesztés"
-
-#: gnome_connection_manager.py:4625 gnome-connection-manager.glade:2339
-msgid "Remove"
-msgstr "Eltávolítás"
-
-#: gnome_connection_manager.py:4630
-msgid "Duplicate Host"
-msgstr "Hoszt duplikálása"
-
-#: gnome_connection_manager.py:4639
-msgid "Expand all"
-msgstr "Mindet kibontja"
-
-#: gnome_connection_manager.py:4644
-msgid "Collapse all"
-msgstr "Mindet összecsukja"
-
-#: gnome_connection_manager.py:4669
-msgid "Reconnect to host"
-msgstr "Újracsatlakozás a hoszthoz"
-
-#: gnome_connection_manager.py:4830 gnome_connection_manager.py:4894
-msgid "No host imported."
-msgstr "Nincs importált hoszt."
-
-#: gnome_connection_manager.py:4880 gnome_connection_manager.py:4944
-msgid "No new host (duplicates ignored)."
-msgstr "Nincs új hoszt (a duplikátumok kihagyva)."
-
-#: gnome_connection_manager.py:5283
-msgid "Can't open log file for writting"
-msgstr "A naplófájl írásra nem nyitható meg"
-
-#: gnome_connection_manager.py:5533
-msgid "Error connecting to server"
-msgstr "Hiba a szerverhez csatlakozás során"
-
-#: gnome_connection_manager.py:5745
-msgid "Invalid entry in configuration file"
-msgstr "Érvénytelen bejegyzés a konfigurációs fájlban"
-
-#: gnome_connection_manager.py:6239 gnome_connection_manager.py:6426
-msgid "Save as"
-msgstr "Mentés másként"
-
-#: gnome_connection_manager.py:6271
-msgid "Can't open file for writting"
-msgstr "A fájl írásra nem nyitható meg"
-
-#: gnome_connection_manager.py:6338
-msgid "There are"
-msgstr "Van"
-
-#: gnome_connection_manager.py:6340
-msgid "open consoles, exit anyway?"
-msgstr "nyitott konzol, mégis kilép?"
-
-#: gnome_connection_manager.py:6375
-msgid "Import Servers"
-msgstr "Szerverek importálása"
-
-#: gnome_connection_manager.py:6375 gnome_connection_manager.py:6430
-msgid "Enter password"
-msgstr "Adja meg a jelszót"
-
-#: gnome_connection_manager.py:6387
-msgid "Invalid password"
-msgstr "Érvénytelen jelszó"
-
-#: gnome_connection_manager.py:6391
-msgid "Server list will be overwritten, continue?"
-msgstr "A szerverlista felülíródik, folytatja?"
-
-#: gnome_connection_manager.py:6407 gnome_connection_manager.py:6452
-msgid "Invalid file"
-msgstr "Érvénytelen fájl"
-
-#: gnome_connection_manager.py:6430
-msgid "Export Servers"
-msgstr "Szerverek exportálása"
-
-#: gnome_connection_manager.py:6661
-msgid "Do you really want to remove host"
-msgstr "Biztosan eltávolítja a hosztot"
-
-#: gnome_connection_manager.py:6680
-msgid "Do you really want to remove all hosts in group"
-msgstr "Biztosan eltávolítja az összes hosztot a csoportból"
-
-#: gnome_connection_manager.py:6839
-msgid "No open consoles"
-msgstr "Nincs nyitott konzol"
-
-#: gnome_connection_manager.py:7221 gnome-connection-manager.glade:2275
-msgid "Local"
-msgstr "Helyi"
-
-#: gnome_connection_manager.py:7223 gnome_connection_manager.py:8390
-#: gnome-connection-manager.glade:1051
-msgid "Host"
-msgstr "Hoszt"
-
-#: gnome_connection_manager.py:7225
-msgid "Remote"
-msgstr "Távoli"
-
-#: gnome_connection_manager.py:7524
-msgid "Fields group, name and host are required"
-msgstr "A csoport, név és hoszt mezők kötelezők"
-
-#: gnome_connection_manager.py:7528
-msgid "Invalid port"
-msgstr "Érvénytelen port"
-
-#: gnome_connection_manager.py:7594 gnome_connection_manager.py:7614
-#: gnome_connection_manager.py:7633
-msgid "Host name"
-msgstr "Hoszt neve"
-
-#: gnome_connection_manager.py:7596 gnome_connection_manager.py:7616
-#: gnome_connection_manager.py:7635
-msgid "already exists for group"
-msgstr "már létezik a csoportban"
-
-#: gnome_connection_manager.py:7652
-msgid "Error saving host. Description"
-msgstr "Hiba a hoszt mentésekor. Leírás"
-
-#: gnome_connection_manager.py:7784
-msgid "Enter remote host"
-msgstr "Adja meg a távoli hosztot"
-
-#: gnome_connection_manager.py:7789
-msgid "Local port already assigned"
-msgstr "A helyi port már foglalt"
-
-#: gnome_connection_manager.py:7953
-msgid "Word separator"
-msgstr "Szóelválasztó"
-
-#: gnome_connection_manager.py:7954
-msgid "Buffer size"
-msgstr "Puffer mérete"
-
-#: gnome_connection_manager.py:7955
-msgid "Transparency"
-msgstr "Átláthatóság"
-
-#: gnome_connection_manager.py:7956 gnome-connection-manager.glade:1352
-msgid "TERM"
-msgstr "TERM"
-
-#: gnome_connection_manager.py:7957
-msgid "Logs path"
-msgstr "Naplók útvonala"
-
-#: gnome_connection_manager.py:7958
-msgid "Continuous VTE tab logging mode"
-msgstr "Folyamatos VTE lap naplózási mód"
-
-#: gnome_connection_manager.py:7959
-msgid "Open local console on startup"
-msgstr "Helyi konzol megnyitása induláskor"
-
-#: gnome_connection_manager.py:7960
-msgid "Log local console sessions"
-msgstr "Helyi konzol munkamenetek naplózása"
-
-#: gnome_connection_manager.py:7961
-msgid "Paste on right click"
-msgstr "Beillesztés jobb kattintásra"
-
-#: gnome_connection_manager.py:7962
-msgid "Copy selection to clipboard"
-msgstr "Kijelölés vágólapra másolása"
-
-#: gnome_connection_manager.py:7963
-msgid "Confirm on close console"
-msgstr "Megerősítés konzol bezárásakor"
-
-#: gnome_connection_manager.py:7965
-msgid "Confirm on close console with middle click"
-msgstr "Megerősítés konzol bezárásakor középső kattintással"
-
-#: gnome_connection_manager.py:7970
-msgid "Circle around tabs when going to the previous/next tab"
-msgstr "Körkörös navigáció a lapok között az előző/következő lapra lépéskor"
-
-#: gnome_connection_manager.py:7978
-msgid "Never"
-msgstr "Soha"
-
-#: gnome_connection_manager.py:7978
-msgid "Always"
-msgstr "Mindig"
-
-#: gnome_connection_manager.py:7978
-msgid "Only on clean exit"
-msgstr "Csak tiszta kilépéskor"
-
-#: gnome_connection_manager.py:7980
-msgid "Confirm on exit"
-msgstr "Megerősítés kilépéskor"
-
-#: gnome_connection_manager.py:7981
-msgid "Check updates"
-msgstr "Frissítések keresése"
-
-#: gnome_connection_manager.py:7983
-msgid "Disable alternating stripes in hosts window"
-msgstr "Váltakozó csíkozás kikapcsolása a hosztok ablakában"
-
-#: gnome_connection_manager.py:7987
-msgid "Dynamic title"
-msgstr "Dinamikus cím"
-
-#: gnome_connection_manager.py:7988
-msgid "Title"
-msgstr "Cím"
-
-#: gnome_connection_manager.py:8021
-msgid "Action"
-msgstr "Művelet"
-
-#: gnome_connection_manager.py:8030 gnome_connection_manager.py:8048
-msgid "Shortcut"
-msgstr "Gyorsbillentyű"
-
-#: gnome_connection_manager.py:8040
-msgid "Command"
-msgstr "Parancs"
-
-#: gnome_connection_manager.py:8324
-msgid "Select font"
-msgstr "Betűtípus kiválasztása"
-
-#: gnome_connection_manager.py:8388
-msgid "Activate"
-msgstr "Aktiválás"
-
-#: gnome_connection_manager.py:8719 gnome-connection-manager.glade:438
-#: gnome-connection-manager.glade:981
-msgid "OK"
-msgstr "OK"
-
-#: gnome_connection_manager.py:8944
-msgid ""
-"A new version is available: https://github.com/MathildeDec/gnome-connection-"
-"manager/releases"
-msgstr ""
-"Új verzió érhető el: https://github.com/MathildeDec/gnome-connection-"
-"manager/releases"
-
-#: gnome-connection-manager.glade:10
-msgid ""
-"This is gnome-connection-manager, written and maintained by\n"
-"Copyright © 2012 Renzo Bertuzzi L. <kuthulu@gmail.com> - Chile"
-msgstr ""
-"Ez a gnome-connection-manager, írta és karbantartja:\n"
-"Copyright © 2012 Renzo Bertuzzi L. <kuthulu@gmail.com> - Chile"
-
-#: gnome-connection-manager.glade:12
-msgid "A simple ssh connection manager for gnome"
-msgstr "Egyszerű SSH kapcsolatkezelő a Gnome-hoz"
-
-#: gnome-connection-manager.glade:14
-msgid "Project's Homepage"
-msgstr "A projekt honlapja"
-
-#: gnome-connection-manager.glade:47 gnome-connection-manager.glade:2501
-msgid "Cluster"
-msgstr "Klaszter"
-
-#: gnome-connection-manager.glade:68
-msgid "Close"
-msgstr "Bezárás"
-
-#: gnome-connection-manager.glade:99
-msgid "Select consoles to use:"
-msgstr "Válassza ki a használandó konzolokat:"
-
-#: gnome-connection-manager.glade:238
-msgid "Clear selection"
-msgstr "Kijelölés törlése"
-
-#: gnome-connection-manager.glade:298
-msgid "Invert selection"
-msgstr "Kijelölés megfordítása"
-
-#: gnome-connection-manager.glade:352
-msgid "Enter the text to send to consoles: "
-msgstr "Adja meg a konzoloknak küldendő szöveget: "
-
-#: gnome-connection-manager.glade:387
-msgid "<span size=\"smaller\">CTRL+UP/CTRL+DOWN for history</span>"
-msgstr "<span size=\"smaller\">CTRL+FEL/CTRL+LE az előzményekhez</span>"
-
-#: gnome-connection-manager.glade:410 gnome-connection-manager.glade:2180
-#: gnome-connection-manager.glade:2418
-msgid "Settings"
-msgstr "Beállítások"
-
-#: gnome-connection-manager.glade:642
-msgid "General"
-msgstr "Általános"
-
-#: gnome-connection-manager.glade:667 gnome-connection-manager.glade:1816
-msgid "Background color:"
-msgstr "Háttérszín:"
-
-#: gnome-connection-manager.glade:684 gnome-connection-manager.glade:1804
-msgid "Foreground color:"
-msgstr "Előtérszín:"
-
-#: gnome-connection-manager.glade:700 gnome-connection-manager.glade:1843
-msgid "Select background color"
-msgstr "Háttérszín kiválasztása"
-
-#: gnome-connection-manager.glade:716 gnome-connection-manager.glade:1829
-msgid "Select foreground color"
-msgstr "Előtérszín kiválasztása"
-
-#: gnome-connection-manager.glade:729 gnome-connection-manager.glade:1780
-msgid "Default colors"
-msgstr "Alapértelmezett színek"
-
-#: gnome-connection-manager.glade:745
-msgid "Use default fixed width font"
-msgstr "Alapértelmezett rögzített szélességű betűtípus használata"
-
-#: gnome-connection-manager.glade:768
-msgid "Font:"
-msgstr "Betűtípus:"
-
-#: gnome-connection-manager.glade:822
-msgid "Colors"
-msgstr "Színek"
-
-#: gnome-connection-manager.glade:850
-msgid "Standard Commands"
-msgstr "Standard parancsok"
-
-#: gnome-connection-manager.glade:895
-msgid "Custom Commands"
-msgstr "Egyéni parancsok"
-
-#: gnome-connection-manager.glade:934
-msgid "Shortcuts"
-msgstr "Gyorsbillentyűk"
-
-#: gnome-connection-manager.glade:953
-msgid "Edit Host"
-msgstr "Hoszt szerkesztése"
-
-#: gnome-connection-manager.glade:1027
-msgid "Name"
-msgstr "Név"
-
-#: gnome-connection-manager.glade:1039
-msgid "Description"
-msgstr "Leírás"
-
-#: gnome-connection-manager.glade:1063
-msgid "Type"
-msgstr "Típus"
-
-#: gnome-connection-manager.glade:1075
-msgid "Port"
-msgstr "Port"
-
-#: gnome-connection-manager.glade:1087
-msgid "User"
-msgstr "Felhasználó"
-
-#: gnome-connection-manager.glade:1099
-msgid "Password"
-msgstr "Jelszó"
-
-#: gnome-connection-manager.glade:1111
-msgid "Private key"
-msgstr "Privát kulcs"
-
-#: gnome-connection-manager.glade:1122
-msgid "To create subgroups use format group1/group2/group3"
-msgstr ""
-"Alcsoportok létrehozásához használja a csoport1/csoport2/csoport3 formátumot"
-
-#: gnome-connection-manager.glade:1176
-msgid "ssh"
-msgstr "ssh"
-
-#: gnome-connection-manager.glade:1177
-msgid "telnet"
-msgstr "telnet"
-
-#: gnome-connection-manager.glade:1178
-msgid "rdp"
-msgstr "rdp"
-
-#: gnome-connection-manager.glade:1179
-msgid "vnc"
-msgstr "vnc"
-
-#: gnome-connection-manager.glade:1180
-msgid "spice"
-msgstr "spice"
-
-#: gnome-connection-manager.glade:1181
-msgid "serial"
+#: plugins/plugin_serial.py
+#, fuzzy
+#| msgid "serial"
+msgid "Serial"
 msgstr "soros"
 
-#: gnome-connection-manager.glade:1182
-msgid "local"
-msgstr "helyi"
+#: plugins/plugin_serial.py
+msgid "Serial port:"
+msgstr "Soros port:"
 
-#: gnome-connection-manager.glade:1217
-msgid "Leave blank for passwordless/public key authentication"
-msgstr "Hagyja üresen jelszó nélküli/nyilvános kulcsú hitelesítéshez"
+#: plugins/plugin_serial.py
+#, fuzzy
+#| msgid "Stop bits:"
+msgid "Stop bits"
+msgstr "Stopbitek:"
 
-#: gnome-connection-manager.glade:1271
-msgid "Keep-Alive"
-msgstr "Keep-Alive"
+#: plugins/plugin_serial.py
+msgid "Stop bits:"
+msgstr "Stopbitek:"
 
-#: gnome-connection-manager.glade:1289
-msgid "X11 Forwarding"
-msgstr "X11 továbbítás"
+#: plugins/plugin_serial.py
+msgid "Stop bits: 1 = standard, 2 = RS-485 / legacy hardware"
+msgstr "Stopbitek: 1 = standard, 2 = RS-485 / régi hardver"
 
-#: gnome-connection-manager.glade:1301
-msgid "Agent Forwarding"
+#: plugins/plugin_serial.py
+#, fuzzy
+#| msgid "Template:"
+msgid "Template"
+msgstr "Sablon:"
+
+#: plugins/plugin_serial.py
+msgid "Template:"
+msgstr "Sablon:"
+
+#: plugins/plugin_serial.py
+msgid "Tool"
+msgstr ""
+
+#: plugins/plugin_serial.py
+msgid "Transmission speed in baud"
+msgstr "Átviteli sebesség baudban"
+
+#: plugins/plugin_serial.py
+msgid "XON/XOFF (software)"
+msgstr ""
+
+#: plugins/plugin_serial.py plugins/plugin_vnc.py
+msgid "xfreerdp options:"
+msgstr "xfreerdp beállítások:"
+
+#: plugins/plugin_serial.py
+msgid "— custom —"
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "(aucun)"
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "(aucune)"
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "Afficher les secrets"
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "Choisissez d'abord un fichier snmp_profiles.ini."
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "Choisissez un constructeur."
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "Clé d'authentification (v3) :"
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "Clé de confidentialité (v3) :"
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "Communauté (v2c, en écriture — jamais 'public') :"
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "Constructeur (driver de push SNMP) :"
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "Déploiement SNMP…"
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "Envois en parallèle :"
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "IP du serveur de dépôt (TFTP/FTP/SFTP) :"
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "Port SNMP :"
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "Profils SNMP (constructeur, identifiants…)"
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+#, python-brace-format
+msgid "Profils SNMP chargés depuis {p}"
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "Protocole d'authentification (v3) :"
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "Protocole de confidentialité (v3) :"
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "Push SNMP"
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "SNMP"
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "Serveur de dépôt du fichier (SFTP / FTP / TFTP)"
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "Timeout requête SNMP (s) :"
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "Utilisateur USM (v3) :"
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "Valider (à blanc, sans envoyer)"
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "Version SNMP :"
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "snmp_profiles.ini"
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "Écrire snmp_profiles.ini sur disque"
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "⚠ L'équipement doit pouvoir joindre ce serveur pour aller chercher le fichier de configuration. Les paramètres de transfert (protocole, credentials) doivent être configurés à part."
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "⚠ Renseignez le serveur de dépôt avant de lancer."
+msgstr ""
+
+#: plugins/plugin_spice.py
+#, python-brace-format
+msgid ""
+"Additional remote-viewer parameters\n"
+"E.g.: {example}"
+msgstr ""
+
+#: plugins/plugin_spice.py
+msgid "CA certificate"
+msgstr ""
+
+#: plugins/plugin_spice.py
+msgid "Configuration SPICE invalide"
+msgstr ""
+
+#: plugins/plugin_spice.py
+msgid "Direct URI"
+msgstr ""
+
+#: plugins/plugin_spice.py
+msgid "Drag and drop a file here to send it to the VM (requires spice-vdagent)"
+msgstr ""
+
+#: plugins/plugin_spice.py plugins/plugin_vnc.py
+#, python-brace-format
+msgid "Ended (code {rc})"
+msgstr "Befejeződött (kód: {rc})"
+
+#: plugins/plugin_spice.py
+#, fuzzy
+#| msgid "Error connecting to server"
+msgid "Error launching viewer"
+msgstr "Hiba a szerverhez csatlakozás során"
+
+#: plugins/plugin_spice.py
+msgid "Error: Proxmox node and VMID required"
+msgstr ""
+
+#: plugins/plugin_spice.py
+msgid "Error: VM name required"
+msgstr ""
+
+#: plugins/plugin_spice.py
+msgid "Error: libvirt URI required"
+msgstr ""
+
+#: plugins/plugin_spice.py
+msgid "Fermer"
+msgstr ""
+
+#: plugins/plugin_spice.py
+#, python-brace-format
+msgid "No SPICE console for {vm}"
+msgstr ""
+
+#: plugins/plugin_spice.py
+msgid "Proxmox node"
+msgstr ""
+
+#: plugins/plugin_spice.py
+msgid "SPICE"
+msgstr ""
+
+#: plugins/plugin_spice.py
+#, python-brace-format
+msgid "SPICE disabled for {vm}"
+msgstr ""
+
+#: plugins/plugin_spice.py
+#, python-brace-format
+msgid "SPICE ticket error: {out}"
+msgstr ""
+
+#: plugins/plugin_spice.py
+#, python-brace-format
+msgid "SSH error: {exc}"
+msgstr ""
+
+#: plugins/plugin_spice.py
+msgid "Share USB devices"
+msgstr ""
+
+#: plugins/plugin_spice.py
+msgid "Share audio"
+msgstr ""
+
+#: plugins/plugin_spice.py
+#, fuzzy
+#| msgid "Serial port:"
+msgid "TLS port"
+msgstr "Soros port:"
+
+#: plugins/plugin_spice.py
+#, python-brace-format
+msgid "USB devices — {host}"
+msgstr ""
+
+#: plugins/plugin_spice.py
+msgid "USB devices…"
+msgstr ""
+
+#: plugins/plugin_spice.py
+#, python-brace-format
+msgid "VM introuvable : {vm}"
+msgstr ""
+
+#: plugins/plugin_spice.py
+msgid "VMID"
+msgstr ""
+
+#: plugins/plugin_spice.py
+msgid "Via Proxmox"
+msgstr ""
+
+#: plugins/plugin_spice.py
+#, fuzzy
+#| msgid "Libvirt"
+msgid "Via libvirt"
+msgstr "Libvirt"
+
+#: plugins/plugin_spice.py
+#, fuzzy
+#| msgid "Detected libvirt URI"
+msgid "libvirt URI"
+msgstr "Észlelt libvirt URI"
+
+#: plugins/plugin_spice.py
+#, python-brace-format
+msgid "libvirt XML parsing error: {exc}"
+msgstr ""
+
+#: plugins/plugin_spice.py
+#, python-brace-format
+msgid "libvirt error: {exc}"
+msgstr ""
+
+#: plugins/plugin_spice.py
+#, fuzzy
+#| msgid "xfreerdp not found"
+msgid "remote-viewer not found"
+msgstr "xfreerdp nem található"
+
+#: plugins/plugin_spice.py
+#, fuzzy
+#| msgid "xfreerdp options:"
+msgid "remote-viewer options:"
+msgstr "xfreerdp beállítások:"
+
+#: plugins/plugin_ssh.py
+msgid "Advanced"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+#, fuzzy
+#| msgid "Agent Forwarding"
+msgid "Agent forwarding (-A)"
 msgstr "Ügynök továbbítás"
 
-#: gnome-connection-manager.glade:1310
-msgid "Compression"
+#: plugins/plugin_ssh.py
+msgid "Arbitrary command to reach the target, e.g. via corkscrew or nc"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+msgid "Bastion host(s) to hop through, e.g. user@bastion"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+msgid "Command to run instead of a shell"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+#, fuzzy
+#| msgid "Compression"
+msgid "Compression (-C)"
 msgstr "Tömörítés"
 
-#: gnome-connection-manager.glade:1328
-msgid "Extra arguments"
-msgstr "További argumentumok"
-
-#: gnome-connection-manager.glade:1340
-msgid "Enable Logging"
-msgstr "Naplózás engedélyezése"
-
-#: gnome-connection-manager.glade:1363
-msgid "Seconds between keep-alive packets"
-msgstr "Másodpercek a keep-alive csomagok között"
-
-#: gnome-connection-manager.glade:1403
-msgid ""
-"Compression level: \n"
-"blank: default compression\n"
-"1: min\n"
-"9: max"
+#: plugins/plugin_ssh.py
+msgid "Connections will be added to the « ssh_config » group, with name = host = SSH alias."
 msgstr ""
-"Tömörítési szint: \n"
-"üres: alapértelmezett tömörítés\n"
-"1: min\n"
-"9: max"
 
-#: gnome-connection-manager.glade:1418
-msgid "Extra arguments to pass to command line"
-msgstr "Parancssorban átadandó további argumentumok"
-
-#: gnome-connection-manager.glade:1457
-msgid "Properties"
-msgstr "Tulajdonságok"
-
-#: gnome-connection-manager.glade:1480
+#: plugins/plugin_ssh.py ssh_config_editor.py
 msgid "Dynamic"
 msgstr "Dinamikus"
 
-#: gnome-connection-manager.glade:1484
-msgid "Create dynamic port forwarding"
-msgstr "Dinamikus port továbbítás létrehozása"
+#: plugins/plugin_ssh.py
+msgid "Dynamic / SOCKS (-D)"
+msgstr ""
 
-#: gnome-connection-manager.glade:1498
+#: plugins/plugin_ssh.py
+msgid "Edit SSH config"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+msgid "Edit ~/.ssh/config…"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+#, fuzzy
+#| msgid "Extra arguments"
+msgid "Extra ssh args"
+msgstr "További argumentumok"
+
+#: plugins/plugin_ssh.py
+#, python-format
+msgid "Host «%s» is already managed by a ssh_config file — it cannot be moved a 2nd time."
+msgstr ""
+
+#: plugins/plugin_ssh.py
+#, python-format
+msgid "Host «%s» moved to %s."
+msgstr ""
+
+#: plugins/plugin_ssh.py
+#, python-format
+msgid "Host «%s» was not migrated (not an SSH host?)."
+msgstr ""
+
+#: plugins/plugin_ssh.py
+#, python-format
+msgid "Import done — imported: %d, already present: %d, errors: %d"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+#, fuzzy, python-format
+#| msgid "Imported"
+msgid "Import failed: %s"
+msgstr "Importálva"
+
+#: plugins/plugin_ssh.py
+msgid "Import from ssh_config…"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+#, fuzzy
+#| msgid "Import from libvirt"
+msgid "Import from which file?"
+msgstr "Importálás libvirtből"
+
+#: plugins/plugin_ssh.py
+msgid "Keep alive (seconds)"
+msgstr ""
+
+#: plugins/plugin_ssh.py ssh_config_editor.py
+msgid "Local"
+msgstr "Helyi"
+
+#: plugins/plugin_ssh.py ssh_config_editor.py
+#, fuzzy
+#| msgid "Local"
+msgid "Local (-L)"
+msgstr "Helyi"
+
+#: plugins/plugin_ssh.py ssh_config_editor.py
 msgid "Local Port"
 msgstr "Helyi port"
 
-#: gnome-connection-manager.glade:1510
-msgid "Remote Host"
-msgstr "Távoli hoszt"
+#: plugins/plugin_ssh.py
+msgid "Local mount point"
+msgstr ""
 
-#: gnome-connection-manager.glade:1522
-msgid "Remote Port"
-msgstr "Távoli port"
-
-#: gnome-connection-manager.glade:1545
-msgid "localhost"
+#: plugins/plugin_ssh.py ssh_config_editor.py
+#, fuzzy
+#| msgid "localhost"
+msgid "Local target host"
 msgstr "localhost"
 
-#: gnome-connection-manager.glade:1693
+#: plugins/plugin_ssh.py ssh_config_editor.py
+#, fuzzy
+#| msgid "Local Port"
+msgid "Local target port"
+msgstr "Helyi port"
+
+#: plugins/plugin_ssh.py
+msgid "Manage SSH Keys…"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+#, python-format
+msgid "Migration done — moved: %d, skipped: %d, already managed: %d, errors: %d"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+#, python-format
+msgid "Migration failed: %s"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+msgid "Mount remote filesystem via SSHFS on connect"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+#, python-format
+msgid ""
+"Move all SSH hosts from gcm.conf to %s?\n"
+"A backup of both files will be created."
+msgstr ""
+
+#: plugins/plugin_ssh.py
+#, python-format
+msgid ""
+"Move all SSH hosts from gcm.conf to the SHARED file %s?\n"
+"This will be usable by every user of this machine and requires root privileges (a polkit prompt may appear). A timestamped backup of both files will be created."
+msgstr ""
+
+#: plugins/plugin_ssh.py
+msgid "Move all to ssh_config…"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+#, python-format
+msgid ""
+"Move host «%s» from gcm.conf to %s?\n"
+"A backup of both files will be created."
+msgstr ""
+
+#: plugins/plugin_ssh.py
+#, python-format
+msgid ""
+"Move host «%s» from gcm.conf to the SHARED file %s?\n"
+"This will be usable by every user of this machine and requires root privileges (a polkit prompt may appear). A timestamped backup of both files will be created."
+msgstr ""
+
+#: plugins/plugin_ssh.py
+msgid "Move to ssh_config…"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+msgid "Personal (me)"
+msgstr ""
+
+#: plugins/plugin_ssh.py ssh_config_editor.py
+msgid "Personal (~/.ssh/config)"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+#, python-format
+msgid ""
+"Personal: only for you, ~/.ssh/config.\n"
+"Shared: visible and usable by every user of this machine (team bastion), %s — requires root privileges."
+msgstr ""
+
+#: plugins/plugin_ssh.py
 msgid "Port forwarding"
 msgstr "Port továbbítás"
 
-#: gnome-connection-manager.glade:1707
-msgid "Send commands after login"
-msgstr "Parancsok küldése bejelentkezés után"
+#: plugins/plugin_ssh.py
+msgid "QUIET / ERROR / INFO / VERBOSE / DEBUG…"
+msgstr ""
 
-#: gnome-connection-manager.glade:1724
+#: plugins/plugin_ssh.py ssh_config_editor.py
+msgid "Remote"
+msgstr "Távoli"
+
+#: plugins/plugin_ssh.py ssh_config_editor.py
+#, fuzzy
+#| msgid "Remote"
+msgid "Remote (-R)"
+msgstr "Távoli"
+
+#: plugins/plugin_ssh.py ssh_config_editor.py
+msgid "Remote Host"
+msgstr "Távoli hoszt"
+
+#: plugins/plugin_ssh.py ssh_config_editor.py
+msgid "Remote Port"
+msgstr "Távoli port"
+
+#: plugins/plugin_ssh.py ssh_config_editor.py
+#, fuzzy
+#| msgid "Remote Port"
+msgid "Remote listen port"
+msgstr "Távoli port"
+
+#: plugins/plugin_ssh.py
+#, fuzzy
+#| msgid "Remote Host"
+msgid "Remote path"
+msgstr "Távoli hoszt"
+
+#: plugins/plugin_ssh.py widgets.py
+msgid "Remove"
+msgstr "Eltávolítás"
+
+#: plugins/plugin_ssh.py
+msgid "SSH"
+msgstr ""
+
+#: plugins/plugin_ssh.py ssh_key_manager_dialog.py
+msgid "SSH Key Manager"
+msgstr ""
+
+#: plugins/plugin_ssh.py
 msgid ""
-"<span size='smaller'>Use ##D=milliseconds to add a delay.\n"
-"Ex: ##D=1000</span>"
+"SSH private key file not found:\n"
+"\n"
+"{}\n"
+"\n"
+"Please check the key path configuration."
 msgstr ""
-"<span size='smaller'>Késleltetés hozzáadásához használja a ##D=milliszekundum formátumot.\n"
-"Pl.: ##D=1000</span>"
 
-#: gnome-connection-manager.glade:1761
-msgid "Commands"
-msgstr "Parancsok"
-
-#: gnome-connection-manager.glade:1888
-msgid "Key sequences"
-msgstr "Billentyűsorozatok"
-
-#: gnome-connection-manager.glade:1906
-msgid "Backspace:"
-msgstr "Backspace:"
-
-#: gnome-connection-manager.glade:1918
-msgid "Delete:"
-msgstr "Delete:"
-
-#: gnome-connection-manager.glade:1952
-msgid "Automatic"
-msgstr "Automatikus"
-
-#: gnome-connection-manager.glade:1953
-msgid "ASCII Backspace \t[Ctrl+H 0x08]"
-msgstr "ASCII Backspace \t[Ctrl+H 0x08]"
-
-#: gnome-connection-manager.glade:1954
-msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
-msgstr "ASCII Delete    \t[Ctrl+? 0x7F]"
-
-#: gnome-connection-manager.glade:1955
-msgid "Delete Sequence \t[@7]"
-msgstr "Delete sorozat \t[@7]"
-
-#: gnome-connection-manager.glade:1956
-msgid "TTY Erase"
-msgstr "TTY törlés"
-
-#: gnome-connection-manager.glade:1987
-msgid "Colors and Keys"
-msgstr "Színek és billentyűk"
-
-#: gnome-connection-manager.glade:2006
-msgid "Gnome Connection Manager"
-msgstr "Gnome Connection Manager"
-
-#: gnome-connection-manager.glade:2024
-msgid "_File"
-msgstr "_Fájl"
-
-#: gnome-connection-manager.glade:2034
-msgid "Save active console buffer to file"
-msgstr "Az aktív konzol pufferének mentése fájlba"
-
-#: gnome-connection-manager.glade:2035
-msgid "Save buffer as"
-msgstr "Puffer mentése másként"
-
-#: gnome-connection-manager.glade:2044
-msgid "Import server list from file"
-msgstr "Szerverlista importálása fájlból"
-
-#: gnome-connection-manager.glade:2045
-msgid "_Import servers"
-msgstr "Szerverek _importálása"
-
-#: gnome-connection-manager.glade:2054
-msgid "Export server list to file"
-msgstr "Szerverlista exportálása fájlba"
-
-#: gnome-connection-manager.glade:2055
-msgid "_Export servers"
-msgstr "Szerverek _exportálása"
-
-#: gnome-connection-manager.glade:2072
-msgid "Import from Proxmox"
-msgstr "Importálás Proxmoxból"
-
-#: gnome-connection-manager.glade:2086
-msgid "_Quit"
-msgstr "_Kilépés"
-
-#: gnome-connection-manager.glade:2099
-msgid "_Edit"
-msgstr "Sz_erkesztés"
-
-#: gnome-connection-manager.glade:2193
-msgid "_View"
-msgstr "_Nézet"
-
-#: gnome-connection-manager.glade:2203
-msgid "Show Toolbar"
-msgstr "Eszköztár megjelenítése"
-
-#: gnome-connection-manager.glade:2212
-msgid "Show Panel"
-msgstr "Panel megjelenítése"
-
-#: gnome-connection-manager.glade:2225
-msgid "_Servers"
-msgstr "_Szerverek"
-
-#: gnome-connection-manager.glade:2239
-msgid "_Help"
-msgstr "_Súgó"
-
-#: gnome-connection-manager.glade:2249
-msgid "_About"
-msgstr "_Névjegy"
-
-#: gnome-connection-manager.glade:2273
-msgid "Open local console"
-msgstr "Helyi konzol megnyitása"
-
-#: gnome-connection-manager.glade:2289
-msgid "Connect to selected host or all hosts in selected group"
+#: plugins/plugin_ssh.py
+msgid "SSHFS"
 msgstr ""
-"Csatlakozás a kijelölt hoszthoz vagy a kijelölt csoport összes hosztjához"
 
-#: gnome-connection-manager.glade:2305
-msgid "Add new host"
+#: plugins/plugin_ssh.py
+msgid "Seconds before giving up on the connection"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+msgid "Shared"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+msgid "Shared (everyone)"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+msgid "Which file?"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+#, fuzzy
+#| msgid "X11 Forwarding"
+msgid "X11 forwarding (-X)"
+msgstr "X11 továbbítás"
+
+#: plugins/plugin_ssh.py
+msgid "e.g. 10m, or yes"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+msgid ""
+"ssh_config_editor module not found.\n"
+"Make sure ssh_config_editor.py and ssh_config_parser.py are in the same directory as gnome_connection_manager.py."
+msgstr ""
+
+#: plugins/plugin_ssh.py
+msgid ""
+"ssh_key_manager_dialog module not found.\n"
+"Make sure ssh_key_manager_dialog.py is in the same directory as gnome_connection_manager.py."
+msgstr ""
+
+#: plugins/plugin_ssh.py
+msgid "yes / no"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+msgid "yes / no / accept-new"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+msgid "yes / no / ask / auto"
+msgstr ""
+
+#: plugins/plugin_ssh.py ssh_config_editor.py
+msgid "yes / no / ask / confirm"
+msgstr ""
+
+#: plugins/plugin_ssh.py ssh_config_editor.py
+msgid "yes / no / force / auto"
+msgstr ""
+
+#: plugins/plugin_vnc.py
+#, python-brace-format
+msgid ""
+"Additional vncviewer parameters\n"
+"E.g.: {example}"
+msgstr ""
+
+#: plugins/plugin_vnc.py
+msgid "Display"
+msgstr ""
+
+#: plugins/plugin_vnc.py
+msgid "VNC"
+msgstr ""
+
+#: plugins/plugin_vnc.py
+msgid "View only"
+msgstr ""
+
+#: plugins/plugin_vnc.py
+msgid "Viewer (fallback)"
+msgstr ""
+
+#: plugins/plugin_vnc.py
+msgid "e.g. 0 for :0, leave empty for default"
+msgstr ""
+
+#: plugins/plugin_vnc.py
+msgid "xfreerdp not found"
+msgstr "xfreerdp nem található"
+
+#: plugins/plugin_web.py
+msgid "BMC web console (iLO, iDRAC, IMM…) or any web interface (Proxmox, switch, TrueNAS…)"
+msgstr ""
+
+#: plugins/plugin_web.py
+msgid "Error: URL not configured"
+msgstr ""
+
+#: plugins/plugin_web.py
+msgid "Error: could not open the URL"
+msgstr ""
+
+#: plugins/plugin_web.py
+msgid "Opened in the system browser"
+msgstr ""
+
+#: plugins/plugin_web.py
+msgid "URL"
+msgstr ""
+
+#: plugins/plugin_web.py
+msgid "URL is required for a Web connection."
+msgstr ""
+
+#: plugins/plugin_web.py
+msgid "URL is required."
+msgstr ""
+
+#: plugins/plugin_web.py
+msgid "URL not configured"
+msgstr ""
+
+#: plugins/plugin_web.py
+msgid "Useful for self-signed certificates on BMC interfaces"
+msgstr ""
+
+#: plugins/plugin_web.py
+msgid "Web"
+msgstr ""
+
+#: plugins/plugin_web.py
+msgid ""
+"WebKitGTK unavailable (gir1.2-webkit2-4.1 package missing).\n"
+"The web console will open in the system browser."
+msgstr ""
+
+#: ssh_config_editor.py
+#, fuzzy, python-brace-format
+#| msgid "Ended (code {rc})"
+msgid ""
+"\n"
+"Exit code: {rc}"
+msgstr "Befejeződött (kód: {rc})"
+
+#: ssh_config_editor.py
+#, python-brace-format
+msgid ""
+"\n"
+"[Error: {exc}]"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid ""
+"\n"
+"[Timeout after 10 s]"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "(no output)\n"
+msgstr ""
+
+#: ssh_config_editor.py
+#, fuzzy
+#| msgid "Add new host"
+msgid "Add a new empty host"
 msgstr "Új hoszt hozzáadása"
 
-#: gnome-connection-manager.glade:2321
-msgid "Edit hosts properties"
-msgstr "Hosztok tulajdonságainak szerkesztése"
+#: ssh_config_editor.py
+msgid "AddKeysToAgent"
+msgstr ""
 
-#: gnome-connection-manager.glade:2337
+#: ssh_config_editor.py
+msgid "Alias(es)"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "At least one alias is required"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "Compression"
+msgstr "Tömörítés"
+
+#: ssh_config_editor.py
+#, fuzzy
+#| msgid "Connect"
+msgid "ConnectTimeout"
+msgstr "Csatlakozás"
+
+#: ssh_config_editor.py
+#, fuzzy
+#| msgid "Cluster"
+msgid "ControlMaster"
+msgstr "Klaszter"
+
+#: ssh_config_editor.py
+msgid "ControlPersist"
+msgstr ""
+
+#: ssh_config_editor.py
+#, python-brace-format
+msgid "Copied: {cmd}"
+msgstr ""
+
+#: ssh_config_editor.py
+#, fuzzy
+#| msgid "Copy selection to clipboard"
+msgid "Copy full ssh command to clipboard"
+msgstr "Kijelölés vágólapra másolása"
+
+#: ssh_config_editor.py
+msgid "Copy ssh cmd"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "Diff (original → current):"
+msgstr ""
+
+#: ssh_config_editor.py
+#, fuzzy
+#| msgid "Dynamic"
+msgid "Dynamic (SOCKS)"
+msgstr "Dinamikus"
+
+#: ssh_config_editor.py
+msgid "Edit SSH config (personal + shared)"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "Edit raw ssh_config — changes here override the Visual tab on Save."
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "Enter remote host"
+msgstr "Adja meg a távoli hosztot"
+
+#: ssh_config_editor.py
+#, fuzzy
+#| msgid "_File"
+msgid "File:"
+msgstr "_Fájl"
+
+#: ssh_config_editor.py
+msgid "Filter hosts…"
+msgstr ""
+
+#: ssh_config_editor.py
+#, fuzzy
+#| msgid "X11 Forwarding"
+msgid "ForwardAgent"
+msgstr "X11 továbbítás"
+
+#: ssh_config_editor.py
+#, fuzzy
+#| msgid "Host name"
+msgid "HostName"
+msgstr "Hoszt neve"
+
+#: ssh_config_editor.py
+msgid "IdentitiesOnly"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "IdentityFile"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "LogLevel"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "Multiple values possible: separate them with commas (one line per value in the file)"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "No changes."
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "PasswordAuthentication"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "Port must be an integer between 1 and 65535"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "Properties"
+msgstr "Tulajdonságok"
+
+#: ssh_config_editor.py
+#, fuzzy
+#| msgid "Command"
+msgid "ProxyCommand"
+msgstr "Parancs"
+
+#: ssh_config_editor.py
+msgid "ProxyJump"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "PubkeyAuthentication"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "QUIET/ERROR/INFO/VERBOSE/DEBUG"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "Raw / Diff"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "Redirection de port"
+msgstr ""
+
+#: ssh_config_editor.py
+#, fuzzy
+#| msgid "Command"
+msgid "RemoteCommand"
+msgstr "Parancs"
+
+#: ssh_config_editor.py
+#, fuzzy
+#| msgid "Remote Host"
+msgid "Remove host?"
+msgstr "Távoli hoszt"
+
+#: ssh_config_editor.py
 msgid "Remove selected host"
 msgstr "Kijelölt hoszt eltávolítása"
 
-#: gnome-connection-manager.glade:2363
-msgid "Split console horizontally"
-msgstr "Konzol felosztása vízszintesen"
+#: ssh_config_editor.py
+#, python-brace-format
+msgid "Remove «{alias}» from {path}?"
+msgstr ""
 
-#: gnome-connection-manager.glade:2364
-msgid "__glade_unnamed_28"
-msgstr "__glade_unnamed_28"
+#: ssh_config_editor.py
+msgid "RequestTTY"
+msgstr ""
 
-#: gnome-connection-manager.glade:2378
-msgid "Split console vertically"
-msgstr "Konzol felosztása függőlegesen"
+#: ssh_config_editor.py
+#, python-brace-format
+msgid ""
+"Running: {cmd}\n"
+"\n"
+msgstr ""
 
-#: gnome-connection-manager.glade:2379
-msgid "__glade_unnamed_29"
-msgstr "__glade_unnamed_29"
+#: ssh_config_editor.py
+msgid "ServerAliveCountMax"
+msgstr ""
 
-#: gnome-connection-manager.glade:2393
+#: ssh_config_editor.py
+msgid "ServerAliveInterval"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "Shared — bastion, all users (/etc/ssh/ssh_config.d/config_gcm.conf)"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "StrictHostKeyChecking"
+msgstr ""
+
+#: ssh_config_editor.py
+#, fuzzy
+#| msgid "No connection type selected."
+msgid "Test SSH connection to selected host"
+msgstr "Nincs kiválasztott kapcsolattípus."
+
+#: ssh_config_editor.py
+#, python-brace-format
+msgid "Test connection — {alias}"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "UserKnownHostsFile"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "Visual"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "auto / yes / no"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "ex : 10"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "ex : 10m"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "ex : 192.168.1.10 ou example.com"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "ex : 22"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "ex : 3"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "ex : 60"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "ex : root"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "ex : ssh -W %h:%p bastion, ou corkscrew proxy 8080 %h %p"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "ex : tmux attach || tmux new"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "ex : user@bastion.example.com, user@server1.example.com"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "ex : web1 ou web1 web1.example.com"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "ex : ~/.ssh/id_ed25519, ~/.ssh/id_rsa"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "ex : ~/.ssh/known_hosts"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "yes / no / ask / accept-new"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "yes ou no"
+msgstr ""
+
+#: ssh_config_editor.py
+#, python-brace-format
+msgid "{path} does not exist yet — it will be created when saving."
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "← Select or create a host"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "⚡ Test"
+msgstr ""
+
+#: ssh_config_editor.py
+#, fuzzy
+#| msgid "Cancel"
+msgid "✕ Cancel"
+msgstr "Mégse"
+
+#: ssh_config_editor.py
+#, fuzzy
+#| msgid "− Remove"
+msgid "✕ Remove"
+msgstr "− Eltávolítás"
+
+#: ssh_config_editor.py
+msgid "⟳ Refresh diff"
+msgstr ""
+
+#: ssh_config_editor.py ssh_key_manager_dialog.py
+#, fuzzy
+#| msgid "+ Add"
+msgid "＋ Add"
+msgstr "+ Hozzáadás"
+
+#: ssh_config_editor.py
+#, fuzzy
+#| msgid "Save"
+msgid "💾 Save"
+msgstr "Mentés"
+
+#: ssh_key_manager_dialog.py
+msgid "#"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "(empty = no passphrase)"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "(empty = remove passphrase)"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "(empty if none)"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "(hashed)"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "(none — keys are generated unsigned)"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "A certificate named {name} already exists"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "A file named {name} already exists"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Add Authorized Key"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "Add {name} to ssh-agent?"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Added to ssh-agent"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "All files"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Authorized Keys"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "CA deleted: {name}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "CA deletion failed: {err}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "CA import failed: {err}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "CA imported and designated: {name}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "CA signing failed: {err}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "CA signing timed out — CA key may require a passphrase (unsupported non-interactively)"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, fuzzy, python-brace-format
+#| msgid "Can't open file for writting"
+msgid "Cannot open file manager: {err}"
+msgstr "A fájl írásra nem nyitható meg"
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "Cannot read public key: {err}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Certificate identity:"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "Change Passphrase — {name}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Change the passphrase of this private key (ssh-keygen -p)"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Check ~/.ssh/config (and GCM hosts, if wired in) against known_hosts"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Choose an existing local key pair as the signing CA"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Clipboard unavailable — key content logged"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, fuzzy
+#| msgid "Command"
+msgid "Comment"
+msgstr "Parancs"
+
+#: ssh_key_manager_dialog.py
+#, fuzzy
+#| msgid "Command"
+msgid "Comment:"
+msgstr "Parancs"
+
+#: ssh_key_manager_dialog.py
+msgid "Confirm new passphrase:"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "Connected to {t} — Known Hosts / Authorized Keys now read from there"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "Connection failed: {err}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Connection timed out"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "Copy failed: {err}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, fuzzy
+#| msgid "Copy selection to clipboard"
+msgid "Copy the public key content to clipboard"
+msgstr "Kijelölés vágólapra másolása"
+
+#: ssh_key_manager_dialog.py
+msgid "Created"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Current passphrase:"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "Delete failed: {err}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Designate Signing CA"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "Designated CA: {name}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Disable"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Enabled"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Entry not found (file may have changed) — refreshing"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Failed to add key"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "Failed to add to agent (passphrase required?): {err}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "Failed to remove from agent: {err}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Failed to update authorized_keys"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Failed to update known_hosts"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "File changed on disk — refreshing"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, fuzzy
+#| msgid "Template name"
+msgid "File name:"
+msgstr "Sablon neve"
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "File {name} already exists in ~/.ssh/ — overwrite?"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Fingerprint copied to clipboard"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Found"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Generate SSH Key"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Generate a new SSH key pair (ssh-keygen)"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "Generation failed: {err}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Hashed"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, fuzzy
+#| msgid "Private key"
+msgid "Import CA Private Key"
+msgstr "Privát kulcs"
+
+#: ssh_key_manager_dialog.py
+#, fuzzy
+#| msgid "Private key"
+msgid "Import Private Key"
+msgstr "Privát kulcs"
+
+#: ssh_key_manager_dialog.py
+msgid "Import an existing private key file into ~/.ssh/"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Import an external CA key pair into ~/.ssh/ and designate it"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "Import failed: {err}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Info (matching known_hosts line)"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Invalid name — must not contain a path separator"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Invalid target — expected user@host or user@host:port"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Key added to authorized_keys"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "Key deleted: {name}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "Key generated: {name}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, fuzzy, python-brace-format
+#| msgid "Template name"
+msgid "Key imported: {name}"
+msgstr "Sablon neve"
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "Key signed by CA {ca} (identity={id})"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Key type:"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Keys are saved in <b>~/.ssh/</b> with permissions 600."
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Known Hosts"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "Known Hosts Test — {n}/{total} found on {target}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Load/unload this key in ssh-agent (ssh-add / ssh-add -d)"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "New name for {name}:"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "New passphrase and confirmation do not match"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "New passphrase:"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "No CA currently designated"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "No CA designated — key generated unsigned"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "No Public key available for selected entry"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "No authorized_keys entry selected"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "No candidate hosts found in ~/.ssh/config (and no GCM host list wired in)"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "No fingerprint available for this entry"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, fuzzy
+#| msgid "No URI selected."
+msgid "No key selected"
+msgstr "Nincs kiválasztott URI."
+
+#: ssh_key_manager_dialog.py
+#, fuzzy
+#| msgid "No connection type selected."
+msgid "No known_hosts entry selected"
+msgstr "Nincs kiválasztott kapcsolattípus."
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "No matching .pub file found next to {name} — cannot import as CA"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "No matching .pub file found next to {name} — cannot use as CA"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, fuzzy
+#| msgid "No URI selected."
+msgid "No private key selected"
+msgstr "Nincs kiválasztott URI."
+
+#: ssh_key_manager_dialog.py
+msgid "No public key available for selected entry"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "No public key available to identify this key in the agent"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Nothing to rename"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Open ~/.ssh/ in the file manager"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Orphan Public key"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Orphan Public keys"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "Passphrase change failed: {err}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "Passphrase changed for {name}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Passphrase:"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Paste the full public key line (options, type, base64 key, comment):"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid ""
+"Permanently delete <b>{name}</b> (and its Orphan Public key if present)?\n"
+"<b>This cannot be undone.</b>"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid ""
+"Permanently delete the CA key pair <b>{name}</b>?\n"
+"Certificates already signed by this CA will no longer be trustable to verify.\n"
+"<b>This cannot be undone.</b>"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Permanently delete the designated CA key pair"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Permanently delete the selected key"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Perms"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Principals (comma-separated):"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, fuzzy
+#| msgid "Private key"
+msgid "Private keys"
+msgstr "Privát kulcs"
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "Public Key — {name}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Public key copied to clipboard"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "Public key file not found: {p}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "RSA size:"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Re-enable"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Remote target (Known Hosts / Authorized Keys):"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid ""
+"Remove this authorized_keys entry?\n"
+"<b>This cannot be undone.</b>"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid ""
+"Remove this known_hosts entry?\n"
+"<b>This cannot be undone.</b>"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "Remove {name} from ssh-agent?"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Removed from ssh-agent"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, fuzzy
+#| msgid "Rename tab"
+msgid "Rename Key"
+msgstr "Lap átnevezése"
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "Rename failed: {err}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Rename this key (and its .pub / certificate, if any)"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "Renamed {old} to {new}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, fuzzy
+#| msgid "No connection type selected."
+msgid "SSH connection failed"
+msgstr "Nincs kiválasztott kapcsolattípus."
+
+#: ssh_key_manager_dialog.py
+msgid "Saved in ~/.ssh/ — leave blank for default name"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Select the private key file, not the .pub file"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Show the full public key content in a dedicated window"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "Sign with designated CA ({name})"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Signed by"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Signing CA:"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Switched back to local machine"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "Testing connection to {t}…"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "This does not look like a valid public key line"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Validity"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, fuzzy
+#| msgid "Parity:"
+msgid "Validity:"
+msgstr "Paritás:"
+
+#: ssh_key_manager_dialog.py
+msgid "_Add"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "_Change"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, fuzzy
+#| msgid "Close"
+msgid "_Close"
+msgstr "Bezárás"
+
+#: ssh_key_manager_dialog.py
+msgid "_Designate"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, fuzzy
+#| msgid "Imported"
+msgid "_Import"
+msgstr "Importálva"
+
+#: ssh_key_manager_dialog.py
+#, fuzzy
+#| msgid "Rename tab"
+msgid "_Rename"
+msgstr "Lap átnevezése"
+
+#: ssh_key_manager_dialog.py
+msgid "add a key to authorized_keys"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "authorized_keys entry removed"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "authorized_keys entry updated"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "authorized_keys not found on {t}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "enable/disable an authorized_keys entry"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, fuzzy
+#| msgid "Never"
+msgid "forever"
+msgstr "Soha"
+
+#: ssh_key_manager_dialog.py
+msgid "known_hosts entry removed"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "known_hosts not found on {t}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "local machine"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "remove a known_hosts entry"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "remove an authorized_keys entry"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "ssh-add failed: {err}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "ssh-add timed out — the key may require a passphrase (no terminal available here)"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "ssh-keygen -V syntax, e.g. +52w (1 year), +30d, or 'always:forever'"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "ssh-keygen failed: {err}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "ssh-keygen not found — install openssh-client"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "unknown CA"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "until {end}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "user@host or root@host[:port]"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "{action} this authorized_keys entry?"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "{n} authorized_keys entries loaded from {t}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "{n} known_hosts entries loaded from {t}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "{priv} private key(s), {pub} Orphan Public key(s) loaded from ~/.ssh/"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "~/.ssh/ not found — no keys loaded"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, fuzzy
+#| msgid "✓ Imported"
+msgid "↑ Import"
+msgstr "✓ Importálva"
+
+#: ssh_key_manager_dialog.py
+msgid "⎘ Copy fingerprint"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "⎘ Copy public key"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, fuzzy
+#| msgid "Copy selection to clipboard"
+msgid "⎘ Copy to clipboard"
+msgstr "Kijelölés vágólapra másolása"
+
+#: ssh_key_manager_dialog.py
+#, fuzzy
+#| msgid "General"
+msgid "⚙ Generate"
+msgstr "Általános"
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid ""
+"⚠ You are about to {action} on the <b>root</b> account of {target}.\n"
+"This can affect SSH access to the whole system.\n"
+"<b>Are you sure?</b>"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, fuzzy
+#| msgid "Rename tab"
+msgid "✎ Rename"
+msgstr "Lap átnevezése"
+
+#: ssh_key_manager_dialog.py
+msgid "⟳ Refresh"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, fuzzy
+#| msgid "✓ Imported"
+msgid "⬆ Import CA"
+msgstr "✓ Importálva"
+
+#: ssh_key_manager_dialog.py
+#, fuzzy
+#| msgid "Local"
+msgid "🏠 Local"
+msgstr "Helyi"
+
+#: ssh_key_manager_dialog.py
+msgid "👁 View public key"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "📂 Reveal"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, fuzzy
+#| msgid "Connect"
+msgid "🔌 Connect"
+msgstr "Csatlakozás"
+
+#: ssh_key_manager_dialog.py
+msgid "🔏 Designate"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "🔑 Agent"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "🔒 Passphrase"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, fuzzy
+#| msgid "Delete:"
+msgid "🗑 Delete"
+msgstr "Delete:"
+
+#: ssh_key_manager_dialog.py
+msgid "🗑 Delete CA"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "🧪 Test known hosts"
+msgstr ""
+
+#: widgets.py
+#, fuzzy, python-format
+#| msgid "Disconnect"
+msgid "%s has disconnected."
+msgstr "Kapcsolat bontása"
+
+#: widgets.py
+msgid "Choose Color…"
+msgstr ""
+
+#: widgets.py
+msgid "Clone console"
+msgstr "Konzol klónozása"
+
+#: widgets.py
+msgid "Collapse all"
+msgstr "Mindet összecsukja"
+
+#: widgets.py
+#, fuzzy
+#| msgid "Connecting…"
+msgid "Connection closed"
+msgstr "Csatlakozás…"
+
+#: widgets.py
+msgid "Copy Address"
+msgstr "Cím másolása"
+
+#: widgets.py
+msgid "Custom commands"
+msgstr "Egyéni parancsok"
+
+#: widgets.py
+msgid "Duplicate Host"
+msgstr "Hoszt duplikálása"
+
+#: widgets.py
+msgid "Enable logging"
+msgstr "Naplózás engedélyezése"
+
+#: widgets.py
+msgid "Expand all"
+msgstr "Mindet kibontja"
+
+#: widgets.py
+msgid "New Group…"
+msgstr ""
+
+#: widgets.py
+msgid "Reconnect to host"
+msgstr "Újracsatlakozás a hoszthoz"
+
+#: widgets.py
+msgid "Rename Group…"
+msgstr ""
+
+#: widgets.py
+#, fuzzy
+#| msgid "Reset console"
+msgid "Reset Color"
+msgstr "Konzol visszaállítása"
+
+#: widgets.py
+msgid "Reset and Clear console"
+msgstr "Konzol visszaállítása és törlése"
+
+#: widgets.py
+msgid "Reset console"
+msgstr "Konzol visszaállítása"
+
+#: widgets.py
+msgid "Save buffer to file"
+msgstr "Puffer mentése fájlba"
+
+#: widgets.py
+msgid "Special keys"
+msgstr ""
+
+#: widgets.py
+msgid "Split H"
+msgstr "Felosztás H"
+
+#: widgets.py
+msgid "Split V"
+msgstr "Felosztás V"
+
+#: widgets.py
 msgid "Unsplit all consoles"
 msgstr "Az összes konzol felosztásának megszüntetése"
 
-#: gnome-connection-manager.glade:2394
-msgid "__glade_unnamed_30"
-msgstr "__glade_unnamed_30"
+#~ msgid "Colors and Keys"
+#~ msgstr "Színek és billentyűk"
 
-#: gnome-connection-manager.glade:2419
-msgid "__glade_unnamed_32"
-msgstr "__glade_unnamed_32"
+#~ msgid "Commands"
+#~ msgstr "Parancsok"
 
-#: gnome-connection-manager.glade:2461
-msgid "__glade_unnamed_36"
-msgstr "__glade_unnamed_36"
+#~ msgid ""
+#~ "Compression level: \n"
+#~ "blank: default compression\n"
+#~ "1: min\n"
+#~ "9: max"
+#~ msgstr ""
+#~ "Tömörítési szint: \n"
+#~ "üres: alapértelmezett tömörítés\n"
+#~ "1: min\n"
+#~ "9: max"
 
-#: gnome-connection-manager.glade:2475
-msgid "__glade_unnamed_37"
-msgstr "__glade_unnamed_37"
+#~ msgid "Connect to selected host or all hosts in selected group"
+#~ msgstr "Csatlakozás a kijelölt hoszthoz vagy a kijelölt csoport összes hosztjához"
 
-#: gnome-connection-manager.glade:2499
-msgid "Send commands to several hosts at the same time"
-msgstr "Parancsok küldése egyszerre több hosztnak"
+#~ msgid "Create dynamic port forwarding"
+#~ msgstr "Dinamikus port továbbítás létrehozása"
 
-#: gnome-connection-manager.glade:2567
-msgid "label"
-msgstr "felirat"
+#~ msgid "Detected Proxmox target"
+#~ msgstr "Észlelt Proxmox cél"
 
-#: gnome-connection-manager.glade:2574
-msgid "page 1"
-msgstr "1. oldal"
+#~ msgid "Detected Proxmox targets (dconf):"
+#~ msgstr "Észlelt Proxmox célok (dconf):"
 
-#: gnome-connection-manager.glade:2593
-msgid "page 2"
-msgstr "2. oldal"
+#~ msgid "Edit hosts properties"
+#~ msgstr "Hosztok tulajdonságainak szerkesztése"
+
+#~ msgid "Export server list to file"
+#~ msgstr "Szerverlista exportálása fájlba"
+
+#~ msgid "Extra arguments to pass to command line"
+#~ msgstr "Parancssorban átadandó további argumentumok"
+
+#~ msgid "Import server list from file"
+#~ msgstr "Szerverlista importálása fájlból"
+
+#~ msgid "Keep-Alive"
+#~ msgstr "Keep-Alive"
+
+#~ msgid "Local port already assigned"
+#~ msgstr "A helyi port már foglalt"
+
+#~ msgid "Open local console"
+#~ msgstr "Helyi konzol megnyitása"
+
+#~ msgid "SPICE  (not available here: Proxmox requires API ticket/proxy)"
+#~ msgstr "SPICE  (itt nem elérhető: a Proxmox API jegyet/proxyt igényel)"
+
+#~ msgid "Save active console buffer to file"
+#~ msgstr "Az aktív konzol pufferének mentése fájlba"
+
+#~ msgid "Seconds between keep-alive packets"
+#~ msgstr "Másodpercek a keep-alive csomagok között"
+
+#~ msgid "Send commands to several hosts at the same time"
+#~ msgstr "Parancsok küldése egyszerre több hosztnak"
+
+#~ msgid "Show Toolbar"
+#~ msgstr "Eszköztár megjelenítése"
+
+#~ msgid "Split console horizontally"
+#~ msgstr "Konzol felosztása vízszintesen"
+
+#~ msgid "Split console vertically"
+#~ msgstr "Konzol felosztása függőlegesen"
+
+#~ msgid "_Edit"
+#~ msgstr "Sz_erkesztés"
+
+#~ msgid "__glade_unnamed_28"
+#~ msgstr "__glade_unnamed_28"
+
+#~ msgid "__glade_unnamed_29"
+#~ msgstr "__glade_unnamed_29"
+
+#~ msgid "__glade_unnamed_30"
+#~ msgstr "__glade_unnamed_30"
+
+#~ msgid "__glade_unnamed_32"
+#~ msgstr "__glade_unnamed_32"
+
+#~ msgid "__glade_unnamed_36"
+#~ msgstr "__glade_unnamed_36"
+
+#~ msgid "__glade_unnamed_37"
+#~ msgstr "__glade_unnamed_37"
+
+#~ msgid "label"
+#~ msgstr "felirat"
+
+#~ msgid "local"
+#~ msgstr "helyi"
+
+#~ msgid "page 1"
+#~ msgstr "1. oldal"
+
+#~ msgid "page 2"
+#~ msgstr "2. oldal"
+
+#~ msgid "rdp"
+#~ msgstr "rdp"
+
+#~ msgid "spice"
+#~ msgstr "spice"
+
+#~ msgid "ssh"
+#~ msgstr "ssh"
+
+#~ msgid "telnet"
+#~ msgstr "telnet"
+
+#~ msgid "vnc"
+#~ msgstr "vnc"
+
+#~ msgid "xfreerdp log:"
+#~ msgstr "xfreerdp napló:"

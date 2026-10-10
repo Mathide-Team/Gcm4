@@ -23,13 +23,7 @@ import gi
 gi.require_version("Gtk", "3.0")
 gi.require_version("Gdk", "3.0")
 from gi.repository import Gdk, GLib, Gtk, Pango  # noqa: E402
-
-try:
-    from loguru import logger
-except ImportError:
-    import logging
-
-    logger = logging.getLogger(__name__)  # type: ignore[assignment]
+from loguru import logger
 
 from key_picker_dialog import KeyPickerDialog
 
