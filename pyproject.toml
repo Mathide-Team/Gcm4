@@ -66,6 +66,7 @@ dev = [
     "ruff>=0.6.0",
     "black>=24.0.0",
     "pytest>=8.0.0",
+    "pytest-cov>=5.0.0",
 ]
 
 # ─── Ruff ────────────────────────────────────────────────────────────────────
@@ -185,6 +186,40 @@ line-length = 99
 target-version = ["py310", "py311", "py312", "py313"]
 
 # ─── Pytest ──────────────────────────────────────────────────────────────────
+# ─── Couverture (issue #128, parité Netcross #224/#246) ─────────────────────
+[tool.coverage.run]
+# Code de l'application uniquement : ni les tests, ni les sous-projets
+# vendorisés (SSH-Studio/, gtk-frdp/), ni les outils annexes (tools/,
+# scripts/). source = ["."] compte aussi, à 0 %, les modules qu'aucun test
+# n'importe : la mesure ne flatte pas la couverture réelle.
+source = ["."]
+branch = true
+omit = [
+    "tests/*",
+    "SSH-Studio/*",
+    "gtk-frdp/*",
+    "tools/*",
+    "scripts/*",
+    ".venv/*",
+    "rdp/*",
+    "vnc/*",
+]
+
+[tool.coverage.report]
+precision = 1
+show_missing = true
+skip_covered = false
+# Seuil bloquant : voir docs/quality/seuil-couverture.md. Ne s'applique
+# qu'aux exécutions avec --cov (la CI). Relever ce chiffre quand la base
+# monte, ne jamais le baisser pour faire passer une PR.
+fail_under = 18
+exclude_lines = [
+    "pragma: no cover",
+    "if TYPE_CHECKING:",
+    "if __name__ == .__main__.:",
+    "raise NotImplementedError",
+]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 python_files = ["test_*.py"]
