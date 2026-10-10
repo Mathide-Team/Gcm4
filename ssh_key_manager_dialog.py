@@ -1243,7 +1243,9 @@ class SSHKeyManagerDialog(GCMBase, Gtk.Window):
         btn_local.connect("clicked", self._on_use_local)
 
         self._lbl_target_status = Gtk.Label()
-        self._lbl_target_status.set_markup(f"<b>{GLib.markup_escape_text(_('local machine'))}</b>")
+        self._lbl_target_status.set_markup(
+            "<b>{}</b>".format(GLib.markup_escape_text(_("local machine")))
+        )
 
         bar.pack_start(lbl, False, False, 0)
         bar.pack_start(self._entry_target, True, True, 0)
@@ -1603,7 +1605,9 @@ class SSHKeyManagerDialog(GCMBase, Gtk.Window):
         """Revient à la machine locale pour Known Hosts / Authorized Keys."""
         self._remote_fs = None
         self._entry_target.set_text("")
-        self._lbl_target_status.set_markup(f"<b>{GLib.markup_escape_text(_('local machine'))}</b>")
+        self._lbl_target_status.set_markup(
+            "<b>{}</b>".format(GLib.markup_escape_text(_("local machine")))
+        )
         self._notify(_("Switched back to local machine"))
         self._load_known_hosts()
         self._load_authorized_keys()
@@ -1645,7 +1649,9 @@ class SSHKeyManagerDialog(GCMBase, Gtk.Window):
         """Met à jour le libellé affichant la CA actuellement désignée."""
         if self._ca_priv_path is None:
             self._lbl_ca_status.set_markup(
-                f"<i>{GLib.markup_escape_text(_('(none — keys are generated unsigned)'))}</i>"
+                "<i>{}</i>".format(
+                    GLib.markup_escape_text(_("(none — keys are generated unsigned)"))
+                )
             )
             return
         fp, key_type = self._get_fingerprint_and_type(

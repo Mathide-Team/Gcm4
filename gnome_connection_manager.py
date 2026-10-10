@@ -3744,7 +3744,7 @@ class Wmain(GCMBase, Gtk.Window):
                 groups[host.group].append(host)
             except BaseException:
                 app_logger.exception(
-                    f"{_('Invalid entry in configuration file')}: {sys.exc_info()[1]}"
+                    "{}: {}", _("Invalid entry in configuration file"), sys.exc_info()[1]
                 )
 
         # Restaurer les groupes vides (dossiers créés sans hôtes)
