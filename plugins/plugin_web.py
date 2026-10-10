@@ -77,7 +77,8 @@ class WebTab(Gtk.Box):
 
         toolbar = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
         title = Gtk.Label()
-        title.set_markup(f"<b>Web</b> <small>{url or _('URL not configured')}</small>")
+        shown = url or _("URL not configured")
+        title.set_markup(f"<b>Web</b> <small>{shown}</small>")
         title.set_xalign(0)
         toolbar.pack_start(title, True, True, 0)
 

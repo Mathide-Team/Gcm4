@@ -82,7 +82,7 @@ class CsvImportBatchPlugin(BatchPlugin):
                 hosts = [app._dict_to_host(row) for row in reader if row.get("name")]
         except Exception as exc:  # noqa: BLE001
             logger.exception(f"CsvImportBatchPlugin.activate | CSV import error: {exc}")
-            msgbox(_(f"CSV import error: {exc}"), parent=app.window)
+            msgbox(_("CSV import error: {exc}").format(exc=exc), parent=app.window)
             return
 
         if not hosts:
@@ -91,7 +91,7 @@ class CsvImportBatchPlugin(BatchPlugin):
 
         n = app._import_hosts_from_list(hosts)
         logger.info(f"CsvImportBatchPlugin.activate | imported={n} file={filename}")
-        msgbox(_(f"{n} connection(s) imported from CSV."), parent=app.window)
+        msgbox(_("{n} connection(s) imported from CSV.").format(n=n), parent=app.window)
 
 
 def get_batch_plugin() -> CsvImportBatchPlugin:

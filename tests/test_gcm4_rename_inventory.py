@@ -68,7 +68,9 @@ REAL_IMPORT_RE = re.compile(
 )
 
 EXPECTED_GCM_LANG_OCCURRENCES_IN_CORE = 1
-EXPECTED_GCM_LANG_LINES_IN_MAKEFILE = 28
+# 0 depuis l'issue #165 : `make translate` délègue à scripts/i18n-update.sh,
+# qui porte le domaine (variable DOMAIN, une seule occurrence).
+EXPECTED_GCM_LANG_LINES_IN_MAKEFILE = 0
 
 EXPECTED_DESKTOP_LINES = {
     "Name=Gnome Connection Manager",
@@ -121,7 +123,7 @@ class TestModuleImportSites(unittest.TestCase):
 
 
 class TestI18nDomainOccurrences(unittest.TestCase):
-    """Occurrences du domaine i18n `gcm-lang` — 29 au total à la session-30."""
+    """Occurrences du domaine i18n `gcm-lang` — 2 depuis l'issue #165."""
 
     def test_domain_name_declared_once_in_core(self):
         """Une seule déclaration `domain_name = "gcm-lang"` dans le module principal."""
@@ -129,9 +131,14 @@ class TestI18nDomainOccurrences(unittest.TestCase):
         self.assertEqual(content.count("gcm-lang"), EXPECTED_GCM_LANG_OCCURRENCES_IN_CORE)
 
     def test_makefile_gcm_lang_line_count(self):
-        """28 lignes `msgfmt` (une par langue) référencent le domaine dans le Makefile."""
+        """Plus aucune ligne `msgfmt` codée en dur dans le Makefile (issue #165)."""
         content = _read(MAKEFILE)
         self.assertEqual(content.count("gcm-lang"), EXPECTED_GCM_LANG_LINES_IN_MAKEFILE)
+
+    def test_i18n_script_declares_domain_once(self):
+        """scripts/i18n-update.sh porte le domaine en un seul endroit."""
+        content = _read(os.path.join(REPO_ROOT, "scripts", "i18n-update.sh"))
+        self.assertEqual(content.count('"${GCM_I18N_DOMAIN:-gcm-lang}"'), 1)
 
 
 class TestDesktopFileBaseline(unittest.TestCase):

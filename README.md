@@ -273,7 +273,9 @@ sudo gem install fpm
 | `make deb` | `.deb` Debian / Ubuntu |
 | `make rpm` | `.rpm` Fedora / RHEL / CentOS |
 | `make opensuse` | `.rpm` **openSUSE / SLES** (dépendances zypper : `typelib-1_0-Vte-2.91`) |
-| `make translate` | Compile les 16 `.po` → `.mo` |
+| `make translate` | Compile les `.po` de `lang/LINGUAS` → `.mo` |
+| `make i18n-update` | Extrait les chaînes (`lang/messages.pot`) et met à jour les `.po` |
+| `make i18n-check` | Échoue si le `.pot` ou un `.po` est périmé (CI) |
 | `make validate` | Valide `.po` (msgfmt) + `.glade` / `.xml` / `.json` |
 | `make test` | Lance la suite pytest (777 tests) |
 | `make lint` | ruff + flake8 |

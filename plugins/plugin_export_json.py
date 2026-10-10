@@ -78,12 +78,15 @@ class JsonExportBatchPlugin(BatchPlugin):
                 json.dump(data, f, indent=2, ensure_ascii=False)
         except Exception as exc:  # noqa: BLE001
             logger.exception(f"JsonExportBatchPlugin.activate | JSON export error: {exc}")
-            msgbox(_(f"JSON export error: {exc}"), parent=app.window)
+            msgbox(_("JSON export error: {exc}").format(exc=exc), parent=app.window)
             return
 
         n = len(hosts)
         logger.info(f"JsonExportBatchPlugin.activate | exported={n} file={filename}")
-        msgbox(_(f"{n} connection(s) exported to {filename}."), parent=app.window)
+        msgbox(
+            _("{n} connection(s) exported to {filename}.").format(n=n, filename=filename),
+            parent=app.window,
+        )
 
 
 def get_batch_plugin() -> JsonExportBatchPlugin:

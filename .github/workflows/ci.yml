@@ -67,3 +67,9 @@ jobs:
         # Même validation que `make validate` : msgfmt --check sur les
         # 29 langues de lang/ (tools/validate_po.py).
         run: uv run python tools/validate_po.py lang/*.po
+
+      - name: Catalogues à jour avec les sources (issue #165)
+        # Échoue si lang/messages.pot ou un lang/*.po n'a pas été régénéré
+        # après l'ajout ou la modification d'une chaîne traduisible :
+        # lancer `make i18n-update` et committer lang/.
+        run: scripts/i18n-update.sh --check
