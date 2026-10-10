@@ -2717,9 +2717,13 @@ class Wmain(GCMBase, Gtk.Window):
                 for h in hosts:
                     writer.writerow(self._host_to_dict(h))
         except Exception as e:
-            msgbox(_(f"CSV export error: {e}"))
+            msgbox(_("CSV export error: {e}").format(e=e))
             return
-        msgbox(_(f"{len(hosts)} connection(s) exported to {filename}."))
+        msgbox(
+            _("{count} connection(s) exported to {filename}.").format(
+                count=len(hosts), filename=filename
+            )
+        )
 
     def on_mnu_export_json_activate(self, widget, *args):
         """Exporte toutes les connexions vers un fichier JSON (sans mot de passe)."""
@@ -2738,9 +2742,13 @@ class Wmain(GCMBase, Gtk.Window):
             with open(filename, "w", encoding="utf-8") as f:
                 _json.dump(data, f, indent=2, ensure_ascii=False)
         except Exception as e:
-            msgbox(_(f"JSON export error: {e}"))
+            msgbox(_("JSON export error: {e}").format(e=e))
             return
-        msgbox(_(f"{len(hosts)} connection(s) exported to {filename}."))
+        msgbox(
+            _("{count} connection(s) exported to {filename}.").format(
+                count=len(hosts), filename=filename
+            )
+        )
 
     # ── Dark mode ─────────────────────────────────────────────────────────────
 
@@ -3899,7 +3907,11 @@ class Wmain(GCMBase, Gtk.Window):
 
             # Collision de noms ?
             if new_full in groups or any(k.startswith(new_full + "/") for k in groups):
-                msgbox(_(f"A group named '{src_leaf}' already exists in '{dest_full}'."))
+                msgbox(
+                    _("A group named '{src_leaf}' already exists in '{dest_full}'.").format(
+                        src_leaf=src_leaf, dest_full=dest_full
+                    )
+                )
                 Gdk.drag_status(context, 0, time)
                 return
 
@@ -4952,7 +4964,7 @@ class Wmain(GCMBase, Gtk.Window):
         full_name = f"{parent_path}/{name}" if parent_path else name
 
         if full_name in groups:
-            msgbox(_(f"Group '{full_name}' already exists."))
+            msgbox(_("Group '{full_name}' already exists.").format(full_name=full_name))
             return
 
         groups[full_name] = []
@@ -4979,7 +4991,7 @@ class Wmain(GCMBase, Gtk.Window):
         new_full = f"{parent_path}/{new_leaf}" if parent_path else new_leaf
 
         if new_full in groups and new_full != old_full:
-            msgbox(_(f"Group '{new_full}' already exists."))
+            msgbox(_("Group '{new_full}' already exists.").format(new_full=new_full))
             return
 
         # Renommer dans groups : clé principale + tous les sous-groupes

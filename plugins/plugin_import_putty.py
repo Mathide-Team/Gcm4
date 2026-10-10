@@ -86,7 +86,7 @@ class PuttyImportBatchPlugin(BatchPlugin):
             hosts = [app._dict_to_host(row) for row in rows]
         except Exception as exc:  # noqa: BLE001
             logger.exception(f"PuttyImportBatchPlugin.activate | PuTTY import error: {exc}")
-            msgbox(_(f"PuTTY import error: {exc}"), parent=app.window)
+            msgbox(_("PuTTY import error: {exc}").format(exc=exc), parent=app.window)
             return
 
         if not hosts:
@@ -100,11 +100,11 @@ class PuttyImportBatchPlugin(BatchPlugin):
         logger.info(
             f"PuttyImportBatchPlugin.activate | imported={n} skipped={len(skipped)} folder={folder}"
         )
-        message = _(f"{n} connection(s) imported from PuTTY.")
+        message = _("{n} connection(s) imported from PuTTY.").format(n=n)
         if skipped:
             message += "\n" + _(
-                f"{len(skipped)} session(s) ignored (unsupported protocol or missing host)."
-            )
+                "{count} session(s) ignored (unsupported protocol or missing host)."
+            ).format(count=len(skipped))
         msgbox(message, parent=app.window)
 
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-10 20:00+0000\n"
+"POT-Creation-Date: 2026-10-10 20:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,6 +36,11 @@ msgstr ""
 msgid ""
 "<span size='smaller'>Use ##D=milliseconds to add a delay.\n"
 "Ex: ##D=1000</span>"
+msgstr ""
+
+#: gnome_connection_manager.py
+#, python-brace-format
+msgid "A group named '{src_leaf}' already exists in '{dest_full}'."
 msgstr ""
 
 #: gnome_connection_manager.py
@@ -108,6 +113,11 @@ msgstr ""
 
 #: gnome_connection_manager.py
 msgid "Buffer size"
+msgstr ""
+
+#: gnome_connection_manager.py
+#, python-brace-format
+msgid "CSV export error: {e}"
 msgstr ""
 
 #: gnome_connection_manager.py
@@ -360,6 +370,16 @@ msgid "Group"
 msgstr ""
 
 #: gnome_connection_manager.py
+#, python-brace-format
+msgid "Group '{full_name}' already exists."
+msgstr ""
+
+#: gnome_connection_manager.py
+#, python-brace-format
+msgid "Group '{new_full}' already exists."
+msgstr ""
+
+#: gnome_connection_manager.py
 msgid "Group name:"
 msgstr ""
 
@@ -410,6 +430,11 @@ msgstr ""
 
 #: gnome_connection_manager.py
 msgid "Invert selection"
+msgstr ""
+
+#: gnome_connection_manager.py
+#, python-brace-format
+msgid "JSON export error: {e}"
 msgstr ""
 
 #: gnome_connection_manager.py
@@ -730,6 +755,11 @@ msgstr ""
 
 #: gnome_connection_manager.py
 #, python-brace-format
+msgid "{count} connection(s) exported to {filename}."
+msgstr ""
+
+#: gnome_connection_manager.py
+#, python-brace-format
 msgid ""
 "{n} outil(s) n'ont pas pu se charger au démarrage :\n"
 "\n"
@@ -796,6 +826,26 @@ msgstr ""
 msgid "⚙ Generate…"
 msgstr ""
 
+#: plugins/plugin_export_csv.py
+#, python-brace-format
+msgid "CSV export error: {exc}"
+msgstr ""
+
+#: plugins/plugin_export_csv.py plugins/plugin_export_json.py
+#, python-brace-format
+msgid "{n} connection(s) exported to {filename}."
+msgstr ""
+
+#: plugins/plugin_export_json.py
+#, python-brace-format
+msgid "JSON export error: {exc}"
+msgstr ""
+
+#: plugins/plugin_import_csv.py
+#, python-brace-format
+msgid "CSV import error: {exc}"
+msgstr ""
+
 #: plugins/plugin_import_csv.py
 msgid "Import from CSV"
 msgstr ""
@@ -808,6 +858,11 @@ msgstr ""
 msgid "No valid entry found in CSV."
 msgstr ""
 
+#: plugins/plugin_import_csv.py
+#, python-brace-format
+msgid "{n} connection(s) imported from CSV."
+msgstr ""
+
 #: plugins/plugin_import_json.py
 msgid "Import from JSON"
 msgstr ""
@@ -817,7 +872,17 @@ msgid "Import from JSON…"
 msgstr ""
 
 #: plugins/plugin_import_json.py
+#, python-brace-format
+msgid "JSON import error: {exc}"
+msgstr ""
+
+#: plugins/plugin_import_json.py
 msgid "No valid entry found in JSON."
+msgstr ""
+
+#: plugins/plugin_import_json.py
+#, python-brace-format
+msgid "{n} connection(s) imported from JSON."
 msgstr ""
 
 #: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
@@ -949,6 +1014,12 @@ msgstr ""
 
 #: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
 #: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
+#, python-brace-format
+msgid "Scan failed: {exc}"
+msgstr ""
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
+#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
 msgid "State"
 msgstr ""
 
@@ -989,6 +1060,11 @@ msgstr ""
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_spice.py
 #: plugins/plugin_vnc.py plugins/plugin_web.py
 msgid "Waiting…"
+msgstr ""
+
+#: plugins/plugin_import_libvirt.py
+#, python-brace-format
+msgid "{n} connection(s) imported from libvirt."
 msgstr ""
 
 #: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
@@ -1086,6 +1162,11 @@ msgid "Verify TLS certificate"
 msgstr ""
 
 #: plugins/plugin_import_ovirt.py
+#, python-brace-format
+msgid "{n} connection(s) imported from oVirt."
+msgstr ""
+
+#: plugins/plugin_import_ovirt.py
 msgid "🔍  Scan oVirt engine"
 msgstr ""
 
@@ -1144,6 +1225,11 @@ msgid "Used as default user in the Proxmox import dialog."
 msgstr ""
 
 #: plugins/plugin_import_proxmox.py
+#, python-brace-format
+msgid "{n} connection(s) imported from Proxmox."
+msgstr ""
+
+#: plugins/plugin_import_proxmox.py
 msgid "🔍  Scan Proxmox hosts"
 msgstr ""
 
@@ -1156,7 +1242,22 @@ msgid "No importable SSH/Telnet session found in this folder."
 msgstr ""
 
 #: plugins/plugin_import_putty.py
+#, python-brace-format
+msgid "PuTTY import error: {exc}"
+msgstr ""
+
+#: plugins/plugin_import_putty.py
 msgid "Select PuTTY sessions folder"
+msgstr ""
+
+#: plugins/plugin_import_putty.py
+#, python-brace-format
+msgid "{count} session(s) ignored (unsupported protocol or missing host)."
+msgstr ""
+
+#: plugins/plugin_import_putty.py
+#, python-brace-format
+msgid "{n} connection(s) imported from PuTTY."
 msgstr ""
 
 #: plugins/plugin_import_virtualbox.py
@@ -1215,6 +1316,11 @@ msgstr ""
 
 #: plugins/plugin_import_virtualbox.py
 msgid "VirtualBox hosts:"
+msgstr ""
+
+#: plugins/plugin_import_virtualbox.py
+#, python-brace-format
+msgid "{n} connection(s) imported from VirtualBox."
 msgstr ""
 
 #: plugins/plugin_import_virtualbox.py

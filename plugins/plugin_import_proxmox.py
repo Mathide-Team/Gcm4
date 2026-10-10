@@ -870,7 +870,7 @@ class ProxmoxImportDialog(GCMBase):
                 )
             except Exception as exc:
                 logger.exception(f"ProxmoxImportDialog._on_scan_clicked | scan failed: {exc}")
-                self._log(_(f"Scan failed: {exc}"))
+                self._log(_("Scan failed: {exc}").format(exc=exc))
                 results = []
             GLib.idle_add(self._show_preview, results)
 
@@ -1007,7 +1007,9 @@ class ProxmoxImportBatchPlugin(BatchPlugin):
                 return
             n = app._import_done(host_dicts, default_group="PROXMOX")
             if n:
-                msgbox(_(f"{n} connection(s) imported from Proxmox."), parent=app.window)
+                msgbox(
+                    _("{n} connection(s) imported from Proxmox.").format(n=n), parent=app.window
+                )
             else:
                 msgbox(_("No new host (duplicates ignored)."), parent=app.window)
 
