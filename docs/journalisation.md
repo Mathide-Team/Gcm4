@@ -83,7 +83,8 @@ Détail dans `CONSIGNES-AGENTS-IA.md` §3.
 - Ne pas appeler `logger.add` ni `logger.remove` dans un module : seuls
   `logging_config.py` et le `main()` d'un outil autonome (`tools/*.py`,
   `plugins/ssh/core.py`, `scripts/pr_coverage_comment.py`, `scripts/i18n_report.py`,
-  `scripts/audit_debug_sorties.py`, `scripts/generate_class_diagram.py`) configurent les
+  `scripts/audit_debug_sorties.py`, `scripts/generate_class_diagram.py`,
+  `scripts/check_branch_protection.py`) configurent les
   sorties. Vérifié par le même test.
 - Au moins deux `debug()` par fonction : à l'entrée et à chaque sortie.
   `scripts/audit_debug_sorties.py` liste les fonctions qui ne le font pas
