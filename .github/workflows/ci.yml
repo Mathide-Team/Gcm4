@@ -39,6 +39,11 @@ jobs:
         # Réintégré par l'issue #113 : flake8 est vert sur ce fichier.
         run: uv run --with flake8 flake8 gnome_connection_manager.py
 
+      - name: Diagramme de classes à jour
+        # Issue #175 : un docs/class-diagram.md périmé fait échouer la CI
+        # (régénérer avec `make class-diagram`).
+        run: uv run python scripts/generate_class_diagram.py --check
+
       - name: Format (ruff format --check)
         # Parité NetCross : le job Qualité contrôle aussi le format.
         # Les 26 fichiers historiquement non formatés ont été alignés
