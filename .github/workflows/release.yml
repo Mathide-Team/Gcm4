@@ -1,0 +1,104 @@
+# Construction et publication des paquets .deb et .rpm (issue #162).
+#
+# Sur tag v* (ex. v1.3.4) : construit les paquets avec les cibles du Makefile
+# (make deb, make rpm, make opensuse, via fpm), vérifie leur contenu, les
+# publie en artefact et les attache à la release GitHub du tag.
+# workflow_dispatch : même construction sans tag (artefacts seulement), pour
+# tester un build ; version optionnelle, sinon PKG_VERSION du Makefile.
+#
+# Runner GitHub (ubuntu-latest), comme le workflow Release de Netcross :
+# environnement propre avec sudo, ruby et rpmbuild installables.
+name: Release
+
+"on":
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version à construire (ex. 1.3.4) ; vide = PKG_VERSION du Makefile"
+        required: false
+        type: string
+
+permissions:
+  contents: write  # attacher les paquets à la release du tag
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  paquets:
+    name: Paquets (.deb, .rpm, openSUSE)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout du dépôt
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0  # changelog des paquets : git log
+
+      - name: Outils de construction (gettext, rpm, fpm)
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq gettext rpm ruby ruby-dev build-essential
+          sudo gem install --no-document fpm
+
+      - name: Version
+        id: version
+        env:
+          SAISIE: ${{ inputs.version }}
+        run: |
+          if [ "${GITHUB_REF_TYPE}" = "tag" ]; then
+            VERSION="${GITHUB_REF_NAME#v}"
+          elif [ -n "$SAISIE" ]; then
+            VERSION="$SAISIE"
+          else
+            VERSION="$(sed -n 's/^PKG_VERSION *= *//p' Makefile)"
+          fi
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "Version construite : $VERSION"
+
+      - name: Paquet .deb
+        run: make deb PKG_VERSION=${{ steps.version.outputs.version }}
+
+      - name: Paquet .rpm (Fedora, RHEL)
+        run: make rpm PKG_VERSION=${{ steps.version.outputs.version }}
+
+      - name: Paquet .rpm (openSUSE)
+        run: make opensuse PKG_VERSION=${{ steps.version.outputs.version }}
+
+      - name: Vérification du contenu
+        # Mêmes garanties que tests/test_paquet_contenu.py, sur les paquets
+        # réellement produits : modules du cœur et plugins présents.
+        # Listes écrites dans des fichiers : avec pipefail (shell par défaut
+        # des étapes), `dpkg -c | grep -q` échouerait sur le SIGPIPE.
+        run: |
+          mkdir -p "$RUNNER_TEMP/rpmdb"
+          dpkg -c ./*.deb > "$RUNNER_TEMP/deb.txt"
+          for r in ./*.rpm; do rpm -qpl --dbpath "$RUNNER_TEMP/rpmdb" "$r" > "$RUNNER_TEMP/$(basename "$r").txt"; done
+          for f in gcm4_core.py logging_config.py models.py utils.py widgets.py plugins/plugin_base.py plugins/ssh/core.py; do
+            for liste in "$RUNNER_TEMP"/deb.txt "$RUNNER_TEMP"/*.rpm.txt; do
+              grep -q "/usr/share/gnome-connection-manager/$f\$" "$liste" || { echo "::error::$f absent de $(basename "$liste" .txt)"; exit 1; }
+            done
+          done
+          ls -l ./*.deb ./*.rpm | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Artefacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: paquets-${{ steps.version.outputs.version }}
+          path: |
+            *.deb
+            *.rpm
+          if-no-files-found: error
+
+      - name: Attache à la release GitHub (tag)
+        if: github.ref_type == 'tag'
+        uses: softprops/action-gh-release@c062e08bd532815e2082a85da87aa8ebc0c92d83  # v2
+        with:
+          files: |
+            *.deb
+            *.rpm
+          generate_release_notes: true
