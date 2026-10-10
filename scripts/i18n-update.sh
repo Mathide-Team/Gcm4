@@ -43,7 +43,7 @@ case "${1:-}" in
     *) echo "option inconnue : $1" >&2; exit 2 ;;
 esac
 
-for tool in xgettext msgmerge msgfmt msginit msgfilter; do
+for tool in xgettext msgmerge msgfmt msginit msgfilter msgattrib; do
     command -v "$tool" >/dev/null || { echo "gettext requis ($tool introuvable)" >&2; exit 2; }
 done
 
@@ -78,6 +78,16 @@ merge_po() {  # $1 = .po existant, $2 = .pot, $3 = sortie
 }
 
 same() { diff -q <(normalize "$1") <(normalize "$2") >/dev/null; }
+
+# Clés d'un catalogue : msgctxt/msgid/msgid_plural des entrées actives.
+# Pour le contrôle --check d'un .po, c'est la seule chose comparée : le
+# rapprochement approximatif (« fuzzy ») de msgmerge et les msgstr qu'il
+# propose varient d'une version de gettext à l'autre (0.21 sur les runners,
+# 0.23 en local), alors que l'ensemble des chaînes à traduire, lui, est
+# déterminé par messages.pot.
+keys() {
+    msgattrib --no-obsolete --no-wrap "$1" 2>/dev/null | grep -E '^(msgctxt|msgid|msgid_plural) ' | LC_ALL=C sort
+}
 
 check_all() {
     local rc=0 po loc
@@ -141,9 +151,9 @@ check)
     for loc in $(linguas); do
         po="$LANG_DIR/$loc.po"
         [ -f "$po" ] || continue
-        merge_po "$po" "$TMP/messages.pot" "$TMP/$loc.po"
-        if ! same "$po" "$TMP/$loc.po"; then
-            echo "::error::lang/$loc.po n'est plus synchronisé avec messages.pot" >&2
+        if ! diff -u <(keys "$POT") <(keys "$po") >"$TMP/$loc.diff"; then
+            echo "::error::lang/$loc.po n'est plus synchronisé avec messages.pot : lancer scripts/i18n-update.sh" >&2
+            head -20 "$TMP/$loc.diff" >&2 || true
             rc=1
         fi
     done
