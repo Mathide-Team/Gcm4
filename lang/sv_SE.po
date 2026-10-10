@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-10 20:05+0000\n"
+"POT-Creation-Date: 2026-10-10 20:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -675,6 +675,12 @@ msgstr "Seriella mallar"
 #: gnome_connection_manager.py
 msgid "Server list will be overwritten, continue?"
 msgstr "Serverlistan kommer att skrivas över, fortsätt?"
+
+#: gnome_connection_manager.py
+#, fuzzy
+#| msgid "_Servers"
+msgid "Servers"
+msgstr "_Servrar"
 
 #: gnome_connection_manager.py
 msgid "Settings"
@@ -2127,6 +2133,13 @@ msgid "⚠ Renseignez le serveur de dépôt avant de lancer."
 msgstr ""
 
 #: plugins/plugin_spice.py
+#, python-brace-format
+msgid ""
+"Additional remote-viewer parameters\n"
+"E.g.: {example}"
+msgstr ""
+
+#: plugins/plugin_spice.py
 msgid "CA certificate"
 msgstr ""
 
@@ -2579,6 +2592,13 @@ msgstr ""
 
 #: plugins/plugin_ssh.py ssh_config_editor.py
 msgid "yes / no / force / auto"
+msgstr ""
+
+#: plugins/plugin_vnc.py
+#, python-brace-format
+msgid ""
+"Additional vncviewer parameters\n"
+"E.g.: {example}"
 msgstr ""
 
 #: plugins/plugin_vnc.py
@@ -4004,9 +4024,6 @@ msgstr "Avdela alla konsoler"
 
 #~ msgid "_Edit"
 #~ msgstr "_Redigera"
-
-#~ msgid "_Servers"
-#~ msgstr "_Servrar"
 
 #~ msgid "__glade_unnamed_28"
 #~ msgstr "__glade_unnamed_28"

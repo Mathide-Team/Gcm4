@@ -483,7 +483,9 @@ class SpiceTab(Gtk.Box):
         self._entry_opts = Gtk.Entry()
         self._entry_opts.set_text(getattr(h, "extra_params", "") or "")
         self._entry_opts.set_tooltip_text(
-            "Paramètres additionnels remote-viewer\nEx: --spice-ca-file=/etc/ssl/certs/ca.crt --full-screen"
+            _("Additional remote-viewer parameters\nE.g.: {example}").format(
+                example="--spice-ca-file=/etc/ssl/certs/ca.crt --full-screen"
+            )
         )
         hb2.pack_start(self._entry_opts, True, True, 0)
         self.pack_start(hb2, False, False, 0)
