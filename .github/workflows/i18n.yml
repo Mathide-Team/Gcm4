@@ -1,0 +1,109 @@
+# Synchronisation automatique des catalogues gettext (issue #167, modèle :
+# Netcross .github/workflows/i18n.yml).
+#
+# Après un push sur dev qui touche le code Python ou lang/, régénère
+# lang/messages.pot et lang/*.po (scripts/i18n-update.sh), recompile les .mo
+# et, s'il y a une différence, la pousse sur la branche fixe
+# « i18n/mise-a-jour-catalogues » avec une PR vers dev. Une seule PR reste
+# ouverte : un nouveau run met à jour la même branche (commit ordinaire,
+# jamais de force-push) et `concurrency` annule le run précédent encore en
+# cours.
+#
+# Aucune traduction automatique : les nouvelles chaînes arrivent avec
+# msgstr "" et sont traduites par une personne.
+#
+# Création de la PR : le GITHUB_TOKEN ne peut ouvrir une PR que si l'option
+# « Allow GitHub Actions to create and approve pull requests » est active
+# (Settings > Actions > General). Sinon, définir le secret I18N_PR_TOKEN
+# (jeton avec contents:write et pull-requests:write) ; à défaut, la branche
+# est poussée et le résumé du run donne le lien pour ouvrir la PR à la main.
+name: i18n
+
+"on":
+  push:
+    branches: [dev]
+    paths:
+      - "**.py"
+      - "lang/**"
+      - "scripts/i18n-update.sh"
+      - ".github/workflows/i18n.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: i18n-mise-a-jour-catalogues
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  BRANCHE_I18N: i18n/mise-a-jour-catalogues
+
+jobs:
+  mise-a-jour:
+    name: PR de mise à jour des catalogues
+    # Pas de boucle : le merge de la PR i18n elle-même ne change plus rien.
+    if: github.repository == 'Mathide-Team/Gcm4'
+    runs-on: ${{ fromJSON(vars.RUNS_ON_LINUX || '{"group":"maison","labels":["self-hosted","linux"]}') }}
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout de dev
+        uses: actions/checkout@v7
+        with:
+          ref: dev
+          fetch-depth: 0
+
+      - name: gettext
+        run: |
+          SUDO=""; if [ "$(id -u)" != "0" ]; then SUDO="sudo"; fi
+          command -v msgattrib >/dev/null || { $SUDO apt-get update && $SUDO env DEBIAN_FRONTEND=noninteractive apt-get install -y gettext; }
+
+      - name: Branche de mise à jour (reprise si elle existe)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git ls-remote --exit-code --heads origin "$BRANCHE_I18N" >/dev/null; then
+            git fetch origin "$BRANCHE_I18N"
+            git switch -c "$BRANCHE_I18N" "origin/$BRANCHE_I18N"
+            # Ramène dev ; en cas de conflit sur lang/, la version de dev
+            # sert de base : les catalogues sont régénérés juste après.
+            git merge --no-edit -X theirs origin/dev
+          else
+            git switch -c "$BRANCHE_I18N"
+          fi
+
+      - name: Régénération (sans traduction automatique)
+        run: |
+          scripts/i18n-update.sh
+          scripts/i18n-update.sh --compile lang
+
+      - name: Commit et PR
+        env:
+          GH_TOKEN: ${{ secrets.I18N_PR_TOKEN || github.token }}
+        run: |
+          git add lang
+          if git diff --cached --quiet; then
+            if git diff --quiet origin/dev -- lang; then
+              echo "Catalogues déjà à jour, aucune PR." >> "$GITHUB_STEP_SUMMARY"
+              exit 0
+            fi
+          else
+            git commit -m "i18n: synchronise les catalogues gettext avec les sources de dev"
+          fi
+          git push origin "$BRANCHE_I18N"
+          pr="$(gh pr list --head "$BRANCHE_I18N" --base dev --state open --json number --jq '.[0].number // empty')"
+          if [ -n "$pr" ]; then
+            echo "PR #$pr mise à jour." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          if gh pr create --base dev --head "$BRANCHE_I18N" \
+              --title "i18n : synchronisation des catalogues gettext" \
+              --body "Généré par le workflow i18n (\`scripts/i18n-update.sh\` puis \`--compile lang\`). Les nouvelles chaînes arrivent avec \`msgstr\` vide, à traduire par une personne. Cette PR est mise à jour à chaque push sur dev qui change les chaînes."; then
+            echo "PR de mise à jour ouverte." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "::warning::création de PR refusée au jeton du workflow (voir l'en-tête de i18n.yml)"
+            echo "Branche \`$BRANCHE_I18N\` poussée ; ouvrir la PR : ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/compare/dev...${BRANCHE_I18N}" >> "$GITHUB_STEP_SUMMARY"
+          fi
