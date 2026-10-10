@@ -39,6 +39,16 @@ class TestWorkflowI18n(unittest.TestCase):
         self.assertIn("scripts/i18n-update.sh --compile lang", WORKFLOW)
         self.assertNotRegex(WORKFLOW, r"push\s+(-f|--force)")
 
+    def test_reprise_repart_des_catalogues_de_dev(self):
+        """Pas de fusion textuelle des .po (entrées dupliquées, msgmerge échoue) :
+        après la fusion de dev, lang/ revient à dev avant la régénération.
+        """
+        fusion = WORKFLOW.index("git merge --no-edit -X theirs origin/dev")
+        reprise = WORKFLOW.index("git checkout origin/dev -- lang/")
+        regeneration = WORKFLOW.index("scripts/i18n-update.sh\n")
+        self.assertLess(fusion, reprise)
+        self.assertLess(reprise, regeneration)
+
     def test_aucune_traduction_automatique(self):
         """Ni msgen, ni outil de traduction machine ; msgstr vides annoncés."""
         for outil in ("msgen", "translate-shell", "trans ", "deepl", "googletrans"):

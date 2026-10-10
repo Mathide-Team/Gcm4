@@ -50,6 +50,21 @@ jobs:
         # (cf. issue de format) ; ce verrou empêche toute régression.
         run: uv run ruff format --check .
 
+      - name: Imports circulaires (ancien code)
+        # Issue #174 : le hook pre-commit tools/check_circular_imports.py
+        # est aussi bloquant en CI ; les contrats de couches sont vérifiés
+        # par tests/test_architecture_imports.py dans l'étape suivante.
+        run: uv run python tools/check_circular_imports.py
+
+      - name: Contrats import-linter (src/gcm4)
+        # Actif dès que le paquet src/gcm4 de l'épopée GTK4 existe.
+        run: |
+          if [ -d src/gcm4 ]; then
+            PYTHONPATH=src uv run --with import-linter lint-imports
+          else
+            echo "src/gcm4 absent : contrats import-linter différés (tests/test_architecture_imports.py couvre l'ancien code)"
+          fi
+
       - name: Tests (pytest + couverture)
         # Toute la suite, y compris tests/test_gcm.py (réintégré, issue #112 :
         # stubs gi complétés et tests resynchronisés avec plugins/).
