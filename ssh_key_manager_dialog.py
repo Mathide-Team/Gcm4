@@ -77,13 +77,7 @@ import gi
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gdk, GLib, Gtk  # noqa: E402
-
-try:
-    from loguru import logger
-except ImportError:
-    import logging as _stdlib_logging
-
-    logger = _stdlib_logging.getLogger(__name__)  # type: ignore[assignment]
+from loguru import logger
 
 from utils import GCMBase, run_dialog_sync
 
