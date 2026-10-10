@@ -150,7 +150,7 @@ def configure_logging(
     _HANDLER_IDS.append(
         _logger.add(sys.stderr, level=requested, format=fmt, backtrace=debug, diagnose=debug)
     )
-    fichiers = []
+    fichiers: list[tuple[str, str | int]] = []
     if config_dir:
         fichiers.append((app_log_path(config_dir), "14 days"))
     if log_file:

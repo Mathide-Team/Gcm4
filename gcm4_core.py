@@ -1039,7 +1039,7 @@ def parse_group_colors(raw: str) -> dict:
         vide si ``raw`` est vide ou ``None``.
     """
     app_logger.debug(f"parse_group_colors() called | raw={raw!r}")
-    result = {}
+    result: dict[str, str] = {}
     if not raw:
         app_logger.debug("parse_group_colors() returning | dict vide (raw vide)")
         return result

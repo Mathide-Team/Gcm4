@@ -78,6 +78,30 @@ jobs:
           path: coverage.xml
           if-no-files-found: warn
 
+
+  types:
+    # Issue #173 : bloquant sur les modules listés dans [tool.mypy] files
+    # (pyproject.toml), liste qui ne peut que s'allonger.
+    name: Types (mypy)
+    runs-on: ${{ fromJSON(vars.RUNS_ON_LINUX || '{"group":"maison","labels":["self-hosted","linux"]}') }}
+
+    steps:
+      - name: Checkout du dépôt
+        uses: actions/checkout@v7
+
+      - name: Installation de uv
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+        with:
+          enable-cache: true
+
+      - name: Installation de Python
+        run: uv python install
+
+      - name: Installation des dépendances (groupe dev)
+        run: uv sync
+
+      - name: mypy
+        run: uv run mypy
   i18n:
     # Issue #166 : catalogues bloquants dans un job dédié. Modifier une
     # chaîne _() sans lancer `make i18n-update` fait échouer ce job.

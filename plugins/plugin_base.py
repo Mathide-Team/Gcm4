@@ -105,7 +105,7 @@ def _attach_debug_tracing(plugin_obj: object, scope: str) -> None:
         except Exception:
             continue
 
-    plugin_obj._gcm_debug_tracing_attached = True
+    setattr(plugin_obj, "_gcm_debug_tracing_attached", True)  # noqa: B010 (attribut dynamique)
 
 
 def _discover_plugin_modules(directory: Path, package: str | None, self_module_name: str):
