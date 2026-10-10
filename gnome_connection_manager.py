@@ -176,7 +176,7 @@ BASE_PATH = os.path.dirname(os.path.abspath(sys.argv[0]))
 SSH_BIN = "ssh"
 TEL_BIN = "telnet"
 
-SHELL = os.environ["SHELL"]
+SHELL = os.environ.get("SHELL") or "/bin/sh"  # absent sous cron, systemd, CI
 DEFAULT_TERM_TYPE = "xterm-256color"
 
 SSH_COMMAND = BASE_PATH + "/ssh.expect"
