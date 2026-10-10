@@ -68,9 +68,13 @@ jobs:
           if git ls-remote --exit-code --heads origin "$BRANCHE_I18N" >/dev/null; then
             git fetch origin "$BRANCHE_I18N"
             git switch -c "$BRANCHE_I18N" "origin/$BRANCHE_I18N"
-            # Ramène dev ; en cas de conflit sur lang/, la version de dev
-            # sert de base : les catalogues sont régénérés juste après.
+            # Ramène dev, puis repart des catalogues de dev : une fusion
+            # textuelle de .po duplique des entrées (msgmerge : « duplicate
+            # message definition », run du 2026-10-10). Les catalogues sont
+            # entièrement régénérés à l'étape suivante, rien n'est perdu
+            # (les traductions se font sur dev, jamais sur cette branche).
             git merge --no-edit -X theirs origin/dev
+            git checkout origin/dev -- lang/
           else
             git switch -c "$BRANCHE_I18N"
           fi

@@ -33,6 +33,15 @@ configuration propre à un plugin appartient au plugin, jamais au cœur.
   sur autre chose **le signale dans `features.md`/`claude.md`, mais ne le
   déplace pas sans confirmation** — sauf si la tâche en cours porte
   justement sur ce protocole.
+- **Contrats vérifiés en CI (issue #174)** : `tests/test_architecture_imports.py`
+  fait échouer toute PR qui fait importer GTK (`gi`) à un module cœur
+  (`*_core.py`, `gcm4_core.py`, `logging_config.py`,
+  `master_password_core.py`, `plugins/*/core.py`), qui fait importer un
+  plugin nommé au cœur, ou un plugin par un autre plugin.
+  `tools/check_circular_imports.py` tourne aussi dans le job Qualité, et les
+  contrats import-linter de `src/gcm4` (`pyproject.toml`) s'activeront
+  avec ce paquet, avec l'interdiction des noms de protocole en littéral
+  dans `src/gcm4/core/` et `src/gcm4/ui/`.
 
 ## 2. Aucune dépendance externe implicite
 
