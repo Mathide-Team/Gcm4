@@ -1118,7 +1118,7 @@ def _rewrite_gcm_conf(gcm_conf_path: Path, migrated_aliases: set[str]) -> None:
         OSError: When the file cannot be written.
     """
     cp = configparser.RawConfigParser()
-    cp.optionxform = str  # preserve key case
+    cp.optionxform = str  # type: ignore[assignment,method-assign]  # preserve key case
     cp.read(str(gcm_conf_path), encoding="utf-8")
 
     for section in cp.sections():
@@ -1210,7 +1210,7 @@ def migrate_ssh_hosts(
         raise FileNotFoundError(f"gcm.conf not found: {gcm_path}")
 
     cp = configparser.RawConfigParser()
-    cp.optionxform = str
+    cp.optionxform = str  # type: ignore[assignment,method-assign]
     cp.read(str(gcm_path), encoding="utf-8")
 
     result: dict[str, list[str]] = {
@@ -1460,7 +1460,7 @@ def import_ssh_config(
         return result
 
     cp = configparser.RawConfigParser()
-    cp.optionxform = str
+    cp.optionxform = str  # type: ignore[assignment,method-assign]
     if gcm_path.exists():
         cp.read(str(gcm_path), encoding="utf-8")
 
