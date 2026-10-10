@@ -85,14 +85,25 @@ Détail dans `CONSIGNES-AGENTS-IA.md` §3.
   `plugins/ssh/core.py`, `scripts/pr_coverage_comment.py`, `scripts/i18n_report.py`) configurent les
   sorties. Vérifié par le même test.
 - Au moins deux `debug()` par fonction : à l'entrée et à chaque sortie.
+  `scripts/audit_debug_sorties.py` liste les fonctions qui ne le font pas
+  encore (`--details`) ; leur total ne doit pas dépasser
+  `scripts/audit_debug_sorties.baseline` (le baisser après avoir
+  instrumenté du code).
 - Placeholders `{}` de loguru (`logger.info("hôte {} ouvert", nom)`) ou
-  f-string ; jamais `%s`, que loguru n'interprète pas.
+  f-string ; autant de `{}` que d'arguments, jamais `%s`, que loguru
+  n'interprète pas.
 - Chaque `except` journalise (`logger.exception` ou `logger.warning` avec la
-  cause) ; un `except` muet cache une panne.
-- Aucune variable de secret interpolée dans un message. Vérifié par
-  `tests/test_secrets_journal.py`, que l'issue #171 généralise à tout le
-  dépôt avec les règles ci-dessus (except, logger de module, cohérence des
-  placeholders).
+  cause) ; un `except` muet cache une panne. Les manques hérités sont
+  comptés fichier par fichier et ce compte ne peut que diminuer.
+- Tout module qui définit des fonctions a un logger de module
+  (`from loguru import logger`).
+- Aucune variable de secret (`pwd`, `password`, `passphrase`, `key`,
+  `token`...) interpolée telle quelle : journaliser `bool(password)`,
+  `len(pwd)` ou `logging_config.summarize(valeur, nom)`.
+
+Ces règles sont vérifiées par `tests/test_loguru_regles.py` (analyse AST de
+tout le dépôt, issue #171) et `tests/test_secrets_journal.py`, dans le job
+Qualité.
 - Les messages de journal ne sont pas traduits : ils s'adressent aux
   développeurs et doivent rester identiques d'une langue à l'autre. Seuls
   les textes affichés à l'utilisateur passent par `_()`.

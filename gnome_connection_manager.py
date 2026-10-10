@@ -3296,13 +3296,13 @@ class Wmain(GCMBase, Gtk.Window):
         self.nbConsole.set_current_page(self.nbConsole.page_num(content))
         return instance
 
-    def close_management_tab(self, key):
-        """Ferme l'onglet de gestion identifie par ``key``, s'il est ouvert.
+    def close_management_tab(self, tab_key):
+        """Ferme l'onglet de gestion identifie par ``tab_key``, s'il est ouvert.
 
         Args:
-            key (str): Cle logique passee a ``open_management_tab``.
+            tab_key (str): Cle logique passee a ``open_management_tab``.
         """
-        content = self._management_tabs.pop(key, None)
+        content = self._management_tabs.pop(tab_key, None)
         if content is None:
             return
         owner = getattr(content, "_gcm_owner_instance", None)
@@ -3311,7 +3311,7 @@ class Wmain(GCMBase, Gtk.Window):
                 owner.on_tab_will_close()
             except Exception:
                 app_logger.exception(
-                    "close_management_tab | on_tab_will_close a leve | key=%s", key
+                    "close_management_tab | on_tab_will_close a leve | key={}", tab_key
                 )
         page_num = self.nbConsole.page_num(content)
         if page_num != -1:
@@ -6267,7 +6267,7 @@ class Whost(GCMBase, Gtk.Dialog):
                         plugin.patch_edit_host_dialog(builder_shim, section, cp)
                     break
         except Exception as exc:
-            app_logger.debug("Whost.init | patch_edit_host_dialog skipped | exc=%s", exc)
+            app_logger.debug("Whost.init | patch_edit_host_dialog skipped | exc={}", exc)
 
     def update_texttags(self, *args):
         """Met a jour les tags de texte (couleurs, polices) dans la vue."""
@@ -7170,7 +7170,7 @@ class Wconfig(GCMBase, Gtk.Dialog):
                             self._plugin_prefs_tabs.append(_tab)
                 except Exception as _e:
                     app_logger.exception(
-                        "Wconfig.new | impossible de charger l'onglet prefs plugin %s: %s",
+                        "Wconfig.new | impossible de charger l'onglet prefs plugin {}: {}",
                         _module_name,
                         _e,
                     )
