@@ -13,6 +13,15 @@ PKG_OPENSUSE = $(PKG_NAME)-opensuse-$(PKG_VERSION).$(PKG_ARCH_RPM).rpm
 
 TMPINSTALLDIR = /tmp/$(PKG_NAME)-fpm-install
 
+# Modules embarqués (issue #162) : TOUS les .py de la racine et les .py de
+# plugins/ hors tests. Avant, seuls gnome_connection_manager.py, pyAES.py et
+# urlregex.py étaient copiés : le paquet installé échouait à l'import de
+# gcm4_core, logging_config, models, utils, widgets... et n'avait aucun
+# plugin. tests/test_paquet_contenu.py vérifie que chaque module importé est
+# bien installé.
+RUNTIME_PY  = $(sort $(wildcard *.py))
+PLUGINS_PY  = $(sort $(shell find plugins -name '*.py' -not -path '*/tests/*' -not -name 'conftest.py' -not -path '*/__pycache__/*'))
+
 FPM_COMMON = -s dir -n $(PKG_NAME) -v $(PKG_VERSION) -C $(TMPINSTALLDIR) \
 	--maintainer $(PKG_MAINTAINER) \
 	--description "$$(printf '$(PKG_DESCRIPTION)')" \
@@ -20,7 +29,7 @@ FPM_COMMON = -s dir -n $(PKG_NAME) -v $(PKG_VERSION) -C $(TMPINSTALLDIR) \
 	--category net --url $(PKG_URL)
 
 # ── Cibles principales ────────────────────────────────────────────────────────
-.PHONY: all deb rpm opensuse install translate i18n-update i18n-check i18n-report class-diagram test lint validate clean help
+.PHONY: all deb rpm opensuse install translate i18n-update i18n-check i18n-report class-diagram ci test lint validate clean help
 
 all:  test lint deb rpm opensuse translate validate
 
@@ -35,6 +44,7 @@ help:
 	@echo "  make i18n-check  → échoue si lang/messages.pot ou un .po est périmé"
 	@echo "  make i18n-report → taux de traduction par langue"
 	@echo "  make class-diagram → régénère docs/class-diagram.md"
+	@echo "  make ci       → rejoue les étapes des jobs Qualité, Types et i18n"
 	@echo "  make test     → lance la suite pytest"
 	@echo "  make lint     → ruff + flake8"
 	@echo "  make validate → valide .po (msgfmt) + .glade/.xml/.json"
@@ -71,9 +81,12 @@ install: translate
 	gzip -9 $(DESTDIR)/usr/share/doc/$(PKG_NAME)/changelog
 	cp gnome-connection-manager.desktop $(DESTDIR)/usr/share/applications/
 	cp LICENSE $(DESTDIR)/usr/share/doc/$(PKG_NAME)/copyright
-	cp -r lang gnome_connection_manager.py \
-		icon.png pyAES.py ssh.expect urlregex.py style.css \
+	cp -r lang icon.png ssh.expect style.css $(RUNTIME_PY) \
 		$(DESTDIR)/usr/share/$(PKG_NAME)/
+	for f in $(PLUGINS_PY); do \
+		install -D -m 644 "$$f" "$(DESTDIR)/usr/share/$(PKG_NAME)/$$f"; \
+	done
+	chmod 755 $(DESTDIR)/usr/share/$(PKG_NAME)/gnome_connection_manager.py
 
 # ── Paquet .deb (Debian / Ubuntu) ────────────────────────────────────────────
 deb:
@@ -91,6 +104,7 @@ deb:
 		-d "freerdp2-x11 | freerdp3-x11" \
 		-d expect \
 		-d python3-paramiko \
+		-d python3-loguru \
 		--after-install postinst \
 		--deb-priority optional \
 		usr
@@ -111,6 +125,7 @@ rpm:
 		-d freerdp \
 		-d expect \
 		-d python3-paramiko \
+		-d python3-loguru \
 		--after-install postinst \
 		usr
 	@echo "\033[92mOK: $(PKG_RPM)\033[0m"
@@ -135,9 +150,25 @@ opensuse:
 		-d freerdp \
 		-d expect \
 		-d python3-paramiko \
+		-d python3-loguru \
 		--after-install postinst \
 		usr
 	@echo "\033[92mOK: $(PKG_OPENSUSE) (openSUSE)\033[0m"
+
+# ── make ci (issue #162) : rejoue localement les étapes du job Qualité ───────
+# Même ordre et mêmes commandes que .github/workflows/ci.yml (jobs Qualité,
+# Types et i18n) ; tests/test_make_ci.py vérifie que chaque commande `run:`
+# de ces jobs figure ici.
+ci:
+	uv run ruff check .
+	uv run --with flake8 flake8 gnome_connection_manager.py
+	uv run python scripts/generate_class_diagram.py --check
+	uv run ruff format --check .
+	uv run python tools/check_circular_imports.py
+	uv run python -m pytest tests/ -q --cov --cov-report=term-missing:skip-covered
+	uv run mypy
+	uv run python tools/validate_po.py lang/*.po
+	scripts/i18n-update.sh --check
 
 # ── Tests unitaires ───────────────────────────────────────────────────────────
 test:
