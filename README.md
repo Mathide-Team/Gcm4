@@ -372,6 +372,20 @@ pre-commit run --all-files  # vérification manuelle
 
 ---
 
+## Journaux et mode debug
+
+```bash
+./gnome_connection_manager.py --debug          # ou GCM_DEBUG=1
+GCM_LOG_LEVEL=TRACE ./gnome_connection_manager.py
+```
+
+Le journal permanent est `~/.gcm/log/gcm-app.log`. Niveaux, variables
+d'environnement, données sensibles à relire avant de joindre un journal à
+un bug, règles pour les contributeurs : voir
+[docs/journalisation.md](docs/journalisation.md).
+
+---
+
 ## Contribuer
 
 Les pull requests sont les bienvenues.
