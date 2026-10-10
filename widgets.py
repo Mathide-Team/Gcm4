@@ -2,11 +2,9 @@
 # -*- coding: UTF-8 -*-
 """Widgets GTK personnalisés pour l'interface GCM."""
 
-import logging
 import os
 import shutil
 import subprocess
-import sys
 from typing import TYPE_CHECKING
 
 import gi
@@ -33,12 +31,7 @@ if TYPE_CHECKING:
     def _(message: str) -> str: ...
 
 
-try:
-    from loguru import logger as _loguru_logger
-
-    _LOGURU_OK = True
-except ImportError:
-    _LOGURU_OK = False
+from loguru import logger as _loguru_logger
 
 try:
     USERHOME_DIR = os.getenv("HOME")
@@ -72,40 +65,27 @@ conf.APP_TITLE = app_name
 
 
 def _setup_app_logger():
-    """Initialise le logger applicatif (Loguru) avec fallback stdlib.
+    """Initialise le logger applicatif (Loguru).
+
+    Issue #130/#170 : configuration unique (``logging_config``), plus de
+    repli sur le module ``logging`` standard (loguru est une dépendance
+    obligatoire). Idempotent : si le point d'entrée a déjà configuré les
+    journaux, rien ne change ; sinon niveau INFO par défaut. Le point
+    d'entrée reconfigure ensuite avec le vrai dossier (--config) et --debug
+    (force=True) : pas de fichier ici, ~/.gcm n'est peut-être pas le dossier
+    demandé.
 
     Returns:
-        object: Logger configuré (`loguru.logger` ou `logging.Logger`).
+        loguru.Logger: Le logger configuré.
     """
-    if _LOGURU_OK:
-        # Issue #130 : configuration unique (logging_config). Idempotent : si
-        # le point d'entrée a déjà configuré les journaux, rien ne change ;
-        # sinon niveau INFO par défaut. Le point d'entrée reconfigure ensuite
-        # avec le vrai dossier (--config) et --debug (force=True) : pas de
-        # fichier ici, ~/.gcm n'est peut-être pas le dossier demandé.
-        import logging_config
+    _loguru_logger.debug("_setup_app_logger() called")
+    import logging_config
 
-        logging_config.configure_logging()
-        return _loguru_logger
-
-    log_dir = os.path.join(CONFIG_DIR, "log")
-    log_file = os.path.join(log_dir, "gcm-app.log")
-    os.makedirs(log_dir, exist_ok=True)
-
-    fallback = logging.getLogger("gcm")
-    fallback.setLevel(logging.DEBUG)
-    if not fallback.handlers:
-        fmt = logging.Formatter("%(asctime)s | %(levelname)s | %(message)s")
-        sh = logging.StreamHandler(sys.stderr)
-        sh.setLevel(logging.DEBUG)
-        sh.setFormatter(fmt)
-        fh = logging.FileHandler(log_file, encoding="utf-8")
-        fh.setLevel(logging.DEBUG)
-        fh.setFormatter(fmt)
-        fallback.addHandler(sh)
-        fallback.addHandler(fh)
-    fallback.warning("loguru non installé, fallback sur logging standard")
-    return fallback
+    logging_config.configure_logging()
+    _loguru_logger.debug(
+        "_setup_app_logger() returning | niveau={}", logging_config.current_level()
+    )
+    return _loguru_logger
 
 
 app_logger = _setup_app_logger()

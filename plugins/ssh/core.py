@@ -66,12 +66,7 @@ from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
 
-try:
-    from loguru import logger
-except ImportError:
-    import logging
-
-    logger = logging.getLogger(__name__)  # type: ignore[assignment]
+from loguru import logger
 
 __all__ = [
     # ssh_config_parser.py
