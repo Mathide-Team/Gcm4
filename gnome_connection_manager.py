@@ -71,6 +71,7 @@ if __name__ == "__main__":
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "plugins"))
 
 import gcm4_core  # noqa: E402
+import logging_config  # noqa: E402
 from plugins.plugin_base import BatchPluginRegistry, PluginRegistry  # noqa: E402
 
 if TYPE_CHECKING:
@@ -208,7 +209,10 @@ def _resolve_config_dir(argv, default_home):
     return gcm4_core._resolve_config_dir(argv, default_home)
 
 
-CONFIG_DIR, _cli_remaining_args = _resolve_config_dir(sys.argv[1:], USERHOME_DIR)
+# `--debug` (issue #130) : retiré avant `--config` et avant la boucle
+# historique sur sys.argv[1:], qui le prendrait pour un hôte.
+_cli_debug, _cli_args = logging_config.extract_debug_flag(sys.argv[1:])
+CONFIG_DIR, _cli_remaining_args = _resolve_config_dir(_cli_args, USERHOME_DIR)
 # `--config`/`-c` consommé : on ne laisse dans sys.argv que ce qui n'a pas été
 # reconnu (ex. spécificateurs d'hôte "groupe/nom"), pour que la boucle
 # historique sur sys.argv[1:] (Wmain.__init__) continue de fonctionner à
@@ -226,7 +230,31 @@ conf.CONTINUOUS_LOG_PATH = CONFIG_DIR + "/log"
 conf.APP_TITLE = app_name
 
 
-app_logger = gcm4_core.setup_app_logger(CONFIG_DIR)
+app_logger = gcm4_core.setup_app_logger(CONFIG_DIR, debug=_cli_debug)
+
+
+def _gi_version(module):
+    """Version « majeure.mineure.micro » d'une bibliothèque gi, ou « ? »."""
+    try:
+        major, minor = module.get_major_version(), module.get_minor_version()
+        parts = (major, minor, module.get_micro_version())
+        result = ".".join(str(p) for p in parts)
+    except Exception as exc:  # stub de test ou binding ancien
+        app_logger.debug("_gi_version() -> ? ({})", type(exc).__name__)
+        return "?"
+    app_logger.debug("_gi_version() -> {}", result)
+    return result
+
+
+app_logger.debug(
+    "démarrage | version={} python={} gtk={} vte={} config_dir={} debug={}",
+    app_version,
+    sys.version.split()[0],
+    _gi_version(Gtk),
+    _gi_version(Vte),
+    CONFIG_DIR,
+    logging_config.is_debug_enabled(),
+)
 
 domain_name = "gcm-lang"
 
