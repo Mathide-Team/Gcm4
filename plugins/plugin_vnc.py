@@ -194,7 +194,9 @@ class VncTab(Gtk.Box):
         self._entry_opts = Gtk.Entry()
         self._entry_opts.set_text(getattr(h, "extra_params", "") or "")
         self._entry_opts.set_tooltip_text(
-            "Paramètres additionnels vncviewer\nEx: -FullScreen -FullColour -CompressLevel 6"
+            _("Additional vncviewer parameters\nE.g.: {example}").format(
+                example="-FullScreen -FullColour -CompressLevel 6"
+            )
         )
         hb2.pack_start(self._entry_opts, True, True, 0)
         self.pack_start(hb2, False, False, 0)

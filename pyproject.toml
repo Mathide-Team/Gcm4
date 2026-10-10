@@ -67,7 +67,60 @@ dev = [
     "black>=24.0.0",
     "pytest>=8.0.0",
     "pytest-cov>=5.0.0",
+    "mypy>=1.11",
 ]
+
+# ─── import-linter (issue #174) ─────────────────────────────────────────────
+# Contrats du futur paquet src/gcm4 (épopée GTK4). Le job Qualité lance
+# `lint-imports` dès que src/gcm4 existe ; d'ici là, l'ancien code est
+# couvert par tests/test_architecture_imports.py et
+# tools/check_circular_imports.py.
+[tool.importlinter]
+root_packages = ["gcm4"]
+include_external_packages = true
+
+[[tool.importlinter.contracts]]
+name = "Couches : l'interface dépend du cœur, jamais l'inverse"
+type = "layers"
+layers = ["gcm4.ui", "gcm4.core"]
+
+[[tool.importlinter.contracts]]
+name = "Le cœur n'importe ni GTK (gi) ni l'interface"
+type = "forbidden"
+source_modules = ["gcm4.core"]
+forbidden_modules = ["gi", "gcm4.ui"]
+
+# ─── mypy (issue #173) ──────────────────────────────────────────────────────
+# Référence progressive : `files` liste les modules vérifiés, sans GTK
+# d'abord. Ils sont tous à 0 erreur et le job « Types (mypy) » est
+# bloquant ; la liste ne peut que s'allonger (tests/test_mypy_config.py).
+# Modules GTK : PyGObject n'a pas de types (pygobject-stubs, évalué dans
+# docs/typage.md) ; ils entreront dans la liste avec la base GTK4.
+[tool.mypy]
+python_version = "3.10"
+files = [
+    "gcm4_core.py",
+    "logging_config.py",
+    "models.py",
+    "master_password_core.py",
+    "folder_context_menu_core.py",
+    "gesture_trigger_core.py",
+    "inline_editor_core.py",
+    "netmiko_bulk_core.py",
+    "popup_menu_core.py",
+    "putty_import_core.py",
+    "snmp_bulk_core.py",
+    "snmp_push_core.py",
+    "tab_context_menu_core.py",
+    "plugins/plugin_base.py",
+    "plugins/ssh/core.py",
+]
+ignore_missing_imports = true
+follow_imports = "silent"
+explicit_package_bases = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+warn_unused_configs = true
 
 # ─── Ruff ────────────────────────────────────────────────────────────────────
 [tool.ruff]

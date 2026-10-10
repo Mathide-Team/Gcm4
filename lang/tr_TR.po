@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-10 20:05+0000\n"
+"POT-Creation-Date: 2026-10-10 20:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -675,6 +675,12 @@ msgstr "Seri Şablonları"
 #: gnome_connection_manager.py
 msgid "Server list will be overwritten, continue?"
 msgstr "Sunucu listesi üzerine yazılacak, devam edilsin mi?"
+
+#: gnome_connection_manager.py
+#, fuzzy
+#| msgid "_Servers"
+msgid "Servers"
+msgstr "_Sunucular"
 
 #: gnome_connection_manager.py
 msgid "Settings"
@@ -2127,6 +2133,13 @@ msgid "⚠ Renseignez le serveur de dépôt avant de lancer."
 msgstr ""
 
 #: plugins/plugin_spice.py
+#, python-brace-format
+msgid ""
+"Additional remote-viewer parameters\n"
+"E.g.: {example}"
+msgstr ""
+
+#: plugins/plugin_spice.py
 msgid "CA certificate"
 msgstr ""
 
@@ -2579,6 +2592,13 @@ msgstr ""
 
 #: plugins/plugin_ssh.py ssh_config_editor.py
 msgid "yes / no / force / auto"
+msgstr ""
+
+#: plugins/plugin_vnc.py
+#, python-brace-format
+msgid ""
+"Additional vncviewer parameters\n"
+"E.g.: {example}"
 msgstr ""
 
 #: plugins/plugin_vnc.py
@@ -4053,5 +4073,104 @@ msgstr "Tüm konsol bölmelerini birleştir"
 #~ msgid "Commands"
 #~ msgstr "Komutlar"
 
-#~ msgid "Colors and Keys"
-#~ msgstr "Renkler ve Tuşlar"
+#~ msgid "Create dynamic port forwarding"
+#~ msgstr "Dinamik port yönlendirme oluştur"
+
+#~ msgid "Detected Proxmox target"
+#~ msgstr "Tespit edilen Proxmox hedefi"
+
+#~ msgid "Detected Proxmox targets (dconf):"
+#~ msgstr "Tespit edilen Proxmox hedefleri (dconf):"
+
+#~ msgid "Edit hosts properties"
+#~ msgstr "Sunucu özelliklerini düzenle"
+
+#~ msgid "Export server list to file"
+#~ msgstr "Sunucu listesini dosyaya aktar"
+
+#~ msgid "Extra arguments to pass to command line"
+#~ msgstr "Komut satırına geçirilecek ek argümanlar"
+
+#~ msgid "Import server list from file"
+#~ msgstr "Sunucu listesini dosyadan içe aktar"
+
+#~ msgid "Keep-Alive"
+#~ msgstr "Keep-Alive"
+
+#~ msgid "Local port already assigned"
+#~ msgstr "Yerel port zaten atanmış"
+
+#~ msgid "Open local console"
+#~ msgstr "Yerel konsolu aç"
+
+#~ msgid "SPICE  (not available here: Proxmox requires API ticket/proxy)"
+#~ msgstr "SPICE  (burada kullanılamaz: Proxmox API bileti/proxy gerektirir)"
+
+#~ msgid "Save active console buffer to file"
+#~ msgstr "Etkin konsol tamponunu dosyaya kaydet"
+
+#~ msgid "Seconds between keep-alive packets"
+#~ msgstr "Keep-alive paketleri arasındaki süre (saniye)"
+
+#~ msgid "Send commands to several hosts at the same time"
+#~ msgstr "Birden çok sunucuya aynı anda komut gönder"
+
+#~ msgid "Show Toolbar"
+#~ msgstr "Araç Çubuğunu Göster"
+
+#~ msgid "Split console horizontally"
+#~ msgstr "Konsolu yatay olarak böl"
+
+#~ msgid "Split console vertically"
+#~ msgstr "Konsolu dikey olarak böl"
+
+#~ msgid "_Edit"
+#~ msgstr "_Düzenle"
+
+#~ msgid "__glade_unnamed_28"
+#~ msgstr "__glade_unnamed_28"
+
+#~ msgid "__glade_unnamed_29"
+#~ msgstr "__glade_unnamed_29"
+
+#~ msgid "__glade_unnamed_30"
+#~ msgstr "__glade_unnamed_30"
+
+#~ msgid "__glade_unnamed_32"
+#~ msgstr "__glade_unnamed_32"
+
+#~ msgid "__glade_unnamed_36"
+#~ msgstr "__glade_unnamed_36"
+
+#~ msgid "__glade_unnamed_37"
+#~ msgstr "__glade_unnamed_37"
+
+#~ msgid "label"
+#~ msgstr "etiket"
+
+#~ msgid "local"
+#~ msgstr "yerel"
+
+#~ msgid "page 1"
+#~ msgstr "sayfa 1"
+
+#~ msgid "page 2"
+#~ msgstr "sayfa 2"
+
+#~ msgid "rdp"
+#~ msgstr "rdp"
+
+#~ msgid "spice"
+#~ msgstr "spice"
+
+#~ msgid "ssh"
+#~ msgstr "ssh"
+
+#~ msgid "telnet"
+#~ msgstr "telnet"
+
+#~ msgid "vnc"
+#~ msgstr "vnc"
+
+#~ msgid "xfreerdp log:"
+#~ msgstr "xfreerdp günlüğü:"

@@ -33,6 +33,15 @@ configuration propre à un plugin appartient au plugin, jamais au cœur.
   sur autre chose **le signale dans `features.md`/`claude.md`, mais ne le
   déplace pas sans confirmation** — sauf si la tâche en cours porte
   justement sur ce protocole.
+- **Contrats vérifiés en CI (issue #174)** : `tests/test_architecture_imports.py`
+  fait échouer toute PR qui fait importer GTK (`gi`) à un module cœur
+  (`*_core.py`, `gcm4_core.py`, `logging_config.py`,
+  `master_password_core.py`, `plugins/*/core.py`), qui fait importer un
+  plugin nommé au cœur, ou un plugin par un autre plugin.
+  `tools/check_circular_imports.py` tourne aussi dans le job Qualité, et les
+  contrats import-linter de `src/gcm4` (`pyproject.toml`) s'activeront
+  avec ce paquet, avec l'interdiction des noms de protocole en littéral
+  dans `src/gcm4/core/` et `src/gcm4/ui/`.
 
 ## 2. Aucune dépendance externe implicite
 
@@ -83,8 +92,15 @@ Un seul système de journalisation (issue #170) : jamais `import logging`
 (ni repli « si loguru est absent » : loguru est une dépendance
 obligatoire), et les puits (`logger.add`) ne sont configurés que par
 `logging_config.py`, sauf dans la fonction `main()` d'un point d'entrée
-autonome (`tools/*.py`, `plugins/ssh/core.py`, `scripts/pr_coverage_comment.py`, `scripts/i18n_report.py`).
+autonome (`tools/*.py`, `plugins/ssh/core.py`, `scripts/pr_coverage_comment.py`, `scripts/i18n_report.py`, `scripts/audit_debug_sorties.py`).
 `tests/test_loguru_only.py` le vérifie par analyse `ast`.
+
+`tests/test_loguru_regles.py` (issue #171) rend bloquantes les autres
+règles : `except` journalisés (manques hérités comptés par fichier, compte
+qui ne peut que diminuer), logger de module, placeholders `{}` cohérents,
+aucun secret interpolé, et total de `scripts/audit_debug_sorties.py`
+(fonctions sans `debug()` en entrée ou à chaque sortie) qui ne doit pas
+augmenter.
 
 ## 4. Docstrings — style Google, avec Args/Returns/Raises
 

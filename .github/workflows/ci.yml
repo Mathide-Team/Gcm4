@@ -45,6 +45,21 @@ jobs:
         # (cf. issue de format) ; ce verrou empêche toute régression.
         run: uv run ruff format --check .
 
+      - name: Imports circulaires (ancien code)
+        # Issue #174 : le hook pre-commit tools/check_circular_imports.py
+        # est aussi bloquant en CI ; les contrats de couches sont vérifiés
+        # par tests/test_architecture_imports.py dans l'étape suivante.
+        run: uv run python tools/check_circular_imports.py
+
+      - name: Contrats import-linter (src/gcm4)
+        # Actif dès que le paquet src/gcm4 de l'épopée GTK4 existe.
+        run: |
+          if [ -d src/gcm4 ]; then
+            PYTHONPATH=src uv run --with import-linter lint-imports
+          else
+            echo "src/gcm4 absent : contrats import-linter différés (tests/test_architecture_imports.py couvre l'ancien code)"
+          fi
+
       - name: Tests (pytest + couverture)
         # Toute la suite, y compris tests/test_gcm.py (réintégré, issue #112 :
         # stubs gi complétés et tests resynchronisés avec plugins/).
@@ -63,6 +78,30 @@ jobs:
           path: coverage.xml
           if-no-files-found: warn
 
+
+  types:
+    # Issue #173 : bloquant sur les modules listés dans [tool.mypy] files
+    # (pyproject.toml), liste qui ne peut que s'allonger.
+    name: Types (mypy)
+    runs-on: ${{ fromJSON(vars.RUNS_ON_LINUX || '{"group":"maison","labels":["self-hosted","linux"]}') }}
+
+    steps:
+      - name: Checkout du dépôt
+        uses: actions/checkout@v7
+
+      - name: Installation de uv
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+        with:
+          enable-cache: true
+
+      - name: Installation de Python
+        run: uv python install
+
+      - name: Installation des dépendances (groupe dev)
+        run: uv sync
+
+      - name: mypy
+        run: uv run mypy
   i18n:
     # Issue #166 : catalogues bloquants dans un job dédié. Modifier une
     # chaîne _() sans lancer `make i18n-update` fait échouer ce job.
