@@ -79,6 +79,13 @@ def exemple(proto: str, plugin_registry) -> str:
 
 Référence complète : n'importe quelle fonction de `gcm4_core.py`.
 
+Un seul système de journalisation (issue #170) : jamais `import logging`
+(ni repli « si loguru est absent » : loguru est une dépendance
+obligatoire), et les puits (`logger.add`) ne sont configurés que par
+`logging_config.py`, sauf dans la fonction `main()` d'un point d'entrée
+autonome (`tools/*.py`, `plugins/ssh/core.py`, `scripts/pr_coverage_comment.py`).
+`tests/test_loguru_only.py` le vérifie par analyse `ast`.
+
 ## 4. Docstrings — style Google, avec Args/Returns/Raises
 
 Déjà imposé par `pyproject.toml` (`[tool.ruff.lint.pydocstyle]` →
