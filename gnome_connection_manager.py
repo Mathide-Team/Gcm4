@@ -3496,7 +3496,7 @@ class Wmain(GCMBase, Gtk.Window):
         self.treeServers.set_level_indentation(5)
 
         column = Gtk.TreeViewColumn()
-        column.set_title("Servers")
+        column.set_title(_("Servers"))
         self.treeServers.append_column(column)
 
         # Icône connexion (stock gtk-network / gtk-directory)
