@@ -9,7 +9,7 @@ name: CI
 
 jobs:
   quality:
-    name: Qualité (lint, tests, catalogues .po)
+    name: Qualité (lint, tests)
     runs-on: ${{ fromJSON(vars.RUNS_ON_LINUX || '{"group":"maison","labels":["self-hosted","linux"]}') }}
 
     steps:
@@ -63,13 +63,48 @@ jobs:
           path: coverage.xml
           if-no-files-found: warn
 
+  i18n:
+    # Issue #166 : catalogues bloquants dans un job dédié. Modifier une
+    # chaîne _() sans lancer `make i18n-update` fait échouer ce job.
+    name: i18n (catalogues à jour)
+    runs-on: ${{ fromJSON(vars.RUNS_ON_LINUX || '{"group":"maison","labels":["self-hosted","linux"]}') }}
+
+    steps:
+      - name: Checkout du dépôt
+        uses: actions/checkout@v7
+
+      - name: Installation de uv
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+        with:
+          enable-cache: true
+
+      - name: Installation de Python
+        run: uv python install
+
+      - name: Installation des dépendances (groupe dev)
+        run: uv sync
+
+      - name: gettext
+        run: |
+          SUDO=""; if [ "$(id -u)" != "0" ]; then SUDO="sudo"; fi
+          command -v msgfmt >/dev/null || { $SUDO apt-get update && $SUDO env DEBIAN_FRONTEND=noninteractive apt-get install -y gettext; }
+
       - name: Catalogues de traduction (.po)
         # Même validation que `make validate` : msgfmt --check sur les
         # 29 langues de lang/ (tools/validate_po.py).
         run: uv run python tools/validate_po.py lang/*.po
 
-      - name: Catalogues à jour avec les sources (issue #165)
+      - name: "Catalogues à jour avec les sources (issue #165)"
         # Échoue si lang/messages.pot ou un lang/*.po n'a pas été régénéré
         # après l'ajout ou la modification d'une chaîne traduisible :
         # lancer `make i18n-update` et committer lang/.
         run: scripts/i18n-update.sh --check
+
+      - name: Compilation de toutes les locales
+        # Dans un dossier temporaire : les .mo suivis par git ne sont pas
+        # réécrits, mais chaque catalogue doit se compiler.
+        run: scripts/i18n-update.sh --compile "$RUNNER_TEMP/locale"
+
+      - name: Rapport de traduction (résumé du job)
+        if: always()
+        run: uv run python scripts/i18n_report.py --markdown
