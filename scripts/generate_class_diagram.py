@@ -485,6 +485,7 @@ def main(argv: list[str] | None = None) -> int:
     Returns:
         int: 0 si écrit ou à jour, 1 si ``--check`` le trouve périmé.
     """
+    logger.trace("main() called (avant configuration des puits : niveau TRACE, muet)")
     parser = argparse.ArgumentParser(description="Génère docs/class-diagram.md depuis le code.")
     parser.add_argument("--check", action="store_true", help="code 1 si le fichier est périmé")
     parser.add_argument("--output", type=Path, default=OUTPUT, help="fichier de sortie")
