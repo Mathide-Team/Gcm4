@@ -20,7 +20,7 @@ FPM_COMMON = -s dir -n $(PKG_NAME) -v $(PKG_VERSION) -C $(TMPINSTALLDIR) \
 	--category net --url $(PKG_URL)
 
 # ── Cibles principales ────────────────────────────────────────────────────────
-.PHONY: all deb rpm opensuse install translate i18n-update i18n-check i18n-report test lint validate clean help
+.PHONY: all deb rpm opensuse install translate i18n-update i18n-check i18n-report class-diagram test lint validate clean help
 
 all:  test lint deb rpm opensuse translate validate
 
@@ -34,6 +34,7 @@ help:
 	@echo "  make i18n-update → extrait les chaînes et met à jour lang/*.po"
 	@echo "  make i18n-check  → échoue si lang/messages.pot ou un .po est périmé"
 	@echo "  make i18n-report → taux de traduction par langue"
+	@echo "  make class-diagram → régénère docs/class-diagram.md"
 	@echo "  make test     → lance la suite pytest"
 	@echo "  make lint     → ruff + flake8"
 	@echo "  make validate → valide .po (msgfmt) + .glade/.xml/.json"
@@ -54,6 +55,9 @@ i18n-check:
 
 i18n-report:
 	@uv run python scripts/i18n_report.py
+
+class-diagram:
+	@uv run python scripts/generate_class_diagram.py
 
 # ── Installation dans un répertoire temporaire ────────────────────────────────
 install: translate
