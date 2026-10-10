@@ -83,7 +83,7 @@ Un seul système de journalisation (issue #170) : jamais `import logging`
 (ni repli « si loguru est absent » : loguru est une dépendance
 obligatoire), et les puits (`logger.add`) ne sont configurés que par
 `logging_config.py`, sauf dans la fonction `main()` d'un point d'entrée
-autonome (`tools/*.py`, `plugins/ssh/core.py`, `scripts/pr_coverage_comment.py`, `scripts/i18n_report.py`, `scripts/audit_debug_sorties.py`).
+autonome (`tools/*.py`, `plugins/ssh/core.py`, `scripts/pr_coverage_comment.py`, `scripts/i18n_report.py`, `scripts/audit_debug_sorties.py`, `scripts/generate_class_diagram.py`).
 `tests/test_loguru_only.py` le vérifie par analyse `ast`.
 
 `tests/test_loguru_regles.py` (issue #171) rend bloquantes les autres
