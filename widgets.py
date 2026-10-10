@@ -120,7 +120,7 @@ def _setup_app_logger():
 
 app_logger = _setup_app_logger()
 
-SHELL = os.environ["SHELL"]
+SHELL = os.environ.get("SHELL") or "/bin/sh"  # absent sous cron, systemd, CI
 # check Terminal version
 TERMINAL_V048 = "spawn_async" in Vte.Terminal.__dict__
 # Vérification runtime du signal 'output-written' (VTE >= 0.60)

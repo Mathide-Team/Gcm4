@@ -10,7 +10,7 @@ name: CI
 jobs:
   quality:
     name: Qualité (lint, tests, catalogues .po)
-    runs-on: ubuntu-latest
+    runs-on: ${{ fromJSON(vars.RUNS_ON_LINUX || '{"group":"maison","labels":["self-hosted","linux"]}') }}
 
     steps:
       - name: Checkout du dépôt
@@ -28,7 +28,9 @@ jobs:
         run: uv sync
 
       - name: gettext (validation des catalogues .po)
-        run: sudo apt-get update && sudo apt-get install -y gettext
+        run: |
+          SUDO=""; if [ "$(id -u)" != "0" ]; then SUDO="sudo"; fi
+          command -v msgfmt >/dev/null || { $SUDO apt-get update && $SUDO env DEBIAN_FRONTEND=noninteractive apt-get install -y gettext; }
 
       - name: Lint (ruff check)
         run: uv run ruff check .
