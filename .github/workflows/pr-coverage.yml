@@ -38,6 +38,11 @@ jobs:
       - name: Installation de Python
         run: uv python install
 
+      - name: gettext (make install des tests de paquet, issue #162)
+        run: |
+          SUDO=""; if [ "$(id -u)" != "0" ]; then SUDO="sudo"; fi
+          command -v msgfmt >/dev/null || { $SUDO apt-get update && $SUDO env DEBIAN_FRONTEND=noninteractive apt-get install -y gettext; }
+
       - name: Couverture de la PR
         run: |
           uv sync
