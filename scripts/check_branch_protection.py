@@ -282,6 +282,7 @@ def verifier_en_ligne(
 
 def main(argv: list[str] | None = None) -> int:
     """Point d'entrée : 0 conforme, 1 écart, 2 erreur."""
+    logger.trace("main() called (avant configuration des puits : niveau TRACE, muet)")
     logger.remove()
     logger.add(sys.stderr, level="DEBUG" if os.environ.get("GCM_DEBUG") else "WARNING")
     logger.debug("main() called")
