@@ -30,6 +30,7 @@ ALLOWED_SINK_FILES = {
     "scripts/pr_coverage_comment.py",  # script de CI
     "scripts/i18n_report.py",  # rapport de traduction (CI, make i18n-report)
     "scripts/audit_debug_sorties.py",  # audit debug entrée/sortie (issue #171)
+    "scripts/check_branch_protection.py",  # protection de dev (issue #161)
     "scripts/generate_class_diagram.py",  # diagramme de classes (issue #175)
 }
 
