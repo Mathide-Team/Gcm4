@@ -82,7 +82,7 @@ Détail dans `CONSIGNES-AGENTS-IA.md` §3.
   `tests/test_loguru_only.py`.
 - Ne pas appeler `logger.add` ni `logger.remove` dans un module : seuls
   `logging_config.py` et le `main()` d'un outil autonome (`tools/*.py`,
-  `plugins/ssh/core.py`, `scripts/pr_coverage_comment.py`) configurent les
+  `plugins/ssh/core.py`, `scripts/pr_coverage_comment.py`, `scripts/i18n_report.py`) configurent les
   sorties. Vérifié par le même test.
 - Au moins deux `debug()` par fonction : à l'entrée et à chaque sortie.
 - Placeholders `{}` de loguru (`logger.info("hôte {} ouvert", nom)`) ou

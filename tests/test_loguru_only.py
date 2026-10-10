@@ -28,6 +28,7 @@ ALLOWED_SINK_FILES = {
     "tools/ssh_deploy.py",
     "plugins/ssh/core.py",  # CLI `python -m plugins.ssh.core`
     "scripts/pr_coverage_comment.py",  # script de CI
+    "scripts/i18n_report.py",  # rapport de traduction (CI, make i18n-report)
 }
 
 
