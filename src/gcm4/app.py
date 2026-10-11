@@ -27,10 +27,10 @@ CODE_GTK_ABSENT = 3
 
 def main(argv: list[str] | None = None) -> int:
     """Lance gcm4 ; renvoie le code de sortie du processus."""
+    logger.debug("main: entrée")  # muet : gcm4 est désactivé jusqu'à configure_logging
     # Journalisation configurée avant tout : niveau de GCM_LOG_LEVEL /
     # GCM_DEBUG, sans quoi loguru écrirait du DEBUG sur stderr par défaut.
     logging_config.configure_logging()
-    logger.debug("main: entrée")
     args = cli.parse_args(sys.argv[1:] if argv is None else argv)
     if args.debug:
         logging_config.enable_debug(config_dir=args.config_dir)
