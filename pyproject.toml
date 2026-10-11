@@ -4,11 +4,16 @@ version = "1.3.3"
 description = "Simple tabbed SSH/Telnet/RDP/VNC/SPICE/Serial connection manager for GTK3"
 license = "GPL-3.0-or-later"
 readme = "README.md"
-requires-python = ">=3.10,<4"
+requires-python = ">=3.12,<4"
 authors = [
     { name = "MathildeDec", email = "mathilde.deuscher@gmail.com" },
 ]
 dependencies = ["loguru (>=0.7.3,<0.8.0)"]
+
+# Commande de la base GTK4 (#133, décision D2 de #118). L'application GTK3
+# reste lancée par gnome_connection_manager.py jusqu'à la bascule (D5).
+[project.scripts]
+gcm4 = "gcm4.app:main"
 
 
 [project.urls]
@@ -50,16 +55,22 @@ paramiko = ["paramiko>=3.4.0"]
 libvirt = ["libvirt-python>=9.0.0"]
 vnc = ["pycryptodomex>=3.20.0"]
 
-# ─── Gestion des dépendances (uv) ────────────────────────────────────────────
-# GCM est une application GTK autonome, packagée en .deb/.rpm via `make`
-# (voir Makefile / postinst), et non une bibliothèque distribuée sur PyPI.
-# uv sert donc uniquement à la gestion des dépendances et de
-# l'environnement de développement (`uv sync`, `uv.lock`), d'où
-# `[tool.uv] package = false` ci-dessous (équivalent du `package-mode =
-# false` de Poetry, qu'uv remplace depuis cette session) : projet
-# "virtuel", aucun wheel n'est construit, pas de `[build-system]` requis.
-[tool.uv]
-package = false
+# ─── Construction (hatchling, #133) ─────────────────────────────────────────
+# Le projet est empaqueté depuis la base GTK4 : `uv sync` installe `gcm4`
+# en mode éditable (commande `gcm4`, version lue par importlib.metadata).
+# Le wheel contient src/gcm4 et les modules sans GTK que gcm4 réutilise
+# encore depuis la racine (ils migreront dans src/gcm4/core au fil des lots,
+# #119). Les .deb/.rpm restent construits par le Makefile.
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+only-include = ["src/gcm4", "gcm4_core.py", "logging_config.py", "pyAES.py"]
+sources = ["src"]
+# Mode éditable (`uv sync`) : src/ et la racine sur sys.path, sans copie
+# des modules racine (une copie figée masquerait les modifications).
+dev-mode-dirs = ["src", "."]
 
 [dependency-groups]
 dev = [
@@ -98,8 +109,14 @@ forbidden_modules = ["gi", "gcm4.ui"]
 # Modules GTK : PyGObject n'a pas de types (pygobject-stubs, évalué dans
 # docs/typage.md) ; ils entreront dans la liste avec la base GTK4.
 [tool.mypy]
-python_version = "3.10"
+python_version = "3.12"
+mypy_path = "src"
 files = [
+    # Paquet GTK4 (#133) : tout sauf ui/ (PyGObject sans types, cf. plus haut).
+    "src/gcm4/__init__.py",
+    "src/gcm4/app.py",
+    "src/gcm4/core/__init__.py",
+    "src/gcm4/core/cli.py",
     "gcm4_core.py",
     "logging_config.py",
     "models.py",

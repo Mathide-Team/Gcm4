@@ -248,24 +248,23 @@ def test_chaque_core_qui_journalise_se_desactive():
             for n in arbre.body
         )
         assert desactive, f"{chemin.name} : ajouter <logger>.disable(__name__) au niveau module"
-    assert sorted(lc.CORE_MODULES) == attendus
+    assert sorted(m for m in lc.CORE_MODULES if m != "gcm4") == attendus
+    assert "gcm4" in lc.CORE_MODULES  # src/gcm4/__init__.py, même convention
 
 
 def test_core_muet_avant_configure_logging_puis_reactive():
     """Un module *_core ne journalise rien avant configure_logging(), puis normalement."""
-    import snmp_bulk_core
-
     lc._reset_for_tests()
-    logger.disable("snmp_bulk_core")
+    logger.disable("gcm4_core")
     recus: list[str] = []
     sink = logger.add(lambda m: recus.append(m.record["name"]), level="DEBUG")
     try:
-        snmp_bulk_core.find_missing_variables("{x}", set())
-        assert "snmp_bulk_core" not in recus
+        gcm4_core.dep_install_hint("a", "b")
+        assert "gcm4_core" not in recus
         lc.configure_logging("DEBUG", force=True)
         sink = logger.add(lambda m: recus.append(m.record["name"]), level="DEBUG")
-        snmp_bulk_core.find_missing_variables("{x}", set())
-        assert "snmp_bulk_core" in recus
+        gcm4_core.dep_install_hint("a", "b")
+        assert "gcm4_core" in recus
     finally:
         lc._reset_for_tests()
         try:

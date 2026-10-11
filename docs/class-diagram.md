@@ -6,7 +6,7 @@
 > toute modification manuelle sera écrasée. Le régénérer avec `make class-diagram` ;
 > le job Qualité échoue s'il est périmé (`--check`).
 
-46 modules · 111 classes · 187 fonctions publiques de module.
+53 modules · 112 classes · 191 fonctions publiques de module.
 
 Conventions : `+` public, `-` privé (préfixe `_`) ; `list~str~` = `list[str]` ; `<<module>>`
 regroupe les fonctions publiques d'un module ; `<<…>>` sur une classe liste `dataclass` et les
@@ -23,12 +23,20 @@ flowchart TD
     g0["Cœur (sans GTK)"]
     g1["Application GTK"]
     g2["Plugins"]
+    g3["gcm4"]
+    g4["gcm4.core"]
+    g5["gcm4.ui"]
     g1 -->|13| g0
     g1 -->|2| g2
     g0 -->|2| g1
     g0 -->|1| g2
     g2 -->|58| g1
     g2 -->|4| g0
+    g3 -->|2| g0
+    g3 -->|1| g4
+    g3 -->|1| g5
+    g4 -->|2| g0
+    g4 -->|1| g3
 ```
 
 ## Cœur (sans GTK)
@@ -1223,5 +1231,55 @@ classDiagram
         +parse() SSHConfig
         +write(backup) None
         +validate() list~str~
+    }
+```
+
+## gcm4
+
+| Module | Fichier | Rôle |
+|---|---|---|
+| `gcm4` | `src/gcm4/__init__.py` | gcm4 : Gnome Connection Manager en GTK4 (épopée #118). |
+| `gcm4.__main__` | `src/gcm4/__main__.py` | ``python -m gcm4`` : même point d'entrée que la commande ``gcm4``. |
+| `gcm4.app` | `src/gcm4/app.py` | Point d'entrée ``gcm4`` (``[project.scripts]``, #133). |
+
+```mermaid
+classDiagram
+    class mod_gcm4_app {
+        <<module>>
+        +main(argv) int
+    }
+```
+
+## gcm4.core
+
+| Module | Fichier | Rôle |
+|---|---|---|
+| `gcm4.core` | `src/gcm4/core/__init__.py` | Cœur de gcm4 : modèle, configuration, services. |
+| `gcm4.core.cli` | `src/gcm4/core/cli.py` | Ligne de commande de gcm4, analysée avant toute initialisation GTK (#133). |
+
+```mermaid
+classDiagram
+    class mod_gcm4_core_cli {
+        <<module>>
+        +build_parser() argparse.ArgumentParser
+        +parse_args(argv, home) argparse.Namespace
+    }
+```
+
+## gcm4.ui
+
+| Module | Fichier | Rôle |
+|---|---|---|
+| `gcm4.ui` | `src/gcm4/ui/__init__.py` | Interface GTK4 de gcm4 : seul endroit autorisé à importer ``gi``. |
+| `gcm4.ui.application` | `src/gcm4/ui/application.py` | Application libadwaita de gcm4 (#133 ; fenêtre et actions : #134). |
+
+```mermaid
+classDiagram
+    class mod_gcm4_ui_application {
+        <<module>>
+        +run(args) int
+    }
+    class Gcm4Application {
+        <<Adw.Application>>
     }
 ```
