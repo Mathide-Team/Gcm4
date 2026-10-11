@@ -56,6 +56,7 @@ _TRUE = frozenset({"1", "true", "yes", "oui", "on"})
 # configure_logging() les réactive. tests/test_logging_config.py vérifie que
 # chaque ``*_core.py`` qui journalise figure ici et se désactive.
 CORE_MODULES = (
+    "gcm4",  # paquet src/gcm4 et ses sous-modules (#133)
     "gcm4_core",
     "master_password_core",
     "putty_import_core",

@@ -36,12 +36,11 @@ def _load_pyproject() -> dict:
 class TestUvMigration(unittest.TestCase):
     """Verrouille la migration Poetry → uv de `pyproject.toml`."""
 
-    def test_tool_uv_package_false(self):
-        """`[tool.uv] package = false` est déclaré (projet non empaqueté, comme Poetry avant)."""
+    def test_projet_empaquete_par_hatchling(self):
+        """Depuis #133, le projet est empaqueté (hatchling) : plus de ``package = false``."""
         data = _load_pyproject()
-        uv_cfg = data.get("tool", {}).get("uv")
-        self.assertIsNotNone(uv_cfg, "section [tool.uv] absente de pyproject.toml")
-        self.assertIs(uv_cfg.get("package"), False)
+        self.assertIsNot(data.get("tool", {}).get("uv", {}).get("package"), False)
+        self.assertEqual(data["build-system"]["build-backend"], "hatchling.build")
 
     def test_no_leftover_poetry_section(self):
         """`[tool.poetry]` n'existe plus dans pyproject.toml (migration complète)."""
