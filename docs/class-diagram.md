@@ -6,7 +6,7 @@
 > toute modification manuelle sera écrasée. Le régénérer avec `make class-diagram` ;
 > le job Qualité échoue s'il est périmé (`--check`).
 
-58 modules · 120 classes · 199 fonctions publiques de module.
+59 modules · 125 classes · 201 fonctions publiques de module.
 
 Conventions : `+` public, `-` privé (préfixe `_`) ; `list~str~` = `list[str]` ; `<<module>>`
 regroupe les fonctions publiques d'un module ; `<<…>>` sur une classe liste `dataclass` et les
@@ -1258,6 +1258,7 @@ classDiagram
 |---|---|---|
 | `gcm4.core` | `src/gcm4/core/__init__.py` | Cœur de gcm4 : modèle, configuration, services. |
 | `gcm4.core.cli` | `src/gcm4/core/cli.py` | Ligne de commande de gcm4, analysée avant toute initialisation GTK (#133). |
+| `gcm4.core.config` | `src/gcm4/core/config.py` | Lecture et écriture de ``~/.gcm/gcm.conf`` sans GTK (#137). |
 | `gcm4.core.i18n` | `src/gcm4/core/i18n.py` | Traductions de gcm4 : domaine gettext ``gcm-lang`` de l'application GTK3. |
 | `gcm4.core.menu` | `src/gcm4/core/menu.py` | Menu principal et raccourcis de gcm4, décrits sans GTK (#134). |
 | `gcm4.core.model` | `src/gcm4/core/model.py` | Modèle de la base GTK4 : Host, Group, HostStore, sans GTK (#136). |
@@ -1269,6 +1270,48 @@ classDiagram
         <<module>>
         +build_parser() argparse.ArgumentParser
         +parse_args(argv, home) argparse.Namespace
+    }
+    class mod_gcm4_core_config {
+        <<module>>
+        +load_config(path, chiffrement) Config
+        +save_config(path, cfg, chiffrement) None
+    }
+    class ConfigError {
+        <<Exception>>
+    }
+    class Chiffrement {
+        <<Protocol>>
+        +dechiffrer(stocke) str
+        +chiffrer(clair) str
+    }
+    class SansChiffrement {
+        +dechiffrer(stocke) str
+        +chiffrer(clair) str
+    }
+    class AppConfig {
+        <<dataclass>>
+        +bool confirm_exit
+        +bool confirm_close_tab
+        +bool confirm_close_tab_middle
+        +int auto_close_tab
+        +bool cycle_tabs
+        +bool disable_shortcuts
+        +bool disable_notifications
+        +bool restore_open_tabs
+        +bool check_updates
+        +bool disable_hosts_stripes
+        +bool update_title
+        +str app_title
+        +str font
+        +str font_color
+        +str back_color
+        +int transparency
+    }
+    class Config {
+        <<dataclass>>
+        +AppConfig options
+        +HostStore store
+        +configparser.RawConfigParser brut
     }
     class mod_gcm4_core_i18n {
         <<module>>
