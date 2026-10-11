@@ -166,7 +166,7 @@ emplacement (poste partagé, tests, profils multiples) :
 # Obligatoires
 sudo apt install python3 python3-gi gir1.2-vte-2.91 gir1.2-gtk-3.0 expect python3-pycryptodome
 
-# RDP 
+# RDP
 sudo apt install meson valac ninja-build pkg-config gobject-introspection libgirepository1.0-dev libgtk-3-dev freerdp3-dev libfuse3-dev
 libfuse3-dev
 git clone https://gitlab.gnome.org/GNOME/gtk-frdp.git
