@@ -206,7 +206,7 @@ jobs:
           DEBIAN_FRONTEND=noninteractive apt-get update -qq
           DEBIAN_FRONTEND=noninteractive apt-get install -y -qq \
             git ca-certificates python3 python3-venv python3-gi \
-            gir1.2-gtk-4.0 xvfb xauth
+            gir1.2-gtk-4.0 gir1.2-adw-1 xvfb xauth
 
       - name: Checkout du dépôt
         uses: actions/checkout@v7
@@ -217,6 +217,26 @@ jobs:
           python3 -m venv --system-site-packages /tmp/venv
           /tmp/venv/bin/pip install -q -r plugins/pluginvnc2/requirements-dev.txt \
             "asyncvnc2 @ git+https://github.com/Mathide-Team/AsyncVnc4@26be75f0582acffbf2a5cd8ea4175f5e40759db3"
+
+      - name: gcm4 (paquet src/gcm4, mode éditable)
+        run: |
+          /tmp/venv/bin/pip install -q -e . pytest
+
+      - name: Tests de l'interface gcm4 sous Xvfb (tests/gtk4), aucun test sauté
+        # GCM_TESTS_GTK4=1 : tests/gtk4/conftest.py collecte toujours ces
+        # tests ; un GTK4/libadwaita absent devient une erreur, pas un saut.
+        env:
+          GCM_TESTS_GTK4: "1"
+        run: |
+          set -o pipefail
+          xvfb-run -a /tmp/venv/bin/python -m pytest tests/gtk4 -q -rs -p no:cacheprovider \
+            | tee /tmp/gcm4-gtk4.txt
+          sautes=$(grep -c '^SKIPPED' /tmp/gcm4-gtk4.txt || true)
+          echo "### Tests gcm4 GTK4 sautés : ${sautes}" >> "$GITHUB_STEP_SUMMARY"
+          if [ "${sautes}" != "0" ]; then
+            echo "::error::tests gcm4 GTK4 sautés"
+            exit 1
+          fi
 
       - name: Tests pluginvnc2 sous Xvfb, aucun test sauté
         working-directory: plugins/pluginvnc2

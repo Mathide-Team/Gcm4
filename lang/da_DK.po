@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-10 20:28+0000\n"
+"POT-Creation-Date: 2026-10-11 23:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,7 +53,7 @@ msgstr ""
 msgid "A new version is available: https://github.com/MathildeDec/gnome-connection-manager/releases"
 msgstr "En ny version er tilgængelig: https://github.com/MathildeDec/gnome-connection-manager/releases"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/application.py
 msgid "A simple ssh connection manager for gnome"
 msgstr "En simpel ssh-forbindelsesmanager til Gnome"
 
@@ -497,7 +497,7 @@ msgstr "Log lokale konsolsessioner"
 msgid "Logs path"
 msgstr "Logsti"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/main_window.py
 msgid "Menu"
 msgstr ""
 
@@ -2670,6 +2670,20 @@ msgid ""
 "WebKitGTK unavailable (gir1.2-webkit2-4.1 package missing).\n"
 "The web console will open in the system browser."
 msgstr ""
+
+#: src/gcm4/ui/main_window.py
+msgid "Home"
+msgstr ""
+
+#: src/gcm4/ui/main_window.py
+msgid "Hosts and groups will appear in the left panel."
+msgstr ""
+
+#: src/gcm4/ui/main_window.py
+#, fuzzy
+#| msgid "Gnome Connection Manager"
+msgid "Welcome to Gnome Connection Manager"
+msgstr "Gnome Connection Manager"
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format
