@@ -6,7 +6,7 @@
 > toute modification manuelle sera écrasée. Le régénérer avec `make class-diagram` ;
 > le job Qualité échoue s'il est périmé (`--check`).
 
-53 modules · 112 classes · 191 fonctions publiques de module.
+54 modules · 116 classes · 193 fonctions publiques de module.
 
 Conventions : `+` public, `-` privé (préfixe `_`) ; `list~str~` = `list[str]` ; `<<module>>`
 regroupe les fonctions publiques d'un module ; `<<…>>` sur une classe liste `dataclass` et les
@@ -597,7 +597,7 @@ classDiagram
         <<Gtk.Dialog>>
         -dict __gsignals__
     }
-    class Host {
+    class models_Host {
         +tunnel_as_string()
         +clone()
     }
@@ -1256,6 +1256,7 @@ classDiagram
 |---|---|---|
 | `gcm4.core` | `src/gcm4/core/__init__.py` | Cœur de gcm4 : modèle, configuration, services. |
 | `gcm4.core.cli` | `src/gcm4/core/cli.py` | Ligne de commande de gcm4, analysée avant toute initialisation GTK (#133). |
+| `gcm4.core.model` | `src/gcm4/core/model.py` | Modèle de la base GTK4 : Host, Group, HostStore, sans GTK (#136). |
 
 ```mermaid
 classDiagram
@@ -1263,6 +1264,58 @@ classDiagram
         <<module>>
         +build_parser() argparse.ArgumentParser
         +parse_args(argv, home) argparse.Namespace
+    }
+    class mod_gcm4_core_model {
+        <<module>>
+        +normaliser_chemin(chemin) str
+        +parent(chemin) str
+    }
+    class gcm4_core_model_Host {
+        <<dataclass>>
+        +str name
+        +str group
+        +str host
+        +int None port
+        +str user
+        +str password
+        +str description
+        +str protocol
+        +str font_color
+        +str back_color
+        +str extra_params
+        +bool workspace
+        +str auto_close_tab
+        +str pre_connect_command
+        +str post_connect_command
+        +dict~str, dict~str, str~~ protocol_options
+        +path() str
+        +clone() Host
+        +options(protocole) dict~str, str~
+        +correspond(recherche) bool
+    }
+    class Group {
+        <<dataclass>>
+        +str path
+        +str color
+        +bool collapsed
+        +name() str
+    }
+    class ConflitDeNom {
+        <<ValueError>>
+    }
+    class HostStore {
+        +ensure_group(chemin) Group None
+        +subgroups(chemin) list~Group~
+        +hosts_in(chemin, recursive) list~Host~
+        +rename_group(ancien, nouveau) None
+        +remove_group(chemin, avec_contenu) list~Host~
+        +find(chemin_hote) Host None
+        +add(host) Host
+        +rename(host, nom) None
+        +move(host, groupe) None
+        +remove(host) None
+        +duplicate(host) Host
+        +search(texte) list~Host~
     }
 ```
 
