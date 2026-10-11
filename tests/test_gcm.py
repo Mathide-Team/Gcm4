@@ -694,6 +694,7 @@ with patch("os.system", return_value=0):
 # Modules vers lesquels le code testé a été déplacé depuis l'écriture de ce
 # fichier (plugins/, hypervisor_import_common.py, widgets.py) -- issue #112.
 import plugin_import_libvirt  # noqa: E402
+import plugin_import_proxmox  # noqa: E402
 import plugin_local  # noqa: E402
 import plugin_rdp  # noqa: E402
 import plugin_serial  # noqa: E402
@@ -3933,124 +3934,114 @@ class TestProtoIcon(unittest.TestCase):
 # ── Tests _proxmox_fetch_hosts résolution IP ─────────────────────────────────
 
 
-class TestProxmoxFetchHostsIPResolution(unittest.TestCase):
-    """Tests pour la résolution IP dans _proxmox_fetch_hosts."""
+class TestProxmoxFetchHosts(unittest.TestCase):
+    """_proxmox_fetch_hosts réel, avec une session SSH simulée (issue #204).
 
-    def _run_responses(self, responses):
-        """Crée un run_fn qui renvoie les réponses dans l'ordre."""
-        call_count = [0]
+    Chaque commande envoyée à l'hyperviseur reçoit la sortie du premier
+    motif de ``self.sorties`` qu'elle contient ; les autres renvoient "".
+    """
 
-        def run_fn(client, cmd, timeout=30):
-            """Run fn."""
-            idx = call_count[0]
-            call_count[0] += 1
-            if idx < len(responses):
-                return responses[idx]
-            return ""
+    QM_LIST = "VMID NAME STATUS MEM(MB)\n100 lab_web running 2048\n"
 
-        return run_fn
+    def setUp(self):
+        """Simule paramiko, la connexion et l'exécution SSH."""
+        self.sorties = {}
+        client = MagicMock()
+        for cible, valeur in (
+            ("PARAMIKO_OK", True),
+            ("paramiko_connect", lambda *a, **k: client),
+            ("libvirt_ssh_run", self._ssh_run),
+            ("libvirt_nmap_scan", lambda *a, **k: {}),
+        ):
+            patcher = patch.object(plugin_import_proxmox.hv_common, cible, valeur)
+            patcher.start()
+            self.addCleanup(patcher.stop)
 
-    def test_extract_first_ipv4_from_qga_json(self):
-        """QGA JSON avec une IP valide → IP extraite correctement."""
-        qga_json = (
-            '{"result":[{"name":"eth0","ip-addresses":'
-            '[{"ip-address-type":"ipv4","ip-address":"192.168.105.145","prefix":24}]}]}'
+    def _ssh_run(self, client, cmd, timeout=30):
+        """Renvoie la sortie simulée de la commande ``cmd``."""
+        for motif, sortie in self.sorties.items():
+            if motif in cmd:
+                return sortie
+        return ""
+
+    def _fetch(self, proto_filter, **sorties):
+        """Lance l'inventaire d'un hyperviseur avec les sorties données."""
+        self.sorties = {"qm list": self.QM_LIST, **sorties}
+        return plugin_import_proxmox._proxmox_fetch_hosts(
+            ["qemu+ssh://root@pve1/system"],
+            "admin",
+            lambda *_: None,
+            lambda *_: None,
+            proto_filter,
         )
-        # Appel direct à la fonction interne via _proxmox_fetch_hosts
-        # On teste via le module directement
-        import json
 
-        data = json.loads(qga_json)
-        ip = ""
-        for iface in data.get("result", []):
-            for addr in iface.get("ip-addresses", []):
-                a = addr.get("ip-address", "")
-                import re
+    def test_spice_avec_vga_qxl(self):
+        """vga: qxl → hôte SPICE via le proxy Proxmox, extra_params --proxmox NŒUD VMID."""
+        hotes = self._fetch({"spice"}, **{"grep '^vga:'": "vga: qxl\n", "hostname": "pve-node1\n"})
+        self.assertEqual(len(hotes), 1)
+        self.assertEqual(hotes[0]["protocol"], "spice")
+        self.assertEqual(hotes[0]["host"], "pve1")
+        self.assertEqual(hotes[0]["group"], "LAB/spice")
+        self.assertEqual(hotes[0]["extra_params"], "--proxmox pve-node1 100")
 
-                if re.match(r"\d+\.\d+\.\d+\.\d+$", a) and not a.startswith("127."):
-                    ip = a
-                    break
-            if ip:
-                break
-        self.assertEqual(ip, "192.168.105.145")
+    def test_spice_avec_vga_qxl2(self):
+        """vga: qxl2 (double écran) est aussi un affichage SPICE."""
+        hotes = self._fetch({"spice"}, **{"grep '^vga:'": "vga: qxl2\n"})
+        self.assertEqual([h["protocol"] for h in hotes], ["spice"])
 
-    def test_extract_ipv4_skips_loopback(self):
-        """L'IP 127.x ne doit pas être retournée."""
-        import json
-        import re
+    def test_pas_de_spice_avec_vga_std(self):
+        """vga: std → aucun hôte SPICE."""
+        self.assertEqual(self._fetch({"spice"}, **{"grep '^vga:'": "vga: std\n"}), [])
 
-        qga_json = (
-            '{"result":[{"name":"lo","ip-addresses":'
-            '[{"ip-address-type":"ipv4","ip-address":"127.0.0.1","prefix":8}]},'
-            '{"name":"eth0","ip-addresses":'
-            '[{"ip-address-type":"ipv4","ip-address":"10.0.0.5","prefix":24}]}]}'
+    def test_pas_de_spice_sans_ligne_vga(self):
+        """Sans ligne vga dans qm config → aucun hôte SPICE."""
+        self.assertEqual(self._fetch({"spice"}), [])
+
+    def test_ip_par_agent_qemu_hors_loopback(self):
+        """L'IP vient de l'agent QEMU, en sautant 127.0.0.1 (interface lo listée en premier)."""
+        qga = (
+            '[{"name":"lo","ip-addresses":[{"ip-address":"127.0.0.1"}]},'
+            '{"name":"eth0","ip-addresses":[{"ip-address":"10.0.0.5"}]}]'
         )
-        data = json.loads(qga_json)
-        ip = ""
-        for iface in data.get("result", []):
-            for addr in iface.get("ip-addresses", []):
-                a = addr.get("ip-address", "")
-                if re.match(r"\d+\.\d+\.\d+\.\d+$", a) and not a.startswith("127."):
-                    ip = a
-                    break
-            if ip:
-                break
-        self.assertEqual(ip, "10.0.0.5")
+        hotes = self._fetch({"ssh"}, **{"network-get-interfaces": qga})
+        self.assertEqual(hotes[0]["host"], "10.0.0.5")
+        self.assertEqual(hotes[0]["protocol"], "ssh")
 
-    def test_ipconfig_parsed_correctly(self):
-        """ipconfig0: ip=192.168.1.5/24,gw=... → IP extraite."""
-        import re
+    def test_ip_par_agent_qemu_format_result(self):
+        """L'enveloppe {"result": [...]} de certaines versions de l'agent est acceptée."""
+        qga = '{"result":[{"name":"eth0","ip-addresses":[{"ip-address":"192.168.105.145"}]}]}'
+        hotes = self._fetch({"ssh"}, **{"network-get-interfaces": qga})
+        self.assertEqual(hotes[0]["host"], "192.168.105.145")
 
-        cfg_out = "ipconfig0: ip=192.168.1.5/24,gw=192.168.1.1"
-        m = re.search(r"ip=(\d+\.\d+\.\d+\.\d+)", cfg_out)
-        self.assertIsNotNone(m)
-        self.assertEqual(m.group(1), "192.168.1.5")
+    def test_ip_par_ipconfig_cloud_init(self):
+        """Sans agent, l'IP statique ipconfig0 (cloud-init) est utilisée."""
+        hotes = self._fetch(
+            {"ssh"}, **{"grep '^ipconfig'": "ipconfig0: ip=192.168.1.5/24,gw=192.168.1.1"}
+        )
+        self.assertEqual(hotes[0]["host"], "192.168.1.5")
 
-    def test_ipconfig_skips_apipa(self):
-        """Une IP 169.x dans ipconfig ne doit pas être utilisée."""
-        import re
+    def test_ipconfig_apipa_ignore(self):
+        """Une IP 169.254.x (APIPA) dans ipconfig0 n'est pas retenue."""
+        hotes = self._fetch({"ssh"}, **{"grep '^ipconfig'": "ipconfig0: ip=169.254.0.1/16"})
+        self.assertFalse(any(h["host"].startswith("169.") for h in hotes))
 
-        cfg_out = "ipconfig0: ip=169.254.0.1/16"
-        m = re.search(r"ip=(\d+\.\d+\.\d+\.\d+)", cfg_out)
-        if m:
-            self.assertTrue(m.group(1).startswith("169."))
+    def test_vnc_si_port_5900_ouvert(self):
+        """Filtre vnc : hôte VNC créé quand le port 5900 de la VM répond."""
+        hotes = self._fetch(
+            {"vnc"},
+            **{"grep '^ipconfig'": "ipconfig0: ip=10.0.0.7/24", "10.0.0.7 5900": "OPEN"},
+        )
+        self.assertEqual(
+            [(h["protocol"], h["host"], h["port"]) for h in hotes], [("vnc", "10.0.0.7", 5900)]
+        )
 
-
-# ── Tests import Proxmox SPICE — détection qxl ───────────────────────────────
-
-
-class TestProxmoxFetchHostsSpiceQxl(unittest.TestCase):
-    """Tests pour la détection vga:qxl dans _proxmox_fetch_hosts."""
-
-    def test_qxl_detected_in_vga_output(self):
-        """Test qxl detected in vga output."""
-        vga_out = "vga: qxl"
-        self.assertIn("qxl", vga_out.lower())
-
-    def test_std_vga_not_qxl(self):
-        """Test std vga not qxl."""
-        vga_out = "vga: std"
-        self.assertNotIn("qxl", vga_out.lower())
-
-    def test_empty_vga_not_qxl(self):
-        """Test empty vga not qxl."""
-        vga_out = ""
-        self.assertNotIn("qxl", vga_out.lower())
-
-    def test_qxl2_detected(self):
-        """Test qxl2 detected."""
-        vga_out = "vga: qxl2"
-        self.assertIn("qxl", vga_out.lower())
-
-    def test_extra_params_proxmox_format(self):
-        """extra_params généré doit avoir le bon format --proxmox NODE VMID."""
-        node_name = "DOCKER41"
-        vmid = "100"
-        extra = f"--proxmox {node_name} {vmid}"
-        self.assertTrue(extra.startswith("--proxmox "))
-        parts = extra.split()
-        self.assertEqual(parts[1], "DOCKER41")
-        self.assertEqual(parts[2], "100")
+    def test_pas_de_vnc_si_port_5900_ferme(self):
+        """Filtre vnc : aucun hôte quand le port 5900 est fermé."""
+        hotes = self._fetch(
+            {"vnc"},
+            **{"grep '^ipconfig'": "ipconfig0: ip=10.0.0.7/24", "10.0.0.7 5900": "CLOSED"},
+        )
+        self.assertEqual(hotes, [])
 
 
 # ── Tests import libvirt/Proxmox — groupes par protocole ─────────────────────
@@ -4144,11 +4135,6 @@ class TestVncProtoFilter(unittest.TestCase):
     def test_vnc_default_port(self):
         """Test vnc default port (plugin_vnc, ex-_PROTO_DEFAULTS)."""
         self.assertEqual(plugin_vnc.get_plugin().default_port, 5900)
-
-    def test_proto_filter_accepts_vnc(self):
-        """Test proto filter accepts vnc."""
-        proto_filter = {"ssh", "vnc", "rdp"}
-        self.assertIn("vnc", proto_filter)
 
     def test_check_port_open_with_vnc_port(self):
         """_check_port_open peut être appelé avec le port VNC 5900."""
