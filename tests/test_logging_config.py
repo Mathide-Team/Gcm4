@@ -225,3 +225,50 @@ def test_stderr_debug_avec_gcm_debug():
     """GCM_DEBUG=1 : DEBUG visible, avec le thread émetteur."""
     err = _executer({"GCM_DEBUG": "1"})
     assert "ligne-debug" in err and "MainProcess:MainThread" in err
+
+
+# --- Convention bibliothèque des *_core.py (issue #130) ---------------------
+
+
+def test_chaque_core_qui_journalise_se_desactive():
+    """Tout *_core.py racine qui importe loguru se désactive et figure dans CORE_MODULES."""
+    import ast
+
+    attendus = []
+    for chemin in sorted(ROOT.glob("*_core.py")):
+        arbre = ast.parse(chemin.read_text(encoding="utf-8"))
+        if not any(isinstance(n, ast.ImportFrom) and n.module == "loguru" for n in arbre.body):
+            continue
+        attendus.append(chemin.stem)
+        desactive = any(
+            isinstance(n, ast.Expr)
+            and isinstance(n.value, ast.Call)
+            and getattr(n.value.func, "attr", "") == "disable"
+            and [getattr(a, "id", None) for a in n.value.args] == ["__name__"]
+            for n in arbre.body
+        )
+        assert desactive, f"{chemin.name} : ajouter <logger>.disable(__name__) au niveau module"
+    assert sorted(lc.CORE_MODULES) == attendus
+
+
+def test_core_muet_avant_configure_logging_puis_reactive():
+    """Un module *_core ne journalise rien avant configure_logging(), puis normalement."""
+    import snmp_bulk_core
+
+    lc._reset_for_tests()
+    logger.disable("snmp_bulk_core")
+    recus: list[str] = []
+    sink = logger.add(lambda m: recus.append(m.record["name"]), level="DEBUG")
+    try:
+        snmp_bulk_core.find_missing_variables("{x}", set())
+        assert "snmp_bulk_core" not in recus
+        lc.configure_logging("DEBUG", force=True)
+        sink = logger.add(lambda m: recus.append(m.record["name"]), level="DEBUG")
+        snmp_bulk_core.find_missing_variables("{x}", set())
+        assert "snmp_bulk_core" in recus
+    finally:
+        lc._reset_for_tests()
+        try:
+            logger.remove(sink)
+        except ValueError:
+            pass
