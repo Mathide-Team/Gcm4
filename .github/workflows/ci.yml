@@ -85,9 +85,31 @@ jobs:
         # Couverture (issue #128) : périmètre et seuil bloquant (fail_under)
         # lus dans [tool.coverage.*] de pyproject.toml. L'étape échoue si la
         # couverture totale passe sous le seuil.
-        run: >-
-          uv run python -m pytest tests/ -q
-          --cov --cov-report=term-missing:skip-covered --cov-report=xml
+        # Issue #160 : -rs liste chaque test sauté et sa raison ; la sortie
+        # est relue par l'étape suivante.
+        run: |
+          set -o pipefail
+          uv run python -m pytest tests/ -q -rs \
+            --cov --cov-report=term-missing:skip-covered --cov-report=xml \
+            | tee /tmp/pytest.txt
+
+      - name: Aucun test sauté silencieusement (issue #160)
+        # Un test sauté est une vérification qui n'a pas eu lieu. Ce job
+        # installe gettext : un test sauté faute de msgfmt fait échouer la
+        # CI. Le nombre de tests sautés et leurs raisons vont dans le résumé.
+        # Seul saut toléré : src/gcm4 absent (épopée GTK4, #118).
+        if: always()
+        run: |
+          sautes=$(grep -c '^SKIPPED' /tmp/pytest.txt || true)
+          {
+            echo "### Tests sautés : ${sautes}"
+            grep '^SKIPPED' /tmp/pytest.txt | sed 's/^/- /' || true
+          } >> "$GITHUB_STEP_SUMMARY"
+          if grep '^SKIPPED' /tmp/pytest.txt | grep -v 'src/gcm4 pas encore créé'; then
+            echo "::error::tests sautés alors que ce job installe leurs dépendances (voir ci-dessus)"
+            exit 1
+          fi
+          echo "tests sautés : ${sautes} (tous tolérés)"
 
       - name: Publication du rapport de couverture (artifact)
         if: always()
