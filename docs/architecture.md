@@ -474,7 +474,7 @@ plugins/                         découverts par autoload() (cf. plugin_base.py)
 └── plugin_snmp_push.py            BatchPlugin — idem, asyncio + ezsnmp
 
 models.py         Host — _CORE_FIELDS communs + champs par protocole appris
-                  dynamiquement via _protocol_field_defaults() → 
+                  dynamiquement via _protocol_field_defaults() →
                   wMain.plugin_registry.all_host_fields() (PAS de champs codés en
                   dur par protocole : le refactor annoncé dans
                   gcm_plugin_architecture.html est terminé)
