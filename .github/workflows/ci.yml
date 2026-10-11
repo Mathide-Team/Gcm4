@@ -9,8 +9,8 @@ name: CI
 
 jobs:
   quality:
-    name: Qualité (lint, tests, catalogues .po)
-    runs-on: ubuntu-latest
+    name: Qualité (lint, tests)
+    runs-on: ${{ fromJSON(vars.RUNS_ON_LINUX || '{"group":"maison","labels":["self-hosted","linux"]}') }}
 
     steps:
       - name: Checkout du dépôt
@@ -28,15 +28,21 @@ jobs:
         run: uv sync
 
       - name: gettext (validation des catalogues .po)
-        run: sudo apt-get update && sudo apt-get install -y gettext
+        run: |
+          SUDO=""; if [ "$(id -u)" != "0" ]; then SUDO="sudo"; fi
+          command -v msgfmt >/dev/null || { $SUDO apt-get update && $SUDO env DEBIAN_FRONTEND=noninteractive apt-get install -y gettext; }
 
       - name: Lint (ruff check)
-        # `make lint` complet (ruff + flake8 gnome_connection_manager.py)
-        # ne passe pas : flake8 reste rouge sur ce fichier (voir CLAUDE.md,
-        # « Commandes de qualité »). ruff check . est vert depuis la
-        # session 36 et est le seuil exigé ici ; flake8 sera réintégré
-        # quand il sera propre (issue de suivi).
         run: uv run ruff check .
+
+      - name: Lint (flake8 gnome_connection_manager.py)
+        # Réintégré par l'issue #113 : flake8 est vert sur ce fichier.
+        run: uv run --with flake8 flake8 gnome_connection_manager.py
+
+      - name: Diagramme de classes à jour
+        # Issue #175 : un docs/class-diagram.md périmé fait échouer la CI
+        # (régénérer avec `make class-diagram`).
+        run: uv run python scripts/generate_class_diagram.py --check
 
       - name: Format (ruff format --check)
         # Parité NetCross : le job Qualité contrôle aussi le format.
@@ -44,15 +50,105 @@ jobs:
         # (cf. issue de format) ; ce verrou empêche toute régression.
         run: uv run ruff format --check .
 
-      - name: Tests (pytest)
-        # tests/test_gcm.py est exclu : ses stubs GTK/VTE sont incomplets
-        # (AttributeError GObject.SignalFlags à la collection, depuis
-        # l'ajout de key_picker_dialog.py) — 280 tests + 100 subtests
-        # passent sans lui. Réparation suivie en issue ; à réintégrer
-        # dès les stubs complétés.
-        run: uv run python -m pytest tests/ -q --ignore=tests/test_gcm.py
+      - name: Imports circulaires (ancien code)
+        # Issue #174 : le hook pre-commit tools/check_circular_imports.py
+        # est aussi bloquant en CI ; les contrats de couches sont vérifiés
+        # par tests/test_architecture_imports.py dans l'étape suivante.
+        run: uv run python tools/check_circular_imports.py
+
+      - name: Contrats import-linter (src/gcm4)
+        # Actif dès que le paquet src/gcm4 de l'épopée GTK4 existe.
+        run: |
+          if [ -d src/gcm4 ]; then
+            PYTHONPATH=src uv run --with import-linter lint-imports
+          else
+            echo "src/gcm4 absent : contrats import-linter différés (tests/test_architecture_imports.py couvre l'ancien code)"
+          fi
+
+      - name: Tests (pytest + couverture)
+        # Toute la suite, y compris tests/test_gcm.py (réintégré, issue #112 :
+        # stubs gi complétés et tests resynchronisés avec plugins/).
+        # Couverture (issue #128) : périmètre et seuil bloquant (fail_under)
+        # lus dans [tool.coverage.*] de pyproject.toml. L'étape échoue si la
+        # couverture totale passe sous le seuil.
+        run: >-
+          uv run python -m pytest tests/ -q
+          --cov --cov-report=term-missing:skip-covered --cov-report=xml
+
+      - name: Publication du rapport de couverture (artifact)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: coverage.xml
+          if-no-files-found: warn
+
+
+  types:
+    # Issue #173 : bloquant sur les modules listés dans [tool.mypy] files
+    # (pyproject.toml), liste qui ne peut que s'allonger.
+    name: Types (mypy)
+    runs-on: ${{ fromJSON(vars.RUNS_ON_LINUX || '{"group":"maison","labels":["self-hosted","linux"]}') }}
+
+    steps:
+      - name: Checkout du dépôt
+        uses: actions/checkout@v7
+
+      - name: Installation de uv
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+        with:
+          enable-cache: true
+
+      - name: Installation de Python
+        run: uv python install
+
+      - name: Installation des dépendances (groupe dev)
+        run: uv sync
+
+      - name: mypy
+        run: uv run mypy
+  i18n:
+    # Issue #166 : catalogues bloquants dans un job dédié. Modifier une
+    # chaîne _() sans lancer `make i18n-update` fait échouer ce job.
+    name: i18n (catalogues à jour)
+    runs-on: ${{ fromJSON(vars.RUNS_ON_LINUX || '{"group":"maison","labels":["self-hosted","linux"]}') }}
+
+    steps:
+      - name: Checkout du dépôt
+        uses: actions/checkout@v7
+
+      - name: Installation de uv
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+        with:
+          enable-cache: true
+
+      - name: Installation de Python
+        run: uv python install
+
+      - name: Installation des dépendances (groupe dev)
+        run: uv sync
+
+      - name: gettext
+        run: |
+          SUDO=""; if [ "$(id -u)" != "0" ]; then SUDO="sudo"; fi
+          command -v msgfmt >/dev/null || { $SUDO apt-get update && $SUDO env DEBIAN_FRONTEND=noninteractive apt-get install -y gettext; }
 
       - name: Catalogues de traduction (.po)
         # Même validation que `make validate` : msgfmt --check sur les
         # 29 langues de lang/ (tools/validate_po.py).
         run: uv run python tools/validate_po.py lang/*.po
+
+      - name: "Catalogues à jour avec les sources (issue #165)"
+        # Échoue si lang/messages.pot ou un lang/*.po n'a pas été régénéré
+        # après l'ajout ou la modification d'une chaîne traduisible :
+        # lancer `make i18n-update` et committer lang/.
+        run: scripts/i18n-update.sh --check
+
+      - name: Compilation de toutes les locales
+        # Dans un dossier temporaire : les .mo suivis par git ne sont pas
+        # réécrits, mais chaque catalogue doit se compiler.
+        run: scripts/i18n-update.sh --compile "$RUNNER_TEMP/locale"
+
+      - name: Rapport de traduction (résumé du job)
+        if: always()
+        run: uv run python scripts/i18n_report.py --markdown

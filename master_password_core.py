@@ -62,14 +62,9 @@ import base64
 import hashlib
 import os
 
+from loguru import logger as app_logger
+
 import pyAES
-
-try:
-    from loguru import logger as app_logger
-except ImportError:  # pragma: no cover — garde-fou si loguru est absent
-    import logging
-
-    app_logger = logging.getLogger(__name__)  # type: ignore[assignment]
 
 __all__ = [
     "MASTER_PASSWORD_MAGIC",

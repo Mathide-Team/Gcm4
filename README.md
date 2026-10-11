@@ -273,7 +273,9 @@ sudo gem install fpm
 | `make deb` | `.deb` Debian / Ubuntu |
 | `make rpm` | `.rpm` Fedora / RHEL / CentOS |
 | `make opensuse` | `.rpm` **openSUSE / SLES** (dépendances zypper : `typelib-1_0-Vte-2.91`) |
-| `make translate` | Compile les 16 `.po` → `.mo` |
+| `make translate` | Compile les `.po` de `lang/LINGUAS` → `.mo` |
+| `make i18n-update` | Extrait les chaînes (`lang/messages.pot`) et met à jour les `.po` |
+| `make i18n-check` | Échoue si le `.pot` ou un `.po` est périmé (CI) |
 | `make validate` | Valide `.po` (msgfmt) + `.glade` / `.xml` / `.json` |
 | `make test` | Lance la suite pytest (777 tests) |
 | `make lint` | ruff + flake8 |
@@ -367,6 +369,20 @@ pre-commit run --all-files  # vérification manuelle
 - 8 bugs upstream corrigés (#64 #66 #67 #81 #82 #87 #88 #89)
 - 188 docstrings Google (#110)
 - Compatibilité Python 3.13 / GTK 3.24+
+
+---
+
+## Journaux et mode debug
+
+```bash
+./gnome_connection_manager.py --debug          # ou GCM_DEBUG=1
+GCM_LOG_LEVEL=TRACE ./gnome_connection_manager.py
+```
+
+Le journal permanent est `~/.gcm/log/gcm-app.log`. Niveaux, variables
+d'environnement, données sensibles à relire avant de joindre un journal à
+un bug, règles pour les contributeurs : voir
+[docs/journalisation.md](docs/journalisation.md).
 
 ---
 

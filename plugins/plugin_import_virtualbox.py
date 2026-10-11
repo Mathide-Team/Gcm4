@@ -860,7 +860,7 @@ class VirtualBoxImportDialog(GCMBase):
                 )
             except Exception as exc:
                 logger.exception(f"VirtualBoxImportDialog._on_scan_clicked | scan failed: {exc}")
-                self._log(_(f"Scan failed: {exc}"))
+                self._log(_("Scan failed: {exc}").format(exc=exc))
                 results = []
             GLib.idle_add(self._show_preview, results)
 
@@ -1017,7 +1017,9 @@ class VirtualBoxImportBatchPlugin(BatchPlugin):
                 return
             n = app._import_done(host_dicts, default_group="VIRTUALBOX")
             if n:
-                msgbox(_(f"{n} connection(s) imported from VirtualBox."), parent=app.window)
+                msgbox(
+                    _("{n} connection(s) imported from VirtualBox.").format(n=n), parent=app.window
+                )
             else:
                 msgbox(_("No new host (duplicates ignored)."), parent=app.window)
 

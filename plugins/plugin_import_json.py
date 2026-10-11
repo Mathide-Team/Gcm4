@@ -76,7 +76,7 @@ class JsonImportBatchPlugin(BatchPlugin):
             hosts = [app._dict_to_host(d) for d in data if isinstance(d, dict) and d.get("name")]
         except Exception as exc:  # noqa: BLE001
             logger.exception(f"JsonImportBatchPlugin.activate | JSON import error: {exc}")
-            msgbox(_(f"JSON import error: {exc}"), parent=app.window)
+            msgbox(_("JSON import error: {exc}").format(exc=exc), parent=app.window)
             return
 
         if not hosts:
@@ -85,7 +85,7 @@ class JsonImportBatchPlugin(BatchPlugin):
 
         n = app._import_hosts_from_list(hosts)
         logger.info(f"JsonImportBatchPlugin.activate | imported={n} file={filename}")
-        msgbox(_(f"{n} connection(s) imported from JSON."), parent=app.window)
+        msgbox(_("{n} connection(s) imported from JSON.").format(n=n), parent=app.window)
 
 
 def get_batch_plugin() -> JsonImportBatchPlugin:

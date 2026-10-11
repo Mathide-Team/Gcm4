@@ -37,6 +37,7 @@ import gi
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import GLib, Gtk  # noqa: E402
+from loguru import logger
 from plugin_base import BatchPlugin  # noqa: E402
 
 from snmp_bulk_core import (  # noqa: E402
@@ -56,13 +57,6 @@ from snmp_bulk_core import (  # noqa: E402
     run_bulk_push,
     summarize_results,
 )
-
-try:
-    from loguru import logger
-except ImportError:  # pragma: no cover
-    import logging
-
-    logger = logging.getLogger(__name__)
 
 # Utilise le _() global injecté par bindtextdomain() si présent, sinon no-op.
 try:

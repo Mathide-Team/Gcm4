@@ -1,0 +1,47 @@
+# Vérifie que la protection réelle de `dev` correspond à la règle versionnée
+# .github/branch-protection/dev.json (issue #161, repris de Netcross #334).
+#
+# Une protection de branche est un réglage du dépôt, invisible dans le code :
+# celle de Gcm4 n'existait pas au 10/10/2026 (« Branch not protected »). Ce
+# workflow rend l'écart visible ; l'appliquer reste une action manuelle d'un
+# administrateur :
+#   gh api -X PUT repos/Mathide-Team/Gcm4/branches/dev/protection \
+#     --input .github/branch-protection/dev.json
+#
+# Pas de déclencheur pull_request : l'état de la protection ne dépend pas du
+# contenu d'une PR. La cohérence de la règle avec les workflows (chaque check
+# requis correspond à un job qui tourne sur les PR vers dev) est vérifiée sur
+# chaque PR par tests/test_check_branch_protection.py.
+#
+# Avec le GITHUB_TOKEN (sans droit d'administration), l'exigence de branche à
+# jour (strict) n'est pas lisible : elle est signalée en avertissement.
+name: Protection de dev
+
+"on":
+  push:
+    branches: [dev]
+  schedule:
+    - cron: "23 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verification:
+    name: "Protection de dev conforme à la règle versionnée"
+    runs-on: ${{ fromJSON(vars.RUNS_ON_LINUX || '{"group":"maison","labels":["self-hosted","linux"]}') }}
+    steps:
+      - name: Checkout du dépôt
+        uses: actions/checkout@v7
+
+      - name: Installation de uv
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+
+      - name: Installation de Python
+        run: uv python install
+
+      - name: Comparaison avec .github/branch-protection/dev.json
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: uv run scripts/check_branch_protection.py --branche dev

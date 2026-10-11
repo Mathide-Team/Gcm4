@@ -63,12 +63,7 @@ from collections.abc import Callable
 from dataclasses import dataclass, field
 from pathlib import Path
 
-try:
-    from loguru import logger
-except ImportError:  # pragma: no cover
-    import logging
-
-    logger = logging.getLogger(__name__)
+from loguru import logger
 
 # Réutilisation explicite : mêmes formats CSV/gabarit/log/manifest que pour
 # Netmiko, aucune raison de les dupliquer (cf. docstring de module).

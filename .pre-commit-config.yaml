@@ -54,3 +54,12 @@ repos:
         language: system
         pass_filenames: false
         always_run: true
+
+      # Diagramme de classes généré (issue #175) : régénéré dès qu'un
+      # fichier Python du périmètre change ; le job Qualité vérifie --check.
+      - id: class-diagram
+        name: docs/class-diagram.md à jour
+        entry: uv run python scripts/generate_class_diagram.py
+        language: system
+        pass_filenames: false
+        files: \.py$

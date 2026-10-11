@@ -42,19 +42,16 @@ sans risque fonctionnel si oublié dans un premier temps.
 
 ## 2. Inventaire — domaine i18n `gcm-lang`
 
-**29 occurrences** au total : 1 dans `gnome_connection_manager.py`
+**2 occurrences** depuis l'issue #165 : 1 dans `gnome_connection_manager.py`
 (`domain_name = "gcm-lang"`, ligne unique, transmise à
-`gcm4_core.bindtextdomain()`) + **28 lignes** dans `Makefile` (une par
-fichier `.po` dans `lang/`, compilation `.po` → `.mo` sous
-`lang/<code>/LC_MESSAGES/gcm-lang.mo`) — purement mécanique, aucune logique
-à adapter au-delà du texte du domaine.
+`gcm4_core.bindtextdomain()`) + 1 dans `scripts/i18n-update.sh`
+(`DOMAIN="${GCM_I18N_DOMAIN:-gcm-lang}"`, utilisé par `--compile` pour
+écrire `lang/<code>/LC_MESSAGES/gcm-lang.mo`). Les 28 lignes `msgfmt` du
+`Makefile` (qui omettaient d'ailleurs une langue sur les 29) ont été
+remplacées par `scripts/i18n-update.sh --compile lang`.
 
-Aparté sans lien direct avec le renommage : `generate_pot.sh` référence un
-dossier `po/` (inexistant — le dépôt utilise `lang/`) et un fichier
-`gnome-connection-manager.glade` (inexistant depuis la session-08, comme le
-`Makefile` — voir §4). Ce script semble ne plus être invoqué par aucune
-cible `Makefile` ; probablement un vestige indépendant du renommage, non
-traité cette session (hors périmètre).
+`generate_pot.sh` (qui visait un dossier `po/` inexistant) délègue
+désormais à `scripts/i18n-update.sh`.
 
 ## 3. Inventaire — fichier `.desktop`
 

@@ -25,12 +25,13 @@ Dépendances : pip install paramiko
 import argparse
 import csv
 import json
-import logging
 import re
 import subprocess
 import sys
 from dataclasses import dataclass, field
 from urllib.parse import urlparse
+
+from loguru import logger as log
 
 try:
     import paramiko
@@ -38,12 +39,17 @@ except ImportError:
     print("Dépendance manquante : pip install paramiko")
     sys.exit(1)
 
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(message)s",
-    datefmt="%H:%M:%S",
-)
-log = logging.getLogger(__name__)
+
+def _configure_logging() -> None:
+    """Sortie console de l'outil autonome (appelée par main() uniquement).
+
+    Outil lancé hors de l'application (``python3 tools/...``) : il configure
+    son propre puits loguru au démarrage, jamais à l'import (issue #170).
+    """
+    log.debug("_configure_logging() called | remplacement du puits par défaut")
+    log.remove()
+    log.add(sys.stderr, level="INFO", format="{time:HH:mm:ss} [{level}] {message}")
+    log.debug("_configure_logging() returning | stderr niveau INFO")
 
 
 # ─── Structures ──────────────────────────────────────────────────────────────
@@ -1135,6 +1141,7 @@ def main() -> None:
     Returns:
         None: Exécute la collecte et les exports demandés.
     """
+    _configure_logging()
     args = _build_parser().parse_args()
 
     uris = args.uris or get_libvirt_uris()
