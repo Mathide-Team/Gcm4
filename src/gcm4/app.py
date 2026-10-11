@@ -14,7 +14,7 @@ from loguru import logger
 
 import gcm4_core
 import logging_config
-from gcm4.core import cli
+from gcm4.core import cli, i18n
 
 # Paquets système de PyGObject, GTK4 et libadwaita (D1 de #118).
 PAQUETS_GTK = {
@@ -27,11 +27,12 @@ CODE_GTK_ABSENT = 3
 
 def main(argv: list[str] | None = None) -> int:
     """Lance gcm4 ; renvoie le code de sortie du processus."""
+    logger.debug("main: entrée")  # muet : gcm4 est désactivé jusqu'à configure_logging
     # Journalisation configurée avant tout : niveau de GCM_LOG_LEVEL /
     # GCM_DEBUG, sans quoi loguru écrirait du DEBUG sur stderr par défaut.
     logging_config.configure_logging()
-    logger.debug("main: entrée")
     args = cli.parse_args(sys.argv[1:] if argv is None else argv)
+    i18n.install()
     if args.debug:
         logging_config.enable_debug(config_dir=args.config_dir)
     else:
