@@ -13,10 +13,11 @@ restaurée, pas la position.
 from __future__ import annotations
 
 import configparser
-import os
 from dataclasses import dataclass
 
 from loguru import logger
+
+from gcm4.core.config import update_keys
 
 SECTION = "window"
 CLE_LARGEUR = "window-width"
@@ -73,18 +74,23 @@ def load_window_state(config_file: str) -> WindowState:
 
 
 def save_window_state(config_file: str, etat: WindowState) -> None:
-    """Écrit ``etat`` dans ``config_file`` sans toucher aux autres clés."""
+    """Écrit ``etat`` dans ``config_file`` sans toucher aux autres clés.
+
+    Écriture sûre de :func:`gcm4.core.config.update_keys` (0600, ``fsync``,
+    ``.bak``) ; un ``gcm.conf`` corrompu n'est jamais réécrit.
+
+    Raises:
+        ConfigError: fichier illisible ou corrompu, ou écriture impossible.
+    """
     logger.debug("save_window_state: {} {}", config_file, etat)
-    cp = _lire(config_file)
-    if not cp.has_section(SECTION):
-        cp.add_section(SECTION)
-    cp.set(SECTION, CLE_LARGEUR, str(etat.width))
-    cp.set(SECTION, CLE_HAUTEUR, str(etat.height))
-    cp.set(SECTION, CLE_PANNEAU, str(etat.panel_width))
-    cp.set(SECTION, CLE_PANNEAU_VISIBLE, str(etat.show_panel))
-    os.makedirs(os.path.dirname(os.path.abspath(config_file)), exist_ok=True)
-    temporaire = config_file + ".tmp"
-    with open(temporaire, "w", encoding="utf-8") as fichier:
-        cp.write(fichier)
-    os.replace(temporaire, config_file)
+    update_keys(
+        config_file,
+        SECTION,
+        {
+            CLE_LARGEUR: str(etat.width),
+            CLE_HAUTEUR: str(etat.height),
+            CLE_PANNEAU: str(etat.panel_width),
+            CLE_PANNEAU_VISIBLE: str(etat.show_panel),
+        },
+    )
     logger.debug("save_window_state: écrit")
