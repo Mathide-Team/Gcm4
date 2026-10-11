@@ -164,6 +164,7 @@ ci:
 	uv run --with flake8 flake8 gnome_connection_manager.py
 	uv run python scripts/generate_class_diagram.py --check
 	uv run ruff format --check .
+	uvx pre-commit run --all-files --show-diff-on-failure
 	uv run python tools/check_circular_imports.py
 	uv run python -m pytest tests/ -q --cov --cov-report=term-missing:skip-covered
 	uv run mypy

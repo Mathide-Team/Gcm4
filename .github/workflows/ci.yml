@@ -50,6 +50,14 @@ jobs:
         # (cf. issue de format) ; ce verrou empêche toute régression.
         run: uv run ruff format --check .
 
+      - name: Hooks pre-commit (tous les fichiers)
+        # Issue #90 : les hooks de .pre-commit-config.yaml (espaces en fin
+        # de ligne, fin de fichier, conflits, gros fichiers, imports
+        # circulaires, diagramme de classes) s'exécutent aussi en CI, sur
+        # tout le dépôt : un poste sans `pre-commit install` ne peut plus
+        # faire passer un écart.
+        run: uvx pre-commit run --all-files --show-diff-on-failure
+
       - name: Imports circulaires (ancien code)
         # Issue #174 : le hook pre-commit tools/check_circular_imports.py
         # est aussi bloquant en CI ; les contrats de couches sont vérifiés
