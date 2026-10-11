@@ -114,6 +114,7 @@ mypy_path = "src"
 files = [
     # Paquet GTK4 (#133) : tout sauf ui/ (PyGObject sans types, cf. plus haut).
     "src/gcm4/__init__.py",
+    "src/gcm4/__main__.py",
     "src/gcm4/app.py",
     "src/gcm4/core/__init__.py",
     "src/gcm4/core/cli.py",
