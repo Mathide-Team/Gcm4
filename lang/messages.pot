@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME Connection Manager\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-10 20:28+0000\n"
+"POT-Creation-Date: 2026-10-11 23:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -72,7 +72,7 @@ msgstr ""
 msgid "New template"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/main_window.py
 msgid "Menu"
 msgstr ""
 
@@ -592,7 +592,7 @@ msgid ""
 "Copyright © 2012 Renzo Bertuzzi L. <kuthulu@gmail.com> - Chile"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/application.py
 msgid "A simple ssh connection manager for gnome"
 msgstr ""
 
@@ -2502,6 +2502,18 @@ msgstr ""
 
 #: plugins/plugin_web.py
 msgid "URL is required."
+msgstr ""
+
+#: src/gcm4/ui/main_window.py
+msgid "Welcome to Gnome Connection Manager"
+msgstr ""
+
+#: src/gcm4/ui/main_window.py
+msgid "Hosts and groups will appear in the left panel."
+msgstr ""
+
+#: src/gcm4/ui/main_window.py
+msgid "Home"
 msgstr ""
 
 #: ssh_config_editor.py
