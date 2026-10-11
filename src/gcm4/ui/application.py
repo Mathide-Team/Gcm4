@@ -3,17 +3,22 @@
 from __future__ import annotations
 
 import argparse
+import os
+from collections.abc import Iterable
 
-from gi.repository import Adw, Gio, Gtk
+from gi.repository import Adw, Gdk, Gio, GLib, Gtk
 from loguru import logger
 
 from gcm4 import __version__
-from gcm4.core import menu
+from gcm4.core import menu, theme
+from gcm4.core.config import ConfigError
 from gcm4.core.i18n import _
 from gcm4.ui.main_window import MainWindow
 
 APPLICATION_ID = "io.github.MathildeDec.gcm4"
 SITE = "https://github.com/Mathide-Team/Gcm4"
+#: Règles CSS encore utiles de l'ancienne interface (audit dans le fichier).
+STYLE_CSS = os.path.join(os.path.dirname(__file__), "style.css")
 DEVELOPPEURS = ["Renzo Bertuzzi L. <kuthulu@gmail.com>", "MathildeDec"]
 
 
@@ -30,6 +35,9 @@ class Gcm4Application(Adw.Application):
             flags=Gio.ApplicationFlags.HANDLES_COMMAND_LINE if flags is None else flags,
         )
         self.args = args
+        self.config_file = os.path.join(args.config_dir, "gcm.conf")
+        self.css_principal: Gtk.CssProvider | None = None
+        self.css_couleurs: Gtk.CssProvider | None = None
         self.connect("startup", self._on_startup)
         self.connect("activate", self._on_activate)
         self.connect("command-line", self._on_command_line)
@@ -52,7 +60,67 @@ class Gcm4Application(Adw.Application):
             preferences.set_enabled(False)
         for action, touches in menu.RACCOURCIS.items():
             self.set_accels_for_action(action, list(touches))
+        mode = theme.load_theme(self.config_file)
+        action_theme = Gio.SimpleAction.new_stateful(
+            "theme", GLib.VariantType.new("s"), GLib.Variant("s", mode)
+        )
+        action_theme.connect("change-state", self._on_theme)
+        self.add_action(action_theme)
+        self.appliquer_theme(mode)
+        self._charger_css()
         logger.debug("_on_startup: fin")
+
+    def appliquer_theme(self, mode: str) -> None:
+        """Applique ``mode`` (``system`` / ``light`` / ``dark``) à chaud avec ``Adw.StyleManager``."""
+        logger.debug("appliquer_theme: {}", mode)
+        schema = getattr(Adw.ColorScheme, theme.SCHEMAS[mode])
+        Adw.StyleManager.get_default().set_color_scheme(schema)
+        logger.debug("appliquer_theme: fait")
+
+    def _on_theme(self, action: Gio.SimpleAction, valeur: GLib.Variant) -> None:
+        """Menu Affichage > thème : applique, puis enregistre dans gcm.conf."""
+        logger.debug("_on_theme: entrée")
+        mode = valeur.get_string()
+        logger.debug("_on_theme: {}", mode)
+        if mode not in theme.MODES:
+            logger.warning("_on_theme: mode inconnu {!r}", mode)
+            return
+        action.set_state(valeur)
+        self.appliquer_theme(mode)
+        try:
+            theme.save_theme(self.config_file, mode)
+        except ConfigError as exc:
+            logger.warning("_on_theme: thème non enregistré ({})", exc)
+        logger.debug("_on_theme: fait")
+
+    def _charger_css(self) -> None:
+        """Feuille de style de la base et feuille des couleurs de groupe (vide au départ)."""
+        logger.debug("_charger_css: {}", STYLE_CSS)
+        ecran = Gdk.Display.get_default()
+        if ecran is None:
+            logger.warning("_charger_css: aucun écran, CSS non chargé")
+            return
+        self.css_principal = Gtk.CssProvider()
+        self.css_principal.load_from_path(STYLE_CSS)
+        self.css_couleurs = Gtk.CssProvider()
+        for fournisseur in (self.css_principal, self.css_couleurs):
+            Gtk.StyleContext.add_provider_for_display(
+                ecran, fournisseur, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+            )
+        logger.debug("_charger_css: fait")
+
+    def set_group_colors(self, couleurs: Iterable[str]) -> None:
+        """Recharge les classes ``gcm-couleur-rrggbb`` (arbre des hôtes, #121)."""
+        logger.debug("set_group_colors")
+        if self.css_couleurs is None:
+            logger.debug("set_group_colors: CSS non chargé")
+            return
+        css = theme.colors_css(couleurs)
+        if hasattr(self.css_couleurs, "load_from_string"):  # GTK ≥ 4.12
+            self.css_couleurs.load_from_string(css)
+        else:  # GTK 4.8 (Debian 12)
+            self.css_couleurs.load_from_data(css, -1)
+        logger.debug("set_group_colors: fait")
 
     def _on_command_line(self, _app: Adw.Application, _ligne: Gio.ApplicationCommandLine) -> int:
         """Ligne de commande (déjà analysée) : active la fenêtre, y compris d'une 2e instance."""

@@ -68,7 +68,7 @@ def test_ecriture_cree_le_dossier_sans_temporaire_restant(tmp_path):
 def test_menu_actions_et_raccourcis():
     """Le menu de la base n'utilise que des actions app.* et win.* ; chaque raccourci vise une action du menu."""
     actions = menu.actions_du_menu()
-    assert actions == ["app.quit", "app.preferences", "win.toggle-panel", "app.about"]
+    assert actions == ["app.quit", "app.preferences", "win.toggle-panel", "app.theme", "app.about"]
     assert set(menu.RACCOURCIS) <= set(actions)
 
 
@@ -96,3 +96,27 @@ def test_sans_catalogue_texte_d_origine(tmp_path):
     """Dossier sans catalogue : le msgid anglais est renvoyé tel quel."""
     i18n.install(tmp_path)
     assert i18n._("Quit") == "Quit"
+
+
+def test_ini_corrompu_jamais_reecrit(tmp_path):
+    """Enregistrer l'état sur un gcm.conf corrompu : ConfigError, fichier intact (pas d'écrasement)."""
+    import pytest
+
+    from gcm4.core.config import ConfigError
+
+    conf = tmp_path / "gcm.conf"
+    conf.write_text("[host 1\nname = precieux\n", encoding="utf-8")
+    with pytest.raises(ConfigError):
+        save_window_state(str(conf), WindowState(800, 600, 200, True))
+    assert conf.read_text(encoding="utf-8") == "[host 1\nname = precieux\n"
+
+
+def test_etat_ecrit_en_0600(tmp_path):
+    """gcm.conf contient des mots de passe : l'état de fenêtre l'écrit en 0600."""
+    import stat
+
+    conf = tmp_path / "gcm.conf"
+    conf.write_text("[options]\n", encoding="utf-8")
+    conf.chmod(0o644)
+    save_window_state(str(conf), WindowState())
+    assert stat.S_IMODE(conf.stat().st_mode) == 0o600
