@@ -175,7 +175,7 @@ ignore = [
     # B006 — listes mutables comme valeur par défaut (héritage upstream)
     "B006",
     # W291/W293 — espaces en fin de ligne (géré par trailing-whitespace pre-commit)
-  
+
     # SIM117 — nested with (Python < 3.10 compat)
     "SIM117",
     # UP007 — X | Y union types (garder Optional[] pour compat)

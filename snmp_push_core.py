@@ -65,6 +65,10 @@ from pathlib import Path
 
 from loguru import logger
 
+# Convention bibliothèque (#130) : muet à l'import, réactivé par
+# logging_config.configure_logging() (CORE_MODULES).
+logger.disable(__name__)
+
 # Réutilisation explicite : mêmes formats CSV/gabarit/log/manifest que pour
 # Netmiko, aucune raison de les dupliquer (cf. docstring de module).
 from netmiko_bulk_core import (  # noqa: F401

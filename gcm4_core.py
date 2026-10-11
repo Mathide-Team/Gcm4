@@ -69,6 +69,10 @@ from typing import TYPE_CHECKING
 
 from loguru import logger as app_logger
 
+# Convention bibliothèque (#130) : muet à l'import, réactivé par
+# logging_config.configure_logging() (CORE_MODULES).
+app_logger.disable(__name__)
+
 import pyAES
 
 if TYPE_CHECKING:

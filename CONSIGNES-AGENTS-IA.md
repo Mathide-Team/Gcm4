@@ -172,6 +172,10 @@ tenu de résorber tout l'historique en une fois.
 
 ## 7. Pre-commit — imports circulaires interdits
 
+Depuis l'issue #90, la CI exécute aussi `pre-commit run --all-files` (job
+« Qualité (lint, tests) ») : installer le hook en local évite seulement de
+le découvrir en CI.
+
 Voir `.pre-commit-config.yaml` (ruff, hygiène de base, et le hook local
 `tools/check_circular_imports.py`). Installation (une fois) :
 
