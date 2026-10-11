@@ -6,7 +6,7 @@
 > toute modification manuelle sera écrasée. Le régénérer avec `make class-diagram` ;
 > le job Qualité échoue s'il est périmé (`--check`).
 
-54 modules · 116 classes · 193 fonctions publiques de module.
+58 modules · 120 classes · 199 fonctions publiques de module.
 
 Conventions : `+` public, `-` privé (préfixe `_`) ; `list~str~` = `list[str]` ; `<<module>>`
 regroupe les fonctions publiques d'un module ; `<<…>>` sur une classe liste `dataclass` et les
@@ -37,6 +37,8 @@ flowchart TD
     g3 -->|1| g5
     g4 -->|2| g0
     g4 -->|1| g3
+    g5 -->|1| g3
+    g5 -->|4| g4
 ```
 
 ## Cœur (sans GTK)
@@ -1256,7 +1258,10 @@ classDiagram
 |---|---|---|
 | `gcm4.core` | `src/gcm4/core/__init__.py` | Cœur de gcm4 : modèle, configuration, services. |
 | `gcm4.core.cli` | `src/gcm4/core/cli.py` | Ligne de commande de gcm4, analysée avant toute initialisation GTK (#133). |
+| `gcm4.core.i18n` | `src/gcm4/core/i18n.py` | Traductions de gcm4 : domaine gettext ``gcm-lang`` de l'application GTK3. |
+| `gcm4.core.menu` | `src/gcm4/core/menu.py` | Menu principal et raccourcis de gcm4, décrits sans GTK (#134). |
 | `gcm4.core.model` | `src/gcm4/core/model.py` | Modèle de la base GTK4 : Host, Group, HostStore, sans GTK (#136). |
+| `gcm4.core.window_state` | `src/gcm4/core/window_state.py` | Géométrie de la fenêtre principale, dans ``gcm.conf`` (#134). |
 
 ```mermaid
 classDiagram
@@ -1264,6 +1269,25 @@ classDiagram
         <<module>>
         +build_parser() argparse.ArgumentParser
         +parse_args(argv, home) argparse.Namespace
+    }
+    class mod_gcm4_core_i18n {
+        <<module>>
+        +locale_dirs() list~Path~
+        +install(locale_dir) gettext.NullTranslations
+    }
+    class mod_gcm4_core_menu {
+        <<module>>
+        +actions_du_menu() list~str~
+    }
+    class Entree {
+        <<dataclass>>
+        +str libelle
+        +str action
+    }
+    class SousMenu {
+        <<dataclass>>
+        +str titre
+        +tuple~tuple~Entree, ...~, ...~ sections
     }
     class mod_gcm4_core_model {
         <<module>>
@@ -1317,6 +1341,18 @@ classDiagram
         +duplicate(host) Host
         +search(texte) list~Host~
     }
+    class mod_gcm4_core_window_state {
+        <<module>>
+        +load_window_state(config_file) WindowState
+        +save_window_state(config_file, etat) None
+    }
+    class WindowState {
+        <<dataclass>>
+        +int width
+        +int height
+        +int panel_width
+        +bool show_panel
+    }
 ```
 
 ## gcm4.ui
@@ -1324,7 +1360,8 @@ classDiagram
 | Module | Fichier | Rôle |
 |---|---|---|
 | `gcm4.ui` | `src/gcm4/ui/__init__.py` | Interface GTK4 de gcm4 : seul endroit autorisé à importer ``gi``. |
-| `gcm4.ui.application` | `src/gcm4/ui/application.py` | Application libadwaita de gcm4 (#133 ; fenêtre et actions : #134). |
+| `gcm4.ui.application` | `src/gcm4/ui/application.py` | Application libadwaita de gcm4 : instance unique, actions, À propos (#133, #134). |
+| `gcm4.ui.main_window` | `src/gcm4/ui/main_window.py` | Fenêtre principale de gcm4 (#134). |
 
 ```mermaid
 classDiagram
@@ -1334,5 +1371,14 @@ classDiagram
     }
     class Gcm4Application {
         <<Adw.Application>>
+        +boite_a_propos() Gtk.Widget
+    }
+    class mod_gcm4_ui_main_window {
+        <<module>>
+        +construire_menu() Gio.Menu
+    }
+    class MainWindow {
+        <<Adw.ApplicationWindow>>
+        +etat_courant() window_state.WindowState
     }
 ```

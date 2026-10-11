@@ -14,7 +14,7 @@ from loguru import logger
 
 import gcm4_core
 import logging_config
-from gcm4.core import cli
+from gcm4.core import cli, i18n
 
 # Paquets système de PyGObject, GTK4 et libadwaita (D1 de #118).
 PAQUETS_GTK = {
@@ -32,6 +32,7 @@ def main(argv: list[str] | None = None) -> int:
     # GCM_DEBUG, sans quoi loguru écrirait du DEBUG sur stderr par défaut.
     logging_config.configure_logging()
     args = cli.parse_args(sys.argv[1:] if argv is None else argv)
+    i18n.install()
     if args.debug:
         logging_config.enable_debug(config_dir=args.config_dir)
     else:
