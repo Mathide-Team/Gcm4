@@ -57,6 +57,10 @@ jobs:
           else
             VERSION="$(sed -n 's/^PKG_VERSION *= *//p' Makefile)"
           fi
+          # Pré-version (tag v1.3.4-rc1) : « - » devient « ~ » (1.3.4~rc1),
+          # que dpkg et rpm trient AVANT 1.3.4. Un « - » serait lu comme
+          # révision Debian et refusé dans la version rpm.
+          VERSION="${VERSION//-/\~}"
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
           echo "Version construite : $VERSION"
 
@@ -102,3 +106,5 @@ jobs:
             *.deb
             *.rpm
           generate_release_notes: true
+          # Tag avec suffixe (v1.3.4-rc1) : publiée comme pré-version.
+          prerelease: ${{ contains(github.ref_name, '-') }}
