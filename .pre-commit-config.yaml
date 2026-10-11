@@ -35,8 +35,11 @@ repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v5.0.0
     hooks:
+      # Fixtures de configuration : octets exacts (clé sans fin de ligne, valeurs vides « pass = »).
       - id: trailing-whitespace
+        exclude: ^tests/data/config/
       - id: end-of-file-fixer
+        exclude: ^tests/data/config/
       - id: check-merge-conflict
       - id: check-added-large-files
         args: [--maxkb=2048]
