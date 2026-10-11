@@ -7,6 +7,12 @@ name: CI
     branches: [main, dev]
   workflow_dispatch:
 
+# Issue #159 : un nouveau push sur la même branche ou PR annule le run
+# précédent, devenu obsolète.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   quality:
     name: Qualité (lint, tests)
@@ -79,9 +85,31 @@ jobs:
         # Couverture (issue #128) : périmètre et seuil bloquant (fail_under)
         # lus dans [tool.coverage.*] de pyproject.toml. L'étape échoue si la
         # couverture totale passe sous le seuil.
-        run: >-
-          uv run python -m pytest tests/ -q
-          --cov --cov-report=term-missing:skip-covered --cov-report=xml
+        # Issue #160 : -rs liste chaque test sauté et sa raison ; la sortie
+        # est relue par l'étape suivante.
+        run: |
+          set -o pipefail
+          uv run python -m pytest tests/ -q -rs \
+            --cov --cov-report=term-missing:skip-covered --cov-report=xml \
+            | tee /tmp/pytest.txt
+
+      - name: Aucun test sauté silencieusement (issue #160)
+        # Un test sauté est une vérification qui n'a pas eu lieu. Ce job
+        # installe gettext : un test sauté faute de msgfmt fait échouer la
+        # CI. Le nombre de tests sautés et leurs raisons vont dans le résumé.
+        # Seul saut toléré : src/gcm4 absent (épopée GTK4, #118).
+        if: always()
+        run: |
+          sautes=$(grep -c '^SKIPPED' /tmp/pytest.txt || true)
+          {
+            echo "### Tests sautés : ${sautes}"
+            grep '^SKIPPED' /tmp/pytest.txt | sed 's/^/- /' || true
+          } >> "$GITHUB_STEP_SUMMARY"
+          if grep '^SKIPPED' /tmp/pytest.txt | grep -v 'src/gcm4 pas encore créé'; then
+            echo "::error::tests sautés alors que ce job installe leurs dépendances (voir ci-dessus)"
+            exit 1
+          fi
+          echo "tests sautés : ${sautes} (tous tolérés)"
 
       - name: Publication du rapport de couverture (artifact)
         if: always()
@@ -160,3 +188,47 @@ jobs:
       - name: Rapport de traduction (résumé du job)
         if: always()
         run: uv run python scripts/i18n_report.py --markdown
+
+  gtk4:
+    # Issue #159 (job « Tests GTK4 (Xvfb) ») et #160 (aucun test GTK
+    # sauté). Aujourd'hui : la suite de plugins/pluginvnc2 (seul code déjà
+    # GTK4, 155 tests) contre un vrai GTK4 sous Xvfb ; src/gcm4/ui la
+    # rejoindra (épopée #118). Conteneur Ubuntu comme le job gtk4 de
+    # Netcross : python3-gi et GTK4 viennent des paquets, sans compilation.
+    name: Tests GTK4 (Xvfb)
+    runs-on: ${{ fromJSON(vars.RUNS_ON_GTK4 || '"ubuntu-latest"') }}
+    container:
+      image: ubuntu:26.04
+
+    steps:
+      - name: GTK4, introspection, Xvfb
+        run: |
+          DEBIAN_FRONTEND=noninteractive apt-get update -qq
+          DEBIAN_FRONTEND=noninteractive apt-get install -y -qq \
+            git ca-certificates python3 python3-venv python3-gi \
+            gir1.2-gtk-4.0 xvfb xauth
+
+      - name: Checkout du dépôt
+        uses: actions/checkout@v7
+
+      - name: Dépendances de pluginvnc2 (venv avec python3-gi système)
+        # asyncvnc2 figé sur un commit de Mathide-Team/AsyncVnc4 (public).
+        run: |
+          python3 -m venv --system-site-packages /tmp/venv
+          /tmp/venv/bin/pip install -q -r plugins/pluginvnc2/requirements-dev.txt \
+            "asyncvnc2 @ git+https://github.com/Mathide-Team/AsyncVnc4@26be75f0582acffbf2a5cd8ea4175f5e40759db3"
+
+      - name: Tests pluginvnc2 sous Xvfb, aucun test sauté
+        working-directory: plugins/pluginvnc2
+        run: |
+          set -o pipefail
+          xvfb-run -a /tmp/venv/bin/python -m pytest tests -q -rs -p no:cacheprovider \
+            | tee /tmp/gtk4.txt
+          sautes=$(grep -c '^SKIPPED' /tmp/gtk4.txt || true)
+          echo "### Tests GTK4 sautés : ${sautes}" >> "$GITHUB_STEP_SUMMARY"
+          if [ "${sautes}" != "0" ]; then
+            grep '^SKIPPED' /tmp/gtk4.txt | sed 's/^/- /' >> "$GITHUB_STEP_SUMMARY"
+            echo "::error::tests GTK4 sautés alors que ce job installe GTK4 et Xvfb"
+            exit 1
+          fi
+          echo "tests GTK4 : tous exécutés"

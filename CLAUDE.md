@@ -542,6 +542,20 @@ en particulier ici où l'environnement de travail n'a pas GTK3/VTE réels
 pour vérifier empiriquement. Ne remplace pas la lecture du code source du
 dépôt lui-même ni les décisions déjà actées dans cette documentation.
 
+## Jobs CI (`.github/workflows/ci.yml`, issue #159)
+
+| Job | Runner | Contenu |
+|---|---|---|
+| Qualité (lint, tests) | maison (self-hosted) | ruff, flake8, format, pre-commit, imports circulaires, import-linter, pytest + couverture, aucun test sauté hors `src/gcm4` absent (#160) |
+| Types (mypy) | maison | mypy (#131) |
+| i18n (catalogues à jour) | maison | validation, fraîcheur et compilation des `.po` (#129) |
+| Tests GTK4 (Xvfb) | ubuntu-latest, conteneur `ubuntu:26.04` | `plugins/pluginvnc2/tests` contre un vrai GTK4, échec si un test est sauté (#160) |
+
+Paquets : workflow `release.yml` (#162). `concurrency` : un nouveau push
+annule le run obsolète de la même branche. Runners surchargeables par les
+variables `RUNS_ON_LINUX` et `RUNS_ON_GTK4`. `make ci` rejoue les trois
+premiers jobs.
+
 ## Carte de la documentation
 
 - **`docs/features-backlog.md`** — fait / pas encore fait, par urgence (importé ci-dessous)
