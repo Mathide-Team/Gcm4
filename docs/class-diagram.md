@@ -28,7 +28,7 @@ flowchart TD
     g0 -->|2| g1
     g0 -->|1| g2
     g2 -->|58| g1
-    g2 -->|3| g0
+    g2 -->|4| g0
 ```
 
 ## Cœur (sans GTK)
@@ -114,6 +114,7 @@ classDiagram
         +apply_debug_argument(args, config_dir) None
         +get_logger(name)
         +summarize(value, name) str
+        +mask_password(text) str
     }
     class mod_master_password_core {
         <<module>>
@@ -1033,7 +1034,6 @@ classDiagram
     BatchPlugin <|-- SnmpPushBatchPlugin
     class mod_plugins_plugin_spice {
         <<module>>
-        +mask_password(text) str
         +parse_spice_hosts(conf_path) list~tuple~str, str~~
         +get_plugin() SpicePlugin
     }

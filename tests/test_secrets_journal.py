@@ -6,7 +6,6 @@ plugin_spice.mask_password extraite par AST.
 """
 
 import ast
-import re
 import unittest
 from pathlib import Path
 
@@ -36,21 +35,10 @@ def _log_calls(path):
 
 
 def _load_mask_password():
-    """Extrait mask_password et _PASSWORD_RE de plugin_spice.py sans l'importer (GTK)."""
-    src = (ROOT / "plugins" / "plugin_spice.py").read_text(encoding="utf-8")
-    tree = ast.parse(src)
-    wanted = [
-        n
-        for n in tree.body
-        if (
-            isinstance(n, ast.Assign)
-            and any(getattr(t, "id", "") == "_PASSWORD_RE" for t in n.targets)
-        )
-        or (isinstance(n, ast.FunctionDef) and n.name == "mask_password")
-    ]
-    ns = {"re": re}
-    exec(compile(ast.Module(body=wanted, type_ignores=[]), "plugin_spice", "exec"), ns)  # noqa: S102
-    return ns["mask_password"]
+    """mask_password partagée, dans logging_config (sans GTK) depuis l'issue #130."""
+    import logging_config
+
+    return logging_config.mask_password
 
 
 class TestAucunSecretJournalise(unittest.TestCase):
@@ -86,7 +74,7 @@ class TestAucunSecretJournalise(unittest.TestCase):
 
 
 class TestMaskPassword(unittest.TestCase):
-    """plugin_spice.mask_password."""
+    """logging_config.mask_password (importée par plugin_spice)."""
 
     @classmethod
     def setUpClass(cls):
@@ -105,6 +93,13 @@ class TestMaskPassword(unittest.TestCase):
         out = self.mask(["remote-viewer", "spice://h?port=5930&password=abc"])
         self.assertNotIn("abc", out)
         self.assertIn("password=***", out)
+
+    def test_identifiants_d_url(self):
+        """user:motdepasse@ d'une URL devient user:***@ ; l'utilisateur reste visible."""
+        self.assertEqual(
+            self.mask("qemu+ssh://root:hunter2@pve1/system"), "qemu+ssh://root:***@pve1/system"
+        )
+        self.assertEqual(self.mask("qemu+ssh://root@pve1/system"), "qemu+ssh://root@pve1/system")
 
     def test_sans_mot_de_passe(self):
         """Sans password=, le texte est inchangé."""
