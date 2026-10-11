@@ -50,6 +50,15 @@ class TestConfigMypy(unittest.TestCase):
         for path in CONFIG["files"]:
             self.assertTrue((ROOT / path).is_file(), path)
 
+    def test_tout_src_gcm4_hors_ui_est_type(self):
+        """Chaque module de src/gcm4 hors ui/ est vérifié par mypy (oubli du lot 1b)."""
+        attendus = {
+            p.relative_to(ROOT).as_posix()
+            for p in (ROOT / "src" / "gcm4").rglob("*.py")
+            if "ui" not in p.relative_to(ROOT / "src" / "gcm4").parts
+        }
+        self.assertEqual(sorted(attendus - set(CONFIG["files"])), [])
+
     def test_modules_types_sans_gtk(self):
         """Les modules typés aujourd'hui n'importent pas GTK (PyGObject n'a pas de types)."""
         for path in CONFIG["files"]:
