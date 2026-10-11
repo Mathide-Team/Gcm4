@@ -21,8 +21,10 @@ Garanties :
 
 Mots de passe : le champ ``pass`` passe par un objet :class:`Chiffrement`.
 Par défaut (:class:`SansChiffrement`), la valeur stockée est conservée
-telle quelle ; le chiffrement de l'application (``.gcm.key``) est le lot
-2c (#138).
+telle quelle. ``gcm4.core.chiffrement.ChiffrementGcm`` (#138) lit et
+écrit le format de l'application (``.gcm.key``) ; ses deux points
+d'accroche facultatifs sont ``preparer(brut)``, appelé avant la lecture
+des hôtes, et ``version_format``, écrit dans ``[options] version``.
 """
 
 from __future__ import annotations
@@ -297,6 +299,9 @@ def load_config(path: str, chiffrement: Chiffrement | None = None) -> Config:
     except configparser.Error as exc:
         logger.warning("load_config: INI corrompu : {}", exc)
         raise ConfigError(_("The configuration file %s is corrupted: %s") % (path, exc)) from exc
+    preparer = getattr(chiffrement, "preparer", None)
+    if callable(preparer):
+        preparer(cp)  # format et clé, avant de déchiffrer le premier hôte (lot 2c)
     cfg = Config(options=_lire_options(cp), brut=cp)
     sections = sorted(
         (int(m.group(1)), s) for s in cp.sections() if (m := _SECTION_HOTE.match(s)) is not None
@@ -358,6 +363,9 @@ def _construire(cfg: Config, chiffrement: Chiffrement) -> configparser.RawConfig
             cp.add_section(section)
     for f in fields(AppConfig):
         cp.set(SECTION_OPTIONS, _cle_option(f.name), _texte_option(cfg, f.name))
+    version_format = getattr(chiffrement, "version_format", None)
+    if version_format is not None:
+        cp.set(SECTION_OPTIONS, "version", version_format)  # format des mots de passe écrits
     store = cfg.store
     groupes: list[Group] = sorted(store.groups.values(), key=lambda g: g.path)
     cp.set(

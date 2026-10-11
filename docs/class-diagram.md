@@ -6,7 +6,7 @@
 > toute modification manuelle sera écrasée. Le régénérer avec `make class-diagram` ;
 > le job Qualité échoue s'il est périmé (`--check`).
 
-59 modules · 125 classes · 201 fonctions publiques de module.
+60 modules · 127 classes · 202 fonctions publiques de module.
 
 Conventions : `+` public, `-` privé (préfixe `_`) ; `list~str~` = `list[str]` ; `<<module>>`
 regroupe les fonctions publiques d'un module ; `<<…>>` sur une classe liste `dataclass` et les
@@ -35,7 +35,8 @@ flowchart TD
     g3 -->|2| g0
     g3 -->|1| g4
     g3 -->|1| g5
-    g4 -->|2| g0
+    g4 -->|1| g1
+    g4 -->|3| g0
     g4 -->|1| g3
     g5 -->|1| g3
     g5 -->|4| g4
@@ -1257,6 +1258,7 @@ classDiagram
 | Module | Fichier | Rôle |
 |---|---|---|
 | `gcm4.core` | `src/gcm4/core/__init__.py` | Cœur de gcm4 : modèle, configuration, services. |
+| `gcm4.core.chiffrement` | `src/gcm4/core/chiffrement.py` | Mots de passe chiffrés de gcm.conf, compatibles avec l'application GTK3 (#138). |
 | `gcm4.core.cli` | `src/gcm4/core/cli.py` | Ligne de commande de gcm4, analysée avant toute initialisation GTK (#133). |
 | `gcm4.core.config` | `src/gcm4/core/config.py` | Lecture et écriture de ``~/.gcm/gcm.conf`` sans GTK (#137). |
 | `gcm4.core.i18n` | `src/gcm4/core/i18n.py` | Traductions de gcm4 : domaine gettext ``gcm-lang`` de l'application GTK3. |
@@ -1266,6 +1268,17 @@ classDiagram
 
 ```mermaid
 classDiagram
+    class mod_gcm4_core_chiffrement {
+        <<module>>
+        +dechiffrer_aes_strict(stocke, secret) str
+    }
+    class ChiffrementError
+    ConfigError <|-- ChiffrementError
+    class ChiffrementGcm {
+        +preparer(brut) None
+        +dechiffrer(stocke) str
+        +chiffrer(clair) str
+    }
     class mod_gcm4_core_cli {
         <<module>>
         +build_parser() argparse.ArgumentParser
