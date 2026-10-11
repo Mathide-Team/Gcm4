@@ -278,6 +278,30 @@ def _lire_groupes(cp: configparser.RawConfigParser, store: HostStore) -> None:
     logger.debug("_lire_groupes: {} groupe(s)", len(store.groups))
 
 
+def _lire_brut(path: str) -> configparser.RawConfigParser | None:
+    """INI brut de ``path`` ; ``None`` si absent.
+
+    Raises:
+        ConfigError: fichier illisible (droits, encodage) ou INI corrompu.
+    """
+    logger.debug("_lire_brut: {}", path)
+    cp = _parseur()
+    try:
+        with open(path, encoding="utf-8") as fichier:
+            cp.read_file(fichier)
+    except FileNotFoundError:
+        logger.debug("_lire_brut: absent")
+        return None
+    except (OSError, UnicodeDecodeError) as exc:
+        logger.warning("_lire_brut: illisible : {}", exc)
+        raise ConfigError(_("Unable to read the configuration file %s: %s") % (path, exc)) from exc
+    except configparser.Error as exc:
+        logger.warning("_lire_brut: INI corrompu : {}", exc)
+        raise ConfigError(_("The configuration file %s is corrupted: %s") % (path, exc)) from exc
+    logger.debug("_lire_brut: {} section(s)", len(cp.sections()))
+    return cp
+
+
 def load_config(path: str, chiffrement: Chiffrement | None = None) -> Config:
     """Lit ``path`` ; fichier absent → configuration par défaut.
 
@@ -286,19 +310,11 @@ def load_config(path: str, chiffrement: Chiffrement | None = None) -> Config:
     """
     logger.debug("load_config: {}", path)
     chiffrement = chiffrement or SansChiffrement()
-    cp = _parseur()
-    try:
-        with open(path, encoding="utf-8") as fichier:
-            cp.read_file(fichier)
-    except FileNotFoundError:
+    lu = _lire_brut(path)
+    if lu is None:
         logger.debug("load_config: absent, valeurs par défaut")
-        return Config(brut=cp)
-    except (OSError, UnicodeDecodeError) as exc:
-        logger.warning("load_config: illisible : {}", exc)
-        raise ConfigError(_("Unable to read the configuration file %s: %s") % (path, exc)) from exc
-    except configparser.Error as exc:
-        logger.warning("load_config: INI corrompu : {}", exc)
-        raise ConfigError(_("The configuration file %s is corrupted: %s") % (path, exc)) from exc
+        return Config(brut=_parseur())
+    cp = lu
     preparer = getattr(chiffrement, "preparer", None)
     if callable(preparer):
         preparer(cp)  # format et clé, avant de déchiffrer le premier hôte (lot 2c)
@@ -397,15 +413,13 @@ def _copie_bak(path: str) -> None:
     logger.debug("_copie_bak: fait")
 
 
-def save_config(path: str, cfg: Config, chiffrement: Chiffrement | None = None) -> None:
-    """Écrit ``cfg`` dans ``path`` de façon atomique (0600, ``.bak``, ``fsync``).
+def _ecrire_atomique(path: str, cp: configparser.RawConfigParser) -> None:
+    """Écrit ``cp`` dans ``path`` : temporaire 0600, ``fsync``, ``os.replace``, ``.bak``.
 
     Raises:
         ConfigError: écriture impossible ; l'ancien fichier est alors intact.
     """
-    logger.debug("save_config: {}", path)
-    chiffrement = chiffrement or SansChiffrement()
-    cp = _construire(cfg, chiffrement)
+    logger.debug("_ecrire_atomique: {}", path)
     dossier = os.path.dirname(os.path.abspath(path))
     temporaire = ""
     try:
@@ -420,11 +434,43 @@ def save_config(path: str, cfg: Config, chiffrement: Chiffrement | None = None) 
         os.replace(temporaire, path)
         temporaire = ""
     except OSError as exc:
-        logger.warning("save_config: écriture impossible, ancien fichier intact : {}", exc)
+        logger.warning("_ecrire_atomique: écriture impossible, ancien fichier intact : {}", exc)
         raise ConfigError(
             _("Unable to write the configuration file %s: %s") % (path, exc)
         ) from exc
     finally:
         if temporaire and os.path.exists(temporaire):
             os.unlink(temporaire)
+    logger.debug("_ecrire_atomique: fait")
+
+
+def update_keys(path: str, section: str, valeurs: dict[str, str]) -> None:
+    """Change quelques clés d'une section sans toucher au reste du fichier.
+
+    Pour l'état de fenêtre et le thème, enregistrés hors de ``save_config`` :
+    mêmes garanties (lecture stricte, écriture atomique 0600, ``.bak``).
+
+    Raises:
+        ConfigError: fichier illisible ou corrompu (il n'est alors **pas**
+            réécrit), ou écriture impossible.
+    """
+    logger.debug("update_keys: {} [{}] {}", path, section, sorted(valeurs))
+    cp = _lire_brut(path) or _parseur()
+    if not cp.has_section(section):
+        cp.add_section(section)
+    for cle, valeur in valeurs.items():
+        cp.set(section, cle, valeur)
+    _ecrire_atomique(path, cp)
+    logger.debug("update_keys: fait")
+
+
+def save_config(path: str, cfg: Config, chiffrement: Chiffrement | None = None) -> None:
+    """Écrit ``cfg`` dans ``path`` de façon atomique (0600, ``.bak``, ``fsync``).
+
+    Raises:
+        ConfigError: écriture impossible ; l'ancien fichier est alors intact.
+    """
+    logger.debug("save_config: {}", path)
+    chiffrement = chiffrement or SansChiffrement()
+    _ecrire_atomique(path, _construire(cfg, chiffrement))
     logger.debug("save_config: fait")

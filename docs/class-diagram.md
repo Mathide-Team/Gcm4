@@ -6,7 +6,7 @@
 > toute modification manuelle sera écrasée. Le régénérer avec `make class-diagram` ;
 > le job Qualité échoue s'il est périmé (`--check`).
 
-60 modules · 127 classes · 202 fonctions publiques de module.
+61 modules · 127 classes · 207 fonctions publiques de module.
 
 Conventions : `+` public, `-` privé (préfixe `_`) ; `list~str~` = `list[str]` ; `<<module>>`
 regroupe les fonctions publiques d'un module ; `<<…>>` sur une classe liste `dataclass` et les
@@ -36,10 +36,10 @@ flowchart TD
     g3 -->|1| g4
     g3 -->|1| g5
     g4 -->|1| g1
-    g4 -->|3| g0
+    g4 -->|4| g0
     g4 -->|1| g3
     g5 -->|1| g3
-    g5 -->|4| g4
+    g5 -->|6| g4
 ```
 
 ## Cœur (sans GTK)
@@ -1264,6 +1264,7 @@ classDiagram
 | `gcm4.core.i18n` | `src/gcm4/core/i18n.py` | Traductions de gcm4 : domaine gettext ``gcm-lang`` de l'application GTK3. |
 | `gcm4.core.menu` | `src/gcm4/core/menu.py` | Menu principal et raccourcis de gcm4, décrits sans GTK (#134). |
 | `gcm4.core.model` | `src/gcm4/core/model.py` | Modèle de la base GTK4 : Host, Group, HostStore, sans GTK (#136). |
+| `gcm4.core.theme` | `src/gcm4/core/theme.py` | Thème de la base GTK4, sans GTK (#135). |
 | `gcm4.core.window_state` | `src/gcm4/core/window_state.py` | Géométrie de la fenêtre principale, dans ``gcm.conf`` (#134). |
 
 ```mermaid
@@ -1287,6 +1288,7 @@ classDiagram
     class mod_gcm4_core_config {
         <<module>>
         +load_config(path, chiffrement) Config
+        +update_keys(path, section, valeurs) None
         +save_config(path, cfg, chiffrement) None
     }
     class ConfigError {
@@ -1339,6 +1341,7 @@ classDiagram
         <<dataclass>>
         +str libelle
         +str action
+        +str None cible
     }
     class SousMenu {
         <<dataclass>>
@@ -1397,6 +1400,13 @@ classDiagram
         +duplicate(host) Host
         +search(texte) list~Host~
     }
+    class mod_gcm4_core_theme {
+        <<module>>
+        +load_theme(config_file) str
+        +save_theme(config_file, mode) None
+        +color_class(couleur) str None
+        +colors_css(couleurs) str
+    }
     class mod_gcm4_core_window_state {
         <<module>>
         +load_window_state(config_file) WindowState
@@ -1427,6 +1437,8 @@ classDiagram
     }
     class Gcm4Application {
         <<Adw.Application>>
+        +appliquer_theme(mode) None
+        +set_group_colors(couleurs) None
         +boite_a_propos() Gtk.Widget
     }
     class mod_gcm4_ui_main_window {

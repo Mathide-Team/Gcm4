@@ -1,0 +1,22 @@
+/* Feuille de style de la base GTK4 (#135).
+ *
+ * Audit de style.css (GTK3), règle par règle :
+ * - onglet sélectionné surligné en jaune (#EEEB00) : CONSERVÉE, repère
+ *   visuel de l'application ; sélecteur GTK4 « tab:checked », texte foncé
+ *   imposé pour rester lisible en thème sombre ;
+ * - « toolbutton button » (bordures) : RETIRÉE, GtkToolButton n'existe plus
+ *   en GTK4 ;
+ * - bordures gauche/droite de « notebook tab » : RETIRÉE, Adwaita sépare
+ *   déjà les onglets ;
+ * - hauteur minimale de 34 px des champs (entry, spinbutton, combobox) :
+ *   RETIRÉE, la hauteur par défaut d'Adwaita est déjà de 34 px et
+ *   GtkComboBox est remplacé par GtkDropDown.
+ *
+ * Couleurs de groupe : classes « gcm-couleur-rrggbb » générées par
+ * gcm4.core.theme.colors_css dans une seconde feuille (Gcm4Application.set_group_colors).
+ */
+
+notebook > header > tabs > tab:checked {
+    background-color: #EEEB00;
+    color: #1e1e1e;
+}
