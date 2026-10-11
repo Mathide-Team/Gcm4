@@ -26,6 +26,10 @@ from pathlib import Path
 
 from loguru import logger
 
+# Convention bibliothèque (#130) : muet à l'import, réactivé par
+# logging_config.configure_logging() (CORE_MODULES).
+logger.disable(__name__)
+
 try:
     from ezsnmp import Session
     from ezsnmp.exceptions import (

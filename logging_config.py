@@ -51,6 +51,18 @@ ENV_FILE = "GCM_LOG_FILE"
 APP_LOG_NAME = "gcm-app.log"
 _TRUE = frozenset({"1", "true", "yes", "oui", "on"})
 
+# Convention bibliothèque (issue #130) : ces modules sans GTK, utilisables
+# seuls, se taisent à l'import (``logger.disable(__name__)``) ;
+# configure_logging() les réactive. tests/test_logging_config.py vérifie que
+# chaque ``*_core.py`` qui journalise figure ici et se désactive.
+CORE_MODULES = (
+    "gcm4_core",
+    "master_password_core",
+    "putty_import_core",
+    "snmp_bulk_core",
+    "snmp_push_core",
+)
+
 _FORMAT = (
     "<green>{time:YYYY-MM-DD HH:mm:ss.SSS}</green> | "
     "<level>{level: <8}</level> | "
@@ -145,6 +157,8 @@ def configure_logging(
     if log_file is None:
         log_file = os.environ.get(ENV_FILE, "").strip() or None
 
+    for module in CORE_MODULES:
+        _logger.enable(module)
     debug = is_debug_level(requested)
     fmt = _DEBUG_FORMAT if debug else _FORMAT
     _HANDLER_IDS.append(
@@ -304,6 +318,24 @@ def summarize(value: object, name: str = "") -> str:
         return f"<{type(value).__name__} {len(value)}>"
     _logger.debug("summarize: type par défaut -> nom du type")
     return f"<{type(value).__name__}>"
+
+
+_PASSWORD_PARAM_RE = re.compile(r"(password=)[^&\s'\"]*", re.IGNORECASE)
+_URL_PASSWORD_RE = re.compile(r"(://[^/:@\s]+):[^/@\s]*@")
+
+
+def mask_password(text: object) -> str:
+    """Masque les mots de passe d'une URI ou d'une commande avant journalisation.
+
+    ``password=...`` (paramètre d'URI SPICE, option de commande) et
+    ``user:motdepasse@`` (identifiants d'URL) deviennent ``***`` ; le nom
+    d'utilisateur reste visible. Accepte toute valeur convertible en
+    ``str`` (liste d'arguments comprise).
+    """
+    _logger.debug("mask_password: entrée de {} car.", len(str(text)))
+    masque = _URL_PASSWORD_RE.sub(r"\1:***@", _PASSWORD_PARAM_RE.sub(r"\1***", str(text)))
+    _logger.debug("mask_password: sortie de {} car.", len(masque))
+    return masque
 
 
 def _reset_for_tests() -> None:

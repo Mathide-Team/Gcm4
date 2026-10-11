@@ -18,7 +18,6 @@ from __future__ import annotations
 import configparser
 import json
 import os
-import re
 import shlex
 import shutil
 import subprocess
@@ -89,19 +88,8 @@ else:
     )
 
 
-_PASSWORD_RE = re.compile(r"(password=)[^&\s'\"]*")
-
-
-def mask_password(text) -> str:
-    """Masque les ``password=...`` d'une URI ou d'une commande avant journalisation.
-
-    Args:
-        text: URI SPICE, liste d'arguments ou toute valeur convertible en str.
-
-    Returns:
-        str: Texte ou tout mot de passe est remplace par ``***``.
-    """
-    return _PASSWORD_RE.sub(r"\1***", str(text))
+# mask_password : partagée par tout le dépôt depuis l'issue #130.
+from logging_config import mask_password  # noqa: E402
 
 
 def parse_spice_hosts(conf_path: Path) -> list[tuple[str, str]]:
