@@ -14,6 +14,7 @@ from gi.repository import Adw, Gio, GLib, Gtk
 from loguru import logger
 
 from gcm4.core import menu, window_state
+from gcm4.core.config import ConfigError
 from gcm4.core.i18n import _
 
 LARGEUR_DEFAUT = 1000
@@ -29,7 +30,14 @@ def construire_menu() -> Gio.Menu:
         for section in sous_menu.sections:
             bloc = Gio.Menu()
             for entree in section:
-                bloc.append(_(entree.libelle), entree.action)
+                ligne = Gio.MenuItem.new(_(entree.libelle), None)
+                if entree.cible is None:
+                    ligne.set_detailed_action(entree.action)
+                else:
+                    ligne.set_action_and_target_value(
+                        entree.action, GLib.Variant("s", entree.cible)
+                    )
+                bloc.append_item(ligne)
             contenu.append_section(None, bloc)
         racine.append_submenu(_(sous_menu.titre), contenu)
     logger.debug("construire_menu: {} sous-menu(s)", racine.get_n_items())
@@ -114,7 +122,9 @@ class MainWindow(Adw.ApplicationWindow):
         logger.debug("_on_close_request: entrée")
         try:
             window_state.save_window_state(self.config_file, self.etat_courant())
-        except OSError as exc:
+        except ConfigError as exc:
+            # gcm.conf corrompu ou disque plein : le fichier reste intact,
+            # seule la géométrie de cette session est perdue.
             logger.warning("_on_close_request: état non enregistré ({})", exc)
         logger.debug("_on_close_request: fermeture autorisée")
         return False

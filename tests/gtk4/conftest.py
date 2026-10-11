@@ -27,7 +27,11 @@ def _gtk4_disponible() -> bool:
         return False
 
 
-if os.environ.get("GCM_TESTS_GTK4") != "1" and not _gtk4_disponible():
+# Toujours évalué (pas de court-circuit) : require_version Gtk 4.0 / Adw 1
+# est ainsi posé avant tout import de gi.repository par les modules de test.
+GTK4_DISPONIBLE = _gtk4_disponible()
+
+if os.environ.get("GCM_TESTS_GTK4") != "1" and not GTK4_DISPONIBLE:
     collect_ignore_glob = ["test_*.py"]
 
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-11 23:04+0000\n"
+"POT-Creation-Date: 2026-10-11 23:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2670,6 +2670,48 @@ msgid ""
 "WebKitGTK unavailable (gir1.2-webkit2-4.1 package missing).\n"
 "The web console will open in the system browser."
 msgstr ""
+
+#: src/gcm4/core/chiffrement.py
+msgid "A stored password is corrupted."
+msgstr ""
+
+#: src/gcm4/core/chiffrement.py
+#, python-format
+msgid "The encryption key %s is missing: the stored passwords cannot be decrypted."
+msgstr ""
+
+#: src/gcm4/core/chiffrement.py
+#, fuzzy, python-format
+#| msgid "Invalid entry in configuration file"
+msgid "Unable to create the encryption key %s: %s"
+msgstr "Entri tidak valid dalam file konfigurasi"
+
+#: src/gcm4/core/chiffrement.py
+msgid "Unable to decrypt the stored passwords: wrong or replaced .gcm.key."
+msgstr ""
+
+#: src/gcm4/core/chiffrement.py
+#, fuzzy, python-format
+#| msgid "Invalid entry in configuration file"
+msgid "Unable to read the encryption key %s: %s"
+msgstr "Entri tidak valid dalam file konfigurasi"
+
+#: src/gcm4/core/config.py
+#, python-format
+msgid "The configuration file %s is corrupted: %s"
+msgstr ""
+
+#: src/gcm4/core/config.py
+#, fuzzy, python-format
+#| msgid "Invalid entry in configuration file"
+msgid "Unable to read the configuration file %s: %s"
+msgstr "Entri tidak valid dalam file konfigurasi"
+
+#: src/gcm4/core/config.py
+#, fuzzy, python-format
+#| msgid "Invalid entry in configuration file"
+msgid "Unable to write the configuration file %s: %s"
+msgstr "Entri tidak valid dalam file konfigurasi"
 
 #: src/gcm4/ui/main_window.py
 msgid "Home"

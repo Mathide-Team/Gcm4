@@ -6,7 +6,7 @@
 > toute modification manuelle sera écrasée. Le régénérer avec `make class-diagram` ;
 > le job Qualité échoue s'il est périmé (`--check`).
 
-58 modules · 120 classes · 199 fonctions publiques de module.
+61 modules · 127 classes · 207 fonctions publiques de module.
 
 Conventions : `+` public, `-` privé (préfixe `_`) ; `list~str~` = `list[str]` ; `<<module>>`
 regroupe les fonctions publiques d'un module ; `<<…>>` sur une classe liste `dataclass` et les
@@ -35,10 +35,11 @@ flowchart TD
     g3 -->|2| g0
     g3 -->|1| g4
     g3 -->|1| g5
-    g4 -->|2| g0
+    g4 -->|1| g1
+    g4 -->|4| g0
     g4 -->|1| g3
     g5 -->|1| g3
-    g5 -->|4| g4
+    g5 -->|6| g4
 ```
 
 ## Cœur (sans GTK)
@@ -1257,18 +1258,75 @@ classDiagram
 | Module | Fichier | Rôle |
 |---|---|---|
 | `gcm4.core` | `src/gcm4/core/__init__.py` | Cœur de gcm4 : modèle, configuration, services. |
+| `gcm4.core.chiffrement` | `src/gcm4/core/chiffrement.py` | Mots de passe chiffrés de gcm.conf, compatibles avec l'application GTK3 (#138). |
 | `gcm4.core.cli` | `src/gcm4/core/cli.py` | Ligne de commande de gcm4, analysée avant toute initialisation GTK (#133). |
+| `gcm4.core.config` | `src/gcm4/core/config.py` | Lecture et écriture de ``~/.gcm/gcm.conf`` sans GTK (#137). |
 | `gcm4.core.i18n` | `src/gcm4/core/i18n.py` | Traductions de gcm4 : domaine gettext ``gcm-lang`` de l'application GTK3. |
 | `gcm4.core.menu` | `src/gcm4/core/menu.py` | Menu principal et raccourcis de gcm4, décrits sans GTK (#134). |
 | `gcm4.core.model` | `src/gcm4/core/model.py` | Modèle de la base GTK4 : Host, Group, HostStore, sans GTK (#136). |
+| `gcm4.core.theme` | `src/gcm4/core/theme.py` | Thème de la base GTK4, sans GTK (#135). |
 | `gcm4.core.window_state` | `src/gcm4/core/window_state.py` | Géométrie de la fenêtre principale, dans ``gcm.conf`` (#134). |
 
 ```mermaid
 classDiagram
+    class mod_gcm4_core_chiffrement {
+        <<module>>
+        +dechiffrer_aes_strict(stocke, secret) str
+    }
+    class ChiffrementError
+    ConfigError <|-- ChiffrementError
+    class ChiffrementGcm {
+        +preparer(brut) None
+        +dechiffrer(stocke) str
+        +chiffrer(clair) str
+    }
     class mod_gcm4_core_cli {
         <<module>>
         +build_parser() argparse.ArgumentParser
         +parse_args(argv, home) argparse.Namespace
+    }
+    class mod_gcm4_core_config {
+        <<module>>
+        +load_config(path, chiffrement) Config
+        +update_keys(path, section, valeurs) None
+        +save_config(path, cfg, chiffrement) None
+    }
+    class ConfigError {
+        <<Exception>>
+    }
+    class Chiffrement {
+        <<Protocol>>
+        +dechiffrer(stocke) str
+        +chiffrer(clair) str
+    }
+    class SansChiffrement {
+        +dechiffrer(stocke) str
+        +chiffrer(clair) str
+    }
+    class AppConfig {
+        <<dataclass>>
+        +bool confirm_exit
+        +bool confirm_close_tab
+        +bool confirm_close_tab_middle
+        +int auto_close_tab
+        +bool cycle_tabs
+        +bool disable_shortcuts
+        +bool disable_notifications
+        +bool restore_open_tabs
+        +bool check_updates
+        +bool disable_hosts_stripes
+        +bool update_title
+        +str app_title
+        +str font
+        +str font_color
+        +str back_color
+        +int transparency
+    }
+    class Config {
+        <<dataclass>>
+        +AppConfig options
+        +HostStore store
+        +configparser.RawConfigParser brut
     }
     class mod_gcm4_core_i18n {
         <<module>>
@@ -1283,6 +1341,7 @@ classDiagram
         <<dataclass>>
         +str libelle
         +str action
+        +str None cible
     }
     class SousMenu {
         <<dataclass>>
@@ -1341,6 +1400,13 @@ classDiagram
         +duplicate(host) Host
         +search(texte) list~Host~
     }
+    class mod_gcm4_core_theme {
+        <<module>>
+        +load_theme(config_file) str
+        +save_theme(config_file, mode) None
+        +color_class(couleur) str None
+        +colors_css(couleurs) str
+    }
     class mod_gcm4_core_window_state {
         <<module>>
         +load_window_state(config_file) WindowState
@@ -1371,6 +1437,8 @@ classDiagram
     }
     class Gcm4Application {
         <<Adw.Application>>
+        +appliquer_theme(mode) None
+        +set_group_colors(couleurs) None
         +boite_a_propos() Gtk.Widget
     }
     class mod_gcm4_ui_main_window {

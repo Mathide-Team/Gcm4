@@ -16,10 +16,14 @@ from loguru import logger
 
 @dataclass(frozen=True)
 class Entree:
-    """Ligne de menu : msgid du libellé et nom d'action (``app.x`` ou ``win.x``)."""
+    """Ligne de menu : msgid du libellé, nom d'action (``app.x`` ou ``win.x``).
+
+    ``cible`` : valeur de l'action à état (entrée radio), ``None`` sinon.
+    """
 
     libelle: str
     action: str
+    cible: str | None = None
 
 
 @dataclass(frozen=True)
@@ -33,7 +37,18 @@ class SousMenu:
 MENU_PRINCIPAL: tuple[SousMenu, ...] = (
     SousMenu("File", ((Entree("Quit", "app.quit"),),)),
     SousMenu("Edit", ((Entree("Settings", "app.preferences"),),)),
-    SousMenu("View", ((Entree("Show Panel", "win.toggle-panel"),),)),
+    SousMenu(
+        "View",
+        (
+            (Entree("Show Panel", "win.toggle-panel"),),
+            # Thème (#135) : action à état app.theme, une entrée radio par mode.
+            (
+                Entree("System", "app.theme", "system"),
+                Entree("Light", "app.theme", "light"),
+                Entree("Dark", "app.theme", "dark"),
+            ),
+        ),
+    ),
     SousMenu("Help", ((Entree("About", "app.about"),),)),
 )
 
@@ -47,6 +62,10 @@ RACCOURCIS: dict[str, tuple[str, ...]] = {
 def actions_du_menu() -> list[str]:
     """Toutes les actions citées par le menu, dans l'ordre d'apparition."""
     logger.debug("actions_du_menu: entrée")
-    actions = [e.action for sm in MENU_PRINCIPAL for section in sm.sections for e in section]
+    actions = list(
+        dict.fromkeys(
+            e.action for sm in MENU_PRINCIPAL for section in sm.sections for e in section
+        )
+    )
     logger.debug("actions_du_menu: {}", actions)
     return actions
