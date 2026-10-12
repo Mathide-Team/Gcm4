@@ -13,7 +13,7 @@ from loguru import logger
 
 from gcm4.core import chemins, menu, window_state
 from gcm4.core.chiffrement import ChiffrementGcm
-from gcm4.core.config import ConfigError, load_config, update_keys
+from gcm4.core.config import ConfigError, load_config, save_config, update_keys
 from gcm4.core.i18n import _
 from gcm4.core.replies import ecrire_replies
 from gcm4.ui.host_tree import HostTree
@@ -67,7 +67,8 @@ class MainWindow(Adw.ApplicationWindow):
         self.config = None
         self.arbre: HostTree | None = None
         try:
-            self.config = load_config(self.config_file, ChiffrementGcm(config_dir))
+            self.chiffrement = ChiffrementGcm(config_dir)
+            self.config = load_config(self.config_file, self.chiffrement)
         except ConfigError as exc:
             # Rien n'est chargé : aucune écriture ne pourra écraser le fichier.
             logger.warning("MainWindow.__init__: configuration non chargée ({})", exc)
@@ -80,7 +81,10 @@ class MainWindow(Adw.ApplicationWindow):
             self.panneau.append(self.erreur_config)
         else:
             self.arbre = HostTree(
-                self.config.store, rayures=not self.config.options.disable_hosts_stripes
+                self.config.store,
+                rayures=not self.config.options.disable_hosts_stripes,
+                enregistrer=self.enregistrer_config,
+                notifier=self.notifier,
             )
             self.panneau.append(self.arbre)
             couleurs = [g.color for g in self.config.store.groups.values() if g.color]
@@ -104,7 +108,8 @@ class MainWindow(Adw.ApplicationWindow):
         corps.append(entete)
         corps.append(self.separateur)
         self.separateur.set_vexpand(True)
-        self.set_content(corps)
+        self.toasts = Adw.ToastOverlay(child=corps)
+        self.set_content(self.toasts)
 
         self.set_default_size(
             self.etat.width if self.etat.width > 0 else LARGEUR_DEFAUT,
@@ -122,6 +127,25 @@ class MainWindow(Adw.ApplicationWindow):
         self.add_action(recherche)
         self.connect("close-request", self._on_close_request)
         logger.debug("MainWindow.__init__: prête ({})", self.etat)
+
+    def enregistrer_config(self) -> None:
+        """Écrit toute la configuration (après une modification de l'arbre).
+
+        Raises:
+            ConfigError: écriture impossible ; le fichier est intact.
+        """
+        logger.debug("enregistrer_config: entrée")
+        if self.config is None:  # configuration illisible : jamais d'écriture
+            logger.debug("enregistrer_config: aucune configuration chargée")
+            return
+        save_config(self.config_file, self.config, self.chiffrement)
+        logger.debug("enregistrer_config: fait")
+
+    def notifier(self, message: str) -> None:
+        """Toast de quelques secondes en bas de la fenêtre."""
+        logger.debug("notifier: entrée")
+        self.toasts.add_toast(Adw.Toast(title=message, timeout=5))
+        logger.debug("notifier: fait")
 
     def _on_search(self, _action: Gio.SimpleAction, _param: GLib.Variant | None) -> None:
         """Ctrl+F / Affichage > Rechercher : panneau affiché, curseur dans la recherche (#140)."""

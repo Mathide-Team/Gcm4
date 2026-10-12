@@ -8,11 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-12 06:08+0000\n"
-
-"POT-Creation-Date: 2026-10-12 05:59+0000\n"
-
-"POT-Creation-Date: 2026-10-12 06:14+0000\n"
+"POT-Creation-Date: 2026-10-12 08:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2717,8 +2713,18 @@ msgid "Search"
 msgstr "Cari"
 
 #: src/gcm4/ui/host_tree.py
+#, python-brace-format
+msgid "An item with this name already exists in '{group}'."
+msgstr "Item dengan nama ini sudah ada di '{group}'."
+
+#: src/gcm4/ui/host_tree.py
 msgid "Hosts"
 msgstr "Host"
+
+#: src/gcm4/ui/host_tree.py
+#, python-brace-format
+msgid "Move not saved: {error}"
+msgstr "Pemindahan tidak disimpan: {error}"
 
 #: src/gcm4/ui/host_tree.py
 msgid "No matching hosts"
