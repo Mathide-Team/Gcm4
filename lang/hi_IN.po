@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-12 08:58+0000\n"
+"POT-Creation-Date: 2026-10-12 18:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2742,6 +2742,28 @@ msgstr "समूह का नाम बदलें…"
 #: src/gcm4/core/menu_arbre.py widgets.py
 msgid "Reset Color"
 msgstr "रंग रीसेट करें"
+
+#: src/gcm4/core/validation.py
+#, python-brace-format
+msgid "A host named «{name}» already exists in this group."
+msgstr "इस समूह में '{name}' नाम का होस्ट पहले से मौजूद है।"
+
+#: src/gcm4/core/validation.py
+msgid "A name is required."
+msgstr "नाम आवश्यक है।"
+
+#: src/gcm4/core/validation.py
+msgid "An address is required."
+msgstr "पता आवश्यक है।"
+
+#: src/gcm4/core/validation.py
+#, python-brace-format
+msgid "Port must be a number between {min} and {max}."
+msgstr "पोर्ट {min} से {max} के बीच की संख्या होनी चाहिए।"
+
+#: src/gcm4/core/validation.py
+msgid "The name must not contain «/»."
+msgstr "नाम में '/' नहीं होना चाहिए।"
 
 #: src/gcm4/ui/host_tree.py
 #, python-brace-format
