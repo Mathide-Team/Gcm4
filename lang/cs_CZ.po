@@ -11,6 +11,8 @@ msgstr ""
 "POT-Creation-Date: 2026-10-12 06:08+0000\n"
 
 "POT-Creation-Date: 2026-10-12 05:59+0000\n"
+
+"POT-Creation-Date: 2026-10-12 06:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -67,11 +69,9 @@ msgstr "ASCII Backspace \t[Ctrl+H 0x08]"
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
 msgstr "ASCII Delete    \t[Ctrl+? 0x7F]"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_About"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "About"
-msgstr "O _aplikaci"
+msgstr "O aplikaci"
 
 #: gnome_connection_manager.py
 msgid "Action"
@@ -237,9 +237,9 @@ msgstr "Vlastní příkazy"
 msgid "Custom commands…"
 msgstr "Vlastní příkazy"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Dark"
-msgstr ""
+msgstr "Tmavý"
 
 #: gnome_connection_manager.py plugins/plugin_serial.py
 msgid "Data bits"
@@ -285,7 +285,7 @@ msgstr "Opravdu chcete odebrat hostitele"
 msgid "Dynamic title"
 msgstr "Dynamický titulek"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py widgets.py
 msgid "Edit"
 msgstr "Upravit"
 
@@ -357,11 +357,9 @@ msgstr "Exportovat servery"
 msgid "Fields group, name and host are required"
 msgstr "Pole skupina, název a hostitel jsou povinná"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_File"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "File"
-msgstr "_Soubor"
+msgstr "Soubor"
 
 #: gnome_connection_manager.py
 msgid "Flow"
@@ -409,11 +407,9 @@ msgstr ""
 msgid "Group name:"
 msgstr "Skupina"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Help"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Help"
-msgstr "_Nápověda"
+msgstr "Nápověda"
 
 #: gnome_connection_manager.py plugins/plugin_ssh.py ssh_config_editor.py
 #: ssh_key_manager_dialog.py
@@ -487,9 +483,9 @@ msgstr ""
 msgid "Leave blank for passwordless/public key authentication"
 msgstr "Nechte prázdné pro autentizaci bez hesla / s veřejným klíčem"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Light"
-msgstr ""
+msgstr "Světlý"
 
 #: gnome_connection_manager.py
 msgid "Log local console sessions"
@@ -606,11 +602,9 @@ msgstr "Soukromý klíč"
 msgid "Project's Homepage"
 msgstr "Domovská stránka projektu"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Quit"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Quit"
-msgstr "_Konec"
+msgstr "Konec"
 
 #: gnome_connection_manager.py
 #, fuzzy
@@ -684,7 +678,7 @@ msgstr "Seznam serverů bude přepsán, pokračovat?"
 msgid "Servers"
 msgstr "_Servery"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Settings"
 msgstr "Nastavení"
 
@@ -706,7 +700,7 @@ msgstr "Klávesová zkratka"
 msgid "Shortcuts"
 msgstr "Klávesové zkratky"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Show Panel"
 msgstr "Zobrazit panel"
 
@@ -718,9 +712,9 @@ msgstr "Standardní příkazy"
 msgid "Stop"
 msgstr "Stop"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "System"
-msgstr ""
+msgstr "Systémový"
 
 #: gnome_connection_manager.py
 msgid "TERM"
@@ -779,11 +773,9 @@ msgstr ""
 msgid "User"
 msgstr "Uživatel"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_View"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "View"
-msgstr "_Zobrazit"
+msgstr "Zobrazit"
 
 #: gnome_connection_manager.py
 msgid "Word separator"
@@ -2720,9 +2712,21 @@ msgstr "Nelze přečíst konfigurační soubor %s: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Nelze zapsat konfigurační soubor %s: %s"
 
+#: src/gcm4/core/menu.py
+msgid "Search"
+msgstr "Hledat"
+
 #: src/gcm4/ui/host_tree.py
 msgid "Hosts"
 msgstr "Hostitelé"
+
+#: src/gcm4/ui/host_tree.py
+msgid "No matching hosts"
+msgstr "Žádní odpovídající hostitelé"
+
+#: src/gcm4/ui/host_tree.py
+msgid "Search hosts"
+msgstr "Hledat hostitele"
 
 #: src/gcm4/ui/main_window.py
 msgid "Configuration not loaded"

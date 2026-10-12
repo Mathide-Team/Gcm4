@@ -11,6 +11,8 @@ msgstr ""
 "POT-Creation-Date: 2026-10-12 06:08+0000\n"
 
 "POT-Creation-Date: 2026-10-12 05:59+0000\n"
+
+"POT-Creation-Date: 2026-10-12 06:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -67,11 +69,9 @@ msgstr "ASCII Geri Tuşu \t[Ctrl+H 0x08]"
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
 msgstr "ASCII Delete    \t[Ctrl+? 0x7F]"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_About"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "About"
-msgstr "_Hakkında"
+msgstr "Hakkında"
 
 #: gnome_connection_manager.py
 msgid "Action"
@@ -237,9 +237,9 @@ msgstr "Özel Komutlar"
 msgid "Custom commands…"
 msgstr "Özel komutlar"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Dark"
-msgstr ""
+msgstr "Koyu"
 
 #: gnome_connection_manager.py plugins/plugin_serial.py
 msgid "Data bits"
@@ -285,7 +285,7 @@ msgstr "Sunucuyu kaldırmak istediğinizden emin misiniz"
 msgid "Dynamic title"
 msgstr "Dinamik başlık"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py widgets.py
 msgid "Edit"
 msgstr "Düzenle"
 
@@ -357,11 +357,9 @@ msgstr "Sunucuları Dışa Aktar"
 msgid "Fields group, name and host are required"
 msgstr "Grup, ad ve sunucu alanları zorunludur"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_File"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "File"
-msgstr "_Dosya"
+msgstr "Dosya"
 
 #: gnome_connection_manager.py
 msgid "Flow"
@@ -409,11 +407,9 @@ msgstr ""
 msgid "Group name:"
 msgstr "Grup"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Help"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Help"
-msgstr "_Yardım"
+msgstr "Yardım"
 
 #: gnome_connection_manager.py plugins/plugin_ssh.py ssh_config_editor.py
 #: ssh_key_manager_dialog.py
@@ -487,9 +483,9 @@ msgstr ""
 msgid "Leave blank for passwordless/public key authentication"
 msgstr "Şifresiz/genel anahtar kimlik doğrulaması için boş bırakın"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Light"
-msgstr ""
+msgstr "Açık"
 
 #: gnome_connection_manager.py
 msgid "Log local console sessions"
@@ -606,11 +602,9 @@ msgstr "Özel anahtar"
 msgid "Project's Homepage"
 msgstr "Projenin Ana Sayfası"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Quit"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Quit"
-msgstr "_Çıkış"
+msgstr "Çıkış"
 
 #: gnome_connection_manager.py
 #, fuzzy
@@ -684,7 +678,7 @@ msgstr "Sunucu listesi üzerine yazılacak, devam edilsin mi?"
 msgid "Servers"
 msgstr "_Sunucular"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Settings"
 msgstr "Ayarlar"
 
@@ -706,7 +700,7 @@ msgstr "Kısayol"
 msgid "Shortcuts"
 msgstr "Kısayollar"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Show Panel"
 msgstr "Paneli Göster"
 
@@ -718,9 +712,9 @@ msgstr "Standart Komutlar"
 msgid "Stop"
 msgstr "Durdurma"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "System"
-msgstr ""
+msgstr "Sistem"
 
 #: gnome_connection_manager.py
 msgid "TERM"
@@ -779,11 +773,9 @@ msgstr ""
 msgid "User"
 msgstr "Kullanıcı"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_View"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "View"
-msgstr "_Görünüm"
+msgstr "Görünüm"
 
 #: gnome_connection_manager.py
 msgid "Word separator"
@@ -2720,9 +2712,21 @@ msgstr "%s yapılandırma dosyası okunamıyor: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "%s yapılandırma dosyası yazılamıyor: %s"
 
+#: src/gcm4/core/menu.py
+msgid "Search"
+msgstr "Ara"
+
 #: src/gcm4/ui/host_tree.py
 msgid "Hosts"
 msgstr "Sunucular"
+
+#: src/gcm4/ui/host_tree.py
+msgid "No matching hosts"
+msgstr "Eşleşen sunucu yok"
+
+#: src/gcm4/ui/host_tree.py
+msgid "Search hosts"
+msgstr "Sunucu ara"
 
 #: src/gcm4/ui/main_window.py
 msgid "Configuration not loaded"
