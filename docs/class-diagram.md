@@ -6,7 +6,7 @@
 > toute modification manuelle sera écrasée. Le régénérer avec `make class-diagram` ;
 > le job Qualité échoue s'il est périmé (`--check`).
 
-69 modules · 136 classes · 232 fonctions publiques de module.
+70 modules · 137 classes · 235 fonctions publiques de module.
 
 Conventions : `+` public, `-` privé (préfixe `_`) ; `list~str~` = `list[str]` ; `<<module>>`
 regroupe les fonctions publiques d'un module ; `<<…>>` sur une classe liste `dataclass` et les
@@ -1270,6 +1270,7 @@ classDiagram
 | `gcm4.core.model` | `src/gcm4/core/model.py` | Modèle de la base GTK4 : Host, Group, HostStore, sans GTK (#136). |
 | `gcm4.core.replies` | `src/gcm4/core/replies.py` | Groupes repliés de ``[window] collapsed-folders``, au format GTK3 (#139). |
 | `gcm4.core.theme` | `src/gcm4/core/theme.py` | Thème de la base GTK4, sans GTK (#135). |
+| `gcm4.core.validation` | `src/gcm4/core/validation.py` | Validation d'un hôte avant enregistrement, sans GTK (#144). |
 | `gcm4.core.window_state` | `src/gcm4/core/window_state.py` | Géométrie de la fenêtre principale, dans ``gcm4.conf`` (#134). |
 
 ```mermaid
@@ -1486,6 +1487,17 @@ classDiagram
         +save_theme(config_file, mode) None
         +color_class(couleur) str None
         +colors_css(couleurs) str
+    }
+    class mod_gcm4_core_validation {
+        <<module>>
+        +lire_port(texte) int None
+        +erreur_de_port(texte) FieldError None
+        +validate_host(host, store, original, adresse_requise) list~FieldError~
+    }
+    class FieldError {
+        <<dataclass>>
+        +str champ
+        +str message
     }
     class mod_gcm4_core_window_state {
         <<module>>
