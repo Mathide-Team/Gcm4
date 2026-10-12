@@ -6,7 +6,7 @@
 > toute modification manuelle sera écrasée. Le régénérer avec `make class-diagram` ;
 > le job Qualité échoue s'il est périmé (`--check`).
 
-72 modules · 138 classes · 236 fonctions publiques de module.
+73 modules · 142 classes · 237 fonctions publiques de module.
 
 Conventions : `+` public, `-` privé (préfixe `_`) ; `list~str~` = `list[str]` ; `<<module>>`
 regroupe les fonctions publiques d'un module ; `<<…>>` sur une classe liste `dataclass` et les
@@ -813,7 +813,7 @@ classDiagram
 
 ```mermaid
 classDiagram
-    class ConnectionPlugin {
+    class plugins_plugin_base_ConnectionPlugin {
         <<ABC>>
         +str protocol_id
         +str display_name
@@ -970,7 +970,7 @@ classDiagram
         +load_host_fields(host) None
         +save_host_fields(host) None
     }
-    ConnectionPlugin <|-- IpmiSolPlugin
+    plugins_plugin_base_ConnectionPlugin <|-- IpmiSolPlugin
     class mod_plugins_plugin_local {
         <<module>>
         +get_plugin() LocalPlugin
@@ -985,7 +985,7 @@ classDiagram
         +load_host_fields(host) None
         +save_host_fields(host) None
     }
-    ConnectionPlugin <|-- LocalPlugin
+    plugins_plugin_base_ConnectionPlugin <|-- LocalPlugin
     class mod_plugins_plugin_netmiko_push {
         <<module>>
         +open_netmiko_tab(wmain) NetmikoTab
@@ -1014,7 +1014,7 @@ classDiagram
         +save_host_fields(host) None
         +host_fields() list~tuple~str, object~~
     }
-    ConnectionPlugin <|-- RdpPlugin
+    plugins_plugin_base_ConnectionPlugin <|-- RdpPlugin
     class mod_plugins_plugin_serial {
         <<module>>
         +get_plugin() SerialPlugin
@@ -1030,7 +1030,7 @@ classDiagram
         +save_host_fields(host) None
         +host_fields() list~tuple~str, object~~
     }
-    ConnectionPlugin <|-- SerialPlugin
+    plugins_plugin_base_ConnectionPlugin <|-- SerialPlugin
     class mod_plugins_plugin_snmp_push {
         <<module>>
         +open_snmp_push_tab(wmain) SnmpPushTab
@@ -1063,7 +1063,7 @@ classDiagram
         +save_host_fields(host) None
         +host_fields() list~tuple~str, object~~
     }
-    ConnectionPlugin <|-- SpicePlugin
+    plugins_plugin_base_ConnectionPlugin <|-- SpicePlugin
     class mod_plugins_plugin_ssh {
         <<module>>
         +get_plugin() SshPlugin
@@ -1088,7 +1088,7 @@ classDiagram
         +import_ssh_config_action() None
         +patch_edit_host_dialog(builder, host_section, cp) None
     }
-    ConnectionPlugin <|-- SshPlugin
+    plugins_plugin_base_ConnectionPlugin <|-- SshPlugin
     class mod_plugins_plugin_telnet {
         <<module>>
         +get_plugin() TelnetPlugin
@@ -1103,7 +1103,7 @@ classDiagram
         +load_host_fields(host) None
         +save_host_fields(host) None
     }
-    ConnectionPlugin <|-- TelnetPlugin
+    plugins_plugin_base_ConnectionPlugin <|-- TelnetPlugin
     class mod_plugins_plugin_vnc {
         <<module>>
         +get_plugin() VncPlugin
@@ -1122,7 +1122,7 @@ classDiagram
         +save_host_fields(host) None
         +host_fields() list~tuple~str, object~~
     }
-    ConnectionPlugin <|-- VncPlugin
+    plugins_plugin_base_ConnectionPlugin <|-- VncPlugin
     class mod_plugins_plugin_web {
         <<module>>
         +get_plugin() WebPlugin
@@ -1139,7 +1139,7 @@ classDiagram
         +host_fields() list~tuple~str, object~~
         +validate() list~str~
     }
-    ConnectionPlugin <|-- WebPlugin
+    plugins_plugin_base_ConnectionPlugin <|-- WebPlugin
     class mod_plugins_pluginvnc2_vnc_tab {
         <<module>>
         +build_vnc_tab_label(tab) Gtk.Box
@@ -1268,6 +1268,7 @@ classDiagram
 | `gcm4.core.menu` | `src/gcm4/core/menu.py` | Menu principal et raccourcis de gcm4, décrits sans GTK (#134). |
 | `gcm4.core.menu_arbre` | `src/gcm4/core/menu_arbre.py` | Menu contextuel de l'arbre et règles de ses actions, sans GTK (#142). |
 | `gcm4.core.model` | `src/gcm4/core/model.py` | Modèle de la base GTK4 : Host, Group, HostStore, sans GTK (#136). |
+| `gcm4.core.plugins` | `src/gcm4/core/plugins.py` | Contrat v1 entre la base gcm4 et ses plugins de connexion (#149), sans GTK. |
 | `gcm4.core.replies` | `src/gcm4/core/replies.py` | Groupes repliés de ``[window] collapsed-folders``, au format GTK3 (#139). |
 | `gcm4.core.theme` | `src/gcm4/core/theme.py` | Thème de la base GTK4, sans GTK (#135). |
 | `gcm4.core.validation` | `src/gcm4/core/validation.py` | Validation d'un hôte avant enregistrement, sans GTK (#144). |
@@ -1476,6 +1477,42 @@ classDiagram
         +replace(original, nouveau) Host
         +duplicate(host) Host
         +search(texte) list~Host~
+    }
+    class mod_gcm4_core_plugins {
+        <<module>>
+        +incompatibilite(classe) str None
+    }
+    class PluginContext {
+        <<Protocol>>
+        +Any log
+        +config() Mapping~str, str~
+        +ask_password(host, done) None
+        +notify(message) None
+        +open_tab(title, widget) None
+    }
+    class Session {
+        <<Protocol>>
+        +Gtk.Widget widget
+        +close() None
+    }
+    class MenuItem {
+        <<dataclass>>
+        +str label
+        +Callable~~~, None~ activate
+    }
+    class gcm4_core_plugins_ConnectionPlugin {
+        <<ABC>>
+        +ClassVar~int~ api_version
+        +ClassVar~str~ name
+        +ClassVar~str~ version
+        +ClassVar~tuple~str, ...~~ protocols
+        +default_port(protocol) int None
+        +default_options(protocol) dict~str, str~
+        +validate_options(protocol, options) list~FieldError~
+        +build_host_options_widget(host, options, changed) Gtk.Widget
+        +open(host) Session
+        +build_preferences_page() Gtk.Widget None
+        +context_menu_items(host) list~MenuItem~
     }
     class mod_gcm4_core_replies {
         <<module>>

@@ -123,14 +123,43 @@ def test_commande_declaree():
     assert data["project"]["requires-python"].startswith(">=3.12")
 
 
+def _sous_type_checking(n: ast.AST) -> bool:
+    """``if TYPE_CHECKING:`` ou ``if typing.TYPE_CHECKING:``."""
+    test = getattr(n, "test", None)
+    return isinstance(n, ast.If) and (
+        (isinstance(test, ast.Name) and test.id == "TYPE_CHECKING")
+        or (isinstance(test, ast.Attribute) and test.attr == "TYPE_CHECKING")
+    )
+
+
 def _imports(path: Path) -> list[str]:
+    """Modules importés à l'exécution (blocs ``if TYPE_CHECKING:`` exclus : annotations seules)."""
     noms = []
-    for n in ast.walk(ast.parse(path.read_text(encoding="utf-8"))):
+    pile: list[ast.AST] = [ast.parse(path.read_text(encoding="utf-8"))]
+    while pile:
+        n = pile.pop()
         if isinstance(n, ast.Import):
             noms += [a.name for a in n.names]
         elif isinstance(n, ast.ImportFrom) and n.module:
             noms.append(n.module)
+        if _sous_type_checking(n):
+            pile.extend(n.orelse)  # le corps n'est jamais exécuté
+        else:
+            pile.extend(ast.iter_child_nodes(n))
     return noms
+
+
+def test_imports_type_checking_ignores(tmp_path):
+    """Un import sous ``if TYPE_CHECKING:`` n'est pas compté ; le même import ailleurs l'est."""
+    f = tmp_path / "m.py"
+    f.write_text(
+        "from typing import TYPE_CHECKING\nimport typing\n"
+        "if TYPE_CHECKING:\n    from gi.repository import Gtk\n"
+        "if typing.TYPE_CHECKING:\n    import gi\nelse:\n    import os\n"
+        "def f():\n    import json\n",
+        encoding="utf-8",
+    )
+    assert sorted(_imports(f)) == ["json", "os", "typing", "typing"]
 
 
 def test_aucun_gi_hors_de_ui():

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-12 18:37+0000\n"
+"POT-Creation-Date: 2026-10-12 18:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2737,6 +2737,28 @@ msgstr "समूह का नाम बदलें…"
 #: src/gcm4/core/menu_arbre.py widgets.py
 msgid "Reset Color"
 msgstr "रंग रीसेट करें"
+
+#: src/gcm4/core/plugins.py
+msgid "It declares no protocol."
+msgstr "कोई प्रोटोकॉल घोषित नहीं है।"
+
+#: src/gcm4/core/plugins.py
+#, python-brace-format
+msgid "It does not implement: {methods}."
+msgstr "लागू नहीं किया: {methods}।"
+
+#: src/gcm4/core/plugins.py
+#, python-brace-format
+msgid "It implements plugin API version {found}; this application supports version {expected}."
+msgstr "यह प्लगइन API संस्करण {found} लागू करता है; यह ऐप्लिकेशन संस्करण {expected} का समर्थन करता है।"
+
+#: src/gcm4/core/plugins.py
+msgid "It is not a connection plugin."
+msgstr "यह कनेक्शन प्लगइन नहीं है।"
+
+#: src/gcm4/core/plugins.py
+msgid "Its name must be a non-empty lowercase identifier."
+msgstr "नाम छोटे अक्षरों वाला गैर-रिक्त पहचानकर्ता होना चाहिए।"
 
 #: src/gcm4/core/validation.py
 #, python-brace-format
