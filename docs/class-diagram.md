@@ -6,7 +6,7 @@
 > toute modification manuelle sera écrasée. Le régénérer avec `make class-diagram` ;
 > le job Qualité échoue s'il est périmé (`--check`).
 
-73 modules · 142 classes · 237 fonctions publiques de module.
+74 modules · 145 classes · 241 fonctions publiques de module.
 
 Conventions : `+` public, `-` privé (préfixe `_`) ; `list~str~` = `list[str]` ; `<<module>>`
 regroupe les fonctions publiques d'un module ; `<<…>>` sur une classe liste `dataclass` et les
@@ -833,7 +833,7 @@ classDiagram
         +menu_actions() list
         +patch_edit_host_dialog(builder, host_section, cp) None
     }
-    class PluginRegistry {
+    class plugins_plugin_base_PluginRegistry {
         +register(plugin) None
         +get(protocol_id) ConnectionPlugin None
         +all() list~ConnectionPlugin~
@@ -1269,6 +1269,7 @@ classDiagram
 | `gcm4.core.menu_arbre` | `src/gcm4/core/menu_arbre.py` | Menu contextuel de l'arbre et règles de ses actions, sans GTK (#142). |
 | `gcm4.core.model` | `src/gcm4/core/model.py` | Modèle de la base GTK4 : Host, Group, HostStore, sans GTK (#136). |
 | `gcm4.core.plugins` | `src/gcm4/core/plugins.py` | Contrat v1 entre la base gcm4 et ses plugins de connexion (#149), sans GTK. |
+| `gcm4.core.registre` | `src/gcm4/core/registre.py` | Découverte des plugins et isolation de leurs erreurs (#150), sans GTK. |
 | `gcm4.core.replies` | `src/gcm4/core/replies.py` | Groupes repliés de ``[window] collapsed-folders``, au format GTK3 (#139). |
 | `gcm4.core.theme` | `src/gcm4/core/theme.py` | Thème de la base GTK4, sans GTK (#135). |
 | `gcm4.core.validation` | `src/gcm4/core/validation.py` | Validation d'un hôte avant enregistrement, sans GTK (#144). |
@@ -1513,6 +1514,35 @@ classDiagram
         +open(host) Session
         +build_preferences_page() Gtk.Widget None
         +context_menu_items(host) list~MenuItem~
+    }
+    class mod_gcm4_core_registre {
+        <<module>>
+        +dossier_source() Path None
+        +candidats_points_d_entree(points) list~Candidat~
+        +candidats_dossier(dossier) list~Candidat~
+        +decouvrir(contexte, candidats) PluginRegistry
+    }
+    class EtatPlugin {
+        <<dataclass>>
+        +str name
+        +str source
+        +str version
+        +tuple~str, ...~ protocols
+        +ConnectionPlugin None plugin
+        +str None erreur
+        +charge() bool
+    }
+    class Candidat {
+        <<dataclass>>
+        +str nom
+        +str source
+        +Callable~~~, Any~ charger
+    }
+    class gcm4_core_registre_PluginRegistry {
+        +plugins() list~ConnectionPlugin~
+        +erreurs() list~EtatPlugin~
+        +get(protocole) ConnectionPlugin None
+        +protocols() list~str~
     }
     class mod_gcm4_core_replies {
         <<module>>

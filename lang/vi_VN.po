@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-12 18:47+0000\n"
+"POT-Creation-Date: 2026-10-12 18:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2759,6 +2759,31 @@ msgstr "Đây không phải tiện ích kết nối."
 #: src/gcm4/core/plugins.py
 msgid "Its name must be a non-empty lowercase identifier."
 msgstr "Tên phải là định danh chữ thường, không rỗng."
+
+#: src/gcm4/core/registre.py
+#, python-brace-format
+msgid "A plugin with the same name is already loaded from {source}."
+msgstr "Một tiện ích cùng tên đã được nạp từ {source}."
+
+#: src/gcm4/core/registre.py
+#, python-brace-format
+msgid "Import failed: {error}"
+msgstr "Nhập thất bại: {error}"
+
+#: src/gcm4/core/registre.py
+#, python-brace-format
+msgid "Initialization failed: {error}"
+msgstr "Khởi tạo thất bại: {error}"
+
+#: src/gcm4/core/registre.py
+#, python-brace-format
+msgid "Protocol «{protocol}» is already handled by «{other}»."
+msgstr "Giao thức '{protocol}' đã được '{other}' xử lý."
+
+#: src/gcm4/core/registre.py
+#, python-brace-format
+msgid "{file} does not define PLUGIN."
+msgstr "{file} không định nghĩa PLUGIN."
 
 #: src/gcm4/core/validation.py
 #, python-brace-format
