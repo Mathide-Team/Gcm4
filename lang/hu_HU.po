@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-12 18:37+0000\n"
+"POT-Creation-Date: 2026-10-12 18:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2737,6 +2737,28 @@ msgstr "Csoport átnevezése…"
 #: src/gcm4/core/menu_arbre.py widgets.py
 msgid "Reset Color"
 msgstr "Szín visszaállítása"
+
+#: src/gcm4/core/plugins.py
+msgid "It declares no protocol."
+msgstr "Nem ad meg protokollt."
+
+#: src/gcm4/core/plugins.py
+#, python-brace-format
+msgid "It does not implement: {methods}."
+msgstr "Nem valósítja meg: {methods}."
+
+#: src/gcm4/core/plugins.py
+#, python-brace-format
+msgid "It implements plugin API version {found}; this application supports version {expected}."
+msgstr "A bővítmény-API {found}. verzióját valósítja meg; ez az alkalmazás a(z) {expected}. verziót támogatja."
+
+#: src/gcm4/core/plugins.py
+msgid "It is not a connection plugin."
+msgstr "Ez nem kapcsolati bővítmény."
+
+#: src/gcm4/core/plugins.py
+msgid "Its name must be a non-empty lowercase identifier."
+msgstr "A névnek nem üres, kisbetűs azonosítónak kell lennie."
 
 #: src/gcm4/core/validation.py
 #, python-brace-format
