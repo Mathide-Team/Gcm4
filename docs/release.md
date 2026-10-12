@@ -40,3 +40,22 @@ complète avant de pousser.
   version optionnelle.
 
 `guard-main.yml` est conservé : les PR vers `main` viennent de `dev`.
+
+## Protections de main et de dev
+
+- **dev** : contrôles requis Qualité, Types, i18n et Tests GTK4 (Xvfb), et
+  branche **à jour exigée** (`.github/branch-protection/dev.json`) : une PR
+  en retard se met à jour avec `gh pr update-branch`.
+- **main** : on n'y fusionne que dev (contrôle « Garde : PR vers main doit
+  venir de dev »), avec Qualité. La branche à jour n'y est **pas** exigée,
+  depuis le 12/10/2026. Chaque release crée sur main un commit de fusion
+  absent de dev ; avec cette exigence, la release suivante était déclarée
+  en retard, et il fallait une PR main → dev (#215, #220) que la
+  protection de dev refusait de faire automatiquement.
+
+## Tag de pré-version
+
+`vX.Y.Z-rcN` donne la version de paquet `X.Y.Z~rcN`, qui reste inférieure à
+`X.Y.Z` pour dpkg et rpm, et une release marquée pré-version (#211, essai
+`v1.3.4-rc1`). GitHub remplace `~` par `.` dans le **nom** des fichiers
+attachés, pas dans les métadonnées des paquets.

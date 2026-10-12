@@ -1,7 +1,8 @@
 """Tests de l'interface GTK4 de gcm4 (job « Tests GTK4 (Xvfb) »).
 
-Sans GTK4/libadwaita (job Qualité, uv sans PyGObject), ces tests ne sont
-pas collectés : ils ne comptent ni comme passés ni comme sautés. Le job
+Sans GTK4/libadwaita ou sans écran (job Qualité, uv sans PyGObject, venv
+--system-site-packages hors session graphique), ces tests ne sont pas
+collectés : ils ne comptent ni comme passés ni comme sautés. Le job
 GTK4 définit ``GCM_TESTS_GTK4=1`` : il les collecte toujours, et un GTK
 absent y devient une erreur, jamais un saut silencieux (#160).
 """
@@ -22,7 +23,11 @@ def _gtk4_disponible() -> bool:
         gi.require_version("Adw", "1")
         from gi.repository import Gtk
 
-        return bool(Gtk.init_check())
+        # Un écran est exigé : GTK 4 récent réussit init_check sans écran
+        # (venv --system-site-packages lancé hors session graphique), puis
+        # plante à la création des fenêtres.
+        ecran = os.environ.get("DISPLAY") or os.environ.get("WAYLAND_DISPLAY")
+        return bool(ecran) and bool(Gtk.init_check())
     except (ImportError, ValueError):
         return False
 
