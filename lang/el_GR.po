@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-12 18:28+0000\n"
+"POT-Creation-Date: 2026-10-12 18:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -81,13 +81,11 @@ msgstr "Ενεργοποίηση"
 msgid "Add Host"
 msgstr "Προσθήκη κεντρικού υπολογιστή"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Disconnect"
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "After disconnecting"
-msgstr "Αποσύνδεση"
+msgstr "Μετά την αποσύνδεση"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Always"
 msgstr "Πάντα"
 
@@ -107,11 +105,9 @@ msgstr "Backspace:"
 msgid "Baud rate"
 msgstr "Ταχύτητα (baud)"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Error connecting to server"
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Before connecting"
-msgstr "Σφάλμα σύνδεσης με τον διακομιστή"
+msgstr "Πριν τη σύνδεση"
 
 #: gnome_connection_manager.py ssh_config_editor.py
 msgid "Browse existing SSH keys in ~/.ssh/"
@@ -141,8 +137,8 @@ msgstr "Δεν είναι δυνατό το άνοιγμα του αρχείου
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
-#: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/menu_arbre.py
-#: utils.py widgets.py
+#: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
 msgid "Cancel"
 msgstr "Ακύρωση"
 
@@ -166,7 +162,7 @@ msgstr "Εκκαθάριση επιλογής"
 msgid "Close"
 msgstr "Κλείσιμο"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py widgets.py
 msgid "Close console"
 msgstr "Κλείσιμο κονσόλας"
 
@@ -242,7 +238,7 @@ msgstr "Σκοτεινό"
 msgid "Data bits"
 msgstr "Bits δεδομένων"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Default colors"
 msgstr "Προεπιλεγμένα χρώματα"
 
@@ -254,7 +250,7 @@ msgstr "Ακολουθία Delete \t[@7]"
 msgid "Delete:"
 msgstr "Delete:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Description"
 msgstr "Περιγραφή"
 
@@ -287,7 +283,7 @@ msgstr "Δυναμικός τίτλος"
 msgid "Edit"
 msgstr "Επεξεργασία"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Edit Host"
 msgstr "Επεξεργασία Κεντρικού Υπολογιστή"
 
@@ -385,7 +381,7 @@ msgstr "Gnome Connection Manager"
 
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
-#: plugins/plugin_import_virtualbox.py
+#: plugins/plugin_import_virtualbox.py src/gcm4/ui/host_dialog.py
 msgid "Group"
 msgstr "Ομάδα"
 
@@ -409,8 +405,8 @@ msgstr "Ομάδα"
 msgid "Help"
 msgstr "Βοήθεια"
 
-#: gnome_connection_manager.py plugins/plugin_ssh.py ssh_config_editor.py
-#: ssh_key_manager_dialog.py
+#: gnome_connection_manager.py plugins/plugin_ssh.py src/gcm4/ui/host_dialog.py
+#: ssh_config_editor.py ssh_key_manager_dialog.py
 msgid "Host"
 msgstr "Κεντρικός υπολογιστής"
 
@@ -434,9 +430,9 @@ msgstr "_Εισαγωγή διακομιστών"
 msgid "Imports"
 msgstr "Έγινε εισαγωγή"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Include this host in the workspace (Tools > Open Workspace)"
-msgstr ""
+msgstr "Συμπερίληψη αυτού του υπολογιστή στον χώρο εργασίας (Εργαλεία > Άνοιγμα χώρου εργασίας)"
 
 #: gnome_connection_manager.py
 msgid "Invalid entry in configuration file"
@@ -477,7 +473,7 @@ msgid ""
 "Détails complets dans le journal de l'application."
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Leave blank for passwordless/public key authentication"
 msgstr "Αφήστε κενό για έλεγχο ταυτότητας χωρίς κωδικό/δημόσιο κλειδί"
 
@@ -497,11 +493,12 @@ msgstr "Διαδρομή αρχείων καταγραφής"
 msgid "Menu"
 msgstr "Μενού"
 
-#: gnome_connection_manager.py ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+#: ssh_key_manager_dialog.py
 msgid "Name"
 msgstr "Όνομα"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Never"
 msgstr "Ποτέ"
 
@@ -542,7 +539,7 @@ msgstr "Καμία ανοιχτή κονσόλα"
 msgid "OK"
 msgstr "Εντάξει"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Only on clean exit"
 msgstr "Μόνο σε ομαλή έξοδο"
 
@@ -570,7 +567,7 @@ msgstr ""
 msgid "Parity"
 msgstr "Ισοτιμία"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Password"
 msgstr "Κωδικός πρόσβασης"
 
@@ -582,7 +579,7 @@ msgstr "Επικόλληση"
 msgid "Paste on right click"
 msgstr "Επικόλληση με δεξί κλικ"
 
-#: gnome_connection_manager.py ssh_config_editor.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py ssh_config_editor.py
 msgid "Port"
 msgstr "Θύρα"
 
@@ -618,7 +615,7 @@ msgstr "Επαναφορά προεπιλογών"
 msgid "Restore open tabs from the previous session on startup"
 msgstr ""
 
-#: gnome_connection_manager.py utils.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py utils.py
 msgid "Save"
 msgstr "Αποθήκευση"
 
@@ -681,10 +678,10 @@ msgstr "Ρυθμίσεις"
 msgid "Shell command run locally, in the background, right after this connection ends. Currently only triggered for terminal-based protocols (SSH/Telnet/Local/Serial/IPMI SOL). Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 #, python-brace-format
 msgid "Shell command run locally, in the background, right before this connection opens (any protocol). Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
-msgstr ""
+msgstr "Εντολή κελύφους που εκτελείται τοπικά, στο παρασκήνιο, αμέσως πριν ανοίξει η σύνδεση (οποιοδήποτε πρωτόκολλο). Αφήστε κενό για απενεργοποίηση. Δεσμευτικά: {name} {address} {group} {protocol}"
 
 #: gnome_connection_manager.py
 msgid "Shortcut"
@@ -742,7 +739,7 @@ msgstr ""
 msgid "Title"
 msgstr "Τίτλος"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "To create subgroups use format group1/group2/group3"
 msgstr "Για να δημιουργήσετε υποομάδες, χρησιμοποιήστε τη μορφή ομάδα1/ομάδα2/ομάδα3"
 
@@ -759,11 +756,11 @@ msgstr "Τύπος"
 msgid "Use default fixed width font"
 msgstr "Χρήση προεπιλεγμένης γραμματοσειράς σταθερού πλάτους"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Use global preference"
-msgstr ""
+msgstr "Χρήση της γενικής προτίμησης"
 
-#: gnome_connection_manager.py ssh_config_editor.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py ssh_config_editor.py
 msgid "User"
 msgstr "Χρήστης"
 
@@ -775,11 +772,9 @@ msgstr "Προβολή"
 msgid "Word separator"
 msgstr "Διαχωριστικό λέξεων"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Backspace:"
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Workspace"
-msgstr "Backspace:"
+msgstr "Χώρος εργασίας"
 
 #: gnome_connection_manager.py
 msgid "already exists for group"
@@ -2590,9 +2585,9 @@ msgid ""
 "E.g.: {example}"
 msgstr ""
 
-#: plugins/plugin_vnc.py
+#: plugins/plugin_vnc.py src/gcm4/ui/host_dialog.py
 msgid "Display"
-msgstr ""
+msgstr "Εμφάνιση"
 
 #: plugins/plugin_vnc.py
 msgid "VNC"
@@ -2723,7 +2718,7 @@ msgstr "Σύμπτυξη όλων"
 msgid "Copy Address"
 msgstr "Αντιγραφή διεύθυνσης"
 
-#: src/gcm4/core/menu_arbre.py widgets.py
+#: src/gcm4/core/menu_arbre.py src/gcm4/ui/host_dialog.py widgets.py
 msgid "Duplicate Host"
 msgstr "Δημιουργία διπλότυπου κεντρικού υπολογιστή"
 
@@ -2764,6 +2759,71 @@ msgstr "Η θύρα πρέπει να είναι αριθμός από {min} έ�
 #: src/gcm4/core/validation.py
 msgid "The name must not contain «/»."
 msgstr "Το όνομα δεν πρέπει να περιέχει «/»."
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Background color"
+msgstr "Χρώμα φόντου"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Commands"
+msgstr "Εντολές"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Connection"
+msgstr "Σύνδεση"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Discard"
+msgstr "Απόρριψη"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Discard changes?"
+msgstr "Απόρριψη αλλαγών;"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Errors"
+msgstr "Σφάλματα"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Existing groups"
+msgstr "Υπάρχουσες ομάδες"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Extra parameters"
+msgstr "Επιπλέον παράμετροι"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Foreground color"
+msgstr "Χρώμα κειμένου"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Keep Editing"
+msgstr "Συνέχεια επεξεργασίας"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "New Host"
+msgstr "Νέος κεντρικός υπολογιστής"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "No extension handles this protocol: its options are kept."
+msgstr "Καμία επέκταση δεν υποστηρίζει αυτό το πρωτόκολλο: οι επιλογές του διατηρούνται."
+
+#: src/gcm4/ui/host_dialog.py
+msgid "No extension is installed."
+msgstr "Δεν έχει εγκατασταθεί επέκταση."
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Protocol"
+msgstr "Πρωτόκολλο"
+
+#: src/gcm4/ui/host_dialog.py
+#, python-brace-format
+msgid "Shell command run locally, in the background, right after this connection ends, by the protocols that support it. Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
+msgstr "Εντολή κελύφους που εκτελείται τοπικά, στο παρασκήνιο, αμέσως μετά τη λήξη της σύνδεσης, από τα πρωτόκολλα που το υποστηρίζουν. Αφήστε κενό για απενεργοποίηση. Δεσμευτικά: {name} {address} {group} {protocol}"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "The changes to this host have not been saved."
+msgstr "Οι αλλαγές σε αυτόν τον υπολογιστή δεν αποθηκεύτηκαν."
 
 #: src/gcm4/ui/host_tree.py
 #, python-brace-format
@@ -4105,108 +4165,6 @@ msgstr "Κατάργηση διαίρεσης όλων των κονσολών"
 
 #~ msgid "xfreerdp log:"
 #~ msgstr "Αρχείο καταγραφής xfreerdp:"
-
-#~ msgid "vnc"
-#~ msgstr "vnc"
-
-#~ msgid "telnet"
-#~ msgstr "telnet"
-
-#~ msgid "ssh"
-#~ msgstr "ssh"
-
-#~ msgid "spice"
-#~ msgstr "spice"
-
-#~ msgid "rdp"
-#~ msgstr "rdp"
-
-#~ msgid "page 2"
-#~ msgstr "σελίδα 2"
-
-#~ msgid "page 1"
-#~ msgstr "σελίδα 1"
-
-#~ msgid "local"
-#~ msgstr "τοπικό"
-
-#~ msgid "label"
-#~ msgstr "ετικέτα"
-
-#~ msgid "__glade_unnamed_37"
-#~ msgstr "__glade_unnamed_37"
-
-#~ msgid "__glade_unnamed_36"
-#~ msgstr "__glade_unnamed_36"
-
-#~ msgid "__glade_unnamed_32"
-#~ msgstr "__glade_unnamed_32"
-
-#~ msgid "__glade_unnamed_30"
-#~ msgstr "__glade_unnamed_30"
-
-#~ msgid "__glade_unnamed_29"
-#~ msgstr "__glade_unnamed_29"
-
-#~ msgid "__glade_unnamed_28"
-#~ msgstr "__glade_unnamed_28"
-
-#~ msgid "_Edit"
-#~ msgstr "_Επεξεργασία"
-
-#~ msgid "Split console vertically"
-#~ msgstr "Διαίρεση κονσόλας κάθετα"
-
-#~ msgid "Split console horizontally"
-#~ msgstr "Διαίρεση κονσόλας οριζόντια"
-
-#~ msgid "Show Toolbar"
-#~ msgstr "Εμφάνιση Γραμμής Εργαλείων"
-
-#~ msgid "Send commands to several hosts at the same time"
-#~ msgstr "Αποστολή εντολών σε πολλούς κεντρικούς υπολογιστές ταυτόχρονα"
-
-#~ msgid "Seconds between keep-alive packets"
-#~ msgstr "Δευτερόλεπτα μεταξύ πακέτων keep-alive"
-
-#~ msgid "Save active console buffer to file"
-#~ msgstr "Αποθήκευση buffer ενεργής κονσόλας σε αρχείο"
-
-#~ msgid "SPICE  (not available here: Proxmox requires API ticket/proxy)"
-#~ msgstr "SPICE  (μη διαθέσιμο εδώ: το Proxmox απαιτεί API ticket/proxy)"
-
-#~ msgid "Open local console"
-#~ msgstr "Άνοιγμα τοπικής κονσόλας"
-
-#~ msgid "Local port already assigned"
-#~ msgstr "Η τοπική θύρα έχει ήδη εκχωρηθεί"
-
-#~ msgid "Keep-Alive"
-#~ msgstr "Keep-Alive"
-
-#~ msgid "Import server list from file"
-#~ msgstr "Εισαγωγή λίστας διακομιστών από αρχείο"
-
-#~ msgid "Extra arguments to pass to command line"
-#~ msgstr "Πρόσθετα ορίσματα προς τη γραμμή εντολών"
-
-#~ msgid "Export server list to file"
-#~ msgstr "Εξαγωγή λίστας διακομιστών σε αρχείο"
-
-#~ msgid "Edit hosts properties"
-#~ msgstr "Επεξεργασία ιδιοτήτων κεντρικών υπολογιστών"
-
-#~ msgid "Detected Proxmox targets (dconf):"
-#~ msgstr "Εντοπισμένοι στόχοι Proxmox (dconf):"
-
-#~ msgid "Detected Proxmox target"
-#~ msgstr "Εντοπισμένος στόχος Proxmox"
-
-#~ msgid "Create dynamic port forwarding"
-#~ msgstr "Δημιουργία δυναμικής προώθησης θύρας"
-
-#~ msgid "Connect to selected host or all hosts in selected group"
-#~ msgstr "Σύνδεση στον επιλεγμένο κεντρικό υπολογιστή ή σε όλους τους κεντρικούς υπολογιστές της επιλεγμένης ομάδας"
 
 #~ msgid ""
 #~ "Compression level: \n"

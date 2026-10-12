@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-12 18:28+0000\n"
+"POT-Creation-Date: 2026-10-12 18:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -81,13 +81,11 @@ msgstr "Aktiválás"
 msgid "Add Host"
 msgstr "Hoszt hozzáadása"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Disconnect"
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "After disconnecting"
-msgstr "Kapcsolat bontása"
+msgstr "Bontás után"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Always"
 msgstr "Mindig"
 
@@ -107,11 +105,9 @@ msgstr "Backspace:"
 msgid "Baud rate"
 msgstr "Átviteli sebesség (baud)"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Error connecting to server"
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Before connecting"
-msgstr "Hiba a szerverhez csatlakozás során"
+msgstr "Kapcsolódás előtt"
 
 #: gnome_connection_manager.py ssh_config_editor.py
 msgid "Browse existing SSH keys in ~/.ssh/"
@@ -141,8 +137,8 @@ msgstr "A naplófájl írásra nem nyitható meg"
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
-#: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/menu_arbre.py
-#: utils.py widgets.py
+#: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
 msgid "Cancel"
 msgstr "Mégse"
 
@@ -166,7 +162,7 @@ msgstr "Kijelölés törlése"
 msgid "Close"
 msgstr "Bezárás"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py widgets.py
 msgid "Close console"
 msgstr "Konzol bezárása"
 
@@ -242,7 +238,7 @@ msgstr "Sötét"
 msgid "Data bits"
 msgstr "Adatbitek"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Default colors"
 msgstr "Alapértelmezett színek"
 
@@ -254,7 +250,7 @@ msgstr "Delete sorozat \t[@7]"
 msgid "Delete:"
 msgstr "Delete:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Description"
 msgstr "Leírás"
 
@@ -287,7 +283,7 @@ msgstr "Dinamikus cím"
 msgid "Edit"
 msgstr "Szerkesztés"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Edit Host"
 msgstr "Hoszt szerkesztése"
 
@@ -385,7 +381,7 @@ msgstr "Gnome Connection Manager"
 
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
-#: plugins/plugin_import_virtualbox.py
+#: plugins/plugin_import_virtualbox.py src/gcm4/ui/host_dialog.py
 msgid "Group"
 msgstr "Csoport"
 
@@ -409,8 +405,8 @@ msgstr "Csoport"
 msgid "Help"
 msgstr "Súgó"
 
-#: gnome_connection_manager.py plugins/plugin_ssh.py ssh_config_editor.py
-#: ssh_key_manager_dialog.py
+#: gnome_connection_manager.py plugins/plugin_ssh.py src/gcm4/ui/host_dialog.py
+#: ssh_config_editor.py ssh_key_manager_dialog.py
 msgid "Host"
 msgstr "Hoszt"
 
@@ -434,9 +430,9 @@ msgstr "Szerverek _importálása"
 msgid "Imports"
 msgstr "Importálva"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Include this host in the workspace (Tools > Open Workspace)"
-msgstr ""
+msgstr "A gép felvétele a munkaterületre (Eszközök > Munkaterület megnyitása)"
 
 #: gnome_connection_manager.py
 msgid "Invalid entry in configuration file"
@@ -477,7 +473,7 @@ msgid ""
 "Détails complets dans le journal de l'application."
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Leave blank for passwordless/public key authentication"
 msgstr "Hagyja üresen jelszó nélküli/nyilvános kulcsú hitelesítéshez"
 
@@ -497,11 +493,12 @@ msgstr "Naplók útvonala"
 msgid "Menu"
 msgstr "Menü"
 
-#: gnome_connection_manager.py ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+#: ssh_key_manager_dialog.py
 msgid "Name"
 msgstr "Név"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Never"
 msgstr "Soha"
 
@@ -542,7 +539,7 @@ msgstr "Nincs nyitott konzol"
 msgid "OK"
 msgstr "OK"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Only on clean exit"
 msgstr "Csak tiszta kilépéskor"
 
@@ -570,7 +567,7 @@ msgstr ""
 msgid "Parity"
 msgstr "Paritás"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Password"
 msgstr "Jelszó"
 
@@ -582,7 +579,7 @@ msgstr "Beillesztés"
 msgid "Paste on right click"
 msgstr "Beillesztés jobb kattintásra"
 
-#: gnome_connection_manager.py ssh_config_editor.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py ssh_config_editor.py
 msgid "Port"
 msgstr "Port"
 
@@ -618,7 +615,7 @@ msgstr "Alapértékek visszaállítása"
 msgid "Restore open tabs from the previous session on startup"
 msgstr ""
 
-#: gnome_connection_manager.py utils.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py utils.py
 msgid "Save"
 msgstr "Mentés"
 
@@ -681,10 +678,10 @@ msgstr "Beállítások"
 msgid "Shell command run locally, in the background, right after this connection ends. Currently only triggered for terminal-based protocols (SSH/Telnet/Local/Serial/IPMI SOL). Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 #, python-brace-format
 msgid "Shell command run locally, in the background, right before this connection opens (any protocol). Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
-msgstr ""
+msgstr "Helyben, a háttérben, közvetlenül a kapcsolat megnyitása előtt futó parancs (bármely protokoll). Hagyja üresen a kikapcsoláshoz. Helyőrzők: {name} {address} {group} {protocol}"
 
 #: gnome_connection_manager.py
 msgid "Shortcut"
@@ -742,7 +739,7 @@ msgstr ""
 msgid "Title"
 msgstr "Cím"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "To create subgroups use format group1/group2/group3"
 msgstr "Alcsoportok létrehozásához használja a csoport1/csoport2/csoport3 formátumot"
 
@@ -759,11 +756,11 @@ msgstr "Típus"
 msgid "Use default fixed width font"
 msgstr "Alapértelmezett rögzített szélességű betűtípus használata"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Use global preference"
-msgstr ""
+msgstr "Általános beállítás használata"
 
-#: gnome_connection_manager.py ssh_config_editor.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py ssh_config_editor.py
 msgid "User"
 msgstr "Felhasználó"
 
@@ -775,11 +772,9 @@ msgstr "Nézet"
 msgid "Word separator"
 msgstr "Szóelválasztó"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Backspace:"
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Workspace"
-msgstr "Backspace:"
+msgstr "Munkaterület"
 
 #: gnome_connection_manager.py
 msgid "already exists for group"
@@ -2590,9 +2585,9 @@ msgid ""
 "E.g.: {example}"
 msgstr ""
 
-#: plugins/plugin_vnc.py
+#: plugins/plugin_vnc.py src/gcm4/ui/host_dialog.py
 msgid "Display"
-msgstr ""
+msgstr "Megjelenítés"
 
 #: plugins/plugin_vnc.py
 msgid "VNC"
@@ -2723,7 +2718,7 @@ msgstr "Mindet összecsukja"
 msgid "Copy Address"
 msgstr "Cím másolása"
 
-#: src/gcm4/core/menu_arbre.py widgets.py
+#: src/gcm4/core/menu_arbre.py src/gcm4/ui/host_dialog.py widgets.py
 msgid "Duplicate Host"
 msgstr "Hoszt duplikálása"
 
@@ -2764,6 +2759,71 @@ msgstr "A portnak {min} és {max} közötti számnak kell lennie."
 #: src/gcm4/core/validation.py
 msgid "The name must not contain «/»."
 msgstr "A név nem tartalmazhat „/” karaktert."
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Background color"
+msgstr "Háttérszín"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Commands"
+msgstr "Parancsok"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Connection"
+msgstr "Kapcsolat"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Discard"
+msgstr "Elvetés"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Discard changes?"
+msgstr "Elveti a módosításokat?"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Errors"
+msgstr "Hibák"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Existing groups"
+msgstr "Meglévő csoportok"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Extra parameters"
+msgstr "További paraméterek"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Foreground color"
+msgstr "Szövegszín"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Keep Editing"
+msgstr "Szerkesztés folytatása"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "New Host"
+msgstr "Új gép"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "No extension handles this protocol: its options are kept."
+msgstr "Egyik bővítmény sem kezeli ezt a protokollt: a beállításai megmaradnak."
+
+#: src/gcm4/ui/host_dialog.py
+msgid "No extension is installed."
+msgstr "Nincs telepített bővítmény."
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Protocol"
+msgstr "Protokoll"
+
+#: src/gcm4/ui/host_dialog.py
+#, python-brace-format
+msgid "Shell command run locally, in the background, right after this connection ends, by the protocols that support it. Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
+msgstr "Helyben, a háttérben, közvetlenül a kapcsolat vége után futó parancs azoknál a protokolloknál, amelyek támogatják. Hagyja üresen a kikapcsoláshoz. Helyőrzők: {name} {address} {group} {protocol}"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "The changes to this host have not been saved."
+msgstr "A gép módosításai nincsenek mentve."
 
 #: src/gcm4/ui/host_tree.py
 #, python-brace-format
@@ -4105,108 +4165,6 @@ msgstr "Az összes konzol felosztásának megszüntetése"
 
 #~ msgid "xfreerdp log:"
 #~ msgstr "xfreerdp napló:"
-
-#~ msgid "vnc"
-#~ msgstr "vnc"
-
-#~ msgid "telnet"
-#~ msgstr "telnet"
-
-#~ msgid "ssh"
-#~ msgstr "ssh"
-
-#~ msgid "spice"
-#~ msgstr "spice"
-
-#~ msgid "rdp"
-#~ msgstr "rdp"
-
-#~ msgid "page 2"
-#~ msgstr "2. oldal"
-
-#~ msgid "page 1"
-#~ msgstr "1. oldal"
-
-#~ msgid "local"
-#~ msgstr "helyi"
-
-#~ msgid "label"
-#~ msgstr "felirat"
-
-#~ msgid "__glade_unnamed_37"
-#~ msgstr "__glade_unnamed_37"
-
-#~ msgid "__glade_unnamed_36"
-#~ msgstr "__glade_unnamed_36"
-
-#~ msgid "__glade_unnamed_32"
-#~ msgstr "__glade_unnamed_32"
-
-#~ msgid "__glade_unnamed_30"
-#~ msgstr "__glade_unnamed_30"
-
-#~ msgid "__glade_unnamed_29"
-#~ msgstr "__glade_unnamed_29"
-
-#~ msgid "__glade_unnamed_28"
-#~ msgstr "__glade_unnamed_28"
-
-#~ msgid "_Edit"
-#~ msgstr "Sz_erkesztés"
-
-#~ msgid "Split console vertically"
-#~ msgstr "Konzol felosztása függőlegesen"
-
-#~ msgid "Split console horizontally"
-#~ msgstr "Konzol felosztása vízszintesen"
-
-#~ msgid "Show Toolbar"
-#~ msgstr "Eszköztár megjelenítése"
-
-#~ msgid "Send commands to several hosts at the same time"
-#~ msgstr "Parancsok küldése egyszerre több hosztnak"
-
-#~ msgid "Seconds between keep-alive packets"
-#~ msgstr "Másodpercek a keep-alive csomagok között"
-
-#~ msgid "Save active console buffer to file"
-#~ msgstr "Az aktív konzol pufferének mentése fájlba"
-
-#~ msgid "SPICE  (not available here: Proxmox requires API ticket/proxy)"
-#~ msgstr "SPICE  (itt nem elérhető: a Proxmox API jegyet/proxyt igényel)"
-
-#~ msgid "Open local console"
-#~ msgstr "Helyi konzol megnyitása"
-
-#~ msgid "Local port already assigned"
-#~ msgstr "A helyi port már foglalt"
-
-#~ msgid "Keep-Alive"
-#~ msgstr "Keep-Alive"
-
-#~ msgid "Import server list from file"
-#~ msgstr "Szerverlista importálása fájlból"
-
-#~ msgid "Extra arguments to pass to command line"
-#~ msgstr "Parancssorban átadandó további argumentumok"
-
-#~ msgid "Export server list to file"
-#~ msgstr "Szerverlista exportálása fájlba"
-
-#~ msgid "Edit hosts properties"
-#~ msgstr "Hosztok tulajdonságainak szerkesztése"
-
-#~ msgid "Detected Proxmox targets (dconf):"
-#~ msgstr "Észlelt Proxmox célok (dconf):"
-
-#~ msgid "Detected Proxmox target"
-#~ msgstr "Észlelt Proxmox cél"
-
-#~ msgid "Create dynamic port forwarding"
-#~ msgstr "Dinamikus port továbbítás létrehozása"
-
-#~ msgid "Connect to selected host or all hosts in selected group"
-#~ msgstr "Csatlakozás a kijelölt hoszthoz vagy a kijelölt csoport összes hosztjához"
 
 #~ msgid ""
 #~ "Compression level: \n"

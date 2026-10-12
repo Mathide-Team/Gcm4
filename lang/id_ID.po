@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-12 18:28+0000\n"
+"POT-Creation-Date: 2026-10-12 18:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -81,13 +81,11 @@ msgstr "Aktifkan"
 msgid "Add Host"
 msgstr "Tambah host"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Disconnect"
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "After disconnecting"
-msgstr "Putuskan"
+msgstr "Setelah memutus"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Always"
 msgstr "Selalu"
 
@@ -107,11 +105,9 @@ msgstr "Backspace:"
 msgid "Baud rate"
 msgstr "Kecepatan baud"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Error connecting to server"
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Before connecting"
-msgstr "Kesalahan menghubungkan ke server"
+msgstr "Sebelum menyambung"
 
 #: gnome_connection_manager.py ssh_config_editor.py
 msgid "Browse existing SSH keys in ~/.ssh/"
@@ -141,8 +137,8 @@ msgstr "Tidak dapat membuka file log untuk ditulis"
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
-#: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/menu_arbre.py
-#: utils.py widgets.py
+#: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
 msgid "Cancel"
 msgstr "Batal"
 
@@ -166,7 +162,7 @@ msgstr "Hapus pilihan"
 msgid "Close"
 msgstr "Tutup"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py widgets.py
 msgid "Close console"
 msgstr "Tutup konsol"
 
@@ -242,7 +238,7 @@ msgstr "Gelap"
 msgid "Data bits"
 msgstr "Bit data"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Default colors"
 msgstr "Warna default"
 
@@ -254,7 +250,7 @@ msgstr "Urutan Delete \t[@7]"
 msgid "Delete:"
 msgstr "Delete:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Description"
 msgstr "Deskripsi"
 
@@ -287,7 +283,7 @@ msgstr "Judul dinamis"
 msgid "Edit"
 msgstr "Edit"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Edit Host"
 msgstr "Edit Host"
 
@@ -385,7 +381,7 @@ msgstr "Gnome Connection Manager"
 
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
-#: plugins/plugin_import_virtualbox.py
+#: plugins/plugin_import_virtualbox.py src/gcm4/ui/host_dialog.py
 msgid "Group"
 msgstr "Grup"
 
@@ -409,8 +405,8 @@ msgstr "Grup"
 msgid "Help"
 msgstr "Bantuan"
 
-#: gnome_connection_manager.py plugins/plugin_ssh.py ssh_config_editor.py
-#: ssh_key_manager_dialog.py
+#: gnome_connection_manager.py plugins/plugin_ssh.py src/gcm4/ui/host_dialog.py
+#: ssh_config_editor.py ssh_key_manager_dialog.py
 msgid "Host"
 msgstr "Host"
 
@@ -434,9 +430,9 @@ msgstr "_Impor server"
 msgid "Imports"
 msgstr "Diimpor"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Include this host in the workspace (Tools > Open Workspace)"
-msgstr ""
+msgstr "Sertakan host ini di ruang kerja (Alat > Buka ruang kerja)"
 
 #: gnome_connection_manager.py
 msgid "Invalid entry in configuration file"
@@ -477,7 +473,7 @@ msgid ""
 "Détails complets dans le journal de l'application."
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Leave blank for passwordless/public key authentication"
 msgstr "Biarkan kosong untuk autentikasi tanpa kata sandi/kunci publik"
 
@@ -497,11 +493,12 @@ msgstr "Path log"
 msgid "Menu"
 msgstr "Menu"
 
-#: gnome_connection_manager.py ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+#: ssh_key_manager_dialog.py
 msgid "Name"
 msgstr "Nama"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Never"
 msgstr "Tidak pernah"
 
@@ -542,7 +539,7 @@ msgstr "Tidak ada konsol yang terbuka"
 msgid "OK"
 msgstr "OK"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Only on clean exit"
 msgstr "Hanya saat keluar bersih"
 
@@ -570,7 +567,7 @@ msgstr ""
 msgid "Parity"
 msgstr "Paritas"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Password"
 msgstr "Kata sandi"
 
@@ -582,7 +579,7 @@ msgstr "Tempel"
 msgid "Paste on right click"
 msgstr "Tempel saat klik kanan"
 
-#: gnome_connection_manager.py ssh_config_editor.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py ssh_config_editor.py
 msgid "Port"
 msgstr "Port"
 
@@ -618,7 +615,7 @@ msgstr "Kembalikan ke default"
 msgid "Restore open tabs from the previous session on startup"
 msgstr ""
 
-#: gnome_connection_manager.py utils.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py utils.py
 msgid "Save"
 msgstr "Simpan"
 
@@ -681,10 +678,10 @@ msgstr "Pengaturan"
 msgid "Shell command run locally, in the background, right after this connection ends. Currently only triggered for terminal-based protocols (SSH/Telnet/Local/Serial/IPMI SOL). Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 #, python-brace-format
 msgid "Shell command run locally, in the background, right before this connection opens (any protocol). Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
-msgstr ""
+msgstr "Perintah shell yang dijalankan lokal di latar belakang tepat sebelum koneksi ini dibuka (semua protokol). Kosongkan untuk menonaktifkan. Penanda: {name} {address} {group} {protocol}"
 
 #: gnome_connection_manager.py
 msgid "Shortcut"
@@ -742,7 +739,7 @@ msgstr ""
 msgid "Title"
 msgstr "Judul"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "To create subgroups use format group1/group2/group3"
 msgstr "Untuk membuat subgrup gunakan format grup1/grup2/grup3"
 
@@ -759,11 +756,11 @@ msgstr "Jenis"
 msgid "Use default fixed width font"
 msgstr "Gunakan font lebar tetap default"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Use global preference"
-msgstr ""
+msgstr "Gunakan preferensi umum"
 
-#: gnome_connection_manager.py ssh_config_editor.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py ssh_config_editor.py
 msgid "User"
 msgstr "Pengguna"
 
@@ -775,11 +772,9 @@ msgstr "Tampilan"
 msgid "Word separator"
 msgstr "Pemisah kata"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Backspace:"
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Workspace"
-msgstr "Backspace:"
+msgstr "Ruang kerja"
 
 #: gnome_connection_manager.py
 msgid "already exists for group"
@@ -2590,9 +2585,9 @@ msgid ""
 "E.g.: {example}"
 msgstr ""
 
-#: plugins/plugin_vnc.py
+#: plugins/plugin_vnc.py src/gcm4/ui/host_dialog.py
 msgid "Display"
-msgstr ""
+msgstr "Tampilan"
 
 #: plugins/plugin_vnc.py
 msgid "VNC"
@@ -2723,7 +2718,7 @@ msgstr "Tutup semua"
 msgid "Copy Address"
 msgstr "Salin alamat"
 
-#: src/gcm4/core/menu_arbre.py widgets.py
+#: src/gcm4/core/menu_arbre.py src/gcm4/ui/host_dialog.py widgets.py
 msgid "Duplicate Host"
 msgstr "Duplikat host"
 
@@ -2764,6 +2759,71 @@ msgstr "Port harus berupa angka antara {min} dan {max}."
 #: src/gcm4/core/validation.py
 msgid "The name must not contain «/»."
 msgstr "Nama tidak boleh mengandung '/'."
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Background color"
+msgstr "Warna latar"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Commands"
+msgstr "Perintah"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Connection"
+msgstr "Koneksi"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Discard"
+msgstr "Buang"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Discard changes?"
+msgstr "Buang perubahan?"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Errors"
+msgstr "Galat"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Existing groups"
+msgstr "Grup yang ada"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Extra parameters"
+msgstr "Parameter tambahan"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Foreground color"
+msgstr "Warna teks"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Keep Editing"
+msgstr "Lanjutkan menyunting"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "New Host"
+msgstr "Host baru"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "No extension handles this protocol: its options are kept."
+msgstr "Tidak ada ekstensi yang menangani protokol ini: opsinya dipertahankan."
+
+#: src/gcm4/ui/host_dialog.py
+msgid "No extension is installed."
+msgstr "Tidak ada ekstensi yang terpasang."
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Protocol"
+msgstr "Protokol"
+
+#: src/gcm4/ui/host_dialog.py
+#, python-brace-format
+msgid "Shell command run locally, in the background, right after this connection ends, by the protocols that support it. Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
+msgstr "Perintah shell yang dijalankan lokal di latar belakang tepat setelah koneksi ini berakhir, oleh protokol yang mendukungnya. Kosongkan untuk menonaktifkan. Penanda: {name} {address} {group} {protocol}"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "The changes to this host have not been saved."
+msgstr "Perubahan pada host ini belum disimpan."
 
 #: src/gcm4/ui/host_tree.py
 #, python-brace-format
@@ -4105,108 +4165,6 @@ msgstr "Gabungkan kembali semua konsol"
 
 #~ msgid "xfreerdp log:"
 #~ msgstr "Log xfreerdp:"
-
-#~ msgid "vnc"
-#~ msgstr "vnc"
-
-#~ msgid "telnet"
-#~ msgstr "telnet"
-
-#~ msgid "ssh"
-#~ msgstr "ssh"
-
-#~ msgid "spice"
-#~ msgstr "spice"
-
-#~ msgid "rdp"
-#~ msgstr "rdp"
-
-#~ msgid "page 2"
-#~ msgstr "halaman 2"
-
-#~ msgid "page 1"
-#~ msgstr "halaman 1"
-
-#~ msgid "local"
-#~ msgstr "lokal"
-
-#~ msgid "label"
-#~ msgstr "label"
-
-#~ msgid "__glade_unnamed_37"
-#~ msgstr "__glade_unnamed_37"
-
-#~ msgid "__glade_unnamed_36"
-#~ msgstr "__glade_unnamed_36"
-
-#~ msgid "__glade_unnamed_32"
-#~ msgstr "__glade_unnamed_32"
-
-#~ msgid "__glade_unnamed_30"
-#~ msgstr "__glade_unnamed_30"
-
-#~ msgid "__glade_unnamed_29"
-#~ msgstr "__glade_unnamed_29"
-
-#~ msgid "__glade_unnamed_28"
-#~ msgstr "__glade_unnamed_28"
-
-#~ msgid "_Edit"
-#~ msgstr "_Edit"
-
-#~ msgid "Split console vertically"
-#~ msgstr "Pisahkan konsol secara vertikal"
-
-#~ msgid "Split console horizontally"
-#~ msgstr "Pisahkan konsol secara horizontal"
-
-#~ msgid "Show Toolbar"
-#~ msgstr "Tampilkan Toolbar"
-
-#~ msgid "Send commands to several hosts at the same time"
-#~ msgstr "Kirim perintah ke beberapa host sekaligus"
-
-#~ msgid "Seconds between keep-alive packets"
-#~ msgstr "Detik antar paket keep-alive"
-
-#~ msgid "Save active console buffer to file"
-#~ msgstr "Simpan buffer konsol aktif ke file"
-
-#~ msgid "SPICE  (not available here: Proxmox requires API ticket/proxy)"
-#~ msgstr "SPICE  (tidak tersedia di sini: Proxmox memerlukan tiket/proxy API)"
-
-#~ msgid "Open local console"
-#~ msgstr "Buka konsol lokal"
-
-#~ msgid "Local port already assigned"
-#~ msgstr "Port lokal sudah digunakan"
-
-#~ msgid "Keep-Alive"
-#~ msgstr "Keep-Alive"
-
-#~ msgid "Import server list from file"
-#~ msgstr "Impor daftar server dari file"
-
-#~ msgid "Extra arguments to pass to command line"
-#~ msgstr "Argumen tambahan untuk diteruskan ke baris perintah"
-
-#~ msgid "Export server list to file"
-#~ msgstr "Ekspor daftar server ke file"
-
-#~ msgid "Edit hosts properties"
-#~ msgstr "Edit properti host"
-
-#~ msgid "Detected Proxmox targets (dconf):"
-#~ msgstr "Target Proxmox terdeteksi (dconf):"
-
-#~ msgid "Detected Proxmox target"
-#~ msgstr "Target Proxmox terdeteksi"
-
-#~ msgid "Create dynamic port forwarding"
-#~ msgstr "Buat penerusan port dinamis"
-
-#~ msgid "Connect to selected host or all hosts in selected group"
-#~ msgstr "Hubungkan ke host yang dipilih atau semua host dalam grup yang dipilih"
 
 #~ msgid ""
 #~ "Compression level: \n"

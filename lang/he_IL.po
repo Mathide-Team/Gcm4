@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-12 18:28+0000\n"
+"POT-Creation-Date: 2026-10-12 18:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -81,13 +81,11 @@ msgstr "הפעל"
 msgid "Add Host"
 msgstr "הוסף מארח"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Disconnect"
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "After disconnecting"
-msgstr "התנתק"
+msgstr "אחרי ניתוק"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Always"
 msgstr "תמיד"
 
@@ -107,11 +105,9 @@ msgstr "Backspace:"
 msgid "Baud rate"
 msgstr "קצב באוד"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Error connecting to server"
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Before connecting"
-msgstr "שגיאה בהתחברות לשרת"
+msgstr "לפני התחברות"
 
 #: gnome_connection_manager.py ssh_config_editor.py
 msgid "Browse existing SSH keys in ~/.ssh/"
@@ -141,8 +137,8 @@ msgstr "לא ניתן לפתוח קובץ יומן לכתיבה"
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
-#: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/menu_arbre.py
-#: utils.py widgets.py
+#: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
 msgid "Cancel"
 msgstr "ביטול"
 
@@ -166,7 +162,7 @@ msgstr "נקה בחירה"
 msgid "Close"
 msgstr "סגור"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py widgets.py
 msgid "Close console"
 msgstr "סגור מסוף"
 
@@ -242,7 +238,7 @@ msgstr "כהה"
 msgid "Data bits"
 msgstr "סיביות מידע"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Default colors"
 msgstr "צבעי ברירת מחדל"
 
@@ -254,7 +250,7 @@ msgstr "רצף Delete \t[@7]"
 msgid "Delete:"
 msgstr "Delete:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Description"
 msgstr "תיאור"
 
@@ -287,7 +283,7 @@ msgstr "כותרת דינמית"
 msgid "Edit"
 msgstr "ערוך"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Edit Host"
 msgstr "ערוך מארח"
 
@@ -385,7 +381,7 @@ msgstr "Gnome Connection Manager"
 
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
-#: plugins/plugin_import_virtualbox.py
+#: plugins/plugin_import_virtualbox.py src/gcm4/ui/host_dialog.py
 msgid "Group"
 msgstr "קבוצה"
 
@@ -409,8 +405,8 @@ msgstr "קבוצה"
 msgid "Help"
 msgstr "עזרה"
 
-#: gnome_connection_manager.py plugins/plugin_ssh.py ssh_config_editor.py
-#: ssh_key_manager_dialog.py
+#: gnome_connection_manager.py plugins/plugin_ssh.py src/gcm4/ui/host_dialog.py
+#: ssh_config_editor.py ssh_key_manager_dialog.py
 msgid "Host"
 msgstr "מארח"
 
@@ -434,9 +430,9 @@ msgstr "_ייבא שרתים"
 msgid "Imports"
 msgstr "יובא"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Include this host in the workspace (Tools > Open Workspace)"
-msgstr ""
+msgstr "לכלול מארח זה בסביבת העבודה (כלים > פתיחת סביבת העבודה)"
 
 #: gnome_connection_manager.py
 msgid "Invalid entry in configuration file"
@@ -477,7 +473,7 @@ msgid ""
 "Détails complets dans le journal de l'application."
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Leave blank for passwordless/public key authentication"
 msgstr "השאר ריק לאימות ללא סיסמה / עם מפתח ציבורי"
 
@@ -497,11 +493,12 @@ msgstr "נתיב יומנים"
 msgid "Menu"
 msgstr "תפריט"
 
-#: gnome_connection_manager.py ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+#: ssh_key_manager_dialog.py
 msgid "Name"
 msgstr "שם"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Never"
 msgstr "לעולם לא"
 
@@ -542,7 +539,7 @@ msgstr "אין מסופים פתוחים"
 msgid "OK"
 msgstr "אישור"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Only on clean exit"
 msgstr "רק ביציאה תקינה"
 
@@ -570,7 +567,7 @@ msgstr ""
 msgid "Parity"
 msgstr "זוגיות"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Password"
 msgstr "סיסמה"
 
@@ -582,7 +579,7 @@ msgstr "הדבק"
 msgid "Paste on right click"
 msgstr "הדבק בלחיצה ימנית"
 
-#: gnome_connection_manager.py ssh_config_editor.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py ssh_config_editor.py
 msgid "Port"
 msgstr "פורט"
 
@@ -618,7 +615,7 @@ msgstr "שחזר ברירות מחדל"
 msgid "Restore open tabs from the previous session on startup"
 msgstr ""
 
-#: gnome_connection_manager.py utils.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py utils.py
 msgid "Save"
 msgstr "שמור"
 
@@ -681,10 +678,10 @@ msgstr "הגדרות"
 msgid "Shell command run locally, in the background, right after this connection ends. Currently only triggered for terminal-based protocols (SSH/Telnet/Local/Serial/IPMI SOL). Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 #, python-brace-format
 msgid "Shell command run locally, in the background, right before this connection opens (any protocol). Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
-msgstr ""
+msgstr "פקודת מעטפת שרצה מקומית ברקע רגע לפני פתיחת החיבור (כל פרוטוקול). השאירו ריק לביטול. ממלאי מקום: {name} {address} {group} {protocol}"
 
 #: gnome_connection_manager.py
 msgid "Shortcut"
@@ -742,7 +739,7 @@ msgstr ""
 msgid "Title"
 msgstr "כותרת"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "To create subgroups use format group1/group2/group3"
 msgstr "ליצירת תת-קבוצות השתמש בפורמט group1/group2/group3"
 
@@ -759,11 +756,11 @@ msgstr "סוג"
 msgid "Use default fixed width font"
 msgstr "השתמש בגופן ברירת מחדל ברוחב קבוע"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Use global preference"
-msgstr ""
+msgstr "להשתמש בהעדפה הכללית"
 
-#: gnome_connection_manager.py ssh_config_editor.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py ssh_config_editor.py
 msgid "User"
 msgstr "משתמש"
 
@@ -775,11 +772,9 @@ msgstr "תצוגה"
 msgid "Word separator"
 msgstr "מפריד מילים"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Backspace:"
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Workspace"
-msgstr "Backspace:"
+msgstr "סביבת עבודה"
 
 #: gnome_connection_manager.py
 msgid "already exists for group"
@@ -2590,9 +2585,9 @@ msgid ""
 "E.g.: {example}"
 msgstr ""
 
-#: plugins/plugin_vnc.py
+#: plugins/plugin_vnc.py src/gcm4/ui/host_dialog.py
 msgid "Display"
-msgstr ""
+msgstr "תצוגה"
 
 #: plugins/plugin_vnc.py
 msgid "VNC"
@@ -2723,7 +2718,7 @@ msgstr "כווץ הכל"
 msgid "Copy Address"
 msgstr "העתק כתובת"
 
-#: src/gcm4/core/menu_arbre.py widgets.py
+#: src/gcm4/core/menu_arbre.py src/gcm4/ui/host_dialog.py widgets.py
 msgid "Duplicate Host"
 msgstr "שכפל מארח"
 
@@ -2764,6 +2759,71 @@ msgstr "הפתחה חייבת להיות מספר בין {min} ל־{max}."
 #: src/gcm4/core/validation.py
 msgid "The name must not contain «/»."
 msgstr "השם לא יכול להכיל „/”."
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Background color"
+msgstr "צבע רקע"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Commands"
+msgstr "פקודות"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Connection"
+msgstr "חיבור"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Discard"
+msgstr "לבטל"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Discard changes?"
+msgstr "לבטל את השינויים?"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Errors"
+msgstr "שגיאות"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Existing groups"
+msgstr "קבוצות קיימות"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Extra parameters"
+msgstr "פרמטרים נוספים"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Foreground color"
+msgstr "צבע טקסט"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Keep Editing"
+msgstr "להמשיך בעריכה"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "New Host"
+msgstr "מארח חדש"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "No extension handles this protocol: its options are kept."
+msgstr "אין הרחבה שמטפלת בפרוטוקול הזה: האפשרויות שלו נשמרות."
+
+#: src/gcm4/ui/host_dialog.py
+msgid "No extension is installed."
+msgstr "לא מותקנת אף הרחבה."
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Protocol"
+msgstr "פרוטוקול"
+
+#: src/gcm4/ui/host_dialog.py
+#, python-brace-format
+msgid "Shell command run locally, in the background, right after this connection ends, by the protocols that support it. Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
+msgstr "פקודת מעטפת שרצה מקומית ברקע מיד אחרי סיום החיבור, בפרוטוקולים שתומכים בכך. השאירו ריק לביטול. ממלאי מקום: {name} {address} {group} {protocol}"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "The changes to this host have not been saved."
+msgstr "השינויים במארח זה לא נשמרו."
 
 #: src/gcm4/ui/host_tree.py
 #, python-brace-format
@@ -4105,108 +4165,6 @@ msgstr "בטל פיצול כל המסופים"
 
 #~ msgid "xfreerdp log:"
 #~ msgstr "יומן xfreerdp:"
-
-#~ msgid "vnc"
-#~ msgstr "vnc"
-
-#~ msgid "telnet"
-#~ msgstr "telnet"
-
-#~ msgid "ssh"
-#~ msgstr "ssh"
-
-#~ msgid "spice"
-#~ msgstr "spice"
-
-#~ msgid "rdp"
-#~ msgstr "rdp"
-
-#~ msgid "page 2"
-#~ msgstr "עמוד 2"
-
-#~ msgid "page 1"
-#~ msgstr "עמוד 1"
-
-#~ msgid "local"
-#~ msgstr "מקומי"
-
-#~ msgid "label"
-#~ msgstr "תווית"
-
-#~ msgid "__glade_unnamed_37"
-#~ msgstr "__glade_unnamed_37"
-
-#~ msgid "__glade_unnamed_36"
-#~ msgstr "__glade_unnamed_36"
-
-#~ msgid "__glade_unnamed_32"
-#~ msgstr "__glade_unnamed_32"
-
-#~ msgid "__glade_unnamed_30"
-#~ msgstr "__glade_unnamed_30"
-
-#~ msgid "__glade_unnamed_29"
-#~ msgstr "__glade_unnamed_29"
-
-#~ msgid "__glade_unnamed_28"
-#~ msgstr "__glade_unnamed_28"
-
-#~ msgid "_Edit"
-#~ msgstr "_ערוך"
-
-#~ msgid "Split console vertically"
-#~ msgstr "פצל מסוף אנכית"
-
-#~ msgid "Split console horizontally"
-#~ msgstr "פצל מסוף אופקית"
-
-#~ msgid "Show Toolbar"
-#~ msgstr "הצג סרגל כלים"
-
-#~ msgid "Send commands to several hosts at the same time"
-#~ msgstr "שלח פקודות למספר מארחים בו-זמנית"
-
-#~ msgid "Seconds between keep-alive packets"
-#~ msgstr "שניות בין מנות keep-alive"
-
-#~ msgid "Save active console buffer to file"
-#~ msgstr "שמור מאגר של מסוף פעיל לקובץ"
-
-#~ msgid "SPICE  (not available here: Proxmox requires API ticket/proxy)"
-#~ msgstr "SPICE  (לא זמין כאן: Proxmox דורש כרטיס API/פרוקסי)"
-
-#~ msgid "Open local console"
-#~ msgstr "פתח מסוף מקומי"
-
-#~ msgid "Local port already assigned"
-#~ msgstr "הפורט המקומי כבר הוקצה"
-
-#~ msgid "Keep-Alive"
-#~ msgstr "Keep-Alive"
-
-#~ msgid "Import server list from file"
-#~ msgstr "ייבא רשימת שרתים מקובץ"
-
-#~ msgid "Extra arguments to pass to command line"
-#~ msgstr "ארגומנטים נוספים להעברה לשורת הפקודה"
-
-#~ msgid "Export server list to file"
-#~ msgstr "ייצא רשימת שרתים לקובץ"
-
-#~ msgid "Edit hosts properties"
-#~ msgstr "ערוך מאפייני מארחים"
-
-#~ msgid "Detected Proxmox targets (dconf):"
-#~ msgstr "מטרות Proxmox שזוהו (dconf):"
-
-#~ msgid "Detected Proxmox target"
-#~ msgstr "מטרת Proxmox שזוהתה"
-
-#~ msgid "Create dynamic port forwarding"
-#~ msgstr "צור העברת פורט דינמית"
-
-#~ msgid "Connect to selected host or all hosts in selected group"
-#~ msgstr "התחבר למארח הנבחר או לכל המארחים בקבוצה הנבחרת"
 
 #~ msgid ""
 #~ "Compression level: \n"

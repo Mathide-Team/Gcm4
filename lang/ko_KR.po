@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-12 18:28+0000\n"
+"POT-Creation-Date: 2026-10-12 18:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -81,13 +81,11 @@ msgstr "활성화"
 msgid "Add Host"
 msgstr "호스트 추가"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Disconnect"
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "After disconnecting"
-msgstr "연결 해제"
+msgstr "연결 끊은 후"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Always"
 msgstr "항상"
 
@@ -107,11 +105,9 @@ msgstr "백스페이스:"
 msgid "Baud rate"
 msgstr "보율"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Error connecting to server"
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Before connecting"
-msgstr "서버 연결 오류"
+msgstr "연결 전"
 
 #: gnome_connection_manager.py ssh_config_editor.py
 msgid "Browse existing SSH keys in ~/.ssh/"
@@ -141,8 +137,8 @@ msgstr "쓰기용으로 로그 파일을 열 수 없습니다"
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
-#: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/menu_arbre.py
-#: utils.py widgets.py
+#: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
 msgid "Cancel"
 msgstr "취소"
 
@@ -166,7 +162,7 @@ msgstr "선택 해제"
 msgid "Close"
 msgstr "닫기"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py widgets.py
 msgid "Close console"
 msgstr "콘솔 닫기"
 
@@ -242,7 +238,7 @@ msgstr "어둡게"
 msgid "Data bits"
 msgstr "데이터 비트"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Default colors"
 msgstr "기본 색상"
 
@@ -254,7 +250,7 @@ msgstr "삭제 시퀀스 \t[@7]"
 msgid "Delete:"
 msgstr "삭제:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Description"
 msgstr "설명"
 
@@ -287,7 +283,7 @@ msgstr "동적 제목"
 msgid "Edit"
 msgstr "편집"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Edit Host"
 msgstr "호스트 편집"
 
@@ -385,7 +381,7 @@ msgstr "Gnome Connection Manager"
 
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
-#: plugins/plugin_import_virtualbox.py
+#: plugins/plugin_import_virtualbox.py src/gcm4/ui/host_dialog.py
 msgid "Group"
 msgstr "그룹"
 
@@ -409,8 +405,8 @@ msgstr "그룹"
 msgid "Help"
 msgstr "도움말"
 
-#: gnome_connection_manager.py plugins/plugin_ssh.py ssh_config_editor.py
-#: ssh_key_manager_dialog.py
+#: gnome_connection_manager.py plugins/plugin_ssh.py src/gcm4/ui/host_dialog.py
+#: ssh_config_editor.py ssh_key_manager_dialog.py
 msgid "Host"
 msgstr "호스트"
 
@@ -434,9 +430,9 @@ msgstr "서버 _가져오기"
 msgid "Imports"
 msgstr "가져옴"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Include this host in the workspace (Tools > Open Workspace)"
-msgstr ""
+msgstr "이 호스트를 작업 공간에 포함 (도구 > 작업 공간 열기)"
 
 #: gnome_connection_manager.py
 msgid "Invalid entry in configuration file"
@@ -477,7 +473,7 @@ msgid ""
 "Détails complets dans le journal de l'application."
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Leave blank for passwordless/public key authentication"
 msgstr "비밀번호 없음/공개 키 인증의 경우 비워 두세요"
 
@@ -497,11 +493,12 @@ msgstr "로그 경로"
 msgid "Menu"
 msgstr "메뉴"
 
-#: gnome_connection_manager.py ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+#: ssh_key_manager_dialog.py
 msgid "Name"
 msgstr "이름"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Never"
 msgstr "안 함"
 
@@ -542,7 +539,7 @@ msgstr "열려 있는 콘솔이 없습니다"
 msgid "OK"
 msgstr "확인"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Only on clean exit"
 msgstr "정상 종료 시에만"
 
@@ -570,7 +567,7 @@ msgstr ""
 msgid "Parity"
 msgstr "패리티"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Password"
 msgstr "비밀번호"
 
@@ -582,7 +579,7 @@ msgstr "붙여넣기"
 msgid "Paste on right click"
 msgstr "마우스 오른쪽 클릭으로 붙여넣기"
 
-#: gnome_connection_manager.py ssh_config_editor.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py ssh_config_editor.py
 msgid "Port"
 msgstr "포트"
 
@@ -618,7 +615,7 @@ msgstr "기본값 복원"
 msgid "Restore open tabs from the previous session on startup"
 msgstr ""
 
-#: gnome_connection_manager.py utils.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py utils.py
 msgid "Save"
 msgstr "저장"
 
@@ -681,10 +678,10 @@ msgstr "설정"
 msgid "Shell command run locally, in the background, right after this connection ends. Currently only triggered for terminal-based protocols (SSH/Telnet/Local/Serial/IPMI SOL). Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 #, python-brace-format
 msgid "Shell command run locally, in the background, right before this connection opens (any protocol). Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
-msgstr ""
+msgstr "이 연결을 열기 직전에 백그라운드에서 로컬로 실행하는 셸 명령 (모든 프로토콜). 비워 두면 사용 안 함. 자리 표시자: {name} {address} {group} {protocol}"
 
 #: gnome_connection_manager.py
 msgid "Shortcut"
@@ -742,7 +739,7 @@ msgstr ""
 msgid "Title"
 msgstr "제목"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "To create subgroups use format group1/group2/group3"
 msgstr "하위 그룹을 만들려면 group1/group2/group3 형식을 사용하세요"
 
@@ -759,11 +756,11 @@ msgstr "유형"
 msgid "Use default fixed width font"
 msgstr "기본 고정폭 글꼴 사용"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Use global preference"
-msgstr ""
+msgstr "전체 설정 사용"
 
-#: gnome_connection_manager.py ssh_config_editor.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py ssh_config_editor.py
 msgid "User"
 msgstr "사용자"
 
@@ -775,11 +772,9 @@ msgstr "보기"
 msgid "Word separator"
 msgstr "단어 구분 기호"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Backspace:"
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Workspace"
-msgstr "백스페이스:"
+msgstr "작업 공간"
 
 #: gnome_connection_manager.py
 msgid "already exists for group"
@@ -2590,9 +2585,9 @@ msgid ""
 "E.g.: {example}"
 msgstr ""
 
-#: plugins/plugin_vnc.py
+#: plugins/plugin_vnc.py src/gcm4/ui/host_dialog.py
 msgid "Display"
-msgstr ""
+msgstr "표시"
 
 #: plugins/plugin_vnc.py
 msgid "VNC"
@@ -2723,7 +2718,7 @@ msgstr "모두 접기"
 msgid "Copy Address"
 msgstr "주소 복사"
 
-#: src/gcm4/core/menu_arbre.py widgets.py
+#: src/gcm4/core/menu_arbre.py src/gcm4/ui/host_dialog.py widgets.py
 msgid "Duplicate Host"
 msgstr "호스트 복제"
 
@@ -2764,6 +2759,71 @@ msgstr "포트는 {min}에서 {max} 사이의 숫자여야 합니다."
 #: src/gcm4/core/validation.py
 msgid "The name must not contain «/»."
 msgstr "이름에 '/'를 사용할 수 없습니다."
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Background color"
+msgstr "배경색"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Commands"
+msgstr "명령"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Connection"
+msgstr "연결"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Discard"
+msgstr "버리기"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Discard changes?"
+msgstr "변경 사항을 버릴까요?"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Errors"
+msgstr "오류"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Existing groups"
+msgstr "기존 그룹"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Extra parameters"
+msgstr "추가 매개변수"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Foreground color"
+msgstr "글자색"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Keep Editing"
+msgstr "계속 편집"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "New Host"
+msgstr "새 호스트"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "No extension handles this protocol: its options are kept."
+msgstr "이 프로토콜을 처리하는 확장 기능이 없습니다: 옵션은 그대로 유지됩니다."
+
+#: src/gcm4/ui/host_dialog.py
+msgid "No extension is installed."
+msgstr "설치된 확장 기능이 없습니다."
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Protocol"
+msgstr "프로토콜"
+
+#: src/gcm4/ui/host_dialog.py
+#, python-brace-format
+msgid "Shell command run locally, in the background, right after this connection ends, by the protocols that support it. Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
+msgstr "이 연결이 끝난 직후, 지원하는 프로토콜이 백그라운드에서 로컬로 실행하는 셸 명령. 비워 두면 사용 안 함. 자리 표시자: {name} {address} {group} {protocol}"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "The changes to this host have not been saved."
+msgstr "이 호스트의 변경 사항이 저장되지 않았습니다."
 
 #: src/gcm4/ui/host_tree.py
 #, python-brace-format
@@ -4105,108 +4165,6 @@ msgstr "모든 콘솔 분할 해제"
 
 #~ msgid "xfreerdp log:"
 #~ msgstr "xfreerdp 로그:"
-
-#~ msgid "vnc"
-#~ msgstr "vnc"
-
-#~ msgid "telnet"
-#~ msgstr "telnet"
-
-#~ msgid "ssh"
-#~ msgstr "ssh"
-
-#~ msgid "spice"
-#~ msgstr "spice"
-
-#~ msgid "rdp"
-#~ msgstr "rdp"
-
-#~ msgid "page 2"
-#~ msgstr "페이지 2"
-
-#~ msgid "page 1"
-#~ msgstr "페이지 1"
-
-#~ msgid "local"
-#~ msgstr "로컬"
-
-#~ msgid "label"
-#~ msgstr "레이블"
-
-#~ msgid "__glade_unnamed_37"
-#~ msgstr "__glade_unnamed_37"
-
-#~ msgid "__glade_unnamed_36"
-#~ msgstr "__glade_unnamed_36"
-
-#~ msgid "__glade_unnamed_32"
-#~ msgstr "__glade_unnamed_32"
-
-#~ msgid "__glade_unnamed_30"
-#~ msgstr "__glade_unnamed_30"
-
-#~ msgid "__glade_unnamed_29"
-#~ msgstr "__glade_unnamed_29"
-
-#~ msgid "__glade_unnamed_28"
-#~ msgstr "__glade_unnamed_28"
-
-#~ msgid "_Edit"
-#~ msgstr "_편집"
-
-#~ msgid "Split console vertically"
-#~ msgstr "콘솔을 수직으로 분할"
-
-#~ msgid "Split console horizontally"
-#~ msgstr "콘솔을 수평으로 분할"
-
-#~ msgid "Show Toolbar"
-#~ msgstr "도구 모음 표시"
-
-#~ msgid "Send commands to several hosts at the same time"
-#~ msgstr "여러 호스트에 동시에 명령 보내기"
-
-#~ msgid "Seconds between keep-alive packets"
-#~ msgstr "Keep-Alive 패킷 사이의 시간(초)"
-
-#~ msgid "Save active console buffer to file"
-#~ msgstr "활성 콘솔 버퍼를 파일로 저장"
-
-#~ msgid "SPICE  (not available here: Proxmox requires API ticket/proxy)"
-#~ msgstr "SPICE (여기서는 사용 불가: Proxmox는 API 티켓/프록시가 필요함)"
-
-#~ msgid "Open local console"
-#~ msgstr "로컬 콘솔 열기"
-
-#~ msgid "Local port already assigned"
-#~ msgstr "로컬 포트가 이미 할당됨"
-
-#~ msgid "Keep-Alive"
-#~ msgstr "Keep-Alive"
-
-#~ msgid "Import server list from file"
-#~ msgstr "파일에서 서버 목록 가져오기"
-
-#~ msgid "Extra arguments to pass to command line"
-#~ msgstr "명령줄에 전달할 추가 인수"
-
-#~ msgid "Export server list to file"
-#~ msgstr "서버 목록을 파일로 내보내기"
-
-#~ msgid "Edit hosts properties"
-#~ msgstr "호스트 속성 편집"
-
-#~ msgid "Detected Proxmox targets (dconf):"
-#~ msgstr "감지된 Proxmox 대상 (dconf):"
-
-#~ msgid "Detected Proxmox target"
-#~ msgstr "감지된 Proxmox 대상"
-
-#~ msgid "Create dynamic port forwarding"
-#~ msgstr "동적 포트 포워딩 생성"
-
-#~ msgid "Connect to selected host or all hosts in selected group"
-#~ msgstr "선택한 호스트 또는 선택한 그룹의 모든 호스트에 연결"
 
 #~ msgid ""
 #~ "Compression level: \n"

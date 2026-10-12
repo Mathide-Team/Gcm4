@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-12 18:28+0000\n"
+"POT-Creation-Date: 2026-10-12 18:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -81,13 +81,11 @@ msgstr "Ativar"
 msgid "Add Host"
 msgstr "Adicionar host"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Disconnect"
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "After disconnecting"
-msgstr "Desconectar"
+msgstr "Após desconectar"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Always"
 msgstr "Sempre"
 
@@ -107,11 +105,9 @@ msgstr "Backspace:"
 msgid "Baud rate"
 msgstr "Taxa de transmissão (baud)"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Error connecting to server"
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Before connecting"
-msgstr "Erro ao conectar ao servidor"
+msgstr "Antes de conectar"
 
 #: gnome_connection_manager.py ssh_config_editor.py
 msgid "Browse existing SSH keys in ~/.ssh/"
@@ -141,8 +137,8 @@ msgstr "Não foi possível abrir o arquivo de log para escrita"
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
-#: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/menu_arbre.py
-#: utils.py widgets.py
+#: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -166,7 +162,7 @@ msgstr "Limpar seleção"
 msgid "Close"
 msgstr "Fechar"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py widgets.py
 msgid "Close console"
 msgstr "Fechar console"
 
@@ -242,7 +238,7 @@ msgstr "Escuro"
 msgid "Data bits"
 msgstr "Bits de dados"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Default colors"
 msgstr "Cores padrão"
 
@@ -254,7 +250,7 @@ msgstr "Sequência Delete \t[@7]"
 msgid "Delete:"
 msgstr "Delete:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Description"
 msgstr "Descrição"
 
@@ -287,7 +283,7 @@ msgstr "Título dinâmico"
 msgid "Edit"
 msgstr "Editar"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Edit Host"
 msgstr "Editar host"
 
@@ -385,7 +381,7 @@ msgstr "Gnome Connection Manager"
 
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
-#: plugins/plugin_import_virtualbox.py
+#: plugins/plugin_import_virtualbox.py src/gcm4/ui/host_dialog.py
 msgid "Group"
 msgstr "Grupo"
 
@@ -409,8 +405,8 @@ msgstr "Grupo"
 msgid "Help"
 msgstr "Ajuda"
 
-#: gnome_connection_manager.py plugins/plugin_ssh.py ssh_config_editor.py
-#: ssh_key_manager_dialog.py
+#: gnome_connection_manager.py plugins/plugin_ssh.py src/gcm4/ui/host_dialog.py
+#: ssh_config_editor.py ssh_key_manager_dialog.py
 msgid "Host"
 msgstr "Host"
 
@@ -434,9 +430,9 @@ msgstr "_Importar servidores"
 msgid "Imports"
 msgstr "Importado"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Include this host in the workspace (Tools > Open Workspace)"
-msgstr ""
+msgstr "Incluir este host no espaço de trabalho (Ferramentas > Abrir espaço de trabalho)"
 
 #: gnome_connection_manager.py
 msgid "Invalid entry in configuration file"
@@ -477,7 +473,7 @@ msgid ""
 "Détails complets dans le journal de l'application."
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Leave blank for passwordless/public key authentication"
 msgstr "Deixe em branco para autenticação sem senha/chave pública"
 
@@ -497,11 +493,12 @@ msgstr "Caminho dos logs"
 msgid "Menu"
 msgstr "Menu"
 
-#: gnome_connection_manager.py ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+#: ssh_key_manager_dialog.py
 msgid "Name"
 msgstr "Nome"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Never"
 msgstr "Nunca"
 
@@ -542,7 +539,7 @@ msgstr "Nenhum console aberto"
 msgid "OK"
 msgstr "OK"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Only on clean exit"
 msgstr "Apenas em saída limpa"
 
@@ -570,7 +567,7 @@ msgstr ""
 msgid "Parity"
 msgstr "Paridade"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Password"
 msgstr "Senha"
 
@@ -582,7 +579,7 @@ msgstr "Colar"
 msgid "Paste on right click"
 msgstr "Colar com clique direito"
 
-#: gnome_connection_manager.py ssh_config_editor.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py ssh_config_editor.py
 msgid "Port"
 msgstr "Porta"
 
@@ -618,7 +615,7 @@ msgstr "Restaurar padrões"
 msgid "Restore open tabs from the previous session on startup"
 msgstr ""
 
-#: gnome_connection_manager.py utils.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py utils.py
 msgid "Save"
 msgstr "Salvar"
 
@@ -681,10 +678,10 @@ msgstr "Configurações"
 msgid "Shell command run locally, in the background, right after this connection ends. Currently only triggered for terminal-based protocols (SSH/Telnet/Local/Serial/IPMI SOL). Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 #, python-brace-format
 msgid "Shell command run locally, in the background, right before this connection opens (any protocol). Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
-msgstr ""
+msgstr "Comando shell executado localmente, em segundo plano, logo antes da abertura desta conexão (qualquer protocolo). Deixe em branco para desativar. Marcadores: {name} {address} {group} {protocol}"
 
 #: gnome_connection_manager.py
 msgid "Shortcut"
@@ -742,7 +739,7 @@ msgstr ""
 msgid "Title"
 msgstr "Título"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "To create subgroups use format group1/group2/group3"
 msgstr "Para criar subgrupos, use o formato grupo1/grupo2/grupo3"
 
@@ -759,11 +756,11 @@ msgstr "Tipo"
 msgid "Use default fixed width font"
 msgstr "Usar fonte de largura fixa padrão"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Use global preference"
-msgstr ""
+msgstr "Usar a preferência global"
 
-#: gnome_connection_manager.py ssh_config_editor.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py ssh_config_editor.py
 msgid "User"
 msgstr "Usuário"
 
@@ -775,11 +772,9 @@ msgstr "Exibir"
 msgid "Word separator"
 msgstr "Separador de palavras"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Backspace:"
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Workspace"
-msgstr "Backspace:"
+msgstr "Espaço de trabalho"
 
 #: gnome_connection_manager.py
 msgid "already exists for group"
@@ -2590,9 +2585,9 @@ msgid ""
 "E.g.: {example}"
 msgstr ""
 
-#: plugins/plugin_vnc.py
+#: plugins/plugin_vnc.py src/gcm4/ui/host_dialog.py
 msgid "Display"
-msgstr ""
+msgstr "Exibição"
 
 #: plugins/plugin_vnc.py
 msgid "VNC"
@@ -2723,7 +2718,7 @@ msgstr "Recolher tudo"
 msgid "Copy Address"
 msgstr "Copiar endereço"
 
-#: src/gcm4/core/menu_arbre.py widgets.py
+#: src/gcm4/core/menu_arbre.py src/gcm4/ui/host_dialog.py widgets.py
 msgid "Duplicate Host"
 msgstr "Duplicar host"
 
@@ -2764,6 +2759,71 @@ msgstr "A porta deve ser um número entre {min} e {max}."
 #: src/gcm4/core/validation.py
 msgid "The name must not contain «/»."
 msgstr "O nome não pode conter “/”."
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Background color"
+msgstr "Cor de fundo"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Commands"
+msgstr "Comandos"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Connection"
+msgstr "Conexão"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Discard"
+msgstr "Descartar"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Discard changes?"
+msgstr "Descartar alterações?"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Errors"
+msgstr "Erros"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Existing groups"
+msgstr "Grupos existentes"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Extra parameters"
+msgstr "Parâmetros extras"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Foreground color"
+msgstr "Cor do texto"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Keep Editing"
+msgstr "Continuar editando"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "New Host"
+msgstr "Novo host"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "No extension handles this protocol: its options are kept."
+msgstr "Nenhuma extensão trata este protocolo: suas opções são mantidas."
+
+#: src/gcm4/ui/host_dialog.py
+msgid "No extension is installed."
+msgstr "Nenhuma extensão instalada."
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Protocol"
+msgstr "Protocolo"
+
+#: src/gcm4/ui/host_dialog.py
+#, python-brace-format
+msgid "Shell command run locally, in the background, right after this connection ends, by the protocols that support it. Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
+msgstr "Comando shell executado localmente, em segundo plano, logo após o fim desta conexão, pelos protocolos que o suportam. Deixe em branco para desativar. Marcadores: {name} {address} {group} {protocol}"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "The changes to this host have not been saved."
+msgstr "As alterações deste host não foram salvas."
 
 #: src/gcm4/ui/host_tree.py
 #, python-brace-format
@@ -4105,108 +4165,6 @@ msgstr "Desfazer divisão de todos os consoles"
 
 #~ msgid "xfreerdp log:"
 #~ msgstr "Log do xfreerdp:"
-
-#~ msgid "vnc"
-#~ msgstr "vnc"
-
-#~ msgid "telnet"
-#~ msgstr "telnet"
-
-#~ msgid "ssh"
-#~ msgstr "ssh"
-
-#~ msgid "spice"
-#~ msgstr "spice"
-
-#~ msgid "rdp"
-#~ msgstr "rdp"
-
-#~ msgid "page 2"
-#~ msgstr "página 2"
-
-#~ msgid "page 1"
-#~ msgstr "página 1"
-
-#~ msgid "local"
-#~ msgstr "local"
-
-#~ msgid "label"
-#~ msgstr "rótulo"
-
-#~ msgid "__glade_unnamed_37"
-#~ msgstr "__glade_unnamed_37"
-
-#~ msgid "__glade_unnamed_36"
-#~ msgstr "__glade_unnamed_36"
-
-#~ msgid "__glade_unnamed_32"
-#~ msgstr "__glade_unnamed_32"
-
-#~ msgid "__glade_unnamed_30"
-#~ msgstr "__glade_unnamed_30"
-
-#~ msgid "__glade_unnamed_29"
-#~ msgstr "__glade_unnamed_29"
-
-#~ msgid "__glade_unnamed_28"
-#~ msgstr "__glade_unnamed_28"
-
-#~ msgid "_Edit"
-#~ msgstr "_Editar"
-
-#~ msgid "Split console vertically"
-#~ msgstr "Dividir console verticalmente"
-
-#~ msgid "Split console horizontally"
-#~ msgstr "Dividir console horizontalmente"
-
-#~ msgid "Show Toolbar"
-#~ msgstr "Mostrar barra de ferramentas"
-
-#~ msgid "Send commands to several hosts at the same time"
-#~ msgstr "Enviar comandos para vários hosts ao mesmo tempo"
-
-#~ msgid "Seconds between keep-alive packets"
-#~ msgstr "Segundos entre pacotes keep-alive"
-
-#~ msgid "Save active console buffer to file"
-#~ msgstr "Salvar buffer do console ativo em arquivo"
-
-#~ msgid "SPICE  (not available here: Proxmox requires API ticket/proxy)"
-#~ msgstr "SPICE  (não disponível aqui: o Proxmox requer ticket de API/proxy)"
-
-#~ msgid "Open local console"
-#~ msgstr "Abrir console local"
-
-#~ msgid "Local port already assigned"
-#~ msgstr "Porta local já atribuída"
-
-#~ msgid "Keep-Alive"
-#~ msgstr "Keep-Alive"
-
-#~ msgid "Import server list from file"
-#~ msgstr "Importar lista de servidores de arquivo"
-
-#~ msgid "Extra arguments to pass to command line"
-#~ msgstr "Argumentos extras a serem passados para a linha de comando"
-
-#~ msgid "Export server list to file"
-#~ msgstr "Exportar lista de servidores para arquivo"
-
-#~ msgid "Edit hosts properties"
-#~ msgstr "Editar propriedades dos hosts"
-
-#~ msgid "Detected Proxmox targets (dconf):"
-#~ msgstr "Destinos Proxmox detectados (dconf):"
-
-#~ msgid "Detected Proxmox target"
-#~ msgstr "Destino Proxmox detectado"
-
-#~ msgid "Create dynamic port forwarding"
-#~ msgstr "Criar redirecionamento de porta dinâmico"
-
-#~ msgid "Connect to selected host or all hosts in selected group"
-#~ msgstr "Conectar ao host selecionado ou a todos os hosts no grupo selecionado"
 
 #~ msgid ""
 #~ "Compression level: \n"
