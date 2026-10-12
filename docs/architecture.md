@@ -393,6 +393,43 @@ Deux bugs additionnels observés dans d'anciens journaux de développement
 (`ImportError: wMain`, `AttributeError` sur « Éditer » sans sélection) sont
 également **déjà corrigés** dans le code actuel.
 
+### 2.10 Champs du dialogue d'hôte (gcm4, #144)
+
+Inventaire de `Whost` (`gnome_connection_manager.py`, l. ~5448 à 6700,
+`models.Host._CORE_FIELDS`) pour le dialogue GTK4 (`gcm4.ui.host_dialog`,
+#145). **Commun** : attribut de `gcm4.core.model.Host`, édité par le dialogue
+et validé par `gcm4.core.validation.validate_host`. **Protocole** : clé de
+`host.protocol_options[protocole]`, éditée par la zone du plugin (#146) et
+conservée telle quelle sans plugin. La correspondance avec les clés INI est
+`gcm4.core.config.CHAMPS_HOTE` : toute clé absente de ce tableau y est une
+option de protocole.
+
+| Widget `Whost` | Champ GTK3 | Clé INI | Classement | Dialogue gcm4 |
+|---|---|---|---|---|
+| `txtName` | `name` | `name` | commun | nom (obligatoire, sans `/`, unique dans le groupe) |
+| `cmbGroup` (avec saisie) | `group` | `group` | commun | groupe : liste des groupes et saisie libre (racine permise) |
+| `txtHost` | `host` | `host` | commun | adresse (obligatoire sauf protocole sans adresse) |
+| `txtPort` | `port` | `port` | commun | port : vide (défaut du protocole, #146) ou 1 à 65535 |
+| `txtUser` | `user` | `user` | commun | utilisateur |
+| `txtPass` / `txtPassword` | `password` | `pass` (chiffré) | commun | `Gtk.PasswordEntry`, jamais journalisé |
+| `txtDescription` | `description` | `description` | commun | description |
+| `btnFColor`, `btnBColor`, `chkDefaultColors` | `font_color`, `back_color` | `font-color`, `back-color` | commun | `Gtk.ColorDialogButton` ×2 et interrupteur « couleurs par défaut » |
+| `cmbProtocol` | `protocol` | `protocol` | commun | `Gtk.DropDown` : protocoles du registre (#124), plus le protocole actuel s'il est inconnu |
+| `chkWorkspace` | `workspace` | `workspace` | commun | interrupteur « espace de travail » |
+| `cmbAutoCloseTab` | `auto_close_tab` | `auto-close-tab` | commun | hérité / jamais / toujours / sortie propre |
+| `txtPreConnectCommand` | `pre_connect_command` | `pre-connect-command` | commun | stocké, exécuté par les plugins seulement |
+| `txtPostConnectCommand` | `post_connect_command` | `post-connect-command` | commun | stocké, exécuté par les plugins seulement |
+| — (page du plugin) | `extra_params` | `extra_params` | commun | paramètres supplémentaires (texte libre transmis au client) |
+| `cmbType` | `type` | `type` | protocole | remplacé par `protocol` ; conservé tel quel |
+| `txtPrivateKey`, `btnBrowse`, `btnPickKey`, `btnKeyManager` | `private_key` | `private_key` | protocole | zone du plugin (SSH) |
+| `chkCommands`, `txtCommands` | `commands` | `commands` | protocole | zone du plugin (terminal) |
+| `chkLogging` | `log` | `log` | protocole | zone du plugin (terminal) |
+| `cmbBackspace`, `cmbDelete` | `backspace_key`, `delete_key` | `backspace_key`, `delete_key` | protocole | zone du plugin (terminal VTE) |
+| `txtTerm` | `term` | `term` | protocole | zone du plugin (terminal) |
+| page tunnels | `tunnel` | `tunnel` | protocole | zone du plugin (SSH) |
+| options SSH | `keep_alive`, `x11`, `agent`, `compression`, `compressionLevel` | idem | protocole | zone du plugin (SSH) |
+| pages `nbHost` des plugins (`save_host_fields`) | champs de `_protocol_field_defaults()` | idem | protocole | zone du plugin du protocole |
+
 ## 3. Arborescence détaillée (fichiers, classes, dépendances)
 
 ```
