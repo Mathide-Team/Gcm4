@@ -6,7 +6,7 @@
 > toute modification manuelle sera écrasée. Le régénérer avec `make class-diagram` ;
 > le job Qualité échoue s'il est périmé (`--check`).
 
-66 modules · 134 classes · 225 fonctions publiques de module.
+69 modules · 136 classes · 232 fonctions publiques de module.
 
 Conventions : `+` public, `-` privé (préfixe `_`) ; `list~str~` = `list[str]` ; `<<module>>`
 regroupe les fonctions publiques d'un module ; `<<…>>` sur une classe liste `dataclass` et les
@@ -39,7 +39,7 @@ flowchart TD
     g4 -->|5| g0
     g4 -->|1| g3
     g5 -->|1| g3
-    g5 -->|13| g4
+    g5 -->|18| g4
 ```
 
 ## Cœur (sans GTK)
@@ -1266,6 +1266,7 @@ classDiagram
 | `gcm4.core.host_tree` | `src/gcm4/core/host_tree.py` | Arbre des groupes et des hôtes, sans GTK (#139). |
 | `gcm4.core.i18n` | `src/gcm4/core/i18n.py` | Traductions de gcm4 : domaine gettext ``gcm-lang`` de l'application GTK3. |
 | `gcm4.core.menu` | `src/gcm4/core/menu.py` | Menu principal et raccourcis de gcm4, décrits sans GTK (#134). |
+| `gcm4.core.menu_arbre` | `src/gcm4/core/menu_arbre.py` | Menu contextuel de l'arbre et règles de ses actions, sans GTK (#142). |
 | `gcm4.core.model` | `src/gcm4/core/model.py` | Modèle de la base GTK4 : Host, Group, HostStore, sans GTK (#136). |
 | `gcm4.core.replies` | `src/gcm4/core/replies.py` | Groupes repliés de ``[window] collapsed-folders``, au format GTK3 (#139). |
 | `gcm4.core.theme` | `src/gcm4/core/theme.py` | Thème de la base GTK4, sans GTK (#135). |
@@ -1406,6 +1407,21 @@ classDiagram
         +str titre
         +tuple~tuple~Entree, ...~, ...~ sections
     }
+    class mod_gcm4_core_menu_arbre {
+        <<module>>
+        +disposition_gtk3(click_target) list~list~str~~
+        +cible(noeud) str
+        +sections(noeud, connexion_possible) list~list~str~~
+        +groupe_de_travail(noeud) str
+        +decompte(store, chemin) Decompte
+        +chemin_de_groupe(store, parent, nom, actuel) str None
+    }
+    class Decompte {
+        <<dataclass>>
+        +int hotes
+        +int sous_groupes
+        +vide() bool
+    }
     class mod_gcm4_core_model {
         <<module>>
         +normaliser_chemin(chemin) str
@@ -1491,8 +1507,10 @@ classDiagram
 |---|---|---|
 | `gcm4.ui` | `src/gcm4/ui/__init__.py` | Interface GTK4 de gcm4 : seul endroit autorisé à importer ``gi``. |
 | `gcm4.ui.application` | `src/gcm4/ui/application.py` | Application libadwaita de gcm4 : instance unique, actions, À propos (#133, #134). |
+| `gcm4.ui.dialogues` | `src/gcm4/ui/dialogues.py` | Dialogues de confirmation et de saisie, compatibles libadwaita 1.2 à 1.9. |
 | `gcm4.ui.host_tree` | `src/gcm4/ui/host_tree.py` | Arbre des groupes et des hôtes du panneau gauche (#139). |
 | `gcm4.ui.main_window` | `src/gcm4/ui/main_window.py` | Fenêtre principale de gcm4 (#134). |
+| `gcm4.ui.menu_arbre` | `src/gcm4/ui/menu_arbre.py` | Menu contextuel, actions, raccourcis et activation de l'arbre (#142). |
 
 ```mermaid
 classDiagram
@@ -1506,6 +1524,10 @@ classDiagram
         +set_group_colors(couleurs) None
         +boite_a_propos() Gtk.Widget
     }
+    class mod_gcm4_ui_dialogues {
+        <<module>>
+        +creer(parent, titre, corps, reponses, defaut, fermeture, rappel, extra) Adw.Dialog Adw.MessageDialog
+    }
     class ElementArbre {
         <<GObject.Object>>
     }
@@ -1517,6 +1539,7 @@ classDiagram
         +chemin_selectionne() str None
         +selectionner(chemin) bool
         +deposer(source, cible) bool
+        +appliquer_couleurs() None
         +lignes_visibles() list~tuple~int, str~~
         +ligne(chemin) Gtk.TreeListRow None
     }
@@ -1529,5 +1552,11 @@ classDiagram
         +enregistrer_config() None
         +notifier(message) None
         +etat_courant() window_state.WindowState
+    }
+    class MenuArbre {
+        +ouvrir(noeud, x, y) None
+        +executer(nom) None
+        +modifier(operation) bool
+        +appliquer_couleur(chemin, couleur) bool
     }
 ```

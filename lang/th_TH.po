@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-12 08:52+0000\n"
+"POT-Creation-Date: 2026-10-12 08:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,7 +77,7 @@ msgstr "การดำเนินการ"
 msgid "Activate"
 msgstr "เปิดใช้งาน"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/core/menu_arbre.py widgets.py
 msgid "Add Host"
 msgstr "เพิ่มโฮสต์"
 
@@ -141,7 +141,8 @@ msgstr "ไม่สามารถเปิดไฟล์บันทึกเ
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
-#: plugins/plugin_spice.py plugins/plugin_ssh.py utils.py widgets.py
+#: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/menu_arbre.py
+#: utils.py widgets.py
 msgid "Cancel"
 msgstr "ยกเลิก"
 
@@ -281,7 +282,8 @@ msgstr "คุณต้องการลบโฮสต์จริงหรื
 msgid "Dynamic title"
 msgstr "ชื่อแบบไดนามิก"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py widgets.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: src/gcm4/core/menu_arbre.py widgets.py
 msgid "Edit"
 msgstr "แก้ไข"
 
@@ -503,11 +505,9 @@ msgstr "ชื่อ"
 msgid "Never"
 msgstr "ไม่เลย"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Group"
+#: gnome_connection_manager.py src/gcm4/ui/menu_arbre.py
 msgid "New Group"
-msgstr "กลุ่ม"
+msgstr "กลุ่มใหม่"
 
 #: gnome_connection_manager.py
 #, fuzzy
@@ -602,11 +602,9 @@ msgstr "โฮมเพจของโปรเจกต์"
 msgid "Quit"
 msgstr "ออก"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Rename tab"
+#: gnome_connection_manager.py src/gcm4/ui/menu_arbre.py
 msgid "Rename Group"
-msgstr "เปลี่ยนชื่อแท็บ"
+msgstr "เปลี่ยนชื่อกลุ่ม"
 
 #: gnome_connection_manager.py widgets.py
 msgid "Rename tab"
@@ -1425,7 +1423,7 @@ msgstr "🔍  สแกนโฮสต์ Proxmox"
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_serial.py
 #: plugins/plugin_spice.py plugins/plugin_vnc.py plugins/plugin_web.py
-#: widgets.py
+#: src/gcm4/core/menu_arbre.py widgets.py
 msgid "Connect"
 msgstr "เชื่อมต่อ"
 
@@ -2501,7 +2499,8 @@ msgstr "พอร์ตระยะไกล"
 msgid "Remote path"
 msgstr "โฮสต์ระยะไกล"
 
-#: plugins/plugin_ssh.py widgets.py
+#: plugins/plugin_ssh.py src/gcm4/core/menu_arbre.py src/gcm4/ui/menu_arbre.py
+#: widgets.py
 msgid "Remove"
 msgstr "ลบ"
 
@@ -2712,6 +2711,38 @@ msgstr "ไม่สามารถเขียนไฟล์การตั้
 msgid "Search"
 msgstr "ค้นหา"
 
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Choose Color…"
+msgstr "เลือกสี…"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Collapse all"
+msgstr "ยุบทั้งหมด"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Copy Address"
+msgstr "คัดลอกที่อยู่"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Duplicate Host"
+msgstr "ทำซ้ำโฮสต์"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Expand all"
+msgstr "ขยายทั้งหมด"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "New Group…"
+msgstr "กลุ่มใหม่…"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Rename Group…"
+msgstr "เปลี่ยนชื่อกลุ่ม…"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Reset Color"
+msgstr "รีเซ็ตสี"
+
 #: src/gcm4/ui/host_tree.py
 #, python-brace-format
 msgid "An item with this name already exists in '{group}'."
@@ -2747,8 +2778,62 @@ msgid "Hosts and groups will appear in the left panel."
 msgstr "โฮสต์และกลุ่มจะปรากฏในแผงด้านซ้าย"
 
 #: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "No extension can open «{protocol}» connections yet."
+msgstr "ยังไม่มีส่วนขยายใดเปิดการเชื่อมต่อ '{protocol}' ได้"
+
+#: src/gcm4/ui/main_window.py
 msgid "Welcome to Gnome Connection Manager"
 msgstr "ยินดีต้อนรับสู่ Gnome Connection Manager"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Address copied"
+msgstr "คัดลอกที่อยู่แล้ว"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Changes not saved: {error}"
+msgstr "ไม่ได้บันทึกการเปลี่ยนแปลง: {error}"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Create"
+msgstr "สร้าง"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Group color"
+msgstr "สีของกลุ่ม"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Group name"
+msgstr "ชื่อกลุ่ม"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "It contains {hosts} host(s) and {groups} subgroup(s), which will be removed too."
+msgstr "กลุ่มนี้มีโฮสต์ {hosts} รายการและกลุ่มย่อย {groups} กลุ่ม ซึ่งจะถูกลบด้วย"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Parent group: {parent}"
+msgstr "กลุ่มแม่: {parent}"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Remove group «{name}»?"
+msgstr "ลบกลุ่ม '{name}' หรือไม่"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Remove host «{name}»?"
+msgstr "ลบโฮสต์ '{name}' หรือไม่"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Rename"
+msgstr "เปลี่ยนชื่อ"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "This cannot be undone."
+msgstr "ไม่สามารถยกเลิกการกระทำนี้ได้"
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format
@@ -3947,16 +4032,8 @@ msgid "%s has disconnected."
 msgstr "ตัดการเชื่อมต่อ"
 
 #: widgets.py
-msgid "Choose Color…"
-msgstr ""
-
-#: widgets.py
 msgid "Clone console"
 msgstr "โคลนคอนโซล"
-
-#: widgets.py
-msgid "Collapse all"
-msgstr "ยุบทั้งหมด"
 
 #: widgets.py
 #, fuzzy
@@ -3965,42 +4042,16 @@ msgid "Connection closed"
 msgstr "กำลังเชื่อมต่อ…"
 
 #: widgets.py
-msgid "Copy Address"
-msgstr "คัดลอกที่อยู่"
-
-#: widgets.py
 msgid "Custom commands"
 msgstr "คำสั่งที่กำหนดเอง"
-
-#: widgets.py
-msgid "Duplicate Host"
-msgstr "ทำซ้ำโฮสต์"
 
 #: widgets.py
 msgid "Enable logging"
 msgstr "เปิดใช้งานการบันทึก"
 
 #: widgets.py
-msgid "Expand all"
-msgstr "ขยายทั้งหมด"
-
-#: widgets.py
-msgid "New Group…"
-msgstr ""
-
-#: widgets.py
 msgid "Reconnect to host"
 msgstr "เชื่อมต่อโฮสต์ใหม่"
-
-#: widgets.py
-msgid "Rename Group…"
-msgstr ""
-
-#: widgets.py
-#, fuzzy
-#| msgid "Reset console"
-msgid "Reset Color"
-msgstr "รีเซ็ตคอนโซล"
 
 #: widgets.py
 msgid "Reset and Clear console"

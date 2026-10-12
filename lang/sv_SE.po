@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-12 08:52+0000\n"
+"POT-Creation-Date: 2026-10-12 08:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,7 +77,7 @@ msgstr "Åtgärd"
 msgid "Activate"
 msgstr "Aktivera"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/core/menu_arbre.py widgets.py
 msgid "Add Host"
 msgstr "Lägg till värd"
 
@@ -141,7 +141,8 @@ msgstr "Det går inte att öppna loggfilen för skrivning"
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
-#: plugins/plugin_spice.py plugins/plugin_ssh.py utils.py widgets.py
+#: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/menu_arbre.py
+#: utils.py widgets.py
 msgid "Cancel"
 msgstr "Avbryt"
 
@@ -281,7 +282,8 @@ msgstr "Vill du verkligen ta bort värden"
 msgid "Dynamic title"
 msgstr "Dynamisk titel"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py widgets.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: src/gcm4/core/menu_arbre.py widgets.py
 msgid "Edit"
 msgstr "Redigera"
 
@@ -503,11 +505,9 @@ msgstr "Namn"
 msgid "Never"
 msgstr "Aldrig"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Group"
+#: gnome_connection_manager.py src/gcm4/ui/menu_arbre.py
 msgid "New Group"
-msgstr "Grupp"
+msgstr "Ny grupp"
 
 #: gnome_connection_manager.py
 #, fuzzy
@@ -602,11 +602,9 @@ msgstr "Projektets webbplats"
 msgid "Quit"
 msgstr "Avsluta"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Rename tab"
+#: gnome_connection_manager.py src/gcm4/ui/menu_arbre.py
 msgid "Rename Group"
-msgstr "Byt namn på flik"
+msgstr "Byt namn på grupp"
 
 #: gnome_connection_manager.py widgets.py
 msgid "Rename tab"
@@ -1425,7 +1423,7 @@ msgstr "🔍  Skanna Proxmox-värdar"
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_serial.py
 #: plugins/plugin_spice.py plugins/plugin_vnc.py plugins/plugin_web.py
-#: widgets.py
+#: src/gcm4/core/menu_arbre.py widgets.py
 msgid "Connect"
 msgstr "Anslut"
 
@@ -2501,7 +2499,8 @@ msgstr "Fjärrport"
 msgid "Remote path"
 msgstr "Fjärrvärd"
 
-#: plugins/plugin_ssh.py widgets.py
+#: plugins/plugin_ssh.py src/gcm4/core/menu_arbre.py src/gcm4/ui/menu_arbre.py
+#: widgets.py
 msgid "Remove"
 msgstr "Ta bort"
 
@@ -2712,6 +2711,38 @@ msgstr "Det går inte att skriva konfigurationsfilen %s: %s"
 msgid "Search"
 msgstr "Sök"
 
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Choose Color…"
+msgstr "Välj färg…"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Collapse all"
+msgstr "Komprimera alla"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Copy Address"
+msgstr "Kopiera adress"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Duplicate Host"
+msgstr "Duplicera värd"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Expand all"
+msgstr "Expandera alla"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "New Group…"
+msgstr "Ny grupp…"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Rename Group…"
+msgstr "Byt namn på grupp…"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Reset Color"
+msgstr "Återställ färg"
+
 #: src/gcm4/ui/host_tree.py
 #, python-brace-format
 msgid "An item with this name already exists in '{group}'."
@@ -2747,8 +2778,62 @@ msgid "Hosts and groups will appear in the left panel."
 msgstr "Värdar och grupper visas i den vänstra panelen."
 
 #: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "No extension can open «{protocol}» connections yet."
+msgstr "Inget tillägg kan öppna ”{protocol}”-anslutningar ännu."
+
+#: src/gcm4/ui/main_window.py
 msgid "Welcome to Gnome Connection Manager"
 msgstr "Välkommen till Gnome Connection Manager"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Address copied"
+msgstr "Adressen kopierades"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Changes not saved: {error}"
+msgstr "Ändringarna sparades inte: {error}"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Create"
+msgstr "Skapa"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Group color"
+msgstr "Gruppfärg"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Group name"
+msgstr "Gruppnamn"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "It contains {hosts} host(s) and {groups} subgroup(s), which will be removed too."
+msgstr "Den innehåller {hosts} värd(ar) och {groups} undergrupp(er), som också tas bort."
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Parent group: {parent}"
+msgstr "Överordnad grupp: {parent}"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Remove group «{name}»?"
+msgstr "Ta bort gruppen ”{name}”?"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Remove host «{name}»?"
+msgstr "Ta bort värden ”{name}”?"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Rename"
+msgstr "Byt namn"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "This cannot be undone."
+msgstr "Detta kan inte ångras."
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format
@@ -3947,16 +4032,8 @@ msgid "%s has disconnected."
 msgstr "Koppla från"
 
 #: widgets.py
-msgid "Choose Color…"
-msgstr ""
-
-#: widgets.py
 msgid "Clone console"
 msgstr "Klona konsol"
-
-#: widgets.py
-msgid "Collapse all"
-msgstr "Komprimera alla"
 
 #: widgets.py
 #, fuzzy
@@ -3965,42 +4042,16 @@ msgid "Connection closed"
 msgstr "Ansluter…"
 
 #: widgets.py
-msgid "Copy Address"
-msgstr "Kopiera adress"
-
-#: widgets.py
 msgid "Custom commands"
 msgstr "Anpassade kommandon"
-
-#: widgets.py
-msgid "Duplicate Host"
-msgstr "Duplicera värd"
 
 #: widgets.py
 msgid "Enable logging"
 msgstr "Aktivera loggning"
 
 #: widgets.py
-msgid "Expand all"
-msgstr "Expandera alla"
-
-#: widgets.py
-msgid "New Group…"
-msgstr ""
-
-#: widgets.py
 msgid "Reconnect to host"
 msgstr "Återanslut till värd"
-
-#: widgets.py
-msgid "Rename Group…"
-msgstr ""
-
-#: widgets.py
-#, fuzzy
-#| msgid "Reset console"
-msgid "Reset Color"
-msgstr "Återställ konsol"
 
 #: widgets.py
 msgid "Reset and Clear console"
