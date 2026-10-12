@@ -6,7 +6,7 @@
 > toute modification manuelle sera écrasée. Le régénérer avec `make class-diagram` ;
 > le job Qualité échoue s'il est périmé (`--check`).
 
-62 modules · 129 classes · 211 fonctions publiques de module.
+65 modules · 132 classes · 219 fonctions publiques de module.
 
 Conventions : `+` public, `-` privé (préfixe `_`) ; `list~str~` = `list[str]` ; `<<module>>`
 regroupe les fonctions publiques d'un module ; `<<…>>` sur une classe liste `dataclass` et les
@@ -36,10 +36,10 @@ flowchart TD
     g3 -->|2| g4
     g3 -->|1| g5
     g4 -->|1| g1
-    g4 -->|4| g0
+    g4 -->|5| g0
     g4 -->|1| g3
     g5 -->|1| g3
-    g5 -->|6| g4
+    g5 -->|11| g4
 ```
 
 ## Cœur (sans GTK)
@@ -1262,9 +1262,11 @@ classDiagram
 | `gcm4.core.chiffrement` | `src/gcm4/core/chiffrement.py` | Mots de passe chiffrés de gcm4.conf, compatibles avec l'application GTK3 (#138). |
 | `gcm4.core.cli` | `src/gcm4/core/cli.py` | Ligne de commande de gcm4, analysée avant toute initialisation GTK (#133). |
 | `gcm4.core.config` | `src/gcm4/core/config.py` | Lecture et écriture de ``~/.config/gcm4/gcm4.conf`` sans GTK (#137). |
+| `gcm4.core.host_tree` | `src/gcm4/core/host_tree.py` | Arbre des groupes et des hôtes, sans GTK (#139). |
 | `gcm4.core.i18n` | `src/gcm4/core/i18n.py` | Traductions de gcm4 : domaine gettext ``gcm-lang`` de l'application GTK3. |
 | `gcm4.core.menu` | `src/gcm4/core/menu.py` | Menu principal et raccourcis de gcm4, décrits sans GTK (#134). |
 | `gcm4.core.model` | `src/gcm4/core/model.py` | Modèle de la base GTK4 : Host, Group, HostStore, sans GTK (#136). |
+| `gcm4.core.replies` | `src/gcm4/core/replies.py` | Groupes repliés de ``[window] collapsed-folders``, au format GTK3 (#139). |
 | `gcm4.core.theme` | `src/gcm4/core/theme.py` | Thème de la base GTK4, sans GTK (#135). |
 | `gcm4.core.window_state` | `src/gcm4/core/window_state.py` | Géométrie de la fenêtre principale, dans ``gcm4.conf`` (#134). |
 
@@ -1345,6 +1347,24 @@ classDiagram
         +HostStore store
         +configparser.RawConfigParser brut
     }
+    class mod_gcm4_core_host_tree {
+        <<module>>
+        +cle_de_tri(texte) str
+        +couleur_effective(chemin, couleurs) str
+        +construire(store) list~Noeud~
+        +infobulle(host) str
+        +ancetres(chemin) list~str~
+    }
+    class Noeud {
+        <<dataclass>>
+        +str chemin
+        +str nom
+        +Host None host
+        +str couleur
+        +list~Noeud~ enfants
+        +est_groupe() bool
+        +classe_css() str None
+    }
     class mod_gcm4_core_i18n {
         <<module>>
         +locale_dirs() list~Path~
@@ -1417,6 +1437,12 @@ classDiagram
         +duplicate(host) Host
         +search(texte) list~Host~
     }
+    class mod_gcm4_core_replies {
+        <<module>>
+        +gtk3_tree_paths(groupes) dict~str, str~
+        +lire_replies(valeur, groupes) set~str~
+        +ecrire_replies(replies, groupes) str
+    }
     class mod_gcm4_core_theme {
         <<module>>
         +load_theme(config_file) str
@@ -1444,6 +1470,7 @@ classDiagram
 |---|---|---|
 | `gcm4.ui` | `src/gcm4/ui/__init__.py` | Interface GTK4 de gcm4 : seul endroit autorisé à importer ``gi``. |
 | `gcm4.ui.application` | `src/gcm4/ui/application.py` | Application libadwaita de gcm4 : instance unique, actions, À propos (#133, #134). |
+| `gcm4.ui.host_tree` | `src/gcm4/ui/host_tree.py` | Arbre des groupes et des hôtes du panneau gauche (#139). |
 | `gcm4.ui.main_window` | `src/gcm4/ui/main_window.py` | Fenêtre principale de gcm4 (#134). |
 
 ```mermaid
@@ -1457,6 +1484,15 @@ classDiagram
         +appliquer_theme(mode) None
         +set_group_colors(couleurs) None
         +boite_a_propos() Gtk.Widget
+    }
+    class ElementArbre {
+        <<GObject.Object>>
+    }
+    class HostTree {
+        <<Gtk.ScrolledWindow>>
+        +recharger() None
+        +lignes_visibles() list~tuple~int, str~~
+        +ligne(chemin) Gtk.TreeListRow None
     }
     class mod_gcm4_ui_main_window {
         <<module>>
