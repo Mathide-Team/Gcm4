@@ -8,6 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
+"POT-Creation-Date: 2026-10-12 06:08+0000\n"
+
 "POT-Creation-Date: 2026-10-12 05:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -2671,6 +2673,15 @@ msgid ""
 "The web console will open in the system browser."
 msgstr ""
 
+#: src/gcm4/app.py
+msgid "The old configuration is intact: fix the problem (permissions, disk space), then start gcm4 again."
+msgstr "पुराना कॉन्फ़िगरेशन सुरक्षित है: समस्या (अनुमतियाँ, डिस्क स्थान) ठीक करें, फिर gcm4 दोबारा शुरू करें।"
+
+#: src/gcm4/app.py
+#, python-brace-format
+msgid "gcm4: unable to copy the configuration {old} to {new} ({error})."
+msgstr "gcm4: कॉन्फ़िगरेशन {old} को {new} में कॉपी नहीं किया जा सका ({error})।"
+
 #: src/gcm4/core/chiffrement.py
 msgid "A stored password is corrupted."
 msgstr "एक सहेजा गया पासवर्ड दूषित है।"
@@ -2686,8 +2697,8 @@ msgid "Unable to create the encryption key %s: %s"
 msgstr "एन्क्रिप्शन कुंजी %s बनाई नहीं जा सकी: %s"
 
 #: src/gcm4/core/chiffrement.py
-msgid "Unable to decrypt the stored passwords: wrong or replaced .gcm.key."
-msgstr "सहेजे गए पासवर्ड डिक्रिप्ट नहीं किए जा सके: .gcm.key गलत है या बदल दी गई है।"
+msgid "Unable to decrypt the stored passwords: wrong or replaced .gcm4.key."
+msgstr "सहेजे गए पासवर्ड डिक्रिप्ट नहीं किए जा सके: .gcm4.key गलत है या बदल दी गई है।"
 
 #: src/gcm4/core/chiffrement.py
 #, python-format

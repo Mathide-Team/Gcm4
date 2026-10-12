@@ -8,6 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
+"POT-Creation-Date: 2026-10-12 06:08+0000\n"
+
 "POT-Creation-Date: 2026-10-12 05:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -2671,6 +2673,15 @@ msgid ""
 "The web console will open in the system browser."
 msgstr ""
 
+#: src/gcm4/app.py
+msgid "The old configuration is intact: fix the problem (permissions, disk space), then start gcm4 again."
+msgstr "이전 설정은 그대로 남아 있습니다. 문제(권한, 디스크 공간)를 해결한 뒤 gcm4를 다시 시작하세요."
+
+#: src/gcm4/app.py
+#, python-brace-format
+msgid "gcm4: unable to copy the configuration {old} to {new} ({error})."
+msgstr "gcm4: 설정 {old}을(를) {new}(으)로 복사할 수 없습니다 ({error})."
+
 #: src/gcm4/core/chiffrement.py
 msgid "A stored password is corrupted."
 msgstr "저장된 암호가 손상되었습니다."
@@ -2686,8 +2697,8 @@ msgid "Unable to create the encryption key %s: %s"
 msgstr "암호화 키 %s을(를) 만들 수 없습니다: %s"
 
 #: src/gcm4/core/chiffrement.py
-msgid "Unable to decrypt the stored passwords: wrong or replaced .gcm.key."
-msgstr "저장된 암호를 복호화할 수 없습니다: .gcm.key가 잘못되었거나 교체되었습니다."
+msgid "Unable to decrypt the stored passwords: wrong or replaced .gcm4.key."
+msgstr "저장된 암호를 복호화할 수 없습니다: .gcm4.key가 잘못되었거나 교체되었습니다."
 
 #: src/gcm4/core/chiffrement.py
 #, python-format

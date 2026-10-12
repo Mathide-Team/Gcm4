@@ -8,6 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
+"POT-Creation-Date: 2026-10-12 06:08+0000\n"
+
 "POT-Creation-Date: 2026-10-12 05:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -2671,6 +2673,15 @@ msgid ""
 "The web console will open in the system browser."
 msgstr ""
 
+#: src/gcm4/app.py
+msgid "The old configuration is intact: fix the problem (permissions, disk space), then start gcm4 again."
+msgstr "Οι παλιές ρυθμίσεις είναι ανέπαφες: διορθώστε το πρόβλημα (δικαιώματα, χώρος στον δίσκο) και εκκινήστε ξανά το gcm4."
+
+#: src/gcm4/app.py
+#, python-brace-format
+msgid "gcm4: unable to copy the configuration {old} to {new} ({error})."
+msgstr "gcm4: δεν ήταν δυνατή η αντιγραφή των ρυθμίσεων {old} στο {new} ({error})."
+
 #: src/gcm4/core/chiffrement.py
 msgid "A stored password is corrupted."
 msgstr "Ένας αποθηκευμένος κωδικός πρόσβασης είναι κατεστραμμένος."
@@ -2686,8 +2697,8 @@ msgid "Unable to create the encryption key %s: %s"
 msgstr "Δεν είναι δυνατή η δημιουργία του κλειδιού κρυπτογράφησης %s: %s"
 
 #: src/gcm4/core/chiffrement.py
-msgid "Unable to decrypt the stored passwords: wrong or replaced .gcm.key."
-msgstr "Δεν είναι δυνατή η αποκρυπτογράφηση των αποθηκευμένων κωδικών: το .gcm.key είναι λάθος ή έχει αντικατασταθεί."
+msgid "Unable to decrypt the stored passwords: wrong or replaced .gcm4.key."
+msgstr "Δεν είναι δυνατή η αποκρυπτογράφηση των αποθηκευμένων κωδικών: το .gcm4.key είναι λάθος ή έχει αντικατασταθεί."
 
 #: src/gcm4/core/chiffrement.py
 #, python-format

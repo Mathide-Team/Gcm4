@@ -8,6 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
+"POT-Creation-Date: 2026-10-12 06:08+0000\n"
+
 "POT-Creation-Date: 2026-10-12 05:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -2671,6 +2673,15 @@ msgid ""
 "The web console will open in the system browser."
 msgstr ""
 
+#: src/gcm4/app.py
+msgid "The old configuration is intact: fix the problem (permissions, disk space), then start gcm4 again."
+msgstr "পুরোনো কনফিগারেশন অক্ষত আছে: সমস্যাটি (অনুমতি, ডিস্কের জায়গা) ঠিক করুন, তারপর gcm4 আবার চালু করুন।"
+
+#: src/gcm4/app.py
+#, python-brace-format
+msgid "gcm4: unable to copy the configuration {old} to {new} ({error})."
+msgstr "gcm4: কনফিগারেশন {old} থেকে {new}-এ কপি করা যায়নি ({error})।"
+
 #: src/gcm4/core/chiffrement.py
 msgid "A stored password is corrupted."
 msgstr "একটি সংরক্ষিত পাসওয়ার্ড নষ্ট হয়ে গেছে।"
@@ -2686,8 +2697,8 @@ msgid "Unable to create the encryption key %s: %s"
 msgstr "এনক্রিপশন কী %s তৈরি করা যায়নি: %s"
 
 #: src/gcm4/core/chiffrement.py
-msgid "Unable to decrypt the stored passwords: wrong or replaced .gcm.key."
-msgstr "সংরক্ষিত পাসওয়ার্ডগুলো ডিক্রিপ্ট করা যায়নি: .gcm.key ভুল বা প্রতিস্থাপিত।"
+msgid "Unable to decrypt the stored passwords: wrong or replaced .gcm4.key."
+msgstr "সংরক্ষিত পাসওয়ার্ডগুলো ডিক্রিপ্ট করা যায়নি: .gcm4.key ভুল বা প্রতিস্থাপিত।"
 
 #: src/gcm4/core/chiffrement.py
 #, python-format

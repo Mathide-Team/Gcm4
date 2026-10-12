@@ -8,6 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
+"POT-Creation-Date: 2026-10-12 06:08+0000\n"
+
 "POT-Creation-Date: 2026-10-12 05:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -2671,6 +2673,15 @@ msgid ""
 "The web console will open in the system browser."
 msgstr ""
 
+#: src/gcm4/app.py
+msgid "The old configuration is intact: fix the problem (permissions, disk space), then start gcm4 again."
+msgstr "Cấu hình cũ vẫn nguyên vẹn: hãy khắc phục sự cố (quyền truy cập, dung lượng đĩa), rồi khởi động lại gcm4."
+
+#: src/gcm4/app.py
+#, python-brace-format
+msgid "gcm4: unable to copy the configuration {old} to {new} ({error})."
+msgstr "gcm4: không thể sao chép cấu hình {old} sang {new} ({error})."
+
 #: src/gcm4/core/chiffrement.py
 msgid "A stored password is corrupted."
 msgstr "Một mật khẩu đã lưu bị hỏng."
@@ -2686,8 +2697,8 @@ msgid "Unable to create the encryption key %s: %s"
 msgstr "Không thể tạo khóa mã hóa %s: %s"
 
 #: src/gcm4/core/chiffrement.py
-msgid "Unable to decrypt the stored passwords: wrong or replaced .gcm.key."
-msgstr "Không thể giải mã các mật khẩu đã lưu: .gcm.key sai hoặc đã bị thay thế."
+msgid "Unable to decrypt the stored passwords: wrong or replaced .gcm4.key."
+msgstr "Không thể giải mã các mật khẩu đã lưu: .gcm4.key sai hoặc đã bị thay thế."
 
 #: src/gcm4/core/chiffrement.py
 #, python-format
