@@ -6,7 +6,7 @@
 > toute modification manuelle sera écrasée. Le régénérer avec `make class-diagram` ;
 > le job Qualité échoue s'il est périmé (`--check`).
 
-65 modules · 132 classes · 221 fonctions publiques de module.
+66 modules · 134 classes · 225 fonctions publiques de module.
 
 Conventions : `+` public, `-` privé (préfixe `_`) ; `list~str~` = `list[str]` ; `<<module>>`
 regroupe les fonctions publiques d'un module ; `<<…>>` sur une classe liste `dataclass` et les
@@ -39,7 +39,7 @@ flowchart TD
     g4 -->|5| g0
     g4 -->|1| g3
     g5 -->|1| g3
-    g5 -->|11| g4
+    g5 -->|13| g4
 ```
 
 ## Cœur (sans GTK)
@@ -1262,6 +1262,7 @@ classDiagram
 | `gcm4.core.chiffrement` | `src/gcm4/core/chiffrement.py` | Mots de passe chiffrés de gcm4.conf, compatibles avec l'application GTK3 (#138). |
 | `gcm4.core.cli` | `src/gcm4/core/cli.py` | Ligne de commande de gcm4, analysée avant toute initialisation GTK (#133). |
 | `gcm4.core.config` | `src/gcm4/core/config.py` | Lecture et écriture de ``~/.config/gcm4/gcm4.conf`` sans GTK (#137). |
+| `gcm4.core.deplacements` | `src/gcm4/core/deplacements.py` | Glisser-déposer dans l'arbre, validé sans GTK (#141). |
 | `gcm4.core.host_tree` | `src/gcm4/core/host_tree.py` | Arbre des groupes et des hôtes, sans GTK (#139). |
 | `gcm4.core.i18n` | `src/gcm4/core/i18n.py` | Traductions de gcm4 : domaine gettext ``gcm-lang`` de l'application GTK3. |
 | `gcm4.core.menu` | `src/gcm4/core/menu.py` | Menu principal et raccourcis de gcm4, décrits sans GTK (#134). |
@@ -1346,6 +1347,24 @@ classDiagram
         +AppConfig options
         +HostStore store
         +configparser.RawConfigParser brut
+    }
+    class mod_gcm4_core_deplacements {
+        <<module>>
+        +cle(chemin, est_groupe) str
+        +groupe_cible(store, cible) str None
+        +valider(store, source, cible) Deplacement Refus
+        +appliquer(store, deplacement) Deplacement
+    }
+    class Refus {
+        <<enum.Enum>>
+    }
+    class Deplacement {
+        <<dataclass>>
+        +str cle
+        +str destination
+        +est_groupe() bool
+        +chemin() str
+        +nouveau_chemin() str
     }
     class mod_gcm4_core_host_tree {
         <<module>>
@@ -1497,6 +1516,7 @@ classDiagram
         +focus_recherche() None
         +chemin_selectionne() str None
         +selectionner(chemin) bool
+        +deposer(source, cible) bool
         +lignes_visibles() list~tuple~int, str~~
         +ligne(chemin) Gtk.TreeListRow None
     }
@@ -1506,6 +1526,8 @@ classDiagram
     }
     class MainWindow {
         <<Adw.ApplicationWindow>>
+        +enregistrer_config() None
+        +notifier(message) None
         +etat_courant() window_state.WindowState
     }
 ```
