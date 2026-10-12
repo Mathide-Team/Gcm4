@@ -499,7 +499,7 @@ msgstr "로그 경로"
 
 #: gnome_connection_manager.py src/gcm4/ui/main_window.py
 msgid "Menu"
-msgstr ""
+msgstr "메뉴"
 
 #: gnome_connection_manager.py ssh_key_manager_dialog.py
 msgid "Name"
@@ -2673,59 +2673,53 @@ msgstr ""
 
 #: src/gcm4/core/chiffrement.py
 msgid "A stored password is corrupted."
-msgstr ""
+msgstr "저장된 암호가 손상되었습니다."
 
 #: src/gcm4/core/chiffrement.py
 #, python-format
 msgid "The encryption key %s is missing: the stored passwords cannot be decrypted."
-msgstr ""
+msgstr "암호화 키 %s이(가) 없습니다: 저장된 암호를 복호화할 수 없습니다."
 
 #: src/gcm4/core/chiffrement.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to create the encryption key %s: %s"
-msgstr "구성 파일에 잘못된 항목이 있습니다"
+msgstr "암호화 키 %s을(를) 만들 수 없습니다: %s"
 
 #: src/gcm4/core/chiffrement.py
 msgid "Unable to decrypt the stored passwords: wrong or replaced .gcm.key."
-msgstr ""
+msgstr "저장된 암호를 복호화할 수 없습니다: .gcm.key가 잘못되었거나 교체되었습니다."
 
 #: src/gcm4/core/chiffrement.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to read the encryption key %s: %s"
-msgstr "구성 파일에 잘못된 항목이 있습니다"
+msgstr "암호화 키 %s을(를) 읽을 수 없습니다: %s"
 
 #: src/gcm4/core/config.py
 #, python-format
 msgid "The configuration file %s is corrupted: %s"
-msgstr ""
+msgstr "설정 파일 %s이(가) 손상되었습니다: %s"
 
 #: src/gcm4/core/config.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to read the configuration file %s: %s"
-msgstr "구성 파일에 잘못된 항목이 있습니다"
+msgstr "설정 파일 %s을(를) 읽을 수 없습니다: %s"
 
 #: src/gcm4/core/config.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to write the configuration file %s: %s"
-msgstr "구성 파일에 잘못된 항목이 있습니다"
+msgstr "설정 파일 %s에 쓸 수 없습니다: %s"
 
 #: src/gcm4/ui/main_window.py
 msgid "Home"
-msgstr ""
+msgstr "홈"
 
 #: src/gcm4/ui/main_window.py
 msgid "Hosts and groups will appear in the left panel."
-msgstr ""
+msgstr "호스트와 그룹이 왼쪽 패널에 표시됩니다."
 
 #: src/gcm4/ui/main_window.py
-#, fuzzy
-#| msgid "Gnome Connection Manager"
 msgid "Welcome to Gnome Connection Manager"
-msgstr "Gnome Connection Manager"
+msgstr "Gnome Connection Manager에 오신 것을 환영합니다"
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format
