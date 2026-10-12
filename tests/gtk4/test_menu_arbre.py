@@ -58,6 +58,7 @@ def test_clic_droit_sur_un_groupe_et_dans_le_vide(app_fixture, pomper):
     assert geste.etat == Gtk.EventSequenceState.CLAIMED
     assert arbre.chemin_selectionne() == "LAB" and menu.cible.chemin == "LAB"
     assert _libelles(menu) == [
+        "arbre.add",
         "arbre.new-group",
         "arbre.rename-group",
         "arbre.group-color",
@@ -71,6 +72,7 @@ def test_clic_droit_sur_un_groupe_et_dans_le_vide(app_fixture, pomper):
     menu._on_clic_droit(_Geste(), 1, 5, arbre.liste.get_height() - 2)
     pomper()
     assert menu.cible is None and _libelles(menu) == [
+        "arbre.add",
         "arbre.new-group",
         "arbre.expand",
         "arbre.collapse",
@@ -87,9 +89,8 @@ def test_touche_menu_sur_la_selection(app_fixture, pomper):
     pomper()
     assert arbre.menu.cible.chemin == "LAB/web"
     actions = _libelles(arbre.menu)
-    assert (
-        actions[:2] == ["arbre.copy-address", "arbre.new-group"] and "arbre.connect" not in actions
-    )
+    assert actions[:3] == ["arbre.copy-address", "arbre.add", "arbre.new-group"]
+    assert "arbre.edit" in actions and "arbre.connect" not in actions
     arbre.menu.popover.popdown()
 
 
@@ -168,13 +169,17 @@ def test_supprimer_hote_par_la_touche_suppr(app_fixture, pomper):
 
 
 def test_dupliquer_et_copier_l_adresse(app_fixture, pomper):
-    """Dupliquer web → « web (2) » écrit et sélectionné ; copier l'adresse → presse-papiers et toast."""
+    """Dupliquer web → dialogue « web (2) », enregistré et sélectionné ; copier l'adresse → presse-papiers et toast."""
     app, dossier = app_fixture
     arbre = app.get_active_window().arbre
     messages = []
     arbre.notifier = messages.append
     arbre.menu.cible = _noeud(arbre, "LAB/web")
     arbre.menu.executer("duplicate")
+    pomper()
+    dialogue = arbre.menu.dialogue_hote
+    assert dialogue.nom.get_text() == "web (2)"
+    assert dialogue.enregistrer()
     pomper()
     assert _relire(dossier).store.find("LAB/web (2)") is not None
     assert arbre.chemin_selectionne() == "LAB/web (2)"
