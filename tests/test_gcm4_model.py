@@ -163,3 +163,40 @@ def test_aucun_hote_perdu_sur_deplacements_de_groupes():
         assert {id(h) for h in s.hosts} == identites
         assert len({h.path for h in s.hosts}) == len(s.hosts)
         assert all(not h.group or h.group in s.groups for h in s.hosts)
+
+
+def test_nom_de_copie(store):
+    """Premier nom libre ; « web (2) » pris → « web (3) » ; rien n'est ajouté."""
+    web = store.find("LAB/web")
+    assert store.nom_de_copie(web) == "web (2)"
+    store.add(Host("web (2)", group="LAB"))
+    assert store.nom_de_copie(web) == "web (3)"
+    assert len(store.hosts) == 5
+
+
+def test_replace_garde_le_rang(store):
+    """Remplacement en place, même rang ; changement de groupe créé au besoin."""
+    web = store.find("LAB/web")
+    rang = store.hosts.index(web)
+    nouveau = web.clone()
+    nouveau.name, nouveau.group = "front", " NEUF/x "
+    assert store.replace(web, nouveau) is nouveau
+    assert store.hosts[rang] is nouveau and nouveau.group == "NEUF/x" and "NEUF/x" in store.groups
+    assert store.find("LAB/web") is None
+
+
+def test_replace_refus(store):
+    """Nom pris par un autre hôte → ConflitDeNom ; original absent → ValueError ; rien ne change."""
+    web, db = store.find("LAB/web"), store.find("LAB/db")
+    avant = list(store.hosts)
+    copie = web.clone()
+    copie.name = "db"
+    with pytest.raises(ConflitDeNom):
+        store.replace(web, copie)
+    with pytest.raises(ValueError):
+        store.replace(Host("fantome"), copie)
+    assert store.hosts == avant and store.find("LAB/db") is db
+    meme = web.clone()
+    meme.description = "modifié"
+    store.replace(web, meme)  # même nom, même groupe : accepté
+    assert store.find("LAB/web").description == "modifié"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-12 18:43+0000\n"
+"POT-Creation-Date: 2026-10-12 18:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -81,13 +81,11 @@ msgstr "เปิดใช้งาน"
 msgid "Add Host"
 msgstr "เพิ่มโฮสต์"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Disconnect"
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "After disconnecting"
-msgstr "ตัดการเชื่อมต่อ"
+msgstr "หลังตัดการเชื่อมต่อ"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Always"
 msgstr "เสมอ"
 
@@ -107,11 +105,9 @@ msgstr "Backspace:"
 msgid "Baud rate"
 msgstr "อัตราบอด"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Error connecting to server"
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Before connecting"
-msgstr "เกิดข้อผิดพลาดในการเชื่อมต่อกับเซิร์ฟเวอร์"
+msgstr "ก่อนเชื่อมต่อ"
 
 #: gnome_connection_manager.py ssh_config_editor.py
 msgid "Browse existing SSH keys in ~/.ssh/"
@@ -141,8 +137,8 @@ msgstr "ไม่สามารถเปิดไฟล์บันทึกเ
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
-#: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/menu_arbre.py
-#: utils.py widgets.py
+#: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
 msgid "Cancel"
 msgstr "ยกเลิก"
 
@@ -166,7 +162,7 @@ msgstr "ล้างการเลือก"
 msgid "Close"
 msgstr "ปิด"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py widgets.py
 msgid "Close console"
 msgstr "ปิดคอนโซล"
 
@@ -242,7 +238,7 @@ msgstr "มืด"
 msgid "Data bits"
 msgstr "บิตข้อมูล"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Default colors"
 msgstr "สีเริ่มต้น"
 
@@ -254,7 +250,7 @@ msgstr "ลำดับ Delete \t[@7]"
 msgid "Delete:"
 msgstr "Delete:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Description"
 msgstr "คำอธิบาย"
 
@@ -287,7 +283,7 @@ msgstr "ชื่อแบบไดนามิก"
 msgid "Edit"
 msgstr "แก้ไข"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Edit Host"
 msgstr "แก้ไขโฮสต์"
 
@@ -385,7 +381,7 @@ msgstr "Gnome Connection Manager"
 
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
-#: plugins/plugin_import_virtualbox.py
+#: plugins/plugin_import_virtualbox.py src/gcm4/ui/host_dialog.py
 msgid "Group"
 msgstr "กลุ่ม"
 
@@ -409,8 +405,8 @@ msgstr "กลุ่ม"
 msgid "Help"
 msgstr "ช่วยเหลือ"
 
-#: gnome_connection_manager.py plugins/plugin_ssh.py ssh_config_editor.py
-#: ssh_key_manager_dialog.py
+#: gnome_connection_manager.py plugins/plugin_ssh.py src/gcm4/ui/host_dialog.py
+#: ssh_config_editor.py ssh_key_manager_dialog.py
 msgid "Host"
 msgstr "โฮสต์"
 
@@ -434,9 +430,9 @@ msgstr "_นำเข้าเซิร์ฟเวอร์"
 msgid "Imports"
 msgstr "นำเข้าแล้ว"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Include this host in the workspace (Tools > Open Workspace)"
-msgstr ""
+msgstr "รวมโฮสต์นี้ในพื้นที่ทำงาน (เครื่องมือ > เปิดพื้นที่ทำงาน)"
 
 #: gnome_connection_manager.py
 msgid "Invalid entry in configuration file"
@@ -477,7 +473,7 @@ msgid ""
 "Détails complets dans le journal de l'application."
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Leave blank for passwordless/public key authentication"
 msgstr "เว้นว่างไว้สำหรับการตรวจสอบสิทธิ์แบบไม่ใช้รหัสผ่าน/คีย์สาธารณะ"
 
@@ -497,11 +493,12 @@ msgstr "พาธของบันทึก"
 msgid "Menu"
 msgstr "เมนู"
 
-#: gnome_connection_manager.py ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+#: ssh_key_manager_dialog.py
 msgid "Name"
 msgstr "ชื่อ"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Never"
 msgstr "ไม่เลย"
 
@@ -542,7 +539,7 @@ msgstr "ไม่มีคอนโซลที่เปิดอยู่"
 msgid "OK"
 msgstr "ตกลง"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Only on clean exit"
 msgstr "เฉพาะเมื่อออกตามปกติ"
 
@@ -570,7 +567,7 @@ msgstr ""
 msgid "Parity"
 msgstr "พาริตี"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Password"
 msgstr "รหัสผ่าน"
 
@@ -582,7 +579,7 @@ msgstr "วาง"
 msgid "Paste on right click"
 msgstr "วางเมื่อคลิกขวา"
 
-#: gnome_connection_manager.py ssh_config_editor.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py ssh_config_editor.py
 msgid "Port"
 msgstr "พอร์ต"
 
@@ -618,7 +615,7 @@ msgstr "คืนค่าเริ่มต้น"
 msgid "Restore open tabs from the previous session on startup"
 msgstr ""
 
-#: gnome_connection_manager.py utils.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py utils.py
 msgid "Save"
 msgstr "บันทึก"
 
@@ -681,10 +678,10 @@ msgstr "การตั้งค่า"
 msgid "Shell command run locally, in the background, right after this connection ends. Currently only triggered for terminal-based protocols (SSH/Telnet/Local/Serial/IPMI SOL). Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 #, python-brace-format
 msgid "Shell command run locally, in the background, right before this connection opens (any protocol). Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
-msgstr ""
+msgstr "คำสั่งเชลล์ที่รันในเครื่องเบื้องหลังทันทีก่อนเปิดการเชื่อมต่อนี้ (ทุกโพรโทคอล) เว้นว่างเพื่อปิดใช้ ตัวแทน: {name} {address} {group} {protocol}"
 
 #: gnome_connection_manager.py
 msgid "Shortcut"
@@ -742,7 +739,7 @@ msgstr ""
 msgid "Title"
 msgstr "ชื่อเรื่อง"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "To create subgroups use format group1/group2/group3"
 msgstr "เพื่อสร้างกลุ่มย่อยให้ใช้รูปแบบ group1/group2/group3"
 
@@ -759,11 +756,11 @@ msgstr "ประเภท"
 msgid "Use default fixed width font"
 msgstr "ใช้แบบอักษรความกว้างคงที่เริ่มต้น"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Use global preference"
-msgstr ""
+msgstr "ใช้ค่ากำหนดทั่วไป"
 
-#: gnome_connection_manager.py ssh_config_editor.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py ssh_config_editor.py
 msgid "User"
 msgstr "ผู้ใช้"
 
@@ -775,11 +772,9 @@ msgstr "มุมมอง"
 msgid "Word separator"
 msgstr "ตัวแบ่งคำ"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Backspace:"
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Workspace"
-msgstr "Backspace:"
+msgstr "พื้นที่ทำงาน"
 
 #: gnome_connection_manager.py
 msgid "already exists for group"
@@ -2590,9 +2585,9 @@ msgid ""
 "E.g.: {example}"
 msgstr ""
 
-#: plugins/plugin_vnc.py
+#: plugins/plugin_vnc.py src/gcm4/ui/host_dialog.py
 msgid "Display"
-msgstr ""
+msgstr "การแสดงผล"
 
 #: plugins/plugin_vnc.py
 msgid "VNC"
@@ -2723,7 +2718,7 @@ msgstr "ยุบทั้งหมด"
 msgid "Copy Address"
 msgstr "คัดลอกที่อยู่"
 
-#: src/gcm4/core/menu_arbre.py widgets.py
+#: src/gcm4/core/menu_arbre.py src/gcm4/ui/host_dialog.py widgets.py
 msgid "Duplicate Host"
 msgstr "ทำซ้ำโฮสต์"
 
@@ -2786,6 +2781,71 @@ msgstr "พอร์ตต้องเป็นตัวเลขระหว่
 #: src/gcm4/core/validation.py
 msgid "The name must not contain «/»."
 msgstr "ชื่อต้องไม่มี '/'"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Background color"
+msgstr "สีพื้นหลัง"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Commands"
+msgstr "คำสั่ง"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Connection"
+msgstr "การเชื่อมต่อ"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Discard"
+msgstr "ทิ้ง"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Discard changes?"
+msgstr "ทิ้งการเปลี่ยนแปลงหรือไม่"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Errors"
+msgstr "ข้อผิดพลาด"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Existing groups"
+msgstr "กลุ่มที่มีอยู่"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Extra parameters"
+msgstr "พารามิเตอร์เพิ่มเติม"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Foreground color"
+msgstr "สีข้อความ"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Keep Editing"
+msgstr "แก้ไขต่อ"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "New Host"
+msgstr "โฮสต์ใหม่"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "No extension handles this protocol: its options are kept."
+msgstr "ไม่มีส่วนขยายที่รองรับโพรโทคอลนี้: ตัวเลือกจะถูกเก็บไว้"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "No extension is installed."
+msgstr "ไม่ได้ติดตั้งส่วนขยาย"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Protocol"
+msgstr "โพรโทคอล"
+
+#: src/gcm4/ui/host_dialog.py
+#, python-brace-format
+msgid "Shell command run locally, in the background, right after this connection ends, by the protocols that support it. Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
+msgstr "คำสั่งเชลล์ที่รันในเครื่องเบื้องหลังทันทีหลังการเชื่อมต่อนี้สิ้นสุด สำหรับโพรโทคอลที่รองรับ เว้นว่างเพื่อปิดใช้ ตัวแทน: {name} {address} {group} {protocol}"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "The changes to this host have not been saved."
+msgstr "ยังไม่ได้บันทึกการเปลี่ยนแปลงของโฮสต์นี้"
 
 #: src/gcm4/ui/host_tree.py
 #, python-brace-format
@@ -4127,9 +4187,6 @@ msgstr "ยกเลิกการแบ่งคอนโซลทั้งห
 
 #~ msgid "Colors and Keys"
 #~ msgstr "สีและปุ่ม"
-
-#~ msgid "Commands"
-#~ msgstr "คำสั่ง"
 
 #~ msgid ""
 #~ "Compression level: \n"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-12 18:43+0000\n"
+"POT-Creation-Date: 2026-10-12 18:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -81,13 +81,11 @@ msgstr "Aktivovat"
 msgid "Add Host"
 msgstr "Přidat hostitele"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Disconnect"
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "After disconnecting"
-msgstr "Odpojit"
+msgstr "Po odpojení"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Always"
 msgstr "Vždy"
 
@@ -107,11 +105,9 @@ msgstr "Backspace:"
 msgid "Baud rate"
 msgstr "Rychlost (baud)"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Error connecting to server"
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Before connecting"
-msgstr "Chyba při připojování k serveru"
+msgstr "Před připojením"
 
 #: gnome_connection_manager.py ssh_config_editor.py
 msgid "Browse existing SSH keys in ~/.ssh/"
@@ -141,8 +137,8 @@ msgstr "Nelze otevřít soubor protokolu pro zápis"
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
-#: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/menu_arbre.py
-#: utils.py widgets.py
+#: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
 msgid "Cancel"
 msgstr "Zrušit"
 
@@ -166,7 +162,7 @@ msgstr "Vymazat výběr"
 msgid "Close"
 msgstr "Zavřít"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py widgets.py
 msgid "Close console"
 msgstr "Zavřít konzoli"
 
@@ -242,7 +238,7 @@ msgstr "Tmavý"
 msgid "Data bits"
 msgstr "Datové bity"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Default colors"
 msgstr "Výchozí barvy"
 
@@ -254,7 +250,7 @@ msgstr "Sekvence Delete \t[@7]"
 msgid "Delete:"
 msgstr "Delete:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Description"
 msgstr "Popis"
 
@@ -287,7 +283,7 @@ msgstr "Dynamický titulek"
 msgid "Edit"
 msgstr "Upravit"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Edit Host"
 msgstr "Upravit hostitele"
 
@@ -385,7 +381,7 @@ msgstr "Gnome Connection Manager"
 
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
-#: plugins/plugin_import_virtualbox.py
+#: plugins/plugin_import_virtualbox.py src/gcm4/ui/host_dialog.py
 msgid "Group"
 msgstr "Skupina"
 
@@ -409,8 +405,8 @@ msgstr "Skupina"
 msgid "Help"
 msgstr "Nápověda"
 
-#: gnome_connection_manager.py plugins/plugin_ssh.py ssh_config_editor.py
-#: ssh_key_manager_dialog.py
+#: gnome_connection_manager.py plugins/plugin_ssh.py src/gcm4/ui/host_dialog.py
+#: ssh_config_editor.py ssh_key_manager_dialog.py
 msgid "Host"
 msgstr "Hostitel"
 
@@ -434,9 +430,9 @@ msgstr "_Importovat servery"
 msgid "Imports"
 msgstr "Importováno"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Include this host in the workspace (Tools > Open Workspace)"
-msgstr ""
+msgstr "Zahrnout tohoto hostitele do pracovního prostoru (Nástroje > Otevřít pracovní prostor)"
 
 #: gnome_connection_manager.py
 msgid "Invalid entry in configuration file"
@@ -477,7 +473,7 @@ msgid ""
 "Détails complets dans le journal de l'application."
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Leave blank for passwordless/public key authentication"
 msgstr "Nechte prázdné pro autentizaci bez hesla / s veřejným klíčem"
 
@@ -497,11 +493,12 @@ msgstr "Cesta k protokolům"
 msgid "Menu"
 msgstr "Nabídka"
 
-#: gnome_connection_manager.py ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+#: ssh_key_manager_dialog.py
 msgid "Name"
 msgstr "Název"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Never"
 msgstr "Nikdy"
 
@@ -542,7 +539,7 @@ msgstr "Žádné otevřené konzole"
 msgid "OK"
 msgstr "OK"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Only on clean exit"
 msgstr "Pouze při čistém ukončení"
 
@@ -570,7 +567,7 @@ msgstr ""
 msgid "Parity"
 msgstr "Parita"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Password"
 msgstr "Heslo"
 
@@ -582,7 +579,7 @@ msgstr "Vložit"
 msgid "Paste on right click"
 msgstr "Vložit pravým kliknutím"
 
-#: gnome_connection_manager.py ssh_config_editor.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py ssh_config_editor.py
 msgid "Port"
 msgstr "Port"
 
@@ -618,7 +615,7 @@ msgstr "Obnovit výchozí"
 msgid "Restore open tabs from the previous session on startup"
 msgstr ""
 
-#: gnome_connection_manager.py utils.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py utils.py
 msgid "Save"
 msgstr "Uložit"
 
@@ -681,10 +678,10 @@ msgstr "Nastavení"
 msgid "Shell command run locally, in the background, right after this connection ends. Currently only triggered for terminal-based protocols (SSH/Telnet/Local/Serial/IPMI SOL). Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 #, python-brace-format
 msgid "Shell command run locally, in the background, right before this connection opens (any protocol). Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
-msgstr ""
+msgstr "Příkaz shellu spuštěný místně na pozadí těsně před otevřením tohoto připojení (libovolný protokol). Ponechte prázdné pro vypnutí. Zástupné znaky: {name} {address} {group} {protocol}"
 
 #: gnome_connection_manager.py
 msgid "Shortcut"
@@ -742,7 +739,7 @@ msgstr ""
 msgid "Title"
 msgstr "Titulek"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "To create subgroups use format group1/group2/group3"
 msgstr "K vytvoření podskupin použijte formát skupina1/skupina2/skupina3"
 
@@ -759,11 +756,11 @@ msgstr "Typ"
 msgid "Use default fixed width font"
 msgstr "Použít výchozí písmo s pevnou šířkou"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Use global preference"
-msgstr ""
+msgstr "Použít globální nastavení"
 
-#: gnome_connection_manager.py ssh_config_editor.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py ssh_config_editor.py
 msgid "User"
 msgstr "Uživatel"
 
@@ -775,11 +772,9 @@ msgstr "Zobrazit"
 msgid "Word separator"
 msgstr "Oddělovač slov"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Backspace:"
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Workspace"
-msgstr "Backspace:"
+msgstr "Pracovní prostor"
 
 #: gnome_connection_manager.py
 msgid "already exists for group"
@@ -2590,9 +2585,9 @@ msgid ""
 "E.g.: {example}"
 msgstr ""
 
-#: plugins/plugin_vnc.py
+#: plugins/plugin_vnc.py src/gcm4/ui/host_dialog.py
 msgid "Display"
-msgstr ""
+msgstr "Zobrazení"
 
 #: plugins/plugin_vnc.py
 msgid "VNC"
@@ -2723,7 +2718,7 @@ msgstr "Sbalit vše"
 msgid "Copy Address"
 msgstr "Kopírovat adresu"
 
-#: src/gcm4/core/menu_arbre.py widgets.py
+#: src/gcm4/core/menu_arbre.py src/gcm4/ui/host_dialog.py widgets.py
 msgid "Duplicate Host"
 msgstr "Duplikovat hostitele"
 
@@ -2786,6 +2781,71 @@ msgstr "Port musí být číslo od {min} do {max}."
 #: src/gcm4/core/validation.py
 msgid "The name must not contain «/»."
 msgstr "Název nesmí obsahovat „/“."
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Background color"
+msgstr "Barva pozadí"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Commands"
+msgstr "Příkazy"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Connection"
+msgstr "Připojení"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Discard"
+msgstr "Zahodit"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Discard changes?"
+msgstr "Zahodit změny?"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Errors"
+msgstr "Chyby"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Existing groups"
+msgstr "Existující skupiny"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Extra parameters"
+msgstr "Další parametry"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Foreground color"
+msgstr "Barva textu"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Keep Editing"
+msgstr "Pokračovat v úpravách"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "New Host"
+msgstr "Nový hostitel"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "No extension handles this protocol: its options are kept."
+msgstr "Tento protokol nepodporuje žádné rozšíření: jeho volby zůstanou zachovány."
+
+#: src/gcm4/ui/host_dialog.py
+msgid "No extension is installed."
+msgstr "Není nainstalováno žádné rozšíření."
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Protocol"
+msgstr "Protokol"
+
+#: src/gcm4/ui/host_dialog.py
+#, python-brace-format
+msgid "Shell command run locally, in the background, right after this connection ends, by the protocols that support it. Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
+msgstr "Příkaz shellu spuštěný místně na pozadí hned po ukončení tohoto připojení, u protokolů, které to podporují. Ponechte prázdné pro vypnutí. Zástupné znaky: {name} {address} {group} {protocol}"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "The changes to this host have not been saved."
+msgstr "Změny tohoto hostitele nebyly uloženy."
 
 #: src/gcm4/ui/host_tree.py
 #, python-brace-format
@@ -4127,9 +4187,6 @@ msgstr "Zrušit rozdělení všech konzolí"
 
 #~ msgid "Colors and Keys"
 #~ msgstr "Barvy a klávesy"
-
-#~ msgid "Commands"
-#~ msgstr "Příkazy"
 
 #~ msgid ""
 #~ "Compression level: \n"

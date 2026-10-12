@@ -3,12 +3,12 @@
 La disposition est celle de ``folder_context_menu_core.build_folder_context_menu_layout``
 (GTK3, ``popupMenuFolder``), portée ici : ce module racine n'est pas dans le
 paquet gcm4 et disparaît avec le cœur GTK3 (#182). La parité est testée tant
-qu'il existe. Elle est ensuite filtrée des entrées dont le lot n'est pas
-encore livré :
+qu'il existe. Elle est ensuite filtrée :
 
 - ``connect`` : visible seulement si un plugin gère le protocole (registre,
-  #124) ; aucune entrée en mode zéro plugin ;
-- ``add`` / ``edit`` : dialogue d'hôte (#145).
+  #124) ; aucune entrée en mode zéro plugin.
+
+``add`` / ``edit`` ouvrent le dialogue d'hôte (#145).
 
 Libellés : msgids de l'interface GTK3 (``widgets.FolderContextMenu``),
 marqués ``N_`` et traduits à l'affichage.
@@ -39,8 +39,8 @@ LIBELLES: dict[str, str] = {
     "collapse": N_("Collapse all"),
 }
 
-#: Entrées en attente d'un lot ultérieur (voir le module).
-EN_ATTENTE: frozenset[str] = frozenset({"add", "edit"})
+#: Entrées en attente d'un lot ultérieur (voir le module) ; aucune depuis #145.
+EN_ATTENTE: frozenset[str] = frozenset()
 
 
 def disposition_gtk3(click_target: str) -> list[list[str]]:

@@ -6,7 +6,7 @@
 > toute modification manuelle sera écrasée. Le régénérer avec `make class-diagram` ;
 > le job Qualité échoue s'il est périmé (`--check`).
 
-71 modules · 141 classes · 236 fonctions publiques de module.
+73 modules · 142 classes · 237 fonctions publiques de module.
 
 Conventions : `+` public, `-` privé (préfixe `_`) ; `list~str~` = `list[str]` ; `<<module>>`
 regroupe les fonctions publiques d'un module ; `<<…>>` sur une classe liste `dataclass` et les
@@ -39,7 +39,7 @@ flowchart TD
     g4 -->|5| g0
     g4 -->|1| g3
     g5 -->|1| g3
-    g5 -->|18| g4
+    g5 -->|21| g4
 ```
 
 ## Cœur (sans GTK)
@@ -1473,6 +1473,8 @@ classDiagram
         +rename(host, nom) None
         +move(host, groupe) None
         +remove(host) None
+        +nom_de_copie(host) str
+        +replace(original, nouveau) Host
         +duplicate(host) Host
         +search(texte) list~Host~
     }
@@ -1556,7 +1558,9 @@ classDiagram
 |---|---|---|
 | `gcm4.ui` | `src/gcm4/ui/__init__.py` | Interface GTK4 de gcm4 : seul endroit autorisé à importer ``gi``. |
 | `gcm4.ui.application` | `src/gcm4/ui/application.py` | Application libadwaita de gcm4 : instance unique, actions, À propos (#133, #134). |
+| `gcm4.ui.couleurs` | `src/gcm4/ui/couleurs.py` | Conversions de couleurs partagées par l'interface GTK4. |
 | `gcm4.ui.dialogues` | `src/gcm4/ui/dialogues.py` | Dialogues de confirmation et de saisie, compatibles libadwaita 1.2 à 1.9. |
+| `gcm4.ui.host_dialog` | `src/gcm4/ui/host_dialog.py` | Dialogue d'hôte : champs communs, création, modification, duplication (#145). |
 | `gcm4.ui.host_tree` | `src/gcm4/ui/host_tree.py` | Arbre des groupes et des hôtes du panneau gauche (#139). |
 | `gcm4.ui.main_window` | `src/gcm4/ui/main_window.py` | Fenêtre principale de gcm4 (#134). |
 | `gcm4.ui.menu_arbre` | `src/gcm4/ui/menu_arbre.py` | Menu contextuel, actions, raccourcis et activation de l'arbre (#142). |
@@ -1573,9 +1577,20 @@ classDiagram
         +set_group_colors(couleurs) None
         +boite_a_propos() Gtk.Widget
     }
+    class mod_gcm4_ui_couleurs {
+        <<module>>
+        +rgba_en_hex(rgba) str
+    }
     class mod_gcm4_ui_dialogues {
         <<module>>
         +creer(parent, titre, corps, reponses, defaut, fermeture, rappel, extra) Adw.Dialog Adw.MessageDialog
+    }
+    class HostDialog {
+        <<Adw.Window>>
+        +lire() Host
+        +modifie() bool
+        +verifier() bool
+        +enregistrer() bool
     }
     class ElementArbre {
         <<GObject.Object>>
@@ -1606,6 +1621,7 @@ classDiagram
         +ouvrir(noeud, x, y) None
         +executer(nom) None
         +modifier(operation) bool
+        +ouvrir_dialogue_hote(mode, hote, groupe) HostDialog
         +appliquer_couleur(chemin, couleur) bool
     }
 ```
