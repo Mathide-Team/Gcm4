@@ -12,11 +12,18 @@
 # Aucune traduction automatique : les nouvelles chaînes arrivent avec
 # msgstr "" et sont traduites par une personne.
 #
-# Création de la PR : le GITHUB_TOKEN ne peut ouvrir une PR que si l'option
-# « Allow GitHub Actions to create and approve pull requests » est active
-# (Settings > Actions > General). Sinon, définir le secret I18N_PR_TOKEN
-# (jeton avec contents:write et pull-requests:write) ; à défaut, la branche
-# est poussée et le résumé du run donne le lien pour ouvrir la PR à la main.
+# Création de la PR : le GITHUB_TOKEN ouvre la PR grâce à l'option « Allow
+# GitHub Actions to create and approve pull requests » (Settings > Actions >
+# General), activée le 12/10/2026 (choix de l'autrice, #167). Le secret
+# I18N_PR_TOKEN reste possible mais n'est pas utilisé. Si l'option est
+# retirée, la branche est poussée et le résumé du run donne le lien.
+#
+# CI de la PR : un push ou une PR faits avec le GITHUB_TOKEN ne déclenchent
+# aucun workflow (protection de GitHub contre les boucles), et les checks
+# obligatoires de dev resteraient « en attente ». ci.yml est donc lancé
+# explicitement sur la branche (workflow_dispatch, seule exception à cette
+# règle) : ses checks s'attachent au commit de tête et satisfont la
+# protection.
 name: i18n
 
 "on":
@@ -48,6 +55,7 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+      actions: write  # gh workflow run ci.yml (voir l'en-tête)
 
     steps:
       - name: Checkout de dev
@@ -98,6 +106,9 @@ jobs:
             git commit -m "i18n: synchronise les catalogues gettext avec les sources de dev"
           fi
           git push origin "$BRANCHE_I18N"
+          # Checks obligatoires de dev sur le commit poussé (voir l'en-tête).
+          gh workflow run ci.yml --ref "$BRANCHE_I18N"
+          echo "CI lancée sur \`$BRANCHE_I18N\`." >> "$GITHUB_STEP_SUMMARY"
           pr="$(gh pr list --head "$BRANCHE_I18N" --base dev --state open --json number --jq '.[0].number // empty')"
           if [ -n "$pr" ]; then
             echo "PR #$pr mise à jour." >> "$GITHUB_STEP_SUMMARY"
