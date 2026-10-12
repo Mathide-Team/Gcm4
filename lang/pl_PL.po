@@ -499,7 +499,7 @@ msgstr "Ścieżka dzienników"
 
 #: gnome_connection_manager.py src/gcm4/ui/main_window.py
 msgid "Menu"
-msgstr ""
+msgstr "Menu"
 
 #: gnome_connection_manager.py ssh_key_manager_dialog.py
 msgid "Name"
@@ -2673,59 +2673,53 @@ msgstr ""
 
 #: src/gcm4/core/chiffrement.py
 msgid "A stored password is corrupted."
-msgstr ""
+msgstr "Zapisane hasło jest uszkodzone."
 
 #: src/gcm4/core/chiffrement.py
 #, python-format
 msgid "The encryption key %s is missing: the stored passwords cannot be decrypted."
-msgstr ""
+msgstr "Brak klucza szyfrowania %s: nie można odszyfrować zapisanych haseł."
 
 #: src/gcm4/core/chiffrement.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to create the encryption key %s: %s"
-msgstr "Nieprawidłowy wpis w pliku konfiguracyjnym"
+msgstr "Nie można utworzyć klucza szyfrowania %s: %s"
 
 #: src/gcm4/core/chiffrement.py
 msgid "Unable to decrypt the stored passwords: wrong or replaced .gcm.key."
-msgstr ""
+msgstr "Nie można odszyfrować zapisanych haseł: nieprawidłowy lub zastąpiony plik .gcm.key."
 
 #: src/gcm4/core/chiffrement.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to read the encryption key %s: %s"
-msgstr "Nieprawidłowy wpis w pliku konfiguracyjnym"
+msgstr "Nie można odczytać klucza szyfrowania %s: %s"
 
 #: src/gcm4/core/config.py
 #, python-format
 msgid "The configuration file %s is corrupted: %s"
-msgstr ""
+msgstr "Plik konfiguracyjny %s jest uszkodzony: %s"
 
 #: src/gcm4/core/config.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to read the configuration file %s: %s"
-msgstr "Nieprawidłowy wpis w pliku konfiguracyjnym"
+msgstr "Nie można odczytać pliku konfiguracyjnego %s: %s"
 
 #: src/gcm4/core/config.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to write the configuration file %s: %s"
-msgstr "Nieprawidłowy wpis w pliku konfiguracyjnym"
+msgstr "Nie można zapisać pliku konfiguracyjnego %s: %s"
 
 #: src/gcm4/ui/main_window.py
 msgid "Home"
-msgstr ""
+msgstr "Strona główna"
 
 #: src/gcm4/ui/main_window.py
 msgid "Hosts and groups will appear in the left panel."
-msgstr ""
+msgstr "Hosty i grupy pojawią się w lewym panelu."
 
 #: src/gcm4/ui/main_window.py
-#, fuzzy
-#| msgid "Gnome Connection Manager"
 msgid "Welcome to Gnome Connection Manager"
-msgstr "Gnome Connection Manager"
+msgstr "Witamy w Gnome Connection Manager"
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format

@@ -499,7 +499,7 @@ msgstr "लॉग पथ"
 
 #: gnome_connection_manager.py src/gcm4/ui/main_window.py
 msgid "Menu"
-msgstr ""
+msgstr "मेनू"
 
 #: gnome_connection_manager.py ssh_key_manager_dialog.py
 msgid "Name"
@@ -2673,59 +2673,53 @@ msgstr ""
 
 #: src/gcm4/core/chiffrement.py
 msgid "A stored password is corrupted."
-msgstr ""
+msgstr "एक सहेजा गया पासवर्ड दूषित है।"
 
 #: src/gcm4/core/chiffrement.py
 #, python-format
 msgid "The encryption key %s is missing: the stored passwords cannot be decrypted."
-msgstr ""
+msgstr "एन्क्रिप्शन कुंजी %s मौजूद नहीं है: सहेजे गए पासवर्ड डिक्रिप्ट नहीं किए जा सकते।"
 
 #: src/gcm4/core/chiffrement.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to create the encryption key %s: %s"
-msgstr "कॉन्फ़िगरेशन फ़ाइल में अमान्य प्रविष्टि"
+msgstr "एन्क्रिप्शन कुंजी %s बनाई नहीं जा सकी: %s"
 
 #: src/gcm4/core/chiffrement.py
 msgid "Unable to decrypt the stored passwords: wrong or replaced .gcm.key."
-msgstr ""
+msgstr "सहेजे गए पासवर्ड डिक्रिप्ट नहीं किए जा सके: .gcm.key गलत है या बदल दी गई है।"
 
 #: src/gcm4/core/chiffrement.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to read the encryption key %s: %s"
-msgstr "कॉन्फ़िगरेशन फ़ाइल में अमान्य प्रविष्टि"
+msgstr "एन्क्रिप्शन कुंजी %s पढ़ी नहीं जा सकी: %s"
 
 #: src/gcm4/core/config.py
 #, python-format
 msgid "The configuration file %s is corrupted: %s"
-msgstr ""
+msgstr "कॉन्फ़िगरेशन फ़ाइल %s दूषित है: %s"
 
 #: src/gcm4/core/config.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to read the configuration file %s: %s"
-msgstr "कॉन्फ़िगरेशन फ़ाइल में अमान्य प्रविष्टि"
+msgstr "कॉन्फ़िगरेशन फ़ाइल %s पढ़ी नहीं जा सकी: %s"
 
 #: src/gcm4/core/config.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to write the configuration file %s: %s"
-msgstr "कॉन्फ़िगरेशन फ़ाइल में अमान्य प्रविष्टि"
+msgstr "कॉन्फ़िगरेशन फ़ाइल %s लिखी नहीं जा सकी: %s"
 
 #: src/gcm4/ui/main_window.py
 msgid "Home"
-msgstr ""
+msgstr "होम"
 
 #: src/gcm4/ui/main_window.py
 msgid "Hosts and groups will appear in the left panel."
-msgstr ""
+msgstr "होस्ट और समूह बाएँ पैनल में दिखाई देंगे।"
 
 #: src/gcm4/ui/main_window.py
-#, fuzzy
-#| msgid "Gnome Connection Manager"
 msgid "Welcome to Gnome Connection Manager"
-msgstr "Gnome Connection Manager"
+msgstr "Gnome Connection Manager में आपका स्वागत है"
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format

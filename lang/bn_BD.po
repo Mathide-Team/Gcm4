@@ -499,7 +499,7 @@ msgstr "লগের পথ"
 
 #: gnome_connection_manager.py src/gcm4/ui/main_window.py
 msgid "Menu"
-msgstr ""
+msgstr "মেনু"
 
 #: gnome_connection_manager.py ssh_key_manager_dialog.py
 msgid "Name"
@@ -2673,59 +2673,53 @@ msgstr ""
 
 #: src/gcm4/core/chiffrement.py
 msgid "A stored password is corrupted."
-msgstr ""
+msgstr "একটি সংরক্ষিত পাসওয়ার্ড নষ্ট হয়ে গেছে।"
 
 #: src/gcm4/core/chiffrement.py
 #, python-format
 msgid "The encryption key %s is missing: the stored passwords cannot be decrypted."
-msgstr ""
+msgstr "এনক্রিপশন কী %s নেই: সংরক্ষিত পাসওয়ার্ডগুলো ডিক্রিপ্ট করা যাবে না।"
 
 #: src/gcm4/core/chiffrement.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to create the encryption key %s: %s"
-msgstr "কনফিগারেশন ফাইলে অবৈধ এন্ট্রি"
+msgstr "এনক্রিপশন কী %s তৈরি করা যায়নি: %s"
 
 #: src/gcm4/core/chiffrement.py
 msgid "Unable to decrypt the stored passwords: wrong or replaced .gcm.key."
-msgstr ""
+msgstr "সংরক্ষিত পাসওয়ার্ডগুলো ডিক্রিপ্ট করা যায়নি: .gcm.key ভুল বা প্রতিস্থাপিত।"
 
 #: src/gcm4/core/chiffrement.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to read the encryption key %s: %s"
-msgstr "কনফিগারেশন ফাইলে অবৈধ এন্ট্রি"
+msgstr "এনক্রিপশন কী %s পড়া যায়নি: %s"
 
 #: src/gcm4/core/config.py
 #, python-format
 msgid "The configuration file %s is corrupted: %s"
-msgstr ""
+msgstr "কনফিগারেশন ফাইল %s নষ্ট হয়ে গেছে: %s"
 
 #: src/gcm4/core/config.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to read the configuration file %s: %s"
-msgstr "কনফিগারেশন ফাইলে অবৈধ এন্ট্রি"
+msgstr "কনফিগারেশন ফাইল %s পড়া যায়নি: %s"
 
 #: src/gcm4/core/config.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to write the configuration file %s: %s"
-msgstr "কনফিগারেশন ফাইলে অবৈধ এন্ট্রি"
+msgstr "কনফিগারেশন ফাইল %s লেখা যায়নি: %s"
 
 #: src/gcm4/ui/main_window.py
 msgid "Home"
-msgstr ""
+msgstr "হোম"
 
 #: src/gcm4/ui/main_window.py
 msgid "Hosts and groups will appear in the left panel."
-msgstr ""
+msgstr "হোস্ট ও গ্রুপগুলো বাম প্যানেলে দেখা যাবে।"
 
 #: src/gcm4/ui/main_window.py
-#, fuzzy
-#| msgid "Gnome Connection Manager"
 msgid "Welcome to Gnome Connection Manager"
-msgstr "Gnome Connection Manager"
+msgstr "Gnome Connection Manager-এ স্বাগতম"
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format
