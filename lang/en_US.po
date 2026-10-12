@@ -49,7 +49,7 @@ msgstr ""
 
 #: gnome_connection_manager.py src/gcm4/ui/application.py
 msgid "A simple ssh connection manager for gnome"
-msgstr ""
+msgstr "A simple ssh connection manager for gnome"
 
 #: gnome_connection_manager.py
 msgid "ASCII Backspace \t[Ctrl+H 0x08]"
@@ -469,7 +469,7 @@ msgstr ""
 
 #: gnome_connection_manager.py src/gcm4/ui/main_window.py
 msgid "Menu"
-msgstr ""
+msgstr "Menu"
 
 #: gnome_connection_manager.py ssh_key_manager_dialog.py
 msgid "Name"
@@ -2506,53 +2506,53 @@ msgstr ""
 
 #: src/gcm4/core/chiffrement.py
 msgid "A stored password is corrupted."
-msgstr ""
+msgstr "A stored password is corrupted."
 
 #: src/gcm4/core/chiffrement.py
 #, python-format
 msgid "The encryption key %s is missing: the stored passwords cannot be decrypted."
-msgstr ""
+msgstr "The encryption key %s is missing: the stored passwords cannot be decrypted."
 
 #: src/gcm4/core/chiffrement.py
 #, python-format
 msgid "Unable to create the encryption key %s: %s"
-msgstr ""
+msgstr "Unable to create the encryption key %s: %s"
 
 #: src/gcm4/core/chiffrement.py
 msgid "Unable to decrypt the stored passwords: wrong or replaced .gcm.key."
-msgstr ""
+msgstr "Unable to decrypt the stored passwords: wrong or replaced .gcm.key."
 
 #: src/gcm4/core/chiffrement.py
 #, python-format
 msgid "Unable to read the encryption key %s: %s"
-msgstr ""
+msgstr "Unable to read the encryption key %s: %s"
 
 #: src/gcm4/core/config.py
 #, python-format
 msgid "The configuration file %s is corrupted: %s"
-msgstr ""
+msgstr "The configuration file %s is corrupted: %s"
 
 #: src/gcm4/core/config.py
 #, python-format
 msgid "Unable to read the configuration file %s: %s"
-msgstr ""
+msgstr "Unable to read the configuration file %s: %s"
 
 #: src/gcm4/core/config.py
 #, python-format
 msgid "Unable to write the configuration file %s: %s"
-msgstr ""
+msgstr "Unable to write the configuration file %s: %s"
 
 #: src/gcm4/ui/main_window.py
 msgid "Home"
-msgstr ""
+msgstr "Home"
 
 #: src/gcm4/ui/main_window.py
 msgid "Hosts and groups will appear in the left panel."
-msgstr ""
+msgstr "Hosts and groups will appear in the left panel."
 
 #: src/gcm4/ui/main_window.py
 msgid "Welcome to Gnome Connection Manager"
-msgstr ""
+msgstr "Welcome to Gnome Connection Manager"
 
 #: ssh_config_editor.py
 #, python-brace-format
