@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-11 23:30+0000\n"
+"POT-Creation-Date: 2026-10-12 06:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2671,6 +2671,15 @@ msgid ""
 "The web console will open in the system browser."
 msgstr ""
 
+#: src/gcm4/app.py
+msgid "The old configuration is intact: fix the problem (permissions, disk space), then start gcm4 again."
+msgstr "旧配置保持不变：请解决问题（权限、磁盘空间）后重新启动 gcm4。"
+
+#: src/gcm4/app.py
+#, python-brace-format
+msgid "gcm4: unable to copy the configuration {old} to {new} ({error})."
+msgstr "gcm4：无法将配置 {old} 复制到 {new}（{error}）。"
+
 #: src/gcm4/core/chiffrement.py
 msgid "A stored password is corrupted."
 msgstr "某个已保存的密码已损坏。"
@@ -2686,8 +2695,8 @@ msgid "Unable to create the encryption key %s: %s"
 msgstr "无法创建加密密钥 %s：%s"
 
 #: src/gcm4/core/chiffrement.py
-msgid "Unable to decrypt the stored passwords: wrong or replaced .gcm.key."
-msgstr "无法解密已保存的密码：.gcm.key 错误或已被替换。"
+msgid "Unable to decrypt the stored passwords: wrong or replaced .gcm4.key."
+msgstr "无法解密已保存的密码：.gcm4.key 错误或已被替换。"
 
 #: src/gcm4/core/chiffrement.py
 #, python-format

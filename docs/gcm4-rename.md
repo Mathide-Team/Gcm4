@@ -134,8 +134,8 @@ aucun (`CONSIGNES-AGENTS-IA.md` §8) :
 | Élément | Aujourd'hui | Pistes (non tranchées) |
 |---|---|---|
 | Module principal | `gnome_connection_manager.py` | `gcm4.py` / `gcm4_app.py` / `gcm4_gtk.py` |
-| Dossier de config | `~/.gcm/` | `~/.gcm4/` / `~/.config/gcm4/` (XDG) |
-| Fichier de conf / clé | `gcm.conf` / `.gcm.key` | `gcm4.conf` / `.gcm4.key` |
+| Dossier de config | `~/.gcm/` | **Tranché (#99)** : `$XDG_CONFIG_HOME/gcm4/` (`~/.config/gcm4/`) pour gcm4 |
+| Fichier de conf / clé | `gcm.conf` / `.gcm.key` | **Tranché (#99)** : `gcm4.conf` / `.gcm4.key`, migration par `gcm4.core.chemins` (voir `docs/configuration.md`) |
 | Domaine i18n | `gcm-lang` | `gcm4-lang` |
 | Identifiant `.desktop` | `gnome-connection-manager.desktop` | `gcm4.desktop` / id inversé façon `io.github.*` |
 | `PKG_NAME` (Makefile) | `gnome-connection-manager` | `gcm4` |

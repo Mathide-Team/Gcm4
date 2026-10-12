@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-11 23:30+0000\n"
+"POT-Creation-Date: 2026-10-12 06:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2671,6 +2671,15 @@ msgid ""
 "The web console will open in the system browser."
 msgstr ""
 
+#: src/gcm4/app.py
+msgid "The old configuration is intact: fix the problem (permissions, disk space), then start gcm4 again."
+msgstr "Den gamle konfigurasjonen er uendret: løs problemet (tillatelser, diskplass), og start deretter gcm4 på nytt."
+
+#: src/gcm4/app.py
+#, python-brace-format
+msgid "gcm4: unable to copy the configuration {old} to {new} ({error})."
+msgstr "gcm4: kunne ikke kopiere konfigurasjonen {old} til {new} ({error})."
+
 #: src/gcm4/core/chiffrement.py
 msgid "A stored password is corrupted."
 msgstr "Et lagret passord er skadet."
@@ -2686,8 +2695,8 @@ msgid "Unable to create the encryption key %s: %s"
 msgstr "Kan ikke opprette krypteringsnøkkelen %s: %s"
 
 #: src/gcm4/core/chiffrement.py
-msgid "Unable to decrypt the stored passwords: wrong or replaced .gcm.key."
-msgstr "Kan ikke dekryptere de lagrede passordene: .gcm.key er feil eller erstattet."
+msgid "Unable to decrypt the stored passwords: wrong or replaced .gcm4.key."
+msgstr "Kan ikke dekryptere de lagrede passordene: .gcm4.key er feil eller erstattet."
 
 #: src/gcm4/core/chiffrement.py
 #, python-format
