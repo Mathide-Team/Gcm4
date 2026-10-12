@@ -103,3 +103,29 @@ def test_tri_selon_la_locale(monkeypatch):
 
     monkeypatch.setattr(host_tree.locale, "strxfrm", echec)
     assert cle_de_tri("Abc") == "abc"
+
+
+def test_correspondances_hotes_et_ancetres(store):
+    """Recherche : hôtes trouvés + tous leurs groupes ; groupes sans résultat exclus ; vide : None."""
+    assert host_tree.correspondances(store, "  ") is None
+    assert host_tree.correspondances(store, "db") == {"LAB", "LAB/bases", "LAB/bases/db"}
+    assert host_tree.correspondances(store, "local") == {"local"}
+    assert host_tree.correspondances(store, "introuvable") == set()
+
+
+def test_correspondances_casse_accents_adresse_description():
+    """Casse et accents ignorés ; adresse et description cherchées comme le nom."""
+    s = HostStore()
+    s.add(
+        Host(
+            "Éclair",
+            group="A/B",
+            host="srv.exemple",
+            user="u",
+            protocol="p",
+            description="Base Clients",
+        )
+    )
+    attendu = {"A", "A/B", "A/B/Éclair"}
+    for texte in ("eclair", "ÉCLAIR", "exemple", "base cli"):
+        assert host_tree.correspondances(s, texte) == attendu, texte

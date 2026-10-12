@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-12 05:59+0000\n"
+"POT-Creation-Date: 2026-10-12 06:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,11 +65,9 @@ msgstr "بک‌اسپیس ASCII \t[Ctrl+H 0x08]"
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
 msgstr "دیلیت ASCII    \t[Ctrl+? 0x7F]"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_About"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "About"
-msgstr "_درباره"
+msgstr "درباره"
 
 #: gnome_connection_manager.py
 msgid "Action"
@@ -235,9 +233,9 @@ msgstr "دستورات سفارشی"
 msgid "Custom commands…"
 msgstr "دستورات سفارشی"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Dark"
-msgstr ""
+msgstr "تیره"
 
 #: gnome_connection_manager.py plugins/plugin_serial.py
 msgid "Data bits"
@@ -283,7 +281,7 @@ msgstr "آیا واقعاً می‌خواهید میزبان را حذف کنی�
 msgid "Dynamic title"
 msgstr "عنوان دینامیک"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py widgets.py
 msgid "Edit"
 msgstr "ویرایش"
 
@@ -355,11 +353,9 @@ msgstr "صدور سرورها"
 msgid "Fields group, name and host are required"
 msgstr "فیلدهای گروه، نام و میزبان الزامی هستند"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_File"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "File"
-msgstr "_فایل"
+msgstr "فایل"
 
 #: gnome_connection_manager.py
 msgid "Flow"
@@ -407,11 +403,9 @@ msgstr ""
 msgid "Group name:"
 msgstr "گروه"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Help"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Help"
-msgstr "_راهنما"
+msgstr "راهنما"
 
 #: gnome_connection_manager.py plugins/plugin_ssh.py ssh_config_editor.py
 #: ssh_key_manager_dialog.py
@@ -485,9 +479,9 @@ msgstr ""
 msgid "Leave blank for passwordless/public key authentication"
 msgstr "برای احراز هویت بدون رمز عبور/کلید عمومی خالی بگذارید"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Light"
-msgstr ""
+msgstr "روشن"
 
 #: gnome_connection_manager.py
 msgid "Log local console sessions"
@@ -604,11 +598,9 @@ msgstr "کلید خصوصی"
 msgid "Project's Homepage"
 msgstr "صفحه اصلی پروژه"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Quit"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Quit"
-msgstr "_خروج"
+msgstr "خروج"
 
 #: gnome_connection_manager.py
 #, fuzzy
@@ -682,7 +674,7 @@ msgstr "فهرست سرورها بازنویسی خواهد شد، ادامه م
 msgid "Servers"
 msgstr "_سرورها"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Settings"
 msgstr "تنظیمات"
 
@@ -704,7 +696,7 @@ msgstr "میانبر"
 msgid "Shortcuts"
 msgstr "میانبرها"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Show Panel"
 msgstr "نمایش پنل"
 
@@ -716,9 +708,9 @@ msgstr "دستورات استاندارد"
 msgid "Stop"
 msgstr "توقف"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "System"
-msgstr ""
+msgstr "سیستم"
 
 #: gnome_connection_manager.py
 msgid "TERM"
@@ -777,11 +769,9 @@ msgstr ""
 msgid "User"
 msgstr "کاربر"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_View"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "View"
-msgstr "_نما"
+msgstr "نما"
 
 #: gnome_connection_manager.py
 msgid "Word separator"
@@ -2709,9 +2699,21 @@ msgstr "خواندن فایل پیکربندی %s ممکن نیست: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "نوشتن فایل پیکربندی %s ممکن نیست: %s"
 
+#: src/gcm4/core/menu.py
+msgid "Search"
+msgstr "جستجو"
+
 #: src/gcm4/ui/host_tree.py
 msgid "Hosts"
 msgstr "میزبان‌ها"
+
+#: src/gcm4/ui/host_tree.py
+msgid "No matching hosts"
+msgstr "میزبان منطبقی یافت نشد"
+
+#: src/gcm4/ui/host_tree.py
+msgid "Search hosts"
+msgstr "جستجوی میزبان‌ها"
 
 #: src/gcm4/ui/main_window.py
 msgid "Configuration not loaded"

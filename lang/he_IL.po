@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-12 05:59+0000\n"
+"POT-Creation-Date: 2026-10-12 06:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,11 +65,9 @@ msgstr "ASCII Backspace \t[Ctrl+H 0x08]"
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
 msgstr "ASCII Delete    \t[Ctrl+? 0x7F]"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_About"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "About"
-msgstr "_על"
+msgstr "על אודות"
 
 #: gnome_connection_manager.py
 msgid "Action"
@@ -235,9 +233,9 @@ msgstr "פקודות מותאמות אישית"
 msgid "Custom commands…"
 msgstr "פקודות מותאמות אישית"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Dark"
-msgstr ""
+msgstr "כהה"
 
 #: gnome_connection_manager.py plugins/plugin_serial.py
 msgid "Data bits"
@@ -283,7 +281,7 @@ msgstr "האם אתה בטוח שברצונך להסיר את המארח"
 msgid "Dynamic title"
 msgstr "כותרת דינמית"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py widgets.py
 msgid "Edit"
 msgstr "ערוך"
 
@@ -355,11 +353,9 @@ msgstr "ייצא שרתים"
 msgid "Fields group, name and host are required"
 msgstr "השדות קבוצה, שם ומארח הם שדות חובה"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_File"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "File"
-msgstr "_קובץ"
+msgstr "קובץ"
 
 #: gnome_connection_manager.py
 msgid "Flow"
@@ -407,11 +403,9 @@ msgstr ""
 msgid "Group name:"
 msgstr "קבוצה"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Help"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Help"
-msgstr "_עזרה"
+msgstr "עזרה"
 
 #: gnome_connection_manager.py plugins/plugin_ssh.py ssh_config_editor.py
 #: ssh_key_manager_dialog.py
@@ -485,9 +479,9 @@ msgstr ""
 msgid "Leave blank for passwordless/public key authentication"
 msgstr "השאר ריק לאימות ללא סיסמה / עם מפתח ציבורי"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Light"
-msgstr ""
+msgstr "בהיר"
 
 #: gnome_connection_manager.py
 msgid "Log local console sessions"
@@ -604,11 +598,9 @@ msgstr "מפתח פרטי"
 msgid "Project's Homepage"
 msgstr "דף הבית של הפרויקט"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Quit"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Quit"
-msgstr "_צא"
+msgstr "יציאה"
 
 #: gnome_connection_manager.py
 #, fuzzy
@@ -682,7 +674,7 @@ msgstr "רשימת השרתים תישכתב, להמשיך?"
 msgid "Servers"
 msgstr "_שרתים"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Settings"
 msgstr "הגדרות"
 
@@ -704,7 +696,7 @@ msgstr "קיצור דרך"
 msgid "Shortcuts"
 msgstr "קיצורי דרך"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Show Panel"
 msgstr "הצג פאנל"
 
@@ -716,9 +708,9 @@ msgstr "פקודות סטנדרטיות"
 msgid "Stop"
 msgstr "עצירה"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "System"
-msgstr ""
+msgstr "מערכת"
 
 #: gnome_connection_manager.py
 msgid "TERM"
@@ -777,11 +769,9 @@ msgstr ""
 msgid "User"
 msgstr "משתמש"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_View"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "View"
-msgstr "_תצוגה"
+msgstr "תצוגה"
 
 #: gnome_connection_manager.py
 msgid "Word separator"
@@ -2709,9 +2699,21 @@ msgstr "לא ניתן לקרוא את קובץ התצורה %s: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "לא ניתן לכתוב את קובץ התצורה %s: %s"
 
+#: src/gcm4/core/menu.py
+msgid "Search"
+msgstr "חיפוש"
+
 #: src/gcm4/ui/host_tree.py
 msgid "Hosts"
 msgstr "מארחים"
+
+#: src/gcm4/ui/host_tree.py
+msgid "No matching hosts"
+msgstr "אין מארחים תואמים"
+
+#: src/gcm4/ui/host_tree.py
+msgid "Search hosts"
+msgstr "חיפוש מארחים"
 
 #: src/gcm4/ui/main_window.py
 msgid "Configuration not loaded"

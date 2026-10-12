@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-12 05:59+0000\n"
+"POT-Creation-Date: 2026-10-12 06:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,11 +65,9 @@ msgstr "ASCII Backsteg \t[Ctrl+H 0x08]"
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
 msgstr "ASCII Delete    \t[Ctrl+? 0x7F]"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_About"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "About"
-msgstr "_Om"
+msgstr "Om"
 
 #: gnome_connection_manager.py
 msgid "Action"
@@ -235,9 +233,9 @@ msgstr "Anpassade kommandon"
 msgid "Custom commands…"
 msgstr "Anpassade kommandon"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Dark"
-msgstr ""
+msgstr "Mörkt"
 
 #: gnome_connection_manager.py plugins/plugin_serial.py
 msgid "Data bits"
@@ -283,7 +281,7 @@ msgstr "Vill du verkligen ta bort värden"
 msgid "Dynamic title"
 msgstr "Dynamisk titel"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py widgets.py
 msgid "Edit"
 msgstr "Redigera"
 
@@ -355,11 +353,9 @@ msgstr "Exportera servrar"
 msgid "Fields group, name and host are required"
 msgstr "Fälten grupp, namn och värd är obligatoriska"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_File"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "File"
-msgstr "_Arkiv"
+msgstr "Arkiv"
 
 #: gnome_connection_manager.py
 msgid "Flow"
@@ -407,11 +403,9 @@ msgstr ""
 msgid "Group name:"
 msgstr "Grupp"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Help"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Help"
-msgstr "_Hjälp"
+msgstr "Hjälp"
 
 #: gnome_connection_manager.py plugins/plugin_ssh.py ssh_config_editor.py
 #: ssh_key_manager_dialog.py
@@ -485,9 +479,9 @@ msgstr ""
 msgid "Leave blank for passwordless/public key authentication"
 msgstr "Lämna tomt för lösenordsfri/publik nyckelautentisering"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Light"
-msgstr ""
+msgstr "Ljust"
 
 #: gnome_connection_manager.py
 msgid "Log local console sessions"
@@ -604,11 +598,9 @@ msgstr "Privat nyckel"
 msgid "Project's Homepage"
 msgstr "Projektets webbplats"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Quit"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Quit"
-msgstr "_Avsluta"
+msgstr "Avsluta"
 
 #: gnome_connection_manager.py
 #, fuzzy
@@ -682,7 +674,7 @@ msgstr "Serverlistan kommer att skrivas över, fortsätt?"
 msgid "Servers"
 msgstr "_Servrar"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Settings"
 msgstr "Inställningar"
 
@@ -704,7 +696,7 @@ msgstr "Genväg"
 msgid "Shortcuts"
 msgstr "Genvägar"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Show Panel"
 msgstr "Visa panel"
 
@@ -716,9 +708,9 @@ msgstr "Standardkommandon"
 msgid "Stop"
 msgstr "Stopp"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "System"
-msgstr ""
+msgstr "System"
 
 #: gnome_connection_manager.py
 msgid "TERM"
@@ -777,11 +769,9 @@ msgstr ""
 msgid "User"
 msgstr "Användare"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_View"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "View"
-msgstr "_Visa"
+msgstr "Visa"
 
 #: gnome_connection_manager.py
 msgid "Word separator"
@@ -2709,9 +2699,21 @@ msgstr "Det går inte att läsa konfigurationsfilen %s: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Det går inte att skriva konfigurationsfilen %s: %s"
 
+#: src/gcm4/core/menu.py
+msgid "Search"
+msgstr "Sök"
+
 #: src/gcm4/ui/host_tree.py
 msgid "Hosts"
 msgstr "Värdar"
+
+#: src/gcm4/ui/host_tree.py
+msgid "No matching hosts"
+msgstr "Inga matchande värdar"
+
+#: src/gcm4/ui/host_tree.py
+msgid "Search hosts"
+msgstr "Sök värdar"
 
 #: src/gcm4/ui/main_window.py
 msgid "Configuration not loaded"

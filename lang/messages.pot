@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME Connection Manager\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-12 05:59+0000\n"
+"POT-Creation-Date: 2026-10-12 06:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -128,11 +128,11 @@ msgstr ""
 msgid "Exports"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Quit"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "File"
 msgstr ""
 
@@ -160,19 +160,19 @@ msgstr ""
 msgid "Custom commands…"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Settings"
 msgstr ""
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py widgets.py
 msgid "Edit"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Show Panel"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "View"
 msgstr ""
 
@@ -184,11 +184,11 @@ msgstr ""
 msgid "Open Workspace"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "About"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Help"
 msgstr ""
 
@@ -712,15 +712,15 @@ msgstr ""
 msgid "GTK Theme:"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "System"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Light"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Dark"
 msgstr ""
 
@@ -2540,6 +2540,18 @@ msgstr ""
 #: src/gcm4/core/config.py
 #, python-format
 msgid "Unable to write the configuration file %s: %s"
+msgstr ""
+
+#: src/gcm4/core/menu.py
+msgid "Search"
+msgstr ""
+
+#: src/gcm4/ui/host_tree.py
+msgid "Search hosts"
+msgstr ""
+
+#: src/gcm4/ui/host_tree.py
+msgid "No matching hosts"
 msgstr ""
 
 #: src/gcm4/ui/host_tree.py

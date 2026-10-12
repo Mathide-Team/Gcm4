@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-12 05:59+0000\n"
+"POT-Creation-Date: 2026-10-12 06:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,11 +65,9 @@ msgstr "ASCII Backspace \t[Ctrl+H 0x08]"
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
 msgstr "ASCII Delete    \t[Ctrl+? 0x7F]"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_About"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "About"
-msgstr "_Névjegy"
+msgstr "Névjegy"
 
 #: gnome_connection_manager.py
 msgid "Action"
@@ -235,9 +233,9 @@ msgstr "Egyéni parancsok"
 msgid "Custom commands…"
 msgstr "Egyéni parancsok"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Dark"
-msgstr ""
+msgstr "Sötét"
 
 #: gnome_connection_manager.py plugins/plugin_serial.py
 msgid "Data bits"
@@ -283,7 +281,7 @@ msgstr "Biztosan eltávolítja a hosztot"
 msgid "Dynamic title"
 msgstr "Dinamikus cím"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py widgets.py
 msgid "Edit"
 msgstr "Szerkesztés"
 
@@ -355,11 +353,9 @@ msgstr "Szerverek exportálása"
 msgid "Fields group, name and host are required"
 msgstr "A csoport, név és hoszt mezők kötelezők"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_File"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "File"
-msgstr "_Fájl"
+msgstr "Fájl"
 
 #: gnome_connection_manager.py
 msgid "Flow"
@@ -407,11 +403,9 @@ msgstr ""
 msgid "Group name:"
 msgstr "Csoport"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Help"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Help"
-msgstr "_Súgó"
+msgstr "Súgó"
 
 #: gnome_connection_manager.py plugins/plugin_ssh.py ssh_config_editor.py
 #: ssh_key_manager_dialog.py
@@ -485,9 +479,9 @@ msgstr ""
 msgid "Leave blank for passwordless/public key authentication"
 msgstr "Hagyja üresen jelszó nélküli/nyilvános kulcsú hitelesítéshez"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Light"
-msgstr ""
+msgstr "Világos"
 
 #: gnome_connection_manager.py
 msgid "Log local console sessions"
@@ -604,11 +598,9 @@ msgstr "Privát kulcs"
 msgid "Project's Homepage"
 msgstr "A projekt honlapja"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Quit"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Quit"
-msgstr "_Kilépés"
+msgstr "Kilépés"
 
 #: gnome_connection_manager.py
 #, fuzzy
@@ -682,7 +674,7 @@ msgstr "A szerverlista felülíródik, folytatja?"
 msgid "Servers"
 msgstr "_Szerverek"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Settings"
 msgstr "Beállítások"
 
@@ -704,7 +696,7 @@ msgstr "Gyorsbillentyű"
 msgid "Shortcuts"
 msgstr "Gyorsbillentyűk"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Show Panel"
 msgstr "Panel megjelenítése"
 
@@ -716,9 +708,9 @@ msgstr "Standard parancsok"
 msgid "Stop"
 msgstr "Stop"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "System"
-msgstr ""
+msgstr "Rendszer"
 
 #: gnome_connection_manager.py
 msgid "TERM"
@@ -777,11 +769,9 @@ msgstr ""
 msgid "User"
 msgstr "Felhasználó"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_View"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "View"
-msgstr "_Nézet"
+msgstr "Nézet"
 
 #: gnome_connection_manager.py
 msgid "Word separator"
@@ -2709,9 +2699,21 @@ msgstr "Nem olvasható a(z) %s beállítófájl: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Nem írható a(z) %s beállítófájl: %s"
 
+#: src/gcm4/core/menu.py
+msgid "Search"
+msgstr "Keresés"
+
 #: src/gcm4/ui/host_tree.py
 msgid "Hosts"
 msgstr "Gépek"
+
+#: src/gcm4/ui/host_tree.py
+msgid "No matching hosts"
+msgstr "Nincs egyező gép"
+
+#: src/gcm4/ui/host_tree.py
+msgid "Search hosts"
+msgstr "Gépek keresése"
 
 #: src/gcm4/ui/main_window.py
 msgid "Configuration not loaded"

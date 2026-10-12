@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-12 05:59+0000\n"
+"POT-Creation-Date: 2026-10-12 06:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,11 +65,9 @@ msgstr "ASCII Backspace \t[Ctrl+H 0x08]"
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
 msgstr "ASCII Delete    \t[Ctrl+? 0x7F]"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_About"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "About"
-msgstr "_সম্পর্কে"
+msgstr "সম্পর্কে"
 
 #: gnome_connection_manager.py
 msgid "Action"
@@ -235,9 +233,9 @@ msgstr "কাস্টম কমান্ড"
 msgid "Custom commands…"
 msgstr "কাস্টম কমান্ড"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Dark"
-msgstr ""
+msgstr "গাঢ়"
 
 #: gnome_connection_manager.py plugins/plugin_serial.py
 msgid "Data bits"
@@ -283,7 +281,7 @@ msgstr "আপনি কি সত্যিই হোস্ট অপসার�
 msgid "Dynamic title"
 msgstr "ডায়নামিক শিরোনাম"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py widgets.py
 msgid "Edit"
 msgstr "সম্পাদনা করুন"
 
@@ -355,11 +353,9 @@ msgstr "সার্ভার এক্সপোর্ট করুন"
 msgid "Fields group, name and host are required"
 msgstr "গ্রুপ, নাম এবং হোস্ট ফিল্ড আবশ্যক"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_File"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "File"
-msgstr "_ফাইল"
+msgstr "ফাইল"
 
 #: gnome_connection_manager.py
 msgid "Flow"
@@ -407,11 +403,9 @@ msgstr ""
 msgid "Group name:"
 msgstr "গ্রুপ"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Help"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Help"
-msgstr "_সাহায্য"
+msgstr "সাহায্য"
 
 #: gnome_connection_manager.py plugins/plugin_ssh.py ssh_config_editor.py
 #: ssh_key_manager_dialog.py
@@ -485,9 +479,9 @@ msgstr ""
 msgid "Leave blank for passwordless/public key authentication"
 msgstr "পাসওয়ার্ডহীন/পাবলিক কী অথেন্টিকেশনের জন্য খালি রাখুন"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Light"
-msgstr ""
+msgstr "হালকা"
 
 #: gnome_connection_manager.py
 msgid "Log local console sessions"
@@ -604,11 +598,9 @@ msgstr "প্রাইভেট কী"
 msgid "Project's Homepage"
 msgstr "প্রজেক্টের হোমপেজ"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Quit"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Quit"
-msgstr "_প্রস্থান"
+msgstr "প্রস্থান"
 
 #: gnome_connection_manager.py
 #, fuzzy
@@ -682,7 +674,7 @@ msgstr "সার্ভার তালিকা ওভাররাইট হব
 msgid "Servers"
 msgstr "_সার্ভার"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Settings"
 msgstr "সেটিংস"
 
@@ -704,7 +696,7 @@ msgstr "শর্টকাট"
 msgid "Shortcuts"
 msgstr "শর্টকাট"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Show Panel"
 msgstr "প্যানেল দেখান"
 
@@ -716,9 +708,9 @@ msgstr "স্ট্যান্ডার্ড কমান্ড"
 msgid "Stop"
 msgstr "স্টপ"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "System"
-msgstr ""
+msgstr "সিস্টেম"
 
 #: gnome_connection_manager.py
 msgid "TERM"
@@ -777,11 +769,9 @@ msgstr ""
 msgid "User"
 msgstr "ব্যবহারকারী"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_View"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "View"
-msgstr "_দৃশ্য"
+msgstr "দৃশ্য"
 
 #: gnome_connection_manager.py
 msgid "Word separator"
@@ -2709,9 +2699,21 @@ msgstr "কনফিগারেশন ফাইল %s পড়া যায়
 msgid "Unable to write the configuration file %s: %s"
 msgstr "কনফিগারেশন ফাইল %s লেখা যায়নি: %s"
 
+#: src/gcm4/core/menu.py
+msgid "Search"
+msgstr "অনুসন্ধান"
+
 #: src/gcm4/ui/host_tree.py
 msgid "Hosts"
 msgstr "হোস্ট"
+
+#: src/gcm4/ui/host_tree.py
+msgid "No matching hosts"
+msgstr "কোনো মিলে যাওয়া হোস্ট নেই"
+
+#: src/gcm4/ui/host_tree.py
+msgid "Search hosts"
+msgstr "হোস্ট খুঁজুন"
 
 #: src/gcm4/ui/main_window.py
 msgid "Configuration not loaded"

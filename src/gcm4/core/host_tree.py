@@ -126,6 +126,25 @@ def infobulle(host: Host) -> str:
     return resultat
 
 
+def correspondances(store: HostStore, texte: str) -> set[str] | None:
+    """Chemins à garder pour ``texte`` : hôtes trouvés et tous leurs groupes ancêtres.
+
+    ``None`` si ``texte`` est vide (pas de filtre). Recherche de
+    ``HostStore.search`` : nom, adresse, description ; casse et accents
+    ignorés. Les groupes sans hôte trouvé disparaissent.
+    """
+    logger.debug("correspondances: {!r}", texte)
+    if not texte.strip():
+        logger.debug("correspondances: pas de filtre")
+        return None
+    garder: set[str] = set()
+    for hote in store.search(texte):
+        garder.add(hote.path)
+        garder.update(ancetres(hote.path))
+    logger.debug("correspondances: {} chemin(s)", len(garder))
+    return garder
+
+
 def ancetres(chemin: str) -> list[str]:
     """Groupes parents de ``chemin``, du plus haut au plus proche (``a/b/c`` → ``a``, ``a/b``)."""
     logger.trace("ancetres: {!r}", chemin)
@@ -139,6 +158,7 @@ def ancetres(chemin: str) -> list[str]:
 
 
 __all__ = [
+    "correspondances",
     "Noeud",
     "ancetres",
     "cle_de_tri",

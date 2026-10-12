@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-12 05:59+0000\n"
+"POT-Creation-Date: 2026-10-12 06:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,11 +65,9 @@ msgstr "ASCII 백스페이스 \t[Ctrl+H 0x08]"
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
 msgstr "ASCII 삭제    \t[Ctrl+? 0x7F]"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_About"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "About"
-msgstr "_정보"
+msgstr "정보"
 
 #: gnome_connection_manager.py
 msgid "Action"
@@ -235,9 +233,9 @@ msgstr "사용자 지정 명령"
 msgid "Custom commands…"
 msgstr "사용자 지정 명령"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Dark"
-msgstr ""
+msgstr "어둡게"
 
 #: gnome_connection_manager.py plugins/plugin_serial.py
 msgid "Data bits"
@@ -283,7 +281,7 @@ msgstr "정말로 호스트를 제거하시겠습니까"
 msgid "Dynamic title"
 msgstr "동적 제목"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py widgets.py
 msgid "Edit"
 msgstr "편집"
 
@@ -355,11 +353,9 @@ msgstr "서버 내보내기"
 msgid "Fields group, name and host are required"
 msgstr "그룹, 이름, 호스트 필드는 필수입니다"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_File"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "File"
-msgstr "_파일"
+msgstr "파일"
 
 #: gnome_connection_manager.py
 msgid "Flow"
@@ -407,11 +403,9 @@ msgstr ""
 msgid "Group name:"
 msgstr "그룹"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Help"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Help"
-msgstr "_도움말"
+msgstr "도움말"
 
 #: gnome_connection_manager.py plugins/plugin_ssh.py ssh_config_editor.py
 #: ssh_key_manager_dialog.py
@@ -485,9 +479,9 @@ msgstr ""
 msgid "Leave blank for passwordless/public key authentication"
 msgstr "비밀번호 없음/공개 키 인증의 경우 비워 두세요"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Light"
-msgstr ""
+msgstr "밝게"
 
 #: gnome_connection_manager.py
 msgid "Log local console sessions"
@@ -604,11 +598,9 @@ msgstr "개인 키"
 msgid "Project's Homepage"
 msgstr "프로젝트 홈페이지"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Quit"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Quit"
-msgstr "_종료"
+msgstr "종료"
 
 #: gnome_connection_manager.py
 #, fuzzy
@@ -682,7 +674,7 @@ msgstr "서버 목록이 덮어쓰여집니다. 계속하시겠습니까?"
 msgid "Servers"
 msgstr "_서버"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Settings"
 msgstr "설정"
 
@@ -704,7 +696,7 @@ msgstr "바로 가기"
 msgid "Shortcuts"
 msgstr "바로 가기"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Show Panel"
 msgstr "패널 표시"
 
@@ -716,9 +708,9 @@ msgstr "표준 명령"
 msgid "Stop"
 msgstr "정지"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "System"
-msgstr ""
+msgstr "시스템"
 
 #: gnome_connection_manager.py
 msgid "TERM"
@@ -777,11 +769,9 @@ msgstr ""
 msgid "User"
 msgstr "사용자"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_View"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "View"
-msgstr "_보기"
+msgstr "보기"
 
 #: gnome_connection_manager.py
 msgid "Word separator"
@@ -2709,9 +2699,21 @@ msgstr "설정 파일 %s을(를) 읽을 수 없습니다: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "설정 파일 %s에 쓸 수 없습니다: %s"
 
+#: src/gcm4/core/menu.py
+msgid "Search"
+msgstr "검색"
+
 #: src/gcm4/ui/host_tree.py
 msgid "Hosts"
 msgstr "호스트"
+
+#: src/gcm4/ui/host_tree.py
+msgid "No matching hosts"
+msgstr "일치하는 호스트가 없습니다"
+
+#: src/gcm4/ui/host_tree.py
+msgid "Search hosts"
+msgstr "호스트 검색"
 
 #: src/gcm4/ui/main_window.py
 msgid "Configuration not loaded"
