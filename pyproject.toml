@@ -117,6 +117,8 @@ files = [
     "src/gcm4/__main__.py",
     "src/gcm4/app.py",
     "src/gcm4/core/__init__.py",
+    "src/gcm4/core/host_tree.py",
+    "src/gcm4/core/replies.py",
     "src/gcm4/core/chiffrement.py",
     "src/gcm4/core/cli.py",
     "src/gcm4/core/config.py",

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-11 23:30+0000\n"
+"POT-Creation-Date: 2026-10-12 05:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2708,6 +2708,14 @@ msgstr "Kan ikke lese konfigurasjonsfilen %s: %s"
 #, python-format
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Kan ikke skrive konfigurasjonsfilen %s: %s"
+
+#: src/gcm4/ui/host_tree.py
+msgid "Hosts"
+msgstr "Verter"
+
+#: src/gcm4/ui/main_window.py
+msgid "Configuration not loaded"
+msgstr "Konfigurasjonen er ikke lastet inn"
 
 #: src/gcm4/ui/main_window.py
 msgid "Home"
