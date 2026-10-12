@@ -499,7 +499,7 @@ msgstr "נתיב יומנים"
 
 #: gnome_connection_manager.py src/gcm4/ui/main_window.py
 msgid "Menu"
-msgstr ""
+msgstr "תפריט"
 
 #: gnome_connection_manager.py ssh_key_manager_dialog.py
 msgid "Name"
@@ -2673,45 +2673,41 @@ msgstr ""
 
 #: src/gcm4/core/chiffrement.py
 msgid "A stored password is corrupted."
-msgstr ""
+msgstr "סיסמה שמורה פגומה."
 
 #: src/gcm4/core/chiffrement.py
 #, python-format
 msgid "The encryption key %s is missing: the stored passwords cannot be decrypted."
-msgstr ""
+msgstr "מפתח ההצפנה %s חסר: לא ניתן לפענח את הסיסמאות השמורות."
 
 #: src/gcm4/core/chiffrement.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to create the encryption key %s: %s"
-msgstr "ערך לא חוקי בקובץ ההגדרות"
+msgstr "לא ניתן ליצור את מפתח ההצפנה %s: %s"
 
 #: src/gcm4/core/chiffrement.py
 msgid "Unable to decrypt the stored passwords: wrong or replaced .gcm.key."
-msgstr ""
+msgstr "לא ניתן לפענח את הסיסמאות השמורות: הקובץ .gcm.key שגוי או הוחלף."
 
 #: src/gcm4/core/chiffrement.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to read the encryption key %s: %s"
-msgstr "ערך לא חוקי בקובץ ההגדרות"
+msgstr "לא ניתן לקרוא את מפתח ההצפנה %s: %s"
 
 #: src/gcm4/core/config.py
 #, python-format
 msgid "The configuration file %s is corrupted: %s"
-msgstr ""
+msgstr "קובץ התצורה %s פגום: %s"
 
 #: src/gcm4/core/config.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to read the configuration file %s: %s"
-msgstr "ערך לא חוקי בקובץ ההגדרות"
+msgstr "לא ניתן לקרוא את קובץ התצורה %s: %s"
 
 #: src/gcm4/core/config.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to write the configuration file %s: %s"
-msgstr "ערך לא חוקי בקובץ ההגדרות"
+msgstr "לא ניתן לכתוב את קובץ התצורה %s: %s"
 
 #: src/gcm4/ui/host_tree.py
 msgid "Hosts"
@@ -2723,17 +2719,15 @@ msgstr "התצורה לא נטענה"
 
 #: src/gcm4/ui/main_window.py
 msgid "Home"
-msgstr ""
+msgstr "בית"
 
 #: src/gcm4/ui/main_window.py
 msgid "Hosts and groups will appear in the left panel."
-msgstr ""
+msgstr "מארחים וקבוצות יופיעו בחלונית השמאלית."
 
 #: src/gcm4/ui/main_window.py
-#, fuzzy
-#| msgid "Gnome Connection Manager"
 msgid "Welcome to Gnome Connection Manager"
-msgstr "Gnome Connection Manager"
+msgstr "ברוכים הבאים ל־Gnome Connection Manager"
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format

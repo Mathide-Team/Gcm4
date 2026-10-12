@@ -499,7 +499,7 @@ msgstr "Sökväg för loggar"
 
 #: gnome_connection_manager.py src/gcm4/ui/main_window.py
 msgid "Menu"
-msgstr ""
+msgstr "Meny"
 
 #: gnome_connection_manager.py ssh_key_manager_dialog.py
 msgid "Name"
@@ -2673,45 +2673,41 @@ msgstr ""
 
 #: src/gcm4/core/chiffrement.py
 msgid "A stored password is corrupted."
-msgstr ""
+msgstr "Ett sparat lösenord är skadat."
 
 #: src/gcm4/core/chiffrement.py
 #, python-format
 msgid "The encryption key %s is missing: the stored passwords cannot be decrypted."
-msgstr ""
+msgstr "Krypteringsnyckeln %s saknas: de sparade lösenorden kan inte dekrypteras."
 
 #: src/gcm4/core/chiffrement.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to create the encryption key %s: %s"
-msgstr "Ogiltig post i konfigurationsfilen"
+msgstr "Det går inte att skapa krypteringsnyckeln %s: %s"
 
 #: src/gcm4/core/chiffrement.py
 msgid "Unable to decrypt the stored passwords: wrong or replaced .gcm.key."
-msgstr ""
+msgstr "Det går inte att dekryptera de sparade lösenorden: .gcm.key är fel eller har ersatts."
 
 #: src/gcm4/core/chiffrement.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to read the encryption key %s: %s"
-msgstr "Ogiltig post i konfigurationsfilen"
+msgstr "Det går inte att läsa krypteringsnyckeln %s: %s"
 
 #: src/gcm4/core/config.py
 #, python-format
 msgid "The configuration file %s is corrupted: %s"
-msgstr ""
+msgstr "Konfigurationsfilen %s är skadad: %s"
 
 #: src/gcm4/core/config.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to read the configuration file %s: %s"
-msgstr "Ogiltig post i konfigurationsfilen"
+msgstr "Det går inte att läsa konfigurationsfilen %s: %s"
 
 #: src/gcm4/core/config.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to write the configuration file %s: %s"
-msgstr "Ogiltig post i konfigurationsfilen"
+msgstr "Det går inte att skriva konfigurationsfilen %s: %s"
 
 #: src/gcm4/ui/host_tree.py
 msgid "Hosts"
@@ -2723,17 +2719,15 @@ msgstr "Konfigurationen har inte lästs in"
 
 #: src/gcm4/ui/main_window.py
 msgid "Home"
-msgstr ""
+msgstr "Hem"
 
 #: src/gcm4/ui/main_window.py
 msgid "Hosts and groups will appear in the left panel."
-msgstr ""
+msgstr "Värdar och grupper visas i den vänstra panelen."
 
 #: src/gcm4/ui/main_window.py
-#, fuzzy
-#| msgid "Gnome Connection Manager"
 msgid "Welcome to Gnome Connection Manager"
-msgstr "Gnome Connection Manager"
+msgstr "Välkommen till Gnome Connection Manager"
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format

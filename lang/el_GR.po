@@ -499,7 +499,7 @@ msgstr "Διαδρομή αρχείων καταγραφής"
 
 #: gnome_connection_manager.py src/gcm4/ui/main_window.py
 msgid "Menu"
-msgstr ""
+msgstr "Μενού"
 
 #: gnome_connection_manager.py ssh_key_manager_dialog.py
 msgid "Name"
@@ -2673,45 +2673,41 @@ msgstr ""
 
 #: src/gcm4/core/chiffrement.py
 msgid "A stored password is corrupted."
-msgstr ""
+msgstr "Ένας αποθηκευμένος κωδικός πρόσβασης είναι κατεστραμμένος."
 
 #: src/gcm4/core/chiffrement.py
 #, python-format
 msgid "The encryption key %s is missing: the stored passwords cannot be decrypted."
-msgstr ""
+msgstr "Το κλειδί κρυπτογράφησης %s λείπει: οι αποθηκευμένοι κωδικοί δεν μπορούν να αποκρυπτογραφηθούν."
 
 #: src/gcm4/core/chiffrement.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to create the encryption key %s: %s"
-msgstr "Μη έγκυρη καταχώριση στο αρχείο ρυθμίσεων"
+msgstr "Δεν είναι δυνατή η δημιουργία του κλειδιού κρυπτογράφησης %s: %s"
 
 #: src/gcm4/core/chiffrement.py
 msgid "Unable to decrypt the stored passwords: wrong or replaced .gcm.key."
-msgstr ""
+msgstr "Δεν είναι δυνατή η αποκρυπτογράφηση των αποθηκευμένων κωδικών: το .gcm.key είναι λάθος ή έχει αντικατασταθεί."
 
 #: src/gcm4/core/chiffrement.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to read the encryption key %s: %s"
-msgstr "Μη έγκυρη καταχώριση στο αρχείο ρυθμίσεων"
+msgstr "Δεν είναι δυνατή η ανάγνωση του κλειδιού κρυπτογράφησης %s: %s"
 
 #: src/gcm4/core/config.py
 #, python-format
 msgid "The configuration file %s is corrupted: %s"
-msgstr ""
+msgstr "Το αρχείο ρυθμίσεων %s είναι κατεστραμμένο: %s"
 
 #: src/gcm4/core/config.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to read the configuration file %s: %s"
-msgstr "Μη έγκυρη καταχώριση στο αρχείο ρυθμίσεων"
+msgstr "Δεν είναι δυνατή η ανάγνωση του αρχείου ρυθμίσεων %s: %s"
 
 #: src/gcm4/core/config.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to write the configuration file %s: %s"
-msgstr "Μη έγκυρη καταχώριση στο αρχείο ρυθμίσεων"
+msgstr "Δεν είναι δυνατή η εγγραφή του αρχείου ρυθμίσεων %s: %s"
 
 #: src/gcm4/ui/host_tree.py
 msgid "Hosts"
@@ -2723,17 +2719,15 @@ msgstr "Οι ρυθμίσεις δεν φορτώθηκαν"
 
 #: src/gcm4/ui/main_window.py
 msgid "Home"
-msgstr ""
+msgstr "Αρχική"
 
 #: src/gcm4/ui/main_window.py
 msgid "Hosts and groups will appear in the left panel."
-msgstr ""
+msgstr "Οι κεντρικοί υπολογιστές και οι ομάδες θα εμφανιστούν στο αριστερό πλαίσιο."
 
 #: src/gcm4/ui/main_window.py
-#, fuzzy
-#| msgid "Gnome Connection Manager"
 msgid "Welcome to Gnome Connection Manager"
-msgstr "Gnome Connection Manager"
+msgstr "Καλώς ήρθατε στο Gnome Connection Manager"
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format

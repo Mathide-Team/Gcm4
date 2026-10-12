@@ -499,7 +499,7 @@ msgstr "พาธของบันทึก"
 
 #: gnome_connection_manager.py src/gcm4/ui/main_window.py
 msgid "Menu"
-msgstr ""
+msgstr "เมนู"
 
 #: gnome_connection_manager.py ssh_key_manager_dialog.py
 msgid "Name"
@@ -2673,45 +2673,41 @@ msgstr ""
 
 #: src/gcm4/core/chiffrement.py
 msgid "A stored password is corrupted."
-msgstr ""
+msgstr "รหัสผ่านที่บันทึกไว้รายการหนึ่งเสียหาย"
 
 #: src/gcm4/core/chiffrement.py
 #, python-format
 msgid "The encryption key %s is missing: the stored passwords cannot be decrypted."
-msgstr ""
+msgstr "ไม่พบกุญแจเข้ารหัส %s: ไม่สามารถถอดรหัสรหัสผ่านที่บันทึกไว้ได้"
 
 #: src/gcm4/core/chiffrement.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to create the encryption key %s: %s"
-msgstr "รายการในไฟล์การกำหนดค่าไม่ถูกต้อง"
+msgstr "ไม่สามารถสร้างกุญแจเข้ารหัส %s: %s"
 
 #: src/gcm4/core/chiffrement.py
 msgid "Unable to decrypt the stored passwords: wrong or replaced .gcm.key."
-msgstr ""
+msgstr "ไม่สามารถถอดรหัสรหัสผ่านที่บันทึกไว้: .gcm.key ไม่ถูกต้องหรือถูกแทนที่"
 
 #: src/gcm4/core/chiffrement.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to read the encryption key %s: %s"
-msgstr "รายการในไฟล์การกำหนดค่าไม่ถูกต้อง"
+msgstr "ไม่สามารถอ่านกุญแจเข้ารหัส %s: %s"
 
 #: src/gcm4/core/config.py
 #, python-format
 msgid "The configuration file %s is corrupted: %s"
-msgstr ""
+msgstr "ไฟล์การตั้งค่า %s เสียหาย: %s"
 
 #: src/gcm4/core/config.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to read the configuration file %s: %s"
-msgstr "รายการในไฟล์การกำหนดค่าไม่ถูกต้อง"
+msgstr "ไม่สามารถอ่านไฟล์การตั้งค่า %s: %s"
 
 #: src/gcm4/core/config.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to write the configuration file %s: %s"
-msgstr "รายการในไฟล์การกำหนดค่าไม่ถูกต้อง"
+msgstr "ไม่สามารถเขียนไฟล์การตั้งค่า %s: %s"
 
 #: src/gcm4/ui/host_tree.py
 msgid "Hosts"
@@ -2723,17 +2719,15 @@ msgstr "ไม่ได้โหลดการตั้งค่า"
 
 #: src/gcm4/ui/main_window.py
 msgid "Home"
-msgstr ""
+msgstr "หน้าแรก"
 
 #: src/gcm4/ui/main_window.py
 msgid "Hosts and groups will appear in the left panel."
-msgstr ""
+msgstr "โฮสต์และกลุ่มจะปรากฏในแผงด้านซ้าย"
 
 #: src/gcm4/ui/main_window.py
-#, fuzzy
-#| msgid "Gnome Connection Manager"
 msgid "Welcome to Gnome Connection Manager"
-msgstr "Gnome Connection Manager"
+msgstr "ยินดีต้อนรับสู่ Gnome Connection Manager"
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format

@@ -42,6 +42,43 @@ générique de migration de config livrés et testés (session-30,
   spécifique à un protocole ne doit y rester à terme — vestiges déjà
   identifiés dans `docs/architecture.md` §2.8-bis.
 
+**Décisions du 12/10/2026 (base GTK4, épopée #118) :**
+- D1, D2, D4 et D5 validées : GTK 4 + libadwaita, commande `gcm4`,
+  **Python ≥ 3.12**, paquet `src/gcm4/` (détail dans #118).
+- **D3 remplacée (#99)** : configuration dans `~/.config/gcm4/gcm4.conf`
+  (`XDG_CONFIG_HOME` respecté), migration automatique depuis `~/.gcm/` par
+  copie (0600, ancien dossier jamais supprimé tant que GTK3 existe, #177).
+- Dialogues de fichiers : `Gtk.FileDialog`, avec un repli pour GTK < 4.10
+  (#97, comme dans SwitchCapture).
+- **Distributions cibles** : Debian 12 (Python 3.11) et Rocky 9 (Python
+  3.9) **restent dans les cibles**. D4 impose donc d'y livrer un Python
+  ≥ 3.12 (ou de rendre le code compatible) et de vérifier libadwaita sur
+  Rocky 9 : travail suivi dans une issue dédiée, jamais en abandonnant ces
+  distributions.
+- **PyGObject, GTK 4 et libadwaita viennent des paquets système** : venv
+  `uv venv --system-site-packages` sur le Python système (README,
+  `bootstrap-dev.sh`, `make run-gtk4`). Ne pas ajouter PyGObject aux
+  dépendances uv.
+- **Traductions** : chaque texte ajouté dans `src/gcm4/` est traduit dans
+  les 29 langues dans la même PR (ou une PR dédiée avant la release),
+  jamais laissé vide ni `fuzzy` (`tests/test_gcm4_traductions.py`).
+  L'outillage (`scripts/i18n-update.sh`, workflow i18n) n'insère toujours
+  aucune traduction de lui-même.
+- **Onglet sélectionné** : surlignage jaune `#EEEB00` gardé, texte foncé
+  (`src/gcm4/ui/style.css`).
+- **Protections** : dev exige une branche à jour, pas main (seul dev y
+  fusionne) ; détail dans `docs/release.md`.
+- **Questions à l'autrice** : posées en commentaire de l'issue concernée,
+  avec le label `question` (rouge). Une réponse donnée dans le chat est
+  reportée dans ce fichier ou dans l'issue, puis le label `question` est
+  retiré.
+- **Exigence de qualité** : entre une solution propre et un raccourci, on
+  choisit la solution propre, sans poser la question.
+- **Issues d'amélioration** : une issue marquée « seulement si un besoin
+  réel se confirme » ou de faible priorité reste ouverte et sera réalisée ;
+  ne jamais la fermer « not planned » sans l'accord de l'autrice (#92, #93
+  et #94, rouvertes le 12/10/2026).
+
 ⚠️ **Avant de répondre à « qu'est-ce qui existe dans GCM » : vérifier dans
 `plugins/`, `tools/`, `lang/`, pas sur la seule foi du README.** La doc
 utilisateur a longtemps décrit une version sans architecture à plugins,
