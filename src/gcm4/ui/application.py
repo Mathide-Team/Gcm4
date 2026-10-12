@@ -13,6 +13,8 @@ from gcm4 import __version__
 from gcm4.core import chemins, menu, theme
 from gcm4.core.config import ConfigError
 from gcm4.core.i18n import _
+from gcm4.core.registre import Candidat, PluginRegistry, decouvrir
+from gcm4.ui.contexte import ContexteApplication
 from gcm4.ui.main_window import MainWindow
 
 APPLICATION_ID = "io.github.MathildeDec.gcm4"
@@ -26,15 +28,29 @@ class Gcm4Application(Adw.Application):
     """Application unique : une deuxième exécution active la fenêtre existante."""
 
     def __init__(
-        self, args: argparse.Namespace, flags: Gio.ApplicationFlags | None = None
+        self,
+        args: argparse.Namespace,
+        flags: Gio.ApplicationFlags | None = None,
+        candidats: Iterable[Candidat] | None = None,
     ) -> None:
-        """Garde les arguments déjà analysés par ``gcm4.core.cli``."""
+        """Garde les arguments déjà analysés par ``gcm4.core.cli``.
+
+        Args:
+            args: options de ``gcm4.core.cli`` (``config_dir``, ``debug``, ``hotes``).
+            flags: drapeaux ``Gio`` ; par défaut ``HANDLES_COMMAND_LINE``.
+            candidats: plugins à charger ; par défaut, points d'entrée puis
+                dossier source (``gcm4.core.registre``). Les tests y passent
+                le plugin démo.
+        """
         logger.debug("Gcm4Application.__init__: config_dir={}", args.config_dir)
         super().__init__(
             application_id=APPLICATION_ID,
             flags=Gio.ApplicationFlags.HANDLES_COMMAND_LINE if flags is None else flags,
         )
         self.args = args
+        self._candidats = None if candidats is None else list(candidats)
+        #: Plugins chargés au démarrage ; vide jusque-là (mode zéro plugin).
+        self.registre = PluginRegistry()
         self.config_file = chemins.fichier_conf(args.config_dir)
         self.css_principal: Gtk.CssProvider | None = None
         self.css_couleurs: Gtk.CssProvider | None = None
@@ -68,6 +84,8 @@ class Gcm4Application(Adw.Application):
         self.add_action(action_theme)
         self.appliquer_theme(mode)
         self._charger_css()
+        # Aucun plugin ne peut empêcher le démarrage : ses erreurs restent dans le registre.
+        self.registre = decouvrir(lambda nom: ContexteApplication(self, nom), self._candidats)
         logger.debug("_on_startup: fin")
 
     def appliquer_theme(self, mode: str) -> None:

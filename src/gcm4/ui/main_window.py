@@ -4,6 +4,11 @@
 (arbre des hôtes du lot 3, #139) et ``Gtk.Notebook`` à droite avec une page
 d'accueil. Taille et largeur du panneau restaurées depuis ``gcm4.conf`` et
 enregistrées à la fermeture.
+
+Connexions (#151) : ``win.connect-host`` demande au registre des plugins
+le plugin du protocole de l'hôte. Sans plugin, un message le dit ; sinon
+sa session devient un onglet, fermée par le bouton de l'onglet ou à la
+fermeture de la fenêtre.
 """
 
 from __future__ import annotations
@@ -15,6 +20,8 @@ from gcm4.core import chemins, menu, window_state
 from gcm4.core.chiffrement import ChiffrementGcm
 from gcm4.core.config import ConfigError, load_config, save_config, update_keys
 from gcm4.core.i18n import _
+from gcm4.core.plugins import Session
+from gcm4.core.registre import PluginRegistry
 from gcm4.core.replies import ecrire_replies
 from gcm4.ui.host_tree import HostTree
 
@@ -54,6 +61,11 @@ class MainWindow(Adw.ApplicationWindow):
         super().__init__(application=application, title="Gnome Connection Manager")
         self.config_file = chemins.fichier_conf(config_dir)
         self.etat = window_state.load_window_state(self.config_file)
+        registre = getattr(application, "registre", None)
+        #: Plugins de l'application ; vide : mode zéro plugin.
+        self.registre = registre if isinstance(registre, PluginRegistry) else PluginRegistry()
+        #: Contenu d'onglet -> session du plugin à fermer avec l'onglet.
+        self.sessions: dict[Gtk.Widget, Session] = {}
 
         entete = Adw.HeaderBar()
         self.bouton_menu = Gtk.MenuButton(
@@ -151,21 +163,72 @@ class MainWindow(Adw.ApplicationWindow):
         logger.debug("notifier: fait")
 
     def _on_connect_host(self, _action: Gio.SimpleAction, param: GLib.Variant) -> None:
-        """Double-clic / Entrée sur un hôte : délégué au registre des plugins (#124).
+        """Double-clic / Entrée / « Connecter » : le plugin du protocole ouvre un onglet.
 
-        En mode zéro plugin, aucun protocole n'est géré : un message le dit,
-        sans erreur.
+        Sans plugin pour ce protocole (mode zéro plugin compris), un message
+        le dit et l'hôte reste intact. Un échec du plugin est affiché et
+        journalisé, sans onglet.
         """
         logger.debug("_on_connect_host: {!r}", param.get_string())
         chemin = param.get_string()
         hote = self.config.store.find(chemin) if self.config is not None else None
-        if hote is not None:
+        plugin = self.registre.get(hote.protocol) if hote is not None else None
+        if hote is None:
+            logger.debug("_on_connect_host: hôte introuvable")
+            return
+        if plugin is None:
             self.notifier(
-                _("No extension can open «{protocol}» connections yet.").format(
-                    protocol=hote.protocol
-                )
+                _(
+                    "No extension handles the protocol «{protocol}». "
+                    "Install it to open this connection."
+                ).format(protocol=hote.protocol)
             )
-        logger.debug("_on_connect_host: fait")
+            logger.debug("_on_connect_host: aucun plugin")
+            return
+        try:
+            session = plugin.open(hote)
+        except Exception as exc:  # un plugin ne doit pas arrêter gcm4
+            logger.warning(
+                "_on_connect_host: {!r} n'a pas ouvert {!r} : {}", plugin.name, chemin, exc
+            )
+            self.notifier(_("Unable to open «{host}»: {error}").format(host=hote.name, error=exc))
+            logger.debug("_on_connect_host: échec du plugin")
+            return
+        self.ajouter_onglet(hote.name, session.widget, session)
+        logger.debug("_on_connect_host: onglet ouvert")
+
+    def ajouter_onglet(
+        self, titre: str, contenu: Gtk.Widget, session: Session | None = None
+    ) -> int:
+        """Onglet ``titre`` avec un bouton de fermeture ; rend son numéro (devenu courant)."""
+        logger.debug("ajouter_onglet: {!r} session={}", titre, session is not None)
+        entete = Gtk.Box(spacing=6)
+        entete.append(Gtk.Label(label=titre))
+        fermer = Gtk.Button(icon_name="window-close-symbolic", has_frame=False)
+        fermer.set_tooltip_text(_("Close tab"))
+        fermer.connect("clicked", lambda _b: self.fermer_onglet(contenu))
+        entete.append(fermer)
+        if session is not None:
+            self.sessions[contenu] = session
+        numero = self.onglets.append_page(contenu, entete)
+        self.onglets.set_tab_reorderable(contenu, True)
+        self.onglets.set_current_page(numero)
+        logger.debug("ajouter_onglet: page {}", numero)
+        return numero
+
+    def fermer_onglet(self, contenu: Gtk.Widget) -> None:
+        """Ferme la session de l'onglet (une seule fois) puis retire l'onglet."""
+        logger.debug("fermer_onglet: entrée")
+        session = self.sessions.pop(contenu, None)
+        if session is not None:
+            try:
+                session.close()
+            except Exception as exc:  # l'onglet se ferme quand même
+                logger.warning("fermer_onglet: close() a échoué : {}", exc)
+        numero = self.onglets.page_num(contenu)
+        if numero >= 0:
+            self.onglets.remove_page(numero)
+        logger.debug("fermer_onglet: page {} retirée", numero)
 
     def _on_search(self, _action: Gio.SimpleAction, _param: GLib.Variant | None) -> None:
         """Ctrl+F / Affichage > Rechercher : panneau affiché, curseur dans la recherche (#140)."""
@@ -200,6 +263,8 @@ class MainWindow(Adw.ApplicationWindow):
     def _on_close_request(self, _fenetre: Gtk.Window) -> bool:
         """Enregistre l'état ; une erreur d'écriture n'empêche pas la fermeture."""
         logger.debug("_on_close_request: entrée")
+        for contenu in list(self.sessions):
+            self.fermer_onglet(contenu)
         try:
             window_state.save_window_state(self.config_file, self.etat_courant())
             if self.config is not None:
