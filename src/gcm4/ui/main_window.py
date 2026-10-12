@@ -2,18 +2,16 @@
 
 ``Adw.HeaderBar`` avec menu principal, ``Gtk.Paned`` : panneau gauche
 (arbre des hôtes du lot 3, #139) et ``Gtk.Notebook`` à droite avec une page
-d'accueil. Taille et largeur du panneau restaurées depuis ``gcm.conf`` et
+d'accueil. Taille et largeur du panneau restaurées depuis ``gcm4.conf`` et
 enregistrées à la fermeture.
 """
 
 from __future__ import annotations
 
-import os
-
 from gi.repository import Adw, Gio, GLib, Gtk
 from loguru import logger
 
-from gcm4.core import menu, window_state
+from gcm4.core import chemins, menu, window_state
 from gcm4.core.config import ConfigError
 from gcm4.core.i18n import _
 
@@ -48,10 +46,10 @@ class MainWindow(Adw.ApplicationWindow):
     """Fenêtre principale : en-tête, panneau gauche, onglets."""
 
     def __init__(self, application: Adw.Application, config_dir: str) -> None:
-        """Construit la fenêtre et restaure son état depuis ``config_dir/gcm.conf``."""
+        """Construit la fenêtre et restaure son état depuis ``config_dir/gcm4.conf``."""
         logger.debug("MainWindow.__init__: config_dir={}", config_dir)
         super().__init__(application=application, title="Gnome Connection Manager")
-        self.config_file = os.path.join(config_dir, "gcm.conf")
+        self.config_file = chemins.fichier_conf(config_dir)
         self.etat = window_state.load_window_state(self.config_file)
 
         entete = Adw.HeaderBar()
@@ -123,7 +121,7 @@ class MainWindow(Adw.ApplicationWindow):
         try:
             window_state.save_window_state(self.config_file, self.etat_courant())
         except ConfigError as exc:
-            # gcm.conf corrompu ou disque plein : le fichier reste intact,
+            # gcm4.conf corrompu ou disque plein : le fichier reste intact,
             # seule la géométrie de cette session est perdue.
             logger.warning("_on_close_request: état non enregistré ({})", exc)
         logger.debug("_on_close_request: fermeture autorisée")

@@ -65,8 +65,8 @@ def test_a_propos(application, pomper):
 
 
 def test_quitter_enregistre_l_etat_sans_perdre_le_reste(application, tmp_path, pomper):
-    """Ctrl+Q enregistre la géométrie ; les autres sections de gcm.conf restent."""
-    conf = tmp_path / "gcm.conf"
+    """Ctrl+Q enregistre la géométrie ; les autres sections de gcm4.conf restent."""
+    conf = tmp_path / "gcm4.conf"
     conf.write_text("[options]\nword-separators = -A-Za-z0-9\n", encoding="utf-8")
     fenetre = _fenetre(application)
     fenetre.separateur.set_position(240)
@@ -81,14 +81,14 @@ def test_quitter_enregistre_l_etat_sans_perdre_le_reste(application, tmp_path, p
 
 
 def test_etat_restaure(tmp_path, pomper):
-    """Taille, largeur et visibilité du panneau sont relues dans gcm.conf."""
+    """Taille, largeur et visibilité du panneau sont relues dans gcm4.conf."""
     import argparse
 
     from gi.repository import Gio
 
     from gcm4.ui.application import Gcm4Application
 
-    (tmp_path / "gcm.conf").write_text(
+    (tmp_path / "gcm4.conf").write_text(
         "[window]\nwindow-width = 800\nwindow-height = 500\nleft-panel-width = 180\nshow-panel = False\n",
         encoding="utf-8",
     )

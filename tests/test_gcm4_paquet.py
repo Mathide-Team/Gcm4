@@ -74,11 +74,26 @@ def test_gtk_absent_message_d_installation(tmp_path):
     assert "Traceback" not in r.stderr
 
 
-def test_config_par_defaut_dans_le_home(tmp_path):
-    """Sans ``-c``, configuration dans ``~/.gcm`` (décision D3 de #118)."""
-    args = cli.parse_args([], home=str(tmp_path))
-    assert args.config_dir == str(tmp_path / ".gcm")
+def test_config_par_defaut_xdg(tmp_path):
+    """Sans ``-c`` : ``~/.config/gcm4``, ancien ``~/.gcm`` à migrer (#99)."""
+    args = cli.parse_args([], home=str(tmp_path), environ={})
+    assert args.config_dir == str(tmp_path / ".config" / "gcm4")
+    assert args.ancien_dossier == str(tmp_path / ".gcm")
     assert args.hotes == [] and args.debug is False
+
+
+def test_config_xdg_config_home(tmp_path):
+    """``XDG_CONFIG_HOME`` absolu respecté ; relatif ignoré (spécification XDG)."""
+    args = cli.parse_args([], home=str(tmp_path), environ={"XDG_CONFIG_HOME": "/srv/conf"})
+    assert args.config_dir == "/srv/conf/gcm4"
+    args = cli.parse_args([], home=str(tmp_path), environ={"XDG_CONFIG_HOME": "relatif"})
+    assert args.config_dir == str(tmp_path / ".config" / "gcm4")
+
+
+def test_config_explicite_jamais_remplie_depuis_gcm(tmp_path):
+    """Avec ``-c``, aucune copie depuis ``~/.gcm``."""
+    args = cli.parse_args(["-c", str(tmp_path / "x")], home=str(tmp_path))
+    assert args.config_dir == str(tmp_path / "x") and args.ancien_dossier is None
 
 
 def test_config_relative_rendue_absolue(tmp_path, monkeypatch):

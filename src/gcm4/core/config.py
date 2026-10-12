@@ -1,4 +1,4 @@
-"""Lecture et écriture de ``~/.gcm/gcm.conf`` sans GTK (#137).
+"""Lecture et écriture de ``~/.config/gcm4/gcm4.conf`` sans GTK (#137).
 
 Format repris de ``Wmain.loadConfig`` / ``Wmain.writeConfig`` (application
 GTK3), inventorié dans ``docs/configuration.md``.
@@ -12,7 +12,7 @@ Garanties :
   clés hors champs communs vont dans ``host.protocol_options[protocole]``
   et sont réécrites telles quelles, même sans le plugin du protocole ;
 - **écriture atomique** : fichier temporaire du même dossier, ``fsync``,
-  ``os.replace``, permissions ``0600`` ; copie ``gcm.conf.bak`` avant la
+  ``os.replace``, permissions ``0600`` ; copie ``gcm4.conf.bak`` avant la
   première écriture d'une session ; en cas d'erreur (disque plein…),
   l'ancien fichier reste intact et :class:`ConfigError` est levée ;
 - **jamais d'écrasement silencieux** : fichier illisible ou INI corrompu
@@ -22,7 +22,7 @@ Garanties :
 Mots de passe : le champ ``pass`` passe par un objet :class:`Chiffrement`.
 Par défaut (:class:`SansChiffrement`), la valeur stockée est conservée
 telle quelle. ``gcm4.core.chiffrement.ChiffrementGcm`` (#138) lit et
-écrit le format de l'application (``.gcm.key``) ; ses deux points
+écrit le format de l'application (``.gcm4.key``) ; ses deux points
 d'accroche facultatifs sont ``preparer(brut)``, appelé avant la lecture
 des hôtes, et ``version_format``, écrit dans ``[options] version``.
 """
@@ -164,7 +164,7 @@ def _entier(texte: str) -> int | None:
     try:
         resultat: int | None = int(texte.strip())
     except ValueError:
-        logger.warning("entier invalide dans gcm.conf : {!r}", texte)
+        logger.warning("entier invalide dans gcm4.conf : {!r}", texte)
         resultat = None
     logger.trace("_entier: -> {}", resultat)
     return resultat
@@ -425,7 +425,9 @@ def _ecrire_atomique(path: str, cp: configparser.RawConfigParser) -> None:
     try:
         os.makedirs(dossier, exist_ok=True)
         _copie_bak(path)
-        descripteur, temporaire = tempfile.mkstemp(prefix=".gcm.conf.", suffix=".tmp", dir=dossier)
+        descripteur, temporaire = tempfile.mkstemp(
+            prefix=".gcm4.conf.", suffix=".tmp", dir=dossier
+        )
         os.fchmod(descripteur, 0o600)
         with os.fdopen(descripteur, "w", encoding="utf-8") as fichier:
             cp.write(fichier)

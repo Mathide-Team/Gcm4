@@ -1,4 +1,4 @@
-"""Géométrie de la fenêtre principale, dans ``gcm.conf`` (#134).
+"""Géométrie de la fenêtre principale, dans ``gcm4.conf`` (#134).
 
 Mêmes clés que l'application GTK3 (section ``[window]``) : on peut passer
 de l'une à l'autre sans perdre ses réglages. L'écriture ne modifie que ces
@@ -77,7 +77,7 @@ def save_window_state(config_file: str, etat: WindowState) -> None:
     """Écrit ``etat`` dans ``config_file`` sans toucher aux autres clés.
 
     Écriture sûre de :func:`gcm4.core.config.update_keys` (0600, ``fsync``,
-    ``.bak``) ; un ``gcm.conf`` corrompu n'est jamais réécrit.
+    ``.bak``) ; un ``gcm4.conf`` corrompu n'est jamais réécrit.
 
     Raises:
         ConfigError: fichier illisible ou corrompu, ou écriture impossible.

@@ -1,16 +1,16 @@
-"""Mots de passe chiffrés de gcm.conf, compatibles avec l'application GTK3 (#138).
+"""Mots de passe chiffrés de gcm4.conf, compatibles avec l'application GTK3 (#138).
 
 Reprise de ``gcm4_core`` (``encrypt`` / ``decrypt`` / ``decrypt_old`` /
 ``load_encryption_key`` / ``initialise_encyption_key``) et de leur appel
 dans ``gnome_connection_manager.py`` :
 
 - secret = nom d'utilisateur (``USER``, ``LOGNAME``, ``USERNAME``) suivi du
-  contenu de ``.gcm.key`` (``gcm4_core.get_password``) ;
+  contenu de ``.gcm4.key`` (``gcm4_core.get_password``) ;
 - format lu selon ``[options] version`` : **absente** → ancien XOR
   (``decrypt_old``), **présente** (quelle que soit sa valeur, comme la
   comparaison ``"1" == 0`` de GTK3) → AES-256 OFB de ``pyAES`` ;
 - écriture toujours au format courant (AES) et ``version = 1`` ;
-- ``.gcm.key`` créée (``0600``, jamais écrasée) à la première écriture si
+- ``.gcm4.key`` créée (``0600``, jamais écrasée) à la première écriture si
   elle manque.
 
 Différence voulue avec GTK3 : une erreur explicite là où GTK3 effaçait en
@@ -36,10 +36,11 @@ from loguru import logger
 
 import gcm4_core
 import pyAES
+from gcm4.core import chemins
 from gcm4.core.config import SECTION_OPTIONS, ConfigError
 from gcm4.core.i18n import _
 
-FICHIER_CLE = ".gcm.key"
+FICHIER_CLE = chemins.FICHIER_CLE
 #: Valeur écrite dans ``[options] version`` (format AES de ``app_fileversion``).
 FORMAT_COURANT = "1"
 _BLOC = 16
@@ -75,21 +76,21 @@ def dechiffrer_aes_strict(stocke: str, secret: str) -> str:
     bourrage = clair[-1]
     if not 1 <= bourrage <= _BLOC or clair[-bourrage:] != bytes([bourrage]) * bourrage:
         raise ChiffrementError(
-            _("Unable to decrypt the stored passwords: wrong or replaced .gcm.key.")
+            _("Unable to decrypt the stored passwords: wrong or replaced .gcm4.key.")
         )
     try:
         resultat = clair[:-bourrage].decode("utf-8")
     except UnicodeDecodeError as exc:
         logger.warning("dechiffrer_aes_strict: UTF-8 invalide")
         raise ChiffrementError(
-            _("Unable to decrypt the stored passwords: wrong or replaced .gcm.key.")
+            _("Unable to decrypt the stored passwords: wrong or replaced .gcm4.key.")
         ) from exc
     logger.trace("dechiffrer_aes_strict: fait (longueur masquée)")
     return resultat
 
 
 class ChiffrementGcm:
-    """Chiffrement de ``gcm.conf`` avec ``.gcm.key`` (format de l'application GTK3).
+    """Chiffrement de ``gcm4.conf`` avec ``.gcm4.key`` (format de l'application GTK3).
 
     S'utilise avec :func:`gcm4.core.config.load_config` /
     :func:`~gcm4.core.config.save_config`, qui appellent :meth:`preparer`
@@ -116,7 +117,7 @@ class ChiffrementGcm:
         return resultat
 
     def _lire_cle(self) -> str | None:
-        """Contenu de ``.gcm.key``, ``None`` si absente."""
+        """Contenu de ``.gcm4.key``, ``None`` si absente."""
         logger.debug("ChiffrementGcm._lire_cle: {}", self.fichier_cle)
         try:
             with open(self.fichier_cle, encoding="utf-8") as fichier:
@@ -136,7 +137,7 @@ class ChiffrementGcm:
         """Format d'après ``[options] version`` et chargement de la clé, avant la lecture des hôtes.
 
         Raises:
-            ChiffrementError: ``.gcm.key`` absente alors que des mots de passe
+            ChiffrementError: ``.gcm4.key`` absente alors que des mots de passe
                 AES sont enregistrés, ou illisible.
         """
         logger.debug("ChiffrementGcm.preparer")
@@ -166,7 +167,7 @@ class ChiffrementGcm:
         return resultat
 
     def _assurer_cle(self) -> None:
-        """Crée ``.gcm.key`` (0600, ``O_EXCL`` : jamais écrasée) si aucune clé n'est chargée."""
+        """Crée ``.gcm4.key`` (0600, ``O_EXCL`` : jamais écrasée) si aucune clé n'est chargée."""
         logger.debug("ChiffrementGcm._assurer_cle")
         if self._cle is not None:
             logger.debug("ChiffrementGcm._assurer_cle: déjà chargée")

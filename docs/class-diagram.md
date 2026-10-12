@@ -6,7 +6,7 @@
 > toute modification manuelle sera écrasée. Le régénérer avec `make class-diagram` ;
 > le job Qualité échoue s'il est périmé (`--check`).
 
-61 modules · 127 classes · 207 fonctions publiques de module.
+62 modules · 129 classes · 211 fonctions publiques de module.
 
 Conventions : `+` public, `-` privé (préfixe `_`) ; `list~str~` = `list[str]` ; `<<module>>`
 regroupe les fonctions publiques d'un module ; `<<…>>` sur une classe liste `dataclass` et les
@@ -33,7 +33,7 @@ flowchart TD
     g2 -->|58| g1
     g2 -->|4| g0
     g3 -->|2| g0
-    g3 -->|1| g4
+    g3 -->|2| g4
     g3 -->|1| g5
     g4 -->|1| g1
     g4 -->|4| g0
@@ -1258,17 +1258,34 @@ classDiagram
 | Module | Fichier | Rôle |
 |---|---|---|
 | `gcm4.core` | `src/gcm4/core/__init__.py` | Cœur de gcm4 : modèle, configuration, services. |
-| `gcm4.core.chiffrement` | `src/gcm4/core/chiffrement.py` | Mots de passe chiffrés de gcm.conf, compatibles avec l'application GTK3 (#138). |
+| `gcm4.core.chemins` | `src/gcm4/core/chemins.py` | Emplacement de la configuration de gcm4 et migration depuis ``~/.gcm`` (#99). |
+| `gcm4.core.chiffrement` | `src/gcm4/core/chiffrement.py` | Mots de passe chiffrés de gcm4.conf, compatibles avec l'application GTK3 (#138). |
 | `gcm4.core.cli` | `src/gcm4/core/cli.py` | Ligne de commande de gcm4, analysée avant toute initialisation GTK (#133). |
-| `gcm4.core.config` | `src/gcm4/core/config.py` | Lecture et écriture de ``~/.gcm/gcm.conf`` sans GTK (#137). |
+| `gcm4.core.config` | `src/gcm4/core/config.py` | Lecture et écriture de ``~/.config/gcm4/gcm4.conf`` sans GTK (#137). |
 | `gcm4.core.i18n` | `src/gcm4/core/i18n.py` | Traductions de gcm4 : domaine gettext ``gcm-lang`` de l'application GTK3. |
 | `gcm4.core.menu` | `src/gcm4/core/menu.py` | Menu principal et raccourcis de gcm4, décrits sans GTK (#134). |
 | `gcm4.core.model` | `src/gcm4/core/model.py` | Modèle de la base GTK4 : Host, Group, HostStore, sans GTK (#136). |
 | `gcm4.core.theme` | `src/gcm4/core/theme.py` | Thème de la base GTK4, sans GTK (#135). |
-| `gcm4.core.window_state` | `src/gcm4/core/window_state.py` | Géométrie de la fenêtre principale, dans ``gcm.conf`` (#134). |
+| `gcm4.core.window_state` | `src/gcm4/core/window_state.py` | Géométrie de la fenêtre principale, dans ``gcm4.conf`` (#134). |
 
 ```mermaid
 classDiagram
+    class mod_gcm4_core_chemins {
+        <<module>>
+        +dossier_par_defaut(home, environ) str
+        +ancien_dossier(home) str
+        +fichier_conf(config_dir) str
+        +preparer(config_dir, ancien) Migration
+    }
+    class MigrationError {
+        <<RuntimeError>>
+    }
+    class Migration {
+        <<dataclass>>
+        +str None dossier_copie_depuis
+        +list~str~ fichiers_copies
+        +effectuee() bool
+    }
     class mod_gcm4_core_chiffrement {
         <<module>>
         +dechiffrer_aes_strict(stocke, secret) str
@@ -1283,7 +1300,7 @@ classDiagram
     class mod_gcm4_core_cli {
         <<module>>
         +build_parser() argparse.ArgumentParser
-        +parse_args(argv, home) argparse.Namespace
+        +parse_args(argv, home, environ) argparse.Namespace
     }
     class mod_gcm4_core_config {
         <<module>>
