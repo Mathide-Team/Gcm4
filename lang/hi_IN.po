@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-12 18:47+0000\n"
+"POT-Creation-Date: 2026-10-12 18:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2759,6 +2759,31 @@ msgstr "यह कनेक्शन प्लगइन नहीं है।"
 #: src/gcm4/core/plugins.py
 msgid "Its name must be a non-empty lowercase identifier."
 msgstr "नाम छोटे अक्षरों वाला गैर-रिक्त पहचानकर्ता होना चाहिए।"
+
+#: src/gcm4/core/registre.py
+#, python-brace-format
+msgid "A plugin with the same name is already loaded from {source}."
+msgstr "इसी नाम का प्लगइन पहले से {source} से लोड है।"
+
+#: src/gcm4/core/registre.py
+#, python-brace-format
+msgid "Import failed: {error}"
+msgstr "आयात विफल: {error}"
+
+#: src/gcm4/core/registre.py
+#, python-brace-format
+msgid "Initialization failed: {error}"
+msgstr "प्रारंभ विफल: {error}"
+
+#: src/gcm4/core/registre.py
+#, python-brace-format
+msgid "Protocol «{protocol}» is already handled by «{other}»."
+msgstr "प्रोटोकॉल '{protocol}' पहले से '{other}' संभालता है।"
+
+#: src/gcm4/core/registre.py
+#, python-brace-format
+msgid "{file} does not define PLUGIN."
+msgstr "{file} में PLUGIN परिभाषित नहीं है।"
 
 #: src/gcm4/core/validation.py
 #, python-brace-format

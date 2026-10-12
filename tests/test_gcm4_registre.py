@@ -1,0 +1,240 @@
+"""Découverte des plugins, tri et isolation des erreurs, sans GTK (#150)."""
+
+from __future__ import annotations
+
+import sys
+from importlib import metadata
+
+import pytest
+
+from gcm4.core import registre
+from gcm4.core.plugins import ConnectionPlugin
+from gcm4.core.registre import Candidat, PluginRegistry, decouvrir
+
+MODULE = '''
+from gcm4.core.plugins import ConnectionPlugin
+
+
+class Base(ConnectionPlugin):
+    """Plugin de test."""
+
+    def build_host_options_widget(self, host, options, changed):
+        """Aucune zone."""
+        return None
+
+    def open(self, host):
+        """Pas de session."""
+        raise NotImplementedError
+
+
+class Alpha(Base):
+    name = "alpha"
+    version = "1.0"
+    protocols = ("a",)
+
+
+class Beta(Base):
+    name = "beta"
+    version = "2.0"
+    protocols = ("b", "b2")
+
+
+class Gourmand(Base):
+    name = "gourmand"
+    protocols = ("a",)
+
+
+class Vieux(Base):
+    name = "vieux"
+    protocols = ("v",)
+    api_version = 0
+
+
+class Fragile(Base):
+    name = "fragile"
+    protocols = ("f",)
+
+    def __init__(self, context):
+        raise RuntimeError("pas de matériel")
+
+
+class Sortie(Base):
+    name = "sortie"
+    protocols = ("s",)
+
+    def __init__(self, context):
+        raise SystemExit(3)
+'''
+
+
+@pytest.fixture
+def module(tmp_path, monkeypatch):
+    """Module importable ``plugins_test`` contenant les classes de MODULE."""
+    (tmp_path / "plugins_test.py").write_text(MODULE, encoding="utf-8")
+    monkeypatch.syspath_prepend(str(tmp_path))
+    yield "plugins_test"
+    sys.modules.pop("plugins_test", None)
+
+
+def _points(*paires):
+    return [metadata.EntryPoint(name=n, value=v, group=registre.GROUPE) for n, v in paires]
+
+
+def _contextes():
+    vus = []
+
+    def fabrique(nom):
+        vus.append(nom)
+        return {"nom": nom}
+
+    return fabrique, vus
+
+
+def test_points_d_entree_tries_et_charges(module):
+    """Points d'entrée triés par nom ; contexte propre à chaque plugin ; index des protocoles."""
+    fabrique, vus = _contextes()
+    candidats = registre.candidats_points_d_entree(
+        _points(("zbeta", f"{module}:Beta"), ("alpha", f"{module}:Alpha"))
+    )
+    assert [c.nom for c in candidats] == ["alpha", "zbeta"]
+    reg = decouvrir(fabrique, candidats)
+    assert [p.name for p in reg.plugins()] == ["alpha", "beta"] and vus == ["alpha", "beta"]
+    assert reg.protocols() == ["a", "b", "b2"] and reg.get("b2").name == "beta"
+    assert "a" in reg and "x" not in reg and reg.get("x") is None
+    assert reg.get("a").context == {"nom": "alpha"} and reg.erreurs() == []
+    etat = reg.etats[1]
+    assert etat.charge and (etat.version, etat.protocols) == ("2.0", ("b", "b2"))
+
+
+@pytest.mark.parametrize(
+    ("valeur", "indice"),
+    [
+        ("module_absent:X", "Import failed"),
+        ("{m}:Inexistante", "Import failed"),
+        ("{m}:Vieux", "version 0"),
+        ("{m}:Fragile", "pas de matériel"),
+        ("{m}:Sortie", "3"),
+    ],
+)
+def test_plugin_casse_isole(module, valeur, indice):
+    """Import, version, __init__ (même SystemExit) : en erreur avec raison ; alpha se charge quand même."""
+    fabrique, _ = _contextes()
+    reg = decouvrir(
+        fabrique,
+        registre.candidats_points_d_entree(
+            _points(("casse", valeur.format(m=module)), ("alpha", f"{module}:Alpha"))
+        ),
+    )
+    assert [p.name for p in reg.plugins()] == ["alpha"]
+    (erreur,) = reg.erreurs()
+    assert indice in erreur.erreur and not erreur.charge
+
+
+def test_warning_au_journal(module):
+    """Un plugin refusé est journalisé en warning avec sa raison."""
+    from loguru import logger
+
+    lignes = []
+    sink = logger.add(
+        lambda m: lignes.append((m.record["level"].name, m.record["message"])), level="WARNING"
+    )
+    logger.enable("gcm4")
+    try:
+        decouvrir(
+            _contextes()[0],
+            registre.candidats_points_d_entree(_points(("x", f"{module}:Fragile"))),
+        )
+    finally:
+        logger.disable("gcm4")
+        logger.remove(sink)
+    assert any(
+        niveau == "WARNING" and "fragile" in msg and "pas de matériel" in msg
+        for niveau, msg in lignes
+    )
+
+
+def test_doublons_de_nom_et_de_protocole(module):
+    """Même name : le premier gagne ; protocole déjà pris : le suivant est refusé."""
+    fabrique, _ = _contextes()
+    reg = decouvrir(
+        fabrique,
+        registre.candidats_points_d_entree(
+            _points(
+                ("a1", f"{module}:Alpha"), ("a2", f"{module}:Alpha"), ("g", f"{module}:Gourmand")
+            )
+        ),
+    )
+    assert [p.name for p in reg.plugins()] == ["alpha"]
+    raisons = sorted(e.erreur for e in reg.erreurs())
+    assert any("same name" in r for r in raisons) and any(
+        "«a»" in r and "alpha" in r for r in raisons
+    )
+
+
+def test_dossier_source(tmp_path, module):
+    """plugins/<nom>/gtk4.py : PLUGIN chargé ; sans PLUGIN, illisible ou sans gtk4.py : erreur ou ignoré."""
+    racine = tmp_path / "plugins"
+    for nom, code in (
+        ("zeta", f"from {module} import Beta as PLUGIN\n"),
+        ("alpha", f"from {module} import Alpha as PLUGIN\n"),
+        ("vide", "X = 1\n"),
+        ("syntaxe", "def (\n"),
+    ):
+        (racine / nom).mkdir(parents=True)
+        (racine / nom / "gtk4.py").write_text(code, encoding="utf-8")
+    (racine / "gtk3_seulement").mkdir()
+    (racine / "gtk3_seulement" / "core.py").write_text("", encoding="utf-8")
+    (racine / "fichier.py").write_text("", encoding="utf-8")
+    candidats = registre.candidats_dossier(racine)
+    assert [c.nom for c in candidats] == ["alpha", "syntaxe", "vide", "zeta"]
+    reg = decouvrir(_contextes()[0], candidats)
+    assert [p.name for p in reg.plugins()] == ["alpha", "beta"]
+    erreurs = {e.name: e.erreur for e in reg.erreurs()}
+    assert set(erreurs) == {"syntaxe", "vide"} and "PLUGIN" in erreurs["vide"]
+    assert "gcm4_plugin_syntaxe" not in sys.modules
+    assert (
+        registre.candidats_dossier(None) == []
+        and registre.candidats_dossier(tmp_path / "absent") == []
+    )
+
+
+def test_ordre_deterministe(module):
+    """Le registre range par name, quel que soit l'ordre des candidats."""
+    fabrique, _ = _contextes()
+    a = registre.candidats_points_d_entree(
+        _points(("1", f"{module}:Beta"), ("2", f"{module}:Alpha"))
+    )
+    b = list(reversed(a))
+    assert [e.name for e in decouvrir(fabrique, a).etats] == [
+        e.name for e in decouvrir(fabrique, b).etats
+    ]
+
+
+def test_zero_plugin(monkeypatch):
+    """Aucun point d'entrée ni dossier source : registre vide, rien ne lève."""
+    monkeypatch.setattr(registre.metadata, "entry_points", lambda group: [])
+    monkeypatch.setattr(registre, "dossier_source", lambda: None)
+    reg = decouvrir(_contextes()[0])
+    assert reg.plugins() == [] and reg.protocols() == [] and reg.get("ssh") is None
+    assert PluginRegistry().etats == []
+
+
+def test_dossier_source_du_depot():
+    """Depuis les sources, plugins/ du dépôt est trouvé ; aucun de ses dossiers n'a encore de gtk4.py."""
+    dossier = registre.dossier_source()
+    assert dossier is not None and dossier.name == "plugins"
+    assert all(c.nom for c in registre.candidats_dossier(dossier))
+
+
+def test_candidat_qui_n_est_pas_une_classe():
+    """Un point d'entrée qui désigne autre chose qu'une classe de plugin est refusé."""
+    reg = decouvrir(_contextes()[0], [Candidat("objet", "x:y", lambda: 42)])
+    assert reg.erreurs()[0].name == "objet" and "connection plugin" in reg.erreurs()[0].erreur
+    assert issubclass(ConnectionPlugin, object)
+
+
+def test_importer_fichier_sans_spec(tmp_path, monkeypatch):
+    """Spec introuvable : ImportError transformée en erreur du plugin."""
+    monkeypatch.setattr(registre.importlib.util, "spec_from_file_location", lambda *a: None)
+    with pytest.raises(ImportError):
+        registre._importer_fichier("x", tmp_path / "gtk4.py")
