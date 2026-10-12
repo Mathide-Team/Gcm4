@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME Connection Manager\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-12 18:49+0000\n"
+"POT-Creation-Date: 2026-10-12 18:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -244,8 +244,8 @@ msgstr ""
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
-#: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/host_dialog.py
-#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
+#: src/gcm4/ui/host_dialog.py src/gcm4/ui/menu_arbre.py utils.py widgets.py
 msgid "Cancel"
 msgstr ""
 
@@ -413,7 +413,8 @@ msgstr ""
 msgid "User"
 msgstr ""
 
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/contexte.py
+#: src/gcm4/ui/host_dialog.py
 msgid "Password"
 msgstr ""
 
@@ -1336,7 +1337,7 @@ msgstr ""
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_serial.py
 #: plugins/plugin_spice.py plugins/plugin_vnc.py plugins/plugin_web.py
-#: src/gcm4/core/menu_arbre.py widgets.py
+#: src/gcm4/core/menu_arbre.py src/gcm4/ui/contexte.py widgets.py
 msgid "Connect"
 msgstr ""
 
@@ -2660,6 +2661,11 @@ msgstr ""
 msgid "An address is required."
 msgstr ""
 
+#: src/gcm4/ui/contexte.py
+#, python-brace-format
+msgid "Password for {target}"
+msgstr ""
+
 #: src/gcm4/ui/host_dialog.py
 msgid "New Host"
 msgstr ""
@@ -2765,7 +2771,16 @@ msgstr ""
 
 #: src/gcm4/ui/main_window.py
 #, python-brace-format
-msgid "No extension can open «{protocol}» connections yet."
+msgid "No extension handles the protocol «{protocol}». Install it to open this connection."
+msgstr ""
+
+#: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Unable to open «{host}»: {error}"
+msgstr ""
+
+#: src/gcm4/ui/main_window.py
+msgid "Close tab"
 msgstr ""
 
 #: src/gcm4/ui/menu_arbre.py

@@ -6,7 +6,7 @@
 > toute modification manuelle sera écrasée. Le régénérer avec `make class-diagram` ;
 > le job Qualité échoue s'il est périmé (`--check`).
 
-74 modules · 145 classes · 241 fonctions publiques de module.
+75 modules · 146 classes · 241 fonctions publiques de module.
 
 Conventions : `+` public, `-` privé (préfixe `_`) ; `list~str~` = `list[str]` ; `<<module>>`
 regroupe les fonctions publiques d'un module ; `<<…>>` sur une classe liste `dataclass` et les
@@ -39,7 +39,7 @@ flowchart TD
     g4 -->|5| g0
     g4 -->|1| g3
     g5 -->|1| g3
-    g5 -->|21| g4
+    g5 -->|27| g4
 ```
 
 ## Cœur (sans GTK)
@@ -1588,6 +1588,7 @@ classDiagram
 |---|---|---|
 | `gcm4.ui` | `src/gcm4/ui/__init__.py` | Interface GTK4 de gcm4 : seul endroit autorisé à importer ``gi``. |
 | `gcm4.ui.application` | `src/gcm4/ui/application.py` | Application libadwaita de gcm4 : instance unique, actions, À propos (#133, #134). |
+| `gcm4.ui.contexte` | `src/gcm4/ui/contexte.py` | Contexte injecté dans chaque plugin (contrat v1, ``docs/plugins.md``, #151). |
 | `gcm4.ui.couleurs` | `src/gcm4/ui/couleurs.py` | Conversions de couleurs partagées par l'interface GTK4. |
 | `gcm4.ui.dialogues` | `src/gcm4/ui/dialogues.py` | Dialogues de confirmation et de saisie, compatibles libadwaita 1.2 à 1.9. |
 | `gcm4.ui.host_dialog` | `src/gcm4/ui/host_dialog.py` | Dialogue d'hôte : champs communs, création, modification, duplication (#145). |
@@ -1606,6 +1607,12 @@ classDiagram
         +appliquer_theme(mode) None
         +set_group_colors(couleurs) None
         +boite_a_propos() Gtk.Widget
+    }
+    class ContexteApplication {
+        +config() Mapping~str, str~
+        +ask_password(host, done) None
+        +notify(message) None
+        +open_tab(title, widget) None
     }
     class mod_gcm4_ui_couleurs {
         <<module>>
@@ -1645,6 +1652,8 @@ classDiagram
         <<Adw.ApplicationWindow>>
         +enregistrer_config() None
         +notifier(message) None
+        +ajouter_onglet(titre, contenu, session) int
+        +fermer_onglet(contenu) None
         +etat_courant() window_state.WindowState
     }
     class MenuArbre {

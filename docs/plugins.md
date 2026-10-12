@@ -12,6 +12,9 @@ version typée du contrat est `src/gcm4/core/plugins.py`.
 
 ```python
 # mon_paquet/gcm4_demo.py
+import gi
+
+gi.require_version("Gtk", "4.0")  # déjà fixé par gcm4, sans effet ; documente la version
 from gi.repository import Gtk
 
 from gcm4.core.plugins import ConnectionPlugin
