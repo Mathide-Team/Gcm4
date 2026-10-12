@@ -90,6 +90,10 @@ dev = [
 [tool.importlinter]
 root_packages = ["gcm4"]
 include_external_packages = true
+# Imports sous `if TYPE_CHECKING:` ignorés (annotations seules, jamais
+# exécutés) : le contrat plugin (gcm4.core.plugins, #149) annote Gtk.Widget
+# sans charger GTK ; test_gcm4_plugins vérifie que gi reste absent.
+exclude_type_checking_imports = true
 
 [[tool.importlinter.contracts]]
 name = "Couches : l'interface dépend du cœur, jamais l'inverse"
@@ -128,6 +132,7 @@ files = [
     "src/gcm4/core/menu.py",
     "src/gcm4/core/menu_arbre.py",
     "src/gcm4/core/model.py",
+    "src/gcm4/core/plugins.py",
     "src/gcm4/core/theme.py",
     "src/gcm4/core/validation.py",
     "src/gcm4/core/window_state.py",
