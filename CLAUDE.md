@@ -69,6 +69,10 @@ générique de migration de config livrés et testés (session-30,
   retiré.
 - **Exigence de qualité** : entre une solution propre et un raccourci, on
   choisit la solution propre, sans poser la question.
+- **Issues d'amélioration** : une issue marquée « seulement si un besoin
+  réel se confirme » ou de faible priorité reste ouverte et sera réalisée ;
+  ne jamais la fermer « not planned » sans l'accord de l'autrice (#92, #93
+  et #94, rouvertes le 12/10/2026).
 
 ⚠️ **Avant de répondre à « qu'est-ce qui existe dans GCM » : vérifier dans
 `plugins/`, `tools/`, `lang/`, pas sur la seule foi du README.** La doc
