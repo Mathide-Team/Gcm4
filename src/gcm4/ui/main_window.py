@@ -14,8 +14,11 @@ from gi.repository import Adw, Gio, GLib, Gtk
 from loguru import logger
 
 from gcm4.core import menu, window_state
-from gcm4.core.config import ConfigError
+from gcm4.core.chiffrement import ChiffrementGcm
+from gcm4.core.config import ConfigError, load_config, update_keys
 from gcm4.core.i18n import _
+from gcm4.core.replies import ecrire_replies
+from gcm4.ui.host_tree import HostTree
 
 LARGEUR_DEFAUT = 1000
 HAUTEUR_DEFAUT = 650
@@ -63,9 +66,31 @@ class MainWindow(Adw.ApplicationWindow):
 
         self.panneau = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         self.panneau.set_size_request(120, -1)
+        self.config = None
+        self.arbre: HostTree | None = None
+        try:
+            self.config = load_config(self.config_file, ChiffrementGcm(config_dir))
+        except ConfigError as exc:
+            # Rien n'est chargé : aucune écriture ne pourra écraser le fichier.
+            logger.warning("MainWindow.__init__: configuration non chargée ({})", exc)
+            self.erreur_config = Adw.StatusPage(
+                icon_name="dialog-warning-symbolic",
+                title=_("Configuration not loaded"),
+                description=str(exc),
+            )
+            self.erreur_config.set_vexpand(True)
+            self.panneau.append(self.erreur_config)
+        else:
+            self.arbre = HostTree(
+                self.config.store, rayures=not self.config.options.disable_hosts_stripes
+            )
+            self.panneau.append(self.arbre)
+            couleurs = [g.color for g in self.config.store.groups.values() if g.color]
+            if hasattr(application, "set_group_colors"):
+                application.set_group_colors(couleurs)
         self.onglets = Gtk.Notebook(scrollable=True)
         self.page_accueil = Adw.StatusPage(
-            icon_name="network-workstation-symbolic",
+            icon_name="network-server-symbolic",
             title=_("Welcome to Gnome Connection Manager"),
             description=_("Hosts and groups will appear in the left panel."),
         )
@@ -122,6 +147,10 @@ class MainWindow(Adw.ApplicationWindow):
         logger.debug("_on_close_request: entrée")
         try:
             window_state.save_window_state(self.config_file, self.etat_courant())
+            if self.config is not None:
+                groupes = self.config.store.groups
+                replies = ecrire_replies((p for p, g in groupes.items() if g.collapsed), groupes)
+                update_keys(self.config_file, "window", {"collapsed-folders": replies})
         except ConfigError as exc:
             # gcm.conf corrompu ou disque plein : le fichier reste intact,
             # seule la géométrie de cette session est perdue.
