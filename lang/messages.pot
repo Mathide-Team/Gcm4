@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME Connection Manager\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-12 08:52+0000\n"
+"POT-Creation-Date: 2026-10-12 08:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -164,7 +164,8 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py widgets.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: src/gcm4/core/menu_arbre.py widgets.py
 msgid "Edit"
 msgstr ""
 
@@ -243,7 +244,8 @@ msgstr ""
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
-#: plugins/plugin_spice.py plugins/plugin_ssh.py utils.py widgets.py
+#: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/menu_arbre.py
+#: utils.py widgets.py
 msgid "Cancel"
 msgstr ""
 
@@ -291,7 +293,7 @@ msgstr ""
 msgid "Export Servers"
 msgstr ""
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/core/menu_arbre.py widgets.py
 msgid "Add Host"
 msgstr ""
 
@@ -311,7 +313,7 @@ msgstr ""
 msgid "Do you really want to remove all hosts in group"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/menu_arbre.py
 msgid "New Group"
 msgstr ""
 
@@ -324,7 +326,7 @@ msgstr ""
 msgid "New name:"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/menu_arbre.py
 msgid "Rename Group"
 msgstr ""
 
@@ -1333,7 +1335,7 @@ msgstr ""
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_serial.py
 #: plugins/plugin_spice.py plugins/plugin_vnc.py plugins/plugin_web.py
-#: widgets.py
+#: src/gcm4/core/menu_arbre.py widgets.py
 msgid "Connect"
 msgstr ""
 
@@ -2249,7 +2251,8 @@ msgstr ""
 msgid "Remote Port"
 msgstr ""
 
-#: plugins/plugin_ssh.py widgets.py
+#: plugins/plugin_ssh.py src/gcm4/core/menu_arbre.py src/gcm4/ui/menu_arbre.py
+#: widgets.py
 msgid "Remove"
 msgstr ""
 
@@ -2555,6 +2558,38 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Copy Address"
+msgstr ""
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "New Group…"
+msgstr ""
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Rename Group…"
+msgstr ""
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Choose Color…"
+msgstr ""
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Reset Color"
+msgstr ""
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Duplicate Host"
+msgstr ""
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Expand all"
+msgstr ""
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Collapse all"
+msgstr ""
+
 #: src/gcm4/ui/host_tree.py
 msgid "Search hosts"
 msgstr ""
@@ -2591,6 +2626,60 @@ msgstr ""
 
 #: src/gcm4/ui/main_window.py
 msgid "Home"
+msgstr ""
+
+#: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "No extension can open «{protocol}» connections yet."
+msgstr ""
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Changes not saved: {error}"
+msgstr ""
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Address copied"
+msgstr ""
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Group color"
+msgstr ""
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Group name"
+msgstr ""
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Parent group: {parent}"
+msgstr ""
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Create"
+msgstr ""
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Rename"
+msgstr ""
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Remove group «{name}»?"
+msgstr ""
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "This cannot be undone."
+msgstr ""
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "It contains {hosts} host(s) and {groups} subgroup(s), which will be removed too."
+msgstr ""
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Remove host «{name}»?"
 msgstr ""
 
 #: ssh_config_editor.py
@@ -3732,38 +3821,6 @@ msgstr ""
 
 #: widgets.py
 msgid "Unsplit all consoles"
-msgstr ""
-
-#: widgets.py
-msgid "Copy Address"
-msgstr ""
-
-#: widgets.py
-msgid "New Group…"
-msgstr ""
-
-#: widgets.py
-msgid "Rename Group…"
-msgstr ""
-
-#: widgets.py
-msgid "Choose Color…"
-msgstr ""
-
-#: widgets.py
-msgid "Reset Color"
-msgstr ""
-
-#: widgets.py
-msgid "Duplicate Host"
-msgstr ""
-
-#: widgets.py
-msgid "Expand all"
-msgstr ""
-
-#: widgets.py
-msgid "Collapse all"
 msgstr ""
 
 #: widgets.py

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-12 08:52+0000\n"
+"POT-Creation-Date: 2026-10-12 08:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,7 +77,7 @@ msgstr "פעולה"
 msgid "Activate"
 msgstr "הפעל"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/core/menu_arbre.py widgets.py
 msgid "Add Host"
 msgstr "הוסף מארח"
 
@@ -141,7 +141,8 @@ msgstr "לא ניתן לפתוח קובץ יומן לכתיבה"
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
-#: plugins/plugin_spice.py plugins/plugin_ssh.py utils.py widgets.py
+#: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/menu_arbre.py
+#: utils.py widgets.py
 msgid "Cancel"
 msgstr "ביטול"
 
@@ -281,7 +282,8 @@ msgstr "האם אתה בטוח שברצונך להסיר את המארח"
 msgid "Dynamic title"
 msgstr "כותרת דינמית"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py widgets.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: src/gcm4/core/menu_arbre.py widgets.py
 msgid "Edit"
 msgstr "ערוך"
 
@@ -503,11 +505,9 @@ msgstr "שם"
 msgid "Never"
 msgstr "לעולם לא"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Group"
+#: gnome_connection_manager.py src/gcm4/ui/menu_arbre.py
 msgid "New Group"
-msgstr "קבוצה"
+msgstr "קבוצה חדשה"
 
 #: gnome_connection_manager.py
 #, fuzzy
@@ -602,11 +602,9 @@ msgstr "דף הבית של הפרויקט"
 msgid "Quit"
 msgstr "יציאה"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Rename tab"
+#: gnome_connection_manager.py src/gcm4/ui/menu_arbre.py
 msgid "Rename Group"
-msgstr "שנה שם לשונית"
+msgstr "שינוי שם קבוצה"
 
 #: gnome_connection_manager.py widgets.py
 msgid "Rename tab"
@@ -1425,7 +1423,7 @@ msgstr "🔍  סרוק מארחי Proxmox"
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_serial.py
 #: plugins/plugin_spice.py plugins/plugin_vnc.py plugins/plugin_web.py
-#: widgets.py
+#: src/gcm4/core/menu_arbre.py widgets.py
 msgid "Connect"
 msgstr "התחבר"
 
@@ -2501,7 +2499,8 @@ msgstr "פורט מרוחק"
 msgid "Remote path"
 msgstr "מארח מרוחק"
 
-#: plugins/plugin_ssh.py widgets.py
+#: plugins/plugin_ssh.py src/gcm4/core/menu_arbre.py src/gcm4/ui/menu_arbre.py
+#: widgets.py
 msgid "Remove"
 msgstr "הסר"
 
@@ -2712,6 +2711,38 @@ msgstr "לא ניתן לכתוב את קובץ התצורה %s: %s"
 msgid "Search"
 msgstr "חיפוש"
 
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Choose Color…"
+msgstr "בחירת צבע…"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Collapse all"
+msgstr "כווץ הכל"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Copy Address"
+msgstr "העתק כתובת"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Duplicate Host"
+msgstr "שכפל מארח"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Expand all"
+msgstr "הרחב הכל"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "New Group…"
+msgstr "קבוצה חדשה…"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Rename Group…"
+msgstr "שינוי שם קבוצה…"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Reset Color"
+msgstr "איפוס צבע"
+
 #: src/gcm4/ui/host_tree.py
 #, python-brace-format
 msgid "An item with this name already exists in '{group}'."
@@ -2747,8 +2778,62 @@ msgid "Hosts and groups will appear in the left panel."
 msgstr "מארחים וקבוצות יופיעו בחלונית השמאלית."
 
 #: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "No extension can open «{protocol}» connections yet."
+msgstr "עדיין אין הרחבה שיכולה לפתוח חיבורי „{protocol}”."
+
+#: src/gcm4/ui/main_window.py
 msgid "Welcome to Gnome Connection Manager"
 msgstr "ברוכים הבאים ל־Gnome Connection Manager"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Address copied"
+msgstr "הכתובת הועתקה"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Changes not saved: {error}"
+msgstr "השינויים לא נשמרו: {error}"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Create"
+msgstr "יצירה"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Group color"
+msgstr "צבע הקבוצה"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Group name"
+msgstr "שם הקבוצה"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "It contains {hosts} host(s) and {groups} subgroup(s), which will be removed too."
+msgstr "היא מכילה {hosts} מארחים ו־{groups} תת־קבוצות, שיימחקו גם הם."
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Parent group: {parent}"
+msgstr "קבוצת אב: {parent}"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Remove group «{name}»?"
+msgstr "למחוק את הקבוצה „{name}”?"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Remove host «{name}»?"
+msgstr "למחוק את המארח „{name}”?"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Rename"
+msgstr "שינוי שם"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "This cannot be undone."
+msgstr "לא ניתן לבטל פעולה זו."
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format
@@ -3947,16 +4032,8 @@ msgid "%s has disconnected."
 msgstr "התנתק"
 
 #: widgets.py
-msgid "Choose Color…"
-msgstr ""
-
-#: widgets.py
 msgid "Clone console"
 msgstr "שכפל מסוף"
-
-#: widgets.py
-msgid "Collapse all"
-msgstr "כווץ הכל"
 
 #: widgets.py
 #, fuzzy
@@ -3965,42 +4042,16 @@ msgid "Connection closed"
 msgstr "מתחבר…"
 
 #: widgets.py
-msgid "Copy Address"
-msgstr "העתק כתובת"
-
-#: widgets.py
 msgid "Custom commands"
 msgstr "פקודות מותאמות אישית"
-
-#: widgets.py
-msgid "Duplicate Host"
-msgstr "שכפל מארח"
 
 #: widgets.py
 msgid "Enable logging"
 msgstr "אפשר רישום יומן"
 
 #: widgets.py
-msgid "Expand all"
-msgstr "הרחב הכל"
-
-#: widgets.py
-msgid "New Group…"
-msgstr ""
-
-#: widgets.py
 msgid "Reconnect to host"
 msgstr "התחבר מחדש למארח"
-
-#: widgets.py
-msgid "Rename Group…"
-msgstr ""
-
-#: widgets.py
-#, fuzzy
-#| msgid "Reset console"
-msgid "Reset Color"
-msgstr "אפס מסוף"
 
 #: widgets.py
 msgid "Reset and Clear console"

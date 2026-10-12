@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-12 08:52+0000\n"
+"POT-Creation-Date: 2026-10-12 08:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,7 +77,7 @@ msgstr "Toiminto"
 msgid "Activate"
 msgstr "Aktivoi"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/core/menu_arbre.py widgets.py
 msgid "Add Host"
 msgstr "Lisää isäntä"
 
@@ -141,7 +141,8 @@ msgstr "Lokitiedostoa ei voi avata kirjoitusta varten"
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
-#: plugins/plugin_spice.py plugins/plugin_ssh.py utils.py widgets.py
+#: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/menu_arbre.py
+#: utils.py widgets.py
 msgid "Cancel"
 msgstr "Peruuta"
 
@@ -281,7 +282,8 @@ msgstr "Haluatko varmasti poistaa isännän"
 msgid "Dynamic title"
 msgstr "Dynaaminen otsikko"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py widgets.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: src/gcm4/core/menu_arbre.py widgets.py
 msgid "Edit"
 msgstr "Muokkaa"
 
@@ -503,11 +505,9 @@ msgstr "Nimi"
 msgid "Never"
 msgstr "Ei koskaan"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Group"
+#: gnome_connection_manager.py src/gcm4/ui/menu_arbre.py
 msgid "New Group"
-msgstr "Ryhmä"
+msgstr "Uusi ryhmä"
 
 #: gnome_connection_manager.py
 #, fuzzy
@@ -602,11 +602,9 @@ msgstr "Projektin kotisivu"
 msgid "Quit"
 msgstr "Lopeta"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Rename tab"
+#: gnome_connection_manager.py src/gcm4/ui/menu_arbre.py
 msgid "Rename Group"
-msgstr "Nimeä välilehti uudelleen"
+msgstr "Nimeä ryhmä uudelleen"
 
 #: gnome_connection_manager.py widgets.py
 msgid "Rename tab"
@@ -1425,7 +1423,7 @@ msgstr "🔍  Etsi Proxmox-isännät"
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_serial.py
 #: plugins/plugin_spice.py plugins/plugin_vnc.py plugins/plugin_web.py
-#: widgets.py
+#: src/gcm4/core/menu_arbre.py widgets.py
 msgid "Connect"
 msgstr "Yhdistä"
 
@@ -2501,7 +2499,8 @@ msgstr "Etäportti"
 msgid "Remote path"
 msgstr "Etäisäntä"
 
-#: plugins/plugin_ssh.py widgets.py
+#: plugins/plugin_ssh.py src/gcm4/core/menu_arbre.py src/gcm4/ui/menu_arbre.py
+#: widgets.py
 msgid "Remove"
 msgstr "Poista"
 
@@ -2712,6 +2711,38 @@ msgstr "Asetustiedostoa %s ei voi kirjoittaa: %s"
 msgid "Search"
 msgstr "Hae"
 
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Choose Color…"
+msgstr "Valitse väri…"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Collapse all"
+msgstr "Tiivistä kaikki"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Copy Address"
+msgstr "Kopioi osoite"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Duplicate Host"
+msgstr "Monista isäntä"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Expand all"
+msgstr "Laajenna kaikki"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "New Group…"
+msgstr "Uusi ryhmä…"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Rename Group…"
+msgstr "Nimeä ryhmä uudelleen…"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Reset Color"
+msgstr "Palauta väri"
+
 #: src/gcm4/ui/host_tree.py
 #, python-brace-format
 msgid "An item with this name already exists in '{group}'."
@@ -2747,8 +2778,62 @@ msgid "Hosts and groups will appear in the left panel."
 msgstr "Palvelimet ja ryhmät näkyvät vasemmassa paneelissa."
 
 #: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "No extension can open «{protocol}» connections yet."
+msgstr "Mikään laajennus ei vielä osaa avata ”{protocol}”-yhteyksiä."
+
+#: src/gcm4/ui/main_window.py
 msgid "Welcome to Gnome Connection Manager"
 msgstr "Tervetuloa Gnome Connection Manageriin"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Address copied"
+msgstr "Osoite kopioitu"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Changes not saved: {error}"
+msgstr "Muutoksia ei tallennettu: {error}"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Create"
+msgstr "Luo"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Group color"
+msgstr "Ryhmän väri"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Group name"
+msgstr "Ryhmän nimi"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "It contains {hosts} host(s) and {groups} subgroup(s), which will be removed too."
+msgstr "Se sisältää {hosts} palvelinta ja {groups} aliryhmää, jotka myös poistetaan."
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Parent group: {parent}"
+msgstr "Yläryhmä: {parent}"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Remove group «{name}»?"
+msgstr "Poistetaanko ryhmä ”{name}”?"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Remove host «{name}»?"
+msgstr "Poistetaanko palvelin ”{name}”?"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Rename"
+msgstr "Nimeä uudelleen"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "This cannot be undone."
+msgstr "Toimintoa ei voi perua."
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format
@@ -3947,16 +4032,8 @@ msgid "%s has disconnected."
 msgstr "Katkaise yhteys"
 
 #: widgets.py
-msgid "Choose Color…"
-msgstr ""
-
-#: widgets.py
 msgid "Clone console"
 msgstr "Kloonaa konsoli"
-
-#: widgets.py
-msgid "Collapse all"
-msgstr "Tiivistä kaikki"
 
 #: widgets.py
 #, fuzzy
@@ -3965,42 +4042,16 @@ msgid "Connection closed"
 msgstr "Yhdistetään…"
 
 #: widgets.py
-msgid "Copy Address"
-msgstr "Kopioi osoite"
-
-#: widgets.py
 msgid "Custom commands"
 msgstr "Mukautetut komennot"
-
-#: widgets.py
-msgid "Duplicate Host"
-msgstr "Monista isäntä"
 
 #: widgets.py
 msgid "Enable logging"
 msgstr "Ota lokitus käyttöön"
 
 #: widgets.py
-msgid "Expand all"
-msgstr "Laajenna kaikki"
-
-#: widgets.py
-msgid "New Group…"
-msgstr ""
-
-#: widgets.py
 msgid "Reconnect to host"
 msgstr "Yhdistä isäntään uudelleen"
-
-#: widgets.py
-msgid "Rename Group…"
-msgstr ""
-
-#: widgets.py
-#, fuzzy
-#| msgid "Reset console"
-msgid "Reset Color"
-msgstr "Nollaa konsoli"
 
 #: widgets.py
 msgid "Reset and Clear console"

@@ -36,6 +36,7 @@ from gcm4.core.config import ConfigError
 from gcm4.core.host_tree import Noeud, ancetres, construire, correspondances, infobulle
 from gcm4.core.i18n import _
 from gcm4.core.model import SEPARATEUR, HostStore
+from gcm4.ui.menu_arbre import MenuArbre
 
 ICONE_GROUPE = "folder-symbolic"
 # network-workstation-symbolic est absente d'adwaita-icon-theme 50 (icône
@@ -133,6 +134,7 @@ class HostTree(Gtk.Box):
         self._connexions: list[tuple[Gtk.TreeListRow, int]] = []
         self._selection_memo: str | None = None
         self.recharger()
+        self.menu = MenuArbre(self)
         logger.debug("HostTree.__init__: prêt")
 
     # --- modèle ------------------------------------------------------------
@@ -399,6 +401,15 @@ class HostTree(Gtk.Box):
         self.selectionner(deplacement.nouveau_chemin)
         logger.debug("deposer: {!r} -> {!r}", deplacement.chemin, deplacement.nouveau_chemin)
         return True
+
+    def appliquer_couleurs(self) -> None:
+        """Recharge la feuille des couleurs de groupe de l'application (après un changement)."""
+        logger.debug("appliquer_couleurs: entrée")
+        racine = self.get_root()
+        application = racine.get_application() if isinstance(racine, Gtk.Window) else None
+        if application is not None and hasattr(application, "set_group_colors"):
+            application.set_group_colors([g.color for g in self.store.groups.values() if g.color])
+        logger.debug("appliquer_couleurs: fait")
 
     def _notifier(self, message: str) -> None:
         """Message court (toast de la fenêtre), journalisé dans tous les cas."""

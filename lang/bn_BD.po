@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-12 08:52+0000\n"
+"POT-Creation-Date: 2026-10-12 08:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,7 +77,7 @@ msgstr "অ্যাকশন"
 msgid "Activate"
 msgstr "সক্রিয় করুন"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/core/menu_arbre.py widgets.py
 msgid "Add Host"
 msgstr "হোস্ট যুক্ত করুন"
 
@@ -141,7 +141,8 @@ msgstr "লগ ফাইল লেখার জন্য খোলা যাচ�
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
-#: plugins/plugin_spice.py plugins/plugin_ssh.py utils.py widgets.py
+#: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/menu_arbre.py
+#: utils.py widgets.py
 msgid "Cancel"
 msgstr "বাতিল"
 
@@ -281,7 +282,8 @@ msgstr "আপনি কি সত্যিই হোস্ট অপসার�
 msgid "Dynamic title"
 msgstr "ডায়নামিক শিরোনাম"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py widgets.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: src/gcm4/core/menu_arbre.py widgets.py
 msgid "Edit"
 msgstr "সম্পাদনা করুন"
 
@@ -503,11 +505,9 @@ msgstr "নাম"
 msgid "Never"
 msgstr "কখনও না"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Group"
+#: gnome_connection_manager.py src/gcm4/ui/menu_arbre.py
 msgid "New Group"
-msgstr "গ্রুপ"
+msgstr "নতুন গ্রুপ"
 
 #: gnome_connection_manager.py
 #, fuzzy
@@ -602,11 +602,9 @@ msgstr "প্রজেক্টের হোমপেজ"
 msgid "Quit"
 msgstr "প্রস্থান"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Rename tab"
+#: gnome_connection_manager.py src/gcm4/ui/menu_arbre.py
 msgid "Rename Group"
-msgstr "ট্যাব নাম পরিবর্তন করুন"
+msgstr "গ্রুপের নাম বদলান"
 
 #: gnome_connection_manager.py widgets.py
 msgid "Rename tab"
@@ -1425,7 +1423,7 @@ msgstr "🔍  Proxmox হোস্ট স্ক্যান করুন"
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_serial.py
 #: plugins/plugin_spice.py plugins/plugin_vnc.py plugins/plugin_web.py
-#: widgets.py
+#: src/gcm4/core/menu_arbre.py widgets.py
 msgid "Connect"
 msgstr "সংযোগ করুন"
 
@@ -2501,7 +2499,8 @@ msgstr "রিমোট পোর্ট"
 msgid "Remote path"
 msgstr "রিমোট হোস্ট"
 
-#: plugins/plugin_ssh.py widgets.py
+#: plugins/plugin_ssh.py src/gcm4/core/menu_arbre.py src/gcm4/ui/menu_arbre.py
+#: widgets.py
 msgid "Remove"
 msgstr "অপসারণ করুন"
 
@@ -2712,6 +2711,38 @@ msgstr "কনফিগারেশন ফাইল %s লেখা যায়
 msgid "Search"
 msgstr "অনুসন্ধান"
 
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Choose Color…"
+msgstr "রং বেছে নিন…"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Collapse all"
+msgstr "সব সংকুচিত করুন"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Copy Address"
+msgstr "ঠিকানা কপি করুন"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Duplicate Host"
+msgstr "হোস্ট ডুপ্লিকেট করুন"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Expand all"
+msgstr "সব বিস্তৃত করুন"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "New Group…"
+msgstr "নতুন গ্রুপ…"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Rename Group…"
+msgstr "গ্রুপের নাম বদলান…"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Reset Color"
+msgstr "রং রিসেট করুন"
+
 #: src/gcm4/ui/host_tree.py
 #, python-brace-format
 msgid "An item with this name already exists in '{group}'."
@@ -2747,8 +2778,62 @@ msgid "Hosts and groups will appear in the left panel."
 msgstr "হোস্ট ও গ্রুপগুলো বাম প্যানেলে দেখা যাবে।"
 
 #: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "No extension can open «{protocol}» connections yet."
+msgstr "এখনও কোনো এক্সটেনশন '{protocol}' সংযোগ খুলতে পারে না।"
+
+#: src/gcm4/ui/main_window.py
 msgid "Welcome to Gnome Connection Manager"
 msgstr "Gnome Connection Manager-এ স্বাগতম"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Address copied"
+msgstr "ঠিকানা কপি হয়েছে"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Changes not saved: {error}"
+msgstr "পরিবর্তন সংরক্ষিত হয়নি: {error}"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Create"
+msgstr "তৈরি করুন"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Group color"
+msgstr "গ্রুপের রং"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Group name"
+msgstr "গ্রুপের নাম"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "It contains {hosts} host(s) and {groups} subgroup(s), which will be removed too."
+msgstr "এতে {hosts}টি হোস্ট ও {groups}টি উপগ্রুপ আছে, সেগুলোও মুছে যাবে।"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Parent group: {parent}"
+msgstr "মূল গ্রুপ: {parent}"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Remove group «{name}»?"
+msgstr "'{name}' গ্রুপ মুছবেন?"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Remove host «{name}»?"
+msgstr "'{name}' হোস্ট মুছবেন?"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Rename"
+msgstr "নাম বদলান"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "This cannot be undone."
+msgstr "এই কাজটি ফিরিয়ে নেওয়া যাবে না।"
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format
@@ -3947,16 +4032,8 @@ msgid "%s has disconnected."
 msgstr "সংযোগ বিচ্ছিন্ন করুন"
 
 #: widgets.py
-msgid "Choose Color…"
-msgstr ""
-
-#: widgets.py
 msgid "Clone console"
 msgstr "কনসোল ক্লোন করুন"
-
-#: widgets.py
-msgid "Collapse all"
-msgstr "সব সংকুচিত করুন"
 
 #: widgets.py
 #, fuzzy
@@ -3965,42 +4042,16 @@ msgid "Connection closed"
 msgstr "সংযোগ করা হচ্ছে…"
 
 #: widgets.py
-msgid "Copy Address"
-msgstr "ঠিকানা কপি করুন"
-
-#: widgets.py
 msgid "Custom commands"
 msgstr "কাস্টম কমান্ড"
-
-#: widgets.py
-msgid "Duplicate Host"
-msgstr "হোস্ট ডুপ্লিকেট করুন"
 
 #: widgets.py
 msgid "Enable logging"
 msgstr "লগিং সক্ষম করুন"
 
 #: widgets.py
-msgid "Expand all"
-msgstr "সব বিস্তৃত করুন"
-
-#: widgets.py
-msgid "New Group…"
-msgstr ""
-
-#: widgets.py
 msgid "Reconnect to host"
 msgstr "হোস্টে পুনরায় সংযোগ করুন"
-
-#: widgets.py
-msgid "Rename Group…"
-msgstr ""
-
-#: widgets.py
-#, fuzzy
-#| msgid "Reset console"
-msgid "Reset Color"
-msgstr "কনসোল রিসেট করুন"
 
 #: widgets.py
 msgid "Reset and Clear console"

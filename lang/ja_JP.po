@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-12 08:52+0000\n"
+"POT-Creation-Date: 2026-10-12 08:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,7 +77,7 @@ msgstr "操作"
 msgid "Activate"
 msgstr "アクティブにする"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/core/menu_arbre.py widgets.py
 msgid "Add Host"
 msgstr "ホストを追加"
 
@@ -141,7 +141,8 @@ msgstr "ログファイルを書き込み用に開けません"
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
-#: plugins/plugin_spice.py plugins/plugin_ssh.py utils.py widgets.py
+#: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/menu_arbre.py
+#: utils.py widgets.py
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -281,7 +282,8 @@ msgstr "ホストを本当に削除しますか"
 msgid "Dynamic title"
 msgstr "動的なタイトル"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py widgets.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: src/gcm4/core/menu_arbre.py widgets.py
 msgid "Edit"
 msgstr "編集"
 
@@ -503,11 +505,9 @@ msgstr "名前"
 msgid "Never"
 msgstr "しない"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Group"
+#: gnome_connection_manager.py src/gcm4/ui/menu_arbre.py
 msgid "New Group"
-msgstr "グループ"
+msgstr "新しいグループ"
 
 #: gnome_connection_manager.py
 #, fuzzy
@@ -602,11 +602,9 @@ msgstr "プロジェクトのホームページ"
 msgid "Quit"
 msgstr "終了"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Rename tab"
+#: gnome_connection_manager.py src/gcm4/ui/menu_arbre.py
 msgid "Rename Group"
-msgstr "タブの名前を変更"
+msgstr "グループ名の変更"
 
 #: gnome_connection_manager.py widgets.py
 msgid "Rename tab"
@@ -1425,7 +1423,7 @@ msgstr "🔍  Proxmox ホストをスキャン"
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_serial.py
 #: plugins/plugin_spice.py plugins/plugin_vnc.py plugins/plugin_web.py
-#: widgets.py
+#: src/gcm4/core/menu_arbre.py widgets.py
 msgid "Connect"
 msgstr "接続"
 
@@ -2501,7 +2499,8 @@ msgstr "リモートポート"
 msgid "Remote path"
 msgstr "リモートホスト"
 
-#: plugins/plugin_ssh.py widgets.py
+#: plugins/plugin_ssh.py src/gcm4/core/menu_arbre.py src/gcm4/ui/menu_arbre.py
+#: widgets.py
 msgid "Remove"
 msgstr "削除"
 
@@ -2712,6 +2711,38 @@ msgstr "設定ファイル %s に書き込めません: %s"
 msgid "Search"
 msgstr "検索"
 
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Choose Color…"
+msgstr "色を選択…"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Collapse all"
+msgstr "すべて折りたたむ"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Copy Address"
+msgstr "アドレスをコピー"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Duplicate Host"
+msgstr "ホストを複製"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Expand all"
+msgstr "すべて展開"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "New Group…"
+msgstr "新しいグループ…"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Rename Group…"
+msgstr "グループ名を変更…"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Reset Color"
+msgstr "色をリセット"
+
 #: src/gcm4/ui/host_tree.py
 #, python-brace-format
 msgid "An item with this name already exists in '{group}'."
@@ -2747,8 +2778,62 @@ msgid "Hosts and groups will appear in the left panel."
 msgstr "ホストとグループは左側のパネルに表示されます。"
 
 #: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "No extension can open «{protocol}» connections yet."
+msgstr "「{protocol}」接続を開ける拡張機能はまだありません。"
+
+#: src/gcm4/ui/main_window.py
 msgid "Welcome to Gnome Connection Manager"
 msgstr "Gnome Connection Manager へようこそ"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Address copied"
+msgstr "アドレスをコピーしました"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Changes not saved: {error}"
+msgstr "変更は保存されていません: {error}"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Create"
+msgstr "作成"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Group color"
+msgstr "グループの色"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Group name"
+msgstr "グループ名"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "It contains {hosts} host(s) and {groups} subgroup(s), which will be removed too."
+msgstr "{hosts} 件のホストと {groups} 件のサブグループが含まれており、これらも削除されます。"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Parent group: {parent}"
+msgstr "親グループ: {parent}"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Remove group «{name}»?"
+msgstr "グループ「{name}」を削除しますか?"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Remove host «{name}»?"
+msgstr "ホスト「{name}」を削除しますか?"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Rename"
+msgstr "名前を変更"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "This cannot be undone."
+msgstr "この操作は元に戻せません。"
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format
@@ -3947,16 +4032,8 @@ msgid "%s has disconnected."
 msgstr "切断"
 
 #: widgets.py
-msgid "Choose Color…"
-msgstr ""
-
-#: widgets.py
 msgid "Clone console"
 msgstr "コンソールを複製"
-
-#: widgets.py
-msgid "Collapse all"
-msgstr "すべて折りたたむ"
 
 #: widgets.py
 #, fuzzy
@@ -3965,42 +4042,16 @@ msgid "Connection closed"
 msgstr "接続中…"
 
 #: widgets.py
-msgid "Copy Address"
-msgstr "アドレスをコピー"
-
-#: widgets.py
 msgid "Custom commands"
 msgstr "カスタムコマンド"
-
-#: widgets.py
-msgid "Duplicate Host"
-msgstr "ホストを複製"
 
 #: widgets.py
 msgid "Enable logging"
 msgstr "ロギングを有効にする"
 
 #: widgets.py
-msgid "Expand all"
-msgstr "すべて展開"
-
-#: widgets.py
-msgid "New Group…"
-msgstr ""
-
-#: widgets.py
 msgid "Reconnect to host"
 msgstr "ホストに再接続"
-
-#: widgets.py
-msgid "Rename Group…"
-msgstr ""
-
-#: widgets.py
-#, fuzzy
-#| msgid "Reset console"
-msgid "Reset Color"
-msgstr "コンソールをリセット"
 
 #: widgets.py
 msgid "Reset and Clear console"
