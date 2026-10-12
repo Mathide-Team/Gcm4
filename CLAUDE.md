@@ -43,8 +43,13 @@ générique de migration de config livrés et testés (session-30,
   identifiés dans `docs/architecture.md` §2.8-bis.
 
 **Décisions du 12/10/2026 (base GTK4, épopée #118) :**
-- D1 à D5 validées : GTK 4 + libadwaita, commande `gcm4`, `~/.gcm/gcm.conf`
-  conservé, **Python ≥ 3.12**, paquet `src/gcm4/` (détail dans #118).
+- D1, D2, D4 et D5 validées : GTK 4 + libadwaita, commande `gcm4`,
+  **Python ≥ 3.12**, paquet `src/gcm4/` (détail dans #118).
+- **D3 remplacée (#99)** : configuration dans `~/.config/gcm4/gcm4.conf`
+  (`XDG_CONFIG_HOME` respecté), migration automatique depuis `~/.gcm/` par
+  copie (0600, ancien dossier jamais supprimé tant que GTK3 existe, #177).
+- Dialogues de fichiers : `Gtk.FileDialog`, avec un repli pour GTK < 4.10
+  (#97, comme dans SwitchCapture).
 - **Distributions cibles** : Debian 12 (Python 3.11) et Rocky 9 (Python
   3.9) **restent dans les cibles**. D4 impose donc d'y livrer un Python
   ≥ 3.12 (ou de rendre le code compatible) et de vérifier libadwaita sur
