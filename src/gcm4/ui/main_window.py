@@ -121,6 +121,9 @@ class MainWindow(Adw.ApplicationWindow):
         action.connect("change-state", self._on_toggle_panel)
         self.add_action(action)
         self.panneau.set_visible(self.etat.show_panel)
+        connexion = Gio.SimpleAction.new("connect-host", GLib.VariantType.new("s"))
+        connexion.connect("activate", self._on_connect_host)
+        self.add_action(connexion)
         recherche = Gio.SimpleAction.new("search", None)
         recherche.connect("activate", self._on_search)
         recherche.set_enabled(self.arbre is not None)  # configuration illisible : rien à chercher
@@ -146,6 +149,23 @@ class MainWindow(Adw.ApplicationWindow):
         logger.debug("notifier: entrée")
         self.toasts.add_toast(Adw.Toast(title=message, timeout=5))
         logger.debug("notifier: fait")
+
+    def _on_connect_host(self, _action: Gio.SimpleAction, param: GLib.Variant) -> None:
+        """Double-clic / Entrée sur un hôte : délégué au registre des plugins (#124).
+
+        En mode zéro plugin, aucun protocole n'est géré : un message le dit,
+        sans erreur.
+        """
+        logger.debug("_on_connect_host: {!r}", param.get_string())
+        chemin = param.get_string()
+        hote = self.config.store.find(chemin) if self.config is not None else None
+        if hote is not None:
+            self.notifier(
+                _("No extension can open «{protocol}» connections yet.").format(
+                    protocol=hote.protocol
+                )
+            )
+        logger.debug("_on_connect_host: fait")
 
     def _on_search(self, _action: Gio.SimpleAction, _param: GLib.Variant | None) -> None:
         """Ctrl+F / Affichage > Rechercher : panneau affiché, curseur dans la recherche (#140)."""

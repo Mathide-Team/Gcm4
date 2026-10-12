@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-12 08:52+0000\n"
+"POT-Creation-Date: 2026-10-12 08:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,7 +77,7 @@ msgstr "Akce"
 msgid "Activate"
 msgstr "Aktivovat"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/core/menu_arbre.py widgets.py
 msgid "Add Host"
 msgstr "Přidat hostitele"
 
@@ -141,7 +141,8 @@ msgstr "Nelze otevřít soubor protokolu pro zápis"
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
-#: plugins/plugin_spice.py plugins/plugin_ssh.py utils.py widgets.py
+#: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/menu_arbre.py
+#: utils.py widgets.py
 msgid "Cancel"
 msgstr "Zrušit"
 
@@ -281,7 +282,8 @@ msgstr "Opravdu chcete odebrat hostitele"
 msgid "Dynamic title"
 msgstr "Dynamický titulek"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py widgets.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: src/gcm4/core/menu_arbre.py widgets.py
 msgid "Edit"
 msgstr "Upravit"
 
@@ -503,11 +505,9 @@ msgstr "Název"
 msgid "Never"
 msgstr "Nikdy"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Group"
+#: gnome_connection_manager.py src/gcm4/ui/menu_arbre.py
 msgid "New Group"
-msgstr "Skupina"
+msgstr "Nová skupina"
 
 #: gnome_connection_manager.py
 #, fuzzy
@@ -602,11 +602,9 @@ msgstr "Domovská stránka projektu"
 msgid "Quit"
 msgstr "Konec"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Rename tab"
+#: gnome_connection_manager.py src/gcm4/ui/menu_arbre.py
 msgid "Rename Group"
-msgstr "Přejmenovat záložku"
+msgstr "Přejmenovat skupinu"
 
 #: gnome_connection_manager.py widgets.py
 msgid "Rename tab"
@@ -1425,7 +1423,7 @@ msgstr "🔍  Skenovat hostitele Proxmox"
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_serial.py
 #: plugins/plugin_spice.py plugins/plugin_vnc.py plugins/plugin_web.py
-#: widgets.py
+#: src/gcm4/core/menu_arbre.py widgets.py
 msgid "Connect"
 msgstr "Připojit"
 
@@ -2501,7 +2499,8 @@ msgstr "Vzdálený port"
 msgid "Remote path"
 msgstr "Vzdálený hostitel"
 
-#: plugins/plugin_ssh.py widgets.py
+#: plugins/plugin_ssh.py src/gcm4/core/menu_arbre.py src/gcm4/ui/menu_arbre.py
+#: widgets.py
 msgid "Remove"
 msgstr "Odebrat"
 
@@ -2712,6 +2711,38 @@ msgstr "Nelze zapsat konfigurační soubor %s: %s"
 msgid "Search"
 msgstr "Hledat"
 
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Choose Color…"
+msgstr "Vybrat barvu…"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Collapse all"
+msgstr "Sbalit vše"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Copy Address"
+msgstr "Kopírovat adresu"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Duplicate Host"
+msgstr "Duplikovat hostitele"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Expand all"
+msgstr "Rozbalit vše"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "New Group…"
+msgstr "Nová skupina…"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Rename Group…"
+msgstr "Přejmenovat skupinu…"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Reset Color"
+msgstr "Obnovit barvu"
+
 #: src/gcm4/ui/host_tree.py
 #, python-brace-format
 msgid "An item with this name already exists in '{group}'."
@@ -2747,8 +2778,62 @@ msgid "Hosts and groups will appear in the left panel."
 msgstr "Hostitelé a skupiny se zobrazí v levém panelu."
 
 #: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "No extension can open «{protocol}» connections yet."
+msgstr "Žádné rozšíření zatím neumí otevřít spojení „{protocol}“."
+
+#: src/gcm4/ui/main_window.py
 msgid "Welcome to Gnome Connection Manager"
 msgstr "Vítejte v Gnome Connection Manager"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Address copied"
+msgstr "Adresa zkopírována"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Changes not saved: {error}"
+msgstr "Změny nebyly uloženy: {error}"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Create"
+msgstr "Vytvořit"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Group color"
+msgstr "Barva skupiny"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Group name"
+msgstr "Název skupiny"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "It contains {hosts} host(s) and {groups} subgroup(s), which will be removed too."
+msgstr "Obsahuje hostitele ({hosts}) a podskupiny ({groups}), které budou také odstraněny."
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Parent group: {parent}"
+msgstr "Nadřazená skupina: {parent}"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Remove group «{name}»?"
+msgstr "Odstranit skupinu „{name}“?"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Remove host «{name}»?"
+msgstr "Odstranit hostitele „{name}“?"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Rename"
+msgstr "Přejmenovat"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "This cannot be undone."
+msgstr "Tuto akci nelze vrátit."
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format
@@ -3947,16 +4032,8 @@ msgid "%s has disconnected."
 msgstr "Odpojit"
 
 #: widgets.py
-msgid "Choose Color…"
-msgstr ""
-
-#: widgets.py
 msgid "Clone console"
 msgstr "Klonovat konzoli"
-
-#: widgets.py
-msgid "Collapse all"
-msgstr "Sbalit vše"
 
 #: widgets.py
 #, fuzzy
@@ -3965,42 +4042,16 @@ msgid "Connection closed"
 msgstr "Připojování…"
 
 #: widgets.py
-msgid "Copy Address"
-msgstr "Kopírovat adresu"
-
-#: widgets.py
 msgid "Custom commands"
 msgstr "Vlastní příkazy"
-
-#: widgets.py
-msgid "Duplicate Host"
-msgstr "Duplikovat hostitele"
 
 #: widgets.py
 msgid "Enable logging"
 msgstr "Povolit protokolování"
 
 #: widgets.py
-msgid "Expand all"
-msgstr "Rozbalit vše"
-
-#: widgets.py
-msgid "New Group…"
-msgstr ""
-
-#: widgets.py
 msgid "Reconnect to host"
 msgstr "Znovu připojit k hostiteli"
-
-#: widgets.py
-msgid "Rename Group…"
-msgstr ""
-
-#: widgets.py
-#, fuzzy
-#| msgid "Reset console"
-msgid "Reset Color"
-msgstr "Resetovat konzoli"
 
 #: widgets.py
 msgid "Reset and Clear console"

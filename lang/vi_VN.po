@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-12 08:52+0000\n"
+"POT-Creation-Date: 2026-10-12 08:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,7 +77,7 @@ msgstr "Hành động"
 msgid "Activate"
 msgstr "Kích hoạt"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/core/menu_arbre.py widgets.py
 msgid "Add Host"
 msgstr "Thêm host"
 
@@ -141,7 +141,8 @@ msgstr "Không thể mở tệp nhật ký để viết"
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
-#: plugins/plugin_spice.py plugins/plugin_ssh.py utils.py widgets.py
+#: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/menu_arbre.py
+#: utils.py widgets.py
 msgid "Cancel"
 msgstr "Hủy"
 
@@ -281,7 +282,8 @@ msgstr "Bạn có chắc muốn xóa host"
 msgid "Dynamic title"
 msgstr "Tiêu đề động"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py widgets.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: src/gcm4/core/menu_arbre.py widgets.py
 msgid "Edit"
 msgstr "Chỉnh sửa"
 
@@ -503,11 +505,9 @@ msgstr "Tên"
 msgid "Never"
 msgstr "Không bao giờ"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Group"
+#: gnome_connection_manager.py src/gcm4/ui/menu_arbre.py
 msgid "New Group"
-msgstr "Nhóm"
+msgstr "Nhóm mới"
 
 #: gnome_connection_manager.py
 #, fuzzy
@@ -602,11 +602,9 @@ msgstr "Trang chủ của dự án"
 msgid "Quit"
 msgstr "Thoát"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Rename tab"
+#: gnome_connection_manager.py src/gcm4/ui/menu_arbre.py
 msgid "Rename Group"
-msgstr "Đổi tên tab"
+msgstr "Đổi tên nhóm"
 
 #: gnome_connection_manager.py widgets.py
 msgid "Rename tab"
@@ -1425,7 +1423,7 @@ msgstr "🔍  Quét host Proxmox"
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_serial.py
 #: plugins/plugin_spice.py plugins/plugin_vnc.py plugins/plugin_web.py
-#: widgets.py
+#: src/gcm4/core/menu_arbre.py widgets.py
 msgid "Connect"
 msgstr "Kết nối"
 
@@ -2501,7 +2499,8 @@ msgstr "Cổng Từ Xa"
 msgid "Remote path"
 msgstr "Host Từ Xa"
 
-#: plugins/plugin_ssh.py widgets.py
+#: plugins/plugin_ssh.py src/gcm4/core/menu_arbre.py src/gcm4/ui/menu_arbre.py
+#: widgets.py
 msgid "Remove"
 msgstr "Xóa"
 
@@ -2712,6 +2711,38 @@ msgstr "Không thể ghi tệp cấu hình %s: %s"
 msgid "Search"
 msgstr "Tìm kiếm"
 
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Choose Color…"
+msgstr "Chọn màu…"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Collapse all"
+msgstr "Thu gọn tất cả"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Copy Address"
+msgstr "Sao chép địa chỉ"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Duplicate Host"
+msgstr "Sao chép host"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Expand all"
+msgstr "Mở rộng tất cả"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "New Group…"
+msgstr "Nhóm mới…"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Rename Group…"
+msgstr "Đổi tên nhóm…"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Reset Color"
+msgstr "Đặt lại màu"
+
 #: src/gcm4/ui/host_tree.py
 #, python-brace-format
 msgid "An item with this name already exists in '{group}'."
@@ -2747,8 +2778,62 @@ msgid "Hosts and groups will appear in the left panel."
 msgstr "Các máy chủ và nhóm sẽ hiển thị ở bảng bên trái."
 
 #: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "No extension can open «{protocol}» connections yet."
+msgstr "Chưa có tiện ích mở rộng nào mở được kết nối '{protocol}'."
+
+#: src/gcm4/ui/main_window.py
 msgid "Welcome to Gnome Connection Manager"
 msgstr "Chào mừng đến với Gnome Connection Manager"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Address copied"
+msgstr "Đã sao chép địa chỉ"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Changes not saved: {error}"
+msgstr "Chưa lưu thay đổi: {error}"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Create"
+msgstr "Tạo"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Group color"
+msgstr "Màu nhóm"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Group name"
+msgstr "Tên nhóm"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "It contains {hosts} host(s) and {groups} subgroup(s), which will be removed too."
+msgstr "Nhóm chứa {hosts} máy chủ và {groups} nhóm con, chúng cũng sẽ bị xóa."
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Parent group: {parent}"
+msgstr "Nhóm cha: {parent}"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Remove group «{name}»?"
+msgstr "Xóa nhóm '{name}'?"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Remove host «{name}»?"
+msgstr "Xóa máy chủ '{name}'?"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Rename"
+msgstr "Đổi tên"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "This cannot be undone."
+msgstr "Không thể hoàn tác thao tác này."
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format
@@ -3947,16 +4032,8 @@ msgid "%s has disconnected."
 msgstr "Ngắt kết nối"
 
 #: widgets.py
-msgid "Choose Color…"
-msgstr ""
-
-#: widgets.py
 msgid "Clone console"
 msgstr "Sao chép console"
-
-#: widgets.py
-msgid "Collapse all"
-msgstr "Thu gọn tất cả"
 
 #: widgets.py
 #, fuzzy
@@ -3965,42 +4042,16 @@ msgid "Connection closed"
 msgstr "Đang kết nối…"
 
 #: widgets.py
-msgid "Copy Address"
-msgstr "Sao chép địa chỉ"
-
-#: widgets.py
 msgid "Custom commands"
 msgstr "Lệnh tùy chỉnh"
-
-#: widgets.py
-msgid "Duplicate Host"
-msgstr "Sao chép host"
 
 #: widgets.py
 msgid "Enable logging"
 msgstr "Bật ghi nhật ký"
 
 #: widgets.py
-msgid "Expand all"
-msgstr "Mở rộng tất cả"
-
-#: widgets.py
-msgid "New Group…"
-msgstr ""
-
-#: widgets.py
 msgid "Reconnect to host"
 msgstr "Kết nối lại với host"
-
-#: widgets.py
-msgid "Rename Group…"
-msgstr ""
-
-#: widgets.py
-#, fuzzy
-#| msgid "Reset console"
-msgid "Reset Color"
-msgstr "Đặt lại console"
 
 #: widgets.py
 msgid "Reset and Clear console"
