@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-12 18:47+0000\n"
+"POT-Creation-Date: 2026-10-12 18:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2759,6 +2759,31 @@ msgstr "연결 플러그인이 아닙니다."
 #: src/gcm4/core/plugins.py
 msgid "Its name must be a non-empty lowercase identifier."
 msgstr "이름은 비어 있지 않은 소문자 식별자여야 합니다."
+
+#: src/gcm4/core/registre.py
+#, python-brace-format
+msgid "A plugin with the same name is already loaded from {source}."
+msgstr "같은 이름의 플러그인이 이미 {source}에서 로드되었습니다."
+
+#: src/gcm4/core/registre.py
+#, python-brace-format
+msgid "Import failed: {error}"
+msgstr "가져오기 실패: {error}"
+
+#: src/gcm4/core/registre.py
+#, python-brace-format
+msgid "Initialization failed: {error}"
+msgstr "초기화 실패: {error}"
+
+#: src/gcm4/core/registre.py
+#, python-brace-format
+msgid "Protocol «{protocol}» is already handled by «{other}»."
+msgstr "'{protocol}' 프로토콜은 이미 '{other}'이(가) 처리합니다."
+
+#: src/gcm4/core/registre.py
+#, python-brace-format
+msgid "{file} does not define PLUGIN."
+msgstr "{file}에 PLUGIN이 정의되어 있지 않습니다."
 
 #: src/gcm4/core/validation.py
 #, python-brace-format

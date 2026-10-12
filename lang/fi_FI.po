@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-12 18:47+0000\n"
+"POT-Creation-Date: 2026-10-12 18:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2759,6 +2759,31 @@ msgstr "Se ei ole yhteysliitännäinen."
 #: src/gcm4/core/plugins.py
 msgid "Its name must be a non-empty lowercase identifier."
 msgstr "Nimen on oltava ei-tyhjä tunniste pienillä kirjaimilla."
+
+#: src/gcm4/core/registre.py
+#, python-brace-format
+msgid "A plugin with the same name is already loaded from {source}."
+msgstr "Samanniminen liitännäinen on jo ladattu kohteesta {source}."
+
+#: src/gcm4/core/registre.py
+#, python-brace-format
+msgid "Import failed: {error}"
+msgstr "Tuonti epäonnistui: {error}"
+
+#: src/gcm4/core/registre.py
+#, python-brace-format
+msgid "Initialization failed: {error}"
+msgstr "Alustus epäonnistui: {error}"
+
+#: src/gcm4/core/registre.py
+#, python-brace-format
+msgid "Protocol «{protocol}» is already handled by «{other}»."
+msgstr "Protokollaa ”{protocol}” käsittelee jo ”{other}”."
+
+#: src/gcm4/core/registre.py
+#, python-brace-format
+msgid "{file} does not define PLUGIN."
+msgstr "{file} ei määrittele PLUGIN-muuttujaa."
 
 #: src/gcm4/core/validation.py
 #, python-brace-format
