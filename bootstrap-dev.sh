@@ -9,7 +9,7 @@
 # lors de cette migration ; à re-signaler si un cas reproductible apparaît.
 #
 # Automatise :
-#   1. Paquets système (typelibs GTK/VTE/VNC/SPICE) via apt
+#   1. Paquets système (typelibs GTK 3 et 4, libadwaita, VTE/VNC/SPICE) via apt
 #   2. Création du venv avec accès aux paquets système (`uv venv
 #      --system-site-packages`, obligatoire pour `import gi`)
 #   3. `uv sync` avec tous les extras (netmiko, paramiko, libvirt, vnc) et
@@ -60,6 +60,8 @@ if [[ "$NO_APT" -eq 0 ]]; then
         APT_PKGS=(
             python3-gi
             gir1.2-gtk-3.0
+            gir1.2-gtk-4.0
+            gir1.2-adw-1
             gir1.2-vte-2.91
             gir1.2-gtk-vnc-2.0
             gir1.2-spiceclientgtk-3.0
@@ -115,10 +117,19 @@ fi
 # système installés à l'étape 1, jamais via pip — le venv doit donc voir les
 # paquets système (équivalent du `virtualenvs.options.system-site-packages`
 # de Poetry).
+# Interpréteur **système** imposé : avec un Python téléchargé par uv, les
+# paquets système vus seraient les siens, pas /usr/lib/python3/dist-packages,
+# et `import gi` échouerait. gcm4 (GTK4) exige Python >= 3.12 (D4, #118).
+PYTHON_SYSTEME="$(command -v python3)"
+if ! "$PYTHON_SYSTEME" -c 'import sys; sys.exit(sys.version_info < (3, 12))'; then
+    warn "Python système $("$PYTHON_SYSTEME" -V 2>&1 | cut -d' ' -f2) < 3.12 : gcm4 (GTK4) exige 3.12 (Debian 13, Ubuntu 24.04, Fedora 39 ou plus récent)."
+fi
 if [[ ! -d .venv ]]; then
-    info "Création du venv (uv venv --system-site-packages)"
-    uv venv --system-site-packages .venv
+    info "Création du venv (uv venv --system-site-packages --python $PYTHON_SYSTEME)"
+    uv venv --system-site-packages --python "$PYTHON_SYSTEME" .venv
     ok ".venv créé"
+elif ! grep -q '^include-system-site-packages = true' .venv/pyvenv.cfg 2>/dev/null; then
+    warn ".venv existe sans accès aux paquets système : gi y est invisible. Recréez-le : rm -rf .venv && $0"
 else
     info ".venv existe déjà, réutilisation"
 fi
@@ -137,6 +148,11 @@ if uv run python3 -c "import gi; gi.require_version('Gtk', '3.0'); from gi.repos
     ok "gi / Gtk / Vte OK"
 else
     warn "gi/Gtk/Vte indisponible — vérifiez python3-gi, gir1.2-gtk-3.0, gir1.2-vte-2.91"
+fi
+if uv run python3 -c "import gi; gi.require_version('Gtk', '4.0'); gi.require_version('Adw', '1'); from gi.repository import Adw, Gtk" 2>/dev/null; then
+    ok "gi / Gtk 4 / libadwaita OK (uv run gcm4)"
+else
+    warn "Gtk 4 / libadwaita indisponible — vérifiez gir1.2-gtk-4.0, gir1.2-adw-1 (gcm4 ne démarrera pas)"
 fi
 if uv run python3 -c "import Cryptodome" 2>/dev/null; then
     ok "Cryptodome (VNC) OK"
