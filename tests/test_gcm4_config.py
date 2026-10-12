@@ -31,7 +31,7 @@ app-title = Gnome Connection Manager
 libvirt-default-user = root
 
 [window]
-collapsed-folders = PROD
+collapsed-folders = 2
 group-colors = LAB=#ff8800,PROD/eu=#00aaff
 left-panel-width = 260
 window-width = 1200
@@ -205,7 +205,8 @@ def test_modifications_du_modele_ecrites(conf):
         "host 3",
     ]
     assert [h["name"] for h in _hotes(cp)] == ["db", "www", "api"]
-    assert sorted(cp.get("window", "collapsed-folders").split(",")) == ["LAB", "PROD"]
+    # Format GTK3 (Gtk.TreePath) : ARCHIVE = 0, LAB = 1, PROD = 2.
+    assert cp.get("window", "collapsed-folders") == "1,2"
 
 
 def test_doublons_conserves_a_la_lecture(tmp_path):

@@ -41,6 +41,7 @@ from loguru import logger
 
 from gcm4.core.i18n import _
 from gcm4.core.model import Group, Host, HostStore, normaliser_chemin
+from gcm4.core.replies import ecrire_replies, lire_replies
 
 SECTION_OPTIONS = "options"
 SECTION_WINDOW = "window"
@@ -271,10 +272,11 @@ def _lire_groupes(cp: configparser.RawConfigParser, store: HostStore) -> None:
         groupe = store.ensure_group(chemin) if egal and couleur.strip() else None
         if groupe is not None:
             groupe.color = couleur.strip()
-    for chemin in _liste(cp.get(SECTION_WINDOW, "collapsed-folders", fallback="")):
-        groupe = store.groups.get(chemin)
-        if groupe is not None:
-            groupe.collapsed = True
+    # Format GTK3 : chemins Gtk.TreePath (« 0:1 »), cf. gcm4.core.replies.
+    for chemin in lire_replies(
+        cp.get(SECTION_WINDOW, "collapsed-folders", fallback=""), store.groups
+    ):
+        store.groups[chemin].collapsed = True
     logger.debug("_lire_groupes: {} groupe(s)", len(store.groups))
 
 
@@ -387,7 +389,11 @@ def _construire(cfg: Config, chiffrement: Chiffrement) -> configparser.RawConfig
     cp.set(
         SECTION_WINDOW, "group-colors", ",".join(f"{g.path}={g.color}" for g in groupes if g.color)
     )
-    cp.set(SECTION_WINDOW, "collapsed-folders", ",".join(g.path for g in groupes if g.collapsed))
+    cp.set(
+        SECTION_WINDOW,
+        "collapsed-folders",
+        ecrire_replies((g.path for g in groupes if g.collapsed), store.groups),
+    )
     vides = [g.path for g in groupes if not store.hosts_in(g.path, recursive=True)]
     cp.set(SECTION_GROUPES_VIDES, "names", ",".join(vides))
     for numero, host in enumerate(store.hosts_in("", recursive=True), start=1):
