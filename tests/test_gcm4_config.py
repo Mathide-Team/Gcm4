@@ -11,7 +11,7 @@ import stat
 import pytest
 
 from gcm4.core import config as config_mod
-from gcm4.core.config import AppConfig, ConfigError, load_config, save_config
+from gcm4.core.config import AppConfig, ConfigError, load_config, save_config, update_keys
 from gcm4.core.model import Host
 
 # gcm.conf telle qu'écrite par Wmain.writeConfig (anonymisée) : options
@@ -294,3 +294,33 @@ def test_dossier_cree(tmp_path, monkeypatch):
     chemin = tmp_path / "nouveau" / "gcm.conf"
     save_config(str(chemin), load_config(str(chemin)))
     assert chemin.is_file() and not chemin.with_name("gcm.conf.bak").exists()
+
+
+def test_save_config_garde_les_cles_window_ecrites_en_session(tmp_path):
+    """Thème / géométrie écrits par update_keys après le chargement : save_config ne les remet pas (#141)."""
+    conf = tmp_path / "gcm4.conf"
+    conf.write_text(
+        "[window]\ntheme-mode = system\nwindow-width = 800\ngroup-colors = A=#111111\n",
+        encoding="utf-8",
+    )
+    cfg = load_config(str(conf))
+    update_keys(str(conf), "window", {"theme-mode": "dark", "window-width": "1200"})
+    cfg.store.ensure_group("A").color = "#222222"
+    save_config(str(conf), cfg)
+    relu = configparser.RawConfigParser()
+    relu.read(conf, encoding="utf-8")
+    assert (
+        relu.get("window", "theme-mode") == "dark" and relu.get("window", "window-width") == "1200"
+    )
+    assert relu.get("window", "group-colors") == "A=#222222"  # le modèle fait foi pour ses clés
+
+
+def test_save_config_refuse_un_fichier_devenu_corrompu(tmp_path):
+    """Fichier corrompu entre chargement et enregistrement : ConfigError, fichier intact."""
+    conf = tmp_path / "gcm4.conf"
+    conf.write_text("[window]\ntheme-mode = dark\n", encoding="utf-8")
+    cfg = load_config(str(conf))
+    conf.write_text("pas un INI", encoding="utf-8")
+    with pytest.raises(ConfigError):
+        save_config(str(conf), cfg)
+    assert conf.read_text(encoding="utf-8") == "pas un INI"
