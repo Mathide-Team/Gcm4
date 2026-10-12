@@ -40,19 +40,19 @@ def test_parite_avec_gtk3(cible):
 
 
 def test_sections_selon_la_cible(store):
-    """Sans plugin ni dialogue d'hôte : ni connect, ni add, ni edit ; racine sans couleur."""
-    assert menu_arbre.sections(None) == [["new-group"], ["expand", "collapse"]]
+    """Sans plugin : pas de connect ; racine sans couleur."""
+    assert menu_arbre.sections(None) == [["add", "new-group"], ["expand", "collapse"]]
     assert menu_arbre.sections(_noeud(store, "LAB")) == [
-        ["new-group", "rename-group", "group-color", "group-color-reset"],
+        ["add", "new-group", "rename-group", "group-color", "group-color-reset"],
         ["delete"],
         ["expand", "collapse"],
     ]
     assert menu_arbre.sections(_noeud(store, "LAB/web")) == [
-        ["copy-address", "new-group", "group-color", "group-color-reset"],
-        ["duplicate", "delete"],
+        ["copy-address", "add", "new-group", "group-color", "group-color-reset"],
+        ["edit", "duplicate", "delete"],
         ["expand", "collapse"],
     ]
-    assert menu_arbre.sections(_noeud(store, "local"))[0] == ["copy-address", "new-group"]
+    assert menu_arbre.sections(_noeud(store, "local"))[0] == ["copy-address", "add", "new-group"]
 
 
 def test_connect_seulement_si_un_plugin_gere_le_protocole(store):

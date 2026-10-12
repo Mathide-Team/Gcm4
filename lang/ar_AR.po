@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-12 18:28+0000\n"
+"POT-Creation-Date: 2026-10-12 18:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -81,13 +81,11 @@ msgstr "تفعيل"
 msgid "Add Host"
 msgstr "إضافة مضيف"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Disconnect"
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "After disconnecting"
-msgstr "قطع الاتصال"
+msgstr "بعد قطع الاتصال"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Always"
 msgstr "دائمًا"
 
@@ -107,11 +105,9 @@ msgstr "مفتاح المسافة للخلف:"
 msgid "Baud rate"
 msgstr "معدل البود"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Error connecting to server"
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Before connecting"
-msgstr "خطأ في الاتصال بالخادم"
+msgstr "قبل الاتصال"
 
 #: gnome_connection_manager.py ssh_config_editor.py
 msgid "Browse existing SSH keys in ~/.ssh/"
@@ -141,8 +137,8 @@ msgstr "تعذر فتح ملف السجل للكتابة"
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
-#: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/menu_arbre.py
-#: utils.py widgets.py
+#: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
 msgid "Cancel"
 msgstr "إلغاء"
 
@@ -166,7 +162,7 @@ msgstr "مسح التحديد"
 msgid "Close"
 msgstr "إغلاق"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py widgets.py
 msgid "Close console"
 msgstr "إغلاق وحدة التحكم"
 
@@ -242,7 +238,7 @@ msgstr "داكن"
 msgid "Data bits"
 msgstr "بتات البيانات"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Default colors"
 msgstr "الألوان الافتراضية"
 
@@ -254,7 +250,7 @@ msgstr "تسلسل الحذف \t[@7]"
 msgid "Delete:"
 msgstr "حذف:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Description"
 msgstr "الوصف"
 
@@ -287,7 +283,7 @@ msgstr "عنوان ديناميكي"
 msgid "Edit"
 msgstr "تحرير"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Edit Host"
 msgstr "تحرير المضيف"
 
@@ -385,7 +381,7 @@ msgstr "Gnome Connection Manager"
 
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
-#: plugins/plugin_import_virtualbox.py
+#: plugins/plugin_import_virtualbox.py src/gcm4/ui/host_dialog.py
 msgid "Group"
 msgstr "المجموعة"
 
@@ -409,8 +405,8 @@ msgstr "المجموعة"
 msgid "Help"
 msgstr "مساعدة"
 
-#: gnome_connection_manager.py plugins/plugin_ssh.py ssh_config_editor.py
-#: ssh_key_manager_dialog.py
+#: gnome_connection_manager.py plugins/plugin_ssh.py src/gcm4/ui/host_dialog.py
+#: ssh_config_editor.py ssh_key_manager_dialog.py
 msgid "Host"
 msgstr "المضيف"
 
@@ -434,9 +430,9 @@ msgstr "ا_ستيراد الخوادم"
 msgid "Imports"
 msgstr "تم الاستيراد"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Include this host in the workspace (Tools > Open Workspace)"
-msgstr ""
+msgstr "تضمين هذا المضيف في مساحة العمل (أدوات > فتح مساحة العمل)"
 
 #: gnome_connection_manager.py
 msgid "Invalid entry in configuration file"
@@ -477,7 +473,7 @@ msgid ""
 "Détails complets dans le journal de l'application."
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Leave blank for passwordless/public key authentication"
 msgstr "اتركه فارغًا للمصادقة بدون كلمة مرور / بالمفتاح العام"
 
@@ -497,11 +493,12 @@ msgstr "مسار السجلات"
 msgid "Menu"
 msgstr "القائمة"
 
-#: gnome_connection_manager.py ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+#: ssh_key_manager_dialog.py
 msgid "Name"
 msgstr "الاسم"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Never"
 msgstr "أبدًا"
 
@@ -542,7 +539,7 @@ msgstr "لا توجد وحدات تحكم مفتوحة"
 msgid "OK"
 msgstr "حسناً"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Only on clean exit"
 msgstr "فقط عند الخروج النظيف"
 
@@ -570,7 +567,7 @@ msgstr ""
 msgid "Parity"
 msgstr "التماثل"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Password"
 msgstr "كلمة المرور"
 
@@ -582,7 +579,7 @@ msgstr "لصق"
 msgid "Paste on right click"
 msgstr "اللصق بالنقر بزر الماوس الأيمن"
 
-#: gnome_connection_manager.py ssh_config_editor.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py ssh_config_editor.py
 msgid "Port"
 msgstr "المنفذ"
 
@@ -618,7 +615,7 @@ msgstr "استعادة الإعدادات الافتراضية"
 msgid "Restore open tabs from the previous session on startup"
 msgstr ""
 
-#: gnome_connection_manager.py utils.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py utils.py
 msgid "Save"
 msgstr "حفظ"
 
@@ -681,10 +678,10 @@ msgstr "الإعدادات"
 msgid "Shell command run locally, in the background, right after this connection ends. Currently only triggered for terminal-based protocols (SSH/Telnet/Local/Serial/IPMI SOL). Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 #, python-brace-format
 msgid "Shell command run locally, in the background, right before this connection opens (any protocol). Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
-msgstr ""
+msgstr "أمر صدفة يُشغَّل محليًا في الخلفية قبيل فتح هذا الاتصال (أي بروتوكول). اتركه فارغًا للتعطيل. العناصر النائبة: {name} {address} {group} {protocol}"
 
 #: gnome_connection_manager.py
 msgid "Shortcut"
@@ -742,7 +739,7 @@ msgstr ""
 msgid "Title"
 msgstr "العنوان"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "To create subgroups use format group1/group2/group3"
 msgstr "لإنشاء مجموعات فرعية، استخدم الصيغة group1/group2/group3"
 
@@ -759,11 +756,11 @@ msgstr "النوع"
 msgid "Use default fixed width font"
 msgstr "استخدام خط ذو عرض ثابت افتراضي"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Use global preference"
-msgstr ""
+msgstr "استخدام التفضيل العام"
 
-#: gnome_connection_manager.py ssh_config_editor.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py ssh_config_editor.py
 msgid "User"
 msgstr "المستخدم"
 
@@ -775,11 +772,9 @@ msgstr "عرض"
 msgid "Word separator"
 msgstr "فاصل الكلمات"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Backspace:"
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Workspace"
-msgstr "مفتاح المسافة للخلف:"
+msgstr "مساحة العمل"
 
 #: gnome_connection_manager.py
 msgid "already exists for group"
@@ -2590,9 +2585,9 @@ msgid ""
 "E.g.: {example}"
 msgstr ""
 
-#: plugins/plugin_vnc.py
+#: plugins/plugin_vnc.py src/gcm4/ui/host_dialog.py
 msgid "Display"
-msgstr ""
+msgstr "العرض"
 
 #: plugins/plugin_vnc.py
 msgid "VNC"
@@ -2723,7 +2718,7 @@ msgstr "طي الكل"
 msgid "Copy Address"
 msgstr "نسخ العنوان"
 
-#: src/gcm4/core/menu_arbre.py widgets.py
+#: src/gcm4/core/menu_arbre.py src/gcm4/ui/host_dialog.py widgets.py
 msgid "Duplicate Host"
 msgstr "تكرار المضيف"
 
@@ -2764,6 +2759,71 @@ msgstr "يجب أن يكون المنفذ رقمًا بين {min} و{max}."
 #: src/gcm4/core/validation.py
 msgid "The name must not contain «/»."
 msgstr "يجب ألا يحتوي الاسم على «/»."
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Background color"
+msgstr "لون الخلفية"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Commands"
+msgstr "الأوامر"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Connection"
+msgstr "الاتصال"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Discard"
+msgstr "تجاهل"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Discard changes?"
+msgstr "تجاهل التغييرات؟"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Errors"
+msgstr "الأخطاء"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Existing groups"
+msgstr "المجموعات الموجودة"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Extra parameters"
+msgstr "معاملات إضافية"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Foreground color"
+msgstr "لون النص"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Keep Editing"
+msgstr "متابعة التحرير"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "New Host"
+msgstr "مضيف جديد"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "No extension handles this protocol: its options are kept."
+msgstr "لا يوجد امتداد يدعم هذا البروتوكول: تُحفظ خياراته كما هي."
+
+#: src/gcm4/ui/host_dialog.py
+msgid "No extension is installed."
+msgstr "لا توجد امتدادات مثبتة."
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Protocol"
+msgstr "البروتوكول"
+
+#: src/gcm4/ui/host_dialog.py
+#, python-brace-format
+msgid "Shell command run locally, in the background, right after this connection ends, by the protocols that support it. Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
+msgstr "أمر صدفة يُشغَّل محليًا في الخلفية فور انتهاء هذا الاتصال، في البروتوكولات التي تدعم ذلك. اتركه فارغًا للتعطيل. العناصر النائبة: {name} {address} {group} {protocol}"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "The changes to this host have not been saved."
+msgstr "لم تُحفظ تغييرات هذا المضيف."
 
 #: src/gcm4/ui/host_tree.py
 #, python-brace-format
@@ -4105,9 +4165,6 @@ msgstr "إلغاء تقسيم جميع وحدات التحكم"
 
 #~ msgid "Colors and Keys"
 #~ msgstr "الألوان والمفاتيح"
-
-#~ msgid "Commands"
-#~ msgstr "الأوامر"
 
 #~ msgid ""
 #~ "Compression level: \n"

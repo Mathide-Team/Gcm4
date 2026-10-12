@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-12 18:28+0000\n"
+"POT-Creation-Date: 2026-10-12 18:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -81,13 +81,11 @@ msgstr "Aktivieren"
 msgid "Add Host"
 msgstr "Host hinzufügen"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Disconnect"
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "After disconnecting"
-msgstr "Trennen"
+msgstr "Nach dem Trennen"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Always"
 msgstr "Immer"
 
@@ -107,11 +105,9 @@ msgstr "Rücktaste:"
 msgid "Baud rate"
 msgstr "Baudrate"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Error connecting to server"
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Before connecting"
-msgstr "Fehler bei der Verbindung zum Server"
+msgstr "Vor dem Verbinden"
 
 #: gnome_connection_manager.py ssh_config_editor.py
 msgid "Browse existing SSH keys in ~/.ssh/"
@@ -141,8 +137,8 @@ msgstr "Protokolldatei kann nicht zum Schreiben geöffnet werden"
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
-#: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/menu_arbre.py
-#: utils.py widgets.py
+#: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -166,7 +162,7 @@ msgstr "Auswahl löschen"
 msgid "Close"
 msgstr "Schließen"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py widgets.py
 msgid "Close console"
 msgstr "Konsole schließen"
 
@@ -242,7 +238,7 @@ msgstr "Dunkel"
 msgid "Data bits"
 msgstr "Datenbits"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Default colors"
 msgstr "Standardfarben"
 
@@ -254,7 +250,7 @@ msgstr "Löschsequenz \t[@7]"
 msgid "Delete:"
 msgstr "Entf:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Description"
 msgstr "Beschreibung"
 
@@ -287,7 +283,7 @@ msgstr "Dynamischer Titel"
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Edit Host"
 msgstr "Host bearbeiten"
 
@@ -385,7 +381,7 @@ msgstr "Gnome Connection Manager"
 
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
-#: plugins/plugin_import_virtualbox.py
+#: plugins/plugin_import_virtualbox.py src/gcm4/ui/host_dialog.py
 msgid "Group"
 msgstr "Gruppe"
 
@@ -409,8 +405,8 @@ msgstr "Gruppe"
 msgid "Help"
 msgstr "Hilfe"
 
-#: gnome_connection_manager.py plugins/plugin_ssh.py ssh_config_editor.py
-#: ssh_key_manager_dialog.py
+#: gnome_connection_manager.py plugins/plugin_ssh.py src/gcm4/ui/host_dialog.py
+#: ssh_config_editor.py ssh_key_manager_dialog.py
 msgid "Host"
 msgstr "Host"
 
@@ -434,9 +430,9 @@ msgstr "Server _importieren"
 msgid "Imports"
 msgstr "Importiert"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Include this host in the workspace (Tools > Open Workspace)"
-msgstr ""
+msgstr "Diesen Host in den Arbeitsbereich aufnehmen (Werkzeuge > Arbeitsbereich öffnen)"
 
 #: gnome_connection_manager.py
 msgid "Invalid entry in configuration file"
@@ -477,7 +473,7 @@ msgid ""
 "Détails complets dans le journal de l'application."
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Leave blank for passwordless/public key authentication"
 msgstr "Leer lassen für passwortlose/öffentliche Schlüsselauthentifizierung"
 
@@ -497,11 +493,12 @@ msgstr "Protokollpfad"
 msgid "Menu"
 msgstr "Menü"
 
-#: gnome_connection_manager.py ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+#: ssh_key_manager_dialog.py
 msgid "Name"
 msgstr "Name"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Never"
 msgstr "Nie"
 
@@ -542,7 +539,7 @@ msgstr "Keine offenen Konsolen"
 msgid "OK"
 msgstr "OK"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Only on clean exit"
 msgstr "Nur bei sauberem Beenden"
 
@@ -570,7 +567,7 @@ msgstr ""
 msgid "Parity"
 msgstr "Parität"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Password"
 msgstr "Passwort"
 
@@ -582,7 +579,7 @@ msgstr "Einfügen"
 msgid "Paste on right click"
 msgstr "Einfügen mit Rechtsklick"
 
-#: gnome_connection_manager.py ssh_config_editor.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py ssh_config_editor.py
 msgid "Port"
 msgstr "Port"
 
@@ -618,7 +615,7 @@ msgstr "Standardwerte wiederherstellen"
 msgid "Restore open tabs from the previous session on startup"
 msgstr ""
 
-#: gnome_connection_manager.py utils.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py utils.py
 msgid "Save"
 msgstr "Speichern"
 
@@ -681,10 +678,10 @@ msgstr "Einstellungen"
 msgid "Shell command run locally, in the background, right after this connection ends. Currently only triggered for terminal-based protocols (SSH/Telnet/Local/Serial/IPMI SOL). Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 #, python-brace-format
 msgid "Shell command run locally, in the background, right before this connection opens (any protocol). Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
-msgstr ""
+msgstr "Shell-Befehl, der lokal im Hintergrund direkt vor dem Öffnen dieser Verbindung ausgeführt wird (jedes Protokoll). Leer lassen zum Deaktivieren. Platzhalter: {name} {address} {group} {protocol}"
 
 #: gnome_connection_manager.py
 msgid "Shortcut"
@@ -742,7 +739,7 @@ msgstr ""
 msgid "Title"
 msgstr "Titel"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "To create subgroups use format group1/group2/group3"
 msgstr "Verwenden Sie zum Erstellen von Untergruppen das Format gruppe1/gruppe2/gruppe3"
 
@@ -759,11 +756,11 @@ msgstr "Typ"
 msgid "Use default fixed width font"
 msgstr "Standard-Festbreitenschrift verwenden"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Use global preference"
-msgstr ""
+msgstr "Globale Einstellung verwenden"
 
-#: gnome_connection_manager.py ssh_config_editor.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py ssh_config_editor.py
 msgid "User"
 msgstr "Benutzer"
 
@@ -775,11 +772,9 @@ msgstr "Ansicht"
 msgid "Word separator"
 msgstr "Worttrennzeichen"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Backspace:"
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Workspace"
-msgstr "Rücktaste:"
+msgstr "Arbeitsbereich"
 
 #: gnome_connection_manager.py
 msgid "already exists for group"
@@ -2590,9 +2585,9 @@ msgid ""
 "E.g.: {example}"
 msgstr ""
 
-#: plugins/plugin_vnc.py
+#: plugins/plugin_vnc.py src/gcm4/ui/host_dialog.py
 msgid "Display"
-msgstr ""
+msgstr "Darstellung"
 
 #: plugins/plugin_vnc.py
 msgid "VNC"
@@ -2723,7 +2718,7 @@ msgstr "Alle einklappen"
 msgid "Copy Address"
 msgstr "Adresse kopieren"
 
-#: src/gcm4/core/menu_arbre.py widgets.py
+#: src/gcm4/core/menu_arbre.py src/gcm4/ui/host_dialog.py widgets.py
 msgid "Duplicate Host"
 msgstr "Host duplizieren"
 
@@ -2764,6 +2759,71 @@ msgstr "Der Port muss eine Zahl zwischen {min} und {max} sein."
 #: src/gcm4/core/validation.py
 msgid "The name must not contain «/»."
 msgstr "Der Name darf kein „/“ enthalten."
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Background color"
+msgstr "Hintergrundfarbe"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Commands"
+msgstr "Befehle"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Connection"
+msgstr "Verbindung"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Discard"
+msgstr "Verwerfen"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Discard changes?"
+msgstr "Änderungen verwerfen?"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Errors"
+msgstr "Fehler"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Existing groups"
+msgstr "Vorhandene Gruppen"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Extra parameters"
+msgstr "Zusätzliche Parameter"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Foreground color"
+msgstr "Textfarbe"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Keep Editing"
+msgstr "Weiter bearbeiten"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "New Host"
+msgstr "Neuer Host"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "No extension handles this protocol: its options are kept."
+msgstr "Keine Erweiterung unterstützt dieses Protokoll: Seine Optionen bleiben erhalten."
+
+#: src/gcm4/ui/host_dialog.py
+msgid "No extension is installed."
+msgstr "Keine Erweiterung installiert."
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Protocol"
+msgstr "Protokoll"
+
+#: src/gcm4/ui/host_dialog.py
+#, python-brace-format
+msgid "Shell command run locally, in the background, right after this connection ends, by the protocols that support it. Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
+msgstr "Shell-Befehl, der lokal im Hintergrund direkt nach dem Ende dieser Verbindung ausgeführt wird, von Protokollen, die dies unterstützen. Leer lassen zum Deaktivieren. Platzhalter: {name} {address} {group} {protocol}"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "The changes to this host have not been saved."
+msgstr "Die Änderungen an diesem Host wurden nicht gespeichert."
 
 #: src/gcm4/ui/host_tree.py
 #, python-brace-format
@@ -4105,9 +4165,6 @@ msgstr "Alle Konsolenteilungen aufheben"
 
 #~ msgid "Colors and Keys"
 #~ msgstr "Farben und Tasten"
-
-#~ msgid "Commands"
-#~ msgstr "Befehle"
 
 #~ msgid ""
 #~ "Compression level: \n"

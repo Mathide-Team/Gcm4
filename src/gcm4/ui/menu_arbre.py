@@ -3,10 +3,12 @@
 - Clic droit (``Gtk.GestureClick`` bouton 3) sur une ligne ou la zone vide,
   touche Menu et Maj+F10 sur la ligne sélectionnée : ``Gtk.PopoverMenu``
   construit depuis :func:`gcm4.core.menu_arbre.sections`.
-- Actions du groupe ``arbre.`` : copier l'adresse, nouveau groupe,
-  renommer, couleur, réinitialiser la couleur, dupliquer, supprimer (avec
-  confirmation et décompte), tout déplier ou replier.
-- Raccourcis de la liste : Suppr (supprimer), F2 (renommer un groupe).
+- Actions du groupe ``arbre.`` : nouvel hôte, modifier, dupliquer (dialogue
+  d'hôte, #145), copier l'adresse, nouveau groupe, renommer, couleur,
+  réinitialiser la couleur, supprimer (avec confirmation et décompte), tout
+  déplier ou replier.
+- Raccourcis de la liste : Suppr (supprimer), F2 (renommer un groupe ou
+  modifier un hôte).
 - Double-clic ou Entrée (``activate`` de la liste) : un groupe se déplie ou
   se replie ; un hôte déclenche ``win.connect-host`` (délégué au registre
   des plugins, #124).
@@ -29,14 +31,18 @@ from gcm4.core import menu_arbre
 from gcm4.core.config import ConfigError
 from gcm4.core.host_tree import Noeud
 from gcm4.core.i18n import _
-from gcm4.core.model import SEPARATEUR
+from gcm4.core.model import SEPARATEUR, Host
 from gcm4.ui import dialogues
+from gcm4.ui.couleurs import rgba_en_hex
+from gcm4.ui.host_dialog import CREATION, DUPLICATION, MODIFICATION, HostDialog
 
 if TYPE_CHECKING:
     from gcm4.ui.host_tree import HostTree
 
 PREFIXE = "arbre"
 ACTIONS = (
+    "add",
+    "edit",
     "copy-address",
     "new-group",
     "rename-group",
@@ -47,16 +53,6 @@ ACTIONS = (
     "expand",
     "collapse",
 )
-
-
-def _rgba_en_hex(rgba: Gdk.RGBA) -> str:
-    """``Gdk.RGBA`` → ``#rrggbb`` (format de ``group-colors``)."""
-    logger.trace("_rgba_en_hex")
-    resultat = "#{:02x}{:02x}{:02x}".format(
-        *(round(c * 255) for c in (rgba.red, rgba.green, rgba.blue))
-    )
-    logger.trace("_rgba_en_hex: {}", resultat)
-    return resultat
 
 
 def _dans_l_arbre(
@@ -85,6 +81,7 @@ class MenuArbre:
         self.arbre = arbre
         self.cible: Noeud | None = None  # ligne visée par le dernier menu
         self.dialogue: Adw.Dialog | Adw.MessageDialog | None = None  # dernier dialogue (tests)
+        self.dialogue_hote: HostDialog | None = None
         self.groupe = Gio.SimpleActionGroup()
         for nom in ACTIONS:
             action = Gio.SimpleAction.new(nom, None)
@@ -103,7 +100,7 @@ class MenuArbre:
         for declencheur, rappel in (
             ("Menu|<Shift>F10", self._menu_clavier),
             ("Delete|KP_Delete", lambda: self._clavier("delete")),
-            ("F2", lambda: self._clavier("rename-group")),
+            ("F2", lambda: self._clavier("rename-group", "edit")),
         ):
             raccourcis.add_shortcut(
                 Gtk.Shortcut(
@@ -175,12 +172,13 @@ class MenuArbre:
         self.ouvrir(noeud, x, y)
         logger.debug("_menu_clavier: fait")
 
-    def _clavier(self, action: str) -> None:
-        """Raccourci de la liste : ``action`` sur la ligne sélectionnée, si elle s'y applique."""
-        logger.debug("_clavier: {}", action)
+    def _clavier(self, *actions: str) -> None:
+        """Raccourci de la liste : première des ``actions`` qui s'applique à la sélection."""
+        logger.debug("_clavier: {}", actions)
         noeud = self._noeud_selectionne()
         disponibles = {a for s in menu_arbre.sections(noeud) for a in s}
-        if noeud is not None and action in disponibles:
+        action = next((a for a in actions if a in disponibles), None)
+        if noeud is not None and action is not None:
             self.cible = noeud
             self.executer(action)
         logger.debug("_clavier: fait")
@@ -251,17 +249,75 @@ class MenuArbre:
             self.arbre._notifier(_("Address copied"))
         logger.debug("_copy_address: fait")
 
+    def _add(self) -> None:
+        """Nouvel hôte dans le groupe visé (dialogue d'hôte, mode création)."""
+        logger.debug("_add: entrée")
+        self.ouvrir_dialogue_hote(CREATION, None, menu_arbre.groupe_de_travail(self.cible))
+        logger.debug("_add: fait")
+
+    def _edit(self) -> None:
+        """Modifier l'hôte visé."""
+        logger.debug("_edit: entrée")
+        hote = self.arbre.store.find(self.cible.chemin) if self.cible else None
+        if hote is not None:
+            self.ouvrir_dialogue_hote(MODIFICATION, hote)
+        logger.debug("_edit: fait")
+
     def _duplicate(self) -> None:
-        """Copie de l'hôte dans son groupe, sélectionnée."""
+        """Dupliquer l'hôte visé : dialogue prérempli « nom (2) », ajustable avant d'enregistrer."""
         logger.debug("_duplicate: entrée")
         hote = self.arbre.store.find(self.cible.chemin) if self.cible else None
-        if hote is None:
-            logger.debug("_duplicate: hôte introuvable")
-            return
-        copies: list[str] = []
-        if self.modifier(lambda: copies.append(self.arbre.store.duplicate(hote).path)):
-            self.arbre.selectionner(copies[0])
-        logger.debug("_duplicate: {}", copies)
+        if hote is not None:
+            self.ouvrir_dialogue_hote(DUPLICATION, hote)
+        logger.debug("_duplicate: fait")
+
+    def ouvrir_dialogue_hote(self, mode: str, hote: Host | None, groupe: str = "") -> HostDialog:
+        """Ouvre le dialogue d'hôte ; l'enregistrement passe par :meth:`modifier`."""
+        logger.debug("ouvrir_dialogue_hote: {} {!r}", mode, hote.path if hote else groupe)
+        store = self.arbre.store
+
+        def valider(nouveau: Host, original: Host | None) -> bool:
+            logger.debug("ouvrir_dialogue_hote.valider: {!r}", nouveau.path)
+
+            def operation() -> None:
+                logger.debug("ouvrir_dialogue_hote.operation: entrée")
+                if original is None:
+                    store.add(nouveau)
+                else:
+                    store.replace(original, nouveau)
+                self._deplier_ancetres(nouveau.group, inclus=True)
+                logger.debug("ouvrir_dialogue_hote.operation: fait")
+
+            ok = self.modifier(operation)
+            if ok:
+                self.arbre.selectionner(nouveau.path)
+            logger.debug("ouvrir_dialogue_hote.valider: {}", ok)
+            return ok
+
+        racine = self.arbre.get_root()
+        self.dialogue_hote = HostDialog(
+            racine if isinstance(racine, Gtk.Window) else None,
+            store,
+            mode,
+            valider,
+            hote=hote,
+            groupe=groupe,
+            protocoles=(),  # registre des plugins : #124
+        )
+        self.dialogue_hote.present()
+        logger.debug("ouvrir_dialogue_hote: affiché")
+        return self.dialogue_hote
+
+    def _deplier_ancetres(self, chemin: str, inclus: bool = False) -> None:
+        """Déplie les groupes parents de ``chemin`` (et ``chemin`` lui-même si ``inclus``)."""
+        logger.trace("_deplier_ancetres: {!r}", chemin)
+        courant = chemin if inclus else chemin.rpartition(SEPARATEUR)[0]
+        while courant:
+            groupe = self.arbre.store.groups.get(courant)
+            if groupe is not None:
+                groupe.collapsed = False
+            courant = courant.rpartition(SEPARATEUR)[0]
+        logger.trace("_deplier_ancetres: fait")
 
     def _expand(self) -> None:
         """Tout déplier (état enregistré à la fermeture, comme GTK3)."""
@@ -322,7 +378,7 @@ class MenuArbre:
         except GLib.Error as exc:  # annulé par l'utilisateur
             logger.debug("_on_couleur_choisie: annulé ({})", exc.message)
             return
-        self.appliquer_couleur(chemin, _rgba_en_hex(rgba))
+        self.appliquer_couleur(chemin, rgba_en_hex(rgba))
         logger.debug("_on_couleur_choisie: fait")
 
     def _on_couleur_ancienne(
@@ -331,7 +387,7 @@ class MenuArbre:
         """Réponse de ``Gtk.ColorChooserDialog`` (GTK < 4.10)."""
         logger.debug("_on_couleur_ancienne: {}", reponse)
         if reponse == Gtk.ResponseType.OK:
-            self.appliquer_couleur(chemin, _rgba_en_hex(dialogue.get_rgba()))
+            self.appliquer_couleur(chemin, rgba_en_hex(dialogue.get_rgba()))
         dialogue.destroy()
         logger.debug("_on_couleur_ancienne: fait")
 
@@ -401,10 +457,7 @@ class MenuArbre:
                 store.ensure_group(chemin)
             else:
                 store.rename_group(actuel, chemin)
-            parent = chemin.rpartition(SEPARATEUR)[0]
-            while parent:
-                store.groups[parent].collapsed = False
-                parent = parent.rpartition(SEPARATEUR)[0]
+            self._deplier_ancetres(chemin)
             logger.debug("_enregistrer_groupe.operation: fait")
 
         if self.modifier(operation):

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-12 18:28+0000\n"
+"POT-Creation-Date: 2026-10-12 18:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -81,13 +81,11 @@ msgstr "সক্রিয় করুন"
 msgid "Add Host"
 msgstr "হোস্ট যুক্ত করুন"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Disconnect"
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "After disconnecting"
-msgstr "সংযোগ বিচ্ছিন্ন করুন"
+msgstr "সংযোগ বিচ্ছিন্নের পরে"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Always"
 msgstr "সবসময়"
 
@@ -107,11 +105,9 @@ msgstr "Backspace:"
 msgid "Baud rate"
 msgstr "বড রেট"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Error connecting to server"
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Before connecting"
-msgstr "সার্ভারের সাথে সংযোগ করতে ত্রুটি"
+msgstr "সংযোগের আগে"
 
 #: gnome_connection_manager.py ssh_config_editor.py
 msgid "Browse existing SSH keys in ~/.ssh/"
@@ -141,8 +137,8 @@ msgstr "লগ ফাইল লেখার জন্য খোলা যাচ�
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
-#: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/menu_arbre.py
-#: utils.py widgets.py
+#: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
 msgid "Cancel"
 msgstr "বাতিল"
 
@@ -166,7 +162,7 @@ msgstr "নির্বাচন পরিষ্কার করুন"
 msgid "Close"
 msgstr "বন্ধ করুন"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py widgets.py
 msgid "Close console"
 msgstr "কনসোল বন্ধ করুন"
 
@@ -242,7 +238,7 @@ msgstr "গাঢ়"
 msgid "Data bits"
 msgstr "ডেটা বিট"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Default colors"
 msgstr "ডিফল্ট রঙ"
 
@@ -254,7 +250,7 @@ msgstr "ডিলিট সিকোয়েন্স \t[@7]"
 msgid "Delete:"
 msgstr "Delete:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Description"
 msgstr "বিবরণ"
 
@@ -287,7 +283,7 @@ msgstr "ডায়নামিক শিরোনাম"
 msgid "Edit"
 msgstr "সম্পাদনা করুন"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Edit Host"
 msgstr "হোস্ট সম্পাদনা করুন"
 
@@ -385,7 +381,7 @@ msgstr "Gnome Connection Manager"
 
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
-#: plugins/plugin_import_virtualbox.py
+#: plugins/plugin_import_virtualbox.py src/gcm4/ui/host_dialog.py
 msgid "Group"
 msgstr "গ্রুপ"
 
@@ -409,8 +405,8 @@ msgstr "গ্রুপ"
 msgid "Help"
 msgstr "সাহায্য"
 
-#: gnome_connection_manager.py plugins/plugin_ssh.py ssh_config_editor.py
-#: ssh_key_manager_dialog.py
+#: gnome_connection_manager.py plugins/plugin_ssh.py src/gcm4/ui/host_dialog.py
+#: ssh_config_editor.py ssh_key_manager_dialog.py
 msgid "Host"
 msgstr "হোস্ট"
 
@@ -434,9 +430,9 @@ msgstr "_সার্ভার আমদানি করুন"
 msgid "Imports"
 msgstr "আমদানি করা হয়েছে"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Include this host in the workspace (Tools > Open Workspace)"
-msgstr ""
+msgstr "এই হোস্টকে ওয়ার্কস্পেসে রাখুন (টুলস > ওয়ার্কস্পেস খুলুন)"
 
 #: gnome_connection_manager.py
 msgid "Invalid entry in configuration file"
@@ -477,7 +473,7 @@ msgid ""
 "Détails complets dans le journal de l'application."
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Leave blank for passwordless/public key authentication"
 msgstr "পাসওয়ার্ডহীন/পাবলিক কী অথেন্টিকেশনের জন্য খালি রাখুন"
 
@@ -497,11 +493,12 @@ msgstr "লগের পথ"
 msgid "Menu"
 msgstr "মেনু"
 
-#: gnome_connection_manager.py ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+#: ssh_key_manager_dialog.py
 msgid "Name"
 msgstr "নাম"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Never"
 msgstr "কখনও না"
 
@@ -542,7 +539,7 @@ msgstr "কোনো খোলা কনসোল নেই"
 msgid "OK"
 msgstr "ঠিক আছে"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Only on clean exit"
 msgstr "শুধুমাত্র ক্লিন এক্সিটে"
 
@@ -570,7 +567,7 @@ msgstr ""
 msgid "Parity"
 msgstr "প্যারিটি"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Password"
 msgstr "পাসওয়ার্ড"
 
@@ -582,7 +579,7 @@ msgstr "পেস্ট করুন"
 msgid "Paste on right click"
 msgstr "রাইট-ক্লিকে পেস্ট করুন"
 
-#: gnome_connection_manager.py ssh_config_editor.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py ssh_config_editor.py
 msgid "Port"
 msgstr "পোর্ট"
 
@@ -618,7 +615,7 @@ msgstr "ডিফল্ট পুনরুদ্ধার করুন"
 msgid "Restore open tabs from the previous session on startup"
 msgstr ""
 
-#: gnome_connection_manager.py utils.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py utils.py
 msgid "Save"
 msgstr "সংরক্ষণ"
 
@@ -681,10 +678,10 @@ msgstr "সেটিংস"
 msgid "Shell command run locally, in the background, right after this connection ends. Currently only triggered for terminal-based protocols (SSH/Telnet/Local/Serial/IPMI SOL). Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 #, python-brace-format
 msgid "Shell command run locally, in the background, right before this connection opens (any protocol). Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
-msgstr ""
+msgstr "এই সংযোগ খোলার ঠিক আগে স্থানীয়ভাবে পটভূমিতে চলা শেল কমান্ড (যেকোনো প্রোটোকল)। বন্ধ করতে ফাঁকা রাখুন। প্লেসহোল্ডার: {name} {address} {group} {protocol}"
 
 #: gnome_connection_manager.py
 msgid "Shortcut"
@@ -742,7 +739,7 @@ msgstr ""
 msgid "Title"
 msgstr "শিরোনাম"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "To create subgroups use format group1/group2/group3"
 msgstr "সাবগ্রুপ তৈরি করতে group1/group2/group3 ফরম্যাট ব্যবহার করুন"
 
@@ -759,11 +756,11 @@ msgstr "প্রকার"
 msgid "Use default fixed width font"
 msgstr "ডিফল্ট ফিক্সড-উইডথ ফন্ট ব্যবহার করুন"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Use global preference"
-msgstr ""
+msgstr "সাধারণ পছন্দ ব্যবহার করুন"
 
-#: gnome_connection_manager.py ssh_config_editor.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py ssh_config_editor.py
 msgid "User"
 msgstr "ব্যবহারকারী"
 
@@ -775,11 +772,9 @@ msgstr "দৃশ্য"
 msgid "Word separator"
 msgstr "শব্দ বিভাজক"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Backspace:"
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Workspace"
-msgstr "Backspace:"
+msgstr "ওয়ার্কস্পেস"
 
 #: gnome_connection_manager.py
 msgid "already exists for group"
@@ -2590,9 +2585,9 @@ msgid ""
 "E.g.: {example}"
 msgstr ""
 
-#: plugins/plugin_vnc.py
+#: plugins/plugin_vnc.py src/gcm4/ui/host_dialog.py
 msgid "Display"
-msgstr ""
+msgstr "প্রদর্শন"
 
 #: plugins/plugin_vnc.py
 msgid "VNC"
@@ -2723,7 +2718,7 @@ msgstr "সব সংকুচিত করুন"
 msgid "Copy Address"
 msgstr "ঠিকানা কপি করুন"
 
-#: src/gcm4/core/menu_arbre.py widgets.py
+#: src/gcm4/core/menu_arbre.py src/gcm4/ui/host_dialog.py widgets.py
 msgid "Duplicate Host"
 msgstr "হোস্ট ডুপ্লিকেট করুন"
 
@@ -2764,6 +2759,71 @@ msgstr "পোর্ট {min} থেকে {max}-এর মধ্যে এক�
 #: src/gcm4/core/validation.py
 msgid "The name must not contain «/»."
 msgstr "নামে '/' থাকতে পারবে না।"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Background color"
+msgstr "পটভূমির রং"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Commands"
+msgstr "কমান্ড"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Connection"
+msgstr "সংযোগ"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Discard"
+msgstr "বাতিল করুন"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Discard changes?"
+msgstr "পরিবর্তনগুলো বাতিল করবেন?"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Errors"
+msgstr "ত্রুটি"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Existing groups"
+msgstr "বিদ্যমান গ্রুপ"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Extra parameters"
+msgstr "অতিরিক্ত প্যারামিটার"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Foreground color"
+msgstr "লেখার রং"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Keep Editing"
+msgstr "সম্পাদনা চালিয়ে যান"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "New Host"
+msgstr "নতুন হোস্ট"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "No extension handles this protocol: its options are kept."
+msgstr "কোনো এক্সটেনশন এই প্রোটোকল সমর্থন করে না: এর বিকল্পগুলো রাখা হবে।"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "No extension is installed."
+msgstr "কোনো এক্সটেনশন ইনস্টল করা নেই।"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Protocol"
+msgstr "প্রোটোকল"
+
+#: src/gcm4/ui/host_dialog.py
+#, python-brace-format
+msgid "Shell command run locally, in the background, right after this connection ends, by the protocols that support it. Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
+msgstr "এই সংযোগ শেষ হওয়ার ঠিক পরে, সমর্থনকারী প্রোটোকলগুলো স্থানীয়ভাবে পটভূমিতে চালায় এমন শেল কমান্ড। বন্ধ করতে ফাঁকা রাখুন। প্লেসহোল্ডার: {name} {address} {group} {protocol}"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "The changes to this host have not been saved."
+msgstr "এই হোস্টের পরিবর্তনগুলো সংরক্ষিত হয়নি।"
 
 #: src/gcm4/ui/host_tree.py
 #, python-brace-format
@@ -4105,9 +4165,6 @@ msgstr "সব কনসোলের বিভক্তি বাতিল ক�
 
 #~ msgid "Colors and Keys"
 #~ msgstr "রঙ এবং কী"
-
-#~ msgid "Commands"
-#~ msgstr "কমান্ড"
 
 #~ msgid ""
 #~ "Compression level: \n"
