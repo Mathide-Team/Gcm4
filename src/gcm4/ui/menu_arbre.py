@@ -32,6 +32,7 @@ from gcm4.core.config import ConfigError
 from gcm4.core.host_tree import Noeud
 from gcm4.core.i18n import _
 from gcm4.core.model import SEPARATEUR, Host
+from gcm4.core.registre import PluginRegistry
 from gcm4.ui import dialogues
 from gcm4.ui.couleurs import rgba_en_hex
 from gcm4.ui.host_dialog import CREATION, DUPLICATION, MODIFICATION, HostDialog
@@ -41,6 +42,7 @@ if TYPE_CHECKING:
 
 PREFIXE = "arbre"
 ACTIONS = (
+    "connect",
     "add",
     "edit",
     "copy-address",
@@ -112,6 +114,14 @@ class MenuArbre:
         arbre.liste.connect("activate", self._on_activate)
         logger.debug("MenuArbre.__init__: prêt")
 
+    def _registre(self) -> PluginRegistry:
+        """Registre des plugins de la fenêtre (vide hors fenêtre principale)."""
+        logger.trace("_registre: entrée")
+        registre = getattr(self.arbre.get_root(), "registre", None)
+        resultat = registre if isinstance(registre, PluginRegistry) else PluginRegistry()
+        logger.trace("_registre: {}", resultat.protocols())
+        return resultat
+
     # --- ouverture du menu ---------------------------------------------------
 
     def ouvrir(self, noeud: Noeud | None, x: float, y: float) -> None:
@@ -119,7 +129,12 @@ class MenuArbre:
         logger.debug("ouvrir: {!r}", noeud.chemin if noeud else None)
         self.cible = noeud
         modele = Gio.Menu()
-        for section in menu_arbre.sections(noeud, connexion_possible=False):
+        possible = (
+            noeud is not None
+            and noeud.host is not None
+            and noeud.host.protocol in self._registre()
+        )
+        for section in menu_arbre.sections(noeud, connexion_possible=possible):
             partie = Gio.Menu()
             for action in section:
                 partie.append(_(menu_arbre.LIBELLES[action]), f"{PREFIXE}.{action}")
@@ -213,6 +228,15 @@ class MenuArbre:
         getattr(self, "_" + nom.replace("-", "_"))()
         logger.debug("executer: fait")
 
+    def _connect(self) -> None:
+        """« Connecter » : même chemin que le double-clic (``win.connect-host``)."""
+        logger.debug("_connect: entrée")
+        if self.cible is not None and not self.cible.est_groupe:
+            self.arbre.activate_action(
+                "win.connect-host", GLib.Variant.new_string(self.cible.chemin)
+            )
+        logger.debug("_connect: fait")
+
     def modifier(self, operation: Callable[[], None]) -> bool:
         """Applique ``operation`` au store, enregistre, annule si l'écriture échoue.
 
@@ -302,7 +326,7 @@ class MenuArbre:
             valider,
             hote=hote,
             groupe=groupe,
-            protocoles=(),  # registre des plugins : #124
+            protocoles=self._registre().protocols(),
         )
         self.dialogue_hote.present()
         logger.debug("ouvrir_dialogue_hote: affiché")

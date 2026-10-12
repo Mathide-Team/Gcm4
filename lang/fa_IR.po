@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-12 18:49+0000\n"
+"POT-Creation-Date: 2026-10-12 18:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -137,8 +137,8 @@ msgstr "فایل گزارش برای نوشتن باز نمی‌شود"
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
-#: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/host_dialog.py
-#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
+#: src/gcm4/ui/host_dialog.py src/gcm4/ui/menu_arbre.py utils.py widgets.py
 msgid "Cancel"
 msgstr "لغو"
 
@@ -567,7 +567,8 @@ msgstr ""
 msgid "Parity"
 msgstr "توازن"
 
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/contexte.py
+#: src/gcm4/ui/host_dialog.py
 msgid "Password"
 msgstr "رمز عبور"
 
@@ -1418,7 +1419,7 @@ msgstr "🔍  اسکن میزبان‌های Proxmox"
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_serial.py
 #: plugins/plugin_spice.py plugins/plugin_vnc.py plugins/plugin_web.py
-#: src/gcm4/core/menu_arbre.py widgets.py
+#: src/gcm4/core/menu_arbre.py src/gcm4/ui/contexte.py widgets.py
 msgid "Connect"
 msgstr "اتصال"
 
@@ -2807,6 +2808,11 @@ msgstr "درگاه باید عددی بین {min} و {max} باشد."
 msgid "The name must not contain «/»."
 msgstr "نام نباید «/» داشته باشد."
 
+#: src/gcm4/ui/contexte.py
+#, python-brace-format
+msgid "Password for {target}"
+msgstr "گذرواژه برای {target}"
+
 #: src/gcm4/ui/host_dialog.py
 msgid "Background color"
 msgstr "رنگ پس‌زمینه"
@@ -2895,6 +2901,10 @@ msgid "Search hosts"
 msgstr "جستجوی میزبان‌ها"
 
 #: src/gcm4/ui/main_window.py
+msgid "Close tab"
+msgstr "بستن زبانه"
+
+#: src/gcm4/ui/main_window.py
 msgid "Configuration not loaded"
 msgstr "پیکربندی بارگذاری نشد"
 
@@ -2908,8 +2918,13 @@ msgstr "میزبان‌ها و گروه‌ها در پنل سمت چپ نمای�
 
 #: src/gcm4/ui/main_window.py
 #, python-brace-format
-msgid "No extension can open «{protocol}» connections yet."
-msgstr "هنوز هیچ افزونه‌ای نمی‌تواند اتصال‌های «{protocol}» را باز کند."
+msgid "No extension handles the protocol «{protocol}». Install it to open this connection."
+msgstr "هیچ افزونه‌ای پروتکل «{protocol}» را مدیریت نمی‌کند. برای باز کردن این اتصال آن را نصب کنید."
+
+#: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Unable to open «{host}»: {error}"
+msgstr "باز کردن «{host}» ممکن نیست: {error}"
 
 #: src/gcm4/ui/main_window.py
 msgid "Welcome to Gnome Connection Manager"

@@ -77,9 +77,8 @@ def application(tmp_path):
 FIXTURE_AES = Path(__file__).resolve().parents[1] / "data" / "config" / "aes"
 
 
-@pytest.fixture
-def app_fixture(tmp_path, monkeypatch, pomper):
-    """Application ouverte sur une copie de tests/data/config/aes (utilisateur « utilisateur »)."""
+def _ouvrir(tmp_path, monkeypatch, pomper, candidats=None):
+    """Application sur une copie de tests/data/config/aes (utilisateur « utilisateur »)."""
     # Imports différés : ce module est chargé même sans GTK 4.
     from gi.repository import Gio
 
@@ -95,10 +94,33 @@ def app_fixture(tmp_path, monkeypatch, pomper):
     app = Gcm4Application(
         argparse.Namespace(config_dir=str(dossier), debug=False, hotes=[]),
         flags=Gio.ApplicationFlags.NON_UNIQUE,
+        candidats=candidats,
     )
     app.register(None)
     app.activate()
     pomper()
+    return app, dossier
+
+
+@pytest.fixture
+def app_fixture(tmp_path, monkeypatch, pomper):
+    """Application ouverte sur la fixture aes, plugins découverts normalement (aucun en CI)."""
+    app, dossier = _ouvrir(tmp_path, monkeypatch, pomper)
+    yield app, dossier
+    for fenetre in list(app.get_windows()):
+        fenetre.destroy()
+    pomper()
+
+
+FIXTURES = Path(__file__).resolve().parents[1] / "fixtures"
+
+
+@pytest.fixture
+def app_demo(tmp_path, monkeypatch, pomper):
+    """Comme ``app_fixture``, avec le seul plugin démo (tests/fixtures/plugin_demo)."""
+    from gcm4.core import registre
+
+    app, dossier = _ouvrir(tmp_path, monkeypatch, pomper, registre.candidats_dossier(FIXTURES))
     yield app, dossier
     for fenetre in list(app.get_windows()):
         fenetre.destroy()

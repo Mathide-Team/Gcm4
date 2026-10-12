@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-12 18:49+0000\n"
+"POT-Creation-Date: 2026-10-12 18:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -137,8 +137,8 @@ msgstr "无法打开日志文件进行写入"
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
-#: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/host_dialog.py
-#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
+#: src/gcm4/ui/host_dialog.py src/gcm4/ui/menu_arbre.py utils.py widgets.py
 msgid "Cancel"
 msgstr "取消"
 
@@ -567,7 +567,8 @@ msgstr ""
 msgid "Parity"
 msgstr "校验"
 
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/contexte.py
+#: src/gcm4/ui/host_dialog.py
 msgid "Password"
 msgstr "密码"
 
@@ -1418,7 +1419,7 @@ msgstr "🔍  扫描 Proxmox 主机"
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_serial.py
 #: plugins/plugin_spice.py plugins/plugin_vnc.py plugins/plugin_web.py
-#: src/gcm4/core/menu_arbre.py widgets.py
+#: src/gcm4/core/menu_arbre.py src/gcm4/ui/contexte.py widgets.py
 msgid "Connect"
 msgstr "连接"
 
@@ -2807,6 +2808,11 @@ msgstr "端口必须是 {min} 到 {max} 之间的数字。"
 msgid "The name must not contain «/»."
 msgstr "名称不能包含“/”。"
 
+#: src/gcm4/ui/contexte.py
+#, python-brace-format
+msgid "Password for {target}"
+msgstr "{target} 的密码"
+
 #: src/gcm4/ui/host_dialog.py
 msgid "Background color"
 msgstr "背景色"
@@ -2895,6 +2901,10 @@ msgid "Search hosts"
 msgstr "搜索主机"
 
 #: src/gcm4/ui/main_window.py
+msgid "Close tab"
+msgstr "关闭标签页"
+
+#: src/gcm4/ui/main_window.py
 msgid "Configuration not loaded"
 msgstr "未加载配置"
 
@@ -2908,8 +2918,13 @@ msgstr "主机和分组将显示在左侧面板中。"
 
 #: src/gcm4/ui/main_window.py
 #, python-brace-format
-msgid "No extension can open «{protocol}» connections yet."
-msgstr "目前还没有扩展可以打开“{protocol}”连接。"
+msgid "No extension handles the protocol «{protocol}». Install it to open this connection."
+msgstr "没有扩展处理协议“{protocol}”。请安装后再打开此连接。"
+
+#: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Unable to open «{host}»: {error}"
+msgstr "无法打开“{host}”：{error}"
 
 #: src/gcm4/ui/main_window.py
 msgid "Welcome to Gnome Connection Manager"
