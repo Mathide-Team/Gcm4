@@ -480,5 +480,36 @@ def save_config(path: str, cfg: Config, chiffrement: Chiffrement | None = None) 
     """
     logger.debug("save_config: {}", path)
     chiffrement = chiffrement or SansChiffrement()
+    _reprendre_cles_hors_modele(path, cfg)
     _ecrire_atomique(path, _construire(cfg, chiffrement))
     logger.debug("save_config: fait")
+
+
+#: Clés de ``[window]`` écrites depuis le modèle par ``_construire`` ; les
+#: autres (géométrie, thème…) sont écrites en cours de session par
+#: ``update_keys`` et le fichier fait foi pour elles.
+_CLES_WINDOW_DU_MODELE = frozenset({"group-colors", "collapsed-folders"})
+
+
+def _reprendre_cles_hors_modele(path: str, cfg: Config) -> None:
+    """Recopie dans ``cfg.brut`` les clés ``[window]`` hors modèle du fichier actuel.
+
+    Sans cela, un enregistrement du modèle en cours de session (glisser-déposer,
+    #141) remettrait le thème ou la géométrie lus au démarrage.
+
+    Raises:
+        ConfigError: fichier devenu illisible ou corrompu (pas d'écrasement).
+    """
+    logger.debug("_reprendre_cles_hors_modele: {}", path)
+    disque = _lire_brut(path)
+    if disque is None or not disque.has_section(SECTION_WINDOW):
+        logger.debug("_reprendre_cles_hors_modele: rien à reprendre")
+        return
+    if not cfg.brut.has_section(SECTION_WINDOW):
+        cfg.brut.add_section(SECTION_WINDOW)
+    reprises = 0
+    for cle, valeur in disque.items(SECTION_WINDOW):
+        if cle not in _CLES_WINDOW_DU_MODELE:
+            cfg.brut.set(SECTION_WINDOW, cle, valeur)
+            reprises += 1
+    logger.debug("_reprendre_cles_hors_modele: {} clé(s)", reprises)

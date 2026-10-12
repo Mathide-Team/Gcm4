@@ -17,14 +17,23 @@
   recherche, tout est déplié sans toucher à ``Group.collapsed`` ; à
   l'effacement, l'arbre est reconstruit avec l'état replié d'origine et la
   sélection est conservée si elle reste visible.
+- Glisser-déposer (#141) : ``Gtk.DragSource`` / ``Gtk.DropTarget`` par
+  ligne, plus une cible sur la liste pour la zone vide (racine). Règles et
+  application dans :mod:`gcm4.core.deplacements` ; enregistrement immédiat
+  par ``enregistrer`` (fourni par la fenêtre). En cas d'échec d'écriture, le
+  déplacement est annulé et ``notifier`` affiche la raison.
 """
 
 from __future__ import annotations
 
-from gi.repository import Gio, GObject, Gtk
+from collections.abc import Callable
+
+from gi.repository import Gdk, Gio, GObject, Gtk
 from loguru import logger
 
-from gcm4.core.host_tree import Noeud, construire, correspondances, infobulle
+from gcm4.core import deplacements
+from gcm4.core.config import ConfigError
+from gcm4.core.host_tree import Noeud, ancetres, construire, correspondances, infobulle
 from gcm4.core.i18n import _
 from gcm4.core.model import SEPARATEUR, HostStore
 
@@ -63,11 +72,27 @@ class HostTree(Gtk.Box):
 
     __gtype_name__ = "Gcm4HostTree"
 
-    def __init__(self, store: HostStore, rayures: bool = True) -> None:
-        """Arbre de ``store`` ; ``rayures`` : alternance de fond des lignes."""
+    def __init__(
+        self,
+        store: HostStore,
+        rayures: bool = True,
+        enregistrer: Callable[[], None] | None = None,
+        notifier: Callable[[str], None] | None = None,
+    ) -> None:
+        """Arbre de ``store``.
+
+        Args:
+            store: hôtes et groupes (lot 2).
+            rayures: alternance de fond des lignes.
+            enregistrer: écrit la configuration après une modification ;
+                lève ``ConfigError`` en cas d'échec.
+            notifier: affiche un message court à l'utilisateur.
+        """
         logger.debug("HostTree.__init__: rayures={}", rayures)
         super().__init__(orientation=Gtk.Orientation.VERTICAL, vexpand=True)
         self.store = store
+        self.enregistrer = enregistrer
+        self.notifier = notifier
         self.garder: set[str] | None = None  # None : pas de recherche en cours
         self.filtre = Gtk.CustomFilter.new(self._garder)
         self.recherche = Gtk.SearchEntry(
@@ -98,6 +123,12 @@ class HostTree(Gtk.Box):
         self.append(self.defilement)
         self.append(self.aucun_resultat)
         self.recherche.set_key_capture_widget(self.liste)
+        # Zone vide sous les lignes : dépôt à la racine.
+        cible_vide = Gtk.DropTarget.new(GObject.TYPE_STRING, Gdk.DragAction.MOVE)
+        cible_vide.set_preload(True)
+        cible_vide.connect("motion", self._on_drop_motion, None)
+        cible_vide.connect("drop", self._on_drop, None)
+        self.liste.add_controller(cible_vide)
         self.modele: Gtk.TreeListModel | None = None
         self._connexions: list[tuple[Gtk.TreeListRow, int]] = []
         self._selection_memo: str | None = None
@@ -118,6 +149,11 @@ class HostTree(Gtk.Box):
         self.modele = Gtk.TreeListModel.new(racine, False, False, self._enfants)
         self.selection.set_model(self.modele)
         self._deplier(None)
+        if self.garder is not None:
+            # Recherche en cours : chemins recalculés sur le store modifié.
+            self.garder = correspondances(self.store, self.recherche.get_text())
+            self.filtre.changed(Gtk.FilterChange.DIFFERENT)
+            self._tout_deplier()
         logger.debug("recharger: {} ligne(s) visibles", self.modele.get_n_items())
 
     def _enfants(self, element: ElementArbre) -> Gio.ListModel | None:
@@ -267,6 +303,110 @@ class HostTree(Gtk.Box):
         logger.debug("selectionner: non visible")
         return False
 
+    # --- glisser-déposer (#141) ---------------------------------------------
+
+    @staticmethod
+    def _cle_ligne(item: Gtk.ListItem | None) -> str | None:
+        """Clé ``h:``/``g:`` de la ligne affichée par ``item`` (``None`` : zone vide ou ligne vide)."""
+        logger.trace("_cle_ligne")
+        ligne = item.get_item() if item is not None else None
+        if ligne is None:
+            logger.trace("_cle_ligne: aucune")
+            return None
+        noeud = ligne.get_item().noeud
+        resultat = deplacements.cle(noeud.chemin, noeud.est_groupe)
+        logger.trace("_cle_ligne: {!r}", resultat)
+        return resultat
+
+    def _on_drag_prepare(
+        self, _source: Gtk.DragSource, _x: float, _y: float, item: Gtk.ListItem
+    ) -> Gdk.ContentProvider | None:
+        """Début de glissement : la clé de la ligne est le contenu transporté."""
+        logger.debug("_on_drag_prepare: entrée")
+        cle = self._cle_ligne(item)
+        resultat = Gdk.ContentProvider.new_for_value(cle) if cle is not None else None
+        logger.debug("_on_drag_prepare: {!r}", cle)
+        return resultat
+
+    def _on_drag_begin(self, source: Gtk.DragSource, _drag: Gdk.Drag, item: Gtk.ListItem) -> None:
+        """Icône de glissement : la ligne elle-même."""
+        logger.debug("_on_drag_begin: entrée")
+        source.set_icon(Gtk.WidgetPaintable.new(item.get_child()), 0, 0)
+        logger.debug("_on_drag_begin: fait")
+
+    def _on_drop_motion(
+        self, cible: Gtk.DropTarget, _x: float, _y: float, item: Gtk.ListItem | None
+    ) -> Gdk.DragAction:
+        """Survol : MOVE si le dépôt est valide, sinon aucune action (curseur de refus)."""
+        logger.trace("_on_drop_motion")
+        valeur = cible.get_value()
+        source = valeur if isinstance(valeur, str) else None
+        ok = source is not None and isinstance(
+            deplacements.valider(self.store, source, self._cle_ligne(item)),
+            deplacements.Deplacement,
+        )
+        logger.trace("_on_drop_motion: {}", ok)
+        return Gdk.DragAction.MOVE if ok else Gdk.DragAction(0)
+
+    def _on_drop(
+        self,
+        _cible: Gtk.DropTarget,
+        valeur: object,
+        _x: float,
+        _y: float,
+        item: Gtk.ListItem | None,
+    ) -> bool:
+        """Dépôt sur une ligne (``item``) ou sur la zone vide (``None``)."""
+        logger.debug("_on_drop: entrée")
+        resultat = isinstance(valeur, str) and self.deposer(valeur, self._cle_ligne(item))
+        logger.debug("_on_drop: {}", resultat)
+        return resultat
+
+    def deposer(self, source: str, cible: str | None) -> bool:
+        """Dépose ``source`` (clé ``h:``/``g:``) sur ``cible`` (clé, ``None`` : racine).
+
+        Valide, applique, enregistre ; annule si l'écriture échoue. La
+        destination est dépliée et l'élément déplacé sélectionné.
+        """
+        logger.debug("deposer: {!r} -> {!r}", source, cible)
+        deplacement = deplacements.valider(self.store, source, cible)
+        if isinstance(deplacement, deplacements.Refus):
+            if deplacement is deplacements.Refus.NOM_PRIS:
+                self._notifier(
+                    _("An item with this name already exists in '{group}'.").format(
+                        group=deplacements.groupe_cible(self.store, cible) or "/"
+                    )
+                )
+            logger.debug("deposer: refus ({})", deplacement.value)
+            return False
+        inverse = deplacements.appliquer(self.store, deplacement)
+        try:
+            if self.enregistrer is not None:
+                self.enregistrer()
+        except ConfigError as exc:
+            # Rien n'a été écrit : le modèle revient à l'état du fichier.
+            logger.warning("deposer: enregistrement impossible ({}), déplacement annulé", exc)
+            deplacements.appliquer(self.store, inverse)
+            self.recharger()
+            self._notifier(_("Move not saved: {error}").format(error=exc))
+            logger.debug("deposer: annulé")
+            return False
+        for chemin in [deplacement.destination, *ancetres(deplacement.destination)]:
+            groupe = self.store.groups.get(chemin)
+            if groupe is not None:
+                groupe.collapsed = False
+        self.recharger()
+        self.selectionner(deplacement.nouveau_chemin)
+        logger.debug("deposer: {!r} -> {!r}", deplacement.chemin, deplacement.nouveau_chemin)
+        return True
+
+    def _notifier(self, message: str) -> None:
+        """Message court (toast de la fenêtre), journalisé dans tous les cas."""
+        logger.debug("_notifier: {}", message)
+        if self.notifier is not None:
+            self.notifier(message)
+        logger.debug("_notifier: fait")
+
     # --- lignes ------------------------------------------------------------
 
     def _on_setup(self, _fabrique: Gtk.SignalListItemFactory, item: Gtk.ListItem) -> None:
@@ -275,7 +415,17 @@ class HostTree(Gtk.Box):
         boite = Gtk.Box(spacing=6)
         boite.append(Gtk.Image())
         boite.append(Gtk.Label(xalign=0, ellipsize=3))  # Pango.EllipsizeMode.END
-        item.set_child(Gtk.TreeExpander(child=boite))
+        fleche = Gtk.TreeExpander(child=boite)
+        source = Gtk.DragSource(actions=Gdk.DragAction.MOVE)
+        source.connect("prepare", self._on_drag_prepare, item)
+        source.connect("drag-begin", self._on_drag_begin, item)
+        fleche.add_controller(source)
+        cible = Gtk.DropTarget.new(GObject.TYPE_STRING, Gdk.DragAction.MOVE)
+        cible.set_preload(True)  # valeur disponible dès « motion » : refus visible avant le dépôt
+        cible.connect("motion", self._on_drop_motion, item)
+        cible.connect("drop", self._on_drop, item)
+        fleche.add_controller(cible)
+        item.set_child(fleche)
         logger.trace("_on_setup: fait")
 
     def _on_bind(self, _fabrique: Gtk.SignalListItemFactory, item: Gtk.ListItem) -> None:
