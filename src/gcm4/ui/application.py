@@ -10,7 +10,7 @@ from gi.repository import Adw, Gdk, Gio, GLib, Gtk
 from loguru import logger
 
 from gcm4 import __version__
-from gcm4.core import menu, theme
+from gcm4.core import chemins, menu, theme
 from gcm4.core.config import ConfigError
 from gcm4.core.i18n import _
 from gcm4.ui.main_window import MainWindow
@@ -35,7 +35,7 @@ class Gcm4Application(Adw.Application):
             flags=Gio.ApplicationFlags.HANDLES_COMMAND_LINE if flags is None else flags,
         )
         self.args = args
-        self.config_file = os.path.join(args.config_dir, "gcm.conf")
+        self.config_file = chemins.fichier_conf(args.config_dir)
         self.css_principal: Gtk.CssProvider | None = None
         self.css_couleurs: Gtk.CssProvider | None = None
         self.connect("startup", self._on_startup)
@@ -78,7 +78,7 @@ class Gcm4Application(Adw.Application):
         logger.debug("appliquer_theme: fait")
 
     def _on_theme(self, action: Gio.SimpleAction, valeur: GLib.Variant) -> None:
-        """Menu Affichage > thème : applique, puis enregistre dans gcm.conf."""
+        """Menu Affichage > thème : applique, puis enregistre dans gcm4.conf."""
         logger.debug("_on_theme: entrée")
         mode = valeur.get_string()
         logger.debug("_on_theme: {}", mode)

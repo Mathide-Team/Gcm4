@@ -11,6 +11,7 @@ import pytest
 from gi.repository import Adw, Gio
 
 import gcm4.ui  # noqa: F401  (require_version avant gi.repository)
+from gcm4.core import chemins
 from gcm4.core import config as config_mod
 from gcm4.ui.application import Gcm4Application
 from gcm4.ui.host_tree import HostTree
@@ -25,6 +26,7 @@ def app_fixture(tmp_path, monkeypatch, pomper):
     monkeypatch.setattr(config_mod, "_sauvegardes", set())
     dossier = tmp_path / "gcm"
     shutil.copytree(FIXTURE, dossier)
+    chemins.preparer(str(dossier))  # fixture GTK3 -> gcm4.conf / .gcm4.key (#99)
     app = Gcm4Application(
         argparse.Namespace(config_dir=str(dossier), debug=False, hotes=[]),
         flags=Gio.ApplicationFlags.NON_UNIQUE,
@@ -70,7 +72,7 @@ def test_deplier_puis_fermer_enregistre_au_format_gtk3(app_fixture, pomper):
     app.activate_action("quit", None)
     pomper()
     cp = configparser.RawConfigParser()
-    cp.read(dossier / "gcm.conf", encoding="utf-8")
+    cp.read(dossier / "gcm4.conf", encoding="utf-8")
     assert cp.get("window", "collapsed-folders") == "1"
     assert cp.get("plugin inconnu", "cle") == "valeur"
 
@@ -123,7 +125,7 @@ def _libelles(widget, resultat=None):
 
 def test_sans_rayures(tmp_path, pomper):
     """disable-hosts-stripes = True : pas de classe gcm-rayures."""
-    (tmp_path / "gcm.conf").write_text(
+    (tmp_path / "gcm4.conf").write_text(
         "[options]\ndisable-hosts-stripes = True\n", encoding="utf-8"
     )
     app = Gcm4Application(
@@ -142,9 +144,9 @@ def test_sans_rayures(tmp_path, pomper):
 
 
 def test_configuration_illisible_jamais_ecrasee(tmp_path, pomper):
-    """Clé .gcm.key absente : message dans le panneau, aucun arbre, gcm.conf intact après Ctrl+Q."""
-    shutil.copy(FIXTURE / "gcm.conf", tmp_path / "gcm.conf")
-    avant = (tmp_path / "gcm.conf").read_bytes()
+    """Clé .gcm4.key absente : message dans le panneau, aucun arbre, gcm4.conf intact après Ctrl+Q."""
+    shutil.copy(FIXTURE / "gcm.conf", tmp_path / "gcm4.conf")
+    avant = (tmp_path / "gcm4.conf").read_bytes()
     app = Gcm4Application(
         argparse.Namespace(config_dir=str(tmp_path), debug=False, hotes=[]),
         flags=Gio.ApplicationFlags.NON_UNIQUE,
@@ -154,11 +156,11 @@ def test_configuration_illisible_jamais_ecrasee(tmp_path, pomper):
     pomper()
     fenetre = app.get_active_window()
     assert fenetre.arbre is None and isinstance(fenetre.erreur_config, Adw.StatusPage)
-    assert ".gcm.key" in fenetre.erreur_config.get_description()
+    assert ".gcm4.key" in fenetre.erreur_config.get_description()
     app.activate_action("quit", None)
     pomper()
     # L'état de fenêtre est écrit (lecture INI correcte) ; les mots de passe et hôtes restent.
-    apres = (tmp_path / "gcm.conf").read_text(encoding="utf-8")
+    apres = (tmp_path / "gcm4.conf").read_text(encoding="utf-8")
     for ligne in avant.decode("utf-8").splitlines():
         if ligne.startswith("pass = ") or ligne.startswith("name = "):
             assert ligne in apres

@@ -8,6 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
+"POT-Creation-Date: 2026-10-12 06:08+0000\n"
+
 "POT-Creation-Date: 2026-10-12 05:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -2671,6 +2673,15 @@ msgid ""
 "The web console will open in the system browser."
 msgstr ""
 
+#: src/gcm4/app.py
+msgid "The old configuration is intact: fix the problem (permissions, disk space), then start gcm4 again."
+msgstr "Configurația veche este intactă: remediați problema (permisiuni, spațiu pe disc), apoi porniți din nou gcm4."
+
+#: src/gcm4/app.py
+#, python-brace-format
+msgid "gcm4: unable to copy the configuration {old} to {new} ({error})."
+msgstr "gcm4: configurația {old} nu poate fi copiată în {new} ({error})."
+
 #: src/gcm4/core/chiffrement.py
 msgid "A stored password is corrupted."
 msgstr "O parolă salvată este coruptă."
@@ -2686,8 +2697,8 @@ msgid "Unable to create the encryption key %s: %s"
 msgstr "Nu se poate crea cheia de criptare %s: %s"
 
 #: src/gcm4/core/chiffrement.py
-msgid "Unable to decrypt the stored passwords: wrong or replaced .gcm.key."
-msgstr "Parolele salvate nu pot fi decriptate: .gcm.key este greșit sau a fost înlocuit."
+msgid "Unable to decrypt the stored passwords: wrong or replaced .gcm4.key."
+msgstr "Parolele salvate nu pot fi decriptate: .gcm4.key este greșit sau a fost înlocuit."
 
 #: src/gcm4/core/chiffrement.py
 #, python-format
