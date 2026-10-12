@@ -306,6 +306,31 @@ uv run python3 gnome_connection_manager.py
 Voir `bootstrap-dev.sh --help` pour les options (`--without-rdp`,
 `--without-snmp`, `--no-apt`).
 
+#### Nouvelle interface GTK4 (`gcm4`, en cours de migration)
+
+PyGObject, GTK 4 et libadwaita ne s'installent **pas** avec uv : ils
+viennent des paquets système, et le venv doit les voir. `bootstrap-dev.sh`
+le fait ; à la main :
+
+```bash
+sudo apt install python3-gi gir1.2-gtk-4.0 gir1.2-adw-1
+rm -rf .venv
+uv venv --system-site-packages --python "$(command -v python3)" .venv
+uv sync --group dev
+make run-gtk4            # = uv run gcm4 ; make run-gtk4 ARGS="--debug"
+```
+
+- `--system-site-packages` rend visibles les paquets système (`gi`) ;
+  `--python` impose l'interpréteur **système** : avec un Python téléchargé
+  par uv, les paquets système vus seraient les siens et `import gi`
+  échouerait.
+- gcm4 exige **Python ≥ 3.12** (Debian 13, Ubuntu 24.04, Fedora 39 ou plus
+  récent). Avec un Python système plus ancien, `bootstrap-dev.sh` prévient.
+- Sans ce venv, `uv run gcm4` s'arrête avec le code 3 et indique les
+  paquets à installer ; `make run-gtk4` refuse un `.venv` créé sans
+  `--system-site-packages`.
+- Tests de l'interface : `GCM_TESTS_GTK4=1 xvfb-run -a uv run pytest tests/gtk4`.
+
 ### Qualité du code
 
 ```bash
