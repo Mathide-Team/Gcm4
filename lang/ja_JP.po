@@ -9,6 +9,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
 "POT-Creation-Date: 2026-10-12 06:08+0000\n"
+
+"POT-Creation-Date: 2026-10-12 05:59+0000\n"
+
+"POT-Creation-Date: 2026-10-12 06:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,11 +69,9 @@ msgstr "ASCII バックスペース \t[Ctrl+H 0x08]"
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
 msgstr "ASCII デリート    \t[Ctrl+? 0x7F]"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_About"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "About"
-msgstr "バージョン_情報"
+msgstr "バージョン情報"
 
 #: gnome_connection_manager.py
 msgid "Action"
@@ -235,9 +237,9 @@ msgstr "カスタムコマンド"
 msgid "Custom commands…"
 msgstr "カスタムコマンド"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Dark"
-msgstr ""
+msgstr "ダーク"
 
 #: gnome_connection_manager.py plugins/plugin_serial.py
 msgid "Data bits"
@@ -283,7 +285,7 @@ msgstr "ホストを本当に削除しますか"
 msgid "Dynamic title"
 msgstr "動的なタイトル"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py widgets.py
 msgid "Edit"
 msgstr "編集"
 
@@ -355,11 +357,9 @@ msgstr "サーバーをエクスポート"
 msgid "Fields group, name and host are required"
 msgstr "グループ、名前、ホストの各項目は必須です"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_File"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "File"
-msgstr "_ファイル"
+msgstr "ファイル"
 
 #: gnome_connection_manager.py
 msgid "Flow"
@@ -407,11 +407,9 @@ msgstr ""
 msgid "Group name:"
 msgstr "グループ"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Help"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Help"
-msgstr "_ヘルプ"
+msgstr "ヘルプ"
 
 #: gnome_connection_manager.py plugins/plugin_ssh.py ssh_config_editor.py
 #: ssh_key_manager_dialog.py
@@ -485,9 +483,9 @@ msgstr ""
 msgid "Leave blank for passwordless/public key authentication"
 msgstr "パスワードなし/公開鍵認証の場合は空白のままにしてください"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Light"
-msgstr ""
+msgstr "ライト"
 
 #: gnome_connection_manager.py
 msgid "Log local console sessions"
@@ -604,11 +602,9 @@ msgstr "秘密鍵"
 msgid "Project's Homepage"
 msgstr "プロジェクトのホームページ"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Quit"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Quit"
-msgstr "_終了"
+msgstr "終了"
 
 #: gnome_connection_manager.py
 #, fuzzy
@@ -682,7 +678,7 @@ msgstr "サーバーリストが上書きされます。続行しますか？"
 msgid "Servers"
 msgstr "_サーバー"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Settings"
 msgstr "設定"
 
@@ -704,7 +700,7 @@ msgstr "ショートカット"
 msgid "Shortcuts"
 msgstr "ショートカット"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Show Panel"
 msgstr "パネルを表示"
 
@@ -716,9 +712,9 @@ msgstr "標準コマンド"
 msgid "Stop"
 msgstr "ストップ"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "System"
-msgstr ""
+msgstr "システム"
 
 #: gnome_connection_manager.py
 msgid "TERM"
@@ -777,11 +773,9 @@ msgstr ""
 msgid "User"
 msgstr "ユーザー"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_View"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "View"
-msgstr "_表示"
+msgstr "表示"
 
 #: gnome_connection_manager.py
 msgid "Word separator"
@@ -2718,9 +2712,21 @@ msgstr "設定ファイル %s を読み込めません: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "設定ファイル %s に書き込めません: %s"
 
+#: src/gcm4/core/menu.py
+msgid "Search"
+msgstr "検索"
+
 #: src/gcm4/ui/host_tree.py
 msgid "Hosts"
 msgstr "ホスト"
+
+#: src/gcm4/ui/host_tree.py
+msgid "No matching hosts"
+msgstr "一致するホストはありません"
+
+#: src/gcm4/ui/host_tree.py
+msgid "Search hosts"
+msgstr "ホストを検索"
 
 #: src/gcm4/ui/main_window.py
 msgid "Configuration not loaded"

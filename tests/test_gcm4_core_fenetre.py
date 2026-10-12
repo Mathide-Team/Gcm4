@@ -68,7 +68,14 @@ def test_ecriture_cree_le_dossier_sans_temporaire_restant(tmp_path):
 def test_menu_actions_et_raccourcis():
     """Le menu de la base n'utilise que des actions app.* et win.* ; chaque raccourci vise une action du menu."""
     actions = menu.actions_du_menu()
-    assert actions == ["app.quit", "app.preferences", "win.toggle-panel", "app.theme", "app.about"]
+    assert actions == [
+        "app.quit",
+        "app.preferences",
+        "win.toggle-panel",
+        "win.search",
+        "app.theme",
+        "app.about",
+    ]
     assert set(menu.RACCOURCIS) <= set(actions)
 
 

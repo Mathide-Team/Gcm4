@@ -9,6 +9,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
 "POT-Creation-Date: 2026-10-12 06:08+0000\n"
+
+"POT-Creation-Date: 2026-10-12 05:59+0000\n"
+
+"POT-Creation-Date: 2026-10-12 06:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,11 +69,9 @@ msgstr "ASCII Backspace \t[Ctrl+H 0x08]"
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
 msgstr "ASCII Delete    \t[Ctrl+? 0x7F]"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_About"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "About"
-msgstr "_O programie"
+msgstr "O programie"
 
 #: gnome_connection_manager.py
 msgid "Action"
@@ -235,9 +237,9 @@ msgstr "Niestandardowe polecenia"
 msgid "Custom commands…"
 msgstr "Niestandardowe polecenia"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Dark"
-msgstr ""
+msgstr "Ciemny"
 
 #: gnome_connection_manager.py plugins/plugin_serial.py
 msgid "Data bits"
@@ -283,7 +285,7 @@ msgstr "Czy na pewno chcesz usunąć hosta"
 msgid "Dynamic title"
 msgstr "Dynamiczny tytuł"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py widgets.py
 msgid "Edit"
 msgstr "Edytuj"
 
@@ -355,11 +357,9 @@ msgstr "Eksportuj serwery"
 msgid "Fields group, name and host are required"
 msgstr "Pola grupa, nazwa i host są wymagane"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_File"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "File"
-msgstr "_Plik"
+msgstr "Plik"
 
 #: gnome_connection_manager.py
 msgid "Flow"
@@ -407,11 +407,9 @@ msgstr ""
 msgid "Group name:"
 msgstr "Grupa"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Help"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Help"
-msgstr "Pomo_c"
+msgstr "Pomoc"
 
 #: gnome_connection_manager.py plugins/plugin_ssh.py ssh_config_editor.py
 #: ssh_key_manager_dialog.py
@@ -485,9 +483,9 @@ msgstr ""
 msgid "Leave blank for passwordless/public key authentication"
 msgstr "Pozostaw puste dla uwierzytelniania bez hasła / kluczem publicznym"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Light"
-msgstr ""
+msgstr "Jasny"
 
 #: gnome_connection_manager.py
 msgid "Log local console sessions"
@@ -604,11 +602,9 @@ msgstr "Klucz prywatny"
 msgid "Project's Homepage"
 msgstr "Strona projektu"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Quit"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Quit"
-msgstr "_Zakończ"
+msgstr "Zakończ"
 
 #: gnome_connection_manager.py
 #, fuzzy
@@ -682,7 +678,7 @@ msgstr "Lista serwerów zostanie zastąpiona, kontynuować?"
 msgid "Servers"
 msgstr "_Serwery"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Settings"
 msgstr "Ustawienia"
 
@@ -704,7 +700,7 @@ msgstr "Skrót"
 msgid "Shortcuts"
 msgstr "Skróty"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Show Panel"
 msgstr "Pokaż panel"
 
@@ -716,9 +712,9 @@ msgstr "Standardowe polecenia"
 msgid "Stop"
 msgstr "Stop"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "System"
-msgstr ""
+msgstr "Systemowy"
 
 #: gnome_connection_manager.py
 msgid "TERM"
@@ -777,11 +773,9 @@ msgstr ""
 msgid "User"
 msgstr "Użytkownik"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_View"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "View"
-msgstr "_Widok"
+msgstr "Widok"
 
 #: gnome_connection_manager.py
 msgid "Word separator"
@@ -2718,9 +2712,21 @@ msgstr "Nie można odczytać pliku konfiguracyjnego %s: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Nie można zapisać pliku konfiguracyjnego %s: %s"
 
+#: src/gcm4/core/menu.py
+msgid "Search"
+msgstr "Szukaj"
+
 #: src/gcm4/ui/host_tree.py
 msgid "Hosts"
 msgstr "Hosty"
+
+#: src/gcm4/ui/host_tree.py
+msgid "No matching hosts"
+msgstr "Brak pasujących hostów"
+
+#: src/gcm4/ui/host_tree.py
+msgid "Search hosts"
+msgstr "Szukaj hostów"
 
 #: src/gcm4/ui/main_window.py
 msgid "Configuration not loaded"

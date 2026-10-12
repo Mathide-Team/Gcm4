@@ -11,6 +11,12 @@
   ``disable-hosts-stripes`` (``style.css``).
 - Groupes repliés : ``Group.collapsed`` suit l'état des lignes ; il est
   enregistré au format GTK3 par la fenêtre (:mod:`gcm4.core.replies`).
+- Recherche (#140) : ``Gtk.SearchEntry`` (Ctrl+F, Échap efface, frappe
+  dans la liste capturée) ; un ``Gtk.FilterListModel`` par niveau, filtre
+  commun calculé par :func:`gcm4.core.host_tree.correspondances`. Pendant la
+  recherche, tout est déplié sans toucher à ``Group.collapsed`` ; à
+  l'effacement, l'arbre est reconstruit avec l'état replié d'origine et la
+  sélection est conservée si elle reste visible.
 """
 
 from __future__ import annotations
@@ -18,7 +24,7 @@ from __future__ import annotations
 from gi.repository import Gio, GObject, Gtk
 from loguru import logger
 
-from gcm4.core.host_tree import Noeud, construire, infobulle
+from gcm4.core.host_tree import Noeud, construire, correspondances, infobulle
 from gcm4.core.i18n import _
 from gcm4.core.model import SEPARATEUR, HostStore
 
@@ -52,7 +58,7 @@ def _liste(noeuds: list[Noeud]) -> Gio.ListStore:
     return liste
 
 
-class HostTree(Gtk.ScrolledWindow):
+class HostTree(Gtk.Box):
     """Panneau gauche : arbre des groupes et des hôtes."""
 
     __gtype_name__ = "Gcm4HostTree"
@@ -60,8 +66,21 @@ class HostTree(Gtk.ScrolledWindow):
     def __init__(self, store: HostStore, rayures: bool = True) -> None:
         """Arbre de ``store`` ; ``rayures`` : alternance de fond des lignes."""
         logger.debug("HostTree.__init__: rayures={}", rayures)
-        super().__init__(vexpand=True, hscrollbar_policy=Gtk.PolicyType.NEVER)
+        super().__init__(orientation=Gtk.Orientation.VERTICAL, vexpand=True)
         self.store = store
+        self.garder: set[str] | None = None  # None : pas de recherche en cours
+        self.filtre = Gtk.CustomFilter.new(self._garder)
+        self.recherche = Gtk.SearchEntry(
+            placeholder_text=_("Search hosts"), margin_start=6, margin_end=6
+        )
+        self.recherche.set_margin_top(6)
+        self.recherche.set_margin_bottom(6)
+        self.recherche.update_property([Gtk.AccessibleProperty.LABEL], [_("Search hosts")])
+        self.recherche.connect("search-changed", self._on_recherche)
+        self.recherche.connect("stop-search", self._on_stop)
+        self.append(self.recherche)
+        self.aucun_resultat = Gtk.Label(label=_("No matching hosts"), vexpand=True, visible=False)
+        self.aucun_resultat.add_css_class("dim-label")
         fabrique = Gtk.SignalListItemFactory()
         fabrique.connect("setup", self._on_setup)
         fabrique.connect("bind", self._on_bind)
@@ -73,8 +92,15 @@ class HostTree(Gtk.ScrolledWindow):
         if rayures:
             self.liste.add_css_class("gcm-rayures")
         self.liste.update_property([Gtk.AccessibleProperty.LABEL], [_("Hosts")])
-        self.set_child(self.liste)
+        self.defilement = Gtk.ScrolledWindow(
+            vexpand=True, hscrollbar_policy=Gtk.PolicyType.NEVER, child=self.liste
+        )
+        self.append(self.defilement)
+        self.append(self.aucun_resultat)
+        self.recherche.set_key_capture_widget(self.liste)
         self.modele: Gtk.TreeListModel | None = None
+        self._connexions: list[tuple[Gtk.TreeListRow, int]] = []
+        self._selection_memo: str | None = None
         self.recharger()
         logger.debug("HostTree.__init__: prêt")
 
@@ -83,9 +109,13 @@ class HostTree(Gtk.ScrolledWindow):
     def recharger(self) -> None:
         """Reconstruit l'arbre depuis le ``HostStore`` et restaure les groupes repliés."""
         logger.debug("recharger: entrée")
-        self.modele = Gtk.TreeListModel.new(
-            _liste(construire(self.store)), False, False, self._enfants
-        )
+        # Les lignes de l'ancien modèle, détruites, notifieraient « replié » :
+        # leurs signaux sont coupés avant le remplacement.
+        for ancienne, identifiant in self._connexions:
+            ancienne.disconnect(identifiant)
+        self._connexions = []
+        racine = Gtk.FilterListModel(model=_liste(construire(self.store)), filter=self.filtre)
+        self.modele = Gtk.TreeListModel.new(racine, False, False, self._enfants)
         self.selection.set_model(self.modele)
         self._deplier(None)
         logger.debug("recharger: {} ligne(s) visibles", self.modele.get_n_items())
@@ -94,7 +124,11 @@ class HostTree(Gtk.ScrolledWindow):
         """Enfants d'un groupe (``None`` pour un hôte ou un groupe vide : pas de flèche)."""
         logger.trace("_enfants: {!r}", element.noeud.chemin)
         noeud = element.noeud
-        resultat = _liste(noeud.enfants) if noeud.est_groupe and noeud.enfants else None
+        resultat = (
+            Gtk.FilterListModel(model=_liste(noeud.enfants), filter=self.filtre)
+            if noeud.est_groupe and noeud.enfants
+            else None
+        )
         logger.trace("_enfants: {}", resultat is not None)
         return resultat
 
@@ -111,7 +145,9 @@ class HostTree(Gtk.ScrolledWindow):
         for enfant in enfants:
             if enfant is None:
                 continue
-            enfant.connect("notify::expanded", self._on_expanded)
+            self._connexions.append(
+                (enfant, enfant.connect("notify::expanded", self._on_expanded))
+            )
             noeud = enfant.get_item().noeud
             groupe = self.store.groups.get(noeud.chemin) if noeud.est_groupe else None
             if groupe is not None and enfant.is_expandable() and not groupe.collapsed:
@@ -122,6 +158,10 @@ class HostTree(Gtk.ScrolledWindow):
         """Ligne dépliée ou repliée : ``Group.collapsed`` mis à jour ; enfants restaurés."""
         logger.debug("_on_expanded: entrée")
         noeud = ligne.get_item().noeud
+        if self.garder is not None:
+            # Recherche : dépliage temporaire (_tout_deplier), Group.collapsed intact.
+            logger.debug("_on_expanded: recherche en cours, état conservé")
+            return
         parent = ligne.get_parent()
         # Ligne détachée : GTK remet profondeur et parent à zéro avant de
         # notifier ; un sous-groupe (« a/b ») sans parent est donc en cours de
@@ -140,6 +180,92 @@ class HostTree(Gtk.ScrolledWindow):
         if ligne.get_expanded():
             self._deplier(ligne)
         logger.debug("_on_expanded: {!r} replié={}", noeud.chemin, not ligne.get_expanded())
+
+    # --- recherche (#140) ---------------------------------------------------
+
+    def _garder(self, element: ElementArbre) -> bool:
+        """Filtre commun : tout sans recherche, sinon les chemins de ``correspondances``."""
+        logger.trace("_garder: {!r}", element.noeud.chemin)
+        resultat = self.garder is None or element.noeud.chemin in self.garder
+        logger.trace("_garder: {}", resultat)
+        return resultat
+
+    def chercher(self, texte: str) -> None:
+        """Filtre l'arbre sur ``texte`` (vide : arbre complet, état replié restauré)."""
+        logger.debug("chercher: {!r}", texte)
+        avant = self.garder
+        # Dernière sélection connue : un filtre peut la masquer un temps.
+        self._selection_memo = self.chemin_selectionne() or self._selection_memo
+        self.garder = correspondances(self.store, texte)
+        if self.garder is None:
+            if avant is not None:
+                self.recharger()
+                self.selectionner(self._selection_memo)
+            self._selection_memo = None
+        else:
+            self.filtre.changed(Gtk.FilterChange.DIFFERENT)
+            self._tout_deplier()
+        vide = self.garder is not None and not self.garder
+        self.aucun_resultat.set_visible(vide)
+        self.defilement.set_visible(not vide)
+        logger.debug(
+            "chercher: {} chemin(s) gardé(s)", "tous" if self.garder is None else len(self.garder)
+        )
+
+    def _tout_deplier(self) -> None:
+        """Déplie chaque groupe visible (recherche en cours)."""
+        logger.debug("_tout_deplier: entrée")
+        assert self.modele is not None
+        i = 0
+        while i < self.modele.get_n_items():  # le dépliage insère les enfants après i
+            ligne = self.modele.get_item(i)
+            if ligne.is_expandable() and not ligne.get_expanded():
+                ligne.set_expanded(True)
+            i += 1
+        logger.debug("_tout_deplier: {} ligne(s)", i)
+
+    def _on_recherche(self, entree: Gtk.SearchEntry) -> None:
+        """Texte modifié (signal temporisé de ``Gtk.SearchEntry``)."""
+        logger.debug("_on_recherche: entrée")
+        self.chercher(entree.get_text())
+        logger.debug("_on_recherche: fait")
+
+    def _on_stop(self, entree: Gtk.SearchEntry) -> None:
+        """Échap : efface la recherche et rend la main à la liste."""
+        logger.debug("_on_stop: entrée")
+        entree.set_text("")
+        self.chercher("")
+        self.liste.grab_focus()
+        logger.debug("_on_stop: fait")
+
+    def focus_recherche(self) -> None:
+        """Ctrl+F : place le curseur dans la recherche, texte sélectionné."""
+        logger.debug("focus_recherche: entrée")
+        self.recherche.grab_focus()
+        self.recherche.select_region(0, -1)
+        logger.debug("focus_recherche: fait")
+
+    # --- sélection -----------------------------------------------------------
+
+    def chemin_selectionne(self) -> str | None:
+        """Chemin de la ligne sélectionnée, ou ``None``."""
+        logger.debug("chemin_selectionne: entrée")
+        ligne = self.selection.get_selected_item()
+        resultat = ligne.get_item().noeud.chemin if ligne is not None else None
+        logger.debug("chemin_selectionne: {!r}", resultat)
+        return resultat
+
+    def selectionner(self, chemin: str | None) -> bool:
+        """Sélectionne la ligne visible ``chemin`` ; ``False`` si elle n'est pas visible."""
+        logger.debug("selectionner: {!r}", chemin)
+        assert self.modele is not None
+        for i in range(self.modele.get_n_items()):
+            if chemin is not None and self.modele.get_item(i).get_item().noeud.chemin == chemin:
+                self.selection.set_selected(i)
+                logger.debug("selectionner: ligne {}", i)
+                return True
+        logger.debug("selectionner: non visible")
+        return False
 
     # --- lignes ------------------------------------------------------------
 

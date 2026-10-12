@@ -9,6 +9,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
 "POT-Creation-Date: 2026-10-12 06:08+0000\n"
+
+"POT-Creation-Date: 2026-10-12 05:59+0000\n"
+
+"POT-Creation-Date: 2026-10-12 06:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,11 +69,9 @@ msgstr "ASCII Backspace \t[Ctrl+H 0x08]"
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
 msgstr "ASCII Delete    \t[Ctrl+? 0x7F]"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_About"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "About"
-msgstr "เ_กี่ยวกับ"
+msgstr "เกี่ยวกับ"
 
 #: gnome_connection_manager.py
 msgid "Action"
@@ -235,9 +237,9 @@ msgstr "คำสั่งที่กำหนดเอง"
 msgid "Custom commands…"
 msgstr "คำสั่งที่กำหนดเอง"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Dark"
-msgstr ""
+msgstr "มืด"
 
 #: gnome_connection_manager.py plugins/plugin_serial.py
 msgid "Data bits"
@@ -283,7 +285,7 @@ msgstr "คุณต้องการลบโฮสต์จริงหรื
 msgid "Dynamic title"
 msgstr "ชื่อแบบไดนามิก"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py widgets.py
 msgid "Edit"
 msgstr "แก้ไข"
 
@@ -355,11 +357,9 @@ msgstr "ส่งออกเซิร์ฟเวอร์"
 msgid "Fields group, name and host are required"
 msgstr "ฟิลด์กลุ่ม ชื่อ และโฮสต์เป็นข้อมูลที่ต้องระบุ"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_File"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "File"
-msgstr "_ไฟล์"
+msgstr "ไฟล์"
 
 #: gnome_connection_manager.py
 msgid "Flow"
@@ -407,11 +407,9 @@ msgstr ""
 msgid "Group name:"
 msgstr "กลุ่ม"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Help"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Help"
-msgstr "_ช่วยเหลือ"
+msgstr "ช่วยเหลือ"
 
 #: gnome_connection_manager.py plugins/plugin_ssh.py ssh_config_editor.py
 #: ssh_key_manager_dialog.py
@@ -485,9 +483,9 @@ msgstr ""
 msgid "Leave blank for passwordless/public key authentication"
 msgstr "เว้นว่างไว้สำหรับการตรวจสอบสิทธิ์แบบไม่ใช้รหัสผ่าน/คีย์สาธารณะ"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Light"
-msgstr ""
+msgstr "สว่าง"
 
 #: gnome_connection_manager.py
 msgid "Log local console sessions"
@@ -604,11 +602,9 @@ msgstr "คีย์ส่วนตัว"
 msgid "Project's Homepage"
 msgstr "โฮมเพจของโปรเจกต์"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Quit"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Quit"
-msgstr "_ออก"
+msgstr "ออก"
 
 #: gnome_connection_manager.py
 #, fuzzy
@@ -682,7 +678,7 @@ msgstr "รายการเซิร์ฟเวอร์จะถูกเข
 msgid "Servers"
 msgstr "เ_ซิร์ฟเวอร์"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Settings"
 msgstr "การตั้งค่า"
 
@@ -704,7 +700,7 @@ msgstr "ทางลัด"
 msgid "Shortcuts"
 msgstr "ทางลัด"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Show Panel"
 msgstr "แสดงแผงควบคุม"
 
@@ -716,9 +712,9 @@ msgstr "คำสั่งมาตรฐาน"
 msgid "Stop"
 msgstr "หยุด"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "System"
-msgstr ""
+msgstr "ตามระบบ"
 
 #: gnome_connection_manager.py
 msgid "TERM"
@@ -777,11 +773,9 @@ msgstr ""
 msgid "User"
 msgstr "ผู้ใช้"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_View"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "View"
-msgstr "มุ_มมอง"
+msgstr "มุมมอง"
 
 #: gnome_connection_manager.py
 msgid "Word separator"
@@ -2718,9 +2712,21 @@ msgstr "ไม่สามารถอ่านไฟล์การตั้ง
 msgid "Unable to write the configuration file %s: %s"
 msgstr "ไม่สามารถเขียนไฟล์การตั้งค่า %s: %s"
 
+#: src/gcm4/core/menu.py
+msgid "Search"
+msgstr "ค้นหา"
+
 #: src/gcm4/ui/host_tree.py
 msgid "Hosts"
 msgstr "โฮสต์"
+
+#: src/gcm4/ui/host_tree.py
+msgid "No matching hosts"
+msgstr "ไม่พบโฮสต์ที่ตรงกัน"
+
+#: src/gcm4/ui/host_tree.py
+msgid "Search hosts"
+msgstr "ค้นหาโฮสต์"
 
 #: src/gcm4/ui/main_window.py
 msgid "Configuration not loaded"

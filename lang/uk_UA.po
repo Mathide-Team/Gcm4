@@ -9,6 +9,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
 "POT-Creation-Date: 2026-10-12 06:08+0000\n"
+
+"POT-Creation-Date: 2026-10-12 05:59+0000\n"
+
+"POT-Creation-Date: 2026-10-12 06:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,11 +69,9 @@ msgstr "ASCII Backspace \t[Ctrl+H 0x08]"
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
 msgstr "ASCII Delete    \t[Ctrl+? 0x7F]"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_About"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "About"
-msgstr "_Про програму"
+msgstr "Про програму"
 
 #: gnome_connection_manager.py
 msgid "Action"
@@ -235,9 +237,9 @@ msgstr "Користувацькі команди"
 msgid "Custom commands…"
 msgstr "Користувацькі команди"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Dark"
-msgstr ""
+msgstr "Темна"
 
 #: gnome_connection_manager.py plugins/plugin_serial.py
 msgid "Data bits"
@@ -283,7 +285,7 @@ msgstr "Ви дійсно хочете видалити хост"
 msgid "Dynamic title"
 msgstr "Динамічний заголовок"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py widgets.py
 msgid "Edit"
 msgstr "Редагувати"
 
@@ -355,11 +357,9 @@ msgstr "Експорт серверів"
 msgid "Fields group, name and host are required"
 msgstr "Поля «група», «ім'я» та «хост» обов'язкові"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_File"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "File"
-msgstr "_Файл"
+msgstr "Файл"
 
 #: gnome_connection_manager.py
 msgid "Flow"
@@ -407,11 +407,9 @@ msgstr ""
 msgid "Group name:"
 msgstr "Група"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Help"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Help"
-msgstr "_Довідка"
+msgstr "Довідка"
 
 #: gnome_connection_manager.py plugins/plugin_ssh.py ssh_config_editor.py
 #: ssh_key_manager_dialog.py
@@ -485,9 +483,9 @@ msgstr ""
 msgid "Leave blank for passwordless/public key authentication"
 msgstr "Залиште порожнім для автентифікації без пароля / за публічним ключем"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Light"
-msgstr ""
+msgstr "Світла"
 
 #: gnome_connection_manager.py
 msgid "Log local console sessions"
@@ -604,11 +602,9 @@ msgstr "Закритий ключ"
 msgid "Project's Homepage"
 msgstr "Домашня сторінка проєкту"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Quit"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Quit"
-msgstr "_Вихід"
+msgstr "Вихід"
 
 #: gnome_connection_manager.py
 #, fuzzy
@@ -682,7 +678,7 @@ msgstr "Список серверів буде перезаписано, про�
 msgid "Servers"
 msgstr "_Сервери"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Settings"
 msgstr "Налаштування"
 
@@ -704,7 +700,7 @@ msgstr "Комбінація клавіш"
 msgid "Shortcuts"
 msgstr "Комбінації клавіш"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Show Panel"
 msgstr "Показати панель"
 
@@ -716,9 +712,9 @@ msgstr "Стандартні команди"
 msgid "Stop"
 msgstr "Стоп"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "System"
-msgstr ""
+msgstr "Системна"
 
 #: gnome_connection_manager.py
 msgid "TERM"
@@ -777,11 +773,9 @@ msgstr ""
 msgid "User"
 msgstr "Користувач"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_View"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "View"
-msgstr "_Вигляд"
+msgstr "Вигляд"
 
 #: gnome_connection_manager.py
 msgid "Word separator"
@@ -2718,9 +2712,21 @@ msgstr "Не вдалося прочитати файл конфігурації
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Не вдалося записати файл конфігурації %s: %s"
 
+#: src/gcm4/core/menu.py
+msgid "Search"
+msgstr "Пошук"
+
 #: src/gcm4/ui/host_tree.py
 msgid "Hosts"
 msgstr "Вузли"
+
+#: src/gcm4/ui/host_tree.py
+msgid "No matching hosts"
+msgstr "Відповідних вузлів немає"
+
+#: src/gcm4/ui/host_tree.py
+msgid "Search hosts"
+msgstr "Пошук вузлів"
 
 #: src/gcm4/ui/main_window.py
 msgid "Configuration not loaded"

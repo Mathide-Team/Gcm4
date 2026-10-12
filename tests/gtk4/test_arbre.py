@@ -7,37 +7,13 @@ import configparser
 import shutil
 from pathlib import Path
 
-import pytest
 from gi.repository import Adw, Gio
 
 import gcm4.ui  # noqa: F401  (require_version avant gi.repository)
-from gcm4.core import chemins
-from gcm4.core import config as config_mod
 from gcm4.ui.application import Gcm4Application
 from gcm4.ui.host_tree import HostTree
 
 FIXTURE = Path(__file__).resolve().parents[1] / "data" / "config" / "aes"
-
-
-@pytest.fixture
-def app_fixture(tmp_path, monkeypatch, pomper):
-    """Application ouverte sur une copie de tests/data/config/aes (utilisateur « utilisateur »)."""
-    monkeypatch.setenv("USER", "utilisateur")
-    monkeypatch.setattr(config_mod, "_sauvegardes", set())
-    dossier = tmp_path / "gcm"
-    shutil.copytree(FIXTURE, dossier)
-    chemins.preparer(str(dossier))  # fixture GTK3 -> gcm4.conf / .gcm4.key (#99)
-    app = Gcm4Application(
-        argparse.Namespace(config_dir=str(dossier), debug=False, hotes=[]),
-        flags=Gio.ApplicationFlags.NON_UNIQUE,
-    )
-    app.register(None)
-    app.activate()
-    pomper()
-    yield app, dossier
-    for fenetre in list(app.get_windows()):
-        fenetre.destroy()
-    pomper()
 
 
 def test_fixture_affichee_groupe_replie(app_fixture):
