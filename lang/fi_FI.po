@@ -11,6 +11,8 @@ msgstr ""
 "POT-Creation-Date: 2026-10-12 06:08+0000\n"
 
 "POT-Creation-Date: 2026-10-12 05:59+0000\n"
+
+"POT-Creation-Date: 2026-10-12 06:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -67,11 +69,9 @@ msgstr "ASCII-askelpalautin \t[Ctrl+H 0x08]"
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
 msgstr "ASCII Delete    \t[Ctrl+? 0x7F]"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_About"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "About"
-msgstr "_Tietoja"
+msgstr "Tietoja"
 
 #: gnome_connection_manager.py
 msgid "Action"
@@ -237,9 +237,9 @@ msgstr "Mukautetut komennot"
 msgid "Custom commands…"
 msgstr "Mukautetut komennot"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Dark"
-msgstr ""
+msgstr "Tumma"
 
 #: gnome_connection_manager.py plugins/plugin_serial.py
 msgid "Data bits"
@@ -285,7 +285,7 @@ msgstr "Haluatko varmasti poistaa isännän"
 msgid "Dynamic title"
 msgstr "Dynaaminen otsikko"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py widgets.py
 msgid "Edit"
 msgstr "Muokkaa"
 
@@ -357,11 +357,9 @@ msgstr "Vie palvelimet"
 msgid "Fields group, name and host are required"
 msgstr "Kentät ryhmä, nimi ja isäntä ovat pakollisia"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_File"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "File"
-msgstr "_Tiedosto"
+msgstr "Tiedosto"
 
 #: gnome_connection_manager.py
 msgid "Flow"
@@ -409,11 +407,9 @@ msgstr ""
 msgid "Group name:"
 msgstr "Ryhmä"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Help"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Help"
-msgstr "_Ohje"
+msgstr "Ohje"
 
 #: gnome_connection_manager.py plugins/plugin_ssh.py ssh_config_editor.py
 #: ssh_key_manager_dialog.py
@@ -487,9 +483,9 @@ msgstr ""
 msgid "Leave blank for passwordless/public key authentication"
 msgstr "Jätä tyhjäksi salasanattomalle/julkisen avaimen todennukselle"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Light"
-msgstr ""
+msgstr "Vaalea"
 
 #: gnome_connection_manager.py
 msgid "Log local console sessions"
@@ -606,11 +602,9 @@ msgstr "Yksityinen avain"
 msgid "Project's Homepage"
 msgstr "Projektin kotisivu"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Quit"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Quit"
-msgstr "_Lopeta"
+msgstr "Lopeta"
 
 #: gnome_connection_manager.py
 #, fuzzy
@@ -684,7 +678,7 @@ msgstr "Palvelinlista korvataan, jatketaanko?"
 msgid "Servers"
 msgstr "_Palvelimet"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Settings"
 msgstr "Asetukset"
 
@@ -706,7 +700,7 @@ msgstr "Pikanäppäin"
 msgid "Shortcuts"
 msgstr "Pikanäppäimet"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Show Panel"
 msgstr "Näytä paneeli"
 
@@ -718,9 +712,9 @@ msgstr "Vakiokomennot"
 msgid "Stop"
 msgstr "Stop"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "System"
-msgstr ""
+msgstr "Järjestelmä"
 
 #: gnome_connection_manager.py
 msgid "TERM"
@@ -779,11 +773,9 @@ msgstr ""
 msgid "User"
 msgstr "Käyttäjä"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_View"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "View"
-msgstr "_Näytä"
+msgstr "Näytä"
 
 #: gnome_connection_manager.py
 msgid "Word separator"
@@ -2720,9 +2712,21 @@ msgstr "Asetustiedostoa %s ei voi lukea: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Asetustiedostoa %s ei voi kirjoittaa: %s"
 
+#: src/gcm4/core/menu.py
+msgid "Search"
+msgstr "Hae"
+
 #: src/gcm4/ui/host_tree.py
 msgid "Hosts"
 msgstr "Palvelimet"
+
+#: src/gcm4/ui/host_tree.py
+msgid "No matching hosts"
+msgstr "Ei vastaavia palvelimia"
+
+#: src/gcm4/ui/host_tree.py
+msgid "Search hosts"
+msgstr "Hae palvelimia"
 
 #: src/gcm4/ui/main_window.py
 msgid "Configuration not loaded"

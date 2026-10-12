@@ -11,6 +11,8 @@ msgstr ""
 "POT-Creation-Date: 2026-10-12 06:08+0000\n"
 
 "POT-Creation-Date: 2026-10-12 05:59+0000\n"
+
+"POT-Creation-Date: 2026-10-12 06:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -67,11 +69,9 @@ msgstr "مسافة للخلف ASCII \t[Ctrl+H 0x08]"
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
 msgstr "حذف ASCII       \t[Ctrl+? 0x7F]"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_About"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "About"
-msgstr "_حول"
+msgstr "حول"
 
 #: gnome_connection_manager.py
 msgid "Action"
@@ -237,9 +237,9 @@ msgstr "أوامر مخصصة"
 msgid "Custom commands…"
 msgstr "أوامر مخصصة"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Dark"
-msgstr ""
+msgstr "داكن"
 
 #: gnome_connection_manager.py plugins/plugin_serial.py
 msgid "Data bits"
@@ -285,7 +285,7 @@ msgstr "هل تريد بالفعل إزالة المضيف"
 msgid "Dynamic title"
 msgstr "عنوان ديناميكي"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py widgets.py
 msgid "Edit"
 msgstr "تحرير"
 
@@ -357,11 +357,9 @@ msgstr "تصدير الخوادم"
 msgid "Fields group, name and host are required"
 msgstr "الحقول المجموعة والاسم والمضيف مطلوبة"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_File"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "File"
-msgstr "_ملف"
+msgstr "ملف"
 
 #: gnome_connection_manager.py
 msgid "Flow"
@@ -409,11 +407,9 @@ msgstr ""
 msgid "Group name:"
 msgstr "المجموعة"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Help"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Help"
-msgstr "_مساعدة"
+msgstr "مساعدة"
 
 #: gnome_connection_manager.py plugins/plugin_ssh.py ssh_config_editor.py
 #: ssh_key_manager_dialog.py
@@ -487,9 +483,9 @@ msgstr ""
 msgid "Leave blank for passwordless/public key authentication"
 msgstr "اتركه فارغًا للمصادقة بدون كلمة مرور / بالمفتاح العام"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Light"
-msgstr ""
+msgstr "فاتح"
 
 #: gnome_connection_manager.py
 msgid "Log local console sessions"
@@ -606,11 +602,9 @@ msgstr "المفتاح الخاص"
 msgid "Project's Homepage"
 msgstr "الصفحة الرئيسية للمشروع"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Quit"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Quit"
-msgstr "_خروج"
+msgstr "خروج"
 
 #: gnome_connection_manager.py
 #, fuzzy
@@ -684,7 +678,7 @@ msgstr "ستتم استبدال قائمة الخوادم، هل تريد الا
 msgid "Servers"
 msgstr "ال_خوادم"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Settings"
 msgstr "الإعدادات"
 
@@ -706,7 +700,7 @@ msgstr "اختصار"
 msgid "Shortcuts"
 msgstr "الاختصارات"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Show Panel"
 msgstr "إظهار اللوحة"
 
@@ -718,9 +712,9 @@ msgstr "الأوامر القياسية"
 msgid "Stop"
 msgstr "التوقف"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "System"
-msgstr ""
+msgstr "النظام"
 
 #: gnome_connection_manager.py
 msgid "TERM"
@@ -779,11 +773,9 @@ msgstr ""
 msgid "User"
 msgstr "المستخدم"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_View"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "View"
-msgstr "_عرض"
+msgstr "عرض"
 
 #: gnome_connection_manager.py
 msgid "Word separator"
@@ -2720,9 +2712,21 @@ msgstr "تعذّرت قراءة ملف الإعدادات %s: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "تعذّرت كتابة ملف الإعدادات %s: %s"
 
+#: src/gcm4/core/menu.py
+msgid "Search"
+msgstr "بحث"
+
 #: src/gcm4/ui/host_tree.py
 msgid "Hosts"
 msgstr "المضيفات"
+
+#: src/gcm4/ui/host_tree.py
+msgid "No matching hosts"
+msgstr "لا توجد مضيفات مطابقة"
+
+#: src/gcm4/ui/host_tree.py
+msgid "Search hosts"
+msgstr "البحث عن المضيفات"
 
 #: src/gcm4/ui/main_window.py
 msgid "Configuration not loaded"

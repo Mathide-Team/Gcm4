@@ -116,8 +116,21 @@ class MainWindow(Adw.ApplicationWindow):
         action.connect("change-state", self._on_toggle_panel)
         self.add_action(action)
         self.panneau.set_visible(self.etat.show_panel)
+        recherche = Gio.SimpleAction.new("search", None)
+        recherche.connect("activate", self._on_search)
+        recherche.set_enabled(self.arbre is not None)  # configuration illisible : rien à chercher
+        self.add_action(recherche)
         self.connect("close-request", self._on_close_request)
         logger.debug("MainWindow.__init__: prête ({})", self.etat)
+
+    def _on_search(self, _action: Gio.SimpleAction, _param: GLib.Variant | None) -> None:
+        """Ctrl+F / Affichage > Rechercher : panneau affiché, curseur dans la recherche (#140)."""
+        logger.debug("_on_search: entrée")
+        if self.arbre is not None:
+            if not self.panneau.get_visible():
+                self.activate_action("win.toggle-panel", None)
+            self.arbre.focus_recherche()
+        logger.debug("_on_search: fait")
 
     def _on_toggle_panel(self, action: Gio.SimpleAction, valeur: GLib.Variant) -> None:
         """F9 / Affichage > Panneau : montre ou cache le panneau gauche."""

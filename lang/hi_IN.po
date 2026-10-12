@@ -11,6 +11,8 @@ msgstr ""
 "POT-Creation-Date: 2026-10-12 06:08+0000\n"
 
 "POT-Creation-Date: 2026-10-12 05:59+0000\n"
+
+"POT-Creation-Date: 2026-10-12 06:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -67,11 +69,9 @@ msgstr "ASCII बैकस्पेस \t[Ctrl+H 0x08]"
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
 msgstr "ASCII डिलीट    \t[Ctrl+? 0x7F]"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_About"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "About"
-msgstr "_परिचय"
+msgstr "परिचय"
 
 #: gnome_connection_manager.py
 msgid "Action"
@@ -237,9 +237,9 @@ msgstr "कस्टम कमांड"
 msgid "Custom commands…"
 msgstr "कस्टम कमांड"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Dark"
-msgstr ""
+msgstr "गहरा"
 
 #: gnome_connection_manager.py plugins/plugin_serial.py
 msgid "Data bits"
@@ -285,7 +285,7 @@ msgstr "क्या आप वास्तव में होस्ट को 
 msgid "Dynamic title"
 msgstr "डायनामिक शीर्षक"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py widgets.py
 msgid "Edit"
 msgstr "संपादित करें"
 
@@ -357,11 +357,9 @@ msgstr "सर्वर निर्यात करें"
 msgid "Fields group, name and host are required"
 msgstr "समूह, नाम और होस्ट फ़ील्ड आवश्यक हैं"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_File"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "File"
-msgstr "_फ़ाइल"
+msgstr "फ़ाइल"
 
 #: gnome_connection_manager.py
 msgid "Flow"
@@ -409,11 +407,9 @@ msgstr ""
 msgid "Group name:"
 msgstr "समूह"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Help"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Help"
-msgstr "_सहायता"
+msgstr "सहायता"
 
 #: gnome_connection_manager.py plugins/plugin_ssh.py ssh_config_editor.py
 #: ssh_key_manager_dialog.py
@@ -487,9 +483,9 @@ msgstr ""
 msgid "Leave blank for passwordless/public key authentication"
 msgstr "पासवर्डलेस/पब्लिक की प्रमाणीकरण के लिए खाली छोड़ें"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Light"
-msgstr ""
+msgstr "हल्का"
 
 #: gnome_connection_manager.py
 msgid "Log local console sessions"
@@ -606,11 +602,9 @@ msgstr "प्राइवेट की"
 msgid "Project's Homepage"
 msgstr "प्रोजेक्ट का होमपेज"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Quit"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Quit"
-msgstr "_छोड़ें"
+msgstr "छोड़ें"
 
 #: gnome_connection_manager.py
 #, fuzzy
@@ -684,7 +678,7 @@ msgstr "सर्वर सूची अधिलेखित हो जाए�
 msgid "Servers"
 msgstr "_सर्वर"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Settings"
 msgstr "सेटिंग्स"
 
@@ -706,7 +700,7 @@ msgstr "शॉर्टकट"
 msgid "Shortcuts"
 msgstr "शॉर्टकट्स"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Show Panel"
 msgstr "पैनल दिखाएं"
 
@@ -718,9 +712,9 @@ msgstr "स्टैंडर्ड कमांड"
 msgid "Stop"
 msgstr "स्टॉप"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "System"
-msgstr ""
+msgstr "सिस्टम"
 
 #: gnome_connection_manager.py
 msgid "TERM"
@@ -779,11 +773,9 @@ msgstr ""
 msgid "User"
 msgstr "उपयोगकर्ता"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_View"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "View"
-msgstr "_दृश्य"
+msgstr "दृश्य"
 
 #: gnome_connection_manager.py
 msgid "Word separator"
@@ -2720,9 +2712,21 @@ msgstr "कॉन्फ़िगरेशन फ़ाइल %s पढ़ी न
 msgid "Unable to write the configuration file %s: %s"
 msgstr "कॉन्फ़िगरेशन फ़ाइल %s लिखी नहीं जा सकी: %s"
 
+#: src/gcm4/core/menu.py
+msgid "Search"
+msgstr "खोजें"
+
 #: src/gcm4/ui/host_tree.py
 msgid "Hosts"
 msgstr "होस्ट"
+
+#: src/gcm4/ui/host_tree.py
+msgid "No matching hosts"
+msgstr "कोई मेल खाता होस्ट नहीं"
+
+#: src/gcm4/ui/host_tree.py
+msgid "Search hosts"
+msgstr "होस्ट खोजें"
 
 #: src/gcm4/ui/main_window.py
 msgid "Configuration not loaded"

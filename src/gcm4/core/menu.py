@@ -4,7 +4,8 @@ Structure reprise de ``Wmain._build_primary_menu`` (GTK3), limitée à la
 base sans plugins (#118) : ce qui sert au terminal, au cluster ou aux
 outils de plugins arrivera avec eux. ``gcm4.ui`` construit le
 ``Gio.Menu`` à partir de ces données, qui restent testables sans display.
-Libellés : msgids anglais de l'ancienne interface, déjà traduits.
+Libellés : msgids anglais de l'ancienne interface, marqués ``N_`` pour
+l'extraction (traduits à l'affichage par ``gcm4.ui``).
 """
 
 from __future__ import annotations
@@ -12,6 +13,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from loguru import logger
+
+from gcm4.core.i18n import N_
 
 
 @dataclass(frozen=True)
@@ -35,27 +38,28 @@ class SousMenu:
 
 
 MENU_PRINCIPAL: tuple[SousMenu, ...] = (
-    SousMenu("File", ((Entree("Quit", "app.quit"),),)),
-    SousMenu("Edit", ((Entree("Settings", "app.preferences"),),)),
+    SousMenu(N_("File"), ((Entree(N_("Quit"), "app.quit"),),)),
+    SousMenu(N_("Edit"), ((Entree(N_("Settings"), "app.preferences"),),)),
     SousMenu(
-        "View",
+        N_("View"),
         (
-            (Entree("Show Panel", "win.toggle-panel"),),
+            (Entree(N_("Show Panel"), "win.toggle-panel"), Entree(N_("Search"), "win.search")),
             # Thème (#135) : action à état app.theme, une entrée radio par mode.
             (
-                Entree("System", "app.theme", "system"),
-                Entree("Light", "app.theme", "light"),
-                Entree("Dark", "app.theme", "dark"),
+                Entree(N_("System"), "app.theme", "system"),
+                Entree(N_("Light"), "app.theme", "light"),
+                Entree(N_("Dark"), "app.theme", "dark"),
             ),
         ),
     ),
-    SousMenu("Help", ((Entree("About", "app.about"),),)),
+    SousMenu(N_("Help"), ((Entree(N_("About"), "app.about"),),)),
 )
 
 RACCOURCIS: dict[str, tuple[str, ...]] = {
     "app.quit": ("<Control>q",),
     "app.preferences": ("<Control>comma",),
     "win.toggle-panel": ("F9",),
+    "win.search": ("<Control>f",),
 }
 
 

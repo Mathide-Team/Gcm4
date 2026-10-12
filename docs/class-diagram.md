@@ -6,7 +6,7 @@
 > toute modification manuelle sera écrasée. Le régénérer avec `make class-diagram` ;
 > le job Qualité échoue s'il est périmé (`--check`).
 
-65 modules · 132 classes · 219 fonctions publiques de module.
+65 modules · 132 classes · 221 fonctions publiques de module.
 
 Conventions : `+` public, `-` privé (préfixe `_`) ; `list~str~` = `list[str]` ; `<<module>>`
 regroupe les fonctions publiques d'un module ; `<<…>>` sur une classe liste `dataclass` et les
@@ -1353,6 +1353,7 @@ classDiagram
         +couleur_effective(chemin, couleurs) str
         +construire(store) list~Noeud~
         +infobulle(host) str
+        +correspondances(store, texte) set~str~ None
         +ancetres(chemin) list~str~
     }
     class Noeud {
@@ -1369,6 +1370,7 @@ classDiagram
         <<module>>
         +locale_dirs() list~Path~
         +install(locale_dir) gettext.NullTranslations
+        +N_(message) str
     }
     class mod_gcm4_core_menu {
         <<module>>
@@ -1489,8 +1491,12 @@ classDiagram
         <<GObject.Object>>
     }
     class HostTree {
-        <<Gtk.ScrolledWindow>>
+        <<Gtk.Box>>
         +recharger() None
+        +chercher(texte) None
+        +focus_recherche() None
+        +chemin_selectionne() str None
+        +selectionner(chemin) bool
         +lignes_visibles() list~tuple~int, str~~
         +ligne(chemin) Gtk.TreeListRow None
     }
