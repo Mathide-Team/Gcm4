@@ -23,3 +23,4 @@ __pycache__/
 # Données de couverture (pytest-cov) : artefact local, jamais versionné.
 .coverage
 .coverage.*
+site/
