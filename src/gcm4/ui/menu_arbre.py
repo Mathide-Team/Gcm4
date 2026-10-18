@@ -326,7 +326,7 @@ class MenuArbre:
             valider,
             hote=hote,
             groupe=groupe,
-            protocoles=self._registre().protocols(),
+            registre=self._registre(),
         )
         self.dialogue_hote.present()
         logger.debug("ouvrir_dialogue_hote: affiché")
