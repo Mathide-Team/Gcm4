@@ -2,9 +2,9 @@
 
 ``Adw.Window`` modale. Seuls les champs **communs** sont édités (inventaire :
 ``docs/architecture.md`` §2.10) ; l'hôte enregistré part d'une copie de
-l'original, donc les options de protocole (``protocol_options``) et toute
-clé inconnue sont conservées telles quelles. La zone d'options fournie par
-le plugin arrive avec #146.
+l'original. La zone d'options du protocole est fournie par le plugin
+installé (#146) ; sans plugin, les options sont conservées sans être
+modifiables.
 
 - Validation à chaque saisie (:func:`gcm4.core.validation.validate_host`) :
   ligne en classe CSS ``error``, message sous le formulaire, « Enregistrer »
@@ -25,8 +25,10 @@ from collections.abc import Callable, Sequence
 from gi.repository import Adw, Gdk, Gtk
 from loguru import logger
 
+import gcm4_core
 from gcm4.core.i18n import _
 from gcm4.core.model import Host, HostStore, normaliser_chemin
+from gcm4.core.registre import PluginRegistry
 from gcm4.core.validation import (
     ADRESSE,
     NOM,
@@ -85,6 +87,7 @@ class HostDialog(Adw.Window):
         hote: Host | None = None,
         groupe: str = "",
         protocoles: Sequence[str] = (),
+        registre: PluginRegistry | None = None,
     ) -> None:
         """Construit le formulaire.
 
@@ -95,7 +98,10 @@ class HostDialog(Adw.Window):
             valider: enregistre l'hôte saisi (voir :data:`Valider`).
             hote: hôte modifié ou dupliqué (ignoré en création).
             groupe: groupe proposé en création.
-            protocoles: protocoles gérés par les plugins installés (#124).
+            protocoles: protocoles gérés par les plugins installés (#124) ;
+                déduits du registre s'il est fourni.
+            registre: registre de plugins, pour la zone d'options (#146) et
+                le port par défaut du protocole.
         """
         logger.debug(
             "HostDialog.__init__: {} {!r}", mode, hote.path if hote is not None else groupe
@@ -117,6 +123,9 @@ class HostDialog(Adw.Window):
             default_height=640,
         )
         self.store, self.mode, self._valider = store, mode, valider
+        self.registre = registre
+        if not protocoles and registre is not None:
+            protocoles = registre.protocols()
         self.original = hote if mode == MODIFICATION else None
         if mode == CREATION:
             self.base = Host(name="", group=normaliser_chemin(groupe))
@@ -128,8 +137,14 @@ class HostDialog(Adw.Window):
         self.enregistre = False  # vrai après l'enregistrement : fermeture sans confirmation
         self.confirmation: Adw.Dialog | Adw.MessageDialog | None = None  # tests
         self.erreurs: list[FieldError] = []
+        # Options du protocole éditées par le plugin, une copie par protocole
+        # visité (#146) ; écrites dans l'hôte seulement à l'enregistrement.
+        self._options_par_protocole: dict[str, dict[str, str]] = {}
+        self._protocole_zone: str | None = None  # protocole déjà affiché dans la zone
         self._construire(titres[mode], protocoles)
         self._remplir()
+        self._maj_port_par_defaut()
+        self._maj_zone_options()
         self.initial = self.lire()
         self.verifier()
         self.connect("close-request", self._on_close_request)
@@ -177,9 +192,16 @@ class HostDialog(Adw.Window):
             self.protocole.set_sensitive(False)
             self.protocole.set_subtitle(_("No extension is installed."))
         self.protocole.set_model(Gtk.StringList.new(self._protocoles))
-        self.protocole.connect("notify::selected", lambda *_a: self.verifier())
+        self.protocole.connect("notify::selected", self._on_protocole_change)
         connexion.add(self.protocole)
         page.add(connexion)
+
+        # Zone d'options du protocole, remplie par le plugin (#146) ; sans
+        # plugin, message de conservation des options.
+        self.zone_options = Adw.PreferencesGroup(title=_("Protocol options"))
+        self._ligne_options = Adw.PreferencesRow()
+        self.zone_options.add(self._ligne_options)
+        page.add(self.zone_options)
 
         affichage = Adw.PreferencesGroup(title=_("Display"))
         self.description = self._ligne(affichage, _("Description"))
@@ -322,6 +344,117 @@ class HostDialog(Adw.Window):
         self.popover_groupes.popdown()
         logger.debug("_on_groupe_choisi: {!r}", self.groupe.get_text())
 
+    # --- protocole : zone d'options et port par défaut (#146) ------------------
+
+    def _protocole_courant(self) -> str:
+        """Protocole sélectionné (celui de la base si la liste est vide)."""
+        logger.trace("_protocole_courant")
+        choisi = self.protocole.get_selected()
+        if self._protocoles and choisi != Gtk.INVALID_LIST_POSITION:
+            logger.trace("_protocole_courant: {!r}", self._protocoles[choisi])
+            return self._protocoles[choisi]
+        logger.trace("_protocole_courant: {!r}", self.base.protocol)
+        return self.base.protocol
+
+    def _on_protocole_change(self, *_args: object) -> None:
+        """Changement de protocole : port par défaut, zone d'options, revalidation."""
+        logger.debug("_on_protocole_change: {!r}", self._protocole_courant())
+        self._maj_port_par_defaut(self._protocole_zone)
+        self._maj_zone_options()
+        self.verifier()
+        logger.debug("_on_protocole_change: fait")
+
+    def _maj_port_par_defaut(self, ancien: str | None = None) -> None:
+        """Port par défaut du protocole courant si le champ est vide ou n'a
+        pas été modifié.
+
+        Le port suit le protocole uniquement tant que le champ est vide ou
+        contient encore le port par défaut de l'**ancien** protocole
+        (comme le dialogue GTK3) : une valeur libre, même si elle est le
+        défaut d'un tiers, n'est jamais écrasée.
+
+        Args:
+            ancien: protocole avant le changement (``None`` : ouverture du
+                dialogue, seul un champ vide est rempli).
+        """
+        logger.trace("_maj_port_par_defaut: ancien={!r}", ancien)
+        if self.registre is None:
+            logger.trace("_maj_port_par_defaut: sans registre")
+            return
+        courant = self.port.get_text().strip()
+        if courant and (
+            ancien is None or courant != gcm4_core.proto_default_port(ancien, self.registre)
+        ):
+            logger.trace("_maj_port_par_defaut: port {!r} libre, conservé", courant)
+            return
+        defaut = gcm4_core.proto_default_port(self._protocole_courant(), self.registre)
+        if defaut != courant:
+            self.port.set_text(defaut)
+            logger.debug("_maj_port_par_defaut: {!r} → {!r}", courant, defaut)
+        logger.trace("_maj_port_par_defaut: fait")
+
+    def _maj_zone_options(self) -> None:
+        """(Re)remplit la zone d'options du protocole courant (#146).
+
+        Avec plugin : le widget du plugin édite une copie des options,
+        écrite dans l'hôte seulement si l'utilisateur enregistre. Sans plugin
+        ou protocole inconnu : message de conservation, options intouchables.
+        """
+        logger.debug("_maj_zone_options: entrée")
+        protocole = self._protocole_courant()
+        if self._protocole_zone == protocole and self._ligne_options.get_child() is not None:
+            logger.trace("_maj_zone_options: {!r} déjà affiché", protocole)
+            return
+        self._protocole_zone = protocole
+        plugin = self.registre.get(protocole) if self.registre is not None else None
+        # Sous-titre du sélecteur synchronisé avec la zone : il ne peut pas
+        # rester « aucune extension » une fois un protocole installé choisi.
+        if self._protocoles:
+            self.protocole.set_subtitle(
+                ""
+                if plugin is not None
+                else _("No extension handles this protocol: its options are kept.")
+            )
+        if plugin is None:
+            logger.debug("_maj_zone_options: {!r} sans plugin", protocole)
+            widget = Gtk.Label(
+                label=_(
+                    "No extension is installed for this protocol: its options "
+                    "are kept and cannot be modified."
+                ),
+                wrap=True,
+                xalign=0,
+            )
+            widget.set_margin_top(12)
+            widget.set_margin_bottom(12)
+        else:
+            # Instantané à jour : le plugin n'a que ``host`` pour connaître le
+            # protocole de la zone (il peut en gérer plusieurs).
+            hote_zone = self.lire() if hasattr(self, "initial") else self.base.clone()
+            hote_zone.protocol = protocole
+            widget = plugin.build_host_options_widget(
+                hote_zone, self._options(protocole), self._options_modifiees
+            )
+        self._ligne_options.set_child(widget)
+        logger.debug("_maj_zone_options: fait")
+
+    def _options(self, protocole: str) -> dict[str, str]:
+        """Copie des options du protocole, une seule par protocole visité."""
+        logger.trace("_options: {!r}", protocole)
+        if protocole not in self._options_par_protocole:
+            self._options_par_protocole[protocole] = dict(
+                self.base.protocol_options.get(protocole, {})
+            )
+            logger.trace("_options: {!r} copiée", protocole)
+        logger.trace("_options: fait")
+        return self._options_par_protocole[protocole]
+
+    def _options_modifiees(self) -> None:
+        """Le plugin signale une modification : revalidation."""
+        logger.trace("_options_modifiees")
+        self.verifier()
+        logger.trace("_options_modifiees: fait")
+
     # --- valeurs ---------------------------------------------------------------
 
     def _remplir(self) -> None:
@@ -388,6 +521,11 @@ class HostDialog(Adw.Window):
         h.pre_connect_command = self.avant.get_text().strip()
         h.post_connect_command = self.apres.get_text().strip()
         h.extra_params = self.parametres.get_text().strip()
+        # Zone du plugin (#146) : options éditées, écrites seulement à
+        # l'enregistrement (une section vide n'est pas créée).
+        for protocole, options in self._options_par_protocole.items():
+            if options or protocole in self.base.protocol_options:
+                h.protocol_options[protocole] = dict(options)
         logger.trace("lire: {!r}", h.path)
         return h
 
@@ -411,6 +549,13 @@ class HostDialog(Adw.Window):
         erreur_port = erreur_de_port(self.port.get_text())
         if erreur_port is not None and all(e.champ != PORT for e in erreurs):
             erreurs.append(erreur_port)
+        # Options du protocole : validation du plugin (#146).
+        if self.registre is not None:
+            plugin = self.registre.get(hote.protocol)
+            if plugin is not None:
+                erreurs.extend(
+                    plugin.validate_options(hote.protocol, self._options(hote.protocol))
+                )
         self.erreurs = erreurs
         par_champ = {e.champ: e.message for e in erreurs}
         for champ, ligne in ((NOM, self.nom), (ADRESSE, self.adresse), (PORT, self.port)):

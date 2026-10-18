@@ -4,12 +4,14 @@ from __future__ import annotations
 
 import configparser
 
-from gi.repository import Gdk
+from gi.repository import Gdk, Gtk
 from loguru import logger
 
 import gcm4.ui  # noqa: F401  (require_version avant gi.repository)
 from gcm4.core.chiffrement import ChiffrementGcm
 from gcm4.core.config import ConfigError, load_config
+from gcm4.core.model import Host
+from gcm4.core.validation import FieldError
 from gcm4.ui.host_dialog import CREATION, DUPLICATION, MODIFICATION, HostDialog
 
 
@@ -260,3 +262,239 @@ def test_mot_de_passe_jamais_journalise(app_fixture, pomper):
         logger.disable("gcm4")
         logger.remove(sink)
     assert lignes and not any("Mdp-Tres-Secret-42" in ligne for ligne in lignes)
+
+
+# --- zone d'options du plugin et port par défaut (#146) -----------------------
+
+
+class _FauxPlugin:
+    """Plugin de test : port par défaut et option « mode » modifiable."""
+
+    def __init__(self, port):
+        self._port = port
+        self.protocols = ("test",)  # parcouru par all_default_ports (contrat v1)
+        self.appels = []
+        self.ligne = None
+
+    def default_port(self, protocol):
+        return self._port
+
+    def build_host_options_widget(self, host, options, changed):
+        self.appels.append((host.name, dict(options)))
+        ligne = Gtk.Entry()
+        ligne.set_text(options.get("mode", ""))
+
+        def saisie(*_args):
+            options["mode"] = ligne.get_text()
+            changed()
+
+        ligne.connect("changed", saisie)
+        self.ligne = ligne
+        return ligne
+
+    def validate_options(self, protocol, options):
+        if options.get("mode") == "interdit":
+            return [FieldError(champ="mode", message="mode interdit")]
+        return []
+
+
+class _FauxRegistre:
+    """Registre minimal : get/protocols/all."""
+
+    def __init__(self, plugins):
+        self._plugins = plugins
+
+    def get(self, protocole):
+        return self._plugins.get(protocole)
+
+    def protocols(self):
+        return sorted(self._plugins)
+
+    def all(self):
+        return list(self._plugins.values())
+
+
+def test_zone_sans_plugin_message_de_conservation(app_fixture, pomper):
+    """Sans plugin : la zone affiche le message de conservation, options intactes (#146)."""
+    app, _ = app_fixture
+    arbre = app.get_active_window().arbre
+    d = _ouvrir(arbre, "edit", "LAB/web")  # proto-b, aucun plugin installé
+    zone = d._ligne_options.get_child()
+    assert isinstance(zone, Gtk.Label)
+    assert zone.get_label() == (
+        "No extension is installed for this protocol: its options are kept and cannot be modified."
+    )
+    assert arbre.store.find("LAB/web").protocol_options["proto-b"] == {"resolution": "1280x800"}
+    d.close()
+
+
+def test_options_rdp_vnc_ssh_sans_plugin(app_fixture, pomper):
+    """Hôtes RDP/VNC/SSH modifiés et enregistrés sans plugin : options conservées (#146)."""
+    app, dossier = app_fixture
+    arbre = app.get_active_window().arbre
+    attendu = {
+        "rdp": {"domain": "CORP", "width": "1920"},
+        "vnc": {"depth": "24"},
+        "ssh": {"tunnel": "L8080:localhost:80", "x11": "True", "keep_alive": "30"},
+    }
+    for proto, options in attendu.items():
+        hote = Host(name=proto, group="LAB", host=f"{proto}.example.org", protocol=proto)
+        hote.protocol_options[proto] = dict(options)
+        arbre.store.add(hote)
+    arbre.recharger()
+    for proto, options in attendu.items():
+        d = _ouvrir(arbre, "edit", f"LAB/{proto}")
+        assert isinstance(d._ligne_options.get_child(), Gtk.Label)
+        d.description.set_text(f"modifié {proto}")
+        assert d.enregistrer()
+        pomper()
+        h = _relire(dossier).store.find(f"LAB/{proto}")
+        assert h.protocol_options[proto] == options
+
+
+def test_zone_options_et_port_par_defaut(app_fixture, pomper):
+    """Zone du plugin : options éditées écrites à l'enregistrement, port qui suit le protocole (#146)."""
+    app, _ = app_fixture
+    fenetre = app.get_active_window()
+    ssh, rdp, vnc = _FauxPlugin(22), _FauxPlugin(3389), _FauxPlugin(4242)
+    registre = _FauxRegistre({"ssh": ssh, "rdp": rdp, "vnc": vnc})
+    hote = Host(name="srv", group="LAB", host="srv.example.org", protocol="ssh", port=22)
+    hote.protocol_options["ssh"] = {"mode": "rapide"}
+    enregistres = []
+    d = HostDialog(
+        fenetre,
+        fenetre.arbre.store,
+        MODIFICATION,
+        lambda h, _o: enregistres.append(h) or True,
+        hote=hote,
+        registre=registre,
+    )
+    pomper()
+    # Zone remplie par le plugin du protocole, avec les options existantes.
+    assert d._ligne_options.get_child() is ssh.ligne
+    assert ssh.appels == [("srv", {"mode": "rapide"})]
+    assert d.port.get_text() == "22"
+    # Bascule de protocole : le port par défaut suit, la zone est remplacée.
+    d.protocole.set_selected(d._protocoles.index("rdp"))
+    pomper()
+    assert d.port.get_text() == "3389"
+    assert d._ligne_options.get_child() is rdp.ligne
+    assert rdp.appels == [("srv", {})]
+    # Port libre, même égal au défaut d'un tiers protocole : jamais écrasé
+    # au changement de protocole (seul le défaut de l'ancien est suivi).
+    d.port.set_text("4242")
+    d.protocole.set_selected(d._protocoles.index("ssh"))
+    pomper()
+    assert d.port.get_text() == "4242"
+    # Option saisie dans la zone : écrite seulement à l'enregistrement,
+    # options de l'autre protocole conservées.
+    d.protocole.set_selected(d._protocoles.index("rdp"))
+    pomper()
+    rdp.ligne.set_text("avance")
+    pomper()
+    assert d.enregistrer()
+    pomper()
+    h = enregistres[0]
+    assert h.protocol == "rdp"
+    assert h.protocol_options["rdp"] == {"mode": "avance"}
+    assert h.protocol_options["ssh"] == {"mode": "rapide"}
+
+
+def test_options_invalides_bloquent_l_enregistrement(app_fixture, pomper):
+    """validate_options du plugin : erreur affichée, « Enregistrer » inactif (#146)."""
+    app, _ = app_fixture
+    fenetre = app.get_active_window()
+    plugin = _FauxPlugin(4242)
+    hote = Host(name="srv", group="LAB", host="srv.example.org", protocol="demo")
+    hote.protocol_options["demo"] = {"mode": ""}
+    d = HostDialog(
+        fenetre,
+        fenetre.arbre.store,
+        MODIFICATION,
+        lambda h, _o: True,
+        hote=hote,
+        registre=_FauxRegistre({"demo": plugin}),
+    )
+    pomper()
+    plugin.ligne.set_text("interdit")
+    pomper()
+    assert any(e.champ == "mode" for e in d.erreurs)
+    assert not d.bouton_enregistrer.get_sensitive()
+    assert not d.enregistrer()
+    plugin.ligne.set_text("avance")
+    pomper()
+    assert d.bouton_enregistrer.get_sensitive() and d.enregistrer()
+
+
+def test_zone_options_plugin_demo(app_demo, pomper):
+    """Zone du plugin démo : option « mode » saisie, écrite à l'enregistrement (#146)."""
+    app, dossier = app_demo
+    arbre = app.get_active_window().arbre
+    hote = arbre.store.find("LAB/web")
+    hote.protocol = "demo"
+    hote.protocol_options = {"demo": {"mode": "rapide"}}
+    d = _ouvrir(arbre, "edit", "LAB/web")
+    zone = d._ligne_options.get_child()
+    assert isinstance(zone, Gtk.Entry) and zone.get_text() == "rapide"
+    zone.set_text("avance")
+    pomper()
+    # Annulation : l'hôte d'origine est intact, l'option n'est pas écrite.
+    d.close()
+    pomper()
+    d.confirmation.emit("response", "abandonner")
+    pomper()
+    assert arbre.store.find("LAB/web").protocol_options["demo"] == {"mode": "rapide"}
+    # Enregistrement : l'option est écrite (à la relecture, le format INI
+    # fusionne les options dans le protocole courant, #146 ne change rien
+    # à l'écriture).
+    d = _ouvrir(arbre, "edit", "LAB/web")
+    zone = d._ligne_options.get_child()
+    zone.set_text("avance")
+    pomper()
+    assert d.enregistrer()
+    pomper()
+    h = _relire(dossier).store.find("LAB/web")
+    assert h.protocol == "demo" and h.protocol_options["demo"] == {"mode": "avance"}
+
+
+def test_sous_titre_protocole_inconnu_synchronise(app_fixture, pomper):
+    """Le sous-titre « aucune extension » suit la sélection, comme la zone (#146)."""
+    app, _ = app_fixture
+    fenetre = app.get_active_window()
+    ssh = _FauxPlugin(22)
+    hote = Host(name="srv", group="LAB", host="srv.example.org", protocol="proto-a")
+    d = HostDialog(
+        fenetre,
+        fenetre.arbre.store,
+        MODIFICATION,
+        lambda h, _o: True,
+        hote=hote,
+        registre=_FauxRegistre({"ssh": ssh}),
+    )
+    pomper()
+    # Protocole inconnu conservé : sous-titre et message de la zone alignés.
+    assert (
+        d.protocole.get_subtitle() == "No extension handles this protocol: its options are kept."
+    )
+    assert isinstance(d._ligne_options.get_child(), Gtk.Label)
+    # Choix d'un protocole installé : sous-titre effacé, zone du plugin.
+    d.protocole.set_selected(d._protocoles.index("ssh"))
+    pomper()
+    assert d.protocole.get_subtitle() == ""
+    assert d._ligne_options.get_child() is ssh.ligne
+    # Retour au protocole inconnu : conservé, options intouchables.
+    d.protocole.set_selected(d._protocoles.index("proto-a"))
+    pomper()
+    assert (
+        d.protocole.get_subtitle() == "No extension handles this protocol: its options are kept."
+    )
+    assert isinstance(d._ligne_options.get_child(), Gtk.Label)
+
+
+def test_port_par_defaut_a_l_ouverture(app_demo, pomper):
+    """Ouverture en création : champ vide → port par défaut du plugin, sans modification."""
+    app, _ = app_demo
+    arbre = app.get_active_window().arbre
+    d = _ouvrir(arbre, "add", None)
+    assert d.port.get_text() == "4242"
+    assert not d.modifie()
