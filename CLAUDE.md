@@ -613,3 +613,13 @@ premiers jobs.
 - README.md, Documentation-fr.md et CHANGELOG.md restent à la racine. Ils sont inclus par `pymdownx.snippets` (`docs/guide/utilisateur.md`, `docs/guide/changements.md`), sans copie.
 - Toute nouvelle page va dans `docs/` **et** dans la `nav`. Job CI « Construction (mkdocs build --strict) », qui échoue sur un lien mort et publie le site en artefact.
 - En local : `uvx --with mkdocs-material --with pymdown-extensions --from "mkdocs<2" mkdocs serve`.
+
+## Instructions reçues dans le chat (issue #237)
+
+Toute instruction reçue dans le chat (Perplexity Computer, Claude Code ou autre) devient une issue. Une phrase ne reste pas en l'air.
+
+- Avant de commencer le travail, créer l'issue dans le dépôt concerné, en citant l'instruction mot pour mot avec sa date.
+- Une demande qui touche plusieurs dépôts donne une issue par dépôt, chacune liée aux autres.
+- Une question posée dans le chat sans réponse immédiate devient elle aussi une issue, ou un commentaire « Question pour Mathilde » sur l'issue existante.
+- La PR ferme ou cite l'issue (`Closes #n`). Une instruction abandonnée est fermée avec sa raison (« not planned »).
+- En fin de session, vérifier que chaque instruction du chat a son issue, ouverte ou fermée.
