@@ -447,6 +447,18 @@ rouvert par `win.connect-host` ; un hôte disparu ou un protocole sans
 plugin donne un seul message par cas. Limite du format : un chemin
 contenant une virgule n'est pas enregistré.
 
+Vérification des mises à jour (#245, `gcm4.core.mises_a_jour`,
+`gcm4.ui.mises_a_jour`) : jamais d'accès réseau au démarrage sans accord.
+`[options] check-updates` (GTK3) dit si l'on vérifie ; `[window]
+check-updates-consent` garde l'accord explicite (absent : une question,
+une seule fois ; « Non » désactive l'option ; activer l'option dans les
+préférences vaut accord). `GCM_NO_UPDATE_CHECK=1` désactive tout (paquets
+de distribution, tests). Source : API GitHub `releases/latest` du dépôt
+(brouillons et pré-versions exclus), délai 5 s, proxy de l'environnement ;
+comparaison numérique des versions (GTK3 comparait des chaînes). Requête
+dans un fil d'exécution, résultat par `GLib.idle_add` ; hors ligne : une
+ligne de journal, rien à l'écran.
+
 | Option `Wconfig` | Clé INI | Classement | Destination dans gcm4 |
 |---|---|---|---|
 | `WORD_SEPARATORS` | `options/word-separators` | terminal | plugin terminal |
@@ -467,7 +479,7 @@ contenant une virgule n'est pas enregistré.
 | `RESTORE_OPEN_TABS` | `options/restore-open-tabs` | base | page Général (#147), #246 |
 | `AUTO_CLOSE_TAB` | `options/auto-close-tab` | terminal | plugin terminal |
 | `CONFIRM_ON_EXIT` | `options/confirm-exit` | base | page Général (#147) |
-| `CHECK_UPDATES` | `options/check-updates` | base | page Général (#147) |
+| `CHECK_UPDATES` | `options/check-updates` | base | page Général (#147), #245 |
 | `DISABLE_HOSTS_STRIPES` | `options/disable-hosts-stripes` | base | page Apparence, issue de suivi |
 | `UPDATE_TITLE` | `options/update-title` | base | titre de fenêtre, issue de suivi |
 | `APP_TITLE` | `options/app-title` | base | titre de fenêtre, issue de suivi |

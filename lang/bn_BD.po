@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-18 16:34+0000\n"
+"POT-Creation-Date: 2026-10-18 16:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -544,7 +544,8 @@ msgstr "ঠিক আছে"
 msgid "Only on clean exit"
 msgstr "শুধুমাত্র ক্লিন এক্সিটে"
 
-#: gnome_connection_manager.py plugins/plugin_import_putty.py utils.py
+#: gnome_connection_manager.py plugins/plugin_import_putty.py
+#: src/gcm4/ui/mises_a_jour.py utils.py
 msgid "Open"
 msgstr "খুলুন"
 
@@ -2997,6 +2998,27 @@ msgstr "নাম বদলান"
 #: src/gcm4/ui/menu_arbre.py
 msgid "This cannot be undone."
 msgstr "এই কাজটি ফিরিয়ে নেওয়া যাবে না।"
+
+#: src/gcm4/ui/mises_a_jour.py
+msgid "Allow"
+msgstr "অনুমতি দিন"
+
+#: src/gcm4/ui/mises_a_jour.py
+msgid "At startup, Gnome Connection Manager can ask GitHub (api.github.com) whether a newer version has been published. You can change this later in the preferences."
+msgstr "চালুর সময় Gnome Connection Manager GitHub (api.github.com)-কে জিজ্ঞাসা করতে পারে নতুন কোনো সংস্করণ প্রকাশিত হয়েছে কি না। পরে পছন্দসমূহে এটি পরিবর্তন করতে পারবেন।"
+
+#: src/gcm4/ui/mises_a_jour.py
+msgid "Check for updates?"
+msgstr "হালনাগাদ পরীক্ষা করবেন?"
+
+#: src/gcm4/ui/mises_a_jour.py
+msgid "No"
+msgstr "না"
+
+#: src/gcm4/ui/mises_a_jour.py
+#, python-brace-format
+msgid "Version {version} is available"
+msgstr "সংস্করণ {version} উপলব্ধ"
 
 #: src/gcm4/ui/preferences.py
 msgid "Appearance"

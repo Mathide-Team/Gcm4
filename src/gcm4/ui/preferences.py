@@ -28,6 +28,7 @@ from loguru import logger
 from gcm4.core import preferences as prefs_core
 from gcm4.core.config import ConfigError
 from gcm4.core.i18n import N_, _
+from gcm4.ui import mises_a_jour
 
 #: Modes du thème, dans l'ordre de la liste déroulante.
 MODES = ("system", "light", "dark")
@@ -236,7 +237,9 @@ class PreferencesWindow(Adw.PreferencesWindow):
             logger.debug("_on_option: aucune configuration chargée")
             return
         setattr(config.options, nom, valeur)  # save_config réécrit [options] depuis le modèle
-        self._enregistrer(nom, valeur)
+        if self._enregistrer(nom, valeur) and nom == "check_updates" and valeur:
+            # Activer l'option vaut accord explicite (#245).
+            mises_a_jour.enregistrer_accord(self.config_file, True)
         logger.debug("_on_option: fait")
 
     def _on_theme(self, ligne: Adw.ComboRow, _pspec: object) -> None:

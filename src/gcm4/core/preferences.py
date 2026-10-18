@@ -94,7 +94,7 @@ INVENTAIRE: tuple[OptionWconfig, ...] = (
     ),
     OptionWconfig("AUTO_CLOSE_TAB", "options/auto-close-tab", TERMINAL, "plugin terminal"),
     OptionWconfig("CONFIRM_ON_EXIT", "options/confirm-exit", BASE, "page Général (#147)"),
-    OptionWconfig("CHECK_UPDATES", "options/check-updates", BASE, "page Général (#147)"),
+    OptionWconfig("CHECK_UPDATES", "options/check-updates", BASE, "page Général (#147), #245"),
     OptionWconfig(
         "DISABLE_HOSTS_STRIPES",
         "options/disable-hosts-stripes",
