@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-18 14:01+0000\n"
+"POT-Creation-Date: 2026-10-18 16:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2921,6 +2921,16 @@ msgstr "โฮสต์และกลุ่มจะปรากฏในแผ
 #, python-brace-format
 msgid "No extension handles the protocol «{protocol}». Install it to open this connection."
 msgstr "ไม่มีส่วนขยายใดจัดการโพรโทคอล '{protocol}' ติดตั้งส่วนขยายเพื่อเปิดการเชื่อมต่อนี้"
+
+#: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Not restored, host not found: {hosts}"
+msgstr "ไม่ได้กู้คืน ไม่พบโฮสต์: {hosts}"
+
+#: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Not restored, no extension for: {hosts}"
+msgstr "ไม่ได้กู้คืน ไม่มีส่วนขยายสำหรับ: {hosts}"
 
 #: src/gcm4/ui/main_window.py
 msgid "Open connections will be closed."

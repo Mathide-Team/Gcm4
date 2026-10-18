@@ -167,8 +167,13 @@ class Gcm4Application(Adw.Application):
     def _on_activate(self, _app: Adw.Application) -> None:
         """Présente la fenêtre principale, créée au premier appel."""
         logger.debug("_on_activate: entrée")
-        fenetre = self.get_active_window() or MainWindow(self, self.args.config_dir)
-        fenetre.present()
+        fenetre = self.get_active_window()
+        if fenetre is None:
+            fenetre = MainWindow(self, self.args.config_dir)
+            fenetre.present()
+            fenetre.restaurer_onglets()  # une fois, à la création (#246)
+        else:
+            fenetre.present()
         logger.debug("_on_activate: fenêtre présentée")
 
     def _on_quit(self, _action: Gio.SimpleAction, _param: object) -> None:
