@@ -439,6 +439,15 @@ Apparence (`gcm4.ui.preferences`) appliquent chaque changement tout de suite
 et l'écrivent aussitôt (`update_keys`, écriture atomique). Nouvelle clé gcm4 :
 `[window] tree-font` (description Pango, vide = police du système).
 
+Lot 5b (#148) : pages Raccourcis (lecture seule, depuis
+`gcm4.core.preferences.raccourcis()`, même source que les raccourcis posés
+par l'application et l'arbre), Journalisation et Extensions. Nouvelle clé
+`[options] log-level` (`TRACE`…`ERROR`, défaut `INFO`) ; priorité : `--debug`,
+puis `GCM_LOG_LEVEL` / `GCM_DEBUG`, puis la préférence. `save_config` reprend
+désormais du fichier les clés de `[options]` sans champ `AppConfig`, comme
+celles de `[window]` : une préférence écrite en cours de session n'est pas
+effacée par un enregistrement du modèle.
+
 | Option `Wconfig` | Clé INI | Classement | Destination dans gcm4 |
 |---|---|---|---|
 | `WORD_SEPARATORS` | `options/word-separators` | terminal | plugin terminal |
@@ -468,7 +477,7 @@ et l'écrivent aussitôt (`update_keys`, écriture atomique). Nouvelle clé gcm4
 | `FONT` | `options/font` | terminal | plugin terminal (police VTE) |
 | `THEME_MODE` | `window/theme-mode` | base | page Apparence (#147) |
 | `DARK_MODE` | `window/dark-mode` | base | écrite avec theme-mode (#135) |
-| `shortcuts` | `shortcuts/*` | base | page Raccourcis (#148) |
+| `shortcuts` | `shortcuts/*` | base | page Raccourcis (#148, lecture seule ; édition : issue de suivi) |
 | `custom commands` | `shortcuts/*` | terminal | plugin terminal |
 | `build_preferences_tab` | — | protocole | plugin.build_preferences_page (#148) |
 | `SerialTemplatesTab` | — | protocole | plugin série |

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-18 14:01+0000\n"
+"POT-Creation-Date: 2026-10-18 14:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -544,7 +544,8 @@ msgstr "OK"
 msgid "Only on clean exit"
 msgstr "Kun ved ren afslutning"
 
-#: gnome_connection_manager.py plugins/plugin_import_putty.py utils.py
+#: gnome_connection_manager.py plugins/plugin_import_putty.py
+#: src/gcm4/ui/preferences.py utils.py
 msgid "Open"
 msgstr "Åbn"
 
@@ -689,7 +690,7 @@ msgstr "Skalkommando, der køres lokalt i baggrunden lige før forbindelsen åbn
 msgid "Shortcut"
 msgstr "Genvej"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Shortcuts"
 msgstr "Genveje"
 
@@ -1420,7 +1421,8 @@ msgstr "🔍  Scan Proxmox-værter"
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_serial.py
 #: plugins/plugin_spice.py plugins/plugin_vnc.py plugins/plugin_web.py
-#: src/gcm4/core/menu_arbre.py src/gcm4/ui/contexte.py widgets.py
+#: src/gcm4/core/menu_arbre.py src/gcm4/core/preferences.py
+#: src/gcm4/ui/contexte.py widgets.py
 msgid "Connect"
 msgstr "Forbind"
 
@@ -2496,8 +2498,8 @@ msgstr "Fjernport"
 msgid "Remote path"
 msgstr "Fjernvært"
 
-#: plugins/plugin_ssh.py src/gcm4/core/menu_arbre.py src/gcm4/ui/menu_arbre.py
-#: widgets.py
+#: plugins/plugin_ssh.py src/gcm4/core/menu_arbre.py
+#: src/gcm4/core/preferences.py src/gcm4/ui/menu_arbre.py widgets.py
 msgid "Remove"
 msgstr "Fjern"
 
@@ -2762,6 +2764,14 @@ msgstr "Det er ikke et forbindelsesplugin."
 msgid "Its name must be a non-empty lowercase identifier."
 msgstr "Navnet skal være en ikke-tom identifikator med små bogstaver."
 
+#: src/gcm4/core/preferences.py
+msgid "Open the context menu"
+msgstr "Åbn genvejsmenuen"
+
+#: src/gcm4/core/preferences.py
+msgid "Rename the group or edit the host"
+msgstr "Omdøb gruppen eller rediger værten"
+
 #: src/gcm4/core/registre.py
 #, python-brace-format
 msgid "A plugin with the same name is already loaded from {source}."
@@ -2884,7 +2894,7 @@ msgstr "Ændringerne af denne vært er ikke gemt."
 msgid "An item with this name already exists in '{group}'."
 msgstr "Der findes allerede et element med dette navn i “{group}”."
 
-#: src/gcm4/ui/host_tree.py
+#: src/gcm4/ui/host_tree.py src/gcm4/ui/preferences.py
 msgid "Hosts"
 msgstr "Værter"
 
@@ -2993,9 +3003,50 @@ msgid "Appearance"
 msgstr "Udseende"
 
 #: src/gcm4/ui/preferences.py
+msgid "Default log level"
+msgstr "Standardlogniveau"
+
+#: src/gcm4/ui/preferences.py
+msgid "Error"
+msgstr "Fejl"
+
+#: src/gcm4/ui/preferences.py
+msgid "Extensions"
+msgstr "Udvidelser"
+
+#: src/gcm4/ui/preferences.py
+msgid "Loaded"
+msgstr "Indlæst"
+
+#: src/gcm4/ui/preferences.py
+msgid "Log folder"
+msgstr "Logmappe"
+
+#: src/gcm4/ui/preferences.py
+msgid "Logging"
+msgstr "Logning"
+
+#: src/gcm4/ui/preferences.py
+msgid "Main window"
+msgstr "Hovedvindue"
+
+#: src/gcm4/ui/preferences.py
+msgid "No extension found."
+msgstr "Ingen udvidelse fundet."
+
+#: src/gcm4/ui/preferences.py
+msgid "Overridden for this session by --debug or GCM_LOG_LEVEL."
+msgstr "Tilsidesat i denne session af --debug eller GCM_LOG_LEVEL."
+
+#: src/gcm4/ui/preferences.py
 #, python-brace-format
 msgid "Preferences not saved: {error}"
 msgstr "Indstillingerne blev ikke gemt: {error}"
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Preferences page unavailable: {error}"
+msgstr "Indstillingssiden er ikke tilgængelig: {error}"
 
 #: src/gcm4/ui/preferences.py
 msgid "Theme"
@@ -3006,8 +3057,18 @@ msgid "Tree font"
 msgstr "Skrifttype for værtstræet"
 
 #: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Unable to open the folder: {error}"
+msgstr "Kan ikke åbne mappen: {error}"
+
+#: src/gcm4/ui/preferences.py
 msgid "Use system font"
 msgstr "Brug systemets skrifttype"
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Version {version}"
+msgstr "Version {version}"
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format

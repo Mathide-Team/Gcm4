@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME Connection Manager\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-18 14:01+0000\n"
+"POT-Creation-Date: 2026-10-18 14:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -266,7 +266,8 @@ msgstr ""
 msgid "open consoles, exit anyway?"
 msgstr ""
 
-#: gnome_connection_manager.py plugins/plugin_import_putty.py utils.py
+#: gnome_connection_manager.py plugins/plugin_import_putty.py
+#: src/gcm4/ui/preferences.py utils.py
 msgid "Open"
 msgstr ""
 
@@ -621,7 +622,7 @@ msgstr ""
 msgid "Font:"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Shortcuts"
 msgstr ""
 
@@ -1338,7 +1339,8 @@ msgstr ""
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_serial.py
 #: plugins/plugin_spice.py plugins/plugin_vnc.py plugins/plugin_web.py
-#: src/gcm4/core/menu_arbre.py src/gcm4/ui/contexte.py widgets.py
+#: src/gcm4/core/menu_arbre.py src/gcm4/core/preferences.py
+#: src/gcm4/ui/contexte.py widgets.py
 msgid "Connect"
 msgstr ""
 
@@ -2254,8 +2256,8 @@ msgstr ""
 msgid "Remote Port"
 msgstr ""
 
-#: plugins/plugin_ssh.py src/gcm4/core/menu_arbre.py src/gcm4/ui/menu_arbre.py
-#: widgets.py
+#: plugins/plugin_ssh.py src/gcm4/core/menu_arbre.py
+#: src/gcm4/core/preferences.py src/gcm4/ui/menu_arbre.py widgets.py
 msgid "Remove"
 msgstr ""
 
@@ -2615,6 +2617,14 @@ msgstr ""
 msgid "It does not implement: {methods}."
 msgstr ""
 
+#: src/gcm4/core/preferences.py
+msgid "Open the context menu"
+msgstr ""
+
+#: src/gcm4/core/preferences.py
+msgid "Rename the group or edit the host"
+msgstr ""
+
 #: src/gcm4/core/registre.py
 #, python-brace-format
 msgid "{file} does not define PLUGIN."
@@ -2740,7 +2750,7 @@ msgstr ""
 msgid "No matching hosts"
 msgstr ""
 
-#: src/gcm4/ui/host_tree.py
+#: src/gcm4/ui/host_tree.py src/gcm4/ui/preferences.py
 msgid "Hosts"
 msgstr ""
 
@@ -2855,6 +2865,57 @@ msgstr ""
 
 #: src/gcm4/ui/preferences.py
 msgid "Tree font"
+msgstr ""
+
+#: src/gcm4/ui/preferences.py
+msgid "Main window"
+msgstr ""
+
+#: src/gcm4/ui/preferences.py
+msgid "Logging"
+msgstr ""
+
+#: src/gcm4/ui/preferences.py
+msgid "Default log level"
+msgstr ""
+
+#: src/gcm4/ui/preferences.py
+msgid "Overridden for this session by --debug or GCM_LOG_LEVEL."
+msgstr ""
+
+#: src/gcm4/ui/preferences.py
+msgid "Log folder"
+msgstr ""
+
+#: src/gcm4/ui/preferences.py
+msgid "Extensions"
+msgstr ""
+
+#: src/gcm4/ui/preferences.py
+msgid "No extension found."
+msgstr ""
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Version {version}"
+msgstr ""
+
+#: src/gcm4/ui/preferences.py
+msgid "Error"
+msgstr ""
+
+#: src/gcm4/ui/preferences.py
+msgid "Loaded"
+msgstr ""
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Preferences page unavailable: {error}"
+msgstr ""
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Unable to open the folder: {error}"
 msgstr ""
 
 #: src/gcm4/ui/preferences.py
