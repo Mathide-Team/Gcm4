@@ -97,19 +97,10 @@ jobs:
         # La base doit naître très couverte : second contrôle bloquant à 95 %
         # sur le cœur, indépendant du seuil global (fail_under = 18). Même
         # valeur que SEUIL_COEUR de scripts/pr_coverage_comment.py et que
-        # docs/quality/seuil-couverture.md. Sans fichier du cœur (branche
-        # antérieure à l'épopée #118), l'étape ne bloque pas : avertissement.
-        run: |
-          if ! sortie=$(uv run coverage report --include='src/gcm4/core/*' --fail-under=95 2>&1); then
-            if echo "$sortie" | grep -q 'No data to report'; then
-              echo "::warning::aucun fichier src/gcm4/core/ dans cette branche : seuil du cœur non contrôlé"
-            else
-              echo "$sortie"
-              exit 1
-            fi
-          else
-            echo "$sortie"
-          fi
+        # docs/quality/seuil-couverture.md. Bloquant sans dérogation : toute
+        # PR vers dev contient le cœur (il est dans la base), y compris une
+        # PR qui le dégrade — c'est le but.
+        run: uv run coverage report --include='src/gcm4/core/*' --fail-under=95
 
       - name: Aucun test sauté silencieusement (issue #160)
         # Un test sauté est une vérification qui n'a pas eu lieu. Ce job

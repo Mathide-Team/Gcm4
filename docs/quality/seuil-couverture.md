@@ -29,13 +29,19 @@ La base GTK4 doit naître très couverte : un second contrôle bloquant s'appliq
 - **job Qualité** (`ci.yml`) : `uv run coverage report --include='src/gcm4/core/*' --fail-under=95`, juste après `pytest --cov`. Une PR qui fait passer le cœur sous 95 % échoue ;
 - **commentaire de PR** (`scripts/pr_coverage_comment.py`) : ligne dédiée « Cœur `src/gcm4/core/` » (base, PR, delta) et rappel du seuil avec la marge.
 
-Mesure de référence (18/10/2026, branche `dev`) : **98,9 %** (771/779 instructions,
-142/144 branches) — 3,9 points de marge.
+Mesure de référence (18/10/2026, branche `dev`) : **99,3 %** (1476/1485 instructions,
+290/294 branches) — 4,3 points de marge.
 
-À la mesure de référence : `chiffrement.py`, `cli.py`, `menu.py`, `model.py`,
-`theme.py` et `window_state.py` sont à 100 % ; `config.py` à 98,7 % ;
-`i18n.py` à 84,8 % (lignes 22-29, `locale_dirs()` : recherche des catalogues
-compilés) tire vers le bas.
+À la mesure de référence : `chiffrement.py`, `cli.py`, `deplacements.py`, `host_tree.py`,
+`i18n.py`, `menu.py`, `model.py`, `registre.py`, `replies.py`, `theme.py`,
+`validation.py` et `window_state.py` sont à 100 % ; `chemins.py` à 98,9 %,
+`menu_arbre.py` à 99,0 % et `config.py` à 98,5 % ; `plugins.py` (93,8 %) est le
+seul module du cœur sous le seuil, tiré vers le haut par l'ensemble.
+
+Vérification du critère d'acceptation (faite le 18/10/2026) : la commande échoue
+bien sur un périmètre sous le seuil — `coverage report --include='src/gcm4/core/plugins.py'
+--fail-under=95` sort en échec (« Coverage failure: total of 93.8 is less than
+fail-under=95.0 »).
 
 ## Où le voir
 
