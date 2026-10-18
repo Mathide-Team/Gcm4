@@ -35,7 +35,7 @@ def test_actions_du_menu_et_raccourcis(application):
         assert cible.lookup_action(action) is not None, nom
     for action, touches in menu.RACCOURCIS.items():
         assert application.get_accels_for_action(action) == list(touches)
-    assert not application.lookup_action("preferences").get_enabled()  # lot 5, #147
+    assert application.lookup_action("preferences").get_enabled()  # lot 5a, #147
 
 
 def test_menu_principal():

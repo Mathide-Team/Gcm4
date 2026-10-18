@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-12 18:56+0000\n"
+"POT-Creation-Date: 2026-10-18 14:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,11 +138,12 @@ msgstr "Không thể mở tệp nhật ký để viết"
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
-#: src/gcm4/ui/host_dialog.py src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: src/gcm4/ui/host_dialog.py src/gcm4/ui/main_window.py
+#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
 msgid "Cancel"
 msgstr "Hủy"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Check updates"
 msgstr "Kiểm tra cập nhật"
 
@@ -192,7 +193,7 @@ msgstr "Xác nhận khi đóng console"
 msgid "Confirm on close console with middle click"
 msgstr "Xác nhận khi đóng console bằng nhấp chuột giữa"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on exit"
 msgstr "Xác nhận khi thoát"
 
@@ -230,7 +231,7 @@ msgstr "Lệnh Tùy Chỉnh"
 msgid "Custom commands…"
 msgstr "Lệnh tùy chỉnh"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Dark"
 msgstr "Tối"
 
@@ -371,7 +372,7 @@ msgstr "Màu chữ:"
 msgid "GTK Theme:"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "General"
 msgstr "Chung"
 
@@ -477,7 +478,7 @@ msgstr ""
 msgid "Leave blank for passwordless/public key authentication"
 msgstr "Để trống cho xác thực không mật khẩu/khóa công khai"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Light"
 msgstr "Sáng"
 
@@ -596,7 +597,7 @@ msgstr "Khóa riêng tư"
 msgid "Project's Homepage"
 msgstr "Trang chủ của dự án"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/main_window.py
 msgid "Quit"
 msgstr "Thoát"
 
@@ -612,9 +613,9 @@ msgstr "Đổi tên tab"
 msgid "Restore defaults"
 msgstr "Khôi phục mặc định"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Restore open tabs from the previous session on startup"
-msgstr ""
+msgstr "Khôi phục các thẻ đang mở của phiên trước khi khởi động"
 
 #: gnome_connection_manager.py src/gcm4/ui/host_dialog.py utils.py
 msgid "Save"
@@ -640,7 +641,7 @@ msgstr "Chọn màu nền"
 msgid "Select consoles to use:"
 msgstr "Chọn console để sử dụng:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Select font"
 msgstr "Chọn phông chữ"
 
@@ -670,7 +671,7 @@ msgstr "Danh sách server sẽ bị ghi đè, tiếp tục?"
 msgid "Servers"
 msgstr "_Server"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Settings"
 msgstr "Cài đặt"
 
@@ -692,7 +693,7 @@ msgstr "Phím tắt"
 msgid "Shortcuts"
 msgstr "Phím tắt"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Show Panel"
 msgstr "Hiển thị Bảng điều khiển"
 
@@ -704,7 +705,7 @@ msgstr "Lệnh Chuẩn"
 msgid "Stop"
 msgstr "Stop"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "System"
 msgstr "Hệ thống"
 
@@ -2922,6 +2923,14 @@ msgid "No extension handles the protocol «{protocol}». Install it to open this
 msgstr "Không có tiện ích nào xử lý giao thức '{protocol}'. Hãy cài đặt để mở kết nối này."
 
 #: src/gcm4/ui/main_window.py
+msgid "Open connections will be closed."
+msgstr "Các kết nối đang mở sẽ bị đóng."
+
+#: src/gcm4/ui/main_window.py
+msgid "Quit anyway?"
+msgstr "Vẫn thoát?"
+
+#: src/gcm4/ui/main_window.py
 #, python-brace-format
 msgid "Unable to open «{host}»: {error}"
 msgstr "Không thể mở '{host}': {error}"
@@ -2978,6 +2987,27 @@ msgstr "Đổi tên"
 #: src/gcm4/ui/menu_arbre.py
 msgid "This cannot be undone."
 msgstr "Không thể hoàn tác thao tác này."
+
+#: src/gcm4/ui/preferences.py
+msgid "Appearance"
+msgstr "Giao diện"
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Preferences not saved: {error}"
+msgstr "Chưa lưu tùy chọn: {error}"
+
+#: src/gcm4/ui/preferences.py
+msgid "Theme"
+msgstr "Chủ đề"
+
+#: src/gcm4/ui/preferences.py
+msgid "Tree font"
+msgstr "Phông chữ cây máy chủ"
+
+#: src/gcm4/ui/preferences.py
+msgid "Use system font"
+msgstr "Dùng phông chữ hệ thống"
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format

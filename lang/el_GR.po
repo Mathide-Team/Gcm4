@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-12 18:56+0000\n"
+"POT-Creation-Date: 2026-10-18 14:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,11 +138,12 @@ msgstr "Δεν είναι δυνατό το άνοιγμα του αρχείου
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
-#: src/gcm4/ui/host_dialog.py src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: src/gcm4/ui/host_dialog.py src/gcm4/ui/main_window.py
+#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
 msgid "Cancel"
 msgstr "Ακύρωση"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Check updates"
 msgstr "Έλεγχος για ενημερώσεις"
 
@@ -192,7 +193,7 @@ msgstr "Επιβεβαίωση κατά το κλείσιμο της κονσό�
 msgid "Confirm on close console with middle click"
 msgstr "Επιβεβαίωση κατά το κλείσιμο της κονσόλας με μεσαίο κλικ"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on exit"
 msgstr "Επιβεβαίωση κατά την έξοδο"
 
@@ -230,7 +231,7 @@ msgstr "Προσαρμοσμένες Εντολές"
 msgid "Custom commands…"
 msgstr "Προσαρμοσμένες εντολές"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Dark"
 msgstr "Σκοτεινό"
 
@@ -371,7 +372,7 @@ msgstr "Χρώμα προσκηνίου:"
 msgid "GTK Theme:"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "General"
 msgstr "Γενικά"
 
@@ -477,7 +478,7 @@ msgstr ""
 msgid "Leave blank for passwordless/public key authentication"
 msgstr "Αφήστε κενό για έλεγχο ταυτότητας χωρίς κωδικό/δημόσιο κλειδί"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Light"
 msgstr "Φωτεινό"
 
@@ -596,7 +597,7 @@ msgstr "Ιδιωτικό κλειδί"
 msgid "Project's Homepage"
 msgstr "Αρχική σελίδα του έργου"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/main_window.py
 msgid "Quit"
 msgstr "Έξοδος"
 
@@ -612,9 +613,9 @@ msgstr "Μετονομασία καρτέλας"
 msgid "Restore defaults"
 msgstr "Επαναφορά προεπιλογών"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Restore open tabs from the previous session on startup"
-msgstr ""
+msgstr "Επαναφορά των ανοιχτών καρτελών της προηγούμενης συνεδρίας κατά την εκκίνηση"
 
 #: gnome_connection_manager.py src/gcm4/ui/host_dialog.py utils.py
 msgid "Save"
@@ -640,7 +641,7 @@ msgstr "Επιλογή χρώματος φόντου"
 msgid "Select consoles to use:"
 msgstr "Επιλέξτε κονσόλες για χρήση:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Select font"
 msgstr "Επιλογή γραμματοσειράς"
 
@@ -670,7 +671,7 @@ msgstr "Η λίστα διακομιστών θα αντικατασταθεί, 
 msgid "Servers"
 msgstr "_Διακομιστές"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Settings"
 msgstr "Ρυθμίσεις"
 
@@ -692,7 +693,7 @@ msgstr "Συντόμευση"
 msgid "Shortcuts"
 msgstr "Συντομεύσεις"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Show Panel"
 msgstr "Εμφάνιση Πίνακα"
 
@@ -704,7 +705,7 @@ msgstr "Τυπικές Εντολές"
 msgid "Stop"
 msgstr "Διακοπή"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "System"
 msgstr "Συστήματος"
 
@@ -2922,6 +2923,14 @@ msgid "No extension handles the protocol «{protocol}». Install it to open this
 msgstr "Καμία επέκταση δεν χειρίζεται το πρωτόκολλο «{protocol}». Εγκαταστήστε την για να ανοίξετε αυτή τη σύνδεση."
 
 #: src/gcm4/ui/main_window.py
+msgid "Open connections will be closed."
+msgstr "Οι ανοιχτές συνδέσεις θα κλείσουν."
+
+#: src/gcm4/ui/main_window.py
+msgid "Quit anyway?"
+msgstr "Έξοδος ούτως ή άλλως;"
+
+#: src/gcm4/ui/main_window.py
 #, python-brace-format
 msgid "Unable to open «{host}»: {error}"
 msgstr "Αδυναμία ανοίγματος «{host}»: {error}"
@@ -2978,6 +2987,27 @@ msgstr "Μετονομασία"
 #: src/gcm4/ui/menu_arbre.py
 msgid "This cannot be undone."
 msgstr "Αυτή η ενέργεια δεν αναιρείται."
+
+#: src/gcm4/ui/preferences.py
+msgid "Appearance"
+msgstr "Εμφάνιση"
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Preferences not saved: {error}"
+msgstr "Οι προτιμήσεις δεν αποθηκεύτηκαν: {error}"
+
+#: src/gcm4/ui/preferences.py
+msgid "Theme"
+msgstr "Θέμα"
+
+#: src/gcm4/ui/preferences.py
+msgid "Tree font"
+msgstr "Γραμματοσειρά δέντρου κεντρικών υπολογιστών"
+
+#: src/gcm4/ui/preferences.py
+msgid "Use system font"
+msgstr "Χρήση γραμματοσειράς συστήματος"
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format

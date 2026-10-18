@@ -133,6 +133,7 @@ files = [
     "src/gcm4/core/menu_arbre.py",
     "src/gcm4/core/model.py",
     "src/gcm4/core/plugins.py",
+    "src/gcm4/core/preferences.py",
     "src/gcm4/core/registre.py",
     "src/gcm4/core/theme.py",
     "src/gcm4/core/validation.py",

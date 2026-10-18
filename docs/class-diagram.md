@@ -6,7 +6,7 @@
 > toute modification manuelle sera écrasée. Le régénérer avec `make class-diagram` ;
 > le job Qualité échoue s'il est périmé (`--check`).
 
-75 modules · 146 classes · 241 fonctions publiques de module.
+77 modules · 149 classes · 244 fonctions publiques de module.
 
 Conventions : `+` public, `-` privé (préfixe `_`) ; `list~str~` = `list[str]` ; `<<module>>`
 regroupe les fonctions publiques d'un module ; `<<…>>` sur une classe liste `dataclass` et les
@@ -39,7 +39,7 @@ flowchart TD
     g4 -->|5| g0
     g4 -->|1| g3
     g5 -->|1| g3
-    g5 -->|27| g4
+    g5 -->|31| g4
 ```
 
 ## Cœur (sans GTK)
@@ -1269,6 +1269,7 @@ classDiagram
 | `gcm4.core.menu_arbre` | `src/gcm4/core/menu_arbre.py` | Menu contextuel de l'arbre et règles de ses actions, sans GTK (#142). |
 | `gcm4.core.model` | `src/gcm4/core/model.py` | Modèle de la base GTK4 : Host, Group, HostStore, sans GTK (#136). |
 | `gcm4.core.plugins` | `src/gcm4/core/plugins.py` | Contrat v1 entre la base gcm4 et ses plugins de connexion (#149), sans GTK. |
+| `gcm4.core.preferences` | `src/gcm4/core/preferences.py` | Préférences générales de la base GTK4, sans GTK (lot 5a, #147). |
 | `gcm4.core.registre` | `src/gcm4/core/registre.py` | Découverte des plugins et isolation de leurs erreurs (#150), sans GTK. |
 | `gcm4.core.replies` | `src/gcm4/core/replies.py` | Groupes repliés de ``[window] collapsed-folders``, au format GTK3 (#139). |
 | `gcm4.core.theme` | `src/gcm4/core/theme.py` | Thème de la base GTK4, sans GTK (#135). |
@@ -1515,6 +1516,27 @@ classDiagram
         +build_preferences_page() Gtk.Widget None
         +context_menu_items(host) list~MenuItem~
     }
+    class mod_gcm4_core_preferences {
+        <<module>>
+        +load_preferences(config_file) Preferences
+        +save_preference(config_file, nom, valeur) None
+    }
+    class OptionWconfig {
+        <<dataclass>>
+        +str nom
+        +str cle
+        +str classement
+        +str destination
+    }
+    class Preferences {
+        <<dataclass>>
+        +bool confirm_exit
+        +bool check_updates
+        +bool restore_open_tabs
+        +str theme
+        +bool show_panel
+        +str tree_font
+    }
     class mod_gcm4_core_registre {
         <<module>>
         +dossier_source() Path None
@@ -1595,6 +1617,7 @@ classDiagram
 | `gcm4.ui.host_tree` | `src/gcm4/ui/host_tree.py` | Arbre des groupes et des hôtes du panneau gauche (#139). |
 | `gcm4.ui.main_window` | `src/gcm4/ui/main_window.py` | Fenêtre principale de gcm4 (#134). |
 | `gcm4.ui.menu_arbre` | `src/gcm4/ui/menu_arbre.py` | Menu contextuel, actions, raccourcis et activation de l'arbre (#142). |
+| `gcm4.ui.preferences` | `src/gcm4/ui/preferences.py` | Préférences de la base GTK4 : pages Général et Apparence (lot 5a, #147). |
 
 ```mermaid
 classDiagram
@@ -1605,6 +1628,7 @@ classDiagram
     class Gcm4Application {
         <<Adw.Application>>
         +appliquer_theme(mode) None
+        +appliquer_police_arbre(description) None
         +set_group_colors(couleurs) None
         +boite_a_propos() Gtk.Widget
     }
@@ -1663,4 +1687,10 @@ classDiagram
         +ouvrir_dialogue_hote(mode, hote, groupe) HostDialog
         +appliquer_couleur(chemin, couleur) bool
     }
+    class mod_gcm4_ui_preferences {
+        <<module>>
+        +css_police(description) str
+    }
+    class PreferencesWindow
+    PreferencesWindow <|-- PreferencesWindow
 ```

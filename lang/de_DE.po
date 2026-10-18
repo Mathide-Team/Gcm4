@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-12 18:56+0000\n"
+"POT-Creation-Date: 2026-10-18 14:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,11 +138,12 @@ msgstr "Protokolldatei kann nicht zum Schreiben geöffnet werden"
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
-#: src/gcm4/ui/host_dialog.py src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: src/gcm4/ui/host_dialog.py src/gcm4/ui/main_window.py
+#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Check updates"
 msgstr "Auf Updates prüfen"
 
@@ -192,7 +193,7 @@ msgstr "Bestätigen beim Schließen der Konsole"
 msgid "Confirm on close console with middle click"
 msgstr "Bestätigen beim Schließen der Konsole mit Mittelklick"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on exit"
 msgstr "Beim Beenden bestätigen"
 
@@ -230,7 +231,7 @@ msgstr "Benutzerdefinierte Befehle"
 msgid "Custom commands…"
 msgstr "Benutzerdefinierte Befehle"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Dark"
 msgstr "Dunkel"
 
@@ -371,7 +372,7 @@ msgstr "Vordergrundfarbe:"
 msgid "GTK Theme:"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "General"
 msgstr "Allgemein"
 
@@ -477,7 +478,7 @@ msgstr ""
 msgid "Leave blank for passwordless/public key authentication"
 msgstr "Leer lassen für passwortlose/öffentliche Schlüsselauthentifizierung"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Light"
 msgstr "Hell"
 
@@ -596,7 +597,7 @@ msgstr "Privater Schlüssel"
 msgid "Project's Homepage"
 msgstr "Projekt-Homepage"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/main_window.py
 msgid "Quit"
 msgstr "Beenden"
 
@@ -612,9 +613,9 @@ msgstr "Tab umbenennen"
 msgid "Restore defaults"
 msgstr "Standardwerte wiederherstellen"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Restore open tabs from the previous session on startup"
-msgstr ""
+msgstr "Beim Start die offenen Tabs der letzten Sitzung wiederherstellen"
 
 #: gnome_connection_manager.py src/gcm4/ui/host_dialog.py utils.py
 msgid "Save"
@@ -640,7 +641,7 @@ msgstr "Hintergrundfarbe auswählen"
 msgid "Select consoles to use:"
 msgstr "Zu verwendende Konsolen auswählen:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Select font"
 msgstr "Schriftart auswählen"
 
@@ -670,7 +671,7 @@ msgstr "Die Serverliste wird überschrieben, fortfahren?"
 msgid "Servers"
 msgstr "_Server"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Settings"
 msgstr "Einstellungen"
 
@@ -692,7 +693,7 @@ msgstr "Tastenkombination"
 msgid "Shortcuts"
 msgstr "Tastenkombinationen"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Show Panel"
 msgstr "Panel anzeigen"
 
@@ -704,7 +705,7 @@ msgstr "Standardbefehle"
 msgid "Stop"
 msgstr "Stopp"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "System"
 msgstr "System"
 
@@ -2922,6 +2923,14 @@ msgid "No extension handles the protocol «{protocol}». Install it to open this
 msgstr "Keine Erweiterung verarbeitet das Protokoll „{protocol}“. Installieren Sie sie, um diese Verbindung zu öffnen."
 
 #: src/gcm4/ui/main_window.py
+msgid "Open connections will be closed."
+msgstr "Offene Verbindungen werden geschlossen."
+
+#: src/gcm4/ui/main_window.py
+msgid "Quit anyway?"
+msgstr "Trotzdem beenden?"
+
+#: src/gcm4/ui/main_window.py
 #, python-brace-format
 msgid "Unable to open «{host}»: {error}"
 msgstr "„{host}“ kann nicht geöffnet werden: {error}"
@@ -2978,6 +2987,27 @@ msgstr "Umbenennen"
 #: src/gcm4/ui/menu_arbre.py
 msgid "This cannot be undone."
 msgstr "Dies kann nicht rückgängig gemacht werden."
+
+#: src/gcm4/ui/preferences.py
+msgid "Appearance"
+msgstr "Erscheinungsbild"
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Preferences not saved: {error}"
+msgstr "Einstellungen nicht gespeichert: {error}"
+
+#: src/gcm4/ui/preferences.py
+msgid "Theme"
+msgstr "Thema"
+
+#: src/gcm4/ui/preferences.py
+msgid "Tree font"
+msgstr "Schrift der Hostliste"
+
+#: src/gcm4/ui/preferences.py
+msgid "Use system font"
+msgstr "Systemschrift verwenden"
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format

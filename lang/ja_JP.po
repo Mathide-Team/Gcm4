@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-12 18:56+0000\n"
+"POT-Creation-Date: 2026-10-18 14:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,11 +138,12 @@ msgstr "ログファイルを書き込み用に開けません"
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
-#: src/gcm4/ui/host_dialog.py src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: src/gcm4/ui/host_dialog.py src/gcm4/ui/main_window.py
+#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Check updates"
 msgstr "更新を確認"
 
@@ -192,7 +193,7 @@ msgstr "コンソールを閉じるときに確認"
 msgid "Confirm on close console with middle click"
 msgstr "中クリックでコンソールを閉じるときに確認"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on exit"
 msgstr "終了時に確認"
 
@@ -230,7 +231,7 @@ msgstr "カスタムコマンド"
 msgid "Custom commands…"
 msgstr "カスタムコマンド"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Dark"
 msgstr "ダーク"
 
@@ -371,7 +372,7 @@ msgstr "文字色:"
 msgid "GTK Theme:"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "General"
 msgstr "一般"
 
@@ -477,7 +478,7 @@ msgstr ""
 msgid "Leave blank for passwordless/public key authentication"
 msgstr "パスワードなし/公開鍵認証の場合は空白のままにしてください"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Light"
 msgstr "ライト"
 
@@ -596,7 +597,7 @@ msgstr "秘密鍵"
 msgid "Project's Homepage"
 msgstr "プロジェクトのホームページ"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/main_window.py
 msgid "Quit"
 msgstr "終了"
 
@@ -612,9 +613,9 @@ msgstr "タブの名前を変更"
 msgid "Restore defaults"
 msgstr "デフォルトに戻す"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Restore open tabs from the previous session on startup"
-msgstr ""
+msgstr "起動時に前回のセッションで開いていたタブを復元する"
 
 #: gnome_connection_manager.py src/gcm4/ui/host_dialog.py utils.py
 msgid "Save"
@@ -640,7 +641,7 @@ msgstr "背景色を選択"
 msgid "Select consoles to use:"
 msgstr "使用するコンソールを選択してください:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Select font"
 msgstr "フォントを選択"
 
@@ -670,7 +671,7 @@ msgstr "サーバーリストが上書きされます。続行しますか？"
 msgid "Servers"
 msgstr "_サーバー"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Settings"
 msgstr "設定"
 
@@ -692,7 +693,7 @@ msgstr "ショートカット"
 msgid "Shortcuts"
 msgstr "ショートカット"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Show Panel"
 msgstr "パネルを表示"
 
@@ -704,7 +705,7 @@ msgstr "標準コマンド"
 msgid "Stop"
 msgstr "ストップ"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "System"
 msgstr "システム"
 
@@ -2922,6 +2923,14 @@ msgid "No extension handles the protocol «{protocol}». Install it to open this
 msgstr "プロトコル「{protocol}」を扱う拡張機能がありません。この接続を開くにはインストールしてください。"
 
 #: src/gcm4/ui/main_window.py
+msgid "Open connections will be closed."
+msgstr "開いている接続は閉じられます。"
+
+#: src/gcm4/ui/main_window.py
+msgid "Quit anyway?"
+msgstr "それでも終了しますか？"
+
+#: src/gcm4/ui/main_window.py
 #, python-brace-format
 msgid "Unable to open «{host}»: {error}"
 msgstr "「{host}」を開けません: {error}"
@@ -2978,6 +2987,27 @@ msgstr "名前を変更"
 #: src/gcm4/ui/menu_arbre.py
 msgid "This cannot be undone."
 msgstr "この操作は元に戻せません。"
+
+#: src/gcm4/ui/preferences.py
+msgid "Appearance"
+msgstr "外観"
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Preferences not saved: {error}"
+msgstr "設定を保存できませんでした: {error}"
+
+#: src/gcm4/ui/preferences.py
+msgid "Theme"
+msgstr "テーマ"
+
+#: src/gcm4/ui/preferences.py
+msgid "Tree font"
+msgstr "ホストツリーのフォント"
+
+#: src/gcm4/ui/preferences.py
+msgid "Use system font"
+msgstr "システムのフォントを使用"
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format
