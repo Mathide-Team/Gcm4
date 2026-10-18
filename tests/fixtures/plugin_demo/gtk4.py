@@ -56,11 +56,19 @@ class DemoPlugin(ConnectionPlugin):
         return 4242
 
     def build_host_options_widget(self, host, options, changed):
-        """Aucune option modifiable : un libellé."""
+        """Option ``mode`` : une ligne de saisie (exemple de ``docs/plugins.md``)."""
         logger.debug("build_host_options_widget: entrée")
-        widget = Gtk.Label(label="demo")
+        ligne = Gtk.Entry()
+        ligne.set_placeholder_text("mode")
+        ligne.set_text(options.get("mode", ""))
+
+        def saisie(*_args):
+            options["mode"] = ligne.get_text()
+            changed()
+
+        ligne.connect("changed", saisie)
         logger.debug("build_host_options_widget: fait")
-        return widget
+        return ligne
 
     def open(self, host):
         """Ouvre une session, ou lève si l'adresse vaut ``echec``."""
