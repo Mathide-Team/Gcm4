@@ -178,8 +178,7 @@ def construire_commentaire(
     c_pr, c_base = couverture_coeur(rapport_pr), couverture_coeur(rapport_base)
     if c_pr is not None and c_base is not None:
         lignes.append(
-            f"| Cœur `src/gcm4/core/` | {_pct(c_base)} | {_pct(c_pr)} | "
-            f"{_delta(c_pr, c_base)} |"
+            f"| Cœur `src/gcm4/core/` | {_pct(c_base)} | {_pct(c_pr)} | {_delta(c_pr, c_base)} |"
         )
     lignes += [
         "",
