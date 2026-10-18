@@ -27,6 +27,7 @@ import json
 import os
 import re
 import sys
+import urllib.error
 import urllib.request
 
 from loguru import logger
@@ -224,8 +225,33 @@ def main(argv: list[str]) -> int:
     if not token or not repo:
         logger.error("GITHUB_TOKEN et GITHUB_REPOSITORY sont requis")
         return 2
-    print(publier(repo, arguments.pr_number, corps, token))
+    try:
+        print(publier(repo, arguments.pr_number, corps, token))
+    except urllib.error.HTTPError as exc:
+        if exc.code != 403:
+            raise
+        # PR depuis un fork : GITHUB_TOKEN est en lecture seule, GitHub refuse
+        # le commentaire (403). Le rapport reste lisible dans le résumé du job ;
+        # ce job n'applique aucun seuil, il ne doit donc pas échouer.
+        logger.warning("publication refusée (403, PR depuis un fork) : {}", exc)
+        ecrire_resume(corps)
+        print(
+            "::warning::Commentaire de couverture refusé (403, PR depuis un fork) : "
+            "rapport dans le résumé du job."
+        )
     return 0
+
+
+def ecrire_resume(corps: str) -> None:
+    """Ajoute ``corps`` au résumé du job (``GITHUB_STEP_SUMMARY``), sinon l'affiche."""
+    logger.debug("ecrire_resume() | {} caractère(s)", len(corps))
+    chemin = os.environ.get("GITHUB_STEP_SUMMARY")
+    if chemin:
+        with open(chemin, "a", encoding="utf-8") as resume:
+            resume.write(corps + "\n")
+    else:
+        print(corps)
+    logger.debug("ecrire_resume() -> {}", "résumé" if chemin else "sortie standard")
 
 
 if __name__ == "__main__":
