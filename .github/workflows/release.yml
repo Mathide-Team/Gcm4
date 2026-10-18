@@ -41,8 +41,8 @@ jobs:
 
       - name: Outils de construction (gettext, rpm, fpm)
         run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y -qq gettext rpm ruby ruby-dev build-essential
+          sudo -n apt-get update -qq
+          sudo -n apt-get install -y -qq gettext rpm ruby ruby-dev build-essential
           sudo gem install --no-document fpm
 
       - name: Version
