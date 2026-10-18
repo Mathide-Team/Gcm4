@@ -74,6 +74,82 @@ def test_commentaire_sans_seuil():
     assert "Aucun seuil bloquant" in pcc.construire_commentaire(_rapport(1), _rapport(1), None)
 
 
+def _fichier_core(couvertes, instructions, branches_couvertes, branches, pct=None):
+    """Entrée `files` d'un rapport JSON avec le détail lignes + branches."""
+    return {
+        "summary": {
+            "covered_lines": couvertes,
+            "num_statements": instructions,
+            "covered_branches": branches_couvertes,
+            "num_branches": branches,
+            "percent_covered": pct if pct is not None else 100.0,
+        }
+    }
+
+
+def _totaux(pct, lignes=(60, 100), branches=(6, 10)):
+    """`totals` complet d'un rapport JSON."""
+    return {
+        "percent_covered": pct,
+        "covered_lines": lignes[0],
+        "num_statements": lignes[1],
+        "covered_branches": branches[0],
+        "num_branches": branches[1],
+    }
+
+
+def test_couverture_coeur_agregee():
+    """Lignes et branches du cœur sont agrégées en un pourcentage."""
+    rapport = {
+        "totals": _totaux(20.0),
+        "files": {
+            "src/gcm4/core/config.py": _fichier_core(290, 294, 84, 86),
+            "src/gcm4/core/menu.py": _fichier_core(19, 19, 8, 8),
+            "src/gcm4/window.py": _fichier_core(10, 100, 0, 10, pct=10.0),
+        },
+    }
+    # (290+84+19+8) / (294+86+19+8) = 401/407 = 98,5 %
+    assert pcc.couverture_coeur(rapport) == pytest.approx(100 * 401 / 407)
+
+
+def test_couverture_coeur_absente():
+    """Sans fichier du cœur : None, la ligne est omise du commentaire."""
+    rapport = {
+        "totals": _totaux(20.0),
+        "files": {"src/gcm4_core.py": _fichier_core(50, 100, 0, 0, pct=50.0)},
+    }
+    assert pcc.couverture_coeur(rapport) is None
+    corps = pcc.construire_commentaire(rapport, rapport, 18.0)
+    assert "src/gcm4/core/" not in corps
+    assert "seuil bloquant du cœur" not in corps
+
+
+def test_commentaire_ligne_coeur_et_marge():
+    """Ligne dédiée au cœur, delta, et rappel du seuil 95 % (issue #164)."""
+    pr = {
+        "totals": _totaux(21.0),
+        "files": {"src/gcm4/core/config.py": _fichier_core(290, 294, 84, 86, pct=98.4)},
+    }
+    base = {
+        "totals": _totaux(19.7, (55, 100), (5, 10)),
+        "files": {"src/gcm4/core/config.py": _fichier_core(288, 294, 80, 86, pct=98.0)},
+    }
+    corps = pcc.construire_commentaire(pr, base, 18.0)
+    assert "| Cœur `src/gcm4/core/` | 96.8 % | 98.4 % | +1.6 pt |" in corps
+    assert "Seuil bloquant du cœur : 95.0 % (issue #164), marge 3.4 pt." in corps
+
+
+def test_commentaire_coeur_sous_le_seuil():
+    """Un cœur sous 95 % est signalé en gras."""
+    pr = {
+        "totals": _totaux(21.0),
+        "files": {"src/gcm4/core/config.py": _fichier_core(100, 294, 0, 86, pct=26.3)},
+    }
+    base = json.loads(json.dumps(pr))
+    corps = pcc.construire_commentaire(pr, base, 18.0)
+    assert "**Sous le seuil bloquant du cœur** de 95.0 % (issue #164)" in corps
+
+
 def test_fichiers_en_baisse_tries_et_nouveaux_ignores():
     """Baisses triées ; fichiers nouveaux ou stables absents."""
     pr = _rapport(10, fichiers={"a.py": 50.0, "b.py": 10.0, "c.py": 90.0, "neuf.py": 0.0})
