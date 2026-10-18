@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import urllib.error
 from pathlib import Path
 
 import pytest
@@ -216,3 +217,41 @@ def test_main_sans_environnement_github(rapports, monkeypatch):
     monkeypatch.delenv("GITHUB_TOKEN", raising=False)
     monkeypatch.delenv("GITHUB_REPOSITORY", raising=False)
     assert pcc.main(rapports) == 2
+
+
+def _refus(code):
+    def faux(*_a, **_k):
+        raise urllib.error.HTTPError("https://api.github.com/x", code, "refus", {}, None)
+
+    return faux
+
+
+def test_main_pr_de_fork_403_resume_du_job(rapports, monkeypatch, tmp_path, capsys):
+    """403 (jeton en lecture seule, PR de fork) : rapport dans le résumé, code 0."""
+    resume = tmp_path / "resume.md"
+    monkeypatch.setenv("GITHUB_TOKEN", "t")
+    monkeypatch.setenv("GITHUB_REPOSITORY", "o/r")
+    monkeypatch.setenv("GITHUB_STEP_SUMMARY", str(resume))
+    monkeypatch.setattr(pcc, "_appel_api", _refus(403))
+    assert pcc.main(rapports) == 0
+    assert "+1.0 pt" in resume.read_text(encoding="utf-8")
+    assert "::warning::" in capsys.readouterr().out
+
+
+def test_main_403_sans_resume_affiche(rapports, monkeypatch, capsys):
+    """Hors GitHub Actions (pas de GITHUB_STEP_SUMMARY) : rapport sur la sortie."""
+    monkeypatch.setenv("GITHUB_TOKEN", "t")
+    monkeypatch.setenv("GITHUB_REPOSITORY", "o/r")
+    monkeypatch.delenv("GITHUB_STEP_SUMMARY", raising=False)
+    monkeypatch.setattr(pcc, "_appel_api", _refus(403))
+    assert pcc.main(rapports) == 0
+    assert "+1.0 pt" in capsys.readouterr().out
+
+
+def test_main_autre_erreur_http_remonte(rapports, monkeypatch):
+    """Une autre erreur HTTP (500…) reste une erreur."""
+    monkeypatch.setenv("GITHUB_TOKEN", "t")
+    monkeypatch.setenv("GITHUB_REPOSITORY", "o/r")
+    monkeypatch.setattr(pcc, "_appel_api", _refus(500))
+    with pytest.raises(urllib.error.HTTPError):
+        pcc.main(rapports)
