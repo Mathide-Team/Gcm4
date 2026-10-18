@@ -40,8 +40,9 @@ jobs:
 
       - name: gettext (make install des tests de paquet, issue #162)
         run: |
-          SUDO=""; if [ "$(id -u)" != "0" ]; then SUDO="sudo"; fi
-          command -v msgfmt >/dev/null || { $SUDO apt-get update && $SUDO env DEBIAN_FRONTEND=noninteractive apt-get install -y gettext; }
+          SUDO=""; if [ "$(id -u)" != "0" ]; then SUDO="sudo -n"; fi
+          command -v msgfmt >/dev/null || { $SUDO apt-get update && $SUDO env DEBIAN_FRONTEND=noninteractive apt-get install -y gettext; } \
+            || { echo "::error::gettext absent et sudo sans mot de passe indisponible sur ce runner : installer gettext sur la machine (sudo apt-get install gettext)"; exit 1; }
 
       - name: Couverture de la PR
         run: |
