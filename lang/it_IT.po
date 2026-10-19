@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-19 12:51+0000\n"
+"POT-Creation-Date: 2026-10-19 12:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -545,7 +545,7 @@ msgid "Only on clean exit"
 msgstr "Solo in caso di uscita normale"
 
 #: gnome_connection_manager.py plugins/plugin_import_putty.py
-#: src/gcm4/ui/preferences.py utils.py
+#: src/gcm4/ui/mises_a_jour.py src/gcm4/ui/preferences.py utils.py
 msgid "Open"
 msgstr "Apri"
 
@@ -3015,6 +3015,27 @@ msgstr "Rinomina"
 #: src/gcm4/ui/menu_arbre.py
 msgid "This cannot be undone."
 msgstr "L'operazione non può essere annullata."
+
+#: src/gcm4/ui/mises_a_jour.py
+msgid "Allow"
+msgstr "Consenti"
+
+#: src/gcm4/ui/mises_a_jour.py
+msgid "At startup, Gnome Connection Manager can ask GitHub (api.github.com) whether a newer version has been published. You can change this later in the preferences."
+msgstr "All'avvio, Gnome Connection Manager può chiedere a GitHub (api.github.com) se è stata pubblicata una versione più recente. Potrai cambiare questa scelta in seguito nelle preferenze."
+
+#: src/gcm4/ui/mises_a_jour.py
+msgid "Check for updates?"
+msgstr "Controllare gli aggiornamenti?"
+
+#: src/gcm4/ui/mises_a_jour.py
+msgid "No"
+msgstr "No"
+
+#: src/gcm4/ui/mises_a_jour.py
+#, python-brace-format
+msgid "Version {version} is available"
+msgstr "È disponibile la versione {version}"
 
 #: src/gcm4/ui/preferences.py
 msgid "Appearance"

@@ -50,6 +50,12 @@ def _pomper(n: int = 60) -> None:
         contexte.iteration(False)
 
 
+@pytest.fixture(autouse=True)
+def _sans_verification_des_mises_a_jour(monkeypatch):
+    """Aucun accès réseau ni question d'accord au démarrage pendant les tests (#245)."""
+    monkeypatch.setenv("GCM_NO_UPDATE_CHECK", "1")
+
+
 @pytest.fixture
 def pomper():
     """Fonction qui traite les événements GTK en attente."""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-19 12:51+0000\n"
+"POT-Creation-Date: 2026-10-19 12:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -545,7 +545,7 @@ msgid "Only on clean exit"
 msgstr "Doar la ieșire normală"
 
 #: gnome_connection_manager.py plugins/plugin_import_putty.py
-#: src/gcm4/ui/preferences.py utils.py
+#: src/gcm4/ui/mises_a_jour.py src/gcm4/ui/preferences.py utils.py
 msgid "Open"
 msgstr "Deschide"
 
@@ -3015,6 +3015,27 @@ msgstr "Redenumire"
 #: src/gcm4/ui/menu_arbre.py
 msgid "This cannot be undone."
 msgstr "Acțiunea nu poate fi anulată."
+
+#: src/gcm4/ui/mises_a_jour.py
+msgid "Allow"
+msgstr "Permite"
+
+#: src/gcm4/ui/mises_a_jour.py
+msgid "At startup, Gnome Connection Manager can ask GitHub (api.github.com) whether a newer version has been published. You can change this later in the preferences."
+msgstr "La pornire, Gnome Connection Manager poate întreba GitHub (api.github.com) dacă a fost publicată o versiune mai nouă. Puteți schimba asta mai târziu în preferințe."
+
+#: src/gcm4/ui/mises_a_jour.py
+msgid "Check for updates?"
+msgstr "Verificați actualizările?"
+
+#: src/gcm4/ui/mises_a_jour.py
+msgid "No"
+msgstr "Nu"
+
+#: src/gcm4/ui/mises_a_jour.py
+#, python-brace-format
+msgid "Version {version} is available"
+msgstr "Versiunea {version} este disponibilă"
 
 #: src/gcm4/ui/preferences.py
 msgid "Appearance"

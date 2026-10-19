@@ -409,6 +409,15 @@ d'environnement, données sensibles à relire avant de joindre un journal à
 un bug, règles pour les contributeurs : voir
 [docs/journalisation.md](docs/journalisation.md).
 
+## Vérification des mises à jour (gcm4)
+
+Au premier démarrage, gcm4 demande s'il peut interroger GitHub
+(`api.github.com`) pour savoir si une version plus récente est publiée ;
+rien n'est envoyé sans cet accord. Le choix se change dans les
+préférences (Général > Vérifier les mises à jour). `GCM_NO_UPDATE_CHECK=1`
+désactive entièrement la vérification (paquets de distribution, postes
+sans accès Internet).
+
 ---
 
 ## Contribuer

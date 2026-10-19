@@ -131,6 +131,7 @@ files = [
     "src/gcm4/core/i18n.py",
     "src/gcm4/core/menu.py",
     "src/gcm4/core/menu_arbre.py",
+    "src/gcm4/core/mises_a_jour.py",
     "src/gcm4/core/model.py",
     "src/gcm4/core/onglets.py",
     "src/gcm4/core/plugins.py",

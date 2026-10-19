@@ -15,6 +15,7 @@ from gcm4.core import preferences as prefs_core
 from gcm4.core.config import ConfigError
 from gcm4.core.i18n import _
 from gcm4.core.registre import Candidat, PluginRegistry, decouvrir
+from gcm4.ui import mises_a_jour
 from gcm4.ui.contexte import ContexteApplication
 from gcm4.ui.main_window import MainWindow
 from gcm4.ui.preferences import PreferencesWindow, css_police
@@ -172,6 +173,7 @@ class Gcm4Application(Adw.Application):
             fenetre = MainWindow(self, self.args.config_dir)
             fenetre.present()
             fenetre.restaurer_onglets()  # une fois, à la création (#246)
+            mises_a_jour.au_demarrage(fenetre)  # jamais sans accord (#245)
         else:
             fenetre.present()
         logger.debug("_on_activate: fenêtre présentée")

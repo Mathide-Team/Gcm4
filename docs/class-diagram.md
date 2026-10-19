@@ -6,7 +6,7 @@
 > toute modification manuelle sera écrasée. Le régénérer avec `make class-diagram` ;
 > le job Qualité échoue s'il est périmé (`--check`).
 
-78 modules · 150 classes · 251 fonctions publiques de module.
+80 modules · 151 classes · 264 fonctions publiques de module.
 
 Conventions : `+` public, `-` privé (préfixe `_`) ; `list~str~` = `list[str]` ; `<<module>>`
 regroupe les fonctions publiques d'un module ; `<<…>>` sur une classe liste `dataclass` et les
@@ -39,8 +39,8 @@ flowchart TD
     g4 -->|5| g0
     g4 -->|1| g3
     g5 -->|2| g0
-    g5 -->|1| g3
-    g5 -->|33| g4
+    g5 -->|2| g3
+    g5 -->|37| g4
 ```
 
 ## Cœur (sans GTK)
@@ -1268,6 +1268,7 @@ classDiagram
 | `gcm4.core.i18n` | `src/gcm4/core/i18n.py` | Traductions de gcm4 : domaine gettext ``gcm-lang`` de l'application GTK3. |
 | `gcm4.core.menu` | `src/gcm4/core/menu.py` | Menu principal et raccourcis de gcm4, décrits sans GTK (#134). |
 | `gcm4.core.menu_arbre` | `src/gcm4/core/menu_arbre.py` | Menu contextuel de l'arbre et règles de ses actions, sans GTK (#142). |
+| `gcm4.core.mises_a_jour` | `src/gcm4/core/mises_a_jour.py` | Vérification des mises à jour, sans GTK ni réseau dans les tests (#245). |
 | `gcm4.core.model` | `src/gcm4/core/model.py` | Modèle de la base GTK4 : Host, Group, HostStore, sans GTK (#136). |
 | `gcm4.core.onglets` | `src/gcm4/core/onglets.py` | Onglets ouverts, enregistrés à la fermeture et restaurés au démarrage (#246). |
 | `gcm4.core.plugins` | `src/gcm4/core/plugins.py` | Contrat v1 entre la base gcm4 et ses plugins de connexion (#149), sans GTK. |
@@ -1427,6 +1428,21 @@ classDiagram
         +int hotes
         +int sous_groupes
         +vide() bool
+    }
+    class mod_gcm4_core_mises_a_jour {
+        <<module>>
+        +cle_version(texte) tuple~tuple~int, ...~, tuple~int, int~~ None
+        +plus_recente(installee, publiee) bool
+        +lire_reponse(texte) MiseAJour None
+        +recuperer(url) str None
+        +verifier(installee, recuperation) MiseAJour None
+        +lire_accord(config_file) bool None
+        +decision(check_updates, accord, environ) str
+    }
+    class MiseAJour {
+        <<dataclass>>
+        +str version
+        +str url
     }
     class mod_gcm4_core_model {
         <<module>>
@@ -1634,6 +1650,7 @@ classDiagram
 | `gcm4.ui.host_tree` | `src/gcm4/ui/host_tree.py` | Arbre des groupes et des hôtes du panneau gauche (#139). |
 | `gcm4.ui.main_window` | `src/gcm4/ui/main_window.py` | Fenêtre principale de gcm4 (#134). |
 | `gcm4.ui.menu_arbre` | `src/gcm4/ui/menu_arbre.py` | Menu contextuel, actions, raccourcis et activation de l'arbre (#142). |
+| `gcm4.ui.mises_a_jour` | `src/gcm4/ui/mises_a_jour.py` | Vérification des mises à jour au démarrage, côté interface (#245). |
 | `gcm4.ui.preferences` | `src/gcm4/ui/preferences.py` | Préférences de la base GTK4 : pages Général et Apparence (lot 5a, #147). |
 
 ```mermaid
@@ -1705,6 +1722,15 @@ classDiagram
         +modifier(operation) bool
         +ouvrir_dialogue_hote(mode, hote, groupe) HostDialog
         +appliquer_couleur(chemin, couleur) bool
+    }
+    class mod_gcm4_ui_mises_a_jour {
+        <<module>>
+        +enregistrer_accord(config_file, accord) None
+        +au_demarrage(fenetre, environ, verification) str
+        +demander_accord(fenetre, verification) Adw.Dialog Adw.MessageDialog
+        +lancer_verification(fenetre, verification) threading.Thread
+        +afficher(fenetre, resultat) bool
+        +ouvrir_page(fenetre, url) None
     }
     class mod_gcm4_ui_preferences {
         <<module>>
