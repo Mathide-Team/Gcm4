@@ -23,12 +23,14 @@ même temps (voir ``gcm4.ui.preferences``).
 from __future__ import annotations
 
 import configparser
+from collections.abc import Mapping
 from dataclasses import dataclass
 
 from loguru import logger
 
-from gcm4.core import theme, window_state
+from gcm4.core import menu, theme, window_state
 from gcm4.core.config import SECTION_OPTIONS, update_keys
+from gcm4.core.i18n import N_
 
 # --- inventaire de Wconfig ------------------------------------------------------
 
@@ -110,7 +112,12 @@ INVENTAIRE: tuple[OptionWconfig, ...] = (
     OptionWconfig("THEME_MODE", "window/theme-mode", BASE, "page Apparence (#147)"),
     OptionWconfig("DARK_MODE", "window/dark-mode", BASE, "écrite avec theme-mode (#135)"),
     # Onglet « Shortcuts »
-    OptionWconfig("shortcuts", "shortcuts/*", BASE, "page Raccourcis (#148)"),
+    OptionWconfig(
+        "shortcuts",
+        "shortcuts/*",
+        BASE,
+        "page Raccourcis (#148, lecture seule ; édition : issue de suivi)",
+    ),
     OptionWconfig("custom commands", "shortcuts/*", TERMINAL, "plugin terminal"),
     # Onglets ajoutés par les plugins et modèles série
     OptionWconfig("build_preferences_tab", "", PROTOCOLE, "plugin.build_preferences_page (#148)"),
@@ -134,6 +141,7 @@ class Preferences:
     theme: str = "system"
     show_panel: bool = True
     tree_font: str = ""
+    log_level: str = "INFO"
 
 
 #: Préférence → (section, clé) INI. ``theme`` passe par :func:`theme.save_theme`.
@@ -144,7 +152,13 @@ CLES: dict[str, tuple[str, str]] = {
     "theme": (window_state.SECTION, theme.CLE_THEME),
     "show_panel": (window_state.SECTION, window_state.CLE_PANNEAU_VISIBLE),
     "tree_font": (window_state.SECTION, CLE_POLICE_ARBRE),
+    "log_level": (SECTION_OPTIONS, "log-level"),
 }
+
+#: Niveaux proposés dans Préférences > Journalisation (#130, #148).
+NIVEAUX_JOURNAL = ("TRACE", "DEBUG", "INFO", "WARNING", "ERROR")
+#: Variables d'environnement prioritaires sur la préférence (``logging_config``).
+VARIABLES_JOURNAL = ("GCM_LOG_LEVEL", "GCM_DEBUG")
 
 
 def _booleen(cp: configparser.RawConfigParser, section: str, cle: str, defaut: bool) -> bool:
@@ -170,6 +184,12 @@ def load_preferences(config_file: str) -> Preferences:
     prefs.theme = theme.load_theme(config_file)
     section, cle = CLES["tree_font"]
     prefs.tree_font = cp.get(section, cle, fallback="").strip()
+    section, cle = CLES["log_level"]
+    niveau = cp.get(section, cle, fallback=prefs.log_level).strip().upper()
+    if niveau in NIVEAUX_JOURNAL:
+        prefs.log_level = niveau
+    else:
+        logger.warning("load_preferences: log-level {!r} inconnu, INFO", niveau)
     logger.debug("load_preferences: {}", prefs)
     return prefs
 
@@ -187,6 +207,8 @@ def save_preference(config_file: str, nom: str, valeur: bool | str) -> None:
     attendu = type(getattr(Preferences(), nom))
     if type(valeur) is not attendu:
         raise ValueError(f"{nom} : {attendu.__name__} attendu")
+    if nom == "log_level" and valeur not in NIVEAUX_JOURNAL:
+        raise ValueError(f"niveau inconnu : {valeur!r}")
     if nom == "theme":
         theme.save_theme(config_file, str(valeur))  # écrit aussi dark-mode (GTK3)
         logger.debug("save_preference: thème enregistré")
@@ -195,3 +217,65 @@ def save_preference(config_file: str, nom: str, valeur: bool | str) -> None:
     texte = str(valeur).strip() if isinstance(valeur, str) else str(valeur)
     update_keys(config_file, section, {cle: texte})
     logger.debug("save_preference: [{}] {} enregistrée", section, cle)
+
+
+def niveau_journal(
+    debug_cli: bool, preference: str, environ: Mapping[str, str]
+) -> tuple[str, str]:
+    """Niveau de journal effectif et sa source : ``cli``, ``env`` ou ``preferences``.
+
+    Priorité : ``--debug``, puis ``GCM_LOG_LEVEL`` / ``GCM_DEBUG``
+    (``logging_config``), puis la préférence enregistrée.
+    """
+    logger.debug("niveau_journal: debug={} préférence={}", debug_cli, preference)
+    if debug_cli:
+        logger.debug("niveau_journal: DEBUG (ligne de commande)")
+        return "DEBUG", "cli"
+    if any(environ.get(v, "").strip() for v in VARIABLES_JOURNAL):
+        logger.debug("niveau_journal: environnement")
+        return "", "env"  # logging_config.level_from_env() décide
+    niveau = preference if preference in NIVEAUX_JOURNAL else "INFO"
+    logger.debug("niveau_journal: {} (préférences)", niveau)
+    return niveau, "preferences"
+
+
+@dataclass(frozen=True)
+class Raccourci:
+    """Raccourci clavier de la base, affiché dans Préférences > Raccourcis."""
+
+    #: Accélérateurs GTK (``"<Control>q"``) ; le premier est affiché en premier.
+    touches: tuple[str, ...]
+    #: Libellé (msgid, traduit à l'affichage).
+    libelle: str
+    #: :data:`FENETRE` ou :data:`ARBRE`.
+    portee: str
+
+
+FENETRE = "fenetre"
+ARBRE = "arbre"
+
+#: Raccourcis de la liste des hôtes (posés par ``gcm4.ui.menu_arbre``).
+RACCOURCIS_ARBRE: tuple[tuple[str, str], ...] = (
+    ("Menu|<Shift>F10", N_("Open the context menu")),
+    ("Delete|KP_Delete", N_("Remove")),
+    ("F2", N_("Rename the group or edit the host")),
+    ("Return", N_("Connect")),
+)
+
+
+def raccourcis() -> list[Raccourci]:
+    """Raccourcis de la base : ceux du menu principal puis ceux de l'arbre."""
+    logger.debug("raccourcis: entrée")
+    libelles = {
+        e.action: e.libelle for sm in menu.MENU_PRINCIPAL for sec in sm.sections for e in sec
+    }
+    resultat = [
+        Raccourci(touches, libelles.get(action, action), FENETRE)
+        for action, touches in menu.RACCOURCIS.items()
+    ]
+    resultat += [
+        Raccourci(tuple(declencheur.split("|")), libelle, ARBRE)
+        for declencheur, libelle in RACCOURCIS_ARBRE
+    ]
+    logger.debug("raccourcis: {}", len(resultat))
+    return resultat

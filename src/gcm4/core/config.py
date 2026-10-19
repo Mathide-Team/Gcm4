@@ -491,25 +491,40 @@ def save_config(path: str, cfg: Config, chiffrement: Chiffrement | None = None) 
 _CLES_WINDOW_DU_MODELE = frozenset({"group-colors", "collapsed-folders"})
 
 
+def _cles_du_modele() -> dict[str, frozenset[str]]:
+    """Par section reprise : clés écrites depuis le modèle par ``_construire``."""
+    logger.trace("_cles_du_modele")
+    resultat = {
+        SECTION_WINDOW: _CLES_WINDOW_DU_MODELE,
+        SECTION_OPTIONS: frozenset(_cle_option(f.name) for f in fields(AppConfig)),
+    }
+    logger.trace("_cles_du_modele: {} section(s)", len(resultat))
+    return resultat
+
+
 def _reprendre_cles_hors_modele(path: str, cfg: Config) -> None:
-    """Recopie dans ``cfg.brut`` les clés ``[window]`` hors modèle du fichier actuel.
+    """Recopie dans ``cfg.brut`` les clés hors modèle de ``[window]`` et ``[options]``.
 
     Sans cela, un enregistrement du modèle en cours de session (glisser-déposer,
-    #141) remettrait le thème ou la géométrie lus au démarrage.
+    #141) remettrait le thème ou la géométrie lus au démarrage, ou effacerait
+    une préférence sans champ ``AppConfig`` écrite depuis (``log-level``, #148).
 
     Raises:
         ConfigError: fichier devenu illisible ou corrompu (pas d'écrasement).
     """
     logger.debug("_reprendre_cles_hors_modele: {}", path)
     disque = _lire_brut(path)
-    if disque is None or not disque.has_section(SECTION_WINDOW):
+    if disque is None:
         logger.debug("_reprendre_cles_hors_modele: rien à reprendre")
         return
-    if not cfg.brut.has_section(SECTION_WINDOW):
-        cfg.brut.add_section(SECTION_WINDOW)
     reprises = 0
-    for cle, valeur in disque.items(SECTION_WINDOW):
-        if cle not in _CLES_WINDOW_DU_MODELE:
-            cfg.brut.set(SECTION_WINDOW, cle, valeur)
-            reprises += 1
+    for section, du_modele in _cles_du_modele().items():
+        if not disque.has_section(section):
+            continue
+        if not cfg.brut.has_section(section):
+            cfg.brut.add_section(section)
+        for cle, valeur in disque.items(section):
+            if cle not in du_modele:
+                cfg.brut.set(section, cle, valeur)
+                reprises += 1
     logger.debug("_reprendre_cles_hors_modele: {} clé(s)", reprises)

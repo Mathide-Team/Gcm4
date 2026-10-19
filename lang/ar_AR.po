@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-19 12:40+0000\n"
+"POT-Creation-Date: 2026-10-19 12:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -544,7 +544,8 @@ msgstr "حسناً"
 msgid "Only on clean exit"
 msgstr "فقط عند الخروج النظيف"
 
-#: gnome_connection_manager.py plugins/plugin_import_putty.py utils.py
+#: gnome_connection_manager.py plugins/plugin_import_putty.py
+#: src/gcm4/ui/preferences.py utils.py
 msgid "Open"
 msgstr "فتح"
 
@@ -689,7 +690,7 @@ msgstr "أمر صدفة يُشغَّل محليًا في الخلفية قبيل
 msgid "Shortcut"
 msgstr "اختصار"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Shortcuts"
 msgstr "الاختصارات"
 
@@ -1420,7 +1421,8 @@ msgstr "🔍  فحص مضيفي Proxmox"
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_serial.py
 #: plugins/plugin_spice.py plugins/plugin_vnc.py plugins/plugin_web.py
-#: src/gcm4/core/menu_arbre.py src/gcm4/ui/contexte.py widgets.py
+#: src/gcm4/core/menu_arbre.py src/gcm4/core/preferences.py
+#: src/gcm4/ui/contexte.py widgets.py
 msgid "Connect"
 msgstr "اتصال"
 
@@ -2496,8 +2498,8 @@ msgstr "المنفذ البعيد"
 msgid "Remote path"
 msgstr "المضيف البعيد"
 
-#: plugins/plugin_ssh.py src/gcm4/core/menu_arbre.py src/gcm4/ui/menu_arbre.py
-#: widgets.py
+#: plugins/plugin_ssh.py src/gcm4/core/menu_arbre.py
+#: src/gcm4/core/preferences.py src/gcm4/ui/menu_arbre.py widgets.py
 msgid "Remove"
 msgstr "إزالة"
 
@@ -2762,6 +2764,14 @@ msgstr "ليس إضافة اتصال."
 msgid "Its name must be a non-empty lowercase identifier."
 msgstr "يجب أن يكون الاسم معرّفًا غير فارغ بأحرف صغيرة."
 
+#: src/gcm4/core/preferences.py
+msgid "Open the context menu"
+msgstr "فتح القائمة السياقية"
+
+#: src/gcm4/core/preferences.py
+msgid "Rename the group or edit the host"
+msgstr "إعادة تسمية المجموعة أو تعديل المضيف"
+
 #: src/gcm4/core/registre.py
 #, python-brace-format
 msgid "A plugin with the same name is already loaded from {source}."
@@ -2892,7 +2902,7 @@ msgstr "لم تُحفظ تغييرات هذا المضيف."
 msgid "An item with this name already exists in '{group}'."
 msgstr "يوجد عنصر بهذا الاسم في «{group}» بالفعل."
 
-#: src/gcm4/ui/host_tree.py
+#: src/gcm4/ui/host_tree.py src/gcm4/ui/preferences.py
 msgid "Hosts"
 msgstr "المضيفات"
 
@@ -3001,9 +3011,50 @@ msgid "Appearance"
 msgstr "المظهر"
 
 #: src/gcm4/ui/preferences.py
+msgid "Default log level"
+msgstr "مستوى السجل الافتراضي"
+
+#: src/gcm4/ui/preferences.py
+msgid "Error"
+msgstr "خطأ"
+
+#: src/gcm4/ui/preferences.py
+msgid "Extensions"
+msgstr "الإضافات"
+
+#: src/gcm4/ui/preferences.py
+msgid "Loaded"
+msgstr "محمّل"
+
+#: src/gcm4/ui/preferences.py
+msgid "Log folder"
+msgstr "مجلد السجلات"
+
+#: src/gcm4/ui/preferences.py
+msgid "Logging"
+msgstr "السجلات"
+
+#: src/gcm4/ui/preferences.py
+msgid "Main window"
+msgstr "النافذة الرئيسية"
+
+#: src/gcm4/ui/preferences.py
+msgid "No extension found."
+msgstr "لم يتم العثور على أي إضافة."
+
+#: src/gcm4/ui/preferences.py
+msgid "Overridden for this session by --debug or GCM_LOG_LEVEL."
+msgstr "تم تجاوزه في هذه الجلسة بواسطة ‎--debug أو GCM_LOG_LEVEL."
+
+#: src/gcm4/ui/preferences.py
 #, python-brace-format
 msgid "Preferences not saved: {error}"
 msgstr "لم يتم حفظ التفضيلات: {error}"
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Preferences page unavailable: {error}"
+msgstr "صفحة التفضيلات غير متاحة: {error}"
 
 #: src/gcm4/ui/preferences.py
 msgid "Theme"
@@ -3014,8 +3065,18 @@ msgid "Tree font"
 msgstr "خط شجرة المضيفين"
 
 #: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Unable to open the folder: {error}"
+msgstr "تعذر فتح المجلد: {error}"
+
+#: src/gcm4/ui/preferences.py
 msgid "Use system font"
 msgstr "استخدام خط النظام"
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Version {version}"
+msgstr "الإصدار {version}"
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format
