@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-18 13:25+0000\n"
+"POT-Creation-Date: 2026-10-19 12:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,11 +138,12 @@ msgstr "Günlük dosyası yazma için açılamıyor"
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
-#: src/gcm4/ui/host_dialog.py src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: src/gcm4/ui/host_dialog.py src/gcm4/ui/main_window.py
+#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
 msgid "Cancel"
 msgstr "İptal"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Check updates"
 msgstr "Güncellemeleri kontrol et"
 
@@ -192,7 +193,7 @@ msgstr "Konsolu kapatırken onayla"
 msgid "Confirm on close console with middle click"
 msgstr "Orta tıklamayla konsolu kapatırken onayla"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on exit"
 msgstr "Çıkışta onayla"
 
@@ -230,7 +231,7 @@ msgstr "Özel Komutlar"
 msgid "Custom commands…"
 msgstr "Özel komutlar"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Dark"
 msgstr "Koyu"
 
@@ -371,7 +372,7 @@ msgstr "Ön plan rengi:"
 msgid "GTK Theme:"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "General"
 msgstr "Genel"
 
@@ -477,7 +478,7 @@ msgstr ""
 msgid "Leave blank for passwordless/public key authentication"
 msgstr "Şifresiz/genel anahtar kimlik doğrulaması için boş bırakın"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Light"
 msgstr "Açık"
 
@@ -596,7 +597,7 @@ msgstr "Özel anahtar"
 msgid "Project's Homepage"
 msgstr "Projenin Ana Sayfası"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/main_window.py
 msgid "Quit"
 msgstr "Çıkış"
 
@@ -612,9 +613,9 @@ msgstr "Sekmeyi yeniden adlandır"
 msgid "Restore defaults"
 msgstr "Varsayılanları geri yükle"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Restore open tabs from the previous session on startup"
-msgstr ""
+msgstr "Başlangıçta önceki oturumda açık olan sekmeleri geri yükle"
 
 #: gnome_connection_manager.py src/gcm4/ui/host_dialog.py utils.py
 msgid "Save"
@@ -640,7 +641,7 @@ msgstr "Arka plan rengini seç"
 msgid "Select consoles to use:"
 msgstr "Kullanılacak konsolları seçin:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Select font"
 msgstr "Yazı tipi seç"
 
@@ -670,7 +671,7 @@ msgstr "Sunucu listesi üzerine yazılacak, devam edilsin mi?"
 msgid "Servers"
 msgstr "_Sunucular"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Settings"
 msgstr "Ayarlar"
 
@@ -692,7 +693,7 @@ msgstr "Kısayol"
 msgid "Shortcuts"
 msgstr "Kısayollar"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Show Panel"
 msgstr "Paneli Göster"
 
@@ -704,7 +705,7 @@ msgstr "Standart Komutlar"
 msgid "Stop"
 msgstr "Durdurma"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "System"
 msgstr "Sistem"
 
@@ -2930,6 +2931,14 @@ msgid "No extension handles the protocol «{protocol}». Install it to open this
 msgstr "Hiçbir uzantı '{protocol}' protokolünü işlemiyor. Bu bağlantıyı açmak için uzantıyı yükleyin."
 
 #: src/gcm4/ui/main_window.py
+msgid "Open connections will be closed."
+msgstr "Açık bağlantılar kapatılacak."
+
+#: src/gcm4/ui/main_window.py
+msgid "Quit anyway?"
+msgstr "Yine de çıkılsın mı?"
+
+#: src/gcm4/ui/main_window.py
 #, python-brace-format
 msgid "Unable to open «{host}»: {error}"
 msgstr "'{host}' açılamıyor: {error}"
@@ -2986,6 +2995,27 @@ msgstr "Yeniden adlandır"
 #: src/gcm4/ui/menu_arbre.py
 msgid "This cannot be undone."
 msgstr "Bu işlem geri alınamaz."
+
+#: src/gcm4/ui/preferences.py
+msgid "Appearance"
+msgstr "Görünüm"
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Preferences not saved: {error}"
+msgstr "Tercihler kaydedilmedi: {error}"
+
+#: src/gcm4/ui/preferences.py
+msgid "Theme"
+msgstr "Tema"
+
+#: src/gcm4/ui/preferences.py
+msgid "Tree font"
+msgstr "Ana makine ağacı yazı tipi"
+
+#: src/gcm4/ui/preferences.py
+msgid "Use system font"
+msgstr "Sistem yazı tipini kullan"
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format

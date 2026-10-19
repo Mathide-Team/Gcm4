@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-18 13:25+0000\n"
+"POT-Creation-Date: 2026-10-19 12:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,11 +138,12 @@ msgstr "Det går inte att öppna loggfilen för skrivning"
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
-#: src/gcm4/ui/host_dialog.py src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: src/gcm4/ui/host_dialog.py src/gcm4/ui/main_window.py
+#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Check updates"
 msgstr "Sök efter uppdateringar"
 
@@ -192,7 +193,7 @@ msgstr "Bekräfta vid stängning av konsol"
 msgid "Confirm on close console with middle click"
 msgstr "Bekräfta vid stängning av konsol med mittenklick"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on exit"
 msgstr "Bekräfta vid avslut"
 
@@ -230,7 +231,7 @@ msgstr "Anpassade kommandon"
 msgid "Custom commands…"
 msgstr "Anpassade kommandon"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Dark"
 msgstr "Mörkt"
 
@@ -371,7 +372,7 @@ msgstr "Förgrundsfärg:"
 msgid "GTK Theme:"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "General"
 msgstr "Allmänt"
 
@@ -477,7 +478,7 @@ msgstr ""
 msgid "Leave blank for passwordless/public key authentication"
 msgstr "Lämna tomt för lösenordsfri/publik nyckelautentisering"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Light"
 msgstr "Ljust"
 
@@ -596,7 +597,7 @@ msgstr "Privat nyckel"
 msgid "Project's Homepage"
 msgstr "Projektets webbplats"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/main_window.py
 msgid "Quit"
 msgstr "Avsluta"
 
@@ -612,9 +613,9 @@ msgstr "Byt namn på flik"
 msgid "Restore defaults"
 msgstr "Återställ standardvärden"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Restore open tabs from the previous session on startup"
-msgstr ""
+msgstr "Återställ öppna flikar från föregående session vid start"
 
 #: gnome_connection_manager.py src/gcm4/ui/host_dialog.py utils.py
 msgid "Save"
@@ -640,7 +641,7 @@ msgstr "Välj bakgrundsfärg"
 msgid "Select consoles to use:"
 msgstr "Välj konsoler att använda:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Select font"
 msgstr "Välj typsnitt"
 
@@ -670,7 +671,7 @@ msgstr "Serverlistan kommer att skrivas över, fortsätt?"
 msgid "Servers"
 msgstr "_Servrar"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Settings"
 msgstr "Inställningar"
 
@@ -692,7 +693,7 @@ msgstr "Genväg"
 msgid "Shortcuts"
 msgstr "Genvägar"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Show Panel"
 msgstr "Visa panel"
 
@@ -704,7 +705,7 @@ msgstr "Standardkommandon"
 msgid "Stop"
 msgstr "Stopp"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "System"
 msgstr "System"
 
@@ -2930,6 +2931,14 @@ msgid "No extension handles the protocol «{protocol}». Install it to open this
 msgstr "Inget tillägg hanterar protokollet ”{protocol}”. Installera det för att öppna anslutningen."
 
 #: src/gcm4/ui/main_window.py
+msgid "Open connections will be closed."
+msgstr "Öppna anslutningar kommer att stängas."
+
+#: src/gcm4/ui/main_window.py
+msgid "Quit anyway?"
+msgstr "Avsluta ändå?"
+
+#: src/gcm4/ui/main_window.py
 #, python-brace-format
 msgid "Unable to open «{host}»: {error}"
 msgstr "Kan inte öppna ”{host}”: {error}"
@@ -2986,6 +2995,27 @@ msgstr "Byt namn"
 #: src/gcm4/ui/menu_arbre.py
 msgid "This cannot be undone."
 msgstr "Detta kan inte ångras."
+
+#: src/gcm4/ui/preferences.py
+msgid "Appearance"
+msgstr "Utseende"
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Preferences not saved: {error}"
+msgstr "Inställningarna sparades inte: {error}"
+
+#: src/gcm4/ui/preferences.py
+msgid "Theme"
+msgstr "Tema"
+
+#: src/gcm4/ui/preferences.py
+msgid "Tree font"
+msgstr "Typsnitt för värdträdet"
+
+#: src/gcm4/ui/preferences.py
+msgid "Use system font"
+msgstr "Använd systemets typsnitt"
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-18 13:25+0000\n"
+"POT-Creation-Date: 2026-10-19 12:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,11 +138,12 @@ msgstr "无法打开日志文件进行写入"
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
-#: src/gcm4/ui/host_dialog.py src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: src/gcm4/ui/host_dialog.py src/gcm4/ui/main_window.py
+#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
 msgid "Cancel"
 msgstr "取消"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Check updates"
 msgstr "检查更新"
 
@@ -192,7 +193,7 @@ msgstr "关闭控制台时确认"
 msgid "Confirm on close console with middle click"
 msgstr "使用鼠标中键关闭控制台时确认"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on exit"
 msgstr "退出时确认"
 
@@ -230,7 +231,7 @@ msgstr "自定义命令"
 msgid "Custom commands…"
 msgstr "自定义命令"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Dark"
 msgstr "深色"
 
@@ -371,7 +372,7 @@ msgstr "前景颜色："
 msgid "GTK Theme:"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "General"
 msgstr "通用"
 
@@ -477,7 +478,7 @@ msgstr ""
 msgid "Leave blank for passwordless/public key authentication"
 msgstr "留空以使用无密码/公钥身份验证"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Light"
 msgstr "浅色"
 
@@ -596,7 +597,7 @@ msgstr "私钥"
 msgid "Project's Homepage"
 msgstr "项目主页"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/main_window.py
 msgid "Quit"
 msgstr "退出"
 
@@ -612,9 +613,9 @@ msgstr "重命名标签"
 msgid "Restore defaults"
 msgstr "恢复默认设置"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Restore open tabs from the previous session on startup"
-msgstr ""
+msgstr "启动时恢复上次会话中打开的标签页"
 
 #: gnome_connection_manager.py src/gcm4/ui/host_dialog.py utils.py
 msgid "Save"
@@ -640,7 +641,7 @@ msgstr "选择背景颜色"
 msgid "Select consoles to use:"
 msgstr "选择要使用的控制台："
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Select font"
 msgstr "选择字体"
 
@@ -670,7 +671,7 @@ msgstr "服务器列表将被覆盖，是否继续？"
 msgid "Servers"
 msgstr "_服务器"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Settings"
 msgstr "设置"
 
@@ -692,7 +693,7 @@ msgstr "快捷键"
 msgid "Shortcuts"
 msgstr "快捷键"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Show Panel"
 msgstr "显示面板"
 
@@ -704,7 +705,7 @@ msgstr "标准命令"
 msgid "Stop"
 msgstr "停止位"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "System"
 msgstr "跟随系统"
 
@@ -2930,6 +2931,14 @@ msgid "No extension handles the protocol «{protocol}». Install it to open this
 msgstr "没有扩展处理协议“{protocol}”。请安装后再打开此连接。"
 
 #: src/gcm4/ui/main_window.py
+msgid "Open connections will be closed."
+msgstr "打开的连接将被关闭。"
+
+#: src/gcm4/ui/main_window.py
+msgid "Quit anyway?"
+msgstr "仍要退出吗？"
+
+#: src/gcm4/ui/main_window.py
 #, python-brace-format
 msgid "Unable to open «{host}»: {error}"
 msgstr "无法打开“{host}”：{error}"
@@ -2986,6 +2995,27 @@ msgstr "重命名"
 #: src/gcm4/ui/menu_arbre.py
 msgid "This cannot be undone."
 msgstr "此操作无法撤销。"
+
+#: src/gcm4/ui/preferences.py
+msgid "Appearance"
+msgstr "外观"
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Preferences not saved: {error}"
+msgstr "未保存首选项：{error}"
+
+#: src/gcm4/ui/preferences.py
+msgid "Theme"
+msgstr "主题"
+
+#: src/gcm4/ui/preferences.py
+msgid "Tree font"
+msgstr "主机树字体"
+
+#: src/gcm4/ui/preferences.py
+msgid "Use system font"
+msgstr "使用系统字体"
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format

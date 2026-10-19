@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME Connection Manager\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-18 13:25+0000\n"
+"POT-Creation-Date: 2026-10-19 12:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -128,7 +128,7 @@ msgstr ""
 msgid "Exports"
 msgstr ""
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/main_window.py
 msgid "Quit"
 msgstr ""
 
@@ -160,7 +160,7 @@ msgstr ""
 msgid "Custom commands…"
 msgstr ""
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Settings"
 msgstr ""
 
@@ -169,7 +169,7 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Show Panel"
 msgstr ""
 
@@ -245,7 +245,8 @@ msgstr ""
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
-#: src/gcm4/ui/host_dialog.py src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: src/gcm4/ui/host_dialog.py src/gcm4/ui/main_window.py
+#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
 msgid "Cancel"
 msgstr ""
 
@@ -604,7 +605,7 @@ msgstr ""
 msgid "Project's Homepage"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "General"
 msgstr ""
 
@@ -688,15 +689,15 @@ msgstr ""
 msgid "Disable desktop notifications when a terminal disconnects"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Restore open tabs from the previous session on startup"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on exit"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Check updates"
 msgstr ""
 
@@ -716,15 +717,15 @@ msgstr ""
 msgid "GTK Theme:"
 msgstr ""
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "System"
 msgstr ""
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Light"
 msgstr ""
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Dark"
 msgstr ""
 
@@ -740,7 +741,7 @@ msgstr ""
 msgid "Command"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Select font"
 msgstr ""
 
@@ -2791,6 +2792,14 @@ msgstr ""
 msgid "Close tab"
 msgstr ""
 
+#: src/gcm4/ui/main_window.py
+msgid "Quit anyway?"
+msgstr ""
+
+#: src/gcm4/ui/main_window.py
+msgid "Open connections will be closed."
+msgstr ""
+
 #: src/gcm4/ui/menu_arbre.py
 #, python-brace-format
 msgid "Changes not saved: {error}"
@@ -2838,6 +2847,27 @@ msgstr ""
 #: src/gcm4/ui/menu_arbre.py
 #, python-brace-format
 msgid "Remove host «{name}»?"
+msgstr ""
+
+#: src/gcm4/ui/preferences.py
+msgid "Appearance"
+msgstr ""
+
+#: src/gcm4/ui/preferences.py
+msgid "Theme"
+msgstr ""
+
+#: src/gcm4/ui/preferences.py
+msgid "Use system font"
+msgstr ""
+
+#: src/gcm4/ui/preferences.py
+msgid "Tree font"
+msgstr ""
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Preferences not saved: {error}"
 msgstr ""
 
 #: ssh_config_editor.py

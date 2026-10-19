@@ -83,7 +83,12 @@ def test_plugin_demo_ouvre_ferme_rouvre(app_demo, pomper):
     arbre.menu.executer("connect")
     pomper()
     assert fenetre.onglets.get_n_pages() == 2 and plugin.ouvertures == 2
-    fenetre.close()
+    fenetre.close()  # connexion ouverte : « Quitter quand même ? » (#147)
+    pomper()
+    assert fenetre.confirmation_fermeture is not None and plugin.fermetures == 1
+    dialogue = fenetre.confirmation_fermeture
+    dialogue.emit("response", "quitter")
+    dialogue.close()  # un vrai clic ferme le dialogue ; emit() seul ne le fait pas
     pomper()
     assert plugin.fermetures == 2 and fenetre.sessions == {}
 

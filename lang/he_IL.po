@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-18 13:25+0000\n"
+"POT-Creation-Date: 2026-10-19 12:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,11 +138,12 @@ msgstr "לא ניתן לפתוח קובץ יומן לכתיבה"
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
-#: src/gcm4/ui/host_dialog.py src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: src/gcm4/ui/host_dialog.py src/gcm4/ui/main_window.py
+#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
 msgid "Cancel"
 msgstr "ביטול"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Check updates"
 msgstr "בדוק עדכונים"
 
@@ -192,7 +193,7 @@ msgstr "אשר בעת סגירת מסוף"
 msgid "Confirm on close console with middle click"
 msgstr "אשר בעת סגירת מסוף בלחיצה אמצעית"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on exit"
 msgstr "אשר ביציאה"
 
@@ -230,7 +231,7 @@ msgstr "פקודות מותאמות אישית"
 msgid "Custom commands…"
 msgstr "פקודות מותאמות אישית"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Dark"
 msgstr "כהה"
 
@@ -371,7 +372,7 @@ msgstr "צבע חזית:"
 msgid "GTK Theme:"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "General"
 msgstr "כללי"
 
@@ -477,7 +478,7 @@ msgstr ""
 msgid "Leave blank for passwordless/public key authentication"
 msgstr "השאר ריק לאימות ללא סיסמה / עם מפתח ציבורי"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Light"
 msgstr "בהיר"
 
@@ -596,7 +597,7 @@ msgstr "מפתח פרטי"
 msgid "Project's Homepage"
 msgstr "דף הבית של הפרויקט"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/main_window.py
 msgid "Quit"
 msgstr "יציאה"
 
@@ -612,9 +613,9 @@ msgstr "שנה שם לשונית"
 msgid "Restore defaults"
 msgstr "שחזר ברירות מחדל"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Restore open tabs from the previous session on startup"
-msgstr ""
+msgstr "שחזור הלשוניות הפתוחות מההפעלה הקודמת בעת האתחול"
 
 #: gnome_connection_manager.py src/gcm4/ui/host_dialog.py utils.py
 msgid "Save"
@@ -640,7 +641,7 @@ msgstr "בחר צבע רקע"
 msgid "Select consoles to use:"
 msgstr "בחר מסופים לשימוש:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Select font"
 msgstr "בחר גופן"
 
@@ -670,7 +671,7 @@ msgstr "רשימת השרתים תישכתב, להמשיך?"
 msgid "Servers"
 msgstr "_שרתים"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Settings"
 msgstr "הגדרות"
 
@@ -692,7 +693,7 @@ msgstr "קיצור דרך"
 msgid "Shortcuts"
 msgstr "קיצורי דרך"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Show Panel"
 msgstr "הצג פאנל"
 
@@ -704,7 +705,7 @@ msgstr "פקודות סטנדרטיות"
 msgid "Stop"
 msgstr "עצירה"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "System"
 msgstr "מערכת"
 
@@ -2930,6 +2931,14 @@ msgid "No extension handles the protocol «{protocol}». Install it to open this
 msgstr "אין הרחבה שמטפלת בפרוטוקול „{protocol}”. התקינו אותה כדי לפתוח את החיבור."
 
 #: src/gcm4/ui/main_window.py
+msgid "Open connections will be closed."
+msgstr "החיבורים הפתוחים ייסגרו."
+
+#: src/gcm4/ui/main_window.py
+msgid "Quit anyway?"
+msgstr "לצאת בכל זאת?"
+
+#: src/gcm4/ui/main_window.py
 #, python-brace-format
 msgid "Unable to open «{host}»: {error}"
 msgstr "לא ניתן לפתוח את „{host}”: {error}"
@@ -2986,6 +2995,27 @@ msgstr "שינוי שם"
 #: src/gcm4/ui/menu_arbre.py
 msgid "This cannot be undone."
 msgstr "לא ניתן לבטל פעולה זו."
+
+#: src/gcm4/ui/preferences.py
+msgid "Appearance"
+msgstr "מראה"
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Preferences not saved: {error}"
+msgstr "ההעדפות לא נשמרו: {error}"
+
+#: src/gcm4/ui/preferences.py
+msgid "Theme"
+msgstr "ערכת נושא"
+
+#: src/gcm4/ui/preferences.py
+msgid "Tree font"
+msgstr "גופן עץ המארחים"
+
+#: src/gcm4/ui/preferences.py
+msgid "Use system font"
+msgstr "שימוש בגופן המערכת"
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format

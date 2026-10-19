@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-18 13:25+0000\n"
+"POT-Creation-Date: 2026-10-19 12:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,11 +138,12 @@ msgstr "Tidak dapat membuka file log untuk ditulis"
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
-#: src/gcm4/ui/host_dialog.py src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: src/gcm4/ui/host_dialog.py src/gcm4/ui/main_window.py
+#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
 msgid "Cancel"
 msgstr "Batal"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Check updates"
 msgstr "Periksa pembaruan"
 
@@ -192,7 +193,7 @@ msgstr "Konfirmasi saat menutup konsol"
 msgid "Confirm on close console with middle click"
 msgstr "Konfirmasi saat menutup konsol dengan klik tengah"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on exit"
 msgstr "Konfirmasi saat keluar"
 
@@ -230,7 +231,7 @@ msgstr "Perintah Khusus"
 msgid "Custom commands…"
 msgstr "Perintah khusus"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Dark"
 msgstr "Gelap"
 
@@ -371,7 +372,7 @@ msgstr "Warna teks:"
 msgid "GTK Theme:"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "General"
 msgstr "Umum"
 
@@ -477,7 +478,7 @@ msgstr ""
 msgid "Leave blank for passwordless/public key authentication"
 msgstr "Biarkan kosong untuk autentikasi tanpa kata sandi/kunci publik"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Light"
 msgstr "Terang"
 
@@ -596,7 +597,7 @@ msgstr "Kunci privat"
 msgid "Project's Homepage"
 msgstr "Halaman utama proyek"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/main_window.py
 msgid "Quit"
 msgstr "Keluar"
 
@@ -612,9 +613,9 @@ msgstr "Ganti nama tab"
 msgid "Restore defaults"
 msgstr "Kembalikan ke default"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Restore open tabs from the previous session on startup"
-msgstr ""
+msgstr "Pulihkan tab yang terbuka dari sesi sebelumnya saat memulai"
 
 #: gnome_connection_manager.py src/gcm4/ui/host_dialog.py utils.py
 msgid "Save"
@@ -640,7 +641,7 @@ msgstr "Pilih warna latar belakang"
 msgid "Select consoles to use:"
 msgstr "Pilih konsol yang akan digunakan:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Select font"
 msgstr "Pilih font"
 
@@ -670,7 +671,7 @@ msgstr "Daftar server akan ditimpa, lanjutkan?"
 msgid "Servers"
 msgstr "_Server"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Settings"
 msgstr "Pengaturan"
 
@@ -692,7 +693,7 @@ msgstr "Pintasan"
 msgid "Shortcuts"
 msgstr "Pintasan"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Show Panel"
 msgstr "Tampilkan Panel"
 
@@ -704,7 +705,7 @@ msgstr "Perintah Standar"
 msgid "Stop"
 msgstr "Stop"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "System"
 msgstr "Sistem"
 
@@ -2930,6 +2931,14 @@ msgid "No extension handles the protocol «{protocol}». Install it to open this
 msgstr "Tidak ada ekstensi yang menangani protokol '{protocol}'. Pasang ekstensinya untuk membuka koneksi ini."
 
 #: src/gcm4/ui/main_window.py
+msgid "Open connections will be closed."
+msgstr "Koneksi yang terbuka akan ditutup."
+
+#: src/gcm4/ui/main_window.py
+msgid "Quit anyway?"
+msgstr "Tetap keluar?"
+
+#: src/gcm4/ui/main_window.py
 #, python-brace-format
 msgid "Unable to open «{host}»: {error}"
 msgstr "Tidak dapat membuka '{host}': {error}"
@@ -2986,6 +2995,27 @@ msgstr "Ubah nama"
 #: src/gcm4/ui/menu_arbre.py
 msgid "This cannot be undone."
 msgstr "Tindakan ini tidak dapat dibatalkan."
+
+#: src/gcm4/ui/preferences.py
+msgid "Appearance"
+msgstr "Tampilan"
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Preferences not saved: {error}"
+msgstr "Preferensi tidak disimpan: {error}"
+
+#: src/gcm4/ui/preferences.py
+msgid "Theme"
+msgstr "Tema"
+
+#: src/gcm4/ui/preferences.py
+msgid "Tree font"
+msgstr "Fon pohon host"
+
+#: src/gcm4/ui/preferences.py
+msgid "Use system font"
+msgstr "Gunakan fon sistem"
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format
