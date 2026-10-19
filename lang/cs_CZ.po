@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-11 23:30+0000\n"
+"POT-Creation-Date: 2026-10-19 12:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,11 +65,9 @@ msgstr "ASCII Backspace \t[Ctrl+H 0x08]"
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
 msgstr "ASCII Delete    \t[Ctrl+? 0x7F]"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_About"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "About"
-msgstr "O _aplikaci"
+msgstr "O aplikaci"
 
 #: gnome_connection_manager.py
 msgid "Action"
@@ -79,17 +77,15 @@ msgstr "Akce"
 msgid "Activate"
 msgstr "Aktivovat"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/core/menu_arbre.py widgets.py
 msgid "Add Host"
 msgstr "Přidat hostitele"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Disconnect"
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "After disconnecting"
-msgstr "Odpojit"
+msgstr "Po odpojení"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Always"
 msgstr "Vždy"
 
@@ -109,11 +105,9 @@ msgstr "Backspace:"
 msgid "Baud rate"
 msgstr "Rychlost (baud)"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Error connecting to server"
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Before connecting"
-msgstr "Chyba při připojování k serveru"
+msgstr "Před připojením"
 
 #: gnome_connection_manager.py ssh_config_editor.py
 msgid "Browse existing SSH keys in ~/.ssh/"
@@ -143,11 +137,13 @@ msgstr "Nelze otevřít soubor protokolu pro zápis"
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
-#: plugins/plugin_spice.py plugins/plugin_ssh.py utils.py widgets.py
+#: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
+#: src/gcm4/ui/host_dialog.py src/gcm4/ui/main_window.py
+#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Check updates"
 msgstr "Zkontrolovat aktualizace"
 
@@ -167,7 +163,7 @@ msgstr "Vymazat výběr"
 msgid "Close"
 msgstr "Zavřít"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py widgets.py
 msgid "Close console"
 msgstr "Zavřít konzoli"
 
@@ -197,7 +193,7 @@ msgstr "Potvrdit při zavření konzole"
 msgid "Confirm on close console with middle click"
 msgstr "Potvrdit při zavření konzole prostředním kliknutím"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on exit"
 msgstr "Potvrdit při ukončení"
 
@@ -235,15 +231,15 @@ msgstr "Vlastní příkazy"
 msgid "Custom commands…"
 msgstr "Vlastní příkazy"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Dark"
-msgstr ""
+msgstr "Tmavý"
 
 #: gnome_connection_manager.py plugins/plugin_serial.py
 msgid "Data bits"
 msgstr "Datové bity"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Default colors"
 msgstr "Výchozí barvy"
 
@@ -255,7 +251,7 @@ msgstr "Sekvence Delete \t[@7]"
 msgid "Delete:"
 msgstr "Delete:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Description"
 msgstr "Popis"
 
@@ -283,11 +279,12 @@ msgstr "Opravdu chcete odebrat hostitele"
 msgid "Dynamic title"
 msgstr "Dynamický titulek"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: src/gcm4/core/menu_arbre.py widgets.py
 msgid "Edit"
 msgstr "Upravit"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Edit Host"
 msgstr "Upravit hostitele"
 
@@ -355,11 +352,9 @@ msgstr "Exportovat servery"
 msgid "Fields group, name and host are required"
 msgstr "Pole skupina, název a hostitel jsou povinná"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_File"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "File"
-msgstr "_Soubor"
+msgstr "Soubor"
 
 #: gnome_connection_manager.py
 msgid "Flow"
@@ -377,7 +372,7 @@ msgstr "Barva popředí:"
 msgid "GTK Theme:"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "General"
 msgstr "Obecné"
 
@@ -387,7 +382,7 @@ msgstr "Gnome Connection Manager"
 
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
-#: plugins/plugin_import_virtualbox.py
+#: plugins/plugin_import_virtualbox.py src/gcm4/ui/host_dialog.py
 msgid "Group"
 msgstr "Skupina"
 
@@ -407,14 +402,12 @@ msgstr ""
 msgid "Group name:"
 msgstr "Skupina"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Help"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Help"
-msgstr "_Nápověda"
+msgstr "Nápověda"
 
-#: gnome_connection_manager.py plugins/plugin_ssh.py ssh_config_editor.py
-#: ssh_key_manager_dialog.py
+#: gnome_connection_manager.py plugins/plugin_ssh.py src/gcm4/ui/host_dialog.py
+#: ssh_config_editor.py ssh_key_manager_dialog.py
 msgid "Host"
 msgstr "Hostitel"
 
@@ -438,9 +431,9 @@ msgstr "_Importovat servery"
 msgid "Imports"
 msgstr "Importováno"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Include this host in the workspace (Tools > Open Workspace)"
-msgstr ""
+msgstr "Zahrnout tohoto hostitele do pracovního prostoru (Nástroje > Otevřít pracovní prostor)"
 
 #: gnome_connection_manager.py
 msgid "Invalid entry in configuration file"
@@ -481,13 +474,13 @@ msgid ""
 "Détails complets dans le journal de l'application."
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Leave blank for passwordless/public key authentication"
 msgstr "Nechte prázdné pro autentizaci bez hesla / s veřejným klíčem"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Light"
-msgstr ""
+msgstr "Světlý"
 
 #: gnome_connection_manager.py
 msgid "Log local console sessions"
@@ -499,21 +492,20 @@ msgstr "Cesta k protokolům"
 
 #: gnome_connection_manager.py src/gcm4/ui/main_window.py
 msgid "Menu"
-msgstr ""
+msgstr "Nabídka"
 
-#: gnome_connection_manager.py ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+#: ssh_key_manager_dialog.py
 msgid "Name"
 msgstr "Název"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Never"
 msgstr "Nikdy"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Group"
+#: gnome_connection_manager.py src/gcm4/ui/menu_arbre.py
 msgid "New Group"
-msgstr "Skupina"
+msgstr "Nová skupina"
 
 #: gnome_connection_manager.py
 #, fuzzy
@@ -548,11 +540,12 @@ msgstr "Žádné otevřené konzole"
 msgid "OK"
 msgstr "OK"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Only on clean exit"
 msgstr "Pouze při čistém ukončení"
 
-#: gnome_connection_manager.py plugins/plugin_import_putty.py utils.py
+#: gnome_connection_manager.py plugins/plugin_import_putty.py
+#: src/gcm4/ui/mises_a_jour.py src/gcm4/ui/preferences.py utils.py
 msgid "Open"
 msgstr "Otevřít"
 
@@ -576,7 +569,8 @@ msgstr ""
 msgid "Parity"
 msgstr "Parita"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/contexte.py
+#: src/gcm4/ui/host_dialog.py
 msgid "Password"
 msgstr "Heslo"
 
@@ -588,7 +582,7 @@ msgstr "Vložit"
 msgid "Paste on right click"
 msgstr "Vložit pravým kliknutím"
 
-#: gnome_connection_manager.py ssh_config_editor.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py ssh_config_editor.py
 msgid "Port"
 msgstr "Port"
 
@@ -604,17 +598,13 @@ msgstr "Soukromý klíč"
 msgid "Project's Homepage"
 msgstr "Domovská stránka projektu"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Quit"
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/main_window.py
 msgid "Quit"
-msgstr "_Konec"
+msgstr "Konec"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Rename tab"
+#: gnome_connection_manager.py src/gcm4/ui/menu_arbre.py
 msgid "Rename Group"
-msgstr "Přejmenovat záložku"
+msgstr "Přejmenovat skupinu"
 
 #: gnome_connection_manager.py widgets.py
 msgid "Rename tab"
@@ -624,11 +614,11 @@ msgstr "Přejmenovat záložku"
 msgid "Restore defaults"
 msgstr "Obnovit výchozí"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Restore open tabs from the previous session on startup"
-msgstr ""
+msgstr "Při spuštění obnovit karty otevřené v předchozí relaci"
 
-#: gnome_connection_manager.py utils.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py utils.py
 msgid "Save"
 msgstr "Uložit"
 
@@ -652,7 +642,7 @@ msgstr "Vybrat barvu pozadí"
 msgid "Select consoles to use:"
 msgstr "Vyberte konzole k použití:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Select font"
 msgstr "Vybrat písmo"
 
@@ -682,7 +672,7 @@ msgstr "Seznam serverů bude přepsán, pokračovat?"
 msgid "Servers"
 msgstr "_Servery"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Settings"
 msgstr "Nastavení"
 
@@ -691,20 +681,20 @@ msgstr "Nastavení"
 msgid "Shell command run locally, in the background, right after this connection ends. Currently only triggered for terminal-based protocols (SSH/Telnet/Local/Serial/IPMI SOL). Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 #, python-brace-format
 msgid "Shell command run locally, in the background, right before this connection opens (any protocol). Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
-msgstr ""
+msgstr "Příkaz shellu spuštěný místně na pozadí těsně před otevřením tohoto připojení (libovolný protokol). Ponechte prázdné pro vypnutí. Zástupné znaky: {name} {address} {group} {protocol}"
 
 #: gnome_connection_manager.py
 msgid "Shortcut"
 msgstr "Klávesová zkratka"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Shortcuts"
 msgstr "Klávesové zkratky"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Show Panel"
 msgstr "Zobrazit panel"
 
@@ -716,9 +706,9 @@ msgstr "Standardní příkazy"
 msgid "Stop"
 msgstr "Stop"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "System"
-msgstr ""
+msgstr "Systémový"
 
 #: gnome_connection_manager.py
 msgid "TERM"
@@ -752,7 +742,7 @@ msgstr ""
 msgid "Title"
 msgstr "Titulek"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "To create subgroups use format group1/group2/group3"
 msgstr "K vytvoření podskupin použijte formát skupina1/skupina2/skupina3"
 
@@ -769,29 +759,25 @@ msgstr "Typ"
 msgid "Use default fixed width font"
 msgstr "Použít výchozí písmo s pevnou šířkou"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Use global preference"
-msgstr ""
+msgstr "Použít globální nastavení"
 
-#: gnome_connection_manager.py ssh_config_editor.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py ssh_config_editor.py
 msgid "User"
 msgstr "Uživatel"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_View"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "View"
-msgstr "_Zobrazit"
+msgstr "Zobrazit"
 
 #: gnome_connection_manager.py
 msgid "Word separator"
 msgstr "Oddělovač slov"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Backspace:"
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Workspace"
-msgstr "Backspace:"
+msgstr "Pracovní prostor"
 
 #: gnome_connection_manager.py
 msgid "already exists for group"
@@ -1435,7 +1421,8 @@ msgstr "🔍  Skenovat hostitele Proxmox"
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_serial.py
 #: plugins/plugin_spice.py plugins/plugin_vnc.py plugins/plugin_web.py
-#: widgets.py
+#: src/gcm4/core/menu_arbre.py src/gcm4/core/preferences.py
+#: src/gcm4/ui/contexte.py widgets.py
 msgid "Connect"
 msgstr "Připojit"
 
@@ -2511,7 +2498,8 @@ msgstr "Vzdálený port"
 msgid "Remote path"
 msgstr "Vzdálený hostitel"
 
-#: plugins/plugin_ssh.py widgets.py
+#: plugins/plugin_ssh.py src/gcm4/core/menu_arbre.py
+#: src/gcm4/core/preferences.py src/gcm4/ui/menu_arbre.py widgets.py
 msgid "Remove"
 msgstr "Odebrat"
 
@@ -2601,9 +2589,9 @@ msgid ""
 "E.g.: {example}"
 msgstr ""
 
-#: plugins/plugin_vnc.py
+#: plugins/plugin_vnc.py src/gcm4/ui/host_dialog.py
 msgid "Display"
-msgstr ""
+msgstr "Zobrazení"
 
 #: plugins/plugin_vnc.py
 msgid "VNC"
@@ -2671,61 +2659,455 @@ msgid ""
 "The web console will open in the system browser."
 msgstr ""
 
+#: src/gcm4/app.py
+msgid "The old configuration is intact: fix the problem (permissions, disk space), then start gcm4 again."
+msgstr "Původní konfigurace zůstala nedotčena: odstraňte problém (oprávnění, místo na disku) a spusťte gcm4 znovu."
+
+#: src/gcm4/app.py
+#, python-brace-format
+msgid "gcm4: unable to copy the configuration {old} to {new} ({error})."
+msgstr "gcm4: konfiguraci {old} nelze zkopírovat do {new} ({error})."
+
 #: src/gcm4/core/chiffrement.py
 msgid "A stored password is corrupted."
-msgstr ""
+msgstr "Uložené heslo je poškozené."
 
 #: src/gcm4/core/chiffrement.py
 #, python-format
 msgid "The encryption key %s is missing: the stored passwords cannot be decrypted."
-msgstr ""
+msgstr "Šifrovací klíč %s chybí: uložená hesla nelze dešifrovat."
 
 #: src/gcm4/core/chiffrement.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to create the encryption key %s: %s"
-msgstr "Neplatná položka v konfiguračním souboru"
+msgstr "Nelze vytvořit šifrovací klíč %s: %s"
 
 #: src/gcm4/core/chiffrement.py
-msgid "Unable to decrypt the stored passwords: wrong or replaced .gcm.key."
-msgstr ""
+msgid "Unable to decrypt the stored passwords: wrong or replaced .gcm4.key."
+msgstr "Uložená hesla nelze dešifrovat: soubor .gcm4.key je nesprávný nebo nahrazený."
 
 #: src/gcm4/core/chiffrement.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to read the encryption key %s: %s"
-msgstr "Neplatná položka v konfiguračním souboru"
+msgstr "Nelze přečíst šifrovací klíč %s: %s"
 
 #: src/gcm4/core/config.py
 #, python-format
 msgid "The configuration file %s is corrupted: %s"
-msgstr ""
+msgstr "Konfigurační soubor %s je poškozen: %s"
 
 #: src/gcm4/core/config.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to read the configuration file %s: %s"
-msgstr "Neplatná položka v konfiguračním souboru"
+msgstr "Nelze přečíst konfigurační soubor %s: %s"
 
 #: src/gcm4/core/config.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to write the configuration file %s: %s"
-msgstr "Neplatná položka v konfiguračním souboru"
+msgstr "Nelze zapsat konfigurační soubor %s: %s"
+
+#: src/gcm4/core/menu.py
+msgid "Search"
+msgstr "Hledat"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Choose Color…"
+msgstr "Vybrat barvu…"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Collapse all"
+msgstr "Sbalit vše"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Copy Address"
+msgstr "Kopírovat adresu"
+
+#: src/gcm4/core/menu_arbre.py src/gcm4/ui/host_dialog.py widgets.py
+msgid "Duplicate Host"
+msgstr "Duplikovat hostitele"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Expand all"
+msgstr "Rozbalit vše"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "New Group…"
+msgstr "Nová skupina…"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Rename Group…"
+msgstr "Přejmenovat skupinu…"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Reset Color"
+msgstr "Obnovit barvu"
+
+#: src/gcm4/core/plugins.py
+msgid "It declares no protocol."
+msgstr "Nedeklaruje žádný protokol."
+
+#: src/gcm4/core/plugins.py
+#, python-brace-format
+msgid "It does not implement: {methods}."
+msgstr "Neimplementuje: {methods}."
+
+#: src/gcm4/core/plugins.py
+#, python-brace-format
+msgid "It implements plugin API version {found}; this application supports version {expected}."
+msgstr "Implementuje verzi {found} API zásuvných modulů; tato aplikace podporuje verzi {expected}."
+
+#: src/gcm4/core/plugins.py
+msgid "It is not a connection plugin."
+msgstr "Nejde o zásuvný modul připojení."
+
+#: src/gcm4/core/plugins.py
+msgid "Its name must be a non-empty lowercase identifier."
+msgstr "Název musí být neprázdný identifikátor malými písmeny."
+
+#: src/gcm4/core/preferences.py
+msgid "Open the context menu"
+msgstr "Otevřít místní nabídku"
+
+#: src/gcm4/core/preferences.py
+msgid "Rename the group or edit the host"
+msgstr "Přejmenovat skupinu nebo upravit hostitele"
+
+#: src/gcm4/core/registre.py
+#, python-brace-format
+msgid "A plugin with the same name is already loaded from {source}."
+msgstr "Zásuvný modul se stejným názvem je již načten z {source}."
+
+#: src/gcm4/core/registre.py
+#, python-brace-format
+msgid "Import failed: {error}"
+msgstr "Import selhal: {error}"
+
+#: src/gcm4/core/registre.py
+#, python-brace-format
+msgid "Initialization failed: {error}"
+msgstr "Inicializace selhala: {error}"
+
+#: src/gcm4/core/registre.py
+#, python-brace-format
+msgid "Protocol «{protocol}» is already handled by «{other}»."
+msgstr "Protokol „{protocol}“ již obsluhuje „{other}“."
+
+#: src/gcm4/core/registre.py
+#, python-brace-format
+msgid "{file} does not define PLUGIN."
+msgstr "{file} nedefinuje PLUGIN."
+
+#: src/gcm4/core/validation.py
+#, python-brace-format
+msgid "A host named «{name}» already exists in this group."
+msgstr "V této skupině již existuje hostitel s názvem „{name}“."
+
+#: src/gcm4/core/validation.py
+msgid "A name is required."
+msgstr "Název je povinný."
+
+#: src/gcm4/core/validation.py
+msgid "An address is required."
+msgstr "Adresa je povinná."
+
+#: src/gcm4/core/validation.py
+#, python-brace-format
+msgid "Port must be a number between {min} and {max}."
+msgstr "Port musí být číslo od {min} do {max}."
+
+#: src/gcm4/core/validation.py
+msgid "The name must not contain «/»."
+msgstr "Název nesmí obsahovat „/“."
+
+#: src/gcm4/ui/contexte.py
+#, python-brace-format
+msgid "Password for {target}"
+msgstr "Heslo pro {target}"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Background color"
+msgstr "Barva pozadí"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Commands"
+msgstr "Příkazy"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Connection"
+msgstr "Připojení"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Discard"
+msgstr "Zahodit"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Discard changes?"
+msgstr "Zahodit změny?"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Errors"
+msgstr "Chyby"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Existing groups"
+msgstr "Existující skupiny"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Extra parameters"
+msgstr "Další parametry"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Foreground color"
+msgstr "Barva textu"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Keep Editing"
+msgstr "Pokračovat v úpravách"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "New Host"
+msgstr "Nový hostitel"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "No extension handles this protocol: its options are kept."
+msgstr "Tento protokol nepodporuje žádné rozšíření: jeho volby zůstanou zachovány."
+
+#: src/gcm4/ui/host_dialog.py
+msgid "No extension is installed for this protocol: its options are kept and cannot be modified."
+msgstr "Pro tento protokol není nainstalováno žádné rozšíření: jeho možnosti jsou zachovány, ale nelze je upravovat."
+
+#: src/gcm4/ui/host_dialog.py
+msgid "No extension is installed."
+msgstr "Není nainstalováno žádné rozšíření."
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Protocol"
+msgstr "Protokol"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Protocol options"
+msgstr "Možnosti protokolu"
+
+#: src/gcm4/ui/host_dialog.py
+#, python-brace-format
+msgid "Shell command run locally, in the background, right after this connection ends, by the protocols that support it. Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
+msgstr "Příkaz shellu spuštěný místně na pozadí hned po ukončení tohoto připojení, u protokolů, které to podporují. Ponechte prázdné pro vypnutí. Zástupné znaky: {name} {address} {group} {protocol}"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "The changes to this host have not been saved."
+msgstr "Změny tohoto hostitele nebyly uloženy."
+
+#: src/gcm4/ui/host_tree.py
+#, python-brace-format
+msgid "An item with this name already exists in '{group}'."
+msgstr "Položka s tímto názvem již v „{group}“ existuje."
+
+#: src/gcm4/ui/host_tree.py src/gcm4/ui/preferences.py
+msgid "Hosts"
+msgstr "Hostitelé"
+
+#: src/gcm4/ui/host_tree.py
+#, python-brace-format
+msgid "Move not saved: {error}"
+msgstr "Přesun nebyl uložen: {error}"
+
+#: src/gcm4/ui/host_tree.py
+msgid "No matching hosts"
+msgstr "Žádní odpovídající hostitelé"
+
+#: src/gcm4/ui/host_tree.py
+msgid "Search hosts"
+msgstr "Hledat hostitele"
+
+#: src/gcm4/ui/main_window.py
+msgid "Close tab"
+msgstr "Zavřít kartu"
+
+#: src/gcm4/ui/main_window.py
+msgid "Configuration not loaded"
+msgstr "Konfigurace nebyla načtena"
 
 #: src/gcm4/ui/main_window.py
 msgid "Home"
-msgstr ""
+msgstr "Domů"
 
 #: src/gcm4/ui/main_window.py
 msgid "Hosts and groups will appear in the left panel."
-msgstr ""
+msgstr "Hostitelé a skupiny se zobrazí v levém panelu."
 
 #: src/gcm4/ui/main_window.py
-#, fuzzy
-#| msgid "Gnome Connection Manager"
+#, python-brace-format
+msgid "No extension handles the protocol «{protocol}». Install it to open this connection."
+msgstr "Protokol „{protocol}“ nepodporuje žádné rozšíření. Nainstalujte jej pro otevření tohoto připojení."
+
+#: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Not restored, host not found: {hosts}"
+msgstr "Neobnoveno, hostitel nenalezen: {hosts}"
+
+#: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Not restored, no extension for: {hosts}"
+msgstr "Neobnoveno, chybí rozšíření pro: {hosts}"
+
+#: src/gcm4/ui/main_window.py
+msgid "Open connections will be closed."
+msgstr "Otevřená připojení budou ukončena."
+
+#: src/gcm4/ui/main_window.py
+msgid "Quit anyway?"
+msgstr "Přesto ukončit?"
+
+#: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Unable to open «{host}»: {error}"
+msgstr "„{host}“ nelze otevřít: {error}"
+
+#: src/gcm4/ui/main_window.py
 msgid "Welcome to Gnome Connection Manager"
-msgstr "Gnome Connection Manager"
+msgstr "Vítejte v Gnome Connection Manager"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Address copied"
+msgstr "Adresa zkopírována"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Changes not saved: {error}"
+msgstr "Změny nebyly uloženy: {error}"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Create"
+msgstr "Vytvořit"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Group color"
+msgstr "Barva skupiny"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Group name"
+msgstr "Název skupiny"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "It contains {hosts} host(s) and {groups} subgroup(s), which will be removed too."
+msgstr "Obsahuje hostitele ({hosts}) a podskupiny ({groups}), které budou také odstraněny."
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Parent group: {parent}"
+msgstr "Nadřazená skupina: {parent}"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Remove group «{name}»?"
+msgstr "Odstranit skupinu „{name}“?"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Remove host «{name}»?"
+msgstr "Odstranit hostitele „{name}“?"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Rename"
+msgstr "Přejmenovat"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "This cannot be undone."
+msgstr "Tuto akci nelze vrátit."
+
+#: src/gcm4/ui/mises_a_jour.py
+msgid "Allow"
+msgstr "Povolit"
+
+#: src/gcm4/ui/mises_a_jour.py
+msgid "At startup, Gnome Connection Manager can ask GitHub (api.github.com) whether a newer version has been published. You can change this later in the preferences."
+msgstr "Při spuštění se může Gnome Connection Manager zeptat GitHubu (api.github.com), zda byla vydána novější verze. Později to můžete změnit v předvolbách."
+
+#: src/gcm4/ui/mises_a_jour.py
+msgid "Check for updates?"
+msgstr "Kontrolovat aktualizace?"
+
+#: src/gcm4/ui/mises_a_jour.py
+msgid "No"
+msgstr "Ne"
+
+#: src/gcm4/ui/mises_a_jour.py
+#, python-brace-format
+msgid "Version {version} is available"
+msgstr "Je k dispozici verze {version}"
+
+#: src/gcm4/ui/preferences.py
+msgid "Appearance"
+msgstr "Vzhled"
+
+#: src/gcm4/ui/preferences.py
+msgid "Default log level"
+msgstr "Výchozí úroveň protokolu"
+
+#: src/gcm4/ui/preferences.py
+msgid "Error"
+msgstr "Chyba"
+
+#: src/gcm4/ui/preferences.py
+msgid "Extensions"
+msgstr "Rozšíření"
+
+#: src/gcm4/ui/preferences.py
+msgid "Loaded"
+msgstr "Načteno"
+
+#: src/gcm4/ui/preferences.py
+msgid "Log folder"
+msgstr "Složka protokolů"
+
+#: src/gcm4/ui/preferences.py
+msgid "Logging"
+msgstr "Protokolování"
+
+#: src/gcm4/ui/preferences.py
+msgid "Main window"
+msgstr "Hlavní okno"
+
+#: src/gcm4/ui/preferences.py
+msgid "No extension found."
+msgstr "Nebylo nalezeno žádné rozšíření."
+
+#: src/gcm4/ui/preferences.py
+msgid "Overridden for this session by --debug or GCM_LOG_LEVEL."
+msgstr "Pro tuto relaci přepsáno volbou --debug nebo GCM_LOG_LEVEL."
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Preferences not saved: {error}"
+msgstr "Předvolby nebyly uloženy: {error}"
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Preferences page unavailable: {error}"
+msgstr "Stránka předvoleb není dostupná: {error}"
+
+#: src/gcm4/ui/preferences.py
+msgid "Theme"
+msgstr "Motiv"
+
+#: src/gcm4/ui/preferences.py
+msgid "Tree font"
+msgstr "Písmo stromu hostitelů"
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Unable to open the folder: {error}"
+msgstr "Složku nelze otevřít: {error}"
+
+#: src/gcm4/ui/preferences.py
+msgid "Use system font"
+msgstr "Použít systémové písmo"
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Version {version}"
+msgstr "Verze {version}"
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format
@@ -3924,16 +4306,8 @@ msgid "%s has disconnected."
 msgstr "Odpojit"
 
 #: widgets.py
-msgid "Choose Color…"
-msgstr ""
-
-#: widgets.py
 msgid "Clone console"
 msgstr "Klonovat konzoli"
-
-#: widgets.py
-msgid "Collapse all"
-msgstr "Sbalit vše"
 
 #: widgets.py
 #, fuzzy
@@ -3942,42 +4316,16 @@ msgid "Connection closed"
 msgstr "Připojování…"
 
 #: widgets.py
-msgid "Copy Address"
-msgstr "Kopírovat adresu"
-
-#: widgets.py
 msgid "Custom commands"
 msgstr "Vlastní příkazy"
-
-#: widgets.py
-msgid "Duplicate Host"
-msgstr "Duplikovat hostitele"
 
 #: widgets.py
 msgid "Enable logging"
 msgstr "Povolit protokolování"
 
 #: widgets.py
-msgid "Expand all"
-msgstr "Rozbalit vše"
-
-#: widgets.py
-msgid "New Group…"
-msgstr ""
-
-#: widgets.py
 msgid "Reconnect to host"
 msgstr "Znovu připojit k hostiteli"
-
-#: widgets.py
-msgid "Rename Group…"
-msgstr ""
-
-#: widgets.py
-#, fuzzy
-#| msgid "Reset console"
-msgid "Reset Color"
-msgstr "Resetovat konzoli"
 
 #: widgets.py
 msgid "Reset and Clear console"
@@ -4009,9 +4357,6 @@ msgstr "Zrušit rozdělení všech konzolí"
 
 #~ msgid "Colors and Keys"
 #~ msgstr "Barvy a klávesy"
-
-#~ msgid "Commands"
-#~ msgstr "Příkazy"
 
 #~ msgid ""
 #~ "Compression level: \n"

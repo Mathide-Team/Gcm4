@@ -1,4 +1,4 @@
-"""Lecture et écriture de ``~/.gcm/gcm.conf`` sans GTK (#137).
+"""Lecture et écriture de ``~/.config/gcm4/gcm4.conf`` sans GTK (#137).
 
 Format repris de ``Wmain.loadConfig`` / ``Wmain.writeConfig`` (application
 GTK3), inventorié dans ``docs/configuration.md``.
@@ -12,7 +12,7 @@ Garanties :
   clés hors champs communs vont dans ``host.protocol_options[protocole]``
   et sont réécrites telles quelles, même sans le plugin du protocole ;
 - **écriture atomique** : fichier temporaire du même dossier, ``fsync``,
-  ``os.replace``, permissions ``0600`` ; copie ``gcm.conf.bak`` avant la
+  ``os.replace``, permissions ``0600`` ; copie ``gcm4.conf.bak`` avant la
   première écriture d'une session ; en cas d'erreur (disque plein…),
   l'ancien fichier reste intact et :class:`ConfigError` est levée ;
 - **jamais d'écrasement silencieux** : fichier illisible ou INI corrompu
@@ -22,7 +22,7 @@ Garanties :
 Mots de passe : le champ ``pass`` passe par un objet :class:`Chiffrement`.
 Par défaut (:class:`SansChiffrement`), la valeur stockée est conservée
 telle quelle. ``gcm4.core.chiffrement.ChiffrementGcm`` (#138) lit et
-écrit le format de l'application (``.gcm.key``) ; ses deux points
+écrit le format de l'application (``.gcm4.key``) ; ses deux points
 d'accroche facultatifs sont ``preparer(brut)``, appelé avant la lecture
 des hôtes, et ``version_format``, écrit dans ``[options] version``.
 """
@@ -41,6 +41,7 @@ from loguru import logger
 
 from gcm4.core.i18n import _
 from gcm4.core.model import Group, Host, HostStore, normaliser_chemin
+from gcm4.core.replies import ecrire_replies, lire_replies
 
 SECTION_OPTIONS = "options"
 SECTION_WINDOW = "window"
@@ -164,7 +165,7 @@ def _entier(texte: str) -> int | None:
     try:
         resultat: int | None = int(texte.strip())
     except ValueError:
-        logger.warning("entier invalide dans gcm.conf : {!r}", texte)
+        logger.warning("entier invalide dans gcm4.conf : {!r}", texte)
         resultat = None
     logger.trace("_entier: -> {}", resultat)
     return resultat
@@ -271,10 +272,11 @@ def _lire_groupes(cp: configparser.RawConfigParser, store: HostStore) -> None:
         groupe = store.ensure_group(chemin) if egal and couleur.strip() else None
         if groupe is not None:
             groupe.color = couleur.strip()
-    for chemin in _liste(cp.get(SECTION_WINDOW, "collapsed-folders", fallback="")):
-        groupe = store.groups.get(chemin)
-        if groupe is not None:
-            groupe.collapsed = True
+    # Format GTK3 : chemins Gtk.TreePath (« 0:1 »), cf. gcm4.core.replies.
+    for chemin in lire_replies(
+        cp.get(SECTION_WINDOW, "collapsed-folders", fallback=""), store.groups
+    ):
+        store.groups[chemin].collapsed = True
     logger.debug("_lire_groupes: {} groupe(s)", len(store.groups))
 
 
@@ -387,7 +389,11 @@ def _construire(cfg: Config, chiffrement: Chiffrement) -> configparser.RawConfig
     cp.set(
         SECTION_WINDOW, "group-colors", ",".join(f"{g.path}={g.color}" for g in groupes if g.color)
     )
-    cp.set(SECTION_WINDOW, "collapsed-folders", ",".join(g.path for g in groupes if g.collapsed))
+    cp.set(
+        SECTION_WINDOW,
+        "collapsed-folders",
+        ecrire_replies((g.path for g in groupes if g.collapsed), store.groups),
+    )
     vides = [g.path for g in groupes if not store.hosts_in(g.path, recursive=True)]
     cp.set(SECTION_GROUPES_VIDES, "names", ",".join(vides))
     for numero, host in enumerate(store.hosts_in("", recursive=True), start=1):
@@ -425,7 +431,9 @@ def _ecrire_atomique(path: str, cp: configparser.RawConfigParser) -> None:
     try:
         os.makedirs(dossier, exist_ok=True)
         _copie_bak(path)
-        descripteur, temporaire = tempfile.mkstemp(prefix=".gcm.conf.", suffix=".tmp", dir=dossier)
+        descripteur, temporaire = tempfile.mkstemp(
+            prefix=".gcm4.conf.", suffix=".tmp", dir=dossier
+        )
         os.fchmod(descripteur, 0o600)
         with os.fdopen(descripteur, "w", encoding="utf-8") as fichier:
             cp.write(fichier)
@@ -472,5 +480,51 @@ def save_config(path: str, cfg: Config, chiffrement: Chiffrement | None = None) 
     """
     logger.debug("save_config: {}", path)
     chiffrement = chiffrement or SansChiffrement()
+    _reprendre_cles_hors_modele(path, cfg)
     _ecrire_atomique(path, _construire(cfg, chiffrement))
     logger.debug("save_config: fait")
+
+
+#: Clés de ``[window]`` écrites depuis le modèle par ``_construire`` ; les
+#: autres (géométrie, thème…) sont écrites en cours de session par
+#: ``update_keys`` et le fichier fait foi pour elles.
+_CLES_WINDOW_DU_MODELE = frozenset({"group-colors", "collapsed-folders"})
+
+
+def _cles_du_modele() -> dict[str, frozenset[str]]:
+    """Par section reprise : clés écrites depuis le modèle par ``_construire``."""
+    logger.trace("_cles_du_modele")
+    resultat = {
+        SECTION_WINDOW: _CLES_WINDOW_DU_MODELE,
+        SECTION_OPTIONS: frozenset(_cle_option(f.name) for f in fields(AppConfig)),
+    }
+    logger.trace("_cles_du_modele: {} section(s)", len(resultat))
+    return resultat
+
+
+def _reprendre_cles_hors_modele(path: str, cfg: Config) -> None:
+    """Recopie dans ``cfg.brut`` les clés hors modèle de ``[window]`` et ``[options]``.
+
+    Sans cela, un enregistrement du modèle en cours de session (glisser-déposer,
+    #141) remettrait le thème ou la géométrie lus au démarrage, ou effacerait
+    une préférence sans champ ``AppConfig`` écrite depuis (``log-level``, #148).
+
+    Raises:
+        ConfigError: fichier devenu illisible ou corrompu (pas d'écrasement).
+    """
+    logger.debug("_reprendre_cles_hors_modele: {}", path)
+    disque = _lire_brut(path)
+    if disque is None:
+        logger.debug("_reprendre_cles_hors_modele: rien à reprendre")
+        return
+    reprises = 0
+    for section, du_modele in _cles_du_modele().items():
+        if not disque.has_section(section):
+            continue
+        if not cfg.brut.has_section(section):
+            cfg.brut.add_section(section)
+        for cle, valeur in disque.items(section):
+            if cle not in du_modele:
+                cfg.brut.set(section, cle, valeur)
+                reprises += 1
+    logger.debug("_reprendre_cles_hors_modele: {} clé(s)", reprises)

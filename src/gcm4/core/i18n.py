@@ -50,3 +50,9 @@ def _(message: str) -> str:
     traduit = _translation.gettext(message)
     logger.trace("_: -> {!r}", traduit)
     return traduit
+
+
+def N_(message: str) -> str:  # noqa: N802  (nom gettext standard, reconnu par xgettext)
+    """Marque ``message`` pour l'extraction sans le traduire (traduit plus tard par ``_``)."""
+    logger.trace("N_: {!r}", message)
+    return message

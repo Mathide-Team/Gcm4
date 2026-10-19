@@ -74,11 +74,26 @@ def test_gtk_absent_message_d_installation(tmp_path):
     assert "Traceback" not in r.stderr
 
 
-def test_config_par_defaut_dans_le_home(tmp_path):
-    """Sans ``-c``, configuration dans ``~/.gcm`` (décision D3 de #118)."""
-    args = cli.parse_args([], home=str(tmp_path))
-    assert args.config_dir == str(tmp_path / ".gcm")
+def test_config_par_defaut_xdg(tmp_path):
+    """Sans ``-c`` : ``~/.config/gcm4``, ancien ``~/.gcm`` à migrer (#99)."""
+    args = cli.parse_args([], home=str(tmp_path), environ={})
+    assert args.config_dir == str(tmp_path / ".config" / "gcm4")
+    assert args.ancien_dossier == str(tmp_path / ".gcm")
     assert args.hotes == [] and args.debug is False
+
+
+def test_config_xdg_config_home(tmp_path):
+    """``XDG_CONFIG_HOME`` absolu respecté ; relatif ignoré (spécification XDG)."""
+    args = cli.parse_args([], home=str(tmp_path), environ={"XDG_CONFIG_HOME": "/srv/conf"})
+    assert args.config_dir == "/srv/conf/gcm4"
+    args = cli.parse_args([], home=str(tmp_path), environ={"XDG_CONFIG_HOME": "relatif"})
+    assert args.config_dir == str(tmp_path / ".config" / "gcm4")
+
+
+def test_config_explicite_jamais_remplie_depuis_gcm(tmp_path):
+    """Avec ``-c``, aucune copie depuis ``~/.gcm``."""
+    args = cli.parse_args(["-c", str(tmp_path / "x")], home=str(tmp_path))
+    assert args.config_dir == str(tmp_path / "x") and args.ancien_dossier is None
 
 
 def test_config_relative_rendue_absolue(tmp_path, monkeypatch):
@@ -108,14 +123,43 @@ def test_commande_declaree():
     assert data["project"]["requires-python"].startswith(">=3.12")
 
 
+def _sous_type_checking(n: ast.AST) -> bool:
+    """``if TYPE_CHECKING:`` ou ``if typing.TYPE_CHECKING:``."""
+    test = getattr(n, "test", None)
+    return isinstance(n, ast.If) and (
+        (isinstance(test, ast.Name) and test.id == "TYPE_CHECKING")
+        or (isinstance(test, ast.Attribute) and test.attr == "TYPE_CHECKING")
+    )
+
+
 def _imports(path: Path) -> list[str]:
+    """Modules importés à l'exécution (blocs ``if TYPE_CHECKING:`` exclus : annotations seules)."""
     noms = []
-    for n in ast.walk(ast.parse(path.read_text(encoding="utf-8"))):
+    pile: list[ast.AST] = [ast.parse(path.read_text(encoding="utf-8"))]
+    while pile:
+        n = pile.pop()
         if isinstance(n, ast.Import):
             noms += [a.name for a in n.names]
         elif isinstance(n, ast.ImportFrom) and n.module:
             noms.append(n.module)
+        if _sous_type_checking(n):
+            pile.extend(n.orelse)  # le corps n'est jamais exécuté
+        else:
+            pile.extend(ast.iter_child_nodes(n))
     return noms
+
+
+def test_imports_type_checking_ignores(tmp_path):
+    """Un import sous ``if TYPE_CHECKING:`` n'est pas compté ; le même import ailleurs l'est."""
+    f = tmp_path / "m.py"
+    f.write_text(
+        "from typing import TYPE_CHECKING\nimport typing\n"
+        "if TYPE_CHECKING:\n    from gi.repository import Gtk\n"
+        "if typing.TYPE_CHECKING:\n    import gi\nelse:\n    import os\n"
+        "def f():\n    import json\n",
+        encoding="utf-8",
+    )
+    assert sorted(_imports(f)) == ["json", "os", "typing", "typing"]
 
 
 def test_aucun_gi_hors_de_ui():

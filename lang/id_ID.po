@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-11 23:30+0000\n"
+"POT-Creation-Date: 2026-10-19 12:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,11 +65,9 @@ msgstr "ASCII Backspace \t[Ctrl+H 0x08]"
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
 msgstr "ASCII Delete    \t[Ctrl+? 0x7F]"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_About"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "About"
-msgstr "_Tentang"
+msgstr "Tentang"
 
 #: gnome_connection_manager.py
 msgid "Action"
@@ -79,17 +77,15 @@ msgstr "Aksi"
 msgid "Activate"
 msgstr "Aktifkan"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/core/menu_arbre.py widgets.py
 msgid "Add Host"
 msgstr "Tambah host"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Disconnect"
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "After disconnecting"
-msgstr "Putuskan"
+msgstr "Setelah memutus"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Always"
 msgstr "Selalu"
 
@@ -109,11 +105,9 @@ msgstr "Backspace:"
 msgid "Baud rate"
 msgstr "Kecepatan baud"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Error connecting to server"
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Before connecting"
-msgstr "Kesalahan menghubungkan ke server"
+msgstr "Sebelum menyambung"
 
 #: gnome_connection_manager.py ssh_config_editor.py
 msgid "Browse existing SSH keys in ~/.ssh/"
@@ -143,11 +137,13 @@ msgstr "Tidak dapat membuka file log untuk ditulis"
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
-#: plugins/plugin_spice.py plugins/plugin_ssh.py utils.py widgets.py
+#: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
+#: src/gcm4/ui/host_dialog.py src/gcm4/ui/main_window.py
+#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
 msgid "Cancel"
 msgstr "Batal"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Check updates"
 msgstr "Periksa pembaruan"
 
@@ -167,7 +163,7 @@ msgstr "Hapus pilihan"
 msgid "Close"
 msgstr "Tutup"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py widgets.py
 msgid "Close console"
 msgstr "Tutup konsol"
 
@@ -197,7 +193,7 @@ msgstr "Konfirmasi saat menutup konsol"
 msgid "Confirm on close console with middle click"
 msgstr "Konfirmasi saat menutup konsol dengan klik tengah"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on exit"
 msgstr "Konfirmasi saat keluar"
 
@@ -235,15 +231,15 @@ msgstr "Perintah Khusus"
 msgid "Custom commands…"
 msgstr "Perintah khusus"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Dark"
-msgstr ""
+msgstr "Gelap"
 
 #: gnome_connection_manager.py plugins/plugin_serial.py
 msgid "Data bits"
 msgstr "Bit data"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Default colors"
 msgstr "Warna default"
 
@@ -255,7 +251,7 @@ msgstr "Urutan Delete \t[@7]"
 msgid "Delete:"
 msgstr "Delete:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Description"
 msgstr "Deskripsi"
 
@@ -283,11 +279,12 @@ msgstr "Apakah Anda benar-benar ingin menghapus host"
 msgid "Dynamic title"
 msgstr "Judul dinamis"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: src/gcm4/core/menu_arbre.py widgets.py
 msgid "Edit"
 msgstr "Edit"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Edit Host"
 msgstr "Edit Host"
 
@@ -355,11 +352,9 @@ msgstr "Ekspor Server"
 msgid "Fields group, name and host are required"
 msgstr "Kolom grup, nama, dan host wajib diisi"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_File"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "File"
-msgstr "_File"
+msgstr "File"
 
 #: gnome_connection_manager.py
 msgid "Flow"
@@ -377,7 +372,7 @@ msgstr "Warna teks:"
 msgid "GTK Theme:"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "General"
 msgstr "Umum"
 
@@ -387,7 +382,7 @@ msgstr "Gnome Connection Manager"
 
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
-#: plugins/plugin_import_virtualbox.py
+#: plugins/plugin_import_virtualbox.py src/gcm4/ui/host_dialog.py
 msgid "Group"
 msgstr "Grup"
 
@@ -407,14 +402,12 @@ msgstr ""
 msgid "Group name:"
 msgstr "Grup"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Help"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Help"
-msgstr "_Bantuan"
+msgstr "Bantuan"
 
-#: gnome_connection_manager.py plugins/plugin_ssh.py ssh_config_editor.py
-#: ssh_key_manager_dialog.py
+#: gnome_connection_manager.py plugins/plugin_ssh.py src/gcm4/ui/host_dialog.py
+#: ssh_config_editor.py ssh_key_manager_dialog.py
 msgid "Host"
 msgstr "Host"
 
@@ -438,9 +431,9 @@ msgstr "_Impor server"
 msgid "Imports"
 msgstr "Diimpor"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Include this host in the workspace (Tools > Open Workspace)"
-msgstr ""
+msgstr "Sertakan host ini di ruang kerja (Alat > Buka ruang kerja)"
 
 #: gnome_connection_manager.py
 msgid "Invalid entry in configuration file"
@@ -481,13 +474,13 @@ msgid ""
 "Détails complets dans le journal de l'application."
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Leave blank for passwordless/public key authentication"
 msgstr "Biarkan kosong untuk autentikasi tanpa kata sandi/kunci publik"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Light"
-msgstr ""
+msgstr "Terang"
 
 #: gnome_connection_manager.py
 msgid "Log local console sessions"
@@ -499,21 +492,20 @@ msgstr "Path log"
 
 #: gnome_connection_manager.py src/gcm4/ui/main_window.py
 msgid "Menu"
-msgstr ""
+msgstr "Menu"
 
-#: gnome_connection_manager.py ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+#: ssh_key_manager_dialog.py
 msgid "Name"
 msgstr "Nama"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Never"
 msgstr "Tidak pernah"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Group"
+#: gnome_connection_manager.py src/gcm4/ui/menu_arbre.py
 msgid "New Group"
-msgstr "Grup"
+msgstr "Grup baru"
 
 #: gnome_connection_manager.py
 #, fuzzy
@@ -548,11 +540,12 @@ msgstr "Tidak ada konsol yang terbuka"
 msgid "OK"
 msgstr "OK"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Only on clean exit"
 msgstr "Hanya saat keluar bersih"
 
-#: gnome_connection_manager.py plugins/plugin_import_putty.py utils.py
+#: gnome_connection_manager.py plugins/plugin_import_putty.py
+#: src/gcm4/ui/mises_a_jour.py src/gcm4/ui/preferences.py utils.py
 msgid "Open"
 msgstr "Buka"
 
@@ -576,7 +569,8 @@ msgstr ""
 msgid "Parity"
 msgstr "Paritas"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/contexte.py
+#: src/gcm4/ui/host_dialog.py
 msgid "Password"
 msgstr "Kata sandi"
 
@@ -588,7 +582,7 @@ msgstr "Tempel"
 msgid "Paste on right click"
 msgstr "Tempel saat klik kanan"
 
-#: gnome_connection_manager.py ssh_config_editor.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py ssh_config_editor.py
 msgid "Port"
 msgstr "Port"
 
@@ -604,17 +598,13 @@ msgstr "Kunci privat"
 msgid "Project's Homepage"
 msgstr "Halaman utama proyek"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Quit"
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/main_window.py
 msgid "Quit"
-msgstr "_Keluar"
+msgstr "Keluar"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Rename tab"
+#: gnome_connection_manager.py src/gcm4/ui/menu_arbre.py
 msgid "Rename Group"
-msgstr "Ganti nama tab"
+msgstr "Ubah nama grup"
 
 #: gnome_connection_manager.py widgets.py
 msgid "Rename tab"
@@ -624,11 +614,11 @@ msgstr "Ganti nama tab"
 msgid "Restore defaults"
 msgstr "Kembalikan ke default"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Restore open tabs from the previous session on startup"
-msgstr ""
+msgstr "Pulihkan tab yang terbuka dari sesi sebelumnya saat memulai"
 
-#: gnome_connection_manager.py utils.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py utils.py
 msgid "Save"
 msgstr "Simpan"
 
@@ -652,7 +642,7 @@ msgstr "Pilih warna latar belakang"
 msgid "Select consoles to use:"
 msgstr "Pilih konsol yang akan digunakan:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Select font"
 msgstr "Pilih font"
 
@@ -682,7 +672,7 @@ msgstr "Daftar server akan ditimpa, lanjutkan?"
 msgid "Servers"
 msgstr "_Server"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Settings"
 msgstr "Pengaturan"
 
@@ -691,20 +681,20 @@ msgstr "Pengaturan"
 msgid "Shell command run locally, in the background, right after this connection ends. Currently only triggered for terminal-based protocols (SSH/Telnet/Local/Serial/IPMI SOL). Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 #, python-brace-format
 msgid "Shell command run locally, in the background, right before this connection opens (any protocol). Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
-msgstr ""
+msgstr "Perintah shell yang dijalankan lokal di latar belakang tepat sebelum koneksi ini dibuka (semua protokol). Kosongkan untuk menonaktifkan. Penanda: {name} {address} {group} {protocol}"
 
 #: gnome_connection_manager.py
 msgid "Shortcut"
 msgstr "Pintasan"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Shortcuts"
 msgstr "Pintasan"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Show Panel"
 msgstr "Tampilkan Panel"
 
@@ -716,9 +706,9 @@ msgstr "Perintah Standar"
 msgid "Stop"
 msgstr "Stop"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "System"
-msgstr ""
+msgstr "Sistem"
 
 #: gnome_connection_manager.py
 msgid "TERM"
@@ -752,7 +742,7 @@ msgstr ""
 msgid "Title"
 msgstr "Judul"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "To create subgroups use format group1/group2/group3"
 msgstr "Untuk membuat subgrup gunakan format grup1/grup2/grup3"
 
@@ -769,29 +759,25 @@ msgstr "Jenis"
 msgid "Use default fixed width font"
 msgstr "Gunakan font lebar tetap default"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Use global preference"
-msgstr ""
+msgstr "Gunakan preferensi umum"
 
-#: gnome_connection_manager.py ssh_config_editor.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py ssh_config_editor.py
 msgid "User"
 msgstr "Pengguna"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_View"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "View"
-msgstr "_Tampilan"
+msgstr "Tampilan"
 
 #: gnome_connection_manager.py
 msgid "Word separator"
 msgstr "Pemisah kata"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Backspace:"
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Workspace"
-msgstr "Backspace:"
+msgstr "Ruang kerja"
 
 #: gnome_connection_manager.py
 msgid "already exists for group"
@@ -1435,7 +1421,8 @@ msgstr "🔍  Pindai host Proxmox"
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_serial.py
 #: plugins/plugin_spice.py plugins/plugin_vnc.py plugins/plugin_web.py
-#: widgets.py
+#: src/gcm4/core/menu_arbre.py src/gcm4/core/preferences.py
+#: src/gcm4/ui/contexte.py widgets.py
 msgid "Connect"
 msgstr "Hubungkan"
 
@@ -2511,7 +2498,8 @@ msgstr "Port Remote"
 msgid "Remote path"
 msgstr "Host Remote"
 
-#: plugins/plugin_ssh.py widgets.py
+#: plugins/plugin_ssh.py src/gcm4/core/menu_arbre.py
+#: src/gcm4/core/preferences.py src/gcm4/ui/menu_arbre.py widgets.py
 msgid "Remove"
 msgstr "Hapus"
 
@@ -2601,9 +2589,9 @@ msgid ""
 "E.g.: {example}"
 msgstr ""
 
-#: plugins/plugin_vnc.py
+#: plugins/plugin_vnc.py src/gcm4/ui/host_dialog.py
 msgid "Display"
-msgstr ""
+msgstr "Tampilan"
 
 #: plugins/plugin_vnc.py
 msgid "VNC"
@@ -2671,61 +2659,455 @@ msgid ""
 "The web console will open in the system browser."
 msgstr ""
 
+#: src/gcm4/app.py
+msgid "The old configuration is intact: fix the problem (permissions, disk space), then start gcm4 again."
+msgstr "Konfigurasi lama tetap utuh: perbaiki masalahnya (izin, ruang disk), lalu jalankan gcm4 lagi."
+
+#: src/gcm4/app.py
+#, python-brace-format
+msgid "gcm4: unable to copy the configuration {old} to {new} ({error})."
+msgstr "gcm4: tidak dapat menyalin konfigurasi {old} ke {new} ({error})."
+
 #: src/gcm4/core/chiffrement.py
 msgid "A stored password is corrupted."
-msgstr ""
+msgstr "Sebuah kata sandi tersimpan rusak."
 
 #: src/gcm4/core/chiffrement.py
 #, python-format
 msgid "The encryption key %s is missing: the stored passwords cannot be decrypted."
-msgstr ""
+msgstr "Kunci enkripsi %s tidak ada: kata sandi tersimpan tidak dapat didekripsi."
 
 #: src/gcm4/core/chiffrement.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to create the encryption key %s: %s"
-msgstr "Entri tidak valid dalam file konfigurasi"
+msgstr "Tidak dapat membuat kunci enkripsi %s: %s"
 
 #: src/gcm4/core/chiffrement.py
-msgid "Unable to decrypt the stored passwords: wrong or replaced .gcm.key."
-msgstr ""
+msgid "Unable to decrypt the stored passwords: wrong or replaced .gcm4.key."
+msgstr "Tidak dapat mendekripsi kata sandi tersimpan: .gcm4.key salah atau telah diganti."
 
 #: src/gcm4/core/chiffrement.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to read the encryption key %s: %s"
-msgstr "Entri tidak valid dalam file konfigurasi"
+msgstr "Tidak dapat membaca kunci enkripsi %s: %s"
 
 #: src/gcm4/core/config.py
 #, python-format
 msgid "The configuration file %s is corrupted: %s"
-msgstr ""
+msgstr "Berkas konfigurasi %s rusak: %s"
 
 #: src/gcm4/core/config.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to read the configuration file %s: %s"
-msgstr "Entri tidak valid dalam file konfigurasi"
+msgstr "Tidak dapat membaca berkas konfigurasi %s: %s"
 
 #: src/gcm4/core/config.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to write the configuration file %s: %s"
-msgstr "Entri tidak valid dalam file konfigurasi"
+msgstr "Tidak dapat menulis berkas konfigurasi %s: %s"
+
+#: src/gcm4/core/menu.py
+msgid "Search"
+msgstr "Cari"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Choose Color…"
+msgstr "Pilih warna…"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Collapse all"
+msgstr "Tutup semua"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Copy Address"
+msgstr "Salin alamat"
+
+#: src/gcm4/core/menu_arbre.py src/gcm4/ui/host_dialog.py widgets.py
+msgid "Duplicate Host"
+msgstr "Duplikat host"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Expand all"
+msgstr "Perluas semua"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "New Group…"
+msgstr "Grup baru…"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Rename Group…"
+msgstr "Ubah nama grup…"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Reset Color"
+msgstr "Atur ulang warna"
+
+#: src/gcm4/core/plugins.py
+msgid "It declares no protocol."
+msgstr "Tidak mendeklarasikan protokol apa pun."
+
+#: src/gcm4/core/plugins.py
+#, python-brace-format
+msgid "It does not implement: {methods}."
+msgstr "Tidak mengimplementasikan: {methods}."
+
+#: src/gcm4/core/plugins.py
+#, python-brace-format
+msgid "It implements plugin API version {found}; this application supports version {expected}."
+msgstr "Mengimplementasikan API plugin versi {found}; aplikasi ini mendukung versi {expected}."
+
+#: src/gcm4/core/plugins.py
+msgid "It is not a connection plugin."
+msgstr "Ini bukan plugin koneksi."
+
+#: src/gcm4/core/plugins.py
+msgid "Its name must be a non-empty lowercase identifier."
+msgstr "Namanya harus berupa pengenal huruf kecil yang tidak kosong."
+
+#: src/gcm4/core/preferences.py
+msgid "Open the context menu"
+msgstr "Buka menu konteks"
+
+#: src/gcm4/core/preferences.py
+msgid "Rename the group or edit the host"
+msgstr "Ganti nama grup atau sunting host"
+
+#: src/gcm4/core/registre.py
+#, python-brace-format
+msgid "A plugin with the same name is already loaded from {source}."
+msgstr "Plugin dengan nama yang sama sudah dimuat dari {source}."
+
+#: src/gcm4/core/registre.py
+#, python-brace-format
+msgid "Import failed: {error}"
+msgstr "Impor gagal: {error}"
+
+#: src/gcm4/core/registre.py
+#, python-brace-format
+msgid "Initialization failed: {error}"
+msgstr "Inisialisasi gagal: {error}"
+
+#: src/gcm4/core/registre.py
+#, python-brace-format
+msgid "Protocol «{protocol}» is already handled by «{other}»."
+msgstr "Protokol '{protocol}' sudah ditangani oleh '{other}'."
+
+#: src/gcm4/core/registre.py
+#, python-brace-format
+msgid "{file} does not define PLUGIN."
+msgstr "{file} tidak mendefinisikan PLUGIN."
+
+#: src/gcm4/core/validation.py
+#, python-brace-format
+msgid "A host named «{name}» already exists in this group."
+msgstr "Host bernama '{name}' sudah ada di grup ini."
+
+#: src/gcm4/core/validation.py
+msgid "A name is required."
+msgstr "Nama wajib diisi."
+
+#: src/gcm4/core/validation.py
+msgid "An address is required."
+msgstr "Alamat wajib diisi."
+
+#: src/gcm4/core/validation.py
+#, python-brace-format
+msgid "Port must be a number between {min} and {max}."
+msgstr "Port harus berupa angka antara {min} dan {max}."
+
+#: src/gcm4/core/validation.py
+msgid "The name must not contain «/»."
+msgstr "Nama tidak boleh mengandung '/'."
+
+#: src/gcm4/ui/contexte.py
+#, python-brace-format
+msgid "Password for {target}"
+msgstr "Kata sandi untuk {target}"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Background color"
+msgstr "Warna latar"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Commands"
+msgstr "Perintah"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Connection"
+msgstr "Koneksi"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Discard"
+msgstr "Buang"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Discard changes?"
+msgstr "Buang perubahan?"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Errors"
+msgstr "Galat"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Existing groups"
+msgstr "Grup yang ada"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Extra parameters"
+msgstr "Parameter tambahan"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Foreground color"
+msgstr "Warna teks"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Keep Editing"
+msgstr "Lanjutkan menyunting"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "New Host"
+msgstr "Host baru"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "No extension handles this protocol: its options are kept."
+msgstr "Tidak ada ekstensi yang menangani protokol ini: opsinya dipertahankan."
+
+#: src/gcm4/ui/host_dialog.py
+msgid "No extension is installed for this protocol: its options are kept and cannot be modified."
+msgstr "Tidak ada ekstensi yang terpasang untuk protokol ini: opsinya tetap disimpan tetapi tidak dapat diubah."
+
+#: src/gcm4/ui/host_dialog.py
+msgid "No extension is installed."
+msgstr "Tidak ada ekstensi yang terpasang."
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Protocol"
+msgstr "Protokol"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Protocol options"
+msgstr "Opsi protokol"
+
+#: src/gcm4/ui/host_dialog.py
+#, python-brace-format
+msgid "Shell command run locally, in the background, right after this connection ends, by the protocols that support it. Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
+msgstr "Perintah shell yang dijalankan lokal di latar belakang tepat setelah koneksi ini berakhir, oleh protokol yang mendukungnya. Kosongkan untuk menonaktifkan. Penanda: {name} {address} {group} {protocol}"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "The changes to this host have not been saved."
+msgstr "Perubahan pada host ini belum disimpan."
+
+#: src/gcm4/ui/host_tree.py
+#, python-brace-format
+msgid "An item with this name already exists in '{group}'."
+msgstr "Item dengan nama ini sudah ada di '{group}'."
+
+#: src/gcm4/ui/host_tree.py src/gcm4/ui/preferences.py
+msgid "Hosts"
+msgstr "Host"
+
+#: src/gcm4/ui/host_tree.py
+#, python-brace-format
+msgid "Move not saved: {error}"
+msgstr "Pemindahan tidak disimpan: {error}"
+
+#: src/gcm4/ui/host_tree.py
+msgid "No matching hosts"
+msgstr "Tidak ada host yang cocok"
+
+#: src/gcm4/ui/host_tree.py
+msgid "Search hosts"
+msgstr "Cari host"
+
+#: src/gcm4/ui/main_window.py
+msgid "Close tab"
+msgstr "Tutup tab"
+
+#: src/gcm4/ui/main_window.py
+msgid "Configuration not loaded"
+msgstr "Konfigurasi tidak dimuat"
 
 #: src/gcm4/ui/main_window.py
 msgid "Home"
-msgstr ""
+msgstr "Beranda"
 
 #: src/gcm4/ui/main_window.py
 msgid "Hosts and groups will appear in the left panel."
-msgstr ""
+msgstr "Host dan grup akan muncul di panel kiri."
 
 #: src/gcm4/ui/main_window.py
-#, fuzzy
-#| msgid "Gnome Connection Manager"
+#, python-brace-format
+msgid "No extension handles the protocol «{protocol}». Install it to open this connection."
+msgstr "Tidak ada ekstensi yang menangani protokol '{protocol}'. Pasang ekstensinya untuk membuka koneksi ini."
+
+#: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Not restored, host not found: {hosts}"
+msgstr "Tidak dipulihkan, host tidak ditemukan: {hosts}"
+
+#: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Not restored, no extension for: {hosts}"
+msgstr "Tidak dipulihkan, tidak ada ekstensi untuk: {hosts}"
+
+#: src/gcm4/ui/main_window.py
+msgid "Open connections will be closed."
+msgstr "Koneksi yang terbuka akan ditutup."
+
+#: src/gcm4/ui/main_window.py
+msgid "Quit anyway?"
+msgstr "Tetap keluar?"
+
+#: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Unable to open «{host}»: {error}"
+msgstr "Tidak dapat membuka '{host}': {error}"
+
+#: src/gcm4/ui/main_window.py
 msgid "Welcome to Gnome Connection Manager"
-msgstr "Gnome Connection Manager"
+msgstr "Selamat datang di Gnome Connection Manager"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Address copied"
+msgstr "Alamat disalin"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Changes not saved: {error}"
+msgstr "Perubahan tidak disimpan: {error}"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Create"
+msgstr "Buat"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Group color"
+msgstr "Warna grup"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Group name"
+msgstr "Nama grup"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "It contains {hosts} host(s) and {groups} subgroup(s), which will be removed too."
+msgstr "Grup ini berisi {hosts} host dan {groups} subgrup, yang juga akan dihapus."
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Parent group: {parent}"
+msgstr "Grup induk: {parent}"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Remove group «{name}»?"
+msgstr "Hapus grup '{name}'?"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Remove host «{name}»?"
+msgstr "Hapus host '{name}'?"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Rename"
+msgstr "Ubah nama"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "This cannot be undone."
+msgstr "Tindakan ini tidak dapat dibatalkan."
+
+#: src/gcm4/ui/mises_a_jour.py
+msgid "Allow"
+msgstr "Izinkan"
+
+#: src/gcm4/ui/mises_a_jour.py
+msgid "At startup, Gnome Connection Manager can ask GitHub (api.github.com) whether a newer version has been published. You can change this later in the preferences."
+msgstr "Saat memulai, Gnome Connection Manager dapat menanyakan ke GitHub (api.github.com) apakah versi yang lebih baru telah dirilis. Anda dapat mengubahnya nanti di preferensi."
+
+#: src/gcm4/ui/mises_a_jour.py
+msgid "Check for updates?"
+msgstr "Periksa pembaruan?"
+
+#: src/gcm4/ui/mises_a_jour.py
+msgid "No"
+msgstr "Tidak"
+
+#: src/gcm4/ui/mises_a_jour.py
+#, python-brace-format
+msgid "Version {version} is available"
+msgstr "Versi {version} tersedia"
+
+#: src/gcm4/ui/preferences.py
+msgid "Appearance"
+msgstr "Tampilan"
+
+#: src/gcm4/ui/preferences.py
+msgid "Default log level"
+msgstr "Tingkat log bawaan"
+
+#: src/gcm4/ui/preferences.py
+msgid "Error"
+msgstr "Galat"
+
+#: src/gcm4/ui/preferences.py
+msgid "Extensions"
+msgstr "Ekstensi"
+
+#: src/gcm4/ui/preferences.py
+msgid "Loaded"
+msgstr "Dimuat"
+
+#: src/gcm4/ui/preferences.py
+msgid "Log folder"
+msgstr "Folder log"
+
+#: src/gcm4/ui/preferences.py
+msgid "Logging"
+msgstr "Pencatatan log"
+
+#: src/gcm4/ui/preferences.py
+msgid "Main window"
+msgstr "Jendela utama"
+
+#: src/gcm4/ui/preferences.py
+msgid "No extension found."
+msgstr "Tidak ada ekstensi yang ditemukan."
+
+#: src/gcm4/ui/preferences.py
+msgid "Overridden for this session by --debug or GCM_LOG_LEVEL."
+msgstr "Ditimpa untuk sesi ini oleh --debug atau GCM_LOG_LEVEL."
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Preferences not saved: {error}"
+msgstr "Preferensi tidak disimpan: {error}"
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Preferences page unavailable: {error}"
+msgstr "Halaman preferensi tidak tersedia: {error}"
+
+#: src/gcm4/ui/preferences.py
+msgid "Theme"
+msgstr "Tema"
+
+#: src/gcm4/ui/preferences.py
+msgid "Tree font"
+msgstr "Fon pohon host"
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Unable to open the folder: {error}"
+msgstr "Tidak dapat membuka folder: {error}"
+
+#: src/gcm4/ui/preferences.py
+msgid "Use system font"
+msgstr "Gunakan fon sistem"
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Version {version}"
+msgstr "Versi {version}"
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format
@@ -3924,16 +4306,8 @@ msgid "%s has disconnected."
 msgstr "Putuskan"
 
 #: widgets.py
-msgid "Choose Color…"
-msgstr ""
-
-#: widgets.py
 msgid "Clone console"
 msgstr "Klon konsol"
-
-#: widgets.py
-msgid "Collapse all"
-msgstr "Tutup semua"
 
 #: widgets.py
 #, fuzzy
@@ -3942,42 +4316,16 @@ msgid "Connection closed"
 msgstr "Menghubungkan…"
 
 #: widgets.py
-msgid "Copy Address"
-msgstr "Salin alamat"
-
-#: widgets.py
 msgid "Custom commands"
 msgstr "Perintah khusus"
-
-#: widgets.py
-msgid "Duplicate Host"
-msgstr "Duplikat host"
 
 #: widgets.py
 msgid "Enable logging"
 msgstr "Aktifkan pencatatan"
 
 #: widgets.py
-msgid "Expand all"
-msgstr "Perluas semua"
-
-#: widgets.py
-msgid "New Group…"
-msgstr ""
-
-#: widgets.py
 msgid "Reconnect to host"
 msgstr "Hubungkan kembali ke host"
-
-#: widgets.py
-msgid "Rename Group…"
-msgstr ""
-
-#: widgets.py
-#, fuzzy
-#| msgid "Reset console"
-msgid "Reset Color"
-msgstr "Reset konsol"
 
 #: widgets.py
 msgid "Reset and Clear console"
@@ -4009,9 +4357,6 @@ msgstr "Gabungkan kembali semua konsol"
 
 #~ msgid "Colors and Keys"
 #~ msgstr "Warna dan Tombol"
-
-#~ msgid "Commands"
-#~ msgstr "Perintah"
 
 #~ msgid ""
 #~ "Compression level: \n"

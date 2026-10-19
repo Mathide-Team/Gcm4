@@ -29,7 +29,7 @@ FPM_COMMON = -s dir -n $(PKG_NAME) -v $(PKG_VERSION) -C $(TMPINSTALLDIR) \
 	--category net --url $(PKG_URL)
 
 # ── Cibles principales ────────────────────────────────────────────────────────
-.PHONY: all deb rpm opensuse install translate i18n-update i18n-check i18n-report class-diagram ci test lint validate clean help
+.PHONY: all run-gtk4 deb rpm opensuse install translate i18n-update i18n-check i18n-report class-diagram ci test lint validate clean help docs
 
 all:  test lint deb rpm opensuse translate validate
 
@@ -43,8 +43,10 @@ help:
 	@echo "  make i18n-update → extrait les chaînes et met à jour lang/*.po"
 	@echo "  make i18n-check  → échoue si lang/messages.pot ou un .po est périmé"
 	@echo "  make i18n-report → taux de traduction par langue"
+	@echo "  make run-gtk4 → lance gcm4 (GTK4) dans .venv ; venv créé par bootstrap-dev.sh"
 	@echo "  make class-diagram → régénère docs/class-diagram.md"
-	@echo "  make ci       → rejoue les étapes des jobs Qualité, Types et i18n"
+	@echo "  make ci       → rejoue les étapes des jobs Qualité, Types, i18n et documentation"
+	@echo "  make docs     → construit la documentation MkDocs (site/, strict)"
 	@echo "  make test     → lance la suite pytest"
 	@echo "  make lint     → ruff + flake8"
 	@echo "  make validate → valide .po (msgfmt) + .glade/.xml/.json"
@@ -65,6 +67,16 @@ i18n-check:
 
 i18n-report:
 	@uv run python scripts/i18n_report.py
+
+# ── Base GTK4 (#119) ──────────────────────────────────────────────────────────
+# gi, GTK 4 et libadwaita viennent des paquets système : le .venv doit être
+# créé avec --system-site-packages sur le Python système (bootstrap-dev.sh).
+run-gtk4:
+	@grep -q '^include-system-site-packages = true' .venv/pyvenv.cfg 2>/dev/null || { \
+	  echo "make run-gtk4 : .venv absent ou sans --system-site-packages (gi invisible)."; \
+	  echo "  rm -rf .venv && uv venv --system-site-packages --python \"$$(command -v python3)\" .venv && uv sync --group dev"; \
+	  exit 1; }
+	uv run gcm4 $(ARGS)
 
 class-diagram:
 	@uv run python scripts/generate_class_diagram.py
@@ -157,7 +169,7 @@ opensuse:
 
 # ── make ci (issue #162) : rejoue localement les étapes du job Qualité ───────
 # Même ordre et mêmes commandes que .github/workflows/ci.yml (jobs Qualité,
-# Types et i18n) ; tests/test_make_ci.py vérifie que chaque commande `run:`
+# Types, i18n et documentation) ; tests/test_make_ci.py vérifie que chaque commande `run:`
 # de ces jobs figure ici.
 ci:
 	uv run ruff check .
@@ -167,9 +179,15 @@ ci:
 	uvx pre-commit run --all-files --show-diff-on-failure
 	uv run python tools/check_circular_imports.py
 	uv run python -m pytest tests/ -q --cov --cov-report=term-missing:skip-covered
+	uv run coverage report --include='src/gcm4/core/*' --fail-under=95
 	uv run mypy
 	uv run python tools/validate_po.py lang/*.po
 	scripts/i18n-update.sh --check
+	uvx --with mkdocs-material --with pymdown-extensions --from "mkdocs<2" mkdocs build --strict
+
+# ── Documentation (MkDocs, issue #127) ──
+docs:
+	uvx --with mkdocs-material --with pymdown-extensions --from "mkdocs<2" mkdocs build --strict
 
 # ── Tests unitaires ───────────────────────────────────────────────────────────
 test:

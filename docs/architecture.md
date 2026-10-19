@@ -393,6 +393,115 @@ Deux bugs additionnels observés dans d'anciens journaux de développement
 (`ImportError: wMain`, `AttributeError` sur « Éditer » sans sélection) sont
 également **déjà corrigés** dans le code actuel.
 
+### 2.10 Champs du dialogue d'hôte (gcm4, #144)
+
+Inventaire de `Whost` (`gnome_connection_manager.py`, l. ~5448 à 6700,
+`models.Host._CORE_FIELDS`) pour le dialogue GTK4 (`gcm4.ui.host_dialog`,
+#145). **Commun** : attribut de `gcm4.core.model.Host`, édité par le dialogue
+et validé par `gcm4.core.validation.validate_host`. **Protocole** : clé de
+`host.protocol_options[protocole]`, éditée par la zone du plugin (#146) et
+conservée telle quelle sans plugin. La correspondance avec les clés INI est
+`gcm4.core.config.CHAMPS_HOTE` : toute clé absente de ce tableau y est une
+option de protocole.
+
+| Widget `Whost` | Champ GTK3 | Clé INI | Classement | Dialogue gcm4 |
+|---|---|---|---|---|
+| `txtName` | `name` | `name` | commun | nom (obligatoire, sans `/`, unique dans le groupe) |
+| `cmbGroup` (avec saisie) | `group` | `group` | commun | groupe : liste des groupes et saisie libre (racine permise) |
+| `txtHost` | `host` | `host` | commun | adresse (obligatoire sauf protocole sans adresse) |
+| `txtPort` | `port` | `port` | commun | port : vide (défaut du protocole, #146) ou 1 à 65535 |
+| `txtUser` | `user` | `user` | commun | utilisateur |
+| `txtPass` / `txtPassword` | `password` | `pass` (chiffré) | commun | `Gtk.PasswordEntry`, jamais journalisé |
+| `txtDescription` | `description` | `description` | commun | description |
+| `btnFColor`, `btnBColor`, `chkDefaultColors` | `font_color`, `back_color` | `font-color`, `back-color` | commun | `Gtk.ColorDialogButton` ×2 et interrupteur « couleurs par défaut » |
+| `cmbProtocol` | `protocol` | `protocol` | commun | `Gtk.DropDown` : protocoles du registre (#124), plus le protocole actuel s'il est inconnu |
+| `chkWorkspace` | `workspace` | `workspace` | commun | interrupteur « espace de travail » |
+| `cmbAutoCloseTab` | `auto_close_tab` | `auto-close-tab` | commun | hérité / jamais / toujours / sortie propre |
+| `txtPreConnectCommand` | `pre_connect_command` | `pre-connect-command` | commun | stocké, exécuté par les plugins seulement |
+| `txtPostConnectCommand` | `post_connect_command` | `post-connect-command` | commun | stocké, exécuté par les plugins seulement |
+| — (page du plugin) | `extra_params` | `extra_params` | commun | paramètres supplémentaires (texte libre transmis au client) |
+| `cmbType` | `type` | `type` | protocole | remplacé par `protocol` ; conservé tel quel |
+| `txtPrivateKey`, `btnBrowse`, `btnPickKey`, `btnKeyManager` | `private_key` | `private_key` | protocole | zone du plugin (SSH) |
+| `chkCommands`, `txtCommands` | `commands` | `commands` | protocole | zone du plugin (terminal) |
+| `chkLogging` | `log` | `log` | protocole | zone du plugin (terminal) |
+| `cmbBackspace`, `cmbDelete` | `backspace_key`, `delete_key` | `backspace_key`, `delete_key` | protocole | zone du plugin (terminal VTE) |
+| `txtTerm` | `term` | `term` | protocole | zone du plugin (terminal) |
+| page tunnels | `tunnel` | `tunnel` | protocole | zone du plugin (SSH) |
+| options SSH | `keep_alive`, `x11`, `agent`, `compression`, `compressionLevel` | idem | protocole | zone du plugin (SSH) |
+| pages `nbHost` des plugins (`save_host_fields`) | champs de `_protocol_field_defaults()` | idem | protocole | zone du plugin du protocole |
+
+### 2.11 Préférences : inventaire de `Wconfig` (gcm4, #147)
+
+Chaque option du dialogue GTK3 `Wconfig` est classée dans
+`gcm4.core.preferences.INVENTAIRE` ; `tests/test_gcm4_preferences.py` relit
+`Wconfig` et échoue si une option n'y figure pas. Les pages Général et
+Apparence (`gcm4.ui.preferences`) appliquent chaque changement tout de suite
+et l'écrivent aussitôt (`update_keys`, écriture atomique). Nouvelle clé gcm4 :
+`[window] tree-font` (description Pango, vide = police du système).
+
+Restauration des onglets (#246, `gcm4.core.onglets`) : à la fermeture, les
+chemins `groupe/nom` des onglets de connexion sont écrits dans l'ordre
+affiché dans `[window] open-tabs` (format GTK3), même option désactivée.
+Au démarrage, si `[options] restore-open-tabs` est actif, chaque chemin est
+rouvert par `win.connect-host` ; un hôte disparu ou un protocole sans
+plugin donne un seul message par cas. Limite du format : un chemin
+contenant une virgule n'est pas enregistré.
+
+Vérification des mises à jour (#245, `gcm4.core.mises_a_jour`,
+`gcm4.ui.mises_a_jour`) : jamais d'accès réseau au démarrage sans accord.
+`[options] check-updates` (GTK3) dit si l'on vérifie ; `[window]
+check-updates-consent` garde l'accord explicite (absent : une question,
+une seule fois ; « Non » désactive l'option ; activer l'option dans les
+préférences vaut accord). `GCM_NO_UPDATE_CHECK=1` désactive tout (paquets
+de distribution, tests). Source : API GitHub `releases/latest` du dépôt
+(brouillons et pré-versions exclus), délai 5 s, proxy de l'environnement ;
+comparaison numérique des versions (GTK3 comparait des chaînes). Requête
+dans un fil d'exécution, résultat par `GLib.idle_add` ; hors ligne : une
+ligne de journal, rien à l'écran.
+
+Lot 5b (#148) : pages Raccourcis (lecture seule, depuis
+`gcm4.core.preferences.raccourcis()`, même source que les raccourcis posés
+par l'application et l'arbre), Journalisation et Extensions. Nouvelle clé
+`[options] log-level` (`TRACE`…`ERROR`, défaut `INFO`) ; priorité : `--debug`,
+puis `GCM_LOG_LEVEL` / `GCM_DEBUG`, puis la préférence. `save_config` reprend
+désormais du fichier les clés de `[options]` sans champ `AppConfig`, comme
+celles de `[window]` : une préférence écrite en cours de session n'est pas
+effacée par un enregistrement du modèle.
+
+| Option `Wconfig` | Clé INI | Classement | Destination dans gcm4 |
+|---|---|---|---|
+| `WORD_SEPARATORS` | `options/word-separators` | terminal | plugin terminal |
+| `BUFFER_LINES` | `options/buffer-lines` | terminal | plugin terminal |
+| `TRANSPARENCY` | `options/transparency` | terminal | plugin terminal |
+| `TERM` | `options/term` | terminal | plugin terminal |
+| `LOG_PATH` | `options/log-path` | terminal | plugin terminal (journal des sessions) |
+| `CONTINUOUS_TAB_LOG` | `options/continuous-tab-log` | terminal | plugin terminal |
+| `STARTUP_LOCAL` | `options/startup-local` | protocole | plugin local |
+| `LOG_LOCAL` | `options/log-local` | protocole | plugin local |
+| `PASTE_ON_RIGHT_CLICK` | `options/paste-right-click` | terminal | plugin terminal |
+| `AUTO_COPY_SELECTION` | `options/auto-copy-selection` | terminal | plugin terminal |
+| `CONFIRM_ON_CLOSE_TAB` | `options/confirm-close-tab` | base | onglets, issue de suivi |
+| `CONFIRM_ON_CLOSE_TAB_MIDDLE` | `options/confirm-close-tab-middle` | base | onglets, issue de suivi |
+| `CYCLE_TABS` | `options/cycle-tabs` | base | onglets, issue de suivi |
+| `DISABLE_SHORTCUTS` | `options/disable-shortcuts` | terminal | plugin terminal |
+| `DISABLE_NOTIFICATIONS` | `options/disable-notifications` | terminal | plugin terminal |
+| `RESTORE_OPEN_TABS` | `options/restore-open-tabs` | base | page Général (#147), #246 |
+| `AUTO_CLOSE_TAB` | `options/auto-close-tab` | terminal | plugin terminal |
+| `CONFIRM_ON_EXIT` | `options/confirm-exit` | base | page Général (#147) |
+| `CHECK_UPDATES` | `options/check-updates` | base | page Général (#147), #245 |
+| `DISABLE_HOSTS_STRIPES` | `options/disable-hosts-stripes` | base | page Apparence, issue de suivi |
+| `UPDATE_TITLE` | `options/update-title` | base | titre de fenêtre, issue de suivi |
+| `APP_TITLE` | `options/app-title` | base | titre de fenêtre, issue de suivi |
+| `FONT_COLOR` | `options/font-color` | terminal | plugin terminal |
+| `BACK_COLOR` | `options/back-color` | terminal | plugin terminal |
+| `FONT` | `options/font` | terminal | plugin terminal (police VTE) |
+| `THEME_MODE` | `window/theme-mode` | base | page Apparence (#147) |
+| `DARK_MODE` | `window/dark-mode` | base | écrite avec theme-mode (#135) |
+| `shortcuts` | `shortcuts/*` | base | page Raccourcis (#148, lecture seule ; édition : issue de suivi) |
+| `custom commands` | `shortcuts/*` | terminal | plugin terminal |
+| `build_preferences_tab` | — | protocole | plugin.build_preferences_page (#148) |
+| `SerialTemplatesTab` | — | protocole | plugin série |
+
 ## 3. Arborescence détaillée (fichiers, classes, dépendances)
 
 ```

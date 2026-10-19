@@ -8,13 +8,15 @@ de sortie non nul.
 
 from __future__ import annotations
 
+import os
 import sys
 
 from loguru import logger
 
 import gcm4_core
 import logging_config
-from gcm4.core import cli, i18n
+from gcm4.core import chemins, cli, i18n, preferences
+from gcm4.core.i18n import _
 
 # Paquets système de PyGObject, GTK4 et libadwaita (D1 de #118).
 PAQUETS_GTK = {
@@ -23,6 +25,7 @@ PAQUETS_GTK = {
     "arch": "python-gobject gtk4 libadwaita",
 }
 CODE_GTK_ABSENT = 3
+CODE_MIGRATION_IMPOSSIBLE = 4
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -33,10 +36,31 @@ def main(argv: list[str] | None = None) -> int:
     logging_config.configure_logging()
     args = cli.parse_args(sys.argv[1:] if argv is None else argv)
     i18n.install()
+    # Avant le journal permanent (config_dir/log) : il créerait le dossier et
+    # bloquerait la copie de ~/.gcm (#99).
+    try:
+        chemins.preparer(args.config_dir, args.ancien_dossier)
+    except chemins.MigrationError as exc:
+        logger.error("main: migration de la configuration impossible ({})", exc)
+        print(
+            _("gcm4: unable to copy the configuration {old} to {new} ({error}).").format(
+                old=args.ancien_dossier, new=args.config_dir, error=exc
+            ),
+            _(
+                "The old configuration is intact: fix the problem (permissions, disk space), then start gcm4 again."
+            ),
+            sep="\n",
+            file=sys.stderr,
+        )
+        logger.debug("main: sortie {}", CODE_MIGRATION_IMPOSSIBLE)
+        return CODE_MIGRATION_IMPOSSIBLE
     if args.debug:
         logging_config.enable_debug(config_dir=args.config_dir)
     else:
-        logging_config.configure_logging(config_dir=args.config_dir, force=True)
+        # Préférences > Journalisation (#148) ; GCM_LOG_LEVEL / GCM_DEBUG priment.
+        preference = preferences.load_preferences(chemins.fichier_conf(args.config_dir))
+        niveau, _source = preferences.niveau_journal(False, preference.log_level, os.environ)
+        logging_config.configure_logging(niveau or None, config_dir=args.config_dir, force=True)
     try:
         from gcm4.ui import application
     except (ImportError, ValueError) as exc:

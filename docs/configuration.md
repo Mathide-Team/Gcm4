@@ -1,9 +1,37 @@
-# Fichier de configuration `~/.gcm/gcm.conf`
+# Fichier de configuration
 
 Inventaire du format lu par `Wmain.loadConfig` et écrit par
 `Wmain.writeConfig` (application GTK3, `gnome_connection_manager.py`), et
-de sa reprise sans GTK dans `src/gcm4/core/config.py` (#137). Le chemin
-reste `~/.gcm/gcm.conf` (décision D3, #118) ; `-c/--config` le change.
+de sa reprise sans GTK dans `src/gcm4/core/config.py` (#137). Le format est
+le même pour les deux applications ; seuls les emplacements diffèrent.
+
+## Emplacements (#99)
+
+| | GTK3 | gcm4 |
+|---|---|---|
+| Dossier | `~/.gcm/` | `$XDG_CONFIG_HOME/gcm4/` (`~/.config/gcm4/` si la variable est absente ou relative) |
+| Configuration | `gcm.conf` | `gcm4.conf` |
+| Clé de chiffrement | `.gcm.key` | `.gcm4.key` |
+| Sauvegarde | `gcm.conf.bak` | `gcm4.conf.bak` |
+| Journal | `log/gcm-app.log` | `log/gcm-app.log` |
+
+`-c/--config DOSSIER` remplace le dossier dans les deux applications.
+
+Migration (`gcm4.core.chemins.preparer`, au démarrage de gcm4, avant toute
+écriture) :
+
+1. sans `-c`, si le dossier de gcm4 est absent et que `~/.gcm/` existe,
+   celui-ci est **copié** en entier, droits compris, puis les fichiers y
+   sont renommés (`gcm.conf` → `gcm4.conf`, etc.) ;
+2. dans le dossier retenu, un `gcm.conf` / `.gcm.key` / `gcm.conf.bak` sans
+   équivalent `gcm4` est copié sous le nouveau nom en `0600`, ce qui couvre
+   `-c ~/.gcm`. Les anciens fichiers y restent, pour GTK3.
+
+Rien n'est jamais supprimé ni écrasé dans `~/.gcm/` : l'application GTK3
+continue de l'utiliser jusqu'à son retrait (#177), et les deux
+configurations évoluent ensuite **séparément**. En cas d'échec (droits,
+disque plein), le dossier partiel est supprimé et gcm4 s'arrête avec le
+code 4 et un message.
 
 ## Règles de `gcm4.core.config`
 

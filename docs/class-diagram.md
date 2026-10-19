@@ -6,7 +6,7 @@
 > toute modification manuelle sera écrasée. Le régénérer avec `make class-diagram` ;
 > le job Qualité échoue s'il est périmé (`--check`).
 
-61 modules · 127 classes · 207 fonctions publiques de module.
+80 modules · 151 classes · 264 fonctions publiques de module.
 
 Conventions : `+` public, `-` privé (préfixe `_`) ; `list~str~` = `list[str]` ; `<<module>>`
 regroupe les fonctions publiques d'un module ; `<<…>>` sur une classe liste `dataclass` et les
@@ -33,13 +33,14 @@ flowchart TD
     g2 -->|58| g1
     g2 -->|4| g0
     g3 -->|2| g0
-    g3 -->|1| g4
+    g3 -->|2| g4
     g3 -->|1| g5
     g4 -->|1| g1
-    g4 -->|4| g0
+    g4 -->|5| g0
     g4 -->|1| g3
-    g5 -->|1| g3
-    g5 -->|6| g4
+    g5 -->|2| g0
+    g5 -->|2| g3
+    g5 -->|37| g4
 ```
 
 ## Cœur (sans GTK)
@@ -813,7 +814,7 @@ classDiagram
 
 ```mermaid
 classDiagram
-    class ConnectionPlugin {
+    class plugins_plugin_base_ConnectionPlugin {
         <<ABC>>
         +str protocol_id
         +str display_name
@@ -833,7 +834,7 @@ classDiagram
         +menu_actions() list
         +patch_edit_host_dialog(builder, host_section, cp) None
     }
-    class PluginRegistry {
+    class plugins_plugin_base_PluginRegistry {
         +register(plugin) None
         +get(protocol_id) ConnectionPlugin None
         +all() list~ConnectionPlugin~
@@ -970,7 +971,7 @@ classDiagram
         +load_host_fields(host) None
         +save_host_fields(host) None
     }
-    ConnectionPlugin <|-- IpmiSolPlugin
+    plugins_plugin_base_ConnectionPlugin <|-- IpmiSolPlugin
     class mod_plugins_plugin_local {
         <<module>>
         +get_plugin() LocalPlugin
@@ -985,7 +986,7 @@ classDiagram
         +load_host_fields(host) None
         +save_host_fields(host) None
     }
-    ConnectionPlugin <|-- LocalPlugin
+    plugins_plugin_base_ConnectionPlugin <|-- LocalPlugin
     class mod_plugins_plugin_netmiko_push {
         <<module>>
         +open_netmiko_tab(wmain) NetmikoTab
@@ -1014,7 +1015,7 @@ classDiagram
         +save_host_fields(host) None
         +host_fields() list~tuple~str, object~~
     }
-    ConnectionPlugin <|-- RdpPlugin
+    plugins_plugin_base_ConnectionPlugin <|-- RdpPlugin
     class mod_plugins_plugin_serial {
         <<module>>
         +get_plugin() SerialPlugin
@@ -1030,7 +1031,7 @@ classDiagram
         +save_host_fields(host) None
         +host_fields() list~tuple~str, object~~
     }
-    ConnectionPlugin <|-- SerialPlugin
+    plugins_plugin_base_ConnectionPlugin <|-- SerialPlugin
     class mod_plugins_plugin_snmp_push {
         <<module>>
         +open_snmp_push_tab(wmain) SnmpPushTab
@@ -1063,7 +1064,7 @@ classDiagram
         +save_host_fields(host) None
         +host_fields() list~tuple~str, object~~
     }
-    ConnectionPlugin <|-- SpicePlugin
+    plugins_plugin_base_ConnectionPlugin <|-- SpicePlugin
     class mod_plugins_plugin_ssh {
         <<module>>
         +get_plugin() SshPlugin
@@ -1088,7 +1089,7 @@ classDiagram
         +import_ssh_config_action() None
         +patch_edit_host_dialog(builder, host_section, cp) None
     }
-    ConnectionPlugin <|-- SshPlugin
+    plugins_plugin_base_ConnectionPlugin <|-- SshPlugin
     class mod_plugins_plugin_telnet {
         <<module>>
         +get_plugin() TelnetPlugin
@@ -1103,7 +1104,7 @@ classDiagram
         +load_host_fields(host) None
         +save_host_fields(host) None
     }
-    ConnectionPlugin <|-- TelnetPlugin
+    plugins_plugin_base_ConnectionPlugin <|-- TelnetPlugin
     class mod_plugins_plugin_vnc {
         <<module>>
         +get_plugin() VncPlugin
@@ -1122,7 +1123,7 @@ classDiagram
         +save_host_fields(host) None
         +host_fields() list~tuple~str, object~~
     }
-    ConnectionPlugin <|-- VncPlugin
+    plugins_plugin_base_ConnectionPlugin <|-- VncPlugin
     class mod_plugins_plugin_web {
         <<module>>
         +get_plugin() WebPlugin
@@ -1139,7 +1140,7 @@ classDiagram
         +host_fields() list~tuple~str, object~~
         +validate() list~str~
     }
-    ConnectionPlugin <|-- WebPlugin
+    plugins_plugin_base_ConnectionPlugin <|-- WebPlugin
     class mod_plugins_pluginvnc2_vnc_tab {
         <<module>>
         +build_vnc_tab_label(tab) Gtk.Box
@@ -1258,17 +1259,44 @@ classDiagram
 | Module | Fichier | Rôle |
 |---|---|---|
 | `gcm4.core` | `src/gcm4/core/__init__.py` | Cœur de gcm4 : modèle, configuration, services. |
-| `gcm4.core.chiffrement` | `src/gcm4/core/chiffrement.py` | Mots de passe chiffrés de gcm.conf, compatibles avec l'application GTK3 (#138). |
+| `gcm4.core.chemins` | `src/gcm4/core/chemins.py` | Emplacement de la configuration de gcm4 et migration depuis ``~/.gcm`` (#99). |
+| `gcm4.core.chiffrement` | `src/gcm4/core/chiffrement.py` | Mots de passe chiffrés de gcm4.conf, compatibles avec l'application GTK3 (#138). |
 | `gcm4.core.cli` | `src/gcm4/core/cli.py` | Ligne de commande de gcm4, analysée avant toute initialisation GTK (#133). |
-| `gcm4.core.config` | `src/gcm4/core/config.py` | Lecture et écriture de ``~/.gcm/gcm.conf`` sans GTK (#137). |
+| `gcm4.core.config` | `src/gcm4/core/config.py` | Lecture et écriture de ``~/.config/gcm4/gcm4.conf`` sans GTK (#137). |
+| `gcm4.core.deplacements` | `src/gcm4/core/deplacements.py` | Glisser-déposer dans l'arbre, validé sans GTK (#141). |
+| `gcm4.core.host_tree` | `src/gcm4/core/host_tree.py` | Arbre des groupes et des hôtes, sans GTK (#139). |
 | `gcm4.core.i18n` | `src/gcm4/core/i18n.py` | Traductions de gcm4 : domaine gettext ``gcm-lang`` de l'application GTK3. |
 | `gcm4.core.menu` | `src/gcm4/core/menu.py` | Menu principal et raccourcis de gcm4, décrits sans GTK (#134). |
+| `gcm4.core.menu_arbre` | `src/gcm4/core/menu_arbre.py` | Menu contextuel de l'arbre et règles de ses actions, sans GTK (#142). |
+| `gcm4.core.mises_a_jour` | `src/gcm4/core/mises_a_jour.py` | Vérification des mises à jour, sans GTK ni réseau dans les tests (#245). |
 | `gcm4.core.model` | `src/gcm4/core/model.py` | Modèle de la base GTK4 : Host, Group, HostStore, sans GTK (#136). |
+| `gcm4.core.onglets` | `src/gcm4/core/onglets.py` | Onglets ouverts, enregistrés à la fermeture et restaurés au démarrage (#246). |
+| `gcm4.core.plugins` | `src/gcm4/core/plugins.py` | Contrat v1 entre la base gcm4 et ses plugins de connexion (#149), sans GTK. |
+| `gcm4.core.preferences` | `src/gcm4/core/preferences.py` | Préférences générales de la base GTK4, sans GTK (lot 5a, #147). |
+| `gcm4.core.registre` | `src/gcm4/core/registre.py` | Découverte des plugins et isolation de leurs erreurs (#150), sans GTK. |
+| `gcm4.core.replies` | `src/gcm4/core/replies.py` | Groupes repliés de ``[window] collapsed-folders``, au format GTK3 (#139). |
 | `gcm4.core.theme` | `src/gcm4/core/theme.py` | Thème de la base GTK4, sans GTK (#135). |
-| `gcm4.core.window_state` | `src/gcm4/core/window_state.py` | Géométrie de la fenêtre principale, dans ``gcm.conf`` (#134). |
+| `gcm4.core.validation` | `src/gcm4/core/validation.py` | Validation d'un hôte avant enregistrement, sans GTK (#144). |
+| `gcm4.core.window_state` | `src/gcm4/core/window_state.py` | Géométrie de la fenêtre principale, dans ``gcm4.conf`` (#134). |
 
 ```mermaid
 classDiagram
+    class mod_gcm4_core_chemins {
+        <<module>>
+        +dossier_par_defaut(home, environ) str
+        +ancien_dossier(home) str
+        +fichier_conf(config_dir) str
+        +preparer(config_dir, ancien) Migration
+    }
+    class MigrationError {
+        <<RuntimeError>>
+    }
+    class Migration {
+        <<dataclass>>
+        +str None dossier_copie_depuis
+        +list~str~ fichiers_copies
+        +effectuee() bool
+    }
     class mod_gcm4_core_chiffrement {
         <<module>>
         +dechiffrer_aes_strict(stocke, secret) str
@@ -1283,7 +1311,7 @@ classDiagram
     class mod_gcm4_core_cli {
         <<module>>
         +build_parser() argparse.ArgumentParser
-        +parse_args(argv, home) argparse.Namespace
+        +parse_args(argv, home, environ) argparse.Namespace
     }
     class mod_gcm4_core_config {
         <<module>>
@@ -1328,10 +1356,48 @@ classDiagram
         +HostStore store
         +configparser.RawConfigParser brut
     }
+    class mod_gcm4_core_deplacements {
+        <<module>>
+        +cle(chemin, est_groupe) str
+        +groupe_cible(store, cible) str None
+        +valider(store, source, cible) Deplacement Refus
+        +appliquer(store, deplacement) Deplacement
+    }
+    class Refus {
+        <<enum.Enum>>
+    }
+    class Deplacement {
+        <<dataclass>>
+        +str cle
+        +str destination
+        +est_groupe() bool
+        +chemin() str
+        +nouveau_chemin() str
+    }
+    class mod_gcm4_core_host_tree {
+        <<module>>
+        +cle_de_tri(texte) str
+        +couleur_effective(chemin, couleurs) str
+        +construire(store) list~Noeud~
+        +infobulle(host) str
+        +correspondances(store, texte) set~str~ None
+        +ancetres(chemin) list~str~
+    }
+    class Noeud {
+        <<dataclass>>
+        +str chemin
+        +str nom
+        +Host None host
+        +str couleur
+        +list~Noeud~ enfants
+        +est_groupe() bool
+        +classe_css() str None
+    }
     class mod_gcm4_core_i18n {
         <<module>>
         +locale_dirs() list~Path~
         +install(locale_dir) gettext.NullTranslations
+        +N_(message) str
     }
     class mod_gcm4_core_menu {
         <<module>>
@@ -1347,6 +1413,36 @@ classDiagram
         <<dataclass>>
         +str titre
         +tuple~tuple~Entree, ...~, ...~ sections
+    }
+    class mod_gcm4_core_menu_arbre {
+        <<module>>
+        +disposition_gtk3(click_target) list~list~str~~
+        +cible(noeud) str
+        +sections(noeud, connexion_possible) list~list~str~~
+        +groupe_de_travail(noeud) str
+        +decompte(store, chemin) Decompte
+        +chemin_de_groupe(store, parent, nom, actuel) str None
+    }
+    class Decompte {
+        <<dataclass>>
+        +int hotes
+        +int sous_groupes
+        +vide() bool
+    }
+    class mod_gcm4_core_mises_a_jour {
+        <<module>>
+        +cle_version(texte) tuple~tuple~int, ...~, tuple~int, int~~ None
+        +plus_recente(installee, publiee) bool
+        +lire_reponse(texte) MiseAJour None
+        +recuperer(url) str None
+        +verifier(installee, recuperation) MiseAJour None
+        +lire_accord(config_file) bool None
+        +decision(check_updates, accord, environ) str
+    }
+    class MiseAJour {
+        <<dataclass>>
+        +str version
+        +str url
     }
     class mod_gcm4_core_model {
         <<module>>
@@ -1397,8 +1493,117 @@ classDiagram
         +rename(host, nom) None
         +move(host, groupe) None
         +remove(host) None
+        +nom_de_copie(host) str
+        +replace(original, nouveau) Host
         +duplicate(host) Host
         +search(texte) list~Host~
+    }
+    class mod_gcm4_core_onglets {
+        <<module>>
+        +serialiser(chemins) str
+        +analyser(brut) list~str~
+        +lire(config_file) list~str~
+    }
+    class mod_gcm4_core_plugins {
+        <<module>>
+        +incompatibilite(classe) str None
+    }
+    class PluginContext {
+        <<Protocol>>
+        +Any log
+        +config() Mapping~str, str~
+        +ask_password(host, done) None
+        +notify(message) None
+        +open_tab(title, widget) None
+    }
+    class Session {
+        <<Protocol>>
+        +Gtk.Widget widget
+        +close() None
+    }
+    class MenuItem {
+        <<dataclass>>
+        +str label
+        +Callable~~~, None~ activate
+    }
+    class gcm4_core_plugins_ConnectionPlugin {
+        <<ABC>>
+        +ClassVar~int~ api_version
+        +ClassVar~str~ name
+        +ClassVar~str~ version
+        +ClassVar~tuple~str, ...~~ protocols
+        +default_port(protocol) int None
+        +default_options(protocol) dict~str, str~
+        +validate_options(protocol, options) list~FieldError~
+        +build_host_options_widget(host, options, changed) Gtk.Widget
+        +open(host) Session
+        +build_preferences_page() Gtk.Widget None
+        +context_menu_items(host) list~MenuItem~
+    }
+    class mod_gcm4_core_preferences {
+        <<module>>
+        +load_preferences(config_file) Preferences
+        +save_preference(config_file, nom, valeur) None
+        +niveau_journal(debug_cli, preference, environ) tuple~str, str~
+        +raccourcis() list~Raccourci~
+    }
+    class OptionWconfig {
+        <<dataclass>>
+        +str nom
+        +str cle
+        +str classement
+        +str destination
+    }
+    class Preferences {
+        <<dataclass>>
+        +bool confirm_exit
+        +bool check_updates
+        +bool restore_open_tabs
+        +str theme
+        +bool show_panel
+        +str tree_font
+        +str log_level
+    }
+    class Raccourci {
+        <<dataclass>>
+        +tuple~str, ...~ touches
+        +str libelle
+        +str portee
+    }
+    class mod_gcm4_core_registre {
+        <<module>>
+        +dossier_source() Path None
+        +candidats_points_d_entree(points) list~Candidat~
+        +candidats_dossier(dossier) list~Candidat~
+        +decouvrir(contexte, candidats) PluginRegistry
+    }
+    class EtatPlugin {
+        <<dataclass>>
+        +str name
+        +str source
+        +str version
+        +tuple~str, ...~ protocols
+        +ConnectionPlugin None plugin
+        +str None erreur
+        +charge() bool
+    }
+    class Candidat {
+        <<dataclass>>
+        +str nom
+        +str source
+        +Callable~~~, Any~ charger
+    }
+    class gcm4_core_registre_PluginRegistry {
+        +plugins() list~ConnectionPlugin~
+        +erreurs() list~EtatPlugin~
+        +get(protocole) ConnectionPlugin None
+        +protocols() list~str~
+    }
+    class mod_gcm4_core_replies {
+        <<module>>
+        +gtk3_tree_paths(groupes) dict~str, str~
+        +lire_replies(valeur, groupes) set~str~
+        +ecrire_replies(replies, groupes) str
     }
     class mod_gcm4_core_theme {
         <<module>>
@@ -1406,6 +1611,17 @@ classDiagram
         +save_theme(config_file, mode) None
         +color_class(couleur) str None
         +colors_css(couleurs) str
+    }
+    class mod_gcm4_core_validation {
+        <<module>>
+        +lire_port(texte) int None
+        +erreur_de_port(texte) FieldError None
+        +validate_host(host, store, original, adresse_requise) list~FieldError~
+    }
+    class FieldError {
+        <<dataclass>>
+        +str champ
+        +str message
     }
     class mod_gcm4_core_window_state {
         <<module>>
@@ -1427,7 +1643,15 @@ classDiagram
 |---|---|---|
 | `gcm4.ui` | `src/gcm4/ui/__init__.py` | Interface GTK4 de gcm4 : seul endroit autorisé à importer ``gi``. |
 | `gcm4.ui.application` | `src/gcm4/ui/application.py` | Application libadwaita de gcm4 : instance unique, actions, À propos (#133, #134). |
+| `gcm4.ui.contexte` | `src/gcm4/ui/contexte.py` | Contexte injecté dans chaque plugin (contrat v1, ``docs/plugins.md``, #151). |
+| `gcm4.ui.couleurs` | `src/gcm4/ui/couleurs.py` | Conversions de couleurs partagées par l'interface GTK4. |
+| `gcm4.ui.dialogues` | `src/gcm4/ui/dialogues.py` | Dialogues de confirmation et de saisie, compatibles libadwaita 1.2 à 1.9. |
+| `gcm4.ui.host_dialog` | `src/gcm4/ui/host_dialog.py` | Dialogue d'hôte : champs communs, création, modification, duplication (#145). |
+| `gcm4.ui.host_tree` | `src/gcm4/ui/host_tree.py` | Arbre des groupes et des hôtes du panneau gauche (#139). |
 | `gcm4.ui.main_window` | `src/gcm4/ui/main_window.py` | Fenêtre principale de gcm4 (#134). |
+| `gcm4.ui.menu_arbre` | `src/gcm4/ui/menu_arbre.py` | Menu contextuel, actions, raccourcis et activation de l'arbre (#142). |
+| `gcm4.ui.mises_a_jour` | `src/gcm4/ui/mises_a_jour.py` | Vérification des mises à jour au démarrage, côté interface (#245). |
+| `gcm4.ui.preferences` | `src/gcm4/ui/preferences.py` | Préférences de la base GTK4 : pages Général et Apparence (lot 5a, #147). |
 
 ```mermaid
 classDiagram
@@ -1438,8 +1662,45 @@ classDiagram
     class Gcm4Application {
         <<Adw.Application>>
         +appliquer_theme(mode) None
+        +appliquer_police_arbre(description) None
         +set_group_colors(couleurs) None
         +boite_a_propos() Gtk.Widget
+    }
+    class ContexteApplication {
+        +config() Mapping~str, str~
+        +ask_password(host, done) None
+        +notify(message) None
+        +open_tab(title, widget) None
+    }
+    class mod_gcm4_ui_couleurs {
+        <<module>>
+        +rgba_en_hex(rgba) str
+    }
+    class mod_gcm4_ui_dialogues {
+        <<module>>
+        +creer(parent, titre, corps, reponses, defaut, fermeture, rappel, extra) Adw.Dialog Adw.MessageDialog
+    }
+    class HostDialog {
+        <<Adw.Window>>
+        +lire() Host
+        +modifie() bool
+        +verifier() bool
+        +enregistrer() bool
+    }
+    class ElementArbre {
+        <<GObject.Object>>
+    }
+    class HostTree {
+        <<Gtk.Box>>
+        +recharger() None
+        +chercher(texte) None
+        +focus_recherche() None
+        +chemin_selectionne() str None
+        +selectionner(chemin) bool
+        +deposer(source, cible) bool
+        +appliquer_couleurs() None
+        +lignes_visibles() list~tuple~int, str~~
+        +ligne(chemin) Gtk.TreeListRow None
     }
     class mod_gcm4_ui_main_window {
         <<module>>
@@ -1447,6 +1708,36 @@ classDiagram
     }
     class MainWindow {
         <<Adw.ApplicationWindow>>
+        +enregistrer_config() None
+        +notifier(message) None
+        +ajouter_onglet(titre, contenu, session) int
+        +fermer_onglet(contenu) None
+        +onglets_ouverts() list~str~
+        +restaurer_onglets() None
         +etat_courant() window_state.WindowState
     }
+    class MenuArbre {
+        +ouvrir(noeud, x, y) None
+        +executer(nom) None
+        +modifier(operation) bool
+        +ouvrir_dialogue_hote(mode, hote, groupe) HostDialog
+        +appliquer_couleur(chemin, couleur) bool
+    }
+    class mod_gcm4_ui_mises_a_jour {
+        <<module>>
+        +enregistrer_accord(config_file, accord) None
+        +au_demarrage(fenetre, environ, verification) str
+        +demander_accord(fenetre, verification) Adw.Dialog Adw.MessageDialog
+        +lancer_verification(fenetre, verification) threading.Thread
+        +afficher(fenetre, resultat) bool
+        +ouvrir_page(fenetre, url) None
+    }
+    class mod_gcm4_ui_preferences {
+        <<module>>
+        +css_police(description) str
+        +libelle_touches(touches) str
+        +lancer_dossier(parent, dossier) None
+    }
+    class PreferencesWindow
+    PreferencesWindow <|-- PreferencesWindow
 ```

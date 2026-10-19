@@ -10,10 +10,15 @@ from gi.repository import Adw, Gdk, Gio, GLib, Gtk
 from loguru import logger
 
 from gcm4 import __version__
-from gcm4.core import menu, theme
+from gcm4.core import chemins, menu, theme
+from gcm4.core import preferences as prefs_core
 from gcm4.core.config import ConfigError
 from gcm4.core.i18n import _
+from gcm4.core.registre import Candidat, PluginRegistry, decouvrir
+from gcm4.ui import mises_a_jour
+from gcm4.ui.contexte import ContexteApplication
 from gcm4.ui.main_window import MainWindow
+from gcm4.ui.preferences import PreferencesWindow, css_police
 
 APPLICATION_ID = "io.github.MathildeDec.gcm4"
 SITE = "https://github.com/Mathide-Team/Gcm4"
@@ -26,18 +31,34 @@ class Gcm4Application(Adw.Application):
     """Application unique : une deuxième exécution active la fenêtre existante."""
 
     def __init__(
-        self, args: argparse.Namespace, flags: Gio.ApplicationFlags | None = None
+        self,
+        args: argparse.Namespace,
+        flags: Gio.ApplicationFlags | None = None,
+        candidats: Iterable[Candidat] | None = None,
     ) -> None:
-        """Garde les arguments déjà analysés par ``gcm4.core.cli``."""
+        """Garde les arguments déjà analysés par ``gcm4.core.cli``.
+
+        Args:
+            args: options de ``gcm4.core.cli`` (``config_dir``, ``debug``, ``hotes``).
+            flags: drapeaux ``Gio`` ; par défaut ``HANDLES_COMMAND_LINE``.
+            candidats: plugins à charger ; par défaut, points d'entrée puis
+                dossier source (``gcm4.core.registre``). Les tests y passent
+                le plugin démo.
+        """
         logger.debug("Gcm4Application.__init__: config_dir={}", args.config_dir)
         super().__init__(
             application_id=APPLICATION_ID,
             flags=Gio.ApplicationFlags.HANDLES_COMMAND_LINE if flags is None else flags,
         )
         self.args = args
-        self.config_file = os.path.join(args.config_dir, "gcm.conf")
+        self._candidats = None if candidats is None else list(candidats)
+        #: Plugins chargés au démarrage ; vide jusque-là (mode zéro plugin).
+        self.registre = PluginRegistry()
+        self.config_file = chemins.fichier_conf(args.config_dir)
         self.css_principal: Gtk.CssProvider | None = None
         self.css_couleurs: Gtk.CssProvider | None = None
+        self.css_police: Gtk.CssProvider | None = None
+        self.preferences: Gtk.Window | None = None  # fenêtre des préférences ouverte (#147)
         self.connect("startup", self._on_startup)
         self.connect("activate", self._on_activate)
         self.connect("command-line", self._on_command_line)
@@ -54,10 +75,6 @@ class Gcm4Application(Adw.Application):
             action = Gio.SimpleAction.new(nom, None)
             action.connect("activate", rappel)
             self.add_action(action)
-        # Préférences : page construite au lot 5 (#147) ; action présente mais inactive.
-        preferences = self.lookup_action("preferences")
-        if isinstance(preferences, Gio.SimpleAction):
-            preferences.set_enabled(False)
         for action, touches in menu.RACCOURCIS.items():
             self.set_accels_for_action(action, list(touches))
         mode = theme.load_theme(self.config_file)
@@ -68,6 +85,8 @@ class Gcm4Application(Adw.Application):
         self.add_action(action_theme)
         self.appliquer_theme(mode)
         self._charger_css()
+        # Aucun plugin ne peut empêcher le démarrage : ses erreurs restent dans le registre.
+        self.registre = decouvrir(lambda nom: ContexteApplication(self, nom), self._candidats)
         logger.debug("_on_startup: fin")
 
     def appliquer_theme(self, mode: str) -> None:
@@ -78,7 +97,7 @@ class Gcm4Application(Adw.Application):
         logger.debug("appliquer_theme: fait")
 
     def _on_theme(self, action: Gio.SimpleAction, valeur: GLib.Variant) -> None:
-        """Menu Affichage > thème : applique, puis enregistre dans gcm.conf."""
+        """Menu Affichage > thème : applique, puis enregistre dans gcm4.conf."""
         logger.debug("_on_theme: entrée")
         mode = valeur.get_string()
         logger.debug("_on_theme: {}", mode)
@@ -103,11 +122,32 @@ class Gcm4Application(Adw.Application):
         self.css_principal = Gtk.CssProvider()
         self.css_principal.load_from_path(STYLE_CSS)
         self.css_couleurs = Gtk.CssProvider()
-        for fournisseur in (self.css_principal, self.css_couleurs):
+        self.css_police = Gtk.CssProvider()
+        for fournisseur in (self.css_principal, self.css_couleurs, self.css_police):
             Gtk.StyleContext.add_provider_for_display(
                 ecran, fournisseur, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
             )
+        self.appliquer_police_arbre(prefs_core.load_preferences(self.config_file).tree_font)
         logger.debug("_charger_css: fait")
+
+    @staticmethod
+    def _charger(fournisseur: Gtk.CssProvider, css: str) -> None:
+        """Remplace le contenu d'une feuille de style (GTK 4.8 à 4.12+)."""
+        logger.trace("_charger: {} octet(s)", len(css))
+        if hasattr(fournisseur, "load_from_string"):  # GTK ≥ 4.12
+            fournisseur.load_from_string(css)
+        else:  # GTK 4.8 (Debian 12)
+            fournisseur.load_from_data(css, -1)
+        logger.trace("_charger: fait")
+
+    def appliquer_police_arbre(self, description: str) -> None:
+        """Police de l'arbre des hôtes (#147) ; vide : police du système."""
+        logger.debug("appliquer_police_arbre: {!r}", description)
+        if self.css_police is None:
+            logger.debug("appliquer_police_arbre: CSS non chargé")
+            return
+        self._charger(self.css_police, css_police(description))
+        logger.debug("appliquer_police_arbre: fait")
 
     def set_group_colors(self, couleurs: Iterable[str]) -> None:
         """Recharge les classes ``gcm-couleur-rrggbb`` (arbre des hôtes, #121)."""
@@ -115,11 +155,7 @@ class Gcm4Application(Adw.Application):
         if self.css_couleurs is None:
             logger.debug("set_group_colors: CSS non chargé")
             return
-        css = theme.colors_css(couleurs)
-        if hasattr(self.css_couleurs, "load_from_string"):  # GTK ≥ 4.12
-            self.css_couleurs.load_from_string(css)
-        else:  # GTK 4.8 (Debian 12)
-            self.css_couleurs.load_from_data(css, -1)
+        self._charger(self.css_couleurs, theme.colors_css(couleurs))
         logger.debug("set_group_colors: fait")
 
     def _on_command_line(self, _app: Adw.Application, _ligne: Gio.ApplicationCommandLine) -> int:
@@ -132,15 +168,28 @@ class Gcm4Application(Adw.Application):
     def _on_activate(self, _app: Adw.Application) -> None:
         """Présente la fenêtre principale, créée au premier appel."""
         logger.debug("_on_activate: entrée")
-        fenetre = self.get_active_window() or MainWindow(self, self.args.config_dir)
-        fenetre.present()
+        fenetre = self.get_active_window()
+        if fenetre is None:
+            fenetre = MainWindow(self, self.args.config_dir)
+            fenetre.present()
+            fenetre.restaurer_onglets()  # une fois, à la création (#246)
+            mises_a_jour.au_demarrage(fenetre)  # jamais sans accord (#245)
+        else:
+            fenetre.present()
         logger.debug("_on_activate: fenêtre présentée")
 
     def _on_quit(self, _action: Gio.SimpleAction, _param: object) -> None:
-        """Ctrl+Q : ferme les fenêtres (leur état est enregistré) puis quitte."""
+        """Ctrl+Q : ferme les fenêtres (leur état est enregistré) puis quitte.
+
+        Une fenêtre qui demande confirmation (connexions ouvertes, #147)
+        garde l'application ouverte : elle quittera après la réponse.
+        """
         logger.debug("_on_quit: entrée")
         for fenetre in list(self.get_windows()):
             fenetre.close()
+        if any(getattr(f, "confirmation_fermeture", None) for f in self.get_windows()):
+            logger.debug("_on_quit: confirmation demandée, pas encore quitté")
+            return
         self.quit()
         logger.debug("_on_quit: fin")
 
@@ -174,8 +223,17 @@ class Gcm4Application(Adw.Application):
         logger.debug("_on_about: présentée")
 
     def _on_preferences(self, _action: Gio.SimpleAction, _param: object) -> None:
-        """Ctrl+, : préférences (lot 5, #147)."""
-        logger.debug("_on_preferences: pas encore disponible (#147)")
+        """Édition > Préférences (Ctrl+,) : pages Général et Apparence (#147)."""
+        logger.debug("_on_preferences: entrée")
+        fenetre = self.get_active_window()
+        if isinstance(fenetre, PreferencesWindow):
+            fenetre.present()
+            logger.debug("_on_preferences: déjà ouverte")
+            return
+        principale = next((f for f in self.get_windows() if isinstance(f, MainWindow)), None)
+        self.preferences = PreferencesWindow(self, principale)
+        self.preferences.present()
+        logger.debug("_on_preferences: présentée")
 
 
 def run(args: argparse.Namespace) -> int:

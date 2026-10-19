@@ -56,7 +56,7 @@ class Host:
     host: str = ""
     port: int | None = None
     user: str = ""
-    password: str = ""
+    password: str = field(default="", repr=False)  # jamais dans un journal (#145)
     description: str = ""
     protocol: str = ""
     font_color: str = ""
@@ -263,14 +263,39 @@ class HostStore:
         self.hosts = [h for h in self.hosts if h is not host]
         logger.debug("remove: {} hôte(s)", len(self.hosts))
 
+    def nom_de_copie(self, host: Host) -> str:
+        """Premier nom libre ``nom (2)``, ``nom (3)``… dans le groupe de ``host``."""
+        logger.debug("nom_de_copie: {!r}", host.path)
+        n = 2
+        while any(h.group == host.group and h.name == f"{host.name} ({n})" for h in self.hosts):
+            n += 1
+        resultat = f"{host.name} ({n})"
+        logger.debug("nom_de_copie: {!r}", resultat)
+        return resultat
+
+    def replace(self, original: Host, nouveau: Host) -> Host:
+        """Met ``nouveau`` à la place de ``original`` (même rang ; groupe créé au besoin).
+
+        Raises:
+            ConflitDeNom: un autre hôte porte déjà ce nom dans le groupe visé.
+            ValueError: ``original`` n'est pas dans le magasin, ou nom vide.
+        """
+        logger.debug("replace: {!r} -> {!r}", original.path, nouveau.path)
+        rang = next((i for i, h in enumerate(self.hosts) if h is original), None)
+        if rang is None:
+            raise ValueError(f"hôte absent : {original.path!r}")
+        nouveau.group = normaliser_chemin(nouveau.group)
+        self._verifier_libre(nouveau.group, nouveau.name, sauf=original)
+        self.ensure_group(nouveau.group)
+        self.hosts[rang] = nouveau
+        logger.debug("replace: rang {}", rang)
+        return nouveau
+
     def duplicate(self, host: Host) -> Host:
         """Copie de ``host`` dans le même groupe, nommée ``nom (2)``, ``nom (3)``…"""
         logger.debug("duplicate: {!r}", host.path)
         copie = host.clone()
-        n = 2
-        while any(h.group == host.group and h.name == f"{host.name} ({n})" for h in self.hosts):
-            n += 1
-        copie.name = f"{host.name} ({n})"
+        copie.name = self.nom_de_copie(host)
         self.add(copie)
         logger.debug("duplicate: {!r}", copie.path)
         return copie

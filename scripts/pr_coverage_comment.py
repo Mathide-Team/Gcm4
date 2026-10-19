@@ -6,7 +6,8 @@ workflow .github/workflows/pr-coverage.yml exécute pytest --cov deux fois
 (ref de fusion de la PR, puis SHA de base de `dev`) et passe les deux
 rapports JSON de coverage.py à ce script. Celui-ci publie, ou met à jour,
 un commentaire unique sur la PR : couverture totale, delta par rapport à la
-base, et fichiers dont la couverture baisse.
+base, ligne dédiée au cœur ``src/gcm4/core/`` (seuil 95 %, issue #164) et
+fichiers dont la couverture baisse.
 
 Appel :
     GITHUB_TOKEN=... GITHUB_REPOSITORY=owner/repo \\
@@ -27,6 +28,7 @@ import json
 import os
 import re
 import sys
+import urllib.error
 import urllib.request
 
 from loguru import logger
@@ -43,6 +45,13 @@ PYPROJECT = os.path.join(
 
 # Au-delà, la liste des fichiers en baisse est tronquée (commentaire lisible).
 MAX_FICHIERS = 15
+
+# Seuil séparé du cœur de la base GTK4 (issue #164) : la base doit naître
+# très couverte. Le job Qualité applique la même valeur via
+# ``coverage report --include='src/gcm4/core/*' --fail-under=95`` ; la garder
+# synchronisée avec docs/quality/seuil-couverture.md.
+COEUR = "src/gcm4/core/"
+SEUIL_COEUR = 95.0
 
 
 def lire_seuil(chemin: str = PYPROJECT) -> float | None:
@@ -97,6 +106,30 @@ def _ligne_seuil(pourcentage_pr: float, seuil: float | None) -> str:
     return f"Seuil bloquant : {_pct(seuil)} (`fail_under`), marge {pourcentage_pr - seuil:.1f} pt."
 
 
+def couverture_coeur(rapport: dict, prefixe: str = COEUR) -> float | None:
+    """Pourcentage (lignes + branches) des fichiers sous `src/gcm4/core/`.
+
+    Issue #164 : la base doit naître très couverte ; le commentaire de PR
+    affiche une ligne dédiée au cœur, en plus du total. ``None`` si le
+    rapport ne contient aucun fichier du cœur (base antérieure à l'épopée
+    GTK4 #118) : la ligne est alors omise.
+    """
+    logger.debug("couverture_coeur() | prefixe={}", prefixe)
+    couvertes = instructions = 0
+    for nom, donnees in rapport.get("files", {}).items():
+        if not nom.startswith(prefixe):
+            continue
+        resume = donnees["summary"]
+        couvertes += resume["covered_lines"] + resume.get("covered_branches", 0)
+        instructions += resume["num_statements"] + resume.get("num_branches", 0)
+    if not instructions:
+        logger.debug("couverture_coeur() -> None (aucun fichier du cœur)")
+        return None
+    pourcentage = 100.0 * couvertes / instructions
+    logger.debug("couverture_coeur() -> {}", pourcentage)
+    return pourcentage
+
+
 def fichiers_en_baisse(rapport_pr: dict, rapport_base: dict, tolerance: float = 0.05) -> list:
     """Fichiers présents des deux côtés dont la couverture baisse.
 
@@ -141,9 +174,27 @@ def construire_commentaire(
         f"{pr['covered_lines'] - base['covered_lines']:+d} |",
         f"| Branches couvertes | {b_base}/{base.get('num_branches', 0)} | "
         f"{b_pr}/{pr.get('num_branches', 0)} | {b_pr - b_base:+d} |",
+    ]
+    c_pr, c_base = couverture_coeur(rapport_pr), couverture_coeur(rapport_base)
+    if c_pr is not None and c_base is not None:
+        lignes.append(
+            f"| Cœur `src/gcm4/core/` | {_pct(c_base)} | {_pct(c_pr)} | {_delta(c_pr, c_base)} |"
+        )
+    lignes += [
         "",
         _ligne_seuil(pr["percent_covered"], seuil),
     ]
+    if c_pr is not None:
+        if c_pr < SEUIL_COEUR:
+            lignes.append(
+                f"**Sous le seuil bloquant du cœur** de {_pct(SEUIL_COEUR)} "
+                "(issue #164) : le job Qualité de la CI échouera."
+            )
+        else:
+            lignes.append(
+                f"Seuil bloquant du cœur : {_pct(SEUIL_COEUR)} (issue #164), "
+                f"marge {c_pr - SEUIL_COEUR:.1f} pt."
+            )
     baisses = fichiers_en_baisse(rapport_pr, rapport_base)
     if baisses:
         lignes += ["", "### Fichiers dont la couverture baisse", "", "| Fichier | Base | PR |"]
@@ -224,8 +275,33 @@ def main(argv: list[str]) -> int:
     if not token or not repo:
         logger.error("GITHUB_TOKEN et GITHUB_REPOSITORY sont requis")
         return 2
-    print(publier(repo, arguments.pr_number, corps, token))
+    try:
+        print(publier(repo, arguments.pr_number, corps, token))
+    except urllib.error.HTTPError as exc:
+        if exc.code != 403:
+            raise
+        # PR depuis un fork : GITHUB_TOKEN est en lecture seule, GitHub refuse
+        # le commentaire (403). Le rapport reste lisible dans le résumé du job ;
+        # ce job n'applique aucun seuil, il ne doit donc pas échouer.
+        logger.warning("publication refusée (403, PR depuis un fork) : {}", exc)
+        ecrire_resume(corps)
+        print(
+            "::warning::Commentaire de couverture refusé (403, PR depuis un fork) : "
+            "rapport dans le résumé du job."
+        )
     return 0
+
+
+def ecrire_resume(corps: str) -> None:
+    """Ajoute ``corps`` au résumé du job (``GITHUB_STEP_SUMMARY``), sinon l'affiche."""
+    logger.debug("ecrire_resume() | {} caractère(s)", len(corps))
+    chemin = os.environ.get("GITHUB_STEP_SUMMARY")
+    if chemin:
+        with open(chemin, "a", encoding="utf-8") as resume:
+            resume.write(corps + "\n")
+    else:
+        print(corps)
+    logger.debug("ecrire_resume() -> {}", "résumé" if chemin else "sortie standard")
 
 
 if __name__ == "__main__":

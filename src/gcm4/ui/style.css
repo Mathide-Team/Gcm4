@@ -20,3 +20,15 @@ notebook > header > tabs > tab:checked {
     background-color: #EEEB00;
     color: #1e1e1e;
 }
+
+/* Arbre des hôtes (#139) : rayures, sauf si [options] disable-hosts-stripes
+ * (même réglage que l'arbre GTK3, servers_background_color). */
+listview.gcm-arbre.gcm-rayures > row:nth-child(even):not(:selected) {
+    background-color: alpha(currentColor, 0.05);
+}
+
+/* Glisser-déposer (#141) : ligne survolée par un dépôt valide. */
+listview.gcm-arbre treeexpander:drop(active) {
+    box-shadow: inset 0 0 0 2px @accent_color;
+    border-radius: 6px;
+}

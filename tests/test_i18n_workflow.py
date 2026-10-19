@@ -49,6 +49,15 @@ class TestWorkflowI18n(unittest.TestCase):
         self.assertLess(fusion, reprise)
         self.assertLess(reprise, regeneration)
 
+    def test_ci_lancee_sur_la_branche_poussee(self):
+        """Le GITHUB_TOKEN ne déclenche pas ci.yml : lancement explicite après chaque push (#167)."""
+        push = WORKFLOW.index('git push origin "$BRANCHE_I18N"')
+        lancement = WORKFLOW.index('gh workflow run ci.yml --ref "$BRANCHE_I18N"')
+        self.assertLess(push, lancement)
+        self.assertIn("actions: write", WORKFLOW)
+        ci = (ROOT / ".github" / "workflows" / "ci.yml").read_text(encoding="utf-8")
+        self.assertIn("workflow_dispatch:", ci)
+
     def test_aucune_traduction_automatique(self):
         """Ni msgen, ni outil de traduction machine ; msgstr vides annoncés."""
         for outil in ("msgen", "translate-shell", "trans ", "deepl", "googletrans"):

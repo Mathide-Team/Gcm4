@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-11 23:30+0000\n"
+"POT-Creation-Date: 2026-10-19 12:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,11 +65,9 @@ msgstr "ASCII Backspace \t[Ctrl+H 0x08]"
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
 msgstr "ASCII Delete    \t[Ctrl+? 0x7F]"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_About"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "About"
-msgstr "_O programie"
+msgstr "O programie"
 
 #: gnome_connection_manager.py
 msgid "Action"
@@ -79,17 +77,15 @@ msgstr "Akcja"
 msgid "Activate"
 msgstr "Aktywuj"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/core/menu_arbre.py widgets.py
 msgid "Add Host"
 msgstr "Dodaj host"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Disconnect"
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "After disconnecting"
-msgstr "Rozłącz"
+msgstr "Po rozłączeniu"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Always"
 msgstr "Zawsze"
 
@@ -109,11 +105,9 @@ msgstr "Backspace:"
 msgid "Baud rate"
 msgstr "Szybkość transmisji (baud)"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Error connecting to server"
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Before connecting"
-msgstr "Błąd podczas łączenia z serwerem"
+msgstr "Przed połączeniem"
 
 #: gnome_connection_manager.py ssh_config_editor.py
 msgid "Browse existing SSH keys in ~/.ssh/"
@@ -143,11 +137,13 @@ msgstr "Nie można otworzyć pliku dziennika do zapisu"
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
-#: plugins/plugin_spice.py plugins/plugin_ssh.py utils.py widgets.py
+#: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
+#: src/gcm4/ui/host_dialog.py src/gcm4/ui/main_window.py
+#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Check updates"
 msgstr "Sprawdź aktualizacje"
 
@@ -167,7 +163,7 @@ msgstr "Wyczyść wybór"
 msgid "Close"
 msgstr "Zamknij"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py widgets.py
 msgid "Close console"
 msgstr "Zamknij konsolę"
 
@@ -197,7 +193,7 @@ msgstr "Potwierdź zamknięcie konsoli"
 msgid "Confirm on close console with middle click"
 msgstr "Potwierdź zamknięcie konsoli środkowym przyciskiem myszy"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on exit"
 msgstr "Potwierdź przy wyjściu"
 
@@ -235,15 +231,15 @@ msgstr "Niestandardowe polecenia"
 msgid "Custom commands…"
 msgstr "Niestandardowe polecenia"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Dark"
-msgstr ""
+msgstr "Ciemny"
 
 #: gnome_connection_manager.py plugins/plugin_serial.py
 msgid "Data bits"
 msgstr "Bity danych"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Default colors"
 msgstr "Domyślne kolory"
 
@@ -255,7 +251,7 @@ msgstr "Sekwencja Delete \t[@7]"
 msgid "Delete:"
 msgstr "Delete:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Description"
 msgstr "Opis"
 
@@ -283,11 +279,12 @@ msgstr "Czy na pewno chcesz usunąć hosta"
 msgid "Dynamic title"
 msgstr "Dynamiczny tytuł"
 
-#: gnome_connection_manager.py widgets.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: src/gcm4/core/menu_arbre.py widgets.py
 msgid "Edit"
 msgstr "Edytuj"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Edit Host"
 msgstr "Edytuj host"
 
@@ -355,11 +352,9 @@ msgstr "Eksportuj serwery"
 msgid "Fields group, name and host are required"
 msgstr "Pola grupa, nazwa i host są wymagane"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_File"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "File"
-msgstr "_Plik"
+msgstr "Plik"
 
 #: gnome_connection_manager.py
 msgid "Flow"
@@ -377,7 +372,7 @@ msgstr "Kolor pierwszego planu:"
 msgid "GTK Theme:"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "General"
 msgstr "Ogólne"
 
@@ -387,7 +382,7 @@ msgstr "Gnome Connection Manager"
 
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
-#: plugins/plugin_import_virtualbox.py
+#: plugins/plugin_import_virtualbox.py src/gcm4/ui/host_dialog.py
 msgid "Group"
 msgstr "Grupa"
 
@@ -407,14 +402,12 @@ msgstr ""
 msgid "Group name:"
 msgstr "Grupa"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Help"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "Help"
-msgstr "Pomo_c"
+msgstr "Pomoc"
 
-#: gnome_connection_manager.py plugins/plugin_ssh.py ssh_config_editor.py
-#: ssh_key_manager_dialog.py
+#: gnome_connection_manager.py plugins/plugin_ssh.py src/gcm4/ui/host_dialog.py
+#: ssh_config_editor.py ssh_key_manager_dialog.py
 msgid "Host"
 msgstr "Host"
 
@@ -438,9 +431,9 @@ msgstr "_Importuj serwery"
 msgid "Imports"
 msgstr "Zaimportowano"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Include this host in the workspace (Tools > Open Workspace)"
-msgstr ""
+msgstr "Uwzględnij ten host w obszarze roboczym (Narzędzia > Otwórz obszar roboczy)"
 
 #: gnome_connection_manager.py
 msgid "Invalid entry in configuration file"
@@ -481,13 +474,13 @@ msgid ""
 "Détails complets dans le journal de l'application."
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Leave blank for passwordless/public key authentication"
 msgstr "Pozostaw puste dla uwierzytelniania bez hasła / kluczem publicznym"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Light"
-msgstr ""
+msgstr "Jasny"
 
 #: gnome_connection_manager.py
 msgid "Log local console sessions"
@@ -499,21 +492,20 @@ msgstr "Ścieżka dzienników"
 
 #: gnome_connection_manager.py src/gcm4/ui/main_window.py
 msgid "Menu"
-msgstr ""
+msgstr "Menu"
 
-#: gnome_connection_manager.py ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+#: ssh_key_manager_dialog.py
 msgid "Name"
 msgstr "Nazwa"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Never"
 msgstr "Nigdy"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Group"
+#: gnome_connection_manager.py src/gcm4/ui/menu_arbre.py
 msgid "New Group"
-msgstr "Grupa"
+msgstr "Nowa grupa"
 
 #: gnome_connection_manager.py
 #, fuzzy
@@ -548,11 +540,12 @@ msgstr "Brak otwartych konsol"
 msgid "OK"
 msgstr "OK"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Only on clean exit"
 msgstr "Tylko przy poprawnym zamknięciu"
 
-#: gnome_connection_manager.py plugins/plugin_import_putty.py utils.py
+#: gnome_connection_manager.py plugins/plugin_import_putty.py
+#: src/gcm4/ui/mises_a_jour.py src/gcm4/ui/preferences.py utils.py
 msgid "Open"
 msgstr "Otwórz"
 
@@ -576,7 +569,8 @@ msgstr ""
 msgid "Parity"
 msgstr "Parzystość"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/contexte.py
+#: src/gcm4/ui/host_dialog.py
 msgid "Password"
 msgstr "Hasło"
 
@@ -588,7 +582,7 @@ msgstr "Wklej"
 msgid "Paste on right click"
 msgstr "Wklej po kliknięciu prawym przyciskiem"
 
-#: gnome_connection_manager.py ssh_config_editor.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py ssh_config_editor.py
 msgid "Port"
 msgstr "Port"
 
@@ -604,17 +598,13 @@ msgstr "Klucz prywatny"
 msgid "Project's Homepage"
 msgstr "Strona projektu"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Quit"
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/main_window.py
 msgid "Quit"
-msgstr "_Zakończ"
+msgstr "Zakończ"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Rename tab"
+#: gnome_connection_manager.py src/gcm4/ui/menu_arbre.py
 msgid "Rename Group"
-msgstr "Zmień nazwę karty"
+msgstr "Zmień nazwę grupy"
 
 #: gnome_connection_manager.py widgets.py
 msgid "Rename tab"
@@ -624,11 +614,11 @@ msgstr "Zmień nazwę karty"
 msgid "Restore defaults"
 msgstr "Przywróć ustawienia domyślne"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Restore open tabs from the previous session on startup"
-msgstr ""
+msgstr "Przywracaj przy uruchomieniu karty otwarte w poprzedniej sesji"
 
-#: gnome_connection_manager.py utils.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py utils.py
 msgid "Save"
 msgstr "Zapisz"
 
@@ -652,7 +642,7 @@ msgstr "Wybierz kolor tła"
 msgid "Select consoles to use:"
 msgstr "Wybierz konsole do użycia:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Select font"
 msgstr "Wybierz czcionkę"
 
@@ -682,7 +672,7 @@ msgstr "Lista serwerów zostanie zastąpiona, kontynuować?"
 msgid "Servers"
 msgstr "_Serwery"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Settings"
 msgstr "Ustawienia"
 
@@ -691,20 +681,20 @@ msgstr "Ustawienia"
 msgid "Shell command run locally, in the background, right after this connection ends. Currently only triggered for terminal-based protocols (SSH/Telnet/Local/Serial/IPMI SOL). Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 #, python-brace-format
 msgid "Shell command run locally, in the background, right before this connection opens (any protocol). Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
-msgstr ""
+msgstr "Polecenie powłoki uruchamiane lokalnie w tle tuż przed otwarciem tego połączenia (dowolny protokół). Pozostaw puste, aby wyłączyć. Znaczniki: {name} {address} {group} {protocol}"
 
 #: gnome_connection_manager.py
 msgid "Shortcut"
 msgstr "Skrót"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Shortcuts"
 msgstr "Skróty"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Show Panel"
 msgstr "Pokaż panel"
 
@@ -716,9 +706,9 @@ msgstr "Standardowe polecenia"
 msgid "Stop"
 msgstr "Stop"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "System"
-msgstr ""
+msgstr "Systemowy"
 
 #: gnome_connection_manager.py
 msgid "TERM"
@@ -752,7 +742,7 @@ msgstr ""
 msgid "Title"
 msgstr "Tytuł"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "To create subgroups use format group1/group2/group3"
 msgstr "Aby utworzyć podgrupy, użyj formatu grupa1/grupa2/grupa3"
 
@@ -769,29 +759,25 @@ msgstr "Typ"
 msgid "Use default fixed width font"
 msgstr "Użyj domyślnej czcionki o stałej szerokości"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Use global preference"
-msgstr ""
+msgstr "Użyj ustawienia globalnego"
 
-#: gnome_connection_manager.py ssh_config_editor.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py ssh_config_editor.py
 msgid "User"
 msgstr "Użytkownik"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_View"
+#: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "View"
-msgstr "_Widok"
+msgstr "Widok"
 
 #: gnome_connection_manager.py
 msgid "Word separator"
 msgstr "Separator słów"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "Backspace:"
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Workspace"
-msgstr "Backspace:"
+msgstr "Obszar roboczy"
 
 #: gnome_connection_manager.py
 msgid "already exists for group"
@@ -1435,7 +1421,8 @@ msgstr "🔍  Skanuj hosty Proxmox"
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_serial.py
 #: plugins/plugin_spice.py plugins/plugin_vnc.py plugins/plugin_web.py
-#: widgets.py
+#: src/gcm4/core/menu_arbre.py src/gcm4/core/preferences.py
+#: src/gcm4/ui/contexte.py widgets.py
 msgid "Connect"
 msgstr "Połącz"
 
@@ -2511,7 +2498,8 @@ msgstr "Port zdalny"
 msgid "Remote path"
 msgstr "Zdalny host"
 
-#: plugins/plugin_ssh.py widgets.py
+#: plugins/plugin_ssh.py src/gcm4/core/menu_arbre.py
+#: src/gcm4/core/preferences.py src/gcm4/ui/menu_arbre.py widgets.py
 msgid "Remove"
 msgstr "Usuń"
 
@@ -2601,9 +2589,9 @@ msgid ""
 "E.g.: {example}"
 msgstr ""
 
-#: plugins/plugin_vnc.py
+#: plugins/plugin_vnc.py src/gcm4/ui/host_dialog.py
 msgid "Display"
-msgstr ""
+msgstr "Wygląd"
 
 #: plugins/plugin_vnc.py
 msgid "VNC"
@@ -2671,61 +2659,455 @@ msgid ""
 "The web console will open in the system browser."
 msgstr ""
 
+#: src/gcm4/app.py
+msgid "The old configuration is intact: fix the problem (permissions, disk space), then start gcm4 again."
+msgstr "Stara konfiguracja jest nienaruszona: usuń problem (uprawnienia, miejsce na dysku), a następnie uruchom ponownie gcm4."
+
+#: src/gcm4/app.py
+#, python-brace-format
+msgid "gcm4: unable to copy the configuration {old} to {new} ({error})."
+msgstr "gcm4: nie można skopiować konfiguracji {old} do {new} ({error})."
+
 #: src/gcm4/core/chiffrement.py
 msgid "A stored password is corrupted."
-msgstr ""
+msgstr "Zapisane hasło jest uszkodzone."
 
 #: src/gcm4/core/chiffrement.py
 #, python-format
 msgid "The encryption key %s is missing: the stored passwords cannot be decrypted."
-msgstr ""
+msgstr "Brak klucza szyfrowania %s: nie można odszyfrować zapisanych haseł."
 
 #: src/gcm4/core/chiffrement.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to create the encryption key %s: %s"
-msgstr "Nieprawidłowy wpis w pliku konfiguracyjnym"
+msgstr "Nie można utworzyć klucza szyfrowania %s: %s"
 
 #: src/gcm4/core/chiffrement.py
-msgid "Unable to decrypt the stored passwords: wrong or replaced .gcm.key."
-msgstr ""
+msgid "Unable to decrypt the stored passwords: wrong or replaced .gcm4.key."
+msgstr "Nie można odszyfrować zapisanych haseł: nieprawidłowy lub zastąpiony plik .gcm4.key."
 
 #: src/gcm4/core/chiffrement.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to read the encryption key %s: %s"
-msgstr "Nieprawidłowy wpis w pliku konfiguracyjnym"
+msgstr "Nie można odczytać klucza szyfrowania %s: %s"
 
 #: src/gcm4/core/config.py
 #, python-format
 msgid "The configuration file %s is corrupted: %s"
-msgstr ""
+msgstr "Plik konfiguracyjny %s jest uszkodzony: %s"
 
 #: src/gcm4/core/config.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to read the configuration file %s: %s"
-msgstr "Nieprawidłowy wpis w pliku konfiguracyjnym"
+msgstr "Nie można odczytać pliku konfiguracyjnego %s: %s"
 
 #: src/gcm4/core/config.py
-#, fuzzy, python-format
-#| msgid "Invalid entry in configuration file"
+#, python-format
 msgid "Unable to write the configuration file %s: %s"
-msgstr "Nieprawidłowy wpis w pliku konfiguracyjnym"
+msgstr "Nie można zapisać pliku konfiguracyjnego %s: %s"
+
+#: src/gcm4/core/menu.py
+msgid "Search"
+msgstr "Szukaj"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Choose Color…"
+msgstr "Wybierz kolor…"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Collapse all"
+msgstr "Zwiń wszystko"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Copy Address"
+msgstr "Kopiuj adres"
+
+#: src/gcm4/core/menu_arbre.py src/gcm4/ui/host_dialog.py widgets.py
+msgid "Duplicate Host"
+msgstr "Duplikuj host"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Expand all"
+msgstr "Rozwiń wszystko"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "New Group…"
+msgstr "Nowa grupa…"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Rename Group…"
+msgstr "Zmień nazwę grupy…"
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Reset Color"
+msgstr "Przywróć kolor"
+
+#: src/gcm4/core/plugins.py
+msgid "It declares no protocol."
+msgstr "Nie deklaruje żadnego protokołu."
+
+#: src/gcm4/core/plugins.py
+#, python-brace-format
+msgid "It does not implement: {methods}."
+msgstr "Nie implementuje: {methods}."
+
+#: src/gcm4/core/plugins.py
+#, python-brace-format
+msgid "It implements plugin API version {found}; this application supports version {expected}."
+msgstr "Implementuje wersję {found} API wtyczek; ta aplikacja obsługuje wersję {expected}."
+
+#: src/gcm4/core/plugins.py
+msgid "It is not a connection plugin."
+msgstr "To nie jest wtyczka połączenia."
+
+#: src/gcm4/core/plugins.py
+msgid "Its name must be a non-empty lowercase identifier."
+msgstr "Nazwa musi być niepustym identyfikatorem pisanym małymi literami."
+
+#: src/gcm4/core/preferences.py
+msgid "Open the context menu"
+msgstr "Otwórz menu kontekstowe"
+
+#: src/gcm4/core/preferences.py
+msgid "Rename the group or edit the host"
+msgstr "Zmień nazwę grupy lub edytuj hosta"
+
+#: src/gcm4/core/registre.py
+#, python-brace-format
+msgid "A plugin with the same name is already loaded from {source}."
+msgstr "Wtyczka o tej samej nazwie jest już wczytana z {source}."
+
+#: src/gcm4/core/registre.py
+#, python-brace-format
+msgid "Import failed: {error}"
+msgstr "Import nie powiódł się: {error}"
+
+#: src/gcm4/core/registre.py
+#, python-brace-format
+msgid "Initialization failed: {error}"
+msgstr "Inicjalizacja nie powiodła się: {error}"
+
+#: src/gcm4/core/registre.py
+#, python-brace-format
+msgid "Protocol «{protocol}» is already handled by «{other}»."
+msgstr "Protokół „{protocol}” jest już obsługiwany przez „{other}”."
+
+#: src/gcm4/core/registre.py
+#, python-brace-format
+msgid "{file} does not define PLUGIN."
+msgstr "{file} nie definiuje PLUGIN."
+
+#: src/gcm4/core/validation.py
+#, python-brace-format
+msgid "A host named «{name}» already exists in this group."
+msgstr "W tej grupie istnieje już host o nazwie „{name}”."
+
+#: src/gcm4/core/validation.py
+msgid "A name is required."
+msgstr "Nazwa jest wymagana."
+
+#: src/gcm4/core/validation.py
+msgid "An address is required."
+msgstr "Adres jest wymagany."
+
+#: src/gcm4/core/validation.py
+#, python-brace-format
+msgid "Port must be a number between {min} and {max}."
+msgstr "Port musi być liczbą z zakresu od {min} do {max}."
+
+#: src/gcm4/core/validation.py
+msgid "The name must not contain «/»."
+msgstr "Nazwa nie może zawierać znaku „/”."
+
+#: src/gcm4/ui/contexte.py
+#, python-brace-format
+msgid "Password for {target}"
+msgstr "Hasło dla {target}"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Background color"
+msgstr "Kolor tła"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Commands"
+msgstr "Polecenia"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Connection"
+msgstr "Połączenie"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Discard"
+msgstr "Odrzuć"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Discard changes?"
+msgstr "Odrzucić zmiany?"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Errors"
+msgstr "Błędy"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Existing groups"
+msgstr "Istniejące grupy"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Extra parameters"
+msgstr "Dodatkowe parametry"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Foreground color"
+msgstr "Kolor tekstu"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Keep Editing"
+msgstr "Kontynuuj edycję"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "New Host"
+msgstr "Nowy host"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "No extension handles this protocol: its options are kept."
+msgstr "Żadne rozszerzenie nie obsługuje tego protokołu: jego opcje zostaną zachowane."
+
+#: src/gcm4/ui/host_dialog.py
+msgid "No extension is installed for this protocol: its options are kept and cannot be modified."
+msgstr "Dla tego protokołu nie jest zainstalowane żadne rozszerzenie: jego opcje są zachowywane, ale nie można ich modyfikować."
+
+#: src/gcm4/ui/host_dialog.py
+msgid "No extension is installed."
+msgstr "Nie zainstalowano żadnego rozszerzenia."
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Protocol"
+msgstr "Protokół"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Protocol options"
+msgstr "Opcje protokołu"
+
+#: src/gcm4/ui/host_dialog.py
+#, python-brace-format
+msgid "Shell command run locally, in the background, right after this connection ends, by the protocols that support it. Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
+msgstr "Polecenie powłoki uruchamiane lokalnie w tle tuż po zakończeniu tego połączenia, przez protokoły, które to obsługują. Pozostaw puste, aby wyłączyć. Znaczniki: {name} {address} {group} {protocol}"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "The changes to this host have not been saved."
+msgstr "Zmiany tego hosta nie zostały zapisane."
+
+#: src/gcm4/ui/host_tree.py
+#, python-brace-format
+msgid "An item with this name already exists in '{group}'."
+msgstr "Element o tej nazwie już istnieje w „{group}”."
+
+#: src/gcm4/ui/host_tree.py src/gcm4/ui/preferences.py
+msgid "Hosts"
+msgstr "Hosty"
+
+#: src/gcm4/ui/host_tree.py
+#, python-brace-format
+msgid "Move not saved: {error}"
+msgstr "Nie zapisano przeniesienia: {error}"
+
+#: src/gcm4/ui/host_tree.py
+msgid "No matching hosts"
+msgstr "Brak pasujących hostów"
+
+#: src/gcm4/ui/host_tree.py
+msgid "Search hosts"
+msgstr "Szukaj hostów"
+
+#: src/gcm4/ui/main_window.py
+msgid "Close tab"
+msgstr "Zamknij kartę"
+
+#: src/gcm4/ui/main_window.py
+msgid "Configuration not loaded"
+msgstr "Nie wczytano konfiguracji"
 
 #: src/gcm4/ui/main_window.py
 msgid "Home"
-msgstr ""
+msgstr "Strona główna"
 
 #: src/gcm4/ui/main_window.py
 msgid "Hosts and groups will appear in the left panel."
-msgstr ""
+msgstr "Hosty i grupy pojawią się w lewym panelu."
 
 #: src/gcm4/ui/main_window.py
-#, fuzzy
-#| msgid "Gnome Connection Manager"
+#, python-brace-format
+msgid "No extension handles the protocol «{protocol}». Install it to open this connection."
+msgstr "Żadne rozszerzenie nie obsługuje protokołu „{protocol}”. Zainstaluj je, aby otworzyć to połączenie."
+
+#: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Not restored, host not found: {hosts}"
+msgstr "Nie przywrócono, nie znaleziono hosta: {hosts}"
+
+#: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Not restored, no extension for: {hosts}"
+msgstr "Nie przywrócono, brak rozszerzenia dla: {hosts}"
+
+#: src/gcm4/ui/main_window.py
+msgid "Open connections will be closed."
+msgstr "Otwarte połączenia zostaną zamknięte."
+
+#: src/gcm4/ui/main_window.py
+msgid "Quit anyway?"
+msgstr "Mimo to zakończyć?"
+
+#: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Unable to open «{host}»: {error}"
+msgstr "Nie można otworzyć „{host}”: {error}"
+
+#: src/gcm4/ui/main_window.py
 msgid "Welcome to Gnome Connection Manager"
-msgstr "Gnome Connection Manager"
+msgstr "Witamy w Gnome Connection Manager"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Address copied"
+msgstr "Skopiowano adres"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Changes not saved: {error}"
+msgstr "Nie zapisano zmian: {error}"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Create"
+msgstr "Utwórz"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Group color"
+msgstr "Kolor grupy"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Group name"
+msgstr "Nazwa grupy"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "It contains {hosts} host(s) and {groups} subgroup(s), which will be removed too."
+msgstr "Zawiera hosty ({hosts}) i podgrupy ({groups}), które również zostaną usunięte."
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Parent group: {parent}"
+msgstr "Grupa nadrzędna: {parent}"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Remove group «{name}»?"
+msgstr "Usunąć grupę „{name}”?"
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
+msgid "Remove host «{name}»?"
+msgstr "Usunąć host „{name}”?"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Rename"
+msgstr "Zmień nazwę"
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "This cannot be undone."
+msgstr "Tej operacji nie można cofnąć."
+
+#: src/gcm4/ui/mises_a_jour.py
+msgid "Allow"
+msgstr "Zezwól"
+
+#: src/gcm4/ui/mises_a_jour.py
+msgid "At startup, Gnome Connection Manager can ask GitHub (api.github.com) whether a newer version has been published. You can change this later in the preferences."
+msgstr "Podczas uruchamiania Gnome Connection Manager może zapytać GitHub (api.github.com), czy opublikowano nowszą wersję. Możesz to później zmienić w preferencjach."
+
+#: src/gcm4/ui/mises_a_jour.py
+msgid "Check for updates?"
+msgstr "Sprawdzać aktualizacje?"
+
+#: src/gcm4/ui/mises_a_jour.py
+msgid "No"
+msgstr "Nie"
+
+#: src/gcm4/ui/mises_a_jour.py
+#, python-brace-format
+msgid "Version {version} is available"
+msgstr "Dostępna jest wersja {version}"
+
+#: src/gcm4/ui/preferences.py
+msgid "Appearance"
+msgstr "Wygląd"
+
+#: src/gcm4/ui/preferences.py
+msgid "Default log level"
+msgstr "Domyślny poziom dziennika"
+
+#: src/gcm4/ui/preferences.py
+msgid "Error"
+msgstr "Błąd"
+
+#: src/gcm4/ui/preferences.py
+msgid "Extensions"
+msgstr "Rozszerzenia"
+
+#: src/gcm4/ui/preferences.py
+msgid "Loaded"
+msgstr "Wczytano"
+
+#: src/gcm4/ui/preferences.py
+msgid "Log folder"
+msgstr "Folder dzienników"
+
+#: src/gcm4/ui/preferences.py
+msgid "Logging"
+msgstr "Dziennik"
+
+#: src/gcm4/ui/preferences.py
+msgid "Main window"
+msgstr "Okno główne"
+
+#: src/gcm4/ui/preferences.py
+msgid "No extension found."
+msgstr "Nie znaleziono żadnego rozszerzenia."
+
+#: src/gcm4/ui/preferences.py
+msgid "Overridden for this session by --debug or GCM_LOG_LEVEL."
+msgstr "Zastąpione w tej sesji przez --debug lub GCM_LOG_LEVEL."
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Preferences not saved: {error}"
+msgstr "Nie zapisano preferencji: {error}"
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Preferences page unavailable: {error}"
+msgstr "Strona preferencji jest niedostępna: {error}"
+
+#: src/gcm4/ui/preferences.py
+msgid "Theme"
+msgstr "Motyw"
+
+#: src/gcm4/ui/preferences.py
+msgid "Tree font"
+msgstr "Czcionka drzewa hostów"
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Unable to open the folder: {error}"
+msgstr "Nie można otworzyć folderu: {error}"
+
+#: src/gcm4/ui/preferences.py
+msgid "Use system font"
+msgstr "Użyj czcionki systemowej"
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Version {version}"
+msgstr "Wersja {version}"
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format
@@ -3924,16 +4306,8 @@ msgid "%s has disconnected."
 msgstr "Rozłącz"
 
 #: widgets.py
-msgid "Choose Color…"
-msgstr ""
-
-#: widgets.py
 msgid "Clone console"
 msgstr "Sklonuj konsolę"
-
-#: widgets.py
-msgid "Collapse all"
-msgstr "Zwiń wszystko"
 
 #: widgets.py
 #, fuzzy
@@ -3942,42 +4316,16 @@ msgid "Connection closed"
 msgstr "Łączenie…"
 
 #: widgets.py
-msgid "Copy Address"
-msgstr "Kopiuj adres"
-
-#: widgets.py
 msgid "Custom commands"
 msgstr "Niestandardowe polecenia"
-
-#: widgets.py
-msgid "Duplicate Host"
-msgstr "Duplikuj host"
 
 #: widgets.py
 msgid "Enable logging"
 msgstr "Włącz logowanie"
 
 #: widgets.py
-msgid "Expand all"
-msgstr "Rozwiń wszystko"
-
-#: widgets.py
-msgid "New Group…"
-msgstr ""
-
-#: widgets.py
 msgid "Reconnect to host"
 msgstr "Połącz ponownie z hostem"
-
-#: widgets.py
-msgid "Rename Group…"
-msgstr ""
-
-#: widgets.py
-#, fuzzy
-#| msgid "Reset console"
-msgid "Reset Color"
-msgstr "Zresetuj konsolę"
 
 #: widgets.py
 msgid "Reset and Clear console"
@@ -4009,9 +4357,6 @@ msgstr "Cofnij podział wszystkich konsol"
 
 #~ msgid "Colors and Keys"
 #~ msgstr "Kolory i klawisze"
-
-#~ msgid "Commands"
-#~ msgstr "Polecenia"
 
 #~ msgid ""
 #~ "Compression level: \n"

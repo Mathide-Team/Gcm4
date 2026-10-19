@@ -2,20 +2,29 @@
 
 ``Adw.HeaderBar`` avec menu principal, ``Gtk.Paned`` : panneau gauche
 (arbre des hôtes du lot 3, #139) et ``Gtk.Notebook`` à droite avec une page
-d'accueil. Taille et largeur du panneau restaurées depuis ``gcm.conf`` et
+d'accueil. Taille et largeur du panneau restaurées depuis ``gcm4.conf`` et
 enregistrées à la fermeture.
+
+Connexions (#151) : ``win.connect-host`` demande au registre des plugins
+le plugin du protocole de l'hôte. Sans plugin, un message le dit ; sinon
+sa session devient un onglet, fermée par le bouton de l'onglet ou à la
+fermeture de la fenêtre.
 """
 
 from __future__ import annotations
 
-import os
-
 from gi.repository import Adw, Gio, GLib, Gtk
 from loguru import logger
 
-from gcm4.core import menu, window_state
-from gcm4.core.config import ConfigError
+from gcm4.core import chemins, menu, onglets, window_state
+from gcm4.core.chiffrement import ChiffrementGcm
+from gcm4.core.config import ConfigError, load_config, save_config, update_keys
 from gcm4.core.i18n import _
+from gcm4.core.plugins import Session
+from gcm4.core.registre import PluginRegistry
+from gcm4.core.replies import ecrire_replies
+from gcm4.ui import dialogues
+from gcm4.ui.host_tree import HostTree
 
 LARGEUR_DEFAUT = 1000
 HAUTEUR_DEFAUT = 650
@@ -48,11 +57,21 @@ class MainWindow(Adw.ApplicationWindow):
     """Fenêtre principale : en-tête, panneau gauche, onglets."""
 
     def __init__(self, application: Adw.Application, config_dir: str) -> None:
-        """Construit la fenêtre et restaure son état depuis ``config_dir/gcm.conf``."""
+        """Construit la fenêtre et restaure son état depuis ``config_dir/gcm4.conf``."""
         logger.debug("MainWindow.__init__: config_dir={}", config_dir)
         super().__init__(application=application, title="Gnome Connection Manager")
-        self.config_file = os.path.join(config_dir, "gcm.conf")
+        self.config_file = chemins.fichier_conf(config_dir)
         self.etat = window_state.load_window_state(self.config_file)
+        registre = getattr(application, "registre", None)
+        #: Plugins de l'application ; vide : mode zéro plugin.
+        self.registre = registre if isinstance(registre, PluginRegistry) else PluginRegistry()
+        #: Contenu d'onglet -> session du plugin à fermer avec l'onglet.
+        self.sessions: dict[Gtk.Widget, Session] = {}
+        #: Contenu d'onglet -> chemin ``groupe/nom`` de l'hôte (restauration, #246).
+        self.chemins_sessions: dict[Gtk.Widget, str] = {}
+        #: Dialogue « Quitter quand même ? » affiché (#147), sinon ``None``.
+        self.confirmation_fermeture: Adw.Dialog | Adw.MessageDialog | None = None
+        self._fermeture_confirmee = False
 
         entete = Adw.HeaderBar()
         self.bouton_menu = Gtk.MenuButton(
@@ -63,9 +82,35 @@ class MainWindow(Adw.ApplicationWindow):
 
         self.panneau = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         self.panneau.set_size_request(120, -1)
+        self.config = None
+        self.arbre: HostTree | None = None
+        try:
+            self.chiffrement = ChiffrementGcm(config_dir)
+            self.config = load_config(self.config_file, self.chiffrement)
+        except ConfigError as exc:
+            # Rien n'est chargé : aucune écriture ne pourra écraser le fichier.
+            logger.warning("MainWindow.__init__: configuration non chargée ({})", exc)
+            self.erreur_config = Adw.StatusPage(
+                icon_name="dialog-warning-symbolic",
+                title=_("Configuration not loaded"),
+                description=str(exc),
+            )
+            self.erreur_config.set_vexpand(True)
+            self.panneau.append(self.erreur_config)
+        else:
+            self.arbre = HostTree(
+                self.config.store,
+                rayures=not self.config.options.disable_hosts_stripes,
+                enregistrer=self.enregistrer_config,
+                notifier=self.notifier,
+            )
+            self.panneau.append(self.arbre)
+            couleurs = [g.color for g in self.config.store.groups.values() if g.color]
+            if hasattr(application, "set_group_colors"):
+                application.set_group_colors(couleurs)
         self.onglets = Gtk.Notebook(scrollable=True)
         self.page_accueil = Adw.StatusPage(
-            icon_name="network-workstation-symbolic",
+            icon_name="network-server-symbolic",
             title=_("Welcome to Gnome Connection Manager"),
             description=_("Hosts and groups will appear in the left panel."),
         )
@@ -81,7 +126,8 @@ class MainWindow(Adw.ApplicationWindow):
         corps.append(entete)
         corps.append(self.separateur)
         self.separateur.set_vexpand(True)
-        self.set_content(corps)
+        self.toasts = Adw.ToastOverlay(child=corps)
+        self.set_content(self.toasts)
 
         self.set_default_size(
             self.etat.width if self.etat.width > 0 else LARGEUR_DEFAUT,
@@ -93,8 +139,156 @@ class MainWindow(Adw.ApplicationWindow):
         action.connect("change-state", self._on_toggle_panel)
         self.add_action(action)
         self.panneau.set_visible(self.etat.show_panel)
+        connexion = Gio.SimpleAction.new("connect-host", GLib.VariantType.new("s"))
+        connexion.connect("activate", self._on_connect_host)
+        self.add_action(connexion)
+        recherche = Gio.SimpleAction.new("search", None)
+        recherche.connect("activate", self._on_search)
+        recherche.set_enabled(self.arbre is not None)  # configuration illisible : rien à chercher
+        self.add_action(recherche)
         self.connect("close-request", self._on_close_request)
         logger.debug("MainWindow.__init__: prête ({})", self.etat)
+
+    def enregistrer_config(self) -> None:
+        """Écrit toute la configuration (après une modification de l'arbre).
+
+        Raises:
+            ConfigError: écriture impossible ; le fichier est intact.
+        """
+        logger.debug("enregistrer_config: entrée")
+        if self.config is None:  # configuration illisible : jamais d'écriture
+            logger.debug("enregistrer_config: aucune configuration chargée")
+            return
+        save_config(self.config_file, self.config, self.chiffrement)
+        logger.debug("enregistrer_config: fait")
+
+    def notifier(self, message: str) -> None:
+        """Toast de quelques secondes en bas de la fenêtre."""
+        logger.debug("notifier: entrée")
+        self.toasts.add_toast(Adw.Toast(title=message, timeout=5))
+        logger.debug("notifier: fait")
+
+    def _on_connect_host(self, _action: Gio.SimpleAction, param: GLib.Variant) -> None:
+        """Double-clic / Entrée / « Connecter » : le plugin du protocole ouvre un onglet.
+
+        Sans plugin pour ce protocole (mode zéro plugin compris), un message
+        le dit et l'hôte reste intact. Un échec du plugin est affiché et
+        journalisé, sans onglet.
+        """
+        logger.debug("_on_connect_host: {!r}", param.get_string())
+        chemin = param.get_string()
+        hote = self.config.store.find(chemin) if self.config is not None else None
+        plugin = self.registre.get(hote.protocol) if hote is not None else None
+        if hote is None:
+            logger.debug("_on_connect_host: hôte introuvable")
+            return
+        if plugin is None:
+            self.notifier(
+                _(
+                    "No extension handles the protocol «{protocol}». "
+                    "Install it to open this connection."
+                ).format(protocol=hote.protocol)
+            )
+            logger.debug("_on_connect_host: aucun plugin")
+            return
+        try:
+            session = plugin.open(hote)
+        except Exception as exc:  # un plugin ne doit pas arrêter gcm4
+            logger.warning(
+                "_on_connect_host: {!r} n'a pas ouvert {!r} : {}", plugin.name, chemin, exc
+            )
+            self.notifier(_("Unable to open «{host}»: {error}").format(host=hote.name, error=exc))
+            logger.debug("_on_connect_host: échec du plugin")
+            return
+        self.ajouter_onglet(hote.name, session.widget, session)
+        self.chemins_sessions[session.widget] = chemin
+        logger.debug("_on_connect_host: onglet ouvert")
+
+    def ajouter_onglet(
+        self, titre: str, contenu: Gtk.Widget, session: Session | None = None
+    ) -> int:
+        """Onglet ``titre`` avec un bouton de fermeture ; rend son numéro (devenu courant)."""
+        logger.debug("ajouter_onglet: {!r} session={}", titre, session is not None)
+        entete = Gtk.Box(spacing=6)
+        entete.append(Gtk.Label(label=titre))
+        fermer = Gtk.Button(icon_name="window-close-symbolic", has_frame=False)
+        fermer.set_tooltip_text(_("Close tab"))
+        fermer.connect("clicked", lambda _b: self.fermer_onglet(contenu))
+        entete.append(fermer)
+        if session is not None:
+            self.sessions[contenu] = session
+        numero = self.onglets.append_page(contenu, entete)
+        self.onglets.set_tab_reorderable(contenu, True)
+        self.onglets.set_current_page(numero)
+        logger.debug("ajouter_onglet: page {}", numero)
+        return numero
+
+    def fermer_onglet(self, contenu: Gtk.Widget) -> None:
+        """Ferme la session de l'onglet (une seule fois) puis retire l'onglet."""
+        logger.debug("fermer_onglet: entrée")
+        session = self.sessions.pop(contenu, None)
+        self.chemins_sessions.pop(contenu, None)
+        if session is not None:
+            try:
+                session.close()
+            except Exception as exc:  # l'onglet se ferme quand même
+                logger.warning("fermer_onglet: close() a échoué : {}", exc)
+        numero = self.onglets.page_num(contenu)
+        if numero >= 0:
+            self.onglets.remove_page(numero)
+        logger.debug("fermer_onglet: page {} retirée", numero)
+
+    def onglets_ouverts(self) -> list[str]:
+        """Chemins ``groupe/nom`` des onglets de connexion, dans l'ordre affiché."""
+        logger.debug("onglets_ouverts: entrée")
+        resultat = []
+        for numero in range(self.onglets.get_n_pages()):
+            chemin = self.chemins_sessions.get(self.onglets.get_nth_page(numero))
+            if chemin is not None:
+                resultat.append(chemin)
+        logger.debug("onglets_ouverts: {}", len(resultat))
+        return resultat
+
+    def restaurer_onglets(self) -> None:
+        """Rouvre les onglets de la dernière session si l'option est active (#246).
+
+        Hôte disparu ou protocole sans plugin : un seul message par cas, pas
+        d'erreur ; l'échec d'un plugin est signalé par ``win.connect-host``.
+        """
+        logger.debug("restaurer_onglets: entrée")
+        if self.config is None or not self.config.options.restore_open_tabs:
+            logger.debug("restaurer_onglets: option inactive ou configuration absente")
+            return
+        absents: list[str] = []
+        sans_plugin: list[str] = []
+        for chemin in onglets.lire(self.config_file):
+            hote = self.config.store.find(chemin)
+            if hote is None:
+                absents.append(chemin)
+            elif self.registre.get(hote.protocol) is None:
+                sans_plugin.append(chemin)
+            else:
+                self.activate_action("win.connect-host", GLib.Variant.new_string(chemin))
+        if absents:
+            self.notifier(
+                _("Not restored, host not found: {hosts}").format(hosts=", ".join(absents))
+            )
+        if sans_plugin:
+            self.notifier(
+                _("Not restored, no extension for: {hosts}").format(hosts=", ".join(sans_plugin))
+            )
+        logger.debug(
+            "restaurer_onglets: {} absent(s), {} sans plugin", len(absents), len(sans_plugin)
+        )
+
+    def _on_search(self, _action: Gio.SimpleAction, _param: GLib.Variant | None) -> None:
+        """Ctrl+F / Affichage > Rechercher : panneau affiché, curseur dans la recherche (#140)."""
+        logger.debug("_on_search: entrée")
+        if self.arbre is not None:
+            if not self.panneau.get_visible():
+                self.activate_action("win.toggle-panel", None)
+            self.arbre.focus_recherche()
+        logger.debug("_on_search: fait")
 
     def _on_toggle_panel(self, action: Gio.SimpleAction, valeur: GLib.Variant) -> None:
         """F9 / Affichage > Panneau : montre ou cache le panneau gauche."""
@@ -117,13 +311,76 @@ class MainWindow(Adw.ApplicationWindow):
         logger.debug("etat_courant: {}", etat)
         return etat
 
+    def _confirmation_requise(self) -> bool:
+        """Connexions ouvertes et « Confirmer à la fermeture » actif (#147)."""
+        logger.trace("_confirmation_requise")
+        resultat = bool(
+            self.sessions
+            and self.config is not None
+            and self.config.options.confirm_exit
+            and not self._fermeture_confirmee
+        )
+        logger.trace("_confirmation_requise: {}", resultat)
+        return resultat
+
+    def _demander_confirmation(self) -> None:
+        """Dialogue « Quitter quand même ? » ; « Quitter » ferme la fenêtre."""
+        logger.debug("_demander_confirmation: {} connexion(s)", len(self.sessions))
+        if self.confirmation_fermeture is not None:
+            logger.debug("_demander_confirmation: déjà affichée")
+            return
+
+        def rappel(reponse: str) -> None:
+            logger.debug("_demander_confirmation.rappel: {}", reponse)
+            self.confirmation_fermeture = None
+            if reponse == "quitter":
+                self._fermeture_confirmee = True
+                # Après la fermeture du dialogue : un close() immédiat fermerait
+                # le dialogue encore attaché, pas la fenêtre.
+                GLib.idle_add(lambda: self.close() and False)
+            logger.debug("_demander_confirmation.rappel: fait")
+
+        self.confirmation_fermeture = dialogues.creer(
+            self,
+            _("Quit anyway?"),
+            _("Open connections will be closed."),
+            [
+                ("annuler", _("Cancel"), None),
+                ("quitter", _("Quit"), Adw.ResponseAppearance.DESTRUCTIVE),
+            ],
+            "annuler",
+            "annuler",
+            rappel,
+        )
+        logger.debug("_demander_confirmation: affichée")
+
     def _on_close_request(self, _fenetre: Gtk.Window) -> bool:
-        """Enregistre l'état ; une erreur d'écriture n'empêche pas la fermeture."""
+        """Enregistre l'état ; une erreur d'écriture n'empêche pas la fermeture.
+
+        Connexions ouvertes et « Confirmer à la fermeture » actif : la
+        fermeture attend la confirmation (#147).
+        """
         logger.debug("_on_close_request: entrée")
+        if self._confirmation_requise():
+            self._demander_confirmation()
+            logger.debug("_on_close_request: confirmation demandée")
+            return True
+        ouverts = onglets.serialiser(self.onglets_ouverts())  # avant la fermeture
+        for contenu in list(self.sessions):
+            self.fermer_onglet(contenu)
         try:
             window_state.save_window_state(self.config_file, self.etat_courant())
+            if self.config is not None:
+                groupes = self.config.store.groups
+                replies = ecrire_replies((p for p, g in groupes.items() if g.collapsed), groupes)
+                # open-tabs écrit même option désactivée, comme GTK3 (#246).
+                update_keys(
+                    self.config_file,
+                    "window",
+                    {"collapsed-folders": replies, onglets.CLE: ouverts},
+                )
         except ConfigError as exc:
-            # gcm.conf corrompu ou disque plein : le fichier reste intact,
+            # gcm4.conf corrompu ou disque plein : le fichier reste intact,
             # seule la géométrie de cette session est perdue.
             logger.warning("_on_close_request: état non enregistré ({})", exc)
         logger.debug("_on_close_request: fermeture autorisée")
