@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-18 16:41+0000\n"
+"POT-Creation-Date: 2026-10-19 12:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2864,12 +2864,20 @@ msgid "No extension handles this protocol: its options are kept."
 msgstr "Nenhuma extensão trata este protocolo: suas opções são mantidas."
 
 #: src/gcm4/ui/host_dialog.py
+msgid "No extension is installed for this protocol: its options are kept and cannot be modified."
+msgstr "Nenhuma extensão está instalada para este protocolo: suas opções são mantidas, mas não podem ser modificadas."
+
+#: src/gcm4/ui/host_dialog.py
 msgid "No extension is installed."
 msgstr "Nenhuma extensão instalada."
 
 #: src/gcm4/ui/host_dialog.py
 msgid "Protocol"
 msgstr "Protocolo"
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Protocol options"
+msgstr "Opções de protocolo"
 
 #: src/gcm4/ui/host_dialog.py
 #, python-brace-format
