@@ -6,7 +6,7 @@
 > toute modification manuelle sera écrasée. Le régénérer avec `make class-diagram` ;
 > le job Qualité échoue s'il est périmé (`--check`).
 
-77 modules · 150 classes · 248 fonctions publiques de module.
+78 modules · 150 classes · 251 fonctions publiques de module.
 
 Conventions : `+` public, `-` privé (préfixe `_`) ; `list~str~` = `list[str]` ; `<<module>>`
 regroupe les fonctions publiques d'un module ; `<<…>>` sur une classe liste `dataclass` et les
@@ -1269,6 +1269,7 @@ classDiagram
 | `gcm4.core.menu` | `src/gcm4/core/menu.py` | Menu principal et raccourcis de gcm4, décrits sans GTK (#134). |
 | `gcm4.core.menu_arbre` | `src/gcm4/core/menu_arbre.py` | Menu contextuel de l'arbre et règles de ses actions, sans GTK (#142). |
 | `gcm4.core.model` | `src/gcm4/core/model.py` | Modèle de la base GTK4 : Host, Group, HostStore, sans GTK (#136). |
+| `gcm4.core.onglets` | `src/gcm4/core/onglets.py` | Onglets ouverts, enregistrés à la fermeture et restaurés au démarrage (#246). |
 | `gcm4.core.plugins` | `src/gcm4/core/plugins.py` | Contrat v1 entre la base gcm4 et ses plugins de connexion (#149), sans GTK. |
 | `gcm4.core.preferences` | `src/gcm4/core/preferences.py` | Préférences générales de la base GTK4, sans GTK (lot 5a, #147). |
 | `gcm4.core.registre` | `src/gcm4/core/registre.py` | Découverte des plugins et isolation de leurs erreurs (#150), sans GTK. |
@@ -1481,6 +1482,12 @@ classDiagram
         +duplicate(host) Host
         +search(texte) list~Host~
     }
+    class mod_gcm4_core_onglets {
+        <<module>>
+        +serialiser(chemins) str
+        +analyser(brut) list~str~
+        +lire(config_file) list~str~
+    }
     class mod_gcm4_core_plugins {
         <<module>>
         +incompatibilite(classe) str None
@@ -1688,6 +1695,8 @@ classDiagram
         +notifier(message) None
         +ajouter_onglet(titre, contenu, session) int
         +fermer_onglet(contenu) None
+        +onglets_ouverts() list~str~
+        +restaurer_onglets() None
         +etat_courant() window_state.WindowState
     }
     class MenuArbre {

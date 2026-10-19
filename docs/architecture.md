@@ -439,6 +439,14 @@ Apparence (`gcm4.ui.preferences`) appliquent chaque changement tout de suite
 et l'écrivent aussitôt (`update_keys`, écriture atomique). Nouvelle clé gcm4 :
 `[window] tree-font` (description Pango, vide = police du système).
 
+Restauration des onglets (#246, `gcm4.core.onglets`) : à la fermeture, les
+chemins `groupe/nom` des onglets de connexion sont écrits dans l'ordre
+affiché dans `[window] open-tabs` (format GTK3), même option désactivée.
+Au démarrage, si `[options] restore-open-tabs` est actif, chaque chemin est
+rouvert par `win.connect-host` ; un hôte disparu ou un protocole sans
+plugin donne un seul message par cas. Limite du format : un chemin
+contenant une virgule n'est pas enregistré.
+
 Lot 5b (#148) : pages Raccourcis (lecture seule, depuis
 `gcm4.core.preferences.raccourcis()`, même source que les raccourcis posés
 par l'application et l'arbre), Journalisation et Extensions. Nouvelle clé
@@ -465,7 +473,7 @@ effacée par un enregistrement du modèle.
 | `CYCLE_TABS` | `options/cycle-tabs` | base | onglets, issue de suivi |
 | `DISABLE_SHORTCUTS` | `options/disable-shortcuts` | terminal | plugin terminal |
 | `DISABLE_NOTIFICATIONS` | `options/disable-notifications` | terminal | plugin terminal |
-| `RESTORE_OPEN_TABS` | `options/restore-open-tabs` | base | page Général (#147) |
+| `RESTORE_OPEN_TABS` | `options/restore-open-tabs` | base | page Général (#147), #246 |
 | `AUTO_CLOSE_TAB` | `options/auto-close-tab` | terminal | plugin terminal |
 | `CONFIRM_ON_EXIT` | `options/confirm-exit` | base | page Général (#147) |
 | `CHECK_UPDATES` | `options/check-updates` | base | page Général (#147) |

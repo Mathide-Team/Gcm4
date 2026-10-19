@@ -16,7 +16,7 @@ from __future__ import annotations
 from gi.repository import Adw, Gio, GLib, Gtk
 from loguru import logger
 
-from gcm4.core import chemins, menu, window_state
+from gcm4.core import chemins, menu, onglets, window_state
 from gcm4.core.chiffrement import ChiffrementGcm
 from gcm4.core.config import ConfigError, load_config, save_config, update_keys
 from gcm4.core.i18n import _
@@ -67,6 +67,8 @@ class MainWindow(Adw.ApplicationWindow):
         self.registre = registre if isinstance(registre, PluginRegistry) else PluginRegistry()
         #: Contenu d'onglet -> session du plugin à fermer avec l'onglet.
         self.sessions: dict[Gtk.Widget, Session] = {}
+        #: Contenu d'onglet -> chemin ``groupe/nom`` de l'hôte (restauration, #246).
+        self.chemins_sessions: dict[Gtk.Widget, str] = {}
         #: Dialogue « Quitter quand même ? » affiché (#147), sinon ``None``.
         self.confirmation_fermeture: Adw.Dialog | Adw.MessageDialog | None = None
         self._fermeture_confirmee = False
@@ -199,6 +201,7 @@ class MainWindow(Adw.ApplicationWindow):
             logger.debug("_on_connect_host: échec du plugin")
             return
         self.ajouter_onglet(hote.name, session.widget, session)
+        self.chemins_sessions[session.widget] = chemin
         logger.debug("_on_connect_host: onglet ouvert")
 
     def ajouter_onglet(
@@ -224,6 +227,7 @@ class MainWindow(Adw.ApplicationWindow):
         """Ferme la session de l'onglet (une seule fois) puis retire l'onglet."""
         logger.debug("fermer_onglet: entrée")
         session = self.sessions.pop(contenu, None)
+        self.chemins_sessions.pop(contenu, None)
         if session is not None:
             try:
                 session.close()
@@ -233,6 +237,49 @@ class MainWindow(Adw.ApplicationWindow):
         if numero >= 0:
             self.onglets.remove_page(numero)
         logger.debug("fermer_onglet: page {} retirée", numero)
+
+    def onglets_ouverts(self) -> list[str]:
+        """Chemins ``groupe/nom`` des onglets de connexion, dans l'ordre affiché."""
+        logger.debug("onglets_ouverts: entrée")
+        resultat = []
+        for numero in range(self.onglets.get_n_pages()):
+            chemin = self.chemins_sessions.get(self.onglets.get_nth_page(numero))
+            if chemin is not None:
+                resultat.append(chemin)
+        logger.debug("onglets_ouverts: {}", len(resultat))
+        return resultat
+
+    def restaurer_onglets(self) -> None:
+        """Rouvre les onglets de la dernière session si l'option est active (#246).
+
+        Hôte disparu ou protocole sans plugin : un seul message par cas, pas
+        d'erreur ; l'échec d'un plugin est signalé par ``win.connect-host``.
+        """
+        logger.debug("restaurer_onglets: entrée")
+        if self.config is None or not self.config.options.restore_open_tabs:
+            logger.debug("restaurer_onglets: option inactive ou configuration absente")
+            return
+        absents: list[str] = []
+        sans_plugin: list[str] = []
+        for chemin in onglets.lire(self.config_file):
+            hote = self.config.store.find(chemin)
+            if hote is None:
+                absents.append(chemin)
+            elif self.registre.get(hote.protocol) is None:
+                sans_plugin.append(chemin)
+            else:
+                self.activate_action("win.connect-host", GLib.Variant.new_string(chemin))
+        if absents:
+            self.notifier(
+                _("Not restored, host not found: {hosts}").format(hosts=", ".join(absents))
+            )
+        if sans_plugin:
+            self.notifier(
+                _("Not restored, no extension for: {hosts}").format(hosts=", ".join(sans_plugin))
+            )
+        logger.debug(
+            "restaurer_onglets: {} absent(s), {} sans plugin", len(absents), len(sans_plugin)
+        )
 
     def _on_search(self, _action: Gio.SimpleAction, _param: GLib.Variant | None) -> None:
         """Ctrl+F / Affichage > Rechercher : panneau affiché, curseur dans la recherche (#140)."""
@@ -318,6 +365,7 @@ class MainWindow(Adw.ApplicationWindow):
             self._demander_confirmation()
             logger.debug("_on_close_request: confirmation demandée")
             return True
+        ouverts = onglets.serialiser(self.onglets_ouverts())  # avant la fermeture
         for contenu in list(self.sessions):
             self.fermer_onglet(contenu)
         try:
@@ -325,7 +373,12 @@ class MainWindow(Adw.ApplicationWindow):
             if self.config is not None:
                 groupes = self.config.store.groups
                 replies = ecrire_replies((p for p, g in groupes.items() if g.collapsed), groupes)
-                update_keys(self.config_file, "window", {"collapsed-folders": replies})
+                # open-tabs écrit même option désactivée, comme GTK3 (#246).
+                update_keys(
+                    self.config_file,
+                    "window",
+                    {"collapsed-folders": replies, onglets.CLE: ouverts},
+                )
         except ConfigError as exc:
             # gcm4.conf corrompu ou disque plein : le fichier reste intact,
             # seule la géométrie de cette session est perdue.

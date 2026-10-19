@@ -91,7 +91,9 @@ INVENTAIRE: tuple[OptionWconfig, ...] = (
     OptionWconfig(
         "DISABLE_NOTIFICATIONS", "options/disable-notifications", TERMINAL, "plugin terminal"
     ),
-    OptionWconfig("RESTORE_OPEN_TABS", "options/restore-open-tabs", BASE, "page Général (#147)"),
+    OptionWconfig(
+        "RESTORE_OPEN_TABS", "options/restore-open-tabs", BASE, "page Général (#147), #246"
+    ),
     OptionWconfig("AUTO_CLOSE_TAB", "options/auto-close-tab", TERMINAL, "plugin terminal"),
     OptionWconfig("CONFIRM_ON_EXIT", "options/confirm-exit", BASE, "page Général (#147)"),
     OptionWconfig("CHECK_UPDATES", "options/check-updates", BASE, "page Général (#147)"),
