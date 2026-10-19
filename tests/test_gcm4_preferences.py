@@ -133,3 +133,86 @@ def test_inventaire_documente():
     assert "### 2.11 Préférences" in doc
     for option in p.INVENTAIRE:
         assert f"| `{option.nom}` |" in doc, option.nom
+
+
+# --- lot 5b (#148) : journalisation, raccourcis -----------------------------------
+
+
+def test_niveau_de_journal_lu_et_ecrit(tmp_path):
+    """[options] log-level : relu en majuscules ; inconnu → INFO ; écriture vérifiée."""
+    conf = tmp_path / "gcm4.conf"
+    conf.write_text("[options]\nlog-level = debug\n", encoding="utf-8")
+    assert p.load_preferences(str(conf)).log_level == "DEBUG"
+    p.save_preference(str(conf), "log_level", "WARNING")
+    assert p.load_preferences(str(conf)).log_level == "WARNING"
+    with pytest.raises(ValueError):
+        p.save_preference(str(conf), "log_level", "BAVARD")
+    conf.write_text("[options]\nlog-level = bavard\n", encoding="utf-8")
+    assert p.load_preferences(str(conf)).log_level == "INFO"
+
+
+def test_priorite_du_niveau_de_journal():
+    """--debug, puis GCM_LOG_LEVEL / GCM_DEBUG, puis la préférence."""
+    assert p.niveau_journal(True, "ERROR", {"GCM_LOG_LEVEL": "TRACE"}) == ("DEBUG", "cli")
+    assert p.niveau_journal(False, "ERROR", {"GCM_LOG_LEVEL": "TRACE"}) == ("", "env")
+    assert p.niveau_journal(False, "ERROR", {"GCM_DEBUG": "1"}) == ("", "env")
+    assert p.niveau_journal(False, "ERROR", {"GCM_DEBUG": " "}) == ("ERROR", "preferences")
+    assert p.niveau_journal(False, "BAVARD", {}) == ("INFO", "preferences")
+
+
+def test_main_applique_le_niveau_enregistre(tmp_path, monkeypatch):
+    """gcm4 sans --debug ni variable : niveau de Préférences > Journalisation."""
+    import sys
+
+    import logging_config
+    from gcm4 import app
+    from gcm4.core import chemins
+
+    (tmp_path / "gcm4.conf").write_text("[options]\nlog-level = WARNING\n", encoding="utf-8")
+    appels = []
+    monkeypatch.delenv("GCM_LOG_LEVEL", raising=False)
+    monkeypatch.delenv("GCM_DEBUG", raising=False)
+    monkeypatch.setattr(chemins, "preparer", lambda *_a: None)
+    monkeypatch.setattr(
+        logging_config, "configure_logging", lambda niveau=None, **kw: appels.append(niveau)
+    )
+    monkeypatch.setitem(sys.modules, "gcm4.ui", None)  # GTK « absent » : main s'arrête là
+    app.main(["-c", str(tmp_path)])
+    assert appels[-1] == "WARNING"
+
+
+def test_cle_options_hors_modele_conservee(tmp_path):
+    """Une clé [options] sans champ AppConfig écrite en session survit à save_config."""
+    from gcm4.core.config import load_config, save_config
+
+    conf = tmp_path / "gcm4.conf"
+    conf.write_text("[options]\nconfirm-exit = True\n", encoding="utf-8")
+    cfg = load_config(str(conf))
+    p.save_preference(str(conf), "log_level", "ERROR")  # après la lecture du modèle
+    save_config(str(conf), cfg)
+    assert p.load_preferences(str(conf)).log_level == "ERROR"
+
+
+def test_raccourcis_de_la_base():
+    """Chaque raccourci du menu et de l'arbre est listé, avec un libellé du menu."""
+    from gcm4.core import menu
+
+    liste = p.raccourcis()
+    fenetre = {r.touches for r in liste if r.portee == p.FENETRE}
+    assert fenetre == set(menu.RACCOURCIS.values())
+    arbre = {t for r in liste if r.portee == p.ARBRE for t in r.touches}
+    assert {"Delete", "F2", "Menu", "<Shift>F10", "Return"} <= arbre
+    assert next(r for r in liste if r.touches == ("<Control>q",)).libelle == "Quit"
+
+
+def test_section_options_creee_en_session_conservee(tmp_path):
+    """Fichier lu sans [options], préférence écrite ensuite : conservée par save_config."""
+    from gcm4.core.config import load_config, save_config
+
+    conf = tmp_path / "gcm4.conf"
+    conf.write_text("[window]\nshow-panel = True\n", encoding="utf-8")
+    cfg = load_config(str(conf))
+    cfg.brut.remove_section("options") if cfg.brut.has_section("options") else None
+    p.save_preference(str(conf), "log_level", "TRACE")
+    save_config(str(conf), cfg)
+    assert p.load_preferences(str(conf)).log_level == "TRACE"

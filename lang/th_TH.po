@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-19 12:42+0000\n"
+"POT-Creation-Date: 2026-10-19 12:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -545,7 +545,7 @@ msgid "Only on clean exit"
 msgstr "เฉพาะเมื่อออกตามปกติ"
 
 #: gnome_connection_manager.py plugins/plugin_import_putty.py
-#: src/gcm4/ui/mises_a_jour.py utils.py
+#: src/gcm4/ui/mises_a_jour.py src/gcm4/ui/preferences.py utils.py
 msgid "Open"
 msgstr "เปิด"
 
@@ -690,7 +690,7 @@ msgstr "คำสั่งเชลล์ที่รันในเครื่
 msgid "Shortcut"
 msgstr "ทางลัด"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Shortcuts"
 msgstr "ทางลัด"
 
@@ -1421,7 +1421,8 @@ msgstr "🔍  สแกนโฮสต์ Proxmox"
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_serial.py
 #: plugins/plugin_spice.py plugins/plugin_vnc.py plugins/plugin_web.py
-#: src/gcm4/core/menu_arbre.py src/gcm4/ui/contexte.py widgets.py
+#: src/gcm4/core/menu_arbre.py src/gcm4/core/preferences.py
+#: src/gcm4/ui/contexte.py widgets.py
 msgid "Connect"
 msgstr "เชื่อมต่อ"
 
@@ -2497,8 +2498,8 @@ msgstr "พอร์ตระยะไกล"
 msgid "Remote path"
 msgstr "โฮสต์ระยะไกล"
 
-#: plugins/plugin_ssh.py src/gcm4/core/menu_arbre.py src/gcm4/ui/menu_arbre.py
-#: widgets.py
+#: plugins/plugin_ssh.py src/gcm4/core/menu_arbre.py
+#: src/gcm4/core/preferences.py src/gcm4/ui/menu_arbre.py widgets.py
 msgid "Remove"
 msgstr "ลบ"
 
@@ -2763,6 +2764,14 @@ msgstr "ไม่ใช่ปลั๊กอินการเชื่อมต
 msgid "Its name must be a non-empty lowercase identifier."
 msgstr "ชื่อต้องเป็นตัวระบุตัวพิมพ์เล็กที่ไม่ว่าง"
 
+#: src/gcm4/core/preferences.py
+msgid "Open the context menu"
+msgstr "เปิดเมนูบริบท"
+
+#: src/gcm4/core/preferences.py
+msgid "Rename the group or edit the host"
+msgstr "เปลี่ยนชื่อกลุ่มหรือแก้ไขโฮสต์"
+
 #: src/gcm4/core/registre.py
 #, python-brace-format
 msgid "A plugin with the same name is already loaded from {source}."
@@ -2893,7 +2902,7 @@ msgstr "ยังไม่ได้บันทึกการเปลี่ย
 msgid "An item with this name already exists in '{group}'."
 msgstr "มีรายการชื่อนี้อยู่แล้วใน '{group}'"
 
-#: src/gcm4/ui/host_tree.py
+#: src/gcm4/ui/host_tree.py src/gcm4/ui/preferences.py
 msgid "Hosts"
 msgstr "โฮสต์"
 
@@ -3033,9 +3042,50 @@ msgid "Appearance"
 msgstr "รูปลักษณ์"
 
 #: src/gcm4/ui/preferences.py
+msgid "Default log level"
+msgstr "ระดับล็อกเริ่มต้น"
+
+#: src/gcm4/ui/preferences.py
+msgid "Error"
+msgstr "ข้อผิดพลาด"
+
+#: src/gcm4/ui/preferences.py
+msgid "Extensions"
+msgstr "ส่วนขยาย"
+
+#: src/gcm4/ui/preferences.py
+msgid "Loaded"
+msgstr "โหลดแล้ว"
+
+#: src/gcm4/ui/preferences.py
+msgid "Log folder"
+msgstr "โฟลเดอร์ล็อก"
+
+#: src/gcm4/ui/preferences.py
+msgid "Logging"
+msgstr "การบันทึกล็อก"
+
+#: src/gcm4/ui/preferences.py
+msgid "Main window"
+msgstr "หน้าต่างหลัก"
+
+#: src/gcm4/ui/preferences.py
+msgid "No extension found."
+msgstr "ไม่พบส่วนขยาย"
+
+#: src/gcm4/ui/preferences.py
+msgid "Overridden for this session by --debug or GCM_LOG_LEVEL."
+msgstr "ถูกแทนที่ในเซสชันนี้โดย --debug หรือ GCM_LOG_LEVEL"
+
+#: src/gcm4/ui/preferences.py
 #, python-brace-format
 msgid "Preferences not saved: {error}"
 msgstr "ไม่ได้บันทึกการตั้งค่า: {error}"
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Preferences page unavailable: {error}"
+msgstr "หน้าการตั้งค่าไม่พร้อมใช้งาน: {error}"
 
 #: src/gcm4/ui/preferences.py
 msgid "Theme"
@@ -3046,8 +3096,18 @@ msgid "Tree font"
 msgstr "แบบอักษรของรายการโฮสต์"
 
 #: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Unable to open the folder: {error}"
+msgstr "ไม่สามารถเปิดโฟลเดอร์: {error}"
+
+#: src/gcm4/ui/preferences.py
 msgid "Use system font"
 msgstr "ใช้แบบอักษรของระบบ"
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Version {version}"
+msgstr "รุ่น {version}"
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-19 12:42+0000\n"
+"POT-Creation-Date: 2026-10-19 12:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -545,7 +545,7 @@ msgid "Only on clean exit"
 msgstr "Chỉ khi thoát sạch"
 
 #: gnome_connection_manager.py plugins/plugin_import_putty.py
-#: src/gcm4/ui/mises_a_jour.py utils.py
+#: src/gcm4/ui/mises_a_jour.py src/gcm4/ui/preferences.py utils.py
 msgid "Open"
 msgstr "Mở"
 
@@ -690,7 +690,7 @@ msgstr "Lệnh shell chạy cục bộ ở nền ngay trước khi mở kết n�
 msgid "Shortcut"
 msgstr "Phím tắt"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Shortcuts"
 msgstr "Phím tắt"
 
@@ -1421,7 +1421,8 @@ msgstr "🔍  Quét host Proxmox"
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_serial.py
 #: plugins/plugin_spice.py plugins/plugin_vnc.py plugins/plugin_web.py
-#: src/gcm4/core/menu_arbre.py src/gcm4/ui/contexte.py widgets.py
+#: src/gcm4/core/menu_arbre.py src/gcm4/core/preferences.py
+#: src/gcm4/ui/contexte.py widgets.py
 msgid "Connect"
 msgstr "Kết nối"
 
@@ -2497,8 +2498,8 @@ msgstr "Cổng Từ Xa"
 msgid "Remote path"
 msgstr "Host Từ Xa"
 
-#: plugins/plugin_ssh.py src/gcm4/core/menu_arbre.py src/gcm4/ui/menu_arbre.py
-#: widgets.py
+#: plugins/plugin_ssh.py src/gcm4/core/menu_arbre.py
+#: src/gcm4/core/preferences.py src/gcm4/ui/menu_arbre.py widgets.py
 msgid "Remove"
 msgstr "Xóa"
 
@@ -2763,6 +2764,14 @@ msgstr "Đây không phải tiện ích kết nối."
 msgid "Its name must be a non-empty lowercase identifier."
 msgstr "Tên phải là định danh chữ thường, không rỗng."
 
+#: src/gcm4/core/preferences.py
+msgid "Open the context menu"
+msgstr "Mở trình đơn ngữ cảnh"
+
+#: src/gcm4/core/preferences.py
+msgid "Rename the group or edit the host"
+msgstr "Đổi tên nhóm hoặc sửa máy chủ"
+
 #: src/gcm4/core/registre.py
 #, python-brace-format
 msgid "A plugin with the same name is already loaded from {source}."
@@ -2893,7 +2902,7 @@ msgstr "Các thay đổi của máy chủ này chưa được lưu."
 msgid "An item with this name already exists in '{group}'."
 msgstr "Đã có một mục cùng tên trong '{group}'."
 
-#: src/gcm4/ui/host_tree.py
+#: src/gcm4/ui/host_tree.py src/gcm4/ui/preferences.py
 msgid "Hosts"
 msgstr "Máy chủ"
 
@@ -3033,9 +3042,50 @@ msgid "Appearance"
 msgstr "Giao diện"
 
 #: src/gcm4/ui/preferences.py
+msgid "Default log level"
+msgstr "Mức nhật ký mặc định"
+
+#: src/gcm4/ui/preferences.py
+msgid "Error"
+msgstr "Lỗi"
+
+#: src/gcm4/ui/preferences.py
+msgid "Extensions"
+msgstr "Phần mở rộng"
+
+#: src/gcm4/ui/preferences.py
+msgid "Loaded"
+msgstr "Đã nạp"
+
+#: src/gcm4/ui/preferences.py
+msgid "Log folder"
+msgstr "Thư mục nhật ký"
+
+#: src/gcm4/ui/preferences.py
+msgid "Logging"
+msgstr "Ghi nhật ký"
+
+#: src/gcm4/ui/preferences.py
+msgid "Main window"
+msgstr "Cửa sổ chính"
+
+#: src/gcm4/ui/preferences.py
+msgid "No extension found."
+msgstr "Không tìm thấy phần mở rộng nào."
+
+#: src/gcm4/ui/preferences.py
+msgid "Overridden for this session by --debug or GCM_LOG_LEVEL."
+msgstr "Bị ghi đè trong phiên này bởi --debug hoặc GCM_LOG_LEVEL."
+
+#: src/gcm4/ui/preferences.py
 #, python-brace-format
 msgid "Preferences not saved: {error}"
 msgstr "Chưa lưu tùy chọn: {error}"
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Preferences page unavailable: {error}"
+msgstr "Trang tùy chọn không khả dụng: {error}"
 
 #: src/gcm4/ui/preferences.py
 msgid "Theme"
@@ -3046,8 +3096,18 @@ msgid "Tree font"
 msgstr "Phông chữ cây máy chủ"
 
 #: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Unable to open the folder: {error}"
+msgstr "Không thể mở thư mục: {error}"
+
+#: src/gcm4/ui/preferences.py
 msgid "Use system font"
 msgstr "Dùng phông chữ hệ thống"
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Version {version}"
+msgstr "Phiên bản {version}"
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format

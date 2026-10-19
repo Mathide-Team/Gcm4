@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-19 12:42+0000\n"
+"POT-Creation-Date: 2026-10-19 12:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -545,7 +545,7 @@ msgid "Only on clean exit"
 msgstr "শুধুমাত্র ক্লিন এক্সিটে"
 
 #: gnome_connection_manager.py plugins/plugin_import_putty.py
-#: src/gcm4/ui/mises_a_jour.py utils.py
+#: src/gcm4/ui/mises_a_jour.py src/gcm4/ui/preferences.py utils.py
 msgid "Open"
 msgstr "খুলুন"
 
@@ -690,7 +690,7 @@ msgstr "এই সংযোগ খোলার ঠিক আগে স্থা�
 msgid "Shortcut"
 msgstr "শর্টকাট"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Shortcuts"
 msgstr "শর্টকাট"
 
@@ -1421,7 +1421,8 @@ msgstr "🔍  Proxmox হোস্ট স্ক্যান করুন"
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_serial.py
 #: plugins/plugin_spice.py plugins/plugin_vnc.py plugins/plugin_web.py
-#: src/gcm4/core/menu_arbre.py src/gcm4/ui/contexte.py widgets.py
+#: src/gcm4/core/menu_arbre.py src/gcm4/core/preferences.py
+#: src/gcm4/ui/contexte.py widgets.py
 msgid "Connect"
 msgstr "সংযোগ করুন"
 
@@ -2497,8 +2498,8 @@ msgstr "রিমোট পোর্ট"
 msgid "Remote path"
 msgstr "রিমোট হোস্ট"
 
-#: plugins/plugin_ssh.py src/gcm4/core/menu_arbre.py src/gcm4/ui/menu_arbre.py
-#: widgets.py
+#: plugins/plugin_ssh.py src/gcm4/core/menu_arbre.py
+#: src/gcm4/core/preferences.py src/gcm4/ui/menu_arbre.py widgets.py
 msgid "Remove"
 msgstr "অপসারণ করুন"
 
@@ -2763,6 +2764,14 @@ msgstr "এটি সংযোগ প্লাগইন নয়।"
 msgid "Its name must be a non-empty lowercase identifier."
 msgstr "নামটি ছোট হাতের অক্ষরের অ-ফাঁকা শনাক্তকারী হতে হবে।"
 
+#: src/gcm4/core/preferences.py
+msgid "Open the context menu"
+msgstr "প্রসঙ্গ মেনু খুলুন"
+
+#: src/gcm4/core/preferences.py
+msgid "Rename the group or edit the host"
+msgstr "গ্রুপের নাম বদলান বা হোস্ট সম্পাদনা করুন"
+
 #: src/gcm4/core/registre.py
 #, python-brace-format
 msgid "A plugin with the same name is already loaded from {source}."
@@ -2893,7 +2902,7 @@ msgstr "এই হোস্টের পরিবর্তনগুলো সং
 msgid "An item with this name already exists in '{group}'."
 msgstr "'{group}'-এ এই নামের একটি আইটেম আগে থেকেই আছে।"
 
-#: src/gcm4/ui/host_tree.py
+#: src/gcm4/ui/host_tree.py src/gcm4/ui/preferences.py
 msgid "Hosts"
 msgstr "হোস্ট"
 
@@ -3033,9 +3042,50 @@ msgid "Appearance"
 msgstr "চেহারা"
 
 #: src/gcm4/ui/preferences.py
+msgid "Default log level"
+msgstr "ডিফল্ট লগ স্তর"
+
+#: src/gcm4/ui/preferences.py
+msgid "Error"
+msgstr "ত্রুটি"
+
+#: src/gcm4/ui/preferences.py
+msgid "Extensions"
+msgstr "এক্সটেনশন"
+
+#: src/gcm4/ui/preferences.py
+msgid "Loaded"
+msgstr "লোড হয়েছে"
+
+#: src/gcm4/ui/preferences.py
+msgid "Log folder"
+msgstr "লগ ফোল্ডার"
+
+#: src/gcm4/ui/preferences.py
+msgid "Logging"
+msgstr "লগিং"
+
+#: src/gcm4/ui/preferences.py
+msgid "Main window"
+msgstr "প্রধান উইন্ডো"
+
+#: src/gcm4/ui/preferences.py
+msgid "No extension found."
+msgstr "কোনো এক্সটেনশন পাওয়া যায়নি।"
+
+#: src/gcm4/ui/preferences.py
+msgid "Overridden for this session by --debug or GCM_LOG_LEVEL."
+msgstr "এই সেশনে --debug বা GCM_LOG_LEVEL দ্বারা প্রতিস্থাপিত।"
+
+#: src/gcm4/ui/preferences.py
 #, python-brace-format
 msgid "Preferences not saved: {error}"
 msgstr "পছন্দসমূহ সংরক্ষিত হয়নি: {error}"
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Preferences page unavailable: {error}"
+msgstr "পছন্দের পাতা উপলব্ধ নয়: {error}"
 
 #: src/gcm4/ui/preferences.py
 msgid "Theme"
@@ -3046,8 +3096,18 @@ msgid "Tree font"
 msgstr "হোস্ট তালিকার ফন্ট"
 
 #: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Unable to open the folder: {error}"
+msgstr "ফোল্ডার খোলা যায়নি: {error}"
+
+#: src/gcm4/ui/preferences.py
 msgid "Use system font"
 msgstr "সিস্টেমের ফন্ট ব্যবহার করুন"
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Version {version}"
+msgstr "সংস্করণ {version}"
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format

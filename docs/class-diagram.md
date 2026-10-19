@@ -6,7 +6,7 @@
 > toute modification manuelle sera écrasée. Le régénérer avec `make class-diagram` ;
 > le job Qualité échoue s'il est périmé (`--check`).
 
-80 modules · 150 classes · 260 fonctions publiques de module.
+80 modules · 151 classes · 264 fonctions publiques de module.
 
 Conventions : `+` public, `-` privé (préfixe `_`) ; `list~str~` = `list[str]` ; `<<module>>`
 regroupe les fonctions publiques d'un module ; `<<…>>` sur une classe liste `dataclass` et les
@@ -38,9 +38,9 @@ flowchart TD
     g4 -->|1| g1
     g4 -->|5| g0
     g4 -->|1| g3
-    g5 -->|1| g0
+    g5 -->|2| g0
     g5 -->|2| g3
-    g5 -->|36| g4
+    g5 -->|37| g4
 ```
 
 ## Cœur (sans GTK)
@@ -1544,6 +1544,8 @@ classDiagram
         <<module>>
         +load_preferences(config_file) Preferences
         +save_preference(config_file, nom, valeur) None
+        +niveau_journal(debug_cli, preference, environ) tuple~str, str~
+        +raccourcis() list~Raccourci~
     }
     class OptionWconfig {
         <<dataclass>>
@@ -1560,6 +1562,13 @@ classDiagram
         +str theme
         +bool show_panel
         +str tree_font
+        +str log_level
+    }
+    class Raccourci {
+        <<dataclass>>
+        +tuple~str, ...~ touches
+        +str libelle
+        +str portee
     }
     class mod_gcm4_core_registre {
         <<module>>
@@ -1726,6 +1735,8 @@ classDiagram
     class mod_gcm4_ui_preferences {
         <<module>>
         +css_police(description) str
+        +libelle_touches(touches) str
+        +lancer_dossier(parent, dossier) None
     }
     class PreferencesWindow
     PreferencesWindow <|-- PreferencesWindow

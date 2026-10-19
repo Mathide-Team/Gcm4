@@ -17,14 +17,32 @@ de la fenêtre principale : sinon ``save_config`` (modification de l'arbre)
 réécrirait l'ancienne valeur. Sans configuration chargée (fichier
 illisible), la page Général est inactive : rien n'est jamais écrit.
 
-Compatibilité : ``Gtk.FontDialogButton`` (GTK ≥ 4.10), sinon ``Gtk.FontButton``.
+Lot 5b (#148) :
+
+- **Raccourcis** : raccourcis de la base en lecture (``gcm4.core.preferences.raccourcis``).
+  ``Gtk.ShortcutsWindow`` est déprécié depuis GTK 4.18 et ``Adw.ShortcutsDialog``
+  demande libadwaita 1.8 : une page des préférences, libellés de
+  ``Gtk.accelerator_get_label``, fonctionne de GTK 4.8 à 4.22 ;
+- **Journalisation** : niveau par défaut (``[options] log-level``), appliqué
+  tout de suite sauf si ``--debug`` ou ``GCM_LOG_LEVEL``/``GCM_DEBUG`` priment ;
+  bouton d'ouverture du dossier des journaux ;
+- **Extensions** : chaque plugin découvert (nom, version, source, chargé ou
+  en erreur avec sa raison) ; la page de réglages d'un plugin
+  (``build_preferences_page()``) est ajoutée après les pages de la base. Une
+  exception du plugin est journalisée et affichée, sans fermer la fenêtre.
+
+Compatibilité : ``Gtk.FontDialogButton`` (GTK ≥ 4.10), sinon ``Gtk.FontButton`` ;
+``Gtk.FileLauncher`` (GTK ≥ 4.10), sinon ``Gio.AppInfo.launch_default_for_uri``.
 """
 
 from __future__ import annotations
 
-from gi.repository import Adw, GLib, Gtk, Pango
+import os
+
+from gi.repository import Adw, Gio, GLib, Gtk, Pango
 from loguru import logger
 
+import logging_config
 from gcm4.core import preferences as prefs_core
 from gcm4.core.config import ConfigError
 from gcm4.core.i18n import N_, _
@@ -99,6 +117,43 @@ def _ecrire_police(bouton: Gtk.Widget, description: str) -> None:
     logger.trace("_ecrire_police: fait")
 
 
+def libelle_touches(touches: tuple[str, ...]) -> str:
+    """Accélérateurs GTK → texte lisible et traduit (``Ctrl+Q``), séparés par « / »."""
+    logger.trace("libelle_touches: {}", touches)
+    libelles = []
+    for accel in touches:
+        ok, cle, mods = Gtk.accelerator_parse(accel)
+        libelles.append(Gtk.accelerator_get_label(cle, mods) if ok and cle else accel)
+    resultat = " / ".join(libelles)
+    logger.trace("libelle_touches: {!r}", resultat)
+    return resultat
+
+
+def lancer_dossier(parent: Gtk.Window | None, dossier: str) -> None:
+    """Ouvre ``dossier`` dans le gestionnaire de fichiers (asynchrone).
+
+    Raises:
+        GLib.Error: lancement impossible (GTK < 4.10 ; sinon erreur journalisée
+            par le rappel).
+    """
+    logger.debug("lancer_dossier: {}", dossier)
+    fichier = Gio.File.new_for_path(dossier)
+    if hasattr(Gtk, "FileLauncher"):
+
+        def fin(lanceur: Gtk.FileLauncher, resultat: Gio.AsyncResult) -> None:
+            logger.debug("lancer_dossier.fin: entrée")
+            try:
+                lanceur.launch_finish(resultat)
+            except GLib.Error as exc:
+                logger.warning("lancer_dossier: {} ({})", dossier, exc.message)
+            logger.debug("lancer_dossier.fin: fait")
+
+        Gtk.FileLauncher.new(fichier).launch(parent, None, fin)
+    else:  # GTK < 4.10
+        Gio.AppInfo.launch_default_for_uri(fichier.get_uri(), None)
+    logger.debug("lancer_dossier: demandé")
+
+
 class PreferencesWindow(Adw.PreferencesWindow):
     """Pages Général et Apparence ; chaque changement est appliqué et enregistré."""
 
@@ -129,6 +184,11 @@ class PreferencesWindow(Adw.PreferencesWindow):
         self.erreur: str | None = None  # dernier échec d'écriture (tests)
         self.add(self._page_generale())
         self.add(self._page_apparence())
+        self.add(self._page_raccourcis())
+        self.add(self._page_journalisation())
+        self.add(self._page_extensions())
+        for page in self.pages_plugins:
+            self.add(page)
         logger.debug("PreferencesWindow.__init__: prête")
 
     @staticmethod
@@ -208,7 +268,142 @@ class PreferencesWindow(Adw.PreferencesWindow):
         logger.debug("_page_apparence: fait")
         return page
 
+    def _page_raccourcis(self) -> Adw.PreferencesPage:
+        """Page Raccourcis : raccourcis de la base, en lecture."""
+        logger.debug("_page_raccourcis: entrée")
+        page = Adw.PreferencesPage(
+            title=_("Shortcuts"), icon_name="preferences-desktop-keyboard-shortcuts-symbolic"
+        )
+        groupes = {
+            prefs_core.FENETRE: Adw.PreferencesGroup(title=_("Main window")),
+            prefs_core.ARBRE: Adw.PreferencesGroup(title=_("Hosts")),
+        }
+        self.lignes_raccourcis: list[Adw.ActionRow] = []
+        for raccourci in prefs_core.raccourcis():
+            ligne = Adw.ActionRow(title=_(raccourci.libelle))
+            touches = Gtk.Label(label=libelle_touches(raccourci.touches))
+            touches.add_css_class("dim-label")
+            ligne.add_suffix(touches)
+            groupes[raccourci.portee].add(ligne)
+            self.lignes_raccourcis.append(ligne)
+        for groupe in groupes.values():
+            page.add(groupe)
+        logger.debug("_page_raccourcis: {} raccourci(s)", len(self.lignes_raccourcis))
+        return page
+
+    def _page_journalisation(self) -> Adw.PreferencesPage:
+        """Page Journalisation : niveau par défaut et dossier des journaux."""
+        logger.debug("_page_journalisation: entrée")
+        page = Adw.PreferencesPage(title=_("Logging"), icon_name="text-x-generic-symbolic")
+        groupe = Adw.PreferencesGroup()
+        args = getattr(self.application, "args", None)
+        _niveau, self.source_journal = prefs_core.niveau_journal(
+            bool(getattr(args, "debug", False)), self.valeurs.log_level, os.environ
+        )
+        self.niveau = Adw.ComboRow(title=_("Default log level"))
+        self.niveau.set_model(Gtk.StringList.new(list(prefs_core.NIVEAUX_JOURNAL)))
+        self.niveau.set_selected(prefs_core.NIVEAUX_JOURNAL.index(self.valeurs.log_level))
+        if self.source_journal != "preferences":
+            self.niveau.set_subtitle(_("Overridden for this session by --debug or GCM_LOG_LEVEL."))
+        self.niveau.connect("notify::selected", self._on_niveau)
+        groupe.add(self.niveau)
+
+        config_dir = getattr(args, "config_dir", None) or os.path.dirname(self.config_file)
+        self.dossier_journaux = os.path.dirname(logging_config.app_log_path(config_dir))
+        ligne = Adw.ActionRow(title=_("Log folder"), subtitle=self.dossier_journaux)
+        ligne.set_subtitle_selectable(True)
+        self.bouton_journaux = Gtk.Button(label=_("Open"), valign=Gtk.Align.CENTER)
+        self.bouton_journaux.connect("clicked", self._on_ouvrir_journaux)
+        ligne.add_suffix(self.bouton_journaux)
+        groupe.add(ligne)
+        page.add(groupe)
+        logger.debug("_page_journalisation: source={}", self.source_journal)
+        return page
+
+    def _page_extensions(self) -> Adw.PreferencesPage:
+        """Page Extensions : plugins découverts ; pages de réglages des plugins."""
+        logger.debug("_page_extensions: entrée")
+        page = Adw.PreferencesPage(title=_("Extensions"), icon_name="application-x-addon-symbolic")
+        groupe = Adw.PreferencesGroup()
+        self.pages_plugins: list[Adw.PreferencesPage] = []
+        self.lignes_extensions: dict[str, Adw.ActionRow] = {}
+        registre = getattr(self.application, "registre", None)
+        etats = list(getattr(registre, "etats", []))
+        if not etats:
+            groupe.set_description(_("No extension found."))
+        for etat in etats:
+            ligne = Adw.ActionRow(title=etat.name)
+            ligne.set_use_markup(False)  # raison d'erreur : texte libre
+            details = [_("Version {version}").format(version=etat.version)] if etat.version else []
+            details.append(etat.source)
+            if etat.erreur is not None:
+                details.append(etat.erreur)
+            elif etat.plugin is not None:
+                details += self._page_du_plugin(etat.name, etat.plugin)
+            ligne.set_subtitle(" — ".join(details))
+            statut = Gtk.Label(label=_("Loaded") if etat.charge else _("Error"))
+            statut.add_css_class("success" if etat.charge else "error")
+            ligne.add_suffix(statut)
+            groupe.add(ligne)
+            self.lignes_extensions[f"{etat.name}:{etat.source}"] = ligne
+        page.add(groupe)
+        logger.debug("_page_extensions: {} extension(s)", len(etats))
+        return page
+
+    def _page_du_plugin(self, nom: str, plugin: object) -> list[str]:
+        """Ajoute la page ``build_preferences_page()`` du plugin ; renvoie l'erreur éventuelle."""
+        logger.debug("_page_du_plugin: {}", nom)
+        try:
+            widget = plugin.build_preferences_page()
+        except Exception as exc:  # code tiers : ne doit pas fermer les préférences
+            logger.exception("_page_du_plugin: {} a échoué", nom)
+            logger.debug("_page_du_plugin: erreur")
+            return [_("Preferences page unavailable: {error}").format(error=exc)]
+        if widget is None:
+            logger.debug("_page_du_plugin: aucune page")
+            return []
+        if isinstance(widget, Adw.PreferencesPage):
+            page = widget
+            if not page.get_title():
+                page.set_title(nom)
+        else:
+            page = Adw.PreferencesPage(title=nom, icon_name="application-x-addon-symbolic")
+            groupe = Adw.PreferencesGroup()
+            groupe.add(widget)
+            page.add(groupe)
+        self.pages_plugins.append(page)
+        logger.debug("_page_du_plugin: page ajoutée")
+        return []
+
     # --- application immédiate ---------------------------------------------------
+
+    def _on_niveau(self, ligne: Adw.ComboRow, _pspec: object) -> None:
+        """Niveau de journal : enregistré ; appliqué si rien ne prime (#130)."""
+        logger.debug("_on_niveau: entrée")
+        choisi = ligne.get_selected()
+        if choisi >= len(prefs_core.NIVEAUX_JOURNAL):
+            logger.debug("_on_niveau: aucune sélection")
+            return
+        niveau = prefs_core.NIVEAUX_JOURNAL[choisi]
+        if self.source_journal == "preferences":
+            config_dir = os.path.dirname(self.dossier_journaux)
+            logging_config.configure_logging(niveau, config_dir=config_dir, force=True)
+        self._enregistrer("log_level", niveau)
+        logger.debug("_on_niveau: {}", niveau)
+
+    def _on_ouvrir_journaux(self, _bouton: Gtk.Button) -> None:
+        """Ouvre le dossier des journaux (créé au besoin) ; échec signalé."""
+        logger.debug("_on_ouvrir_journaux: {}", self.dossier_journaux)
+        try:
+            os.makedirs(self.dossier_journaux, mode=0o700, exist_ok=True)
+            lancer_dossier(self, self.dossier_journaux)
+        except (OSError, GLib.Error) as exc:
+            logger.warning("_on_ouvrir_journaux: {}", exc)
+            self.erreur = str(exc)
+            if hasattr(self, "add_toast"):
+                message = _("Unable to open the folder: {error}").format(error=exc)
+                self.add_toast(Adw.Toast(title=message, timeout=5))
+        logger.debug("_on_ouvrir_journaux: fait")
 
     def _enregistrer(self, nom: str, valeur: bool | str) -> bool:
         """Écrit la préférence ; un échec est signalé (toast) sans annuler le changement."""
