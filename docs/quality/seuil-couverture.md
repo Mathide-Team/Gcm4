@@ -21,12 +21,33 @@ Le seuil bloquant `fail_under = 18` laisse moins de 2 points de marge. Il absorb
 
 **Règle** : relever le seuil quand la base monte, ne jamais le baisser pour faire passer une PR. Le seuil ne s'applique qu'aux exécutions avec `--cov` (la CI, ou en local `uv run pytest --cov`).
 
+## Seuil séparé du cœur (issue #164)
+
+La base GTK4 doit naître très couverte : un second contrôle bloquant s'applique
+à `src/gcm4/core/` seul, à **95 %** (lignes + branches, comme le total).
+
+- **job Qualité** (`ci.yml`) : `uv run coverage report --include='src/gcm4/core/*' --fail-under=95`, juste après `pytest --cov`. Une PR qui fait passer le cœur sous 95 % échoue ;
+- **commentaire de PR** (`scripts/pr_coverage_comment.py`) : ligne dédiée « Cœur `src/gcm4/core/` » (base, PR, delta) et rappel du seuil avec la marge.
+
+Mesure de référence (18/10/2026, branche `dev`) : **99,3 %** (1476/1485 instructions,
+290/294 branches) — 4,3 points de marge.
+
+À la mesure de référence : `chiffrement.py`, `cli.py`, `deplacements.py`, `host_tree.py`,
+`i18n.py`, `menu.py`, `model.py`, `registre.py`, `replies.py`, `theme.py`,
+`validation.py` et `window_state.py` sont à 100 % ; `chemins.py` à 98,9 %,
+`menu_arbre.py` à 99,0 % et `config.py` à 98,5 % ; `plugins.py` (93,8 %) est le
+seul module du cœur sous le seuil, tiré vers le haut par l'ensemble.
+
+Vérification du critère d'acceptation (faite le 18/10/2026) : la commande échoue
+bien sur un périmètre sous le seuil — `coverage report --include='src/gcm4/core/plugins.py'
+--fail-under=95` sort en échec (« Coverage failure: total of 93.8 is less than
+fail-under=95.0 »).
+
 ## Où le voir
 
 - **job Qualité** (`ci.yml`) : `pytest --cov`, rapport `term-missing` dans les logs, `coverage.xml` publié en artefact `coverage-report`. L'étape échoue sous le seuil ;
-- **commentaire de PR** (`pr-coverage.yml`, `scripts/pr_coverage_comment.py`) : chaque PR vers `dev` reçoit un commentaire unique, mis à jour à chaque push. Il donne la couverture de la base et de la PR, le delta, et les fichiers dont la couverture baisse. La base est mesurée avec la configuration de la PR, pour comparer le même périmètre.
+- **commentaire de PR** (`pr-coverage.yml`, `scripts/pr_coverage_comment.py`) : chaque PR vers `dev` reçoit un commentaire unique, mis à jour à chaque push. Il donne la couverture de la base et de la PR, le delta, la ligne du cœur (`src/gcm4/core/`) et les fichiers dont la couverture baisse. La base est mesurée avec la configuration de la PR, pour comparer le même périmètre.
 
 ## Suite prévue
 
 - couverture du futur job GTK4 (Xvfb, #127) fusionnée avec `coverage combine`, pour que le code d'interface ne paraisse pas non couvert ;
-- seuil séparé, au moins 95 %, sur `src/gcm4/core/` dès sa création (épopée #118).
