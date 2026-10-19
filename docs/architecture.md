@@ -439,6 +439,26 @@ Apparence (`gcm4.ui.preferences`) appliquent chaque changement tout de suite
 et l'écrivent aussitôt (`update_keys`, écriture atomique). Nouvelle clé gcm4 :
 `[window] tree-font` (description Pango, vide = police du système).
 
+Restauration des onglets (#246, `gcm4.core.onglets`) : à la fermeture, les
+chemins `groupe/nom` des onglets de connexion sont écrits dans l'ordre
+affiché dans `[window] open-tabs` (format GTK3), même option désactivée.
+Au démarrage, si `[options] restore-open-tabs` est actif, chaque chemin est
+rouvert par `win.connect-host` ; un hôte disparu ou un protocole sans
+plugin donne un seul message par cas. Limite du format : un chemin
+contenant une virgule n'est pas enregistré.
+
+Vérification des mises à jour (#245, `gcm4.core.mises_a_jour`,
+`gcm4.ui.mises_a_jour`) : jamais d'accès réseau au démarrage sans accord.
+`[options] check-updates` (GTK3) dit si l'on vérifie ; `[window]
+check-updates-consent` garde l'accord explicite (absent : une question,
+une seule fois ; « Non » désactive l'option ; activer l'option dans les
+préférences vaut accord). `GCM_NO_UPDATE_CHECK=1` désactive tout (paquets
+de distribution, tests). Source : API GitHub `releases/latest` du dépôt
+(brouillons et pré-versions exclus), délai 5 s, proxy de l'environnement ;
+comparaison numérique des versions (GTK3 comparait des chaînes). Requête
+dans un fil d'exécution, résultat par `GLib.idle_add` ; hors ligne : une
+ligne de journal, rien à l'écran.
+
 Lot 5b (#148) : pages Raccourcis (lecture seule, depuis
 `gcm4.core.preferences.raccourcis()`, même source que les raccourcis posés
 par l'application et l'arbre), Journalisation et Extensions. Nouvelle clé
@@ -465,10 +485,10 @@ effacée par un enregistrement du modèle.
 | `CYCLE_TABS` | `options/cycle-tabs` | base | onglets, issue de suivi |
 | `DISABLE_SHORTCUTS` | `options/disable-shortcuts` | terminal | plugin terminal |
 | `DISABLE_NOTIFICATIONS` | `options/disable-notifications` | terminal | plugin terminal |
-| `RESTORE_OPEN_TABS` | `options/restore-open-tabs` | base | page Général (#147) |
+| `RESTORE_OPEN_TABS` | `options/restore-open-tabs` | base | page Général (#147), #246 |
 | `AUTO_CLOSE_TAB` | `options/auto-close-tab` | terminal | plugin terminal |
 | `CONFIRM_ON_EXIT` | `options/confirm-exit` | base | page Général (#147) |
-| `CHECK_UPDATES` | `options/check-updates` | base | page Général (#147) |
+| `CHECK_UPDATES` | `options/check-updates` | base | page Général (#147), #245 |
 | `DISABLE_HOSTS_STRIPES` | `options/disable-hosts-stripes` | base | page Apparence, issue de suivi |
 | `UPDATE_TITLE` | `options/update-title` | base | titre de fenêtre, issue de suivi |
 | `APP_TITLE` | `options/app-title` | base | titre de fenêtre, issue de suivi |

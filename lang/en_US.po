@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-19 12:41+0000\n"
+"POT-Creation-Date: 2026-10-19 12:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -521,7 +521,7 @@ msgid "Only on clean exit"
 msgstr "Only on clean exit"
 
 #: gnome_connection_manager.py plugins/plugin_import_putty.py
-#: src/gcm4/ui/preferences.py utils.py
+#: src/gcm4/ui/mises_a_jour.py src/gcm4/ui/preferences.py utils.py
 msgid "Open"
 msgstr "Open"
 
@@ -2794,6 +2794,16 @@ msgid "No extension handles the protocol «{protocol}». Install it to open this
 msgstr "No extension handles the protocol «{protocol}». Install it to open this connection."
 
 #: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Not restored, host not found: {hosts}"
+msgstr "Not restored, host not found: {hosts}"
+
+#: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Not restored, no extension for: {hosts}"
+msgstr "Not restored, no extension for: {hosts}"
+
+#: src/gcm4/ui/main_window.py
 msgid "Open connections will be closed."
 msgstr "Open connections will be closed."
 
@@ -2858,6 +2868,27 @@ msgstr "Rename"
 #: src/gcm4/ui/menu_arbre.py
 msgid "This cannot be undone."
 msgstr "This cannot be undone."
+
+#: src/gcm4/ui/mises_a_jour.py
+msgid "Allow"
+msgstr "Allow"
+
+#: src/gcm4/ui/mises_a_jour.py
+msgid "At startup, Gnome Connection Manager can ask GitHub (api.github.com) whether a newer version has been published. You can change this later in the preferences."
+msgstr "At startup, Gnome Connection Manager can ask GitHub (api.github.com) whether a newer version has been published. You can change this later in the preferences."
+
+#: src/gcm4/ui/mises_a_jour.py
+msgid "Check for updates?"
+msgstr "Check for updates?"
+
+#: src/gcm4/ui/mises_a_jour.py
+msgid "No"
+msgstr "No"
+
+#: src/gcm4/ui/mises_a_jour.py
+#, python-brace-format
+msgid "Version {version} is available"
+msgstr "Version {version} is available"
 
 #: src/gcm4/ui/preferences.py
 msgid "Appearance"

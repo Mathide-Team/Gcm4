@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-19 12:41+0000\n"
+"POT-Creation-Date: 2026-10-19 12:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -545,7 +545,7 @@ msgid "Only on clean exit"
 msgstr "רק ביציאה תקינה"
 
 #: gnome_connection_manager.py plugins/plugin_import_putty.py
-#: src/gcm4/ui/preferences.py utils.py
+#: src/gcm4/ui/mises_a_jour.py src/gcm4/ui/preferences.py utils.py
 msgid "Open"
 msgstr "פתח"
 
@@ -2941,6 +2941,16 @@ msgid "No extension handles the protocol «{protocol}». Install it to open this
 msgstr "אין הרחבה שמטפלת בפרוטוקול „{protocol}”. התקינו אותה כדי לפתוח את החיבור."
 
 #: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Not restored, host not found: {hosts}"
+msgstr "לא שוחזר, המארח לא נמצא: {hosts}"
+
+#: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Not restored, no extension for: {hosts}"
+msgstr "לא שוחזר, אין הרחבה עבור: {hosts}"
+
+#: src/gcm4/ui/main_window.py
 msgid "Open connections will be closed."
 msgstr "החיבורים הפתוחים ייסגרו."
 
@@ -3005,6 +3015,27 @@ msgstr "שינוי שם"
 #: src/gcm4/ui/menu_arbre.py
 msgid "This cannot be undone."
 msgstr "לא ניתן לבטל פעולה זו."
+
+#: src/gcm4/ui/mises_a_jour.py
+msgid "Allow"
+msgstr "לאפשר"
+
+#: src/gcm4/ui/mises_a_jour.py
+msgid "At startup, Gnome Connection Manager can ask GitHub (api.github.com) whether a newer version has been published. You can change this later in the preferences."
+msgstr "בעת האתחול, Gnome Connection Manager יכול לשאול את GitHub ‏(api.github.com) אם פורסמה גרסה חדשה יותר. ניתן לשנות זאת מאוחר יותר בהעדפות."
+
+#: src/gcm4/ui/mises_a_jour.py
+msgid "Check for updates?"
+msgstr "לבדוק אם יש עדכונים?"
+
+#: src/gcm4/ui/mises_a_jour.py
+msgid "No"
+msgstr "לא"
+
+#: src/gcm4/ui/mises_a_jour.py
+#, python-brace-format
+msgid "Version {version} is available"
+msgstr "גרסה {version} זמינה"
 
 #: src/gcm4/ui/preferences.py
 msgid "Appearance"

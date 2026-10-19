@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-19 12:41+0000\n"
+"POT-Creation-Date: 2026-10-19 12:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -545,7 +545,7 @@ msgid "Only on clean exit"
 msgstr "Alleen bij normaal afsluiten"
 
 #: gnome_connection_manager.py plugins/plugin_import_putty.py
-#: src/gcm4/ui/preferences.py utils.py
+#: src/gcm4/ui/mises_a_jour.py src/gcm4/ui/preferences.py utils.py
 msgid "Open"
 msgstr "Openen"
 
@@ -2941,6 +2941,16 @@ msgid "No extension handles the protocol «{protocol}». Install it to open this
 msgstr "Geen extensie ondersteunt protocol ‘{protocol}’. Installeer deze om deze verbinding te openen."
 
 #: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Not restored, host not found: {hosts}"
+msgstr "Niet hersteld, host niet gevonden: {hosts}"
+
+#: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Not restored, no extension for: {hosts}"
+msgstr "Niet hersteld, geen extensie voor: {hosts}"
+
+#: src/gcm4/ui/main_window.py
 msgid "Open connections will be closed."
 msgstr "Open verbindingen worden gesloten."
 
@@ -3005,6 +3015,27 @@ msgstr "Hernoemen"
 #: src/gcm4/ui/menu_arbre.py
 msgid "This cannot be undone."
 msgstr "Dit kan niet ongedaan worden gemaakt."
+
+#: src/gcm4/ui/mises_a_jour.py
+msgid "Allow"
+msgstr "Toestaan"
+
+#: src/gcm4/ui/mises_a_jour.py
+msgid "At startup, Gnome Connection Manager can ask GitHub (api.github.com) whether a newer version has been published. You can change this later in the preferences."
+msgstr "Bij het opstarten kan Gnome Connection Manager aan GitHub (api.github.com) vragen of er een nieuwere versie is uitgebracht. U kunt dit later wijzigen in de voorkeuren."
+
+#: src/gcm4/ui/mises_a_jour.py
+msgid "Check for updates?"
+msgstr "Controleren op updates?"
+
+#: src/gcm4/ui/mises_a_jour.py
+msgid "No"
+msgstr "Nee"
+
+#: src/gcm4/ui/mises_a_jour.py
+#, python-brace-format
+msgid "Version {version} is available"
+msgstr "Versie {version} is beschikbaar"
 
 #: src/gcm4/ui/preferences.py
 msgid "Appearance"

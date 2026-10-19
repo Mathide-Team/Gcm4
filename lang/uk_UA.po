@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-19 12:41+0000\n"
+"POT-Creation-Date: 2026-10-19 12:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -545,7 +545,7 @@ msgid "Only on clean exit"
 msgstr "Тільки при коректному виході"
 
 #: gnome_connection_manager.py plugins/plugin_import_putty.py
-#: src/gcm4/ui/preferences.py utils.py
+#: src/gcm4/ui/mises_a_jour.py src/gcm4/ui/preferences.py utils.py
 msgid "Open"
 msgstr "Відкрити"
 
@@ -2941,6 +2941,16 @@ msgid "No extension handles the protocol «{protocol}». Install it to open this
 msgstr "Жодне розширення не підтримує протокол «{protocol}». Установіть його, щоб відкрити це з'єднання."
 
 #: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Not restored, host not found: {hosts}"
+msgstr "Не відновлено, вузол не знайдено: {hosts}"
+
+#: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Not restored, no extension for: {hosts}"
+msgstr "Не відновлено, немає розширення для: {hosts}"
+
+#: src/gcm4/ui/main_window.py
 msgid "Open connections will be closed."
 msgstr "Відкриті з’єднання буде закрито."
 
@@ -3005,6 +3015,27 @@ msgstr "Перейменувати"
 #: src/gcm4/ui/menu_arbre.py
 msgid "This cannot be undone."
 msgstr "Цю дію не можна скасувати."
+
+#: src/gcm4/ui/mises_a_jour.py
+msgid "Allow"
+msgstr "Дозволити"
+
+#: src/gcm4/ui/mises_a_jour.py
+msgid "At startup, Gnome Connection Manager can ask GitHub (api.github.com) whether a newer version has been published. You can change this later in the preferences."
+msgstr "Під час запуску Gnome Connection Manager може запитати GitHub (api.github.com), чи опубліковано новішу версію. Це можна змінити пізніше в параметрах."
+
+#: src/gcm4/ui/mises_a_jour.py
+msgid "Check for updates?"
+msgstr "Перевіряти оновлення?"
+
+#: src/gcm4/ui/mises_a_jour.py
+msgid "No"
+msgstr "Ні"
+
+#: src/gcm4/ui/mises_a_jour.py
+#, python-brace-format
+msgid "Version {version} is available"
+msgstr "Доступна версія {version}"
 
 #: src/gcm4/ui/preferences.py
 msgid "Appearance"

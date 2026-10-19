@@ -15,6 +15,7 @@ from gcm4.core import preferences as prefs_core
 from gcm4.core.config import ConfigError
 from gcm4.core.i18n import _
 from gcm4.core.registre import Candidat, PluginRegistry, decouvrir
+from gcm4.ui import mises_a_jour
 from gcm4.ui.contexte import ContexteApplication
 from gcm4.ui.main_window import MainWindow
 from gcm4.ui.preferences import PreferencesWindow, css_police
@@ -167,8 +168,14 @@ class Gcm4Application(Adw.Application):
     def _on_activate(self, _app: Adw.Application) -> None:
         """Présente la fenêtre principale, créée au premier appel."""
         logger.debug("_on_activate: entrée")
-        fenetre = self.get_active_window() or MainWindow(self, self.args.config_dir)
-        fenetre.present()
+        fenetre = self.get_active_window()
+        if fenetre is None:
+            fenetre = MainWindow(self, self.args.config_dir)
+            fenetre.present()
+            fenetre.restaurer_onglets()  # une fois, à la création (#246)
+            mises_a_jour.au_demarrage(fenetre)  # jamais sans accord (#245)
+        else:
+            fenetre.present()
         logger.debug("_on_activate: fenêtre présentée")
 
     def _on_quit(self, _action: Gio.SimpleAction, _param: object) -> None:
