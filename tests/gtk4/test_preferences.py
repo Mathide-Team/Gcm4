@@ -167,3 +167,107 @@ def test_confirmation_a_la_fermeture(app_demo, pomper):
     fenetre.close()
     pomper()
     assert fenetre.confirmation_fermeture is None and fenetre.sessions == {}
+
+
+# --- lot 5b (#148) : Raccourcis, Journalisation, Extensions -------------------------
+
+
+def test_page_raccourcis(app_fixture, pomper):
+    """Chaque raccourci de la base a sa ligne, avec un libellé de touches lisible."""
+    from gi.repository import Gtk
+
+    from gcm4.ui.preferences import libelle_touches
+
+    app, _ = app_fixture
+    d = _ouvrir(app, pomper)
+    assert len(d.lignes_raccourcis) == len(prefs_core.raccourcis())
+    assert "Q" in libelle_touches(("<Control>q",)) and " / " in libelle_touches(("Menu", "F10"))
+    assert libelle_touches(("pas-une-touche",)) == "pas-une-touche"
+    assert Gtk.accelerator_parse("<Control>comma")[0]
+
+
+def test_page_journalisation(app_fixture, pomper, monkeypatch):
+    """Niveau enregistré et appliqué ; dossier des journaux créé puis ouvert."""
+    import gcm4.ui.preferences as ui
+
+    app, dossier = app_fixture
+    monkeypatch.delenv("GCM_LOG_LEVEL", raising=False)
+    monkeypatch.delenv("GCM_DEBUG", raising=False)
+    appliques, ouverts = [], []
+    monkeypatch.setattr(
+        ui.logging_config, "configure_logging", lambda n=None, **kw: appliques.append(n)
+    )
+    monkeypatch.setattr(ui, "lancer_dossier", lambda _p, chemin: ouverts.append(chemin))
+    d = _ouvrir(app, pomper)
+    assert d.source_journal == "preferences" and not d.niveau.get_subtitle()
+    d.niveau.set_selected(prefs_core.NIVEAUX_JOURNAL.index("WARNING"))
+    pomper()
+    assert appliques == ["WARNING"] and _ini(dossier).get("options", "log-level") == "WARNING"
+    d.bouton_journaux.emit("clicked")
+    assert ouverts == [d.dossier_journaux] and (dossier / "log").is_dir()
+
+    def echoue(*_a):
+        raise OSError("pas de gestionnaire de fichiers")
+
+    monkeypatch.setattr(ui, "lancer_dossier", echoue)
+    d.bouton_journaux.emit("clicked")
+    assert "gestionnaire" in d.erreur
+
+
+def test_journalisation_imposee_par_debug(app_fixture, pomper, monkeypatch):
+    """--debug : niveau enregistré mais pas appliqué, sous-titre explicatif."""
+    import gcm4.ui.preferences as ui
+
+    app, dossier = app_fixture
+    appliques = []
+    monkeypatch.setattr(
+        ui.logging_config, "configure_logging", lambda n=None, **kw: appliques.append(n)
+    )
+    app.args.debug = True
+    d = _ouvrir(app, pomper)
+    assert d.source_journal == "cli" and d.niveau.get_subtitle()
+    d.niveau.set_selected(prefs_core.NIVEAUX_JOURNAL.index("ERROR"))
+    pomper()
+    assert appliques == [] and _ini(dossier).get("options", "log-level") == "ERROR"
+
+
+def test_page_extensions(app_fixture, pomper):
+    """Chargé ou en erreur avec sa raison ; page du plugin ajoutée ; exception tolérée."""
+    from gi.repository import Adw, Gtk
+
+    from gcm4.core.registre import EtatPlugin, PluginRegistry
+
+    class AvecPage:
+        def build_preferences_page(self):
+            return Gtk.Label(label="réglages")
+
+    class AvecPageAdw:
+        def build_preferences_page(self):
+            return Adw.PreferencesPage()
+
+    class Casse:
+        def build_preferences_page(self):
+            raise RuntimeError("boum")
+
+    app, _ = app_fixture
+    app.registre = PluginRegistry(
+        [
+            EtatPlugin("ok", "paquet", "1.2", ("ok",), AvecPage()),
+            EtatPlugin("adw", "paquet", "", ("adw",), AvecPageAdw()),
+            EtatPlugin("casse", "dossier", "0.1", ("casse",), Casse()),
+            EtatPlugin("refuse", "dossier", erreur="contrat v2 attendu <b>"),
+        ]
+    )
+    d = _ouvrir(app, pomper)
+    lignes = d.lignes_extensions
+    assert "1.2" in lignes["ok:paquet"].get_subtitle()
+    assert "contrat v2 attendu <b>" in lignes["refuse:dossier"].get_subtitle()
+    assert "boum" in lignes["casse:dossier"].get_subtitle()
+    assert [p.get_title() for p in d.pages_plugins] == ["adw", "ok"]
+
+
+def test_extensions_sans_plugin(app_fixture, pomper):
+    """Mode zéro plugin : message, aucune ligne."""
+    app, _ = app_fixture
+    d = _ouvrir(app, pomper)
+    assert d.lignes_extensions == {} and d.pages_plugins == []
