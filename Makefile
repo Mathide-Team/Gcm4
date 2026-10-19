@@ -179,6 +179,7 @@ ci:
 	uvx pre-commit run --all-files --show-diff-on-failure
 	uv run python tools/check_circular_imports.py
 	uv run python -m pytest tests/ -q --cov --cov-report=term-missing:skip-covered
+	uv run coverage report --include='src/gcm4/core/*' --fail-under=95
 	uv run mypy
 	uv run python tools/validate_po.py lang/*.po
 	scripts/i18n-update.sh --check
