@@ -65,7 +65,7 @@ import os
 import random
 import re
 import shutil
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any, cast
 
 from loguru import logger as app_logger
 
@@ -651,6 +651,11 @@ def proto_default_port(proto: str, plugin_registry: PluginRegistry) -> str:
     jamais reconstruire une dépendance en allant chercher un objet GTK par
     son nom global).
 
+    Complément du 2026-10-18 (#146) : ``plugin.default_port`` est accepté
+    comme attribut (plugins GTK3) **ou** comme méthode appelée avec
+    ``proto`` (contrat v1 de ``gcm4.core.plugins.ConnectionPlugin``) —
+    auparavant, une méthode était convertie en chaîne "<bound method ...>".
+
     Args:
         proto (str): Identifiant de protocole (ex. ``"ssh"``, ``"rdp"``...).
         plugin_registry (PluginRegistry): Registre de plugins chargé
@@ -661,12 +666,20 @@ def proto_default_port(proto: str, plugin_registry: PluginRegistry) -> str:
     """
     app_logger.debug(f"proto_default_port() called | proto={proto!r}")
     plugin = plugin_registry.get(proto)
-    if plugin is None or plugin.default_port is None:
+    if plugin is None:
         app_logger.debug(
             "proto_default_port() returning | vide (plugin absent ou sans port par défaut)"
         )
         return ""
-    result = str(plugin.default_port)
+    port = plugin.default_port
+    if callable(port):  # contrat v1 : default_port(protocol) est une méthode
+        port = port(proto)
+    if port is None:
+        app_logger.debug(
+            "proto_default_port() returning | vide (plugin absent ou sans port par défaut)"
+        )
+        return ""
+    result = str(port)
     app_logger.debug(f"proto_default_port() returning | result={result!r}")
     return result
 
@@ -677,7 +690,9 @@ def all_default_ports(plugin_registry: PluginRegistry) -> set[str]:
     Utilisé pour détecter si le champ Port affiche encore une valeur par
     défaut générique (donc remplaçable sans écraser une saisie utilisateur).
     Voir ``proto_default_port`` pour le contexte de la réécriture du
-    2026-08-30 (paramètre explicite au lieu du global ``wMain``).
+    2026-08-30 (paramètre explicite au lieu du global ``wMain``) et le
+    complément du 2026-10-18 (#146) : les plugins du contrat v1 y déclarent
+    leur port par une méthode, parcourue via ``plugin.protocols``.
 
     Args:
         plugin_registry (PluginRegistry): Registre de plugins chargé.
@@ -686,9 +701,22 @@ def all_default_ports(plugin_registry: PluginRegistry) -> set[str]:
         set[str]: Ports par défaut (+ chaîne vide).
     """
     app_logger.debug("all_default_ports() called")
-    result = {str(p.default_port) for p in plugin_registry.all() if p.default_port is not None} | {
-        ""
-    }
+    result = {""}
+    # Registre GTK4 (``plugins()``) ou ancien registre GTK3 (``all()``).
+    tous: list[Any] = (
+        plugin_registry.all()
+        if hasattr(plugin_registry, "all")
+        else cast(Any, plugin_registry).plugins()
+    )
+    for plugin in tous:
+        port = plugin.default_port
+        if callable(port):  # contrat v1 : default_port(protocol) est une méthode
+            for proto in getattr(plugin, "protocols", ()):  # protocoles gérés par le plugin
+                valeur = port(proto)
+                if valeur is not None:
+                    result.add(str(valeur))
+        elif port is not None:
+            result.add(str(port))
     app_logger.debug(f"all_default_ports() returning | count={len(result)}")
     return result
 

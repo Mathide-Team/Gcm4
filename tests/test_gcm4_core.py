@@ -56,6 +56,19 @@ class FakePluginRegistry:
         return list(self._plugins.values())
 
 
+class FakePluginContratV1:
+    """Plugin du contrat v1 (#124) : ``default_port(protocol)`` est une méthode."""
+
+    def __init__(self, port, protocoles=()):
+        """Port par défaut (ou None) et protocoles gérés."""
+        self._port = port
+        self.protocols = tuple(protocoles)
+
+    def default_port(self, protocol):
+        """Port par défaut du protocole (méthode, contrat v1)."""
+        return self._port
+
+
 class TestResolveConfigDir(unittest.TestCase):
     """Smoke test — couverture complète déjà dans tests/test_gcm.py::TestResolveConfigDir."""
 
@@ -393,6 +406,21 @@ class TestProtoDefaultPort(unittest.TestCase):
         )
         result = gcm4_core.all_default_ports(registry)
         self.assertEqual(result, {"22", "3389", ""})
+
+    def test_methode_du_contrat_v1_est_appelee(self):
+        """Contrat v1 : ``default_port(protocol)`` méthode est appelée avec le protocole (#146)."""
+        registry = FakePluginRegistry({"demo": FakePluginContratV1(4242, protocoles=("demo",))})
+        self.assertEqual(gcm4_core.proto_default_port("demo", registry), "4242")
+
+    def test_all_default_ports_avec_methodes(self):
+        """Les ports des méthodes du contrat v1 alimentent l'ensemble (via ``protocols``)."""
+        registry = FakePluginRegistry(
+            {
+                "demo": FakePluginContratV1(4242, protocoles=("demo",)),
+                "local": FakePluginContratV1(None, protocoles=("local",)),
+            }
+        )
+        self.assertEqual(gcm4_core.all_default_ports(registry), {"4242", ""})
 
 
 class TestComputeZoomSize(unittest.TestCase):
