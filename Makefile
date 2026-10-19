@@ -29,7 +29,7 @@ FPM_COMMON = -s dir -n $(PKG_NAME) -v $(PKG_VERSION) -C $(TMPINSTALLDIR) \
 	--category net --url $(PKG_URL)
 
 # ── Cibles principales ────────────────────────────────────────────────────────
-.PHONY: all run-gtk4 deb rpm opensuse install translate i18n-update i18n-check i18n-report class-diagram ci test lint validate clean help
+.PHONY: all run-gtk4 deb rpm opensuse install translate i18n-update i18n-check i18n-report class-diagram ci test lint validate clean help docs
 
 all:  test lint deb rpm opensuse translate validate
 
@@ -45,7 +45,8 @@ help:
 	@echo "  make i18n-report → taux de traduction par langue"
 	@echo "  make run-gtk4 → lance gcm4 (GTK4) dans .venv ; venv créé par bootstrap-dev.sh"
 	@echo "  make class-diagram → régénère docs/class-diagram.md"
-	@echo "  make ci       → rejoue les étapes des jobs Qualité, Types et i18n"
+	@echo "  make ci       → rejoue les étapes des jobs Qualité, Types, i18n et documentation"
+	@echo "  make docs     → construit la documentation MkDocs (site/, strict)"
 	@echo "  make test     → lance la suite pytest"
 	@echo "  make lint     → ruff + flake8"
 	@echo "  make validate → valide .po (msgfmt) + .glade/.xml/.json"
@@ -168,7 +169,7 @@ opensuse:
 
 # ── make ci (issue #162) : rejoue localement les étapes du job Qualité ───────
 # Même ordre et mêmes commandes que .github/workflows/ci.yml (jobs Qualité,
-# Types et i18n) ; tests/test_make_ci.py vérifie que chaque commande `run:`
+# Types, i18n et documentation) ; tests/test_make_ci.py vérifie que chaque commande `run:`
 # de ces jobs figure ici.
 ci:
 	uv run ruff check .
@@ -182,6 +183,11 @@ ci:
 	uv run mypy
 	uv run python tools/validate_po.py lang/*.po
 	scripts/i18n-update.sh --check
+	uvx --with mkdocs-material --with pymdown-extensions --from "mkdocs<2" mkdocs build --strict
+
+# ── Documentation (MkDocs, issue #127) ──
+docs:
+	uvx --with mkdocs-material --with pymdown-extensions --from "mkdocs<2" mkdocs build --strict
 
 # ── Tests unitaires ───────────────────────────────────────────────────────────
 test:

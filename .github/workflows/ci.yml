@@ -263,3 +263,26 @@ jobs:
             exit 1
           fi
           echo "tests GTK4 : tous exécutés"
+
+  documentation:
+    # Règle commune à tous les dépôts (modèle Netcross #282, IAO #183) :
+    # le nom du job reste « Construction (mkdocs build --strict) ».
+    name: Construction (mkdocs build --strict)
+    runs-on: ${{ fromJSON(vars.RUNS_ON_LINUX || '{"group":"maison","labels":["self-hosted","linux"]}') }}
+
+    steps:
+      - name: Checkout du dépôt
+        uses: actions/checkout@v7
+
+      - name: Installation de uv
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+
+      - name: Construction (strict -- échoue sur lien mort)
+        # mkdocs < 2 : Material for MkDocs ne prend pas en charge MkDocs 2.0.
+        run: uvx --with mkdocs-material --with pymdown-extensions --from "mkdocs<2" mkdocs build --strict
+
+      - name: Upload de l'artefact (site HTML)
+        uses: actions/upload-artifact@v4
+        with:
+          name: mkdocs-site
+          path: site/
