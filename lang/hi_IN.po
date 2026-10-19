@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-18 13:25+0000\n"
+"POT-Creation-Date: 2026-10-19 12:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,11 +138,12 @@ msgstr "लॉग फ़ाइल को लिखने के लिए नह
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
-#: src/gcm4/ui/host_dialog.py src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: src/gcm4/ui/host_dialog.py src/gcm4/ui/main_window.py
+#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
 msgid "Cancel"
 msgstr "रद्द करें"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Check updates"
 msgstr "अपडेट जांचें"
 
@@ -192,7 +193,7 @@ msgstr "कंसोल बंद करने पर पुष्टि कर�
 msgid "Confirm on close console with middle click"
 msgstr "मध्य-क्लिक से कंसोल बंद करने पर पुष्टि करें"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on exit"
 msgstr "बाहर निकलने पर पुष्टि करें"
 
@@ -230,7 +231,7 @@ msgstr "कस्टम कमांड"
 msgid "Custom commands…"
 msgstr "कस्टम कमांड"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Dark"
 msgstr "गहरा"
 
@@ -371,7 +372,7 @@ msgstr "फ़ोरग्राउंड रंग:"
 msgid "GTK Theme:"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "General"
 msgstr "सामान्य"
 
@@ -477,7 +478,7 @@ msgstr ""
 msgid "Leave blank for passwordless/public key authentication"
 msgstr "पासवर्डलेस/पब्लिक की प्रमाणीकरण के लिए खाली छोड़ें"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Light"
 msgstr "हल्का"
 
@@ -543,7 +544,8 @@ msgstr "ठीक है"
 msgid "Only on clean exit"
 msgstr "केवल साफ़ निकास पर"
 
-#: gnome_connection_manager.py plugins/plugin_import_putty.py utils.py
+#: gnome_connection_manager.py plugins/plugin_import_putty.py
+#: src/gcm4/ui/preferences.py utils.py
 msgid "Open"
 msgstr "खोलें"
 
@@ -596,7 +598,7 @@ msgstr "प्राइवेट की"
 msgid "Project's Homepage"
 msgstr "प्रोजेक्ट का होमपेज"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/main_window.py
 msgid "Quit"
 msgstr "छोड़ें"
 
@@ -612,9 +614,9 @@ msgstr "टैब का नाम बदलें"
 msgid "Restore defaults"
 msgstr "डिफ़ॉल्ट पुनर्स्थापित करें"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Restore open tabs from the previous session on startup"
-msgstr ""
+msgstr "शुरू होने पर पिछले सत्र के खुले टैब पुनर्स्थापित करें"
 
 #: gnome_connection_manager.py src/gcm4/ui/host_dialog.py utils.py
 msgid "Save"
@@ -640,7 +642,7 @@ msgstr "पृष्ठभूमि रंग चुनें"
 msgid "Select consoles to use:"
 msgstr "उपयोग करने के लिए कंसोल चुनें:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Select font"
 msgstr "फ़ॉन्ट चुनें"
 
@@ -670,7 +672,7 @@ msgstr "सर्वर सूची अधिलेखित हो जाए�
 msgid "Servers"
 msgstr "_सर्वर"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Settings"
 msgstr "सेटिंग्स"
 
@@ -688,11 +690,11 @@ msgstr "यह कनेक्शन खुलने से ठीक पहल�
 msgid "Shortcut"
 msgstr "शॉर्टकट"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Shortcuts"
 msgstr "शॉर्टकट्स"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Show Panel"
 msgstr "पैनल दिखाएं"
 
@@ -704,7 +706,7 @@ msgstr "स्टैंडर्ड कमांड"
 msgid "Stop"
 msgstr "स्टॉप"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "System"
 msgstr "सिस्टम"
 
@@ -1419,7 +1421,8 @@ msgstr "🔍  Proxmox होस्ट स्कैन करें"
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_serial.py
 #: plugins/plugin_spice.py plugins/plugin_vnc.py plugins/plugin_web.py
-#: src/gcm4/core/menu_arbre.py src/gcm4/ui/contexte.py widgets.py
+#: src/gcm4/core/menu_arbre.py src/gcm4/core/preferences.py
+#: src/gcm4/ui/contexte.py widgets.py
 msgid "Connect"
 msgstr "कनेक्ट करें"
 
@@ -2495,8 +2498,8 @@ msgstr "रिमोट पोर्ट"
 msgid "Remote path"
 msgstr "रिमोट होस्ट"
 
-#: plugins/plugin_ssh.py src/gcm4/core/menu_arbre.py src/gcm4/ui/menu_arbre.py
-#: widgets.py
+#: plugins/plugin_ssh.py src/gcm4/core/menu_arbre.py
+#: src/gcm4/core/preferences.py src/gcm4/ui/menu_arbre.py widgets.py
 msgid "Remove"
 msgstr "हटाएं"
 
@@ -2761,6 +2764,14 @@ msgstr "यह कनेक्शन प्लगइन नहीं है।"
 msgid "Its name must be a non-empty lowercase identifier."
 msgstr "नाम छोटे अक्षरों वाला गैर-रिक्त पहचानकर्ता होना चाहिए।"
 
+#: src/gcm4/core/preferences.py
+msgid "Open the context menu"
+msgstr "संदर्भ मेनू खोलें"
+
+#: src/gcm4/core/preferences.py
+msgid "Rename the group or edit the host"
+msgstr "समूह का नाम बदलें या होस्ट संपादित करें"
+
 #: src/gcm4/core/registre.py
 #, python-brace-format
 msgid "A plugin with the same name is already loaded from {source}."
@@ -2891,7 +2902,7 @@ msgstr "इस होस्ट के बदलाव सहेजे नही�
 msgid "An item with this name already exists in '{group}'."
 msgstr "'{group}' में इस नाम का आइटम पहले से मौजूद है।"
 
-#: src/gcm4/ui/host_tree.py
+#: src/gcm4/ui/host_tree.py src/gcm4/ui/preferences.py
 msgid "Hosts"
 msgstr "होस्ट"
 
@@ -2928,6 +2939,14 @@ msgstr "होस्ट और समूह बाएँ पैनल में 
 #, python-brace-format
 msgid "No extension handles the protocol «{protocol}». Install it to open this connection."
 msgstr "कोई एक्सटेंशन प्रोटोकॉल '{protocol}' को नहीं संभालता। यह कनेक्शन खोलने के लिए उसे इंस्टॉल करें।"
+
+#: src/gcm4/ui/main_window.py
+msgid "Open connections will be closed."
+msgstr "खुले कनेक्शन बंद कर दिए जाएँगे।"
+
+#: src/gcm4/ui/main_window.py
+msgid "Quit anyway?"
+msgstr "फिर भी बाहर निकलें?"
 
 #: src/gcm4/ui/main_window.py
 #, python-brace-format
@@ -2986,6 +3005,78 @@ msgstr "नाम बदलें"
 #: src/gcm4/ui/menu_arbre.py
 msgid "This cannot be undone."
 msgstr "यह क्रिया पूर्ववत नहीं की जा सकती।"
+
+#: src/gcm4/ui/preferences.py
+msgid "Appearance"
+msgstr "दिखावट"
+
+#: src/gcm4/ui/preferences.py
+msgid "Default log level"
+msgstr "डिफ़ॉल्ट लॉग स्तर"
+
+#: src/gcm4/ui/preferences.py
+msgid "Error"
+msgstr "त्रुटि"
+
+#: src/gcm4/ui/preferences.py
+msgid "Extensions"
+msgstr "एक्सटेंशन"
+
+#: src/gcm4/ui/preferences.py
+msgid "Loaded"
+msgstr "लोड किया गया"
+
+#: src/gcm4/ui/preferences.py
+msgid "Log folder"
+msgstr "लॉग फ़ोल्डर"
+
+#: src/gcm4/ui/preferences.py
+msgid "Logging"
+msgstr "लॉगिंग"
+
+#: src/gcm4/ui/preferences.py
+msgid "Main window"
+msgstr "मुख्य विंडो"
+
+#: src/gcm4/ui/preferences.py
+msgid "No extension found."
+msgstr "कोई एक्सटेंशन नहीं मिला।"
+
+#: src/gcm4/ui/preferences.py
+msgid "Overridden for this session by --debug or GCM_LOG_LEVEL."
+msgstr "इस सत्र के लिए --debug या GCM_LOG_LEVEL द्वारा बदला गया।"
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Preferences not saved: {error}"
+msgstr "प्राथमिकताएँ सहेजी नहीं गईं: {error}"
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Preferences page unavailable: {error}"
+msgstr "प्राथमिकता पृष्ठ उपलब्ध नहीं: {error}"
+
+#: src/gcm4/ui/preferences.py
+msgid "Theme"
+msgstr "थीम"
+
+#: src/gcm4/ui/preferences.py
+msgid "Tree font"
+msgstr "होस्ट ट्री का फ़ॉन्ट"
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Unable to open the folder: {error}"
+msgstr "फ़ोल्डर नहीं खोला जा सका: {error}"
+
+#: src/gcm4/ui/preferences.py
+msgid "Use system font"
+msgstr "सिस्टम फ़ॉन्ट का उपयोग करें"
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Version {version}"
+msgstr "संस्करण {version}"
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format

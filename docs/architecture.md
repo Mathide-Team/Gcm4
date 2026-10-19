@@ -430,6 +430,58 @@ option de protocole.
 | options SSH | `keep_alive`, `x11`, `agent`, `compression`, `compressionLevel` | idem | protocole | zone du plugin (SSH) |
 | pages `nbHost` des plugins (`save_host_fields`) | champs de `_protocol_field_defaults()` | idem | protocole | zone du plugin du protocole |
 
+### 2.11 Préférences : inventaire de `Wconfig` (gcm4, #147)
+
+Chaque option du dialogue GTK3 `Wconfig` est classée dans
+`gcm4.core.preferences.INVENTAIRE` ; `tests/test_gcm4_preferences.py` relit
+`Wconfig` et échoue si une option n'y figure pas. Les pages Général et
+Apparence (`gcm4.ui.preferences`) appliquent chaque changement tout de suite
+et l'écrivent aussitôt (`update_keys`, écriture atomique). Nouvelle clé gcm4 :
+`[window] tree-font` (description Pango, vide = police du système).
+
+Lot 5b (#148) : pages Raccourcis (lecture seule, depuis
+`gcm4.core.preferences.raccourcis()`, même source que les raccourcis posés
+par l'application et l'arbre), Journalisation et Extensions. Nouvelle clé
+`[options] log-level` (`TRACE`…`ERROR`, défaut `INFO`) ; priorité : `--debug`,
+puis `GCM_LOG_LEVEL` / `GCM_DEBUG`, puis la préférence. `save_config` reprend
+désormais du fichier les clés de `[options]` sans champ `AppConfig`, comme
+celles de `[window]` : une préférence écrite en cours de session n'est pas
+effacée par un enregistrement du modèle.
+
+| Option `Wconfig` | Clé INI | Classement | Destination dans gcm4 |
+|---|---|---|---|
+| `WORD_SEPARATORS` | `options/word-separators` | terminal | plugin terminal |
+| `BUFFER_LINES` | `options/buffer-lines` | terminal | plugin terminal |
+| `TRANSPARENCY` | `options/transparency` | terminal | plugin terminal |
+| `TERM` | `options/term` | terminal | plugin terminal |
+| `LOG_PATH` | `options/log-path` | terminal | plugin terminal (journal des sessions) |
+| `CONTINUOUS_TAB_LOG` | `options/continuous-tab-log` | terminal | plugin terminal |
+| `STARTUP_LOCAL` | `options/startup-local` | protocole | plugin local |
+| `LOG_LOCAL` | `options/log-local` | protocole | plugin local |
+| `PASTE_ON_RIGHT_CLICK` | `options/paste-right-click` | terminal | plugin terminal |
+| `AUTO_COPY_SELECTION` | `options/auto-copy-selection` | terminal | plugin terminal |
+| `CONFIRM_ON_CLOSE_TAB` | `options/confirm-close-tab` | base | onglets, issue de suivi |
+| `CONFIRM_ON_CLOSE_TAB_MIDDLE` | `options/confirm-close-tab-middle` | base | onglets, issue de suivi |
+| `CYCLE_TABS` | `options/cycle-tabs` | base | onglets, issue de suivi |
+| `DISABLE_SHORTCUTS` | `options/disable-shortcuts` | terminal | plugin terminal |
+| `DISABLE_NOTIFICATIONS` | `options/disable-notifications` | terminal | plugin terminal |
+| `RESTORE_OPEN_TABS` | `options/restore-open-tabs` | base | page Général (#147) |
+| `AUTO_CLOSE_TAB` | `options/auto-close-tab` | terminal | plugin terminal |
+| `CONFIRM_ON_EXIT` | `options/confirm-exit` | base | page Général (#147) |
+| `CHECK_UPDATES` | `options/check-updates` | base | page Général (#147) |
+| `DISABLE_HOSTS_STRIPES` | `options/disable-hosts-stripes` | base | page Apparence, issue de suivi |
+| `UPDATE_TITLE` | `options/update-title` | base | titre de fenêtre, issue de suivi |
+| `APP_TITLE` | `options/app-title` | base | titre de fenêtre, issue de suivi |
+| `FONT_COLOR` | `options/font-color` | terminal | plugin terminal |
+| `BACK_COLOR` | `options/back-color` | terminal | plugin terminal |
+| `FONT` | `options/font` | terminal | plugin terminal (police VTE) |
+| `THEME_MODE` | `window/theme-mode` | base | page Apparence (#147) |
+| `DARK_MODE` | `window/dark-mode` | base | écrite avec theme-mode (#135) |
+| `shortcuts` | `shortcuts/*` | base | page Raccourcis (#148, lecture seule ; édition : issue de suivi) |
+| `custom commands` | `shortcuts/*` | terminal | plugin terminal |
+| `build_preferences_tab` | — | protocole | plugin.build_preferences_page (#148) |
+| `SerialTemplatesTab` | — | protocole | plugin série |
+
 ## 3. Arborescence détaillée (fichiers, classes, dépendances)
 
 ```

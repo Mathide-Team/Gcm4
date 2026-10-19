@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-18 13:25+0000\n"
+"POT-Creation-Date: 2026-10-19 12:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,11 +138,12 @@ msgstr "ไม่สามารถเปิดไฟล์บันทึกเ
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
-#: src/gcm4/ui/host_dialog.py src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: src/gcm4/ui/host_dialog.py src/gcm4/ui/main_window.py
+#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
 msgid "Cancel"
 msgstr "ยกเลิก"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Check updates"
 msgstr "ตรวจสอบการอัปเดต"
 
@@ -192,7 +193,7 @@ msgstr "ยืนยันเมื่อปิดคอนโซล"
 msgid "Confirm on close console with middle click"
 msgstr "ยืนยันเมื่อปิดคอนโซลด้วยคลิกกลาง"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on exit"
 msgstr "ยืนยันเมื่อออก"
 
@@ -230,7 +231,7 @@ msgstr "คำสั่งที่กำหนดเอง"
 msgid "Custom commands…"
 msgstr "คำสั่งที่กำหนดเอง"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Dark"
 msgstr "มืด"
 
@@ -371,7 +372,7 @@ msgstr "สีพื้นหน้า:"
 msgid "GTK Theme:"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "General"
 msgstr "ทั่วไป"
 
@@ -477,7 +478,7 @@ msgstr ""
 msgid "Leave blank for passwordless/public key authentication"
 msgstr "เว้นว่างไว้สำหรับการตรวจสอบสิทธิ์แบบไม่ใช้รหัสผ่าน/คีย์สาธารณะ"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Light"
 msgstr "สว่าง"
 
@@ -543,7 +544,8 @@ msgstr "ตกลง"
 msgid "Only on clean exit"
 msgstr "เฉพาะเมื่อออกตามปกติ"
 
-#: gnome_connection_manager.py plugins/plugin_import_putty.py utils.py
+#: gnome_connection_manager.py plugins/plugin_import_putty.py
+#: src/gcm4/ui/preferences.py utils.py
 msgid "Open"
 msgstr "เปิด"
 
@@ -596,7 +598,7 @@ msgstr "คีย์ส่วนตัว"
 msgid "Project's Homepage"
 msgstr "โฮมเพจของโปรเจกต์"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/main_window.py
 msgid "Quit"
 msgstr "ออก"
 
@@ -612,9 +614,9 @@ msgstr "เปลี่ยนชื่อแท็บ"
 msgid "Restore defaults"
 msgstr "คืนค่าเริ่มต้น"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Restore open tabs from the previous session on startup"
-msgstr ""
+msgstr "กู้คืนแท็บที่เปิดอยู่จากเซสชันก่อนหน้าเมื่อเริ่มโปรแกรม"
 
 #: gnome_connection_manager.py src/gcm4/ui/host_dialog.py utils.py
 msgid "Save"
@@ -640,7 +642,7 @@ msgstr "เลือกสีพื้นหลัง"
 msgid "Select consoles to use:"
 msgstr "เลือกคอนโซลที่จะใช้:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Select font"
 msgstr "เลือกแบบอักษร"
 
@@ -670,7 +672,7 @@ msgstr "รายการเซิร์ฟเวอร์จะถูกเข
 msgid "Servers"
 msgstr "เ_ซิร์ฟเวอร์"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Settings"
 msgstr "การตั้งค่า"
 
@@ -688,11 +690,11 @@ msgstr "คำสั่งเชลล์ที่รันในเครื่
 msgid "Shortcut"
 msgstr "ทางลัด"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Shortcuts"
 msgstr "ทางลัด"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Show Panel"
 msgstr "แสดงแผงควบคุม"
 
@@ -704,7 +706,7 @@ msgstr "คำสั่งมาตรฐาน"
 msgid "Stop"
 msgstr "หยุด"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "System"
 msgstr "ตามระบบ"
 
@@ -1419,7 +1421,8 @@ msgstr "🔍  สแกนโฮสต์ Proxmox"
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_serial.py
 #: plugins/plugin_spice.py plugins/plugin_vnc.py plugins/plugin_web.py
-#: src/gcm4/core/menu_arbre.py src/gcm4/ui/contexte.py widgets.py
+#: src/gcm4/core/menu_arbre.py src/gcm4/core/preferences.py
+#: src/gcm4/ui/contexte.py widgets.py
 msgid "Connect"
 msgstr "เชื่อมต่อ"
 
@@ -2495,8 +2498,8 @@ msgstr "พอร์ตระยะไกล"
 msgid "Remote path"
 msgstr "โฮสต์ระยะไกล"
 
-#: plugins/plugin_ssh.py src/gcm4/core/menu_arbre.py src/gcm4/ui/menu_arbre.py
-#: widgets.py
+#: plugins/plugin_ssh.py src/gcm4/core/menu_arbre.py
+#: src/gcm4/core/preferences.py src/gcm4/ui/menu_arbre.py widgets.py
 msgid "Remove"
 msgstr "ลบ"
 
@@ -2761,6 +2764,14 @@ msgstr "ไม่ใช่ปลั๊กอินการเชื่อมต
 msgid "Its name must be a non-empty lowercase identifier."
 msgstr "ชื่อต้องเป็นตัวระบุตัวพิมพ์เล็กที่ไม่ว่าง"
 
+#: src/gcm4/core/preferences.py
+msgid "Open the context menu"
+msgstr "เปิดเมนูบริบท"
+
+#: src/gcm4/core/preferences.py
+msgid "Rename the group or edit the host"
+msgstr "เปลี่ยนชื่อกลุ่มหรือแก้ไขโฮสต์"
+
 #: src/gcm4/core/registre.py
 #, python-brace-format
 msgid "A plugin with the same name is already loaded from {source}."
@@ -2891,7 +2902,7 @@ msgstr "ยังไม่ได้บันทึกการเปลี่ย
 msgid "An item with this name already exists in '{group}'."
 msgstr "มีรายการชื่อนี้อยู่แล้วใน '{group}'"
 
-#: src/gcm4/ui/host_tree.py
+#: src/gcm4/ui/host_tree.py src/gcm4/ui/preferences.py
 msgid "Hosts"
 msgstr "โฮสต์"
 
@@ -2928,6 +2939,14 @@ msgstr "โฮสต์และกลุ่มจะปรากฏในแผ
 #, python-brace-format
 msgid "No extension handles the protocol «{protocol}». Install it to open this connection."
 msgstr "ไม่มีส่วนขยายใดจัดการโพรโทคอล '{protocol}' ติดตั้งส่วนขยายเพื่อเปิดการเชื่อมต่อนี้"
+
+#: src/gcm4/ui/main_window.py
+msgid "Open connections will be closed."
+msgstr "การเชื่อมต่อที่เปิดอยู่จะถูกปิด"
+
+#: src/gcm4/ui/main_window.py
+msgid "Quit anyway?"
+msgstr "ต้องการออกอยู่ดีหรือไม่?"
 
 #: src/gcm4/ui/main_window.py
 #, python-brace-format
@@ -2986,6 +3005,78 @@ msgstr "เปลี่ยนชื่อ"
 #: src/gcm4/ui/menu_arbre.py
 msgid "This cannot be undone."
 msgstr "ไม่สามารถยกเลิกการกระทำนี้ได้"
+
+#: src/gcm4/ui/preferences.py
+msgid "Appearance"
+msgstr "รูปลักษณ์"
+
+#: src/gcm4/ui/preferences.py
+msgid "Default log level"
+msgstr "ระดับล็อกเริ่มต้น"
+
+#: src/gcm4/ui/preferences.py
+msgid "Error"
+msgstr "ข้อผิดพลาด"
+
+#: src/gcm4/ui/preferences.py
+msgid "Extensions"
+msgstr "ส่วนขยาย"
+
+#: src/gcm4/ui/preferences.py
+msgid "Loaded"
+msgstr "โหลดแล้ว"
+
+#: src/gcm4/ui/preferences.py
+msgid "Log folder"
+msgstr "โฟลเดอร์ล็อก"
+
+#: src/gcm4/ui/preferences.py
+msgid "Logging"
+msgstr "การบันทึกล็อก"
+
+#: src/gcm4/ui/preferences.py
+msgid "Main window"
+msgstr "หน้าต่างหลัก"
+
+#: src/gcm4/ui/preferences.py
+msgid "No extension found."
+msgstr "ไม่พบส่วนขยาย"
+
+#: src/gcm4/ui/preferences.py
+msgid "Overridden for this session by --debug or GCM_LOG_LEVEL."
+msgstr "ถูกแทนที่ในเซสชันนี้โดย --debug หรือ GCM_LOG_LEVEL"
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Preferences not saved: {error}"
+msgstr "ไม่ได้บันทึกการตั้งค่า: {error}"
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Preferences page unavailable: {error}"
+msgstr "หน้าการตั้งค่าไม่พร้อมใช้งาน: {error}"
+
+#: src/gcm4/ui/preferences.py
+msgid "Theme"
+msgstr "ธีม"
+
+#: src/gcm4/ui/preferences.py
+msgid "Tree font"
+msgstr "แบบอักษรของรายการโฮสต์"
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Unable to open the folder: {error}"
+msgstr "ไม่สามารถเปิดโฟลเดอร์: {error}"
+
+#: src/gcm4/ui/preferences.py
+msgid "Use system font"
+msgstr "ใช้แบบอักษรของระบบ"
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Version {version}"
+msgstr "รุ่น {version}"
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format

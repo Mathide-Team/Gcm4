@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-18 13:25+0000\n"
+"POT-Creation-Date: 2026-10-19 12:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,11 +138,12 @@ msgstr "Nu se poate deschide fișierul de jurnal pentru scriere"
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
-#: src/gcm4/ui/host_dialog.py src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: src/gcm4/ui/host_dialog.py src/gcm4/ui/main_window.py
+#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
 msgid "Cancel"
 msgstr "Anulează"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Check updates"
 msgstr "Verifică actualizări"
 
@@ -192,7 +193,7 @@ msgstr "Confirmă la închiderea consolei"
 msgid "Confirm on close console with middle click"
 msgstr "Confirmă la închiderea consolei cu clic mijloc"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on exit"
 msgstr "Confirmă la ieșire"
 
@@ -230,7 +231,7 @@ msgstr "Comenzi personalizate"
 msgid "Custom commands…"
 msgstr "Comenzi personalizate"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Dark"
 msgstr "Întunecat"
 
@@ -371,7 +372,7 @@ msgstr "Culoare text:"
 msgid "GTK Theme:"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "General"
 msgstr "General"
 
@@ -477,7 +478,7 @@ msgstr ""
 msgid "Leave blank for passwordless/public key authentication"
 msgstr "Lăsați necompletat pentru autentificare fără parolă / cu cheie publică"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Light"
 msgstr "Luminos"
 
@@ -543,7 +544,8 @@ msgstr "OK"
 msgid "Only on clean exit"
 msgstr "Doar la ieșire normală"
 
-#: gnome_connection_manager.py plugins/plugin_import_putty.py utils.py
+#: gnome_connection_manager.py plugins/plugin_import_putty.py
+#: src/gcm4/ui/preferences.py utils.py
 msgid "Open"
 msgstr "Deschide"
 
@@ -596,7 +598,7 @@ msgstr "Cheie privată"
 msgid "Project's Homepage"
 msgstr "Pagina web a proiectului"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/main_window.py
 msgid "Quit"
 msgstr "Ieșire"
 
@@ -612,9 +614,9 @@ msgstr "Redenumește fila"
 msgid "Restore defaults"
 msgstr "Restabilește valorile implicite"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Restore open tabs from the previous session on startup"
-msgstr ""
+msgstr "La pornire, restaurează filele deschise în sesiunea anterioară"
 
 #: gnome_connection_manager.py src/gcm4/ui/host_dialog.py utils.py
 msgid "Save"
@@ -640,7 +642,7 @@ msgstr "Selectează culoarea de fundal"
 msgid "Select consoles to use:"
 msgstr "Selectați consolele de utilizat:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Select font"
 msgstr "Selectează fontul"
 
@@ -670,7 +672,7 @@ msgstr "Lista de servere va fi suprascrisă, continuați?"
 msgid "Servers"
 msgstr "_Servere"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Settings"
 msgstr "Setări"
 
@@ -688,11 +690,11 @@ msgstr "Comandă shell rulată local, în fundal, imediat înainte de deschidere
 msgid "Shortcut"
 msgstr "Comandă rapidă"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Shortcuts"
 msgstr "Comenzi rapide"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Show Panel"
 msgstr "Afișează panoul"
 
@@ -704,7 +706,7 @@ msgstr "Comenzi standard"
 msgid "Stop"
 msgstr "Stop"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "System"
 msgstr "Sistem"
 
@@ -1419,7 +1421,8 @@ msgstr "🔍  Scanare hosturi Proxmox"
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_serial.py
 #: plugins/plugin_spice.py plugins/plugin_vnc.py plugins/plugin_web.py
-#: src/gcm4/core/menu_arbre.py src/gcm4/ui/contexte.py widgets.py
+#: src/gcm4/core/menu_arbre.py src/gcm4/core/preferences.py
+#: src/gcm4/ui/contexte.py widgets.py
 msgid "Connect"
 msgstr "Conectare"
 
@@ -2495,8 +2498,8 @@ msgstr "Port remote"
 msgid "Remote path"
 msgstr "Host remote"
 
-#: plugins/plugin_ssh.py src/gcm4/core/menu_arbre.py src/gcm4/ui/menu_arbre.py
-#: widgets.py
+#: plugins/plugin_ssh.py src/gcm4/core/menu_arbre.py
+#: src/gcm4/core/preferences.py src/gcm4/ui/menu_arbre.py widgets.py
 msgid "Remove"
 msgstr "Elimină"
 
@@ -2761,6 +2764,14 @@ msgstr "Nu este un modul de conexiune."
 msgid "Its name must be a non-empty lowercase identifier."
 msgstr "Numele trebuie să fie un identificator nevid, cu litere mici."
 
+#: src/gcm4/core/preferences.py
+msgid "Open the context menu"
+msgstr "Deschide meniul contextual"
+
+#: src/gcm4/core/preferences.py
+msgid "Rename the group or edit the host"
+msgstr "Redenumește grupul sau editează gazda"
+
 #: src/gcm4/core/registre.py
 #, python-brace-format
 msgid "A plugin with the same name is already loaded from {source}."
@@ -2891,7 +2902,7 @@ msgstr "Modificările acestei gazde nu au fost salvate."
 msgid "An item with this name already exists in '{group}'."
 msgstr "Există deja un element cu acest nume în „{group}”."
 
-#: src/gcm4/ui/host_tree.py
+#: src/gcm4/ui/host_tree.py src/gcm4/ui/preferences.py
 msgid "Hosts"
 msgstr "Gazde"
 
@@ -2928,6 +2939,14 @@ msgstr "Gazdele și grupurile vor apărea în panoul din stânga."
 #, python-brace-format
 msgid "No extension handles the protocol «{protocol}». Install it to open this connection."
 msgstr "Nicio extensie nu gestionează protocolul „{protocol}”. Instalați-o pentru a deschide această conexiune."
+
+#: src/gcm4/ui/main_window.py
+msgid "Open connections will be closed."
+msgstr "Conexiunile deschise vor fi închise."
+
+#: src/gcm4/ui/main_window.py
+msgid "Quit anyway?"
+msgstr "Ieșiți oricum?"
 
 #: src/gcm4/ui/main_window.py
 #, python-brace-format
@@ -2986,6 +3005,78 @@ msgstr "Redenumire"
 #: src/gcm4/ui/menu_arbre.py
 msgid "This cannot be undone."
 msgstr "Acțiunea nu poate fi anulată."
+
+#: src/gcm4/ui/preferences.py
+msgid "Appearance"
+msgstr "Aspect"
+
+#: src/gcm4/ui/preferences.py
+msgid "Default log level"
+msgstr "Nivel implicit al jurnalului"
+
+#: src/gcm4/ui/preferences.py
+msgid "Error"
+msgstr "Eroare"
+
+#: src/gcm4/ui/preferences.py
+msgid "Extensions"
+msgstr "Extensii"
+
+#: src/gcm4/ui/preferences.py
+msgid "Loaded"
+msgstr "Încărcată"
+
+#: src/gcm4/ui/preferences.py
+msgid "Log folder"
+msgstr "Dosarul jurnalelor"
+
+#: src/gcm4/ui/preferences.py
+msgid "Logging"
+msgstr "Jurnalizare"
+
+#: src/gcm4/ui/preferences.py
+msgid "Main window"
+msgstr "Fereastra principală"
+
+#: src/gcm4/ui/preferences.py
+msgid "No extension found."
+msgstr "Nu s-a găsit nicio extensie."
+
+#: src/gcm4/ui/preferences.py
+msgid "Overridden for this session by --debug or GCM_LOG_LEVEL."
+msgstr "Înlocuit în această sesiune de --debug sau GCM_LOG_LEVEL."
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Preferences not saved: {error}"
+msgstr "Preferințele nu au fost salvate: {error}"
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Preferences page unavailable: {error}"
+msgstr "Pagina de preferințe nu este disponibilă: {error}"
+
+#: src/gcm4/ui/preferences.py
+msgid "Theme"
+msgstr "Temă"
+
+#: src/gcm4/ui/preferences.py
+msgid "Tree font"
+msgstr "Fontul arborelui de gazde"
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Unable to open the folder: {error}"
+msgstr "Dosarul nu poate fi deschis: {error}"
+
+#: src/gcm4/ui/preferences.py
+msgid "Use system font"
+msgstr "Folosește fontul sistemului"
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Version {version}"
+msgstr "Versiunea {version}"
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-18 13:25+0000\n"
+"POT-Creation-Date: 2026-10-19 12:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,11 +138,12 @@ msgstr "A naplófájl írásra nem nyitható meg"
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
-#: src/gcm4/ui/host_dialog.py src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: src/gcm4/ui/host_dialog.py src/gcm4/ui/main_window.py
+#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
 msgid "Cancel"
 msgstr "Mégse"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Check updates"
 msgstr "Frissítések keresése"
 
@@ -192,7 +193,7 @@ msgstr "Megerősítés konzol bezárásakor"
 msgid "Confirm on close console with middle click"
 msgstr "Megerősítés konzol bezárásakor középső kattintással"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on exit"
 msgstr "Megerősítés kilépéskor"
 
@@ -230,7 +231,7 @@ msgstr "Egyéni parancsok"
 msgid "Custom commands…"
 msgstr "Egyéni parancsok"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Dark"
 msgstr "Sötét"
 
@@ -371,7 +372,7 @@ msgstr "Előtérszín:"
 msgid "GTK Theme:"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "General"
 msgstr "Általános"
 
@@ -477,7 +478,7 @@ msgstr ""
 msgid "Leave blank for passwordless/public key authentication"
 msgstr "Hagyja üresen jelszó nélküli/nyilvános kulcsú hitelesítéshez"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Light"
 msgstr "Világos"
 
@@ -543,7 +544,8 @@ msgstr "OK"
 msgid "Only on clean exit"
 msgstr "Csak tiszta kilépéskor"
 
-#: gnome_connection_manager.py plugins/plugin_import_putty.py utils.py
+#: gnome_connection_manager.py plugins/plugin_import_putty.py
+#: src/gcm4/ui/preferences.py utils.py
 msgid "Open"
 msgstr "Megnyitás"
 
@@ -596,7 +598,7 @@ msgstr "Privát kulcs"
 msgid "Project's Homepage"
 msgstr "A projekt honlapja"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/main_window.py
 msgid "Quit"
 msgstr "Kilépés"
 
@@ -612,9 +614,9 @@ msgstr "Lap átnevezése"
 msgid "Restore defaults"
 msgstr "Alapértékek visszaállítása"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Restore open tabs from the previous session on startup"
-msgstr ""
+msgstr "Indításkor az előző munkamenet megnyitott lapjainak visszaállítása"
 
 #: gnome_connection_manager.py src/gcm4/ui/host_dialog.py utils.py
 msgid "Save"
@@ -640,7 +642,7 @@ msgstr "Háttérszín kiválasztása"
 msgid "Select consoles to use:"
 msgstr "Válassza ki a használandó konzolokat:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Select font"
 msgstr "Betűtípus kiválasztása"
 
@@ -670,7 +672,7 @@ msgstr "A szerverlista felülíródik, folytatja?"
 msgid "Servers"
 msgstr "_Szerverek"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Settings"
 msgstr "Beállítások"
 
@@ -688,11 +690,11 @@ msgstr "Helyben, a háttérben, közvetlenül a kapcsolat megnyitása előtt fut
 msgid "Shortcut"
 msgstr "Gyorsbillentyű"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Shortcuts"
 msgstr "Gyorsbillentyűk"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "Show Panel"
 msgstr "Panel megjelenítése"
 
@@ -704,7 +706,7 @@ msgstr "Standard parancsok"
 msgid "Stop"
 msgstr "Stop"
 
-#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
 msgid "System"
 msgstr "Rendszer"
 
@@ -1419,7 +1421,8 @@ msgstr "🔍  Proxmox hosztok keresése"
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_serial.py
 #: plugins/plugin_spice.py plugins/plugin_vnc.py plugins/plugin_web.py
-#: src/gcm4/core/menu_arbre.py src/gcm4/ui/contexte.py widgets.py
+#: src/gcm4/core/menu_arbre.py src/gcm4/core/preferences.py
+#: src/gcm4/ui/contexte.py widgets.py
 msgid "Connect"
 msgstr "Csatlakozás"
 
@@ -2495,8 +2498,8 @@ msgstr "Távoli port"
 msgid "Remote path"
 msgstr "Távoli hoszt"
 
-#: plugins/plugin_ssh.py src/gcm4/core/menu_arbre.py src/gcm4/ui/menu_arbre.py
-#: widgets.py
+#: plugins/plugin_ssh.py src/gcm4/core/menu_arbre.py
+#: src/gcm4/core/preferences.py src/gcm4/ui/menu_arbre.py widgets.py
 msgid "Remove"
 msgstr "Eltávolítás"
 
@@ -2761,6 +2764,14 @@ msgstr "Ez nem kapcsolati bővítmény."
 msgid "Its name must be a non-empty lowercase identifier."
 msgstr "A névnek nem üres, kisbetűs azonosítónak kell lennie."
 
+#: src/gcm4/core/preferences.py
+msgid "Open the context menu"
+msgstr "Helyi menü megnyitása"
+
+#: src/gcm4/core/preferences.py
+msgid "Rename the group or edit the host"
+msgstr "Csoport átnevezése vagy gazdagép szerkesztése"
+
 #: src/gcm4/core/registre.py
 #, python-brace-format
 msgid "A plugin with the same name is already loaded from {source}."
@@ -2891,7 +2902,7 @@ msgstr "A gép módosításai nincsenek mentve."
 msgid "An item with this name already exists in '{group}'."
 msgstr "Már van ilyen nevű elem itt: „{group}”."
 
-#: src/gcm4/ui/host_tree.py
+#: src/gcm4/ui/host_tree.py src/gcm4/ui/preferences.py
 msgid "Hosts"
 msgstr "Gépek"
 
@@ -2928,6 +2939,14 @@ msgstr "A gépek és csoportok a bal oldali panelen jelennek meg."
 #, python-brace-format
 msgid "No extension handles the protocol «{protocol}». Install it to open this connection."
 msgstr "Egyetlen bővítmény sem kezeli a(z) „{protocol}” protokollt. Telepítse a kapcsolat megnyitásához."
+
+#: src/gcm4/ui/main_window.py
+msgid "Open connections will be closed."
+msgstr "A nyitott kapcsolatok bezárulnak."
+
+#: src/gcm4/ui/main_window.py
+msgid "Quit anyway?"
+msgstr "Mégis kilép?"
 
 #: src/gcm4/ui/main_window.py
 #, python-brace-format
@@ -2986,6 +3005,78 @@ msgstr "Átnevezés"
 #: src/gcm4/ui/menu_arbre.py
 msgid "This cannot be undone."
 msgstr "Ez nem vonható vissza."
+
+#: src/gcm4/ui/preferences.py
+msgid "Appearance"
+msgstr "Megjelenés"
+
+#: src/gcm4/ui/preferences.py
+msgid "Default log level"
+msgstr "Alapértelmezett naplózási szint"
+
+#: src/gcm4/ui/preferences.py
+msgid "Error"
+msgstr "Hiba"
+
+#: src/gcm4/ui/preferences.py
+msgid "Extensions"
+msgstr "Bővítmények"
+
+#: src/gcm4/ui/preferences.py
+msgid "Loaded"
+msgstr "Betöltve"
+
+#: src/gcm4/ui/preferences.py
+msgid "Log folder"
+msgstr "Naplómappa"
+
+#: src/gcm4/ui/preferences.py
+msgid "Logging"
+msgstr "Naplózás"
+
+#: src/gcm4/ui/preferences.py
+msgid "Main window"
+msgstr "Főablak"
+
+#: src/gcm4/ui/preferences.py
+msgid "No extension found."
+msgstr "Nem található bővítmény."
+
+#: src/gcm4/ui/preferences.py
+msgid "Overridden for this session by --debug or GCM_LOG_LEVEL."
+msgstr "Ebben a munkamenetben a --debug vagy a GCM_LOG_LEVEL felülírja."
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Preferences not saved: {error}"
+msgstr "A beállítások nem lettek mentve: {error}"
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Preferences page unavailable: {error}"
+msgstr "A beállítási oldal nem érhető el: {error}"
+
+#: src/gcm4/ui/preferences.py
+msgid "Theme"
+msgstr "Téma"
+
+#: src/gcm4/ui/preferences.py
+msgid "Tree font"
+msgstr "Gazdagépfa betűtípusa"
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Unable to open the folder: {error}"
+msgstr "A mappa nem nyitható meg: {error}"
+
+#: src/gcm4/ui/preferences.py
+msgid "Use system font"
+msgstr "Rendszer betűtípusának használata"
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Version {version}"
+msgstr "Verzió: {version}"
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format

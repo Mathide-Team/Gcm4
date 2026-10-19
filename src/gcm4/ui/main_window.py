@@ -23,6 +23,7 @@ from gcm4.core.i18n import _
 from gcm4.core.plugins import Session
 from gcm4.core.registre import PluginRegistry
 from gcm4.core.replies import ecrire_replies
+from gcm4.ui import dialogues
 from gcm4.ui.host_tree import HostTree
 
 LARGEUR_DEFAUT = 1000
@@ -66,6 +67,9 @@ class MainWindow(Adw.ApplicationWindow):
         self.registre = registre if isinstance(registre, PluginRegistry) else PluginRegistry()
         #: Contenu d'onglet -> session du plugin à fermer avec l'onglet.
         self.sessions: dict[Gtk.Widget, Session] = {}
+        #: Dialogue « Quitter quand même ? » affiché (#147), sinon ``None``.
+        self.confirmation_fermeture: Adw.Dialog | Adw.MessageDialog | None = None
+        self._fermeture_confirmee = False
 
         entete = Adw.HeaderBar()
         self.bouton_menu = Gtk.MenuButton(
@@ -260,9 +264,60 @@ class MainWindow(Adw.ApplicationWindow):
         logger.debug("etat_courant: {}", etat)
         return etat
 
+    def _confirmation_requise(self) -> bool:
+        """Connexions ouvertes et « Confirmer à la fermeture » actif (#147)."""
+        logger.trace("_confirmation_requise")
+        resultat = bool(
+            self.sessions
+            and self.config is not None
+            and self.config.options.confirm_exit
+            and not self._fermeture_confirmee
+        )
+        logger.trace("_confirmation_requise: {}", resultat)
+        return resultat
+
+    def _demander_confirmation(self) -> None:
+        """Dialogue « Quitter quand même ? » ; « Quitter » ferme la fenêtre."""
+        logger.debug("_demander_confirmation: {} connexion(s)", len(self.sessions))
+        if self.confirmation_fermeture is not None:
+            logger.debug("_demander_confirmation: déjà affichée")
+            return
+
+        def rappel(reponse: str) -> None:
+            logger.debug("_demander_confirmation.rappel: {}", reponse)
+            self.confirmation_fermeture = None
+            if reponse == "quitter":
+                self._fermeture_confirmee = True
+                # Après la fermeture du dialogue : un close() immédiat fermerait
+                # le dialogue encore attaché, pas la fenêtre.
+                GLib.idle_add(lambda: self.close() and False)
+            logger.debug("_demander_confirmation.rappel: fait")
+
+        self.confirmation_fermeture = dialogues.creer(
+            self,
+            _("Quit anyway?"),
+            _("Open connections will be closed."),
+            [
+                ("annuler", _("Cancel"), None),
+                ("quitter", _("Quit"), Adw.ResponseAppearance.DESTRUCTIVE),
+            ],
+            "annuler",
+            "annuler",
+            rappel,
+        )
+        logger.debug("_demander_confirmation: affichée")
+
     def _on_close_request(self, _fenetre: Gtk.Window) -> bool:
-        """Enregistre l'état ; une erreur d'écriture n'empêche pas la fermeture."""
+        """Enregistre l'état ; une erreur d'écriture n'empêche pas la fermeture.
+
+        Connexions ouvertes et « Confirmer à la fermeture » actif : la
+        fermeture attend la confirmation (#147).
+        """
         logger.debug("_on_close_request: entrée")
+        if self._confirmation_requise():
+            self._demander_confirmation()
+            logger.debug("_on_close_request: confirmation demandée")
+            return True
         for contenu in list(self.sessions):
             self.fermer_onglet(contenu)
         try:

@@ -162,7 +162,7 @@ est en lecture seule.
 
 | Méthode | Description |
 |---|---|
-| `build_preferences_page()` | page du plugin dans Préférences > Extensions ; `None` : aucune |
+| `build_preferences_page()` | page du plugin dans les préférences, après la page Extensions : un `Adw.PreferencesPage` est ajouté tel quel (titre par défaut : `name`), tout autre widget est placé dans une page au nom du plugin ; `None` : aucune. Une exception est journalisée et affichée dans la ligne du plugin (page Extensions), sans fermer les préférences |
 | `context_menu_items(host)` | liste de `MenuItem(label, activate)` ajoutée au menu contextuel d'un hôte du plugin |
 
 ## Règles

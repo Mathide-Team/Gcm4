@@ -28,6 +28,7 @@ from gi.repository import Adw, Gdk, Gio, GLib, Gtk
 from loguru import logger
 
 from gcm4.core import menu_arbre
+from gcm4.core import preferences as prefs_core
 from gcm4.core.config import ConfigError
 from gcm4.core.host_tree import Noeud
 from gcm4.core.i18n import _
@@ -99,11 +100,17 @@ class MenuArbre:
         clic.connect("pressed", self._on_clic_droit)
         arbre.liste.add_controller(clic)
         raccourcis = Gtk.ShortcutController()
-        for declencheur, rappel in (
-            ("Menu|<Shift>F10", self._menu_clavier),
-            ("Delete|KP_Delete", lambda: self._clavier("delete")),
-            ("F2", lambda: self._clavier("rename-group", "edit")),
-        ):
+        # Déclencheurs partagés avec Préférences > Raccourcis (#148) ; Entrée
+        # passe par le signal « activate » de la liste.
+        rappels = {
+            "Menu|<Shift>F10": self._menu_clavier,
+            "Delete|KP_Delete": lambda: self._clavier("delete"),
+            "F2": lambda: self._clavier("rename-group", "edit"),
+        }
+        for declencheur, _libelle in prefs_core.RACCOURCIS_ARBRE:
+            rappel = rappels.get(declencheur)
+            if rappel is None:
+                continue
             raccourcis.add_shortcut(
                 Gtk.Shortcut(
                     trigger=Gtk.ShortcutTrigger.parse_string(declencheur),
