@@ -6,7 +6,7 @@
 > toute modification manuelle sera écrasée. Le régénérer avec `make class-diagram` ;
 > le job Qualité échoue s'il est périmé (`--check`).
 
-80 modules · 151 classes · 264 fonctions publiques de module.
+81 modules · 151 classes · 267 fonctions publiques de module.
 
 Conventions : `+` public, `-` privé (préfixe `_`) ; `list~str~` = `list[str]` ; `<<module>>`
 regroupe les fonctions publiques d'un module ; `<<…>>` sur une classe liste `dataclass` et les
@@ -40,7 +40,7 @@ flowchart TD
     g4 -->|1| g3
     g5 -->|2| g0
     g5 -->|2| g3
-    g5 -->|37| g4
+    g5 -->|38| g4
 ```
 
 ## Cœur (sans GTK)
@@ -1262,6 +1262,7 @@ classDiagram
 | `gcm4.core.chemins` | `src/gcm4/core/chemins.py` | Emplacement de la configuration de gcm4 et migration depuis ``~/.gcm`` (#99). |
 | `gcm4.core.chiffrement` | `src/gcm4/core/chiffrement.py` | Mots de passe chiffrés de gcm4.conf, compatibles avec l'application GTK3 (#138). |
 | `gcm4.core.cli` | `src/gcm4/core/cli.py` | Ligne de commande de gcm4, analysée avant toute initialisation GTK (#133). |
+| `gcm4.core.comportement_onglets` | `src/gcm4/core/comportement_onglets.py` | Onglets et titre de la fenêtre : options de base reprises de Wconfig (#247), sans GTK. |
 | `gcm4.core.config` | `src/gcm4/core/config.py` | Lecture et écriture de ``~/.config/gcm4/gcm4.conf`` sans GTK (#137). |
 | `gcm4.core.deplacements` | `src/gcm4/core/deplacements.py` | Glisser-déposer dans l'arbre, validé sans GTK (#141). |
 | `gcm4.core.host_tree` | `src/gcm4/core/host_tree.py` | Arbre des groupes et des hôtes, sans GTK (#139). |
@@ -1312,6 +1313,12 @@ classDiagram
         <<module>>
         +build_parser() argparse.ArgumentParser
         +parse_args(argv, home, environ) argparse.Namespace
+    }
+    class mod_gcm4_core_comportement_onglets {
+        <<module>>
+        +voisin(courant, total, sens, boucler) int
+        +titre_application(app_title) str
+        +titre_fenetre(app_title, dynamique, onglet) str
     }
     class mod_gcm4_core_config {
         <<module>>
@@ -1563,6 +1570,12 @@ classDiagram
         +bool show_panel
         +str tree_font
         +str log_level
+        +bool confirm_close_tab
+        +bool confirm_close_tab_middle
+        +bool cycle_tabs
+        +bool disable_hosts_stripes
+        +bool update_title
+        +str app_title
     }
     class Raccourci {
         <<dataclass>>
@@ -1695,6 +1708,7 @@ classDiagram
         +recharger() None
         +chercher(texte) None
         +focus_recherche() None
+        +set_rayures(rayures) None
         +chemin_selectionne() str None
         +selectionner(chemin) bool
         +deposer(source, cible) bool
@@ -1711,6 +1725,10 @@ classDiagram
         +enregistrer_config() None
         +notifier(message) None
         +ajouter_onglet(titre, contenu, session) int
+        +demander_fermeture(contenu, milieu) None
+        +aller_onglet_voisin(sens) None
+        +maj_titre(page) None
+        +appliquer_options() None
         +fermer_onglet(contenu) None
         +onglets_ouverts() list~str~
         +restaurer_onglets() None

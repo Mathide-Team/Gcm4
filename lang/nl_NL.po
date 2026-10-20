@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-19 12:52+0000\n"
+"POT-Creation-Date: 2026-10-20 22:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -151,7 +151,7 @@ msgstr "Controleren op updates"
 msgid "Choose Group Color"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Circle around tabs when going to the previous/next tab"
 msgstr "Rond door tabbladen bij vorige/volgende tabblad"
 
@@ -159,11 +159,13 @@ msgstr "Rond door tabbladen bij vorige/volgende tabblad"
 msgid "Clear selection"
 msgstr "Selectie wissen"
 
-#: gnome_connection_manager.py ssh_config_editor.py ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/main_window.py ssh_config_editor.py
+#: ssh_key_manager_dialog.py
 msgid "Close"
 msgstr "Sluiten"
 
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py widgets.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/main_window.py widgets.py
 msgid "Close console"
 msgstr "Console sluiten"
 
@@ -185,11 +187,11 @@ msgstr "Kleuren"
 msgid "Command"
 msgstr "Opdracht"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on close console"
 msgstr "Bevestigen bij sluiten console"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on close console with middle click"
 msgstr "Bevestigen bij sluiten console met middelklik"
 
@@ -255,7 +257,7 @@ msgstr "Delete:"
 msgid "Description"
 msgstr "Beschrijving"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Disable alternating stripes in hosts window"
 msgstr "Afwisselende strepen in hostvenster uitschakelen"
 
@@ -275,7 +277,7 @@ msgstr "Wilt u alle hosts in groep echt verwijderen"
 msgid "Do you really want to remove host"
 msgstr "Wilt u host echt verwijderen"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Dynamic title"
 msgstr "Dynamische titel"
 
@@ -738,7 +740,7 @@ msgstr ""
 msgid "Tip: use #P=password to send a password without keeping it in clear text in the command history"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Title"
 msgstr "Titel"
 
@@ -2705,6 +2707,14 @@ msgstr "Kan het configuratiebestand %s niet lezen: %s"
 #, python-format
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Kan het configuratiebestand %s niet schrijven: %s"
+
+#: src/gcm4/core/menu.py
+msgid "Next tab"
+msgstr "Volgend tabblad"
+
+#: src/gcm4/core/menu.py
+msgid "Previous tab"
+msgstr "Vorig tabblad"
 
 #: src/gcm4/core/menu.py
 msgid "Search"

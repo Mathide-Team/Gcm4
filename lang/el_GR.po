@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-19 12:52+0000\n"
+"POT-Creation-Date: 2026-10-20 22:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -151,7 +151,7 @@ msgstr "Έλεγχος για ενημερώσεις"
 msgid "Choose Group Color"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Circle around tabs when going to the previous/next tab"
 msgstr "Κυκλική περιήγηση στις καρτέλες κατά τη μετάβαση στην προηγούμενη/επόμενη καρτέλα"
 
@@ -159,11 +159,13 @@ msgstr "Κυκλική περιήγηση στις καρτέλες κατά τ�
 msgid "Clear selection"
 msgstr "Εκκαθάριση επιλογής"
 
-#: gnome_connection_manager.py ssh_config_editor.py ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/main_window.py ssh_config_editor.py
+#: ssh_key_manager_dialog.py
 msgid "Close"
 msgstr "Κλείσιμο"
 
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py widgets.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/main_window.py widgets.py
 msgid "Close console"
 msgstr "Κλείσιμο κονσόλας"
 
@@ -185,11 +187,11 @@ msgstr "Χρώματα"
 msgid "Command"
 msgstr "Εντολή"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on close console"
 msgstr "Επιβεβαίωση κατά το κλείσιμο της κονσόλας"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on close console with middle click"
 msgstr "Επιβεβαίωση κατά το κλείσιμο της κονσόλας με μεσαίο κλικ"
 
@@ -255,7 +257,7 @@ msgstr "Delete:"
 msgid "Description"
 msgstr "Περιγραφή"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Disable alternating stripes in hosts window"
 msgstr "Απενεργοποίηση εναλλασσόμενων λωρίδων στο παράθυρο κεντρικών υπολογιστών"
 
@@ -275,7 +277,7 @@ msgstr "Θέλετε πραγματικά να αφαιρέσετε όλους �
 msgid "Do you really want to remove host"
 msgstr "Θέλετε πραγματικά να αφαιρέσετε τον κεντρικό υπολογιστή"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Dynamic title"
 msgstr "Δυναμικός τίτλος"
 
@@ -738,7 +740,7 @@ msgstr ""
 msgid "Tip: use #P=password to send a password without keeping it in clear text in the command history"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Title"
 msgstr "Τίτλος"
 
@@ -2705,6 +2707,14 @@ msgstr "Δεν είναι δυνατή η ανάγνωση του αρχείου
 #, python-format
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Δεν είναι δυνατή η εγγραφή του αρχείου ρυθμίσεων %s: %s"
+
+#: src/gcm4/core/menu.py
+msgid "Next tab"
+msgstr "Επόμενη καρτέλα"
+
+#: src/gcm4/core/menu.py
+msgid "Previous tab"
+msgstr "Προηγούμενη καρτέλα"
 
 #: src/gcm4/core/menu.py
 msgid "Search"
