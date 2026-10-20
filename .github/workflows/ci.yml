@@ -197,7 +197,9 @@ jobs:
         # (mktemp) : sur un runner auto-hébergé, un « $RUNNER_TEMP/locale »
         # resté d'un job précédent et non accessible faisait échouer ce job
         # (« mkdir: Permission denied », runner « ubuntu », 20/10/2026).
-        run: scripts/i18n-update.sh --compile "$(mktemp -d)/locale"
+        # Dans $RUNNER_TEMP, vidé par le runner à la fin du job : rien ne
+        # s'accumule dans /tmp des machines du groupe maison.
+        run: scripts/i18n-update.sh --compile "$(mktemp -d -p "$RUNNER_TEMP")/locale"
 
       - name: Rapport de traduction (résumé du job)
         if: always()
