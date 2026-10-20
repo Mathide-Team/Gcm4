@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME Connection Manager\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-20 21:04+0000\n"
+"POT-Creation-Date: 2026-10-20 21:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -104,7 +104,7 @@ msgstr ""
 msgid "Save buffer as"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/echange.py
 msgid "Import servers"
 msgstr ""
 
@@ -112,7 +112,7 @@ msgstr ""
 msgid "Imports"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/echange.py
 msgid "Export servers"
 msgstr ""
 
@@ -245,8 +245,8 @@ msgstr ""
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
-#: src/gcm4/ui/host_dialog.py src/gcm4/ui/main_window.py
-#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: src/gcm4/ui/echange.py src/gcm4/ui/fichiers.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/main_window.py src/gcm4/ui/menu_arbre.py utils.py widgets.py
 msgid "Cancel"
 msgstr ""
 
@@ -754,7 +754,8 @@ msgstr ""
 msgid "Send the command above to every checked host (same as pressing Enter)"
 msgstr ""
 
-#: gnome_connection_manager.py ssh_config_editor.py ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/echange.py ssh_config_editor.py
+#: ssh_key_manager_dialog.py
 msgid "Close"
 msgstr ""
 
@@ -2559,14 +2560,9 @@ msgstr ""
 msgid "Unable to write the configuration file %s: %s"
 msgstr ""
 
-#: src/gcm4/core/echange_cli.py
+#: src/gcm4/core/echange_cli.py src/gcm4/ui/echange.py
 #, python-brace-format
 msgid "Hosts exported: {count} ({file})"
-msgstr ""
-
-#: src/gcm4/core/echange_cli.py
-#, python-brace-format
-msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
 msgstr ""
 
 #: src/gcm4/core/exchange.py
@@ -2613,9 +2609,13 @@ msgstr ""
 msgid "The file %s is not a valid host export: %s"
 msgstr ""
 
-#: src/gcm4/core/exchange.py
+#: src/gcm4/core/exchange.py src/gcm4/core/sauvegarde.py
 #, python-format
 msgid "Unable to write the file %s: %s"
+msgstr ""
+
+#: src/gcm4/core/menu.py src/gcm4/ui/echange.py
+msgid "Save configuration as…"
 msgstr ""
 
 #: src/gcm4/core/menu.py
@@ -2709,6 +2709,25 @@ msgstr ""
 msgid "Protocol «{protocol}» is already handled by «{other}»."
 msgstr ""
 
+#: src/gcm4/core/sauvegarde.py
+#, python-brace-format
+msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
+msgstr ""
+
+#: src/gcm4/core/sauvegarde.py
+#, python-format
+msgid "No configuration to save yet: %s"
+msgstr ""
+
+#: src/gcm4/core/sauvegarde.py
+msgid "Choose a folder other than the configuration folder."
+msgstr ""
+
+#: src/gcm4/core/sauvegarde.py
+#, python-brace-format
+msgid "{folder} already contains {file}."
+msgstr ""
+
 #: src/gcm4/core/validation.py
 #, python-brace-format
 msgid "Port must be a number between {min} and {max}."
@@ -2734,6 +2753,56 @@ msgstr ""
 #: src/gcm4/ui/contexte.py
 #, python-brace-format
 msgid "Password for {target}"
+msgstr ""
+
+#: src/gcm4/ui/echange.py
+msgid "Keep the existing host"
+msgstr ""
+
+#: src/gcm4/ui/echange.py
+msgid "Rename the imported host"
+msgstr ""
+
+#: src/gcm4/ui/echange.py
+msgid "Replace the existing host"
+msgstr ""
+
+#: src/gcm4/ui/echange.py
+msgid "Include passwords (in clear text)"
+msgstr ""
+
+#: src/gcm4/ui/echange.py
+msgid "Passwords will be written in clear text: keep this file safe."
+msgstr ""
+
+#: src/gcm4/ui/echange.py
+msgid "JSON or CSV file, chosen by its extension."
+msgstr ""
+
+#: src/gcm4/ui/echange.py
+msgid "Export"
+msgstr ""
+
+#: src/gcm4/ui/echange.py
+msgid "This file contains passwords in clear text."
+msgstr ""
+
+#: src/gcm4/ui/echange.py
+msgid "If a host already exists:"
+msgstr ""
+
+#: src/gcm4/ui/echange.py
+#, python-brace-format
+msgid "Hosts in {file}: {count}, already present: {existing}"
+msgstr ""
+
+#: src/gcm4/ui/echange.py
+msgid "Import"
+msgstr ""
+
+#: src/gcm4/ui/echange.py
+#, python-brace-format
+msgid "Configuration saved to {folder}"
 msgstr ""
 
 #: src/gcm4/ui/host_dialog.py
