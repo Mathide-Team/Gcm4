@@ -10,6 +10,10 @@
 > session par session, dans `claude.md` (journal) et `features.md` (§4.1).
 
 ### Added
+- **Base GTK4 — `gcm4 groupe/nom…`** (#154) : les hôtes de la ligne de
+  commande sont sélectionnés dans l'arbre au démarrage (groupes parents
+  dépliés), connectés seulement si un plugin gère leur protocole ; hôte
+  inconnu signalé par un seul message
 - **Architecture à plugins** (#107) : `Host` générique sans champ codé en dur
   par protocole, `PluginRegistry`/`BatchPluginRegistry` avec autoload et
   injection de contexte (`bind_app()`), menu contextuel peuplé dynamiquement

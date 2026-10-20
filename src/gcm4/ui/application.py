@@ -173,6 +173,7 @@ class Gcm4Application(Adw.Application):
             fenetre = MainWindow(self, self.args.config_dir)
             fenetre.present()
             fenetre.restaurer_onglets()  # une fois, à la création (#246)
+            fenetre.ouvrir_hotes(getattr(self.args, "hotes", []))  # gcm4 groupe/nom (#154)
             mises_a_jour.au_demarrage(fenetre)  # jamais sans accord (#245)
         else:
             fenetre.present()
