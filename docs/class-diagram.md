@@ -6,7 +6,7 @@
 > toute modification manuelle sera écrasée. Le régénérer avec `make class-diagram` ;
 > le job Qualité échoue s'il est périmé (`--check`).
 
-82 modules · 154 classes · 277 fonctions publiques de module.
+85 modules · 155 classes · 282 fonctions publiques de module.
 
 Conventions : `+` public, `-` privé (préfixe `_`) ; `list~str~` = `list[str]` ; `<<module>>`
 regroupe les fonctions publiques d'un module ; `<<…>>` sur une classe liste `dataclass` et les
@@ -40,7 +40,7 @@ flowchart TD
     g4 -->|1| g3
     g5 -->|2| g0
     g5 -->|2| g3
-    g5 -->|37| g4
+    g5 -->|43| g4
 ```
 
 ## Cœur (sans GTK)
@@ -1277,6 +1277,7 @@ classDiagram
 | `gcm4.core.preferences` | `src/gcm4/core/preferences.py` | Préférences générales de la base GTK4, sans GTK (lot 5a, #147). |
 | `gcm4.core.registre` | `src/gcm4/core/registre.py` | Découverte des plugins et isolation de leurs erreurs (#150), sans GTK. |
 | `gcm4.core.replies` | `src/gcm4/core/replies.py` | Groupes repliés de ``[window] collapsed-folders``, au format GTK3 (#139). |
+| `gcm4.core.sauvegarde` | `src/gcm4/core/sauvegarde.py` | Aperçu d'import, bilan et copie de la configuration, sans GTK (#153). |
 | `gcm4.core.theme` | `src/gcm4/core/theme.py` | Thème de la base GTK4, sans GTK (#135). |
 | `gcm4.core.validation` | `src/gcm4/core/validation.py` | Validation d'un hôte avant enregistrement, sans GTK (#144). |
 | `gcm4.core.window_state` | `src/gcm4/core/window_state.py` | Géométrie de la fenêtre principale, dans ``gcm4.conf`` (#134). |
@@ -1640,6 +1641,13 @@ classDiagram
         +lire_replies(valeur, groupes) set~str~
         +ecrire_replies(replies, groupes) str
     }
+    class mod_gcm4_core_sauvegarde {
+        <<module>>
+        +apercu(store, hosts, conflit) Rapport
+        +bilan(fichier, rapport) str
+        +avec_mots_de_passe(hosts) bool
+        +enregistrer_sous(config_dir, dossier) list~Path~
+    }
     class mod_gcm4_core_theme {
         <<module>>
         +load_theme(config_file) str
@@ -1681,6 +1689,8 @@ classDiagram
 | `gcm4.ui.contexte` | `src/gcm4/ui/contexte.py` | Contexte injecté dans chaque plugin (contrat v1, ``docs/plugins.md``, #151). |
 | `gcm4.ui.couleurs` | `src/gcm4/ui/couleurs.py` | Conversions de couleurs partagées par l'interface GTK4. |
 | `gcm4.ui.dialogues` | `src/gcm4/ui/dialogues.py` | Dialogues de confirmation et de saisie, compatibles libadwaita 1.2 à 1.9. |
+| `gcm4.ui.echange` | `src/gcm4/ui/echange.py` | Import/export des hôtes et copie de la configuration depuis le menu Fichier (#153). |
+| `gcm4.ui.fichiers` | `src/gcm4/ui/fichiers.py` | Choix d'un fichier ou d'un dossier, asynchrone, GTK 4.0 à 4.22 (#153). |
 | `gcm4.ui.host_dialog` | `src/gcm4/ui/host_dialog.py` | Dialogue d'hôte : champs communs, création, modification, duplication (#145). |
 | `gcm4.ui.host_tree` | `src/gcm4/ui/host_tree.py` | Arbre des groupes et des hôtes du panneau gauche (#139). |
 | `gcm4.ui.main_window` | `src/gcm4/ui/main_window.py` | Fenêtre principale de gcm4 (#134). |
@@ -1714,6 +1724,18 @@ classDiagram
     class mod_gcm4_ui_dialogues {
         <<module>>
         +creer(parent, titre, corps, reponses, defaut, fermeture, rappel, extra) Adw.Dialog Adw.MessageDialog
+    }
+    class Echange {
+        +config_dir() str
+        +exporter_vers(chemin, mots_de_passe) bool
+        +ouvrir_apercu(chemin) bool
+        +conflit_choisi() Conflit
+        +appliquer_import(chemin, hotes, conflit) bool
+        +enregistrer_sous(dossier) bool
+    }
+    class mod_gcm4_ui_fichiers {
+        <<module>>
+        +choisir(parent, mode, titre, rappel, nom) Gtk.FileDialog Gtk.FileChooserNative
     }
     class HostDialog {
         <<Adw.Window>>
