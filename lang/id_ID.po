@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-20 20:59+0000\n"
+"POT-Creation-Date: 2026-10-20 21:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2705,6 +2705,16 @@ msgstr "Tidak dapat membaca berkas konfigurasi %s: %s"
 #, python-format
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Tidak dapat menulis berkas konfigurasi %s: %s"
+
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Hosts exported: {count} ({file})"
+msgstr "Host yang diekspor: {count} ({file})"
+
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
+msgstr "Impor {file}: ditambah {added}, diganti {replaced}, diubah nama {renamed}, diabaikan {ignored}, grup baru {groups}"
 
 #: src/gcm4/core/exchange.py
 #, python-format

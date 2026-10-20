@@ -126,6 +126,7 @@ files = [
     "src/gcm4/core/replies.py",
     "src/gcm4/core/chiffrement.py",
     "src/gcm4/core/deplacements.py",
+    "src/gcm4/core/echange_cli.py",
     "src/gcm4/core/exchange.py",
     "src/gcm4/core/cli.py",
     "src/gcm4/core/config.py",
