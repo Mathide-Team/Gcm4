@@ -110,8 +110,12 @@ def _ouvrir(tmp_path, monkeypatch, pomper, candidats=None):
 
 @pytest.fixture
 def app_fixture(tmp_path, monkeypatch, pomper):
-    """Application ouverte sur la fixture aes, plugins découverts normalement (aucun en CI)."""
-    app, dossier = _ouvrir(tmp_path, monkeypatch, pomper)
+    """Application ouverte sur la fixture aes, sans aucun plugin (mode zéro plugin).
+
+    Candidats vides plutôt que la découverte normale : le dépôt fournit des
+    plugins en mode source (``plugins/telnet``), ces tests n'en dépendent pas.
+    """
+    app, dossier = _ouvrir(tmp_path, monkeypatch, pomper, [])
     yield app, dossier
     for fenetre in list(app.get_windows()):
         fenetre.destroy()

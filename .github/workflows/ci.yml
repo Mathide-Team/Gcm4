@@ -213,11 +213,13 @@ jobs:
 
     steps:
       - name: GTK4, introspection, Xvfb
+        # VTE GTK4 et expect : plugin telnet (tests/gtk4/test_plugin_telnet.py,
+        # vrai terminal et vrai script expect, telnet simulé).
         run: |
           DEBIAN_FRONTEND=noninteractive apt-get update -qq
           DEBIAN_FRONTEND=noninteractive apt-get install -y -qq \
             git ca-certificates python3 python3-venv python3-gi \
-            gir1.2-gtk-4.0 gir1.2-adw-1 xvfb xauth
+            gir1.2-gtk-4.0 gir1.2-adw-1 gir1.2-vte-3.91 expect xvfb xauth
 
       - name: Checkout du dépôt
         uses: actions/checkout@v7
