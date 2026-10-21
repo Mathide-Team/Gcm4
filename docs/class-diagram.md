@@ -6,7 +6,7 @@
 > toute modification manuelle sera écrasée. Le régénérer avec `make class-diagram` ;
 > le job Qualité échoue s'il est périmé (`--check`).
 
-80 modules · 151 classes · 264 fonctions publiques de module.
+81 modules · 154 classes · 274 fonctions publiques de module.
 
 Conventions : `+` public, `-` privé (préfixe `_`) ; `list~str~` = `list[str]` ; `<<module>>`
 regroupe les fonctions publiques d'un module ; `<<…>>` sur une classe liste `dataclass` et les
@@ -1264,6 +1264,7 @@ classDiagram
 | `gcm4.core.cli` | `src/gcm4/core/cli.py` | Ligne de commande de gcm4, analysée avant toute initialisation GTK (#133). |
 | `gcm4.core.config` | `src/gcm4/core/config.py` | Lecture et écriture de ``~/.config/gcm4/gcm4.conf`` sans GTK (#137). |
 | `gcm4.core.deplacements` | `src/gcm4/core/deplacements.py` | Glisser-déposer dans l'arbre, validé sans GTK (#141). |
+| `gcm4.core.exchange` | `src/gcm4/core/exchange.py` | Import et export des hôtes en CSV et JSON, sans GTK (#152). |
 | `gcm4.core.host_tree` | `src/gcm4/core/host_tree.py` | Arbre des groupes et des hôtes, sans GTK (#139). |
 | `gcm4.core.i18n` | `src/gcm4/core/i18n.py` | Traductions de gcm4 : domaine gettext ``gcm-lang`` de l'application GTK3. |
 | `gcm4.core.menu` | `src/gcm4/core/menu.py` | Menu principal et raccourcis de gcm4, décrits sans GTK (#134). |
@@ -1373,6 +1374,33 @@ classDiagram
         +est_groupe() bool
         +chemin() str
         +nouveau_chemin() str
+    }
+    class mod_gcm4_core_exchange {
+        <<module>>
+        +hote_vers_dict(host, mots_de_passe) dict~str, Any~
+        +ecrire_json(hosts, mots_de_passe) str
+        +ecrire_csv(hosts, mots_de_passe) str
+        +dict_vers_hote(ligne, ou, vides_absents) Host
+        +lire_json(texte) list~Host~
+        +lire_csv(texte) list~Host~
+        +importer(store, hosts, conflit) Rapport
+        +lire_fichier(chemin) list~Host~
+        +importer_fichier(store, chemin, conflit) Rapport
+        +exporter_fichier(chemin, hosts, mots_de_passe) int
+    }
+    class ExchangeError {
+        <<Exception>>
+    }
+    class Conflit {
+        <<str, enum.Enum>>
+    }
+    class Rapport {
+        <<dataclass>>
+        +list~str~ ajoutes
+        +list~str~ remplaces
+        +list~tuple~str, str~~ renommes
+        +list~str~ ignores
+        +list~str~ groupes_crees
     }
     class mod_gcm4_core_host_tree {
         <<module>>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-19 12:52+0000\n"
+"POT-Creation-Date: 2026-10-20 20:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2705,6 +2705,55 @@ msgstr "Kan ikke læse konfigurationsfilen %s: %s"
 #, python-format
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Kan ikke skrive konfigurationsfilen %s: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: the host name is missing"
+msgstr "%s: værtsnavnet mangler"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: too many cells"
+msgstr "%s: for mange celler"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: unexpected value for %s"
+msgstr "%s: uventet værdi for %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "The file %s is not a valid host export: %s"
+msgstr "Filen %s er ikke en gyldig eksport af værter: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to read the file %s: %s"
+msgstr "Kan ikke læse filen %s: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to write the file %s: %s"
+msgstr "Kan ikke skrive filen %s: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "entry %d"
+msgstr "post %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "line %d"
+msgstr "linje %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "the column %s is missing"
+msgstr "kolonnen %s mangler"
+
+#: src/gcm4/core/exchange.py
+msgid "unsupported format or version"
+msgstr "formatet eller versionen understøttes ikke"
 
 #: src/gcm4/core/menu.py
 msgid "Search"

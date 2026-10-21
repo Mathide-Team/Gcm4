@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-19 12:52+0000\n"
+"POT-Creation-Date: 2026-10-20 20:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2705,6 +2705,55 @@ msgstr "কনফিগারেশন ফাইল %s পড়া যায়
 #, python-format
 msgid "Unable to write the configuration file %s: %s"
 msgstr "কনফিগারেশন ফাইল %s লেখা যায়নি: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: the host name is missing"
+msgstr "%s: হোস্টের নাম নেই"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: too many cells"
+msgstr "%s: অতিরিক্ত ঘর"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: unexpected value for %s"
+msgstr "%s: %s-এর জন্য অপ্রত্যাশিত মান"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "The file %s is not a valid host export: %s"
+msgstr "%s ফাইলটি বৈধ হোস্ট এক্সপোর্ট নয়: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to read the file %s: %s"
+msgstr "%s ফাইলটি পড়া যায়নি: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to write the file %s: %s"
+msgstr "%s ফাইলটি লেখা যায়নি: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "entry %d"
+msgstr "এন্ট্রি %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "line %d"
+msgstr "লাইন %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "the column %s is missing"
+msgstr "%s কলামটি নেই"
+
+#: src/gcm4/core/exchange.py
+msgid "unsupported format or version"
+msgstr "অসমর্থিত ফরম্যাট বা সংস্করণ"
 
 #: src/gcm4/core/menu.py
 msgid "Search"

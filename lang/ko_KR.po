@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-19 12:52+0000\n"
+"POT-Creation-Date: 2026-10-20 20:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2705,6 +2705,55 @@ msgstr "설정 파일 %s을(를) 읽을 수 없습니다: %s"
 #, python-format
 msgid "Unable to write the configuration file %s: %s"
 msgstr "설정 파일 %s에 쓸 수 없습니다: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: the host name is missing"
+msgstr "%s: 호스트 이름이 없습니다"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: too many cells"
+msgstr "%s: 셀이 너무 많습니다"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: unexpected value for %s"
+msgstr "%s: %s에 예상하지 못한 값"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "The file %s is not a valid host export: %s"
+msgstr "%s 파일은 올바른 호스트 내보내기가 아닙니다: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to read the file %s: %s"
+msgstr "%s 파일을 읽을 수 없습니다: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to write the file %s: %s"
+msgstr "%s 파일을 쓸 수 없습니다: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "entry %d"
+msgstr "항목 %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "line %d"
+msgstr "%d번째 줄"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "the column %s is missing"
+msgstr "%s 열이 없습니다"
+
+#: src/gcm4/core/exchange.py
+msgid "unsupported format or version"
+msgstr "지원하지 않는 형식 또는 버전"
 
 #: src/gcm4/core/menu.py
 msgid "Search"

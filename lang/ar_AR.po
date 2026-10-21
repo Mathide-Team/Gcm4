@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-19 12:52+0000\n"
+"POT-Creation-Date: 2026-10-20 20:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2705,6 +2705,55 @@ msgstr "تعذّرت قراءة ملف الإعدادات %s: %s"
 #, python-format
 msgid "Unable to write the configuration file %s: %s"
 msgstr "تعذّرت كتابة ملف الإعدادات %s: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: the host name is missing"
+msgstr "%s: اسم المضيف مفقود"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: too many cells"
+msgstr "%s: خلايا أكثر من اللازم"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: unexpected value for %s"
+msgstr "%s: قيمة غير متوقعة لـ %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "The file %s is not a valid host export: %s"
+msgstr "الملف %s ليس تصديرًا صالحًا للمضيفين: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to read the file %s: %s"
+msgstr "تعذّرت قراءة الملف %s: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to write the file %s: %s"
+msgstr "تعذّرت كتابة الملف %s: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "entry %d"
+msgstr "الإدخال %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "line %d"
+msgstr "السطر %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "the column %s is missing"
+msgstr "العمود %s مفقود"
+
+#: src/gcm4/core/exchange.py
+msgid "unsupported format or version"
+msgstr "تنسيق أو إصدار غير مدعوم"
 
 #: src/gcm4/core/menu.py
 msgid "Search"
