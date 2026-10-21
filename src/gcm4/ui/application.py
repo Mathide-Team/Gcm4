@@ -10,12 +10,14 @@ from gi.repository import Adw, Gdk, Gio, GLib, Gtk
 from loguru import logger
 
 from gcm4 import __version__
-from gcm4.core import chemins, menu, theme
+from gcm4.core import chemins, theme
 from gcm4.core import preferences as prefs_core
+from gcm4.core import raccourcis as raccourcis_core
 from gcm4.core.config import ConfigError
 from gcm4.core.i18n import _
 from gcm4.core.registre import Candidat, PluginRegistry, decouvrir
 from gcm4.ui import mises_a_jour
+from gcm4.ui import raccourcis as raccourcis_ui
 from gcm4.ui.contexte import ContexteApplication
 from gcm4.ui.main_window import MainWindow
 from gcm4.ui.preferences import PreferencesWindow, css_police
@@ -75,8 +77,7 @@ class Gcm4Application(Adw.Application):
             action = Gio.SimpleAction.new(nom, None)
             action.connect("activate", rappel)
             self.add_action(action)
-        for action, touches in menu.RACCOURCIS.items():
-            self.set_accels_for_action(action, list(touches))
+        self.appliquer_raccourcis()
         mode = theme.load_theme(self.config_file)
         action_theme = Gio.SimpleAction.new_stateful(
             "theme", GLib.VariantType.new("s"), GLib.Variant("s", mode)
@@ -88,6 +89,22 @@ class Gcm4Application(Adw.Application):
         # Aucun plugin ne peut empêcher le démarrage : ses erreurs restent dans le registre.
         self.registre = decouvrir(lambda nom: ContexteApplication(self, nom), self._candidats)
         logger.debug("_on_startup: fin")
+
+    def raccourcis_effectifs(self) -> dict[str, tuple[str, ...]]:
+        """Accélérateurs de la fenêtre lus dans ``[shortcuts]`` (#247) ; défaut si absent."""
+        logger.debug("raccourcis_effectifs: entrée")
+        resultat = raccourcis_core.effectifs(
+            raccourcis_core.lire(self.config_file), raccourcis_ui.resoudre
+        )
+        logger.debug("raccourcis_effectifs: {} action(s)", len(resultat))
+        return resultat
+
+    def appliquer_raccourcis(self) -> None:
+        """Pose les accélérateurs effectifs : au démarrage et après chaque modification."""
+        logger.debug("appliquer_raccourcis: entrée")
+        for action, touches in self.raccourcis_effectifs().items():
+            self.set_accels_for_action(action, list(touches))
+        logger.debug("appliquer_raccourcis: fait")
 
     def appliquer_theme(self, mode: str) -> None:
         """Applique ``mode`` (``system`` / ``light`` / ``dark``) à chaud avec ``Adw.StyleManager``."""

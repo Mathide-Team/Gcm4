@@ -6,7 +6,7 @@
 > toute modification manuelle sera écrasée. Le régénérer avec `make class-diagram` ;
 > le job Qualité échoue s'il est périmé (`--check`).
 
-81 modules · 151 classes · 267 fonctions publiques de module.
+83 modules · 153 classes · 281 fonctions publiques de module.
 
 Conventions : `+` public, `-` privé (préfixe `_`) ; `list~str~` = `list[str]` ; `<<module>>`
 regroupe les fonctions publiques d'un module ; `<<…>>` sur une classe liste `dataclass` et les
@@ -40,7 +40,7 @@ flowchart TD
     g4 -->|1| g3
     g5 -->|2| g0
     g5 -->|2| g3
-    g5 -->|38| g4
+    g5 -->|44| g4
 ```
 
 ## Cœur (sans GTK)
@@ -1274,6 +1274,7 @@ classDiagram
 | `gcm4.core.onglets` | `src/gcm4/core/onglets.py` | Onglets ouverts, enregistrés à la fermeture et restaurés au démarrage (#246). |
 | `gcm4.core.plugins` | `src/gcm4/core/plugins.py` | Contrat v1 entre la base gcm4 et ses plugins de connexion (#149), sans GTK. |
 | `gcm4.core.preferences` | `src/gcm4/core/preferences.py` | Préférences générales de la base GTK4, sans GTK (lot 5a, #147). |
+| `gcm4.core.raccourcis` | `src/gcm4/core/raccourcis.py` | Raccourcis de la fenêtre principale modifiables : section ``[shortcuts]`` (#247), sans GTK. |
 | `gcm4.core.registre` | `src/gcm4/core/registre.py` | Découverte des plugins et isolation de leurs erreurs (#150), sans GTK. |
 | `gcm4.core.replies` | `src/gcm4/core/replies.py` | Groupes repliés de ``[window] collapsed-folders``, au format GTK3 (#139). |
 | `gcm4.core.theme` | `src/gcm4/core/theme.py` | Thème de la base GTK4, sans GTK (#135). |
@@ -1552,7 +1553,8 @@ classDiagram
         +load_preferences(config_file) Preferences
         +save_preference(config_file, nom, valeur) None
         +niveau_journal(debug_cli, preference, environ) tuple~str, str~
-        +raccourcis() list~Raccourci~
+        +libelles_actions() dict~str, str~
+        +raccourcis(effectifs) list~Raccourci~
     }
     class OptionWconfig {
         <<dataclass>>
@@ -1582,6 +1584,26 @@ classDiagram
         +tuple~str, ...~ touches
         +str libelle
         +str portee
+        +str None action
+    }
+    class mod_gcm4_core_raccourcis {
+        <<module>>
+        +depuis_accelerateur(accelerateur) Combinaison
+        +depuis_gtk3(texte, resoudre) Combinaison
+        +personnalise(section, action) bool
+        +effectifs(section, resoudre) dict~str, tuple~str, ...~~
+        +valeur_a_ecrire(combinaison) str
+        +conflit(combinaison, action, actuels, autres) str None
+        +lire(config_file) dict~str, str~
+        +enregistrer(config_file, action, combinaison) None
+        +reinitialiser(config_file, action) None
+    }
+    class Combinaison {
+        <<dataclass>>
+        +tuple~str, ...~ modificateurs
+        +str touche
+        +gtk3() str
+        +accelerateur() str
     }
     class mod_gcm4_core_registre {
         <<module>>
@@ -1665,6 +1687,7 @@ classDiagram
 | `gcm4.ui.menu_arbre` | `src/gcm4/ui/menu_arbre.py` | Menu contextuel, actions, raccourcis et activation de l'arbre (#142). |
 | `gcm4.ui.mises_a_jour` | `src/gcm4/ui/mises_a_jour.py` | Vérification des mises à jour au démarrage, côté interface (#245). |
 | `gcm4.ui.preferences` | `src/gcm4/ui/preferences.py` | Préférences de la base GTK4 : pages Général et Apparence (lot 5a, #147). |
+| `gcm4.ui.raccourcis` | `src/gcm4/ui/raccourcis.py` | Raccourcis modifiables (#247) : noms de touches GDK, saisie d'une combinaison. |
 
 ```mermaid
 classDiagram
@@ -1674,6 +1697,8 @@ classDiagram
     }
     class Gcm4Application {
         <<Adw.Application>>
+        +raccourcis_effectifs() dict~str, tuple~str, ...~~
+        +appliquer_raccourcis() None
         +appliquer_theme(mode) None
         +appliquer_police_arbre(description) None
         +set_group_colors(couleurs) None
@@ -1758,4 +1783,15 @@ classDiagram
     }
     class PreferencesWindow
     PreferencesWindow <|-- PreferencesWindow
+    class mod_gcm4_ui_raccourcis {
+        <<module>>
+        +nom_touche(keyval) str None
+        +resoudre(nom) str None
+        +depuis_evenement(keyval, etat) tuple~str, Combinaison None~
+        +libelle(combinaison) str
+    }
+    class SaisieRaccourci {
+        +proposer(keyval, etat) bool
+        +repondre(reponse) None
+    }
 ```

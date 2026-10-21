@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-20 22:29+0000\n"
+"POT-Creation-Date: 2026-10-21 06:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -139,7 +139,7 @@ msgstr "Impossibile aprire il file di log in scrittura"
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
 #: src/gcm4/ui/host_dialog.py src/gcm4/ui/main_window.py
-#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: src/gcm4/ui/menu_arbre.py src/gcm4/ui/raccourcis.py utils.py widgets.py
 msgid "Cancel"
 msgstr "Annulla"
 
@@ -3052,8 +3052,16 @@ msgid "Appearance"
 msgstr "Aspetto"
 
 #: src/gcm4/ui/preferences.py
+msgid "Click a shortcut to change it, or press Backspace in the dialog to disable it."
+msgstr "Fai clic su una scorciatoia per modificarla, oppure premi Backspace nella finestra di dialogo per disattivarla."
+
+#: src/gcm4/ui/preferences.py
 msgid "Default log level"
 msgstr "Livello di registro predefinito"
+
+#: src/gcm4/ui/preferences.py src/gcm4/ui/raccourcis.py
+msgid "Disabled"
+msgstr "Disattivata"
 
 #: src/gcm4/ui/preferences.py
 msgid "Error"
@@ -3118,6 +3126,36 @@ msgstr "Usa il carattere di sistema"
 #, python-brace-format
 msgid "Version {version}"
 msgstr "Versione {version}"
+
+#: src/gcm4/ui/raccourcis.py
+#, python-brace-format
+msgid "Already used by “{action}”."
+msgstr "Già usata da «{action}»."
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Press a key combination"
+msgstr "Premi una combinazione di tasti"
+
+#: src/gcm4/ui/raccourcis.py
+#, python-brace-format
+msgid "Press the new shortcut for “{action}”, or Backspace to disable it."
+msgstr "Premi la nuova scorciatoia per «{action}», oppure Backspace per disattivarla."
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Reset to default"
+msgstr "Ripristina predefinita"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Set"
+msgstr "Imposta"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Set Shortcut"
+msgstr "Imposta scorciatoia"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Use Ctrl, Alt or Super with this key."
+msgstr "Usa Ctrl, Alt o Super con questo tasto."
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format
