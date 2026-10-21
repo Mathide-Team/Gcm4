@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-19 12:52+0000\n"
+"POT-Creation-Date: 2026-10-20 20:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2705,6 +2705,55 @@ msgstr "कॉन्फ़िगरेशन फ़ाइल %s पढ़ी न
 #, python-format
 msgid "Unable to write the configuration file %s: %s"
 msgstr "कॉन्फ़िगरेशन फ़ाइल %s लिखी नहीं जा सकी: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: the host name is missing"
+msgstr "%s: होस्ट का नाम नहीं है"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: too many cells"
+msgstr "%s: बहुत अधिक सेल"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: unexpected value for %s"
+msgstr "%s: %s के लिए अनपेक्षित मान"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "The file %s is not a valid host export: %s"
+msgstr "फ़ाइल %s मान्य होस्ट निर्यात नहीं है: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to read the file %s: %s"
+msgstr "फ़ाइल %s पढ़ी नहीं जा सकी: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to write the file %s: %s"
+msgstr "फ़ाइल %s लिखी नहीं जा सकी: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "entry %d"
+msgstr "प्रविष्टि %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "line %d"
+msgstr "पंक्ति %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "the column %s is missing"
+msgstr "कॉलम %s नहीं है"
+
+#: src/gcm4/core/exchange.py
+msgid "unsupported format or version"
+msgstr "असमर्थित प्रारूप या संस्करण"
 
 #: src/gcm4/core/menu.py
 msgid "Search"
