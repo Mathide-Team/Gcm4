@@ -115,8 +115,7 @@ class HostTree(Gtk.Box):
         self.liste = Gtk.ListView(model=self.selection, factory=fabrique)
         self.liste.add_css_class("gcm-arbre")
         self.liste.add_css_class("navigation-sidebar")
-        if rayures:
-            self.liste.add_css_class("gcm-rayures")
+        self.set_rayures(rayures)
         self.liste.update_property([Gtk.AccessibleProperty.LABEL], [_("Hosts")])
         self.defilement = Gtk.ScrolledWindow(
             vexpand=True, hscrollbar_policy=Gtk.PolicyType.NEVER, child=self.liste
@@ -282,6 +281,15 @@ class HostTree(Gtk.Box):
         self.recherche.grab_focus()
         self.recherche.select_region(0, -1)
         logger.debug("focus_recherche: fait")
+
+    def set_rayures(self, rayures: bool) -> None:
+        """Active ou retire l'alternance de fond des lignes (option immédiate, #247)."""
+        logger.debug("set_rayures: {}", rayures)
+        if rayures:
+            self.liste.add_css_class("gcm-rayures")
+        else:
+            self.liste.remove_css_class("gcm-rayures")
+        logger.debug("set_rayures: fait")
 
     # --- sélection -----------------------------------------------------------
 

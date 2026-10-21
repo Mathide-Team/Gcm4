@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-20 21:19+0000\n"
+"POT-Creation-Date: 2026-10-20 22:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -151,7 +151,7 @@ msgstr "Güncellemeleri kontrol et"
 msgid "Choose Group Color"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Circle around tabs when going to the previous/next tab"
 msgstr "Önceki/sonraki sekmeye giderken sekmeler arasında döngü yap"
 
@@ -159,11 +159,13 @@ msgstr "Önceki/sonraki sekmeye giderken sekmeler arasında döngü yap"
 msgid "Clear selection"
 msgstr "Seçimi temizle"
 
-#: gnome_connection_manager.py ssh_config_editor.py ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/main_window.py ssh_config_editor.py
+#: ssh_key_manager_dialog.py
 msgid "Close"
 msgstr "Kapat"
 
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py widgets.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/main_window.py widgets.py
 msgid "Close console"
 msgstr "Konsolu kapat"
 
@@ -185,11 +187,11 @@ msgstr "Renkler"
 msgid "Command"
 msgstr "Komut"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on close console"
 msgstr "Konsolu kapatırken onayla"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on close console with middle click"
 msgstr "Orta tıklamayla konsolu kapatırken onayla"
 
@@ -255,7 +257,7 @@ msgstr "Delete:"
 msgid "Description"
 msgstr "Açıklama"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Disable alternating stripes in hosts window"
 msgstr "Sunucu penceresinde alternatif şeritleri devre dışı bırak"
 
@@ -275,7 +277,7 @@ msgstr "Gruptaki tüm sunucuları kaldırmak istediğinizden emin misiniz"
 msgid "Do you really want to remove host"
 msgstr "Sunucuyu kaldırmak istediğinizden emin misiniz"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Dynamic title"
 msgstr "Dinamik başlık"
 
@@ -738,7 +740,7 @@ msgstr ""
 msgid "Tip: use #P=password to send a password without keeping it in clear text in the command history"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Title"
 msgstr "Başlık"
 
@@ -2754,6 +2756,14 @@ msgstr "%s sütunu eksik"
 #: src/gcm4/core/exchange.py
 msgid "unsupported format or version"
 msgstr "desteklenmeyen biçim veya sürüm"
+
+#: src/gcm4/core/menu.py
+msgid "Next tab"
+msgstr "Sonraki sekme"
+
+#: src/gcm4/core/menu.py
+msgid "Previous tab"
+msgstr "Önceki sekme"
 
 #: src/gcm4/core/menu.py
 msgid "Search"

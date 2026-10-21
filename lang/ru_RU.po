@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-20 21:19+0000\n"
+"POT-Creation-Date: 2026-10-20 22:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -151,7 +151,7 @@ msgstr "Проверять обновления"
 msgid "Choose Group Color"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Circle around tabs when going to the previous/next tab"
 msgstr "Циклически переключаться между вкладками при переходе вперёд/назад"
 
@@ -159,11 +159,13 @@ msgstr "Циклически переключаться между вкладк�
 msgid "Clear selection"
 msgstr "Очистить выделение"
 
-#: gnome_connection_manager.py ssh_config_editor.py ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/main_window.py ssh_config_editor.py
+#: ssh_key_manager_dialog.py
 msgid "Close"
 msgstr "Закрыть"
 
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py widgets.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/main_window.py widgets.py
 msgid "Close console"
 msgstr "Закрыть консоль"
 
@@ -185,11 +187,11 @@ msgstr "Цвета"
 msgid "Command"
 msgstr "Команда"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on close console"
 msgstr "Подтверждать при закрытии консоли"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on close console with middle click"
 msgstr "Подтверждать при закрытии консоли средней кнопкой мыши"
 
@@ -255,7 +257,7 @@ msgstr "Delete:"
 msgid "Description"
 msgstr "Описание"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Disable alternating stripes in hosts window"
 msgstr "Отключить чередующиеся полосы в окне хостов"
 
@@ -275,7 +277,7 @@ msgstr "Вы действительно хотите удалить все хо�
 msgid "Do you really want to remove host"
 msgstr "Вы действительно хотите удалить хост"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Dynamic title"
 msgstr "Динамический заголовок"
 
@@ -738,7 +740,7 @@ msgstr ""
 msgid "Tip: use #P=password to send a password without keeping it in clear text in the command history"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Title"
 msgstr "Заголовок"
 
@@ -2754,6 +2756,14 @@ msgstr "отсутствует столбец %s"
 #: src/gcm4/core/exchange.py
 msgid "unsupported format or version"
 msgstr "неподдерживаемый формат или версия"
+
+#: src/gcm4/core/menu.py
+msgid "Next tab"
+msgstr "Следующая вкладка"
+
+#: src/gcm4/core/menu.py
+msgid "Previous tab"
+msgstr "Предыдущая вкладка"
 
 #: src/gcm4/core/menu.py
 msgid "Search"

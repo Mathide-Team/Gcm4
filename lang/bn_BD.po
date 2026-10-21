@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-20 21:19+0000\n"
+"POT-Creation-Date: 2026-10-20 22:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -151,7 +151,7 @@ msgstr "আপডেট পরীক্ষা করুন"
 msgid "Choose Group Color"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Circle around tabs when going to the previous/next tab"
 msgstr "পূর্ববর্তী/পরবর্তী ট্যাবে যাওয়ার সময় ট্যাবের মধ্যে চক্রাকারে ঘুরুন"
 
@@ -159,11 +159,13 @@ msgstr "পূর্ববর্তী/পরবর্তী ট্যাবে 
 msgid "Clear selection"
 msgstr "নির্বাচন পরিষ্কার করুন"
 
-#: gnome_connection_manager.py ssh_config_editor.py ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/main_window.py ssh_config_editor.py
+#: ssh_key_manager_dialog.py
 msgid "Close"
 msgstr "বন্ধ করুন"
 
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py widgets.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/main_window.py widgets.py
 msgid "Close console"
 msgstr "কনসোল বন্ধ করুন"
 
@@ -185,11 +187,11 @@ msgstr "রঙ"
 msgid "Command"
 msgstr "কমান্ড"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on close console"
 msgstr "কনসোল বন্ধ করার সময় নিশ্চিত করুন"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on close console with middle click"
 msgstr "মধ্য-ক্লিকে কনসোল বন্ধ করার সময় নিশ্চিত করুন"
 
@@ -255,7 +257,7 @@ msgstr "Delete:"
 msgid "Description"
 msgstr "বিবরণ"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Disable alternating stripes in hosts window"
 msgstr "হোস্ট উইন্ডোতে অল্টারনেটিং স্ট্রাইপ নিষ্ক্রিয় করুন"
 
@@ -275,7 +277,7 @@ msgstr "আপনি কি সত্যিই গ্রুপের সমস�
 msgid "Do you really want to remove host"
 msgstr "আপনি কি সত্যিই হোস্ট অপসারণ করতে চান"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Dynamic title"
 msgstr "ডায়নামিক শিরোনাম"
 
@@ -738,7 +740,7 @@ msgstr ""
 msgid "Tip: use #P=password to send a password without keeping it in clear text in the command history"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Title"
 msgstr "শিরোনাম"
 
@@ -2754,6 +2756,14 @@ msgstr "%s কলামটি নেই"
 #: src/gcm4/core/exchange.py
 msgid "unsupported format or version"
 msgstr "অসমর্থিত ফরম্যাট বা সংস্করণ"
+
+#: src/gcm4/core/menu.py
+msgid "Next tab"
+msgstr "পরবর্তী ট্যাব"
+
+#: src/gcm4/core/menu.py
+msgid "Previous tab"
+msgstr "পূর্ববর্তী ট্যাব"
 
 #: src/gcm4/core/menu.py
 msgid "Search"
