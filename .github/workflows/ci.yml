@@ -275,6 +275,10 @@ jobs:
     runs-on: ${{ fromJSON(vars.RUNS_ON_GTK4 || '"ubuntu-latest"') }}
     container:
       image: debian:12
+    # Le sh de Debian 12 (dash 0.5.12) ne connaît pas « set -o pipefail ».
+    defaults:
+      run:
+        shell: bash
 
     steps:
       - name: Paquets Debian 12 (GTK 4.8, libadwaita 1.2, python3-gi)
