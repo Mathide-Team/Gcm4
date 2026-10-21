@@ -83,7 +83,7 @@ def application(tmp_path):
 FIXTURE_AES = Path(__file__).resolve().parents[1] / "data" / "config" / "aes"
 
 
-def _ouvrir(tmp_path, monkeypatch, pomper, candidats=None):
+def _ouvrir(tmp_path, monkeypatch, pomper, candidats=None, hotes=()):
     """Application sur une copie de tests/data/config/aes (utilisateur « utilisateur »)."""
     # Imports différés : ce module est chargé même sans GTK 4.
     from gi.repository import Gio
@@ -98,7 +98,7 @@ def _ouvrir(tmp_path, monkeypatch, pomper, candidats=None):
     shutil.copytree(FIXTURE_AES, dossier)
     chemins.preparer(str(dossier))  # fixture GTK3 -> gcm4.conf / .gcm4.key (#99)
     app = Gcm4Application(
-        argparse.Namespace(config_dir=str(dossier), debug=False, hotes=[]),
+        argparse.Namespace(config_dir=str(dossier), debug=False, hotes=list(hotes)),
         flags=Gio.ApplicationFlags.NON_UNIQUE,
         candidats=candidats,
     )

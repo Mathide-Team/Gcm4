@@ -56,6 +56,7 @@ nav:
   - Guide utilisateur:
       - Documentation utilisateur: guide/utilisateur.md
       - Fichier de configuration: configuration.md
+      - Import et export des hôtes: echange-hotes.md
       - Langue de l'interface: i18n.md
       - Journaux et mode debug: journalisation.md
   - Développement:

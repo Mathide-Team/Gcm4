@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-19 12:52+0000\n"
+"POT-Creation-Date: 2026-10-20 22:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -151,7 +151,7 @@ msgstr "업데이트 확인"
 msgid "Choose Group Color"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Circle around tabs when going to the previous/next tab"
 msgstr "이전/다음 탭으로 이동할 때 탭을 순환"
 
@@ -159,11 +159,13 @@ msgstr "이전/다음 탭으로 이동할 때 탭을 순환"
 msgid "Clear selection"
 msgstr "선택 해제"
 
-#: gnome_connection_manager.py ssh_config_editor.py ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/main_window.py ssh_config_editor.py
+#: ssh_key_manager_dialog.py
 msgid "Close"
 msgstr "닫기"
 
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py widgets.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/main_window.py widgets.py
 msgid "Close console"
 msgstr "콘솔 닫기"
 
@@ -185,11 +187,11 @@ msgstr "색상"
 msgid "Command"
 msgstr "명령"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on close console"
 msgstr "콘솔을 닫을 때 확인"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on close console with middle click"
 msgstr "마우스 가운데 클릭으로 콘솔을 닫을 때 확인"
 
@@ -255,7 +257,7 @@ msgstr "삭제:"
 msgid "Description"
 msgstr "설명"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Disable alternating stripes in hosts window"
 msgstr "호스트 창의 줄무늬 교차 표시 비활성화"
 
@@ -275,7 +277,7 @@ msgstr "정말로 그룹의 모든 호스트를 제거하시겠습니까"
 msgid "Do you really want to remove host"
 msgstr "정말로 호스트를 제거하시겠습니까"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Dynamic title"
 msgstr "동적 제목"
 
@@ -738,7 +740,7 @@ msgstr ""
 msgid "Tip: use #P=password to send a password without keeping it in clear text in the command history"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Title"
 msgstr "제목"
 
@@ -2706,6 +2708,63 @@ msgstr "설정 파일 %s을(를) 읽을 수 없습니다: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "설정 파일 %s에 쓸 수 없습니다: %s"
 
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: the host name is missing"
+msgstr "%s: 호스트 이름이 없습니다"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: too many cells"
+msgstr "%s: 셀이 너무 많습니다"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: unexpected value for %s"
+msgstr "%s: %s에 예상하지 못한 값"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "The file %s is not a valid host export: %s"
+msgstr "%s 파일은 올바른 호스트 내보내기가 아닙니다: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to read the file %s: %s"
+msgstr "%s 파일을 읽을 수 없습니다: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to write the file %s: %s"
+msgstr "%s 파일을 쓸 수 없습니다: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "entry %d"
+msgstr "항목 %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "line %d"
+msgstr "%d번째 줄"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "the column %s is missing"
+msgstr "%s 열이 없습니다"
+
+#: src/gcm4/core/exchange.py
+msgid "unsupported format or version"
+msgstr "지원하지 않는 형식 또는 버전"
+
+#: src/gcm4/core/menu.py
+msgid "Next tab"
+msgstr "다음 탭"
+
+#: src/gcm4/core/menu.py
+msgid "Previous tab"
+msgstr "이전 탭"
+
 #: src/gcm4/core/menu.py
 msgid "Search"
 msgstr "검색"
@@ -2930,6 +2989,11 @@ msgstr "설정을 불러오지 못했습니다"
 #: src/gcm4/ui/main_window.py
 msgid "Home"
 msgstr "홈"
+
+#: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Host not found: {hosts}"
+msgstr "호스트를 찾을 수 없음: {hosts}"
 
 #: src/gcm4/ui/main_window.py
 msgid "Hosts and groups will appear in the left panel."

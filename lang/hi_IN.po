@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-19 12:52+0000\n"
+"POT-Creation-Date: 2026-10-20 22:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -151,7 +151,7 @@ msgstr "अपडेट जांचें"
 msgid "Choose Group Color"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Circle around tabs when going to the previous/next tab"
 msgstr "पिछले/अगले टैब पर जाते समय टैब के बीच चक्र करें"
 
@@ -159,11 +159,13 @@ msgstr "पिछले/अगले टैब पर जाते समय ट
 msgid "Clear selection"
 msgstr "चयन साफ़ करें"
 
-#: gnome_connection_manager.py ssh_config_editor.py ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/main_window.py ssh_config_editor.py
+#: ssh_key_manager_dialog.py
 msgid "Close"
 msgstr "बंद करें"
 
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py widgets.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/main_window.py widgets.py
 msgid "Close console"
 msgstr "कंसोल बंद करें"
 
@@ -185,11 +187,11 @@ msgstr "रंग"
 msgid "Command"
 msgstr "कमांड"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on close console"
 msgstr "कंसोल बंद करने पर पुष्टि करें"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on close console with middle click"
 msgstr "मध्य-क्लिक से कंसोल बंद करने पर पुष्टि करें"
 
@@ -255,7 +257,7 @@ msgstr "डिलीट:"
 msgid "Description"
 msgstr "विवरण"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Disable alternating stripes in hosts window"
 msgstr "होस्ट विंडो में वैकल्पिक स्ट्राइप्स अक्षम करें"
 
@@ -275,7 +277,7 @@ msgstr "क्या आप वास्तव में समूह में 
 msgid "Do you really want to remove host"
 msgstr "क्या आप वास्तव में होस्ट को हटाना चाहते हैं"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Dynamic title"
 msgstr "डायनामिक शीर्षक"
 
@@ -738,7 +740,7 @@ msgstr ""
 msgid "Tip: use #P=password to send a password without keeping it in clear text in the command history"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Title"
 msgstr "शीर्षक"
 
@@ -2706,6 +2708,63 @@ msgstr "कॉन्फ़िगरेशन फ़ाइल %s पढ़ी न
 msgid "Unable to write the configuration file %s: %s"
 msgstr "कॉन्फ़िगरेशन फ़ाइल %s लिखी नहीं जा सकी: %s"
 
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: the host name is missing"
+msgstr "%s: होस्ट का नाम नहीं है"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: too many cells"
+msgstr "%s: बहुत अधिक सेल"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: unexpected value for %s"
+msgstr "%s: %s के लिए अनपेक्षित मान"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "The file %s is not a valid host export: %s"
+msgstr "फ़ाइल %s मान्य होस्ट निर्यात नहीं है: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to read the file %s: %s"
+msgstr "फ़ाइल %s पढ़ी नहीं जा सकी: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to write the file %s: %s"
+msgstr "फ़ाइल %s लिखी नहीं जा सकी: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "entry %d"
+msgstr "प्रविष्टि %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "line %d"
+msgstr "पंक्ति %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "the column %s is missing"
+msgstr "कॉलम %s नहीं है"
+
+#: src/gcm4/core/exchange.py
+msgid "unsupported format or version"
+msgstr "असमर्थित प्रारूप या संस्करण"
+
+#: src/gcm4/core/menu.py
+msgid "Next tab"
+msgstr "अगला टैब"
+
+#: src/gcm4/core/menu.py
+msgid "Previous tab"
+msgstr "पिछला टैब"
+
 #: src/gcm4/core/menu.py
 msgid "Search"
 msgstr "खोजें"
@@ -2930,6 +2989,11 @@ msgstr "कॉन्फ़िगरेशन लोड नहीं हुआ"
 #: src/gcm4/ui/main_window.py
 msgid "Home"
 msgstr "होम"
+
+#: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Host not found: {hosts}"
+msgstr "होस्ट नहीं मिला: {hosts}"
 
 #: src/gcm4/ui/main_window.py
 msgid "Hosts and groups will appear in the left panel."
