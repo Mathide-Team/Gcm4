@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-19 12:52+0000\n"
+"POT-Creation-Date: 2026-10-21 07:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,70 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: data/io.github.MathildeDec.gcm4.desktop
+msgid "Connection Manager"
+msgstr "接続マネージャー"
+
+#: data/io.github.MathildeDec.gcm4.desktop
+#: data/io.github.MathildeDec.gcm4.metainfo.xml gnome_connection_manager.py
+msgid "Gnome Connection Manager"
+msgstr "Gnome Connection Manager"
+
+#: data/io.github.MathildeDec.gcm4.desktop
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Organize your hosts and open their connections in tabs"
+msgstr "ホストを整理し、その接続をタブで開きます"
+
+#: data/io.github.MathildeDec.gcm4.desktop
+msgid "connection;remote;host;session;terminal;gcm4;"
+msgstr "接続;リモート;ホスト;セッション;端末;ターミナル;gcm4;"
+
+#: data/io.github.MathildeDec.gcm4.desktop
+msgid "gcm4 (debug mode)"
+msgstr "gcm4 (デバッグモード)"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Connection protocols provided by plugins"
+msgstr "接続プロトコルは拡張機能が提供"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml gnome_connection_manager.py
+#: src/gcm4/ui/host_dialog.py
+msgid "Edit Host"
+msgstr "ホストを編集"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Gnome Connection Manager keeps your hosts in groups and opens each connection in a tab of a single window."
+msgstr "Gnome Connection Manager はホストをグループにまとめ、各接続を 1 つのウィンドウのタブで開きます。"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Groups and hosts in a searchable tree, with colors and drag and drop"
+msgstr "検索できるツリーでグループとホストを管理、色分けとドラッグ＆ドロップに対応"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Groups and hosts in the main window"
+msgstr "メインウィンドウのグループとホスト"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Host passwords stored encrypted"
+msgstr "ホストのパスワードを暗号化して保存"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Last release of the GTK3 application; the GTK4 base is not released yet."
+msgstr "GTK3 アプリケーションの最終リリースです。GTK4 ベースはまだリリースされていません。"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Open tabs restored at the next start"
+msgstr "開いていたタブを次回起動時に復元"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml gnome_connection_manager.py
+#: src/gcm4/core/menu.py src/gcm4/ui/preferences.py
+msgid "Settings"
+msgstr "設定"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "The base application provides no protocol by itself: connections need the corresponding plugin."
+msgstr "基本アプリケーションはそれ自体ではプロトコルを提供しません。接続には対応する拡張機能が必要です。"
 
 #: gnome_connection_manager.py
 msgid "+ Add"
@@ -284,10 +348,6 @@ msgstr "動的なタイトル"
 msgid "Edit"
 msgstr "編集"
 
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
-msgid "Edit Host"
-msgstr "ホストを編集"
-
 #: gnome_connection_manager.py
 msgid "Enable Logging"
 msgstr "ロギングを有効にする"
@@ -375,10 +435,6 @@ msgstr ""
 #: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "General"
 msgstr "一般"
-
-#: gnome_connection_manager.py
-msgid "Gnome Connection Manager"
-msgstr "Gnome Connection Manager"
 
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
@@ -671,10 +727,6 @@ msgstr "サーバーリストが上書きされます。続行しますか？"
 #| msgid "_Servers"
 msgid "Servers"
 msgstr "_サーバー"
-
-#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
-msgid "Settings"
-msgstr "設定"
 
 #: gnome_connection_manager.py
 #, python-brace-format

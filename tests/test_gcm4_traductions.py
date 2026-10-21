@@ -1,4 +1,6 @@
-"""Chaque texte de src/gcm4 est traduit dans toutes les langues (décision du 12/10/2026).
+"""Chaque texte de gcm4 est traduit dans toutes les langues (décision du 12/10/2026).
+
+Textes de src/gcm4, du lanceur et des métadonnées AppStream de data/ (#274).
 
 L'outillage n'insère jamais de traduction (``scripts/i18n-update.sh``) ;
 les textes de la base GTK4 sont traduits à la main, dans le commit qui les
@@ -29,11 +31,14 @@ def _entrees(chemin: Path) -> dict[str, tuple[str, bool]]:
 
 
 def _msgids_gcm4() -> list[str]:
-    """Msgids du modèle dont une référence est dans src/gcm4/."""
+    """Msgids du modèle dont une référence est dans src/gcm4/ ou data/."""
     ids = []
     for bloc in (LANG / "messages.pot").read_text(encoding="utf-8").split("\n\n"):
         lignes = bloc.splitlines()
-        if any(ligne.startswith("#:") and "src/gcm4/" in ligne for ligne in lignes):
+        if any(
+            ligne.startswith("#:") and ("src/gcm4/" in ligne or "data/" in ligne)
+            for ligne in lignes
+        ):
             ids += [ligne[6:] for ligne in lignes if ligne.startswith("msgid ")]
     return ids
 
@@ -41,11 +46,14 @@ def _msgids_gcm4() -> list[str]:
 def test_des_textes_gcm4_existent():
     """Garde-fou : le filtre trouve bien les textes de la base GTK4."""
     assert '"Welcome to Gnome Connection Manager"' in _msgids_gcm4()
+    # Lanceur et AppStream (#274).
+    assert '"connection;remote;host;session;terminal;gcm4;"' in _msgids_gcm4()
+    assert '"Host passwords stored encrypted"' in _msgids_gcm4()
 
 
 @pytest.mark.parametrize("po", sorted(LANG.glob("*.po")), ids=lambda p: p.stem)
 def test_textes_gcm4_traduits(po):
-    """Aucun texte de src/gcm4 vide ou fuzzy dans cette langue."""
+    """Aucun texte de src/gcm4 ou data/ vide ou fuzzy dans cette langue."""
     entrees = _entrees(po)
     manquants = [
         m for m in _msgids_gcm4() if entrees.get(m, ('""', False))[0] == '""' or entrees[m][1]

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-19 12:52+0000\n"
+"POT-Creation-Date: 2026-10-21 07:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,70 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: data/io.github.MathildeDec.gcm4.desktop
+msgid "Connection Manager"
+msgstr "连接管理器"
+
+#: data/io.github.MathildeDec.gcm4.desktop
+#: data/io.github.MathildeDec.gcm4.metainfo.xml gnome_connection_manager.py
+msgid "Gnome Connection Manager"
+msgstr "Gnome Connection Manager"
+
+#: data/io.github.MathildeDec.gcm4.desktop
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Organize your hosts and open their connections in tabs"
+msgstr "整理您的主机，并在标签页中打开它们的连接"
+
+#: data/io.github.MathildeDec.gcm4.desktop
+msgid "connection;remote;host;session;terminal;gcm4;"
+msgstr "连接;远程;主机;会话;终端;gcm4;"
+
+#: data/io.github.MathildeDec.gcm4.desktop
+msgid "gcm4 (debug mode)"
+msgstr "gcm4（调试模式）"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Connection protocols provided by plugins"
+msgstr "连接协议由扩展提供"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml gnome_connection_manager.py
+#: src/gcm4/ui/host_dialog.py
+msgid "Edit Host"
+msgstr "编辑主机"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Gnome Connection Manager keeps your hosts in groups and opens each connection in a tab of a single window."
+msgstr "Gnome Connection Manager 将您的主机按分组保存，并在同一窗口的标签页中打开每个连接。"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Groups and hosts in a searchable tree, with colors and drag and drop"
+msgstr "可搜索的分组和主机树，支持颜色和拖放"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Groups and hosts in the main window"
+msgstr "主窗口中的分组和主机"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Host passwords stored encrypted"
+msgstr "主机密码加密保存"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Last release of the GTK3 application; the GTK4 base is not released yet."
+msgstr "GTK3 应用的最后一个版本；GTK4 基础版尚未发布。"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Open tabs restored at the next start"
+msgstr "下次启动时恢复打开的标签页"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml gnome_connection_manager.py
+#: src/gcm4/core/menu.py src/gcm4/ui/preferences.py
+msgid "Settings"
+msgstr "设置"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "The base application provides no protocol by itself: connections need the corresponding plugin."
+msgstr "基础应用本身不提供任何协议：连接需要相应的扩展。"
 
 #: gnome_connection_manager.py
 msgid "+ Add"
@@ -284,10 +348,6 @@ msgstr "动态标题"
 msgid "Edit"
 msgstr "编辑"
 
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
-msgid "Edit Host"
-msgstr "编辑主机"
-
 #: gnome_connection_manager.py
 msgid "Enable Logging"
 msgstr "启用日志记录"
@@ -375,10 +435,6 @@ msgstr ""
 #: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "General"
 msgstr "通用"
-
-#: gnome_connection_manager.py
-msgid "Gnome Connection Manager"
-msgstr "Gnome Connection Manager"
 
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
@@ -671,10 +727,6 @@ msgstr "服务器列表将被覆盖，是否继续？"
 #| msgid "_Servers"
 msgid "Servers"
 msgstr "_服务器"
-
-#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
-msgid "Settings"
-msgstr "设置"
 
 #: gnome_connection_manager.py
 #, python-brace-format

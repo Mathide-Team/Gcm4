@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-19 12:52+0000\n"
+"POT-Creation-Date: 2026-10-21 07:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,70 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: data/io.github.MathildeDec.gcm4.desktop
+msgid "Connection Manager"
+msgstr "ตัวจัดการการเชื่อมต่อ"
+
+#: data/io.github.MathildeDec.gcm4.desktop
+#: data/io.github.MathildeDec.gcm4.metainfo.xml gnome_connection_manager.py
+msgid "Gnome Connection Manager"
+msgstr "Gnome Connection Manager"
+
+#: data/io.github.MathildeDec.gcm4.desktop
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Organize your hosts and open their connections in tabs"
+msgstr "จัดระเบียบโฮสต์และเปิดการเชื่อมต่อของโฮสต์ในแท็บ"
+
+#: data/io.github.MathildeDec.gcm4.desktop
+msgid "connection;remote;host;session;terminal;gcm4;"
+msgstr "การเชื่อมต่อ;ระยะไกล;โฮสต์;เซสชัน;เทอร์มินัล;gcm4;"
+
+#: data/io.github.MathildeDec.gcm4.desktop
+msgid "gcm4 (debug mode)"
+msgstr "gcm4 (โหมดดีบัก)"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Connection protocols provided by plugins"
+msgstr "โพรโทคอลการเชื่อมต่อมาจากส่วนขยาย"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml gnome_connection_manager.py
+#: src/gcm4/ui/host_dialog.py
+msgid "Edit Host"
+msgstr "แก้ไขโฮสต์"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Gnome Connection Manager keeps your hosts in groups and opens each connection in a tab of a single window."
+msgstr "Gnome Connection Manager เก็บโฮสต์ของคุณไว้ในกลุ่ม และเปิดการเชื่อมต่อแต่ละรายการในแท็บของหน้าต่างเดียว"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Groups and hosts in a searchable tree, with colors and drag and drop"
+msgstr "กลุ่มและโฮสต์ในแผนผังที่ค้นหาได้ พร้อมสีและการลากและวาง"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Groups and hosts in the main window"
+msgstr "กลุ่มและโฮสต์ในหน้าต่างหลัก"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Host passwords stored encrypted"
+msgstr "รหัสผ่านของโฮสต์ถูกจัดเก็บแบบเข้ารหัส"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Last release of the GTK3 application; the GTK4 base is not released yet."
+msgstr "รุ่นล่าสุดของแอปพลิเคชัน GTK3 ฐาน GTK4 ยังไม่ได้เผยแพร่"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Open tabs restored at the next start"
+msgstr "กู้คืนแท็บที่เปิดอยู่เมื่อเริ่มโปรแกรมครั้งถัดไป"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml gnome_connection_manager.py
+#: src/gcm4/core/menu.py src/gcm4/ui/preferences.py
+msgid "Settings"
+msgstr "การตั้งค่า"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "The base application provides no protocol by itself: connections need the corresponding plugin."
+msgstr "แอปพลิเคชันพื้นฐานไม่มีโพรโทคอลใดในตัว: การเชื่อมต่อต้องใช้ส่วนขยายที่เกี่ยวข้อง"
 
 #: gnome_connection_manager.py
 msgid "+ Add"
@@ -284,10 +348,6 @@ msgstr "ชื่อแบบไดนามิก"
 msgid "Edit"
 msgstr "แก้ไข"
 
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
-msgid "Edit Host"
-msgstr "แก้ไขโฮสต์"
-
 #: gnome_connection_manager.py
 msgid "Enable Logging"
 msgstr "เปิดใช้งานการบันทึก"
@@ -375,10 +435,6 @@ msgstr ""
 #: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "General"
 msgstr "ทั่วไป"
-
-#: gnome_connection_manager.py
-msgid "Gnome Connection Manager"
-msgstr "Gnome Connection Manager"
 
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
@@ -671,10 +727,6 @@ msgstr "รายการเซิร์ฟเวอร์จะถูกเข
 #| msgid "_Servers"
 msgid "Servers"
 msgstr "เ_ซิร์ฟเวอร์"
-
-#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
-msgid "Settings"
-msgstr "การตั้งค่า"
 
 #: gnome_connection_manager.py
 #, python-brace-format

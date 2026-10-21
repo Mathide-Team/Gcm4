@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-19 12:52+0000\n"
+"POT-Creation-Date: 2026-10-21 07:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,70 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+
+#: data/io.github.MathildeDec.gcm4.desktop
+msgid "Connection Manager"
+msgstr "Менеджер підключень"
+
+#: data/io.github.MathildeDec.gcm4.desktop
+#: data/io.github.MathildeDec.gcm4.metainfo.xml gnome_connection_manager.py
+msgid "Gnome Connection Manager"
+msgstr "Gnome Connection Manager"
+
+#: data/io.github.MathildeDec.gcm4.desktop
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Organize your hosts and open their connections in tabs"
+msgstr "Упорядковуйте хости та відкривайте їхні підключення у вкладках"
+
+#: data/io.github.MathildeDec.gcm4.desktop
+msgid "connection;remote;host;session;terminal;gcm4;"
+msgstr "підключення;з'єднання;віддалений;хост;сеанс;термінал;gcm4;"
+
+#: data/io.github.MathildeDec.gcm4.desktop
+msgid "gcm4 (debug mode)"
+msgstr "gcm4 (режим налагодження)"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Connection protocols provided by plugins"
+msgstr "Протоколи підключення надаються розширеннями"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml gnome_connection_manager.py
+#: src/gcm4/ui/host_dialog.py
+msgid "Edit Host"
+msgstr "Редагувати хост"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Gnome Connection Manager keeps your hosts in groups and opens each connection in a tab of a single window."
+msgstr "Gnome Connection Manager зберігає ваші хости в групах і відкриває кожне підключення у вкладці одного вікна."
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Groups and hosts in a searchable tree, with colors and drag and drop"
+msgstr "Групи та хости в дереві з пошуком, кольорами та перетягуванням"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Groups and hosts in the main window"
+msgstr "Групи та хости в головному вікні"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Host passwords stored encrypted"
+msgstr "Паролі хостів зберігаються в зашифрованому вигляді"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Last release of the GTK3 application; the GTK4 base is not released yet."
+msgstr "Останній випуск програми GTK3; базу GTK4 ще не випущено."
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Open tabs restored at the next start"
+msgstr "Відкриті вкладки відновлюються під час наступного запуску"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml gnome_connection_manager.py
+#: src/gcm4/core/menu.py src/gcm4/ui/preferences.py
+msgid "Settings"
+msgstr "Налаштування"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "The base application provides no protocol by itself: connections need the corresponding plugin."
+msgstr "Базова програма сама не надає жодного протоколу: для підключень потрібне відповідне розширення."
 
 #: gnome_connection_manager.py
 msgid "+ Add"
@@ -284,10 +348,6 @@ msgstr "Динамічний заголовок"
 msgid "Edit"
 msgstr "Редагувати"
 
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
-msgid "Edit Host"
-msgstr "Редагувати хост"
-
 #: gnome_connection_manager.py
 msgid "Enable Logging"
 msgstr "Увімкнути журналювання"
@@ -375,10 +435,6 @@ msgstr ""
 #: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "General"
 msgstr "Загальні"
-
-#: gnome_connection_manager.py
-msgid "Gnome Connection Manager"
-msgstr "Gnome Connection Manager"
 
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
@@ -671,10 +727,6 @@ msgstr "Список серверів буде перезаписано, про�
 #| msgid "_Servers"
 msgid "Servers"
 msgstr "_Сервери"
-
-#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
-msgid "Settings"
-msgstr "Налаштування"
 
 #: gnome_connection_manager.py
 #, python-brace-format

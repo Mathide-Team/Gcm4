@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-19 12:52+0000\n"
+"POT-Creation-Date: 2026-10-21 07:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,70 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2);\n"
+
+#: data/io.github.MathildeDec.gcm4.desktop
+msgid "Connection Manager"
+msgstr "Manager de conexiuni"
+
+#: data/io.github.MathildeDec.gcm4.desktop
+#: data/io.github.MathildeDec.gcm4.metainfo.xml gnome_connection_manager.py
+msgid "Gnome Connection Manager"
+msgstr "Gnome Connection Manager"
+
+#: data/io.github.MathildeDec.gcm4.desktop
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Organize your hosts and open their connections in tabs"
+msgstr "Organizați-vă hosturile și deschideți-le conexiunile în file"
+
+#: data/io.github.MathildeDec.gcm4.desktop
+msgid "connection;remote;host;session;terminal;gcm4;"
+msgstr "conexiune;la distanță;host;sesiune;terminal;gcm4;"
+
+#: data/io.github.MathildeDec.gcm4.desktop
+msgid "gcm4 (debug mode)"
+msgstr "gcm4 (mod depanare)"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Connection protocols provided by plugins"
+msgstr "Protocoalele de conexiune sunt furnizate de extensii"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml gnome_connection_manager.py
+#: src/gcm4/ui/host_dialog.py
+msgid "Edit Host"
+msgstr "Editează hostul"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Gnome Connection Manager keeps your hosts in groups and opens each connection in a tab of a single window."
+msgstr "Gnome Connection Manager păstrează hosturile în grupuri și deschide fiecare conexiune într-o filă a unei singure ferestre."
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Groups and hosts in a searchable tree, with colors and drag and drop"
+msgstr "Grupuri și hosturi într-un arbore cu căutare, culori și tragere și plasare"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Groups and hosts in the main window"
+msgstr "Grupuri și hosturi în fereastra principală"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Host passwords stored encrypted"
+msgstr "Parolele hosturilor sunt stocate criptat"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Last release of the GTK3 application; the GTK4 base is not released yet."
+msgstr "Ultima versiune a aplicației GTK3; baza GTK4 nu a fost încă publicată."
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Open tabs restored at the next start"
+msgstr "Filele deschise sunt restaurate la următoarea pornire"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml gnome_connection_manager.py
+#: src/gcm4/core/menu.py src/gcm4/ui/preferences.py
+msgid "Settings"
+msgstr "Setări"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "The base application provides no protocol by itself: connections need the corresponding plugin."
+msgstr "Aplicația de bază nu oferă singură niciun protocol: conexiunile au nevoie de extensia corespunzătoare."
 
 #: gnome_connection_manager.py
 msgid "+ Add"
@@ -284,10 +348,6 @@ msgstr "Titlu dinamic"
 msgid "Edit"
 msgstr "Editare"
 
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
-msgid "Edit Host"
-msgstr "Editează hostul"
-
 #: gnome_connection_manager.py
 msgid "Enable Logging"
 msgstr "Activează jurnalizarea"
@@ -375,10 +435,6 @@ msgstr ""
 #: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "General"
 msgstr "General"
-
-#: gnome_connection_manager.py
-msgid "Gnome Connection Manager"
-msgstr "Gnome Connection Manager"
 
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
@@ -671,10 +727,6 @@ msgstr "Lista de servere va fi suprascrisă, continuați?"
 #| msgid "_Servers"
 msgid "Servers"
 msgstr "_Servere"
-
-#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
-msgid "Settings"
-msgstr "Setări"
 
 #: gnome_connection_manager.py
 #, python-brace-format

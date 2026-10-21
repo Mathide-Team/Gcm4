@@ -171,12 +171,16 @@ class TestCi(unittest.TestCase):
         """ci.yml installe les validateurs et lance scripts/check-desktop.sh."""
         ci = (ROOT / ".github" / "workflows" / "ci.yml").read_text(encoding="utf-8")
         self.assertIn("name: Intégration au bureau", ci)
-        self.assertIn("desktop-file-utils appstream", ci)
+        self.assertIn("desktop-file-utils appstream gettext", ci)
         self.assertIn("run: scripts/check-desktop.sh", ci)
 
     def test_check_desktop_valide_les_trois(self):
         """Le script appelle les deux validateurs et le contrôle des icônes."""
         script = (ROOT / "scripts" / "check-desktop.sh").read_text(encoding="utf-8")
-        self.assertIn('desktop-file-validate "$DESKTOP"', script)
-        self.assertIn('appstreamcli validate --no-net --explain "$METAINFO"', script)
+        self.assertIn('desktop-file-validate "$1"', script)
+        self.assertIn('appstreamcli validate --no-net --explain "$2"', script)
+        self.assertIn('valider "$DESKTOP" "$METAINFO"', script)
+        # Les fichiers traduits installés par les paquets (#274).
+        self.assertIn('i18n-update.sh" --desktop "$FUSION"', script)
+        self.assertIn('valider "$FUSION/$APP_ID.desktop" "$FUSION/$APP_ID.metainfo.xml"', script)
         self.assertIn('generer-icones.sh" --check', script)
