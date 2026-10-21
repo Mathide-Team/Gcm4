@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-19 12:52+0000\n"
+"POT-Creation-Date: 2026-10-20 22:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -151,7 +151,7 @@ msgstr "Se etter oppdateringer"
 msgid "Choose Group Color"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Circle around tabs when going to the previous/next tab"
 msgstr "Gå i sirkel rundt fanene ved forrige/neste fane"
 
@@ -159,11 +159,13 @@ msgstr "Gå i sirkel rundt fanene ved forrige/neste fane"
 msgid "Clear selection"
 msgstr "Tøm utvalg"
 
-#: gnome_connection_manager.py ssh_config_editor.py ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/main_window.py ssh_config_editor.py
+#: ssh_key_manager_dialog.py
 msgid "Close"
 msgstr "Lukk"
 
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py widgets.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/main_window.py widgets.py
 msgid "Close console"
 msgstr "Lukk konsoll"
 
@@ -185,11 +187,11 @@ msgstr "Farger"
 msgid "Command"
 msgstr "Kommando"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on close console"
 msgstr "Bekreft ved lukking av konsoll"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on close console with middle click"
 msgstr "Bekreft ved lukking av konsoll med midterste museknapp"
 
@@ -255,7 +257,7 @@ msgstr "Delete:"
 msgid "Description"
 msgstr "Beskrivelse"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Disable alternating stripes in hosts window"
 msgstr "Deaktiver alternerende striper i vertsvinduet"
 
@@ -275,7 +277,7 @@ msgstr "Vil du virkelig fjerne alle verter i gruppen"
 msgid "Do you really want to remove host"
 msgstr "Vil du virkelig fjerne verten"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Dynamic title"
 msgstr "Dynamisk tittel"
 
@@ -738,7 +740,7 @@ msgstr ""
 msgid "Tip: use #P=password to send a password without keeping it in clear text in the command history"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Title"
 msgstr "Tittel"
 
@@ -2706,6 +2708,63 @@ msgstr "Kan ikke lese konfigurasjonsfilen %s: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Kan ikke skrive konfigurasjonsfilen %s: %s"
 
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: the host name is missing"
+msgstr "%s: vertsnavnet mangler"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: too many cells"
+msgstr "%s: for mange celler"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: unexpected value for %s"
+msgstr "%s: uventet verdi for %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "The file %s is not a valid host export: %s"
+msgstr "Filen %s er ikke en gyldig eksport av verter: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to read the file %s: %s"
+msgstr "Kan ikke lese filen %s: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to write the file %s: %s"
+msgstr "Kan ikke skrive filen %s: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "entry %d"
+msgstr "oppføring %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "line %d"
+msgstr "linje %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "the column %s is missing"
+msgstr "kolonnen %s mangler"
+
+#: src/gcm4/core/exchange.py
+msgid "unsupported format or version"
+msgstr "formatet eller versjonen støttes ikke"
+
+#: src/gcm4/core/menu.py
+msgid "Next tab"
+msgstr "Neste fane"
+
+#: src/gcm4/core/menu.py
+msgid "Previous tab"
+msgstr "Forrige fane"
+
 #: src/gcm4/core/menu.py
 msgid "Search"
 msgstr "Søk"
@@ -2930,6 +2989,11 @@ msgstr "Konfigurasjonen er ikke lastet inn"
 #: src/gcm4/ui/main_window.py
 msgid "Home"
 msgstr "Hjem"
+
+#: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Host not found: {hosts}"
+msgstr "Fant ikke verten: {hosts}"
 
 #: src/gcm4/ui/main_window.py
 msgid "Hosts and groups will appear in the left panel."
