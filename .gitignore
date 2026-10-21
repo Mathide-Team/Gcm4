@@ -29,3 +29,6 @@ site/
 build-deb/_build/
 build-deb/dist/
 build-deb/gcm4_*
+# Paquet .rpm de la base GTK4 (#157)
+build-rpm/_build/
+build-rpm/dist/

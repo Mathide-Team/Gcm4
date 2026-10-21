@@ -29,7 +29,7 @@ FPM_COMMON = -s dir -n $(PKG_NAME) -v $(PKG_VERSION) -C $(TMPINSTALLDIR) \
 	--category net --url $(PKG_URL)
 
 # ── Cibles principales ────────────────────────────────────────────────────────
-.PHONY: all run-gtk4 deb deb-gcm4 smoke-deb rpm opensuse install translate i18n-update i18n-check i18n-report class-diagram ci check-desktop icons test lint validate clean help docs
+.PHONY: all run-gtk4 deb deb-gcm4 smoke-deb rpm rpm-gcm4 smoke-rpm opensuse install translate i18n-update i18n-check i18n-report class-diagram ci check-desktop icons test lint validate clean help docs
 
 all:  test lint deb rpm opensuse translate validate
 
@@ -39,6 +39,8 @@ help:
 	@echo "  make deb      → paquet .deb (Debian/Ubuntu)"
 	@echo "  make deb-gcm4 → paquet .deb de la base GTK4 (build-deb/dist/gcm4_*.deb)"
 	@echo "  make smoke-deb → installe ce paquet (sudo apt) et le vérifie"
+	@echo "  make rpm-gcm4 → paquet .rpm de la base GTK4 (build-rpm/dist/gcm4-*.rpm)"
+	@echo "  make smoke-rpm → vérifie le contenu de ce paquet (rpm -qpl, sans l'installer)"
 	@echo "  make rpm      → paquet .rpm (Fedora/RHEL/CentOS)"
 	@echo "  make opensuse → paquet .rpm (openSUSE — dépendances zypper)"
 	@echo "  make translate → compile tous les .po → .mo"
@@ -135,6 +137,16 @@ deb-gcm4:
 
 smoke-deb:
 	scripts/smoke-test-packages.sh deb $(wildcard build-deb/dist/gcm4_*_all.deb)
+
+# ── Paquet .rpm de la base GTK4 (#157) ───────────────────────────────────────
+# build-rpm/build.sh (rpmbuild, Fedora ou construction croisée avec le paquet
+# rpm de Debian/Ubuntu). smoke-rpm vérifie le contenu sans installer ; sur
+# Fedora, « scripts/smoke-test-packages.sh rpm-dnf » l'installe et le lance.
+rpm-gcm4:
+	build-rpm/build.sh
+
+smoke-rpm:
+	scripts/smoke-test-packages.sh rpm $(wildcard build-rpm/dist/gcm4-*.noarch.rpm)
 
 # ── Paquet .rpm (Fedora / RHEL / CentOS) ─────────────────────────────────────
 rpm:
