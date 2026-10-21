@@ -75,7 +75,11 @@ par `name` :
    ```
 
 2. **mode source** : dossier `plugins/<nom>/` du dépôt gcm4, avec un
-   `gtk4.py` qui expose la classe dans une variable `PLUGIN`.
+   `gtk4.py` qui expose la classe dans une variable `PLUGIN`. Le dossier est
+   importé comme un paquet (`gcm4_plugin_<nom>`, son `__init__.py` est
+   exécuté s'il existe) : `gtk4.py` peut importer ses voisins, par exemple
+   la logique sans GTK de `core.py` avec `from . import core`. Si l'import
+   échoue, rien du dossier ne reste chargé.
 
 Deux plugins de même `name` : le premier trouvé est gardé, l'autre est
 signalé en erreur.
