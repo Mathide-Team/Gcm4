@@ -406,11 +406,14 @@ jobs:
     steps:
       - name: Système propre, comme un poste de travail
         # Les images Fedora n'installent que l'anglais (%_install_langs) ;
-        # un poste de travail installe toutes les langues.
+        # un poste de travail installe toutes les langues. GTK 4 charge
+        # libGLESv2 (libglvnd-gles) et le rendu logiciel de Mesa, présents
+        # sur tout poste Fedora mais pas dans l'image : sans eux, gcm4 avorte
+        # à la première fenêtre (« Couldn't open libGLESv2.so.2 »).
         run: |
           rm -f /etc/rpm/macros.image-language-conf
           dnf install -y -q /usr/bin/xvfb-run /usr/bin/xauth /usr/bin/dbus-run-session \
-            /usr/bin/timeout findutils
+            /usr/bin/timeout findutils libglvnd-gles mesa-dri-drivers
 
       - name: Checkout du dépôt
         uses: actions/checkout@v7
