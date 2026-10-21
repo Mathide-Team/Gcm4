@@ -21,8 +21,9 @@ l'application (`APPLICATION_ID`, `io.github.MathildeDec.gcm4`) :
 
 - `io.github.MathildeDec.gcm4.desktop` : lanceur (`Exec=gcm4`) et action
   « gcm4 (debug mode) » (`gcm4 --debug`). gcm4 est une application à
-  instance unique : si gcm4 tourne déjà, l'action présente la fenêtre
-  existante sans activer le mode debug (#275).
+  instance unique : tant que #275 (PR #277) n'est pas fusionnée, l'action
+  lancée alors que gcm4 tourne déjà présente la fenêtre existante sans
+  activer le mode debug ; ensuite, l'instance en cours passe en DEBUG.
 - `io.github.MathildeDec.gcm4.metainfo.xml` : métadonnées AppStream
   (logithèques). La balise `<release>` suit la version de `pyproject.toml`.
 - `icons/hicolor/<taille>/apps/io.github.MathildeDec.gcm4.png` : 16 à 128
