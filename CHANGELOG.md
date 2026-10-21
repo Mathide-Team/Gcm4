@@ -14,6 +14,11 @@
   commande sont sélectionnés dans l'arbre au démarrage (groupes parents
   dépliés), connectés seulement si un plugin gère leur protocole ; hôte
   inconnu signalé par un seul message
+- **Base GTK4 — import/export CSV et JSON sans GTK** (#152) :
+  `src/gcm4/core/exchange.py`, schéma JSON versionné (`gcm4-hosts`, v1,
+  `docs/echange-hotes.md`), mots de passe exclus sauf demande explicite,
+  conflits ignorer / renommer / remplacer avec rapport, fichier mal formé
+  sans aucune modification de la configuration ; exports GTK3 acceptés
 - **Architecture à plugins** (#107) : `Host` générique sans champ codé en dur
   par protocole, `PluginRegistry`/`BatchPluginRegistry` avec autoload et
   injection de contexte (`bind_app()`), menu contextuel peuplé dynamiquement

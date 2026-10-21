@@ -2706,6 +2706,55 @@ msgstr "%s yapılandırma dosyası okunamıyor: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "%s yapılandırma dosyası yazılamıyor: %s"
 
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: the host name is missing"
+msgstr "%s: ana makine adı eksik"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: too many cells"
+msgstr "%s: hücre sayısı fazla"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: unexpected value for %s"
+msgstr "%s: %s için beklenmeyen değer"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "The file %s is not a valid host export: %s"
+msgstr "%s dosyası geçerli bir ana makine dışa aktarımı değil: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to read the file %s: %s"
+msgstr "%s dosyası okunamıyor: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to write the file %s: %s"
+msgstr "%s dosyası yazılamıyor: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "entry %d"
+msgstr "%d. kayıt"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "line %d"
+msgstr "%d. satır"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "the column %s is missing"
+msgstr "%s sütunu eksik"
+
+#: src/gcm4/core/exchange.py
+msgid "unsupported format or version"
+msgstr "desteklenmeyen biçim veya sürüm"
+
 #: src/gcm4/core/menu.py
 msgid "Search"
 msgstr "Ara"

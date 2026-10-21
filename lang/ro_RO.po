@@ -2706,6 +2706,55 @@ msgstr "Nu se poate citi fișierul de configurare %s: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Nu se poate scrie fișierul de configurare %s: %s"
 
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: the host name is missing"
+msgstr "%s: lipsește numele gazdei"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: too many cells"
+msgstr "%s: prea multe celule"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: unexpected value for %s"
+msgstr "%s: valoare neașteptată pentru %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "The file %s is not a valid host export: %s"
+msgstr "Fișierul %s nu este un export valid de gazde: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to read the file %s: %s"
+msgstr "Fișierul %s nu poate fi citit: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to write the file %s: %s"
+msgstr "Fișierul %s nu poate fi scris: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "entry %d"
+msgstr "intrarea %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "line %d"
+msgstr "linia %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "the column %s is missing"
+msgstr "lipsește coloana %s"
+
+#: src/gcm4/core/exchange.py
+msgid "unsupported format or version"
+msgstr "format sau versiune neacceptate"
+
 #: src/gcm4/core/menu.py
 msgid "Search"
 msgstr "Căutare"

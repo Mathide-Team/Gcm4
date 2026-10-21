@@ -2706,6 +2706,55 @@ msgstr "設定ファイル %s を読み込めません: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "設定ファイル %s に書き込めません: %s"
 
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: the host name is missing"
+msgstr "%s: ホスト名がありません"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: too many cells"
+msgstr "%s: セルが多すぎます"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: unexpected value for %s"
+msgstr "%s: %s の値が不正です"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "The file %s is not a valid host export: %s"
+msgstr "ファイル %s は有効なホストのエクスポートではありません: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to read the file %s: %s"
+msgstr "ファイル %s を読み込めません: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to write the file %s: %s"
+msgstr "ファイル %s に書き込めません: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "entry %d"
+msgstr "エントリ %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "line %d"
+msgstr "%d 行目"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "the column %s is missing"
+msgstr "列 %s がありません"
+
+#: src/gcm4/core/exchange.py
+msgid "unsupported format or version"
+msgstr "サポートされていない形式またはバージョンです"
+
 #: src/gcm4/core/menu.py
 msgid "Search"
 msgstr "検索"

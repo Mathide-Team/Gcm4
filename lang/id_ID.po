@@ -2706,6 +2706,55 @@ msgstr "Tidak dapat membaca berkas konfigurasi %s: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Tidak dapat menulis berkas konfigurasi %s: %s"
 
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: the host name is missing"
+msgstr "%s: nama host tidak ada"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: too many cells"
+msgstr "%s: terlalu banyak sel"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: unexpected value for %s"
+msgstr "%s: nilai tak terduga untuk %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "The file %s is not a valid host export: %s"
+msgstr "Berkas %s bukan ekspor host yang valid: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to read the file %s: %s"
+msgstr "Tidak dapat membaca berkas %s: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to write the file %s: %s"
+msgstr "Tidak dapat menulis berkas %s: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "entry %d"
+msgstr "entri %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "line %d"
+msgstr "baris %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "the column %s is missing"
+msgstr "kolom %s tidak ada"
+
+#: src/gcm4/core/exchange.py
+msgid "unsupported format or version"
+msgstr "format atau versi tidak didukung"
+
 #: src/gcm4/core/menu.py
 msgid "Search"
 msgstr "Cari"
