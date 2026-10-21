@@ -47,6 +47,8 @@ markdown_extensions:
   - toc:
       permalink: true
   - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.snippets:
       base_path: ["."]
       check_paths: true
@@ -54,6 +56,7 @@ markdown_extensions:
 nav:
   - Accueil: index.md
   - Guide utilisateur:
+      - "gcm4 (GTK4) : installation et premiers pas": guide/base-gtk4.md
       - Documentation utilisateur: guide/utilisateur.md
       - Fichier de configuration: configuration.md
       - Langue de l'interface: i18n.md
