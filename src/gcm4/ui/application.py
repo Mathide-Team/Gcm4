@@ -21,9 +21,14 @@ from gcm4.ui.main_window import MainWindow
 from gcm4.ui.preferences import PreferencesWindow, css_police
 
 APPLICATION_ID = "io.github.MathildeDec.gcm4"
-SITE = "https://github.com/Mathide-Team/Gcm4"
+SITE = "https://github.com/Mathilde-Team/Gcm4"
+#: Nom affiché (titre, À propos, lanceur ``data/io.github.MathildeDec.gcm4.desktop``).
+NOM_AFFICHE = "Gnome Connection Manager"
 #: Règles CSS encore utiles de l'ancienne interface (audit dans le fichier).
 STYLE_CSS = os.path.join(os.path.dirname(__file__), "style.css")
+#: Icônes du dépôt (#155), utilisées quand gcm4 tourne depuis les sources ;
+#: une fois installées (#156, #157), le thème hicolor du système les fournit.
+ICONES_DEPOT = os.path.join(os.path.dirname(__file__), "..", "..", "..", "data", "icons")
 DEVELOPPEURS = ["Renzo Bertuzzi L. <kuthulu@gmail.com>", "MathildeDec"]
 
 
@@ -46,6 +51,11 @@ class Gcm4Application(Adw.Application):
                 le plugin démo.
         """
         logger.debug("Gcm4Application.__init__: config_dir={}", args.config_dir)
+        # Avant l'ouverture de l'écran : classe X11 des fenêtres (WM_CLASS) = nom
+        # du fichier .desktop, sinon « python3 » et le bureau ne relie pas la
+        # fenêtre à son lanceur (#155). Sous Wayland, c'est l'application_id.
+        GLib.set_prgname(APPLICATION_ID)
+        GLib.set_application_name(NOM_AFFICHE)
         super().__init__(
             application_id=APPLICATION_ID,
             flags=Gio.ApplicationFlags.HANDLES_COMMAND_LINE if flags is None else flags,
@@ -127,8 +137,24 @@ class Gcm4Application(Adw.Application):
             Gtk.StyleContext.add_provider_for_display(
                 ecran, fournisseur, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
             )
+        self._declarer_icone(ecran)
         self.appliquer_police_arbre(prefs_core.load_preferences(self.config_file).tree_font)
         logger.debug("_charger_css: fait")
+
+    @staticmethod
+    def _declarer_icone(ecran: Gdk.Display) -> None:
+        """Icône des fenêtres : celle du lanceur, ``APPLICATION_ID`` (#155).
+
+        Depuis les sources, le dossier ``data/icons`` du dépôt est ajouté au
+        thème d'icônes pour que l'icône soit trouvée sans installation.
+        """
+        logger.debug("_declarer_icone: entrée")
+        depot = os.path.normpath(ICONES_DEPOT)
+        if os.path.isdir(depot):
+            Gtk.IconTheme.get_for_display(ecran).add_search_path(depot)
+            logger.debug("_declarer_icone: icônes du dépôt {}", depot)
+        Gtk.Window.set_default_icon_name(APPLICATION_ID)
+        logger.debug("_declarer_icone: fait")
 
     @staticmethod
     def _charger(fournisseur: Gtk.CssProvider, css: str) -> None:
@@ -199,8 +225,8 @@ class Gcm4Application(Adw.Application):
         logger.debug("boite_a_propos: entrée")
         classe = getattr(Adw, "AboutDialog", None) or Adw.AboutWindow
         boite = classe(
-            application_name="Gnome Connection Manager",
-            application_icon="gnome-connection-manager",
+            application_name=NOM_AFFICHE,
+            application_icon=APPLICATION_ID,
             version=__version__,
             developers=DEVELOPPEURS,
             copyright="© 2012 Renzo Bertuzzi L.",
