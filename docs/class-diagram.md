@@ -6,7 +6,7 @@
 > toute modification manuelle sera écrasée. Le régénérer avec `make class-diagram` ;
 > le job Qualité échoue s'il est périmé (`--check`).
 
-82 modules · 154 classes · 271 fonctions publiques de module.
+84 modules · 157 classes · 284 fonctions publiques de module.
 
 Conventions : `+` public, `-` privé (préfixe `_`) ; `list~str~` = `list[str]` ; `<<module>>`
 regroupe les fonctions publiques d'un module ; `<<…>>` sur une classe liste `dataclass` et les
@@ -41,7 +41,7 @@ flowchart TD
     g4 -->|1| g3
     g5 -->|2| g0
     g5 -->|2| g3
-    g5 -->|37| g4
+    g5 -->|38| g4
 ```
 
 ## Cœur (sans GTK)
@@ -1289,8 +1289,10 @@ classDiagram
 | `gcm4.core.chemins` | `src/gcm4/core/chemins.py` | Emplacement de la configuration de gcm4 et migration depuis ``~/.gcm`` (#99). |
 | `gcm4.core.chiffrement` | `src/gcm4/core/chiffrement.py` | Mots de passe chiffrés de gcm4.conf, compatibles avec l'application GTK3 (#138). |
 | `gcm4.core.cli` | `src/gcm4/core/cli.py` | Ligne de commande de gcm4, analysée avant toute initialisation GTK (#133). |
+| `gcm4.core.comportement_onglets` | `src/gcm4/core/comportement_onglets.py` | Onglets et titre de la fenêtre : options de base reprises de Wconfig (#247), sans GTK. |
 | `gcm4.core.config` | `src/gcm4/core/config.py` | Lecture et écriture de ``~/.config/gcm4/gcm4.conf`` sans GTK (#137). |
 | `gcm4.core.deplacements` | `src/gcm4/core/deplacements.py` | Glisser-déposer dans l'arbre, validé sans GTK (#141). |
+| `gcm4.core.exchange` | `src/gcm4/core/exchange.py` | Import et export des hôtes en CSV et JSON, sans GTK (#152). |
 | `gcm4.core.host_tree` | `src/gcm4/core/host_tree.py` | Arbre des groupes et des hôtes, sans GTK (#139). |
 | `gcm4.core.i18n` | `src/gcm4/core/i18n.py` | Traductions de gcm4 : domaine gettext ``gcm-lang`` de l'application GTK3. |
 | `gcm4.core.menu` | `src/gcm4/core/menu.py` | Menu principal et raccourcis de gcm4, décrits sans GTK (#134). |
@@ -1339,6 +1341,12 @@ classDiagram
         <<module>>
         +build_parser() argparse.ArgumentParser
         +parse_args(argv, home, environ) argparse.Namespace
+    }
+    class mod_gcm4_core_comportement_onglets {
+        <<module>>
+        +voisin(courant, total, sens, boucler) int
+        +titre_application(app_title) str
+        +titre_fenetre(app_title, dynamique, onglet) str
     }
     class mod_gcm4_core_config {
         <<module>>
@@ -1400,6 +1408,33 @@ classDiagram
         +est_groupe() bool
         +chemin() str
         +nouveau_chemin() str
+    }
+    class mod_gcm4_core_exchange {
+        <<module>>
+        +hote_vers_dict(host, mots_de_passe) dict~str, Any~
+        +ecrire_json(hosts, mots_de_passe) str
+        +ecrire_csv(hosts, mots_de_passe) str
+        +dict_vers_hote(ligne, ou, vides_absents) Host
+        +lire_json(texte) list~Host~
+        +lire_csv(texte) list~Host~
+        +importer(store, hosts, conflit) Rapport
+        +lire_fichier(chemin) list~Host~
+        +importer_fichier(store, chemin, conflit) Rapport
+        +exporter_fichier(chemin, hosts, mots_de_passe) int
+    }
+    class ExchangeError {
+        <<Exception>>
+    }
+    class Conflit {
+        <<str, enum.Enum>>
+    }
+    class Rapport {
+        <<dataclass>>
+        +list~str~ ajoutes
+        +list~str~ remplaces
+        +list~tuple~str, str~~ renommes
+        +list~str~ ignores
+        +list~str~ groupes_crees
     }
     class mod_gcm4_core_host_tree {
         <<module>>
@@ -1590,6 +1625,12 @@ classDiagram
         +bool show_panel
         +str tree_font
         +str log_level
+        +bool confirm_close_tab
+        +bool confirm_close_tab_middle
+        +bool cycle_tabs
+        +bool disable_hosts_stripes
+        +bool update_title
+        +str app_title
     }
     class Raccourci {
         <<dataclass>>
@@ -1722,8 +1763,10 @@ classDiagram
         +recharger() None
         +chercher(texte) None
         +focus_recherche() None
+        +set_rayures(rayures) None
         +chemin_selectionne() str None
         +selectionner(chemin) bool
+        +reveler(chemin) bool
         +deposer(source, cible) bool
         +appliquer_couleurs() None
         +lignes_visibles() list~tuple~int, str~~
@@ -1738,9 +1781,14 @@ classDiagram
         +enregistrer_config() None
         +notifier(message) None
         +ajouter_onglet(titre, contenu, session) int
+        +demander_fermeture(contenu, milieu) None
+        +aller_onglet_voisin(sens) None
+        +maj_titre(page) None
+        +appliquer_options() None
         +fermer_onglet(contenu) None
         +onglets_ouverts() list~str~
         +restaurer_onglets() None
+        +ouvrir_hotes(specs) None
         +etat_courant() window_state.WindowState
     }
     class MenuArbre {

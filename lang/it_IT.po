@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-21 16:15+0000\n"
+"POT-Creation-Date: 2026-10-21 20:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -151,7 +151,7 @@ msgstr "Controlla aggiornamenti"
 msgid "Choose Group Color"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Circle around tabs when going to the previous/next tab"
 msgstr "Ciclo tra le schede quando si passa alla scheda precedente/successiva"
 
@@ -159,11 +159,13 @@ msgstr "Ciclo tra le schede quando si passa alla scheda precedente/successiva"
 msgid "Clear selection"
 msgstr "Annulla selezione"
 
-#: gnome_connection_manager.py ssh_config_editor.py ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/main_window.py ssh_config_editor.py
+#: ssh_key_manager_dialog.py
 msgid "Close"
 msgstr "Chiudi"
 
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py widgets.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/main_window.py widgets.py
 msgid "Close console"
 msgstr "Chiudi console"
 
@@ -185,11 +187,11 @@ msgstr "Colori"
 msgid "Command"
 msgstr "Comando"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on close console"
 msgstr "Conferma alla chiusura della console"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on close console with middle click"
 msgstr "Conferma alla chiusura della console con il clic centrale"
 
@@ -255,7 +257,7 @@ msgstr "Canc:"
 msgid "Description"
 msgstr "Descrizione"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Disable alternating stripes in hosts window"
 msgstr "Disattiva le righe alternate nella finestra degli host"
 
@@ -275,7 +277,7 @@ msgstr "Vuoi davvero rimuovere tutti gli host nel gruppo"
 msgid "Do you really want to remove host"
 msgstr "Vuoi davvero rimuovere l'host"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Dynamic title"
 msgstr "Titolo dinamico"
 
@@ -738,7 +740,7 @@ msgstr ""
 msgid "Tip: use #P=password to send a password without keeping it in clear text in the command history"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Title"
 msgstr "Titolo"
 
@@ -2711,6 +2713,63 @@ msgstr "Impossibile leggere il file di configurazione %s: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Impossibile scrivere il file di configurazione %s: %s"
 
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: the host name is missing"
+msgstr "%s: manca il nome dell'host"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: too many cells"
+msgstr "%s: troppe celle"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: unexpected value for %s"
+msgstr "%s: valore inatteso per %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "The file %s is not a valid host export: %s"
+msgstr "Il file %s non è un'esportazione di host valida: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to read the file %s: %s"
+msgstr "Impossibile leggere il file %s: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to write the file %s: %s"
+msgstr "Impossibile scrivere il file %s: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "entry %d"
+msgstr "voce %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "line %d"
+msgstr "riga %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "the column %s is missing"
+msgstr "manca la colonna %s"
+
+#: src/gcm4/core/exchange.py
+msgid "unsupported format or version"
+msgstr "formato o versione non supportati"
+
+#: src/gcm4/core/menu.py
+msgid "Next tab"
+msgstr "Scheda successiva"
+
+#: src/gcm4/core/menu.py
+msgid "Previous tab"
+msgstr "Scheda precedente"
+
 #: src/gcm4/core/menu.py
 msgid "Search"
 msgstr "Cerca"
@@ -2935,6 +2994,11 @@ msgstr "Configurazione non caricata"
 #: src/gcm4/ui/main_window.py
 msgid "Home"
 msgstr "Home"
+
+#: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Host not found: {hosts}"
+msgstr "Host non trovato: {hosts}"
 
 #: src/gcm4/ui/main_window.py
 msgid "Hosts and groups will appear in the left panel."

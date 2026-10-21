@@ -7,15 +7,20 @@ n'annule pas le changement en cours de session ; il est signalé par un
 toast et journalisé.
 
 - **Général** : confirmation à la fermeture, vérification des mises à jour,
-  restauration des onglets ouverts (stockée ; utilisée par les plugins) ;
+  restauration des onglets ouverts ; onglets (#247) : confirmation avant de
+  fermer une console (bouton, clic du milieu), bouclage onglet suivant /
+  précédent ;
 - **Apparence** : thème (action ``app.theme``, même état que le menu
   Affichage), panneau visible (action ``win.toggle-panel``, comme F9),
-  police de l'arbre des hôtes (CSS sur la classe ``gcm-arbre``).
+  police de l'arbre des hôtes (CSS sur la classe ``gcm-arbre``) ; groupe
+  Fenêtre principale (#247) : rayures de l'arbre, titre dynamique et titre
+  de la fenêtre, appliqués tout de suite (``MainWindow.appliquer_options``).
 
 Les options ``[options]`` sont aussi mises à jour dans ``Config.options``
 de la fenêtre principale : sinon ``save_config`` (modification de l'arbre)
 réécrirait l'ancienne valeur. Sans configuration chargée (fichier
-illisible), la page Général est inactive : rien n'est jamais écrit.
+illisible), la page Général et le groupe Fenêtre principale sont inactifs :
+rien n'est jamais écrit.
 
 Lot 5b (#148) :
 
@@ -32,7 +37,9 @@ Lot 5b (#148) :
   exception du plugin est journalisée et affichée, sans fermer la fenêtre.
 
 Compatibilité : ``Gtk.FontDialogButton`` (GTK ≥ 4.10), sinon ``Gtk.FontButton`` ;
-``Gtk.FileLauncher`` (GTK ≥ 4.10), sinon ``Gio.AppInfo.launch_default_for_uri``.
+``Gtk.FileLauncher`` (GTK ≥ 4.10), sinon ``Gio.AppInfo.launch_default_for_uri`` ;
+chemin des journaux sélectionnable avec libadwaita ≥ 1.3 seulement
+(``set_subtitle_selectable``), le bouton « Ouvrir » reste disponible en 1.2.
 """
 
 from __future__ import annotations
@@ -43,6 +50,7 @@ from gi.repository import Adw, Gio, GLib, Gtk, Pango
 from loguru import logger
 
 import logging_config
+from gcm4.core import comportement_onglets
 from gcm4.core import preferences as prefs_core
 from gcm4.core.config import ConfigError
 from gcm4.core.i18n import N_, _
@@ -56,6 +64,16 @@ OPTIONS_GENERALES = (
     ("confirm_exit", N_("Confirm on exit")),
     ("check_updates", N_("Check updates")),
     ("restore_open_tabs", N_("Restore open tabs from the previous session on startup")),
+    # Onglets (#247), libellés de Wconfig (GTK3).
+    ("confirm_close_tab", N_("Confirm on close console")),
+    ("confirm_close_tab_middle", N_("Confirm on close console with middle click")),
+    ("cycle_tabs", N_("Circle around tabs when going to the previous/next tab")),
+)
+
+#: Options de la page Apparence, groupe « Fenêtre principale » (#247).
+OPTIONS_FENETRE = (
+    ("disable_hosts_stripes", N_("Disable alternating stripes in hosts window")),
+    ("update_title", N_("Dynamic title")),
 )
 
 
@@ -208,22 +226,28 @@ class PreferencesWindow(Adw.PreferencesWindow):
         page = Adw.PreferencesPage(title=_("General"), icon_name="preferences-system-symbolic")
         groupe = Adw.PreferencesGroup()
         self.interrupteurs: dict[str, Gtk.Switch] = {}
-        config = getattr(self.fenetre, "config", None)
         for nom, libelle in OPTIONS_GENERALES:
-            interrupteur = Gtk.Switch(valign=Gtk.Align.CENTER)
-            valeur = getattr(config.options, nom) if config is not None else None
-            interrupteur.set_active(getattr(self.valeurs, nom) if valeur is None else bool(valeur))
-            ligne = Adw.ActionRow(title=_(libelle))
-            ligne.add_suffix(interrupteur)
-            ligne.set_activatable_widget(interrupteur)
-            interrupteur.connect("notify::active", self._on_option, nom)
-            groupe.add(ligne)
-            self.interrupteurs[nom] = interrupteur
-        if config is None:  # configuration illisible : jamais d'écriture
+            self._ligne_option(groupe, nom, libelle)
+        if getattr(self.fenetre, "config", None) is None:  # illisible : jamais d'écriture
             groupe.set_sensitive(False)
         page.add(groupe)
         logger.debug("_page_generale: fait")
         return page
+
+    def _ligne_option(self, groupe: Adw.PreferencesGroup, nom: str, libelle: str) -> None:
+        """Interrupteur d'une option ``[options]`` (``AppConfig``), ajouté à ``groupe``."""
+        logger.debug("_ligne_option: {}", nom)
+        config = getattr(self.fenetre, "config", None)
+        interrupteur = Gtk.Switch(valign=Gtk.Align.CENTER)
+        valeur = getattr(config.options, nom) if config is not None else None
+        interrupteur.set_active(getattr(self.valeurs, nom) if valeur is None else bool(valeur))
+        ligne = Adw.ActionRow(title=_(libelle))
+        ligne.add_suffix(interrupteur)
+        ligne.set_activatable_widget(interrupteur)
+        interrupteur.connect("notify::active", self._on_option, nom)
+        groupe.add(ligne)
+        self.interrupteurs[nom] = interrupteur
+        logger.debug("_ligne_option: fait")
 
     def _page_apparence(self) -> Adw.PreferencesPage:
         """Page Apparence : thème, panneau, police de l'arbre."""
@@ -265,8 +289,53 @@ class PreferencesWindow(Adw.PreferencesWindow):
         signal = "notify::font-desc" if hasattr(self.police, "get_font_desc") else "font-set"
         self.police.connect(signal, self._on_police)
         page.add(groupe)
+        page.add(self._groupe_fenetre())
         logger.debug("_page_apparence: fait")
         return page
+
+    def _groupe_fenetre(self) -> Adw.PreferencesGroup:
+        """Apparence > Fenêtre principale : rayures de l'arbre, titre (#247).
+
+        Appliqué tout de suite (``MainWindow.appliquer_options``). Titre vide :
+        nom de l'application, comme GTK3.
+        """
+        logger.debug("_groupe_fenetre: entrée")
+        groupe = Adw.PreferencesGroup(title=_("Main window"))
+        for nom, libelle in OPTIONS_FENETRE:
+            self._ligne_option(groupe, nom, libelle)
+        config = getattr(self.fenetre, "config", None)
+        titre = config.options.app_title if config is not None else self.valeurs.app_title
+        if titre.strip() == comportement_onglets.NOM_APPLICATION:
+            titre = ""  # valeur écrite par GTK3 pour « titre par défaut »
+        self.titre = Adw.EntryRow(title=_("Title"), show_apply_button=True)
+        self.titre.set_text(titre.strip())
+        self.titre.connect("apply", self._on_titre)
+        groupe.add(self.titre)
+        if config is None:  # illisible : jamais d'écriture
+            groupe.set_sensitive(False)
+        logger.debug("_groupe_fenetre: fait")
+        return groupe
+
+    def _appliquer(self) -> None:
+        """Répercute les options d'affichage sur la fenêtre principale, si elle le permet."""
+        logger.debug("_appliquer: entrée")
+        appliquer = getattr(self.fenetre, "appliquer_options", None)
+        if callable(appliquer):
+            appliquer()
+        logger.debug("_appliquer: fait")
+
+    def _on_titre(self, ligne: Adw.EntryRow) -> None:
+        """Titre de la fenêtre validé (bouton ou Entrée) : modèle, fichier, fenêtre."""
+        logger.debug("_on_titre: entrée")
+        config = getattr(self.fenetre, "config", None)
+        if config is None:
+            logger.debug("_on_titre: aucune configuration chargée")
+            return
+        valeur = ligne.get_text().strip()
+        config.options.app_title = valeur  # save_config réécrit [options] depuis le modèle
+        self._enregistrer("app_title", valeur)
+        self._appliquer()
+        logger.debug("_on_titre: {!r}", valeur)
 
     def _page_raccourcis(self) -> Adw.PreferencesPage:
         """Page Raccourcis : raccourcis de la base, en lecture."""
@@ -311,7 +380,8 @@ class PreferencesWindow(Adw.PreferencesWindow):
         config_dir = getattr(args, "config_dir", None) or os.path.dirname(self.config_file)
         self.dossier_journaux = os.path.dirname(logging_config.app_log_path(config_dir))
         ligne = Adw.ActionRow(title=_("Log folder"), subtitle=self.dossier_journaux)
-        ligne.set_subtitle_selectable(True)
+        if hasattr(ligne, "set_subtitle_selectable"):  # libadwaita ≥ 1.3 (#223)
+            ligne.set_subtitle_selectable(True)
         self.bouton_journaux = Gtk.Button(label=_("Open"), valign=Gtk.Align.CENTER)
         self.bouton_journaux.connect("clicked", self._on_ouvrir_journaux)
         ligne.add_suffix(self.bouton_journaux)
@@ -435,6 +505,8 @@ class PreferencesWindow(Adw.PreferencesWindow):
         if self._enregistrer(nom, valeur) and nom == "check_updates" and valeur:
             # Activer l'option vaut accord explicite (#245).
             mises_a_jour.enregistrer_accord(self.config_file, True)
+        if nom in dict(OPTIONS_FENETRE):
+            self._appliquer()
         logger.debug("_on_option: fait")
 
     def _on_theme(self, ligne: Adw.ComboRow, _pspec: object) -> None:

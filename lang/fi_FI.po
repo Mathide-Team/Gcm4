@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-21 16:15+0000\n"
+"POT-Creation-Date: 2026-10-21 20:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -151,7 +151,7 @@ msgstr "Tarkista päivitykset"
 msgid "Choose Group Color"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Circle around tabs when going to the previous/next tab"
 msgstr "Kierrä välilehtien yli siirryttäessä edelliseen/seuraavaan"
 
@@ -159,11 +159,13 @@ msgstr "Kierrä välilehtien yli siirryttäessä edelliseen/seuraavaan"
 msgid "Clear selection"
 msgstr "Tyhjennä valinta"
 
-#: gnome_connection_manager.py ssh_config_editor.py ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/main_window.py ssh_config_editor.py
+#: ssh_key_manager_dialog.py
 msgid "Close"
 msgstr "Sulje"
 
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py widgets.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/main_window.py widgets.py
 msgid "Close console"
 msgstr "Sulje konsoli"
 
@@ -185,11 +187,11 @@ msgstr "Värit"
 msgid "Command"
 msgstr "Komento"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on close console"
 msgstr "Vahvista konsolin sulkeminen"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on close console with middle click"
 msgstr "Vahvista konsolin sulkeminen keskinäppäimellä"
 
@@ -255,7 +257,7 @@ msgstr "Delete:"
 msgid "Description"
 msgstr "Kuvaus"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Disable alternating stripes in hosts window"
 msgstr "Poista vuorottelevat raidat isäntäikkunasta"
 
@@ -275,7 +277,7 @@ msgstr "Haluatko varmasti poistaa kaikki ryhmän isännät"
 msgid "Do you really want to remove host"
 msgstr "Haluatko varmasti poistaa isännän"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Dynamic title"
 msgstr "Dynaaminen otsikko"
 
@@ -738,7 +740,7 @@ msgstr ""
 msgid "Tip: use #P=password to send a password without keeping it in clear text in the command history"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Title"
 msgstr "Otsikko"
 
@@ -2711,6 +2713,63 @@ msgstr "Asetustiedostoa %s ei voi lukea: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Asetustiedostoa %s ei voi kirjoittaa: %s"
 
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: the host name is missing"
+msgstr "%s: isännän nimi puuttuu"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: too many cells"
+msgstr "%s: liikaa soluja"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: unexpected value for %s"
+msgstr "%s: odottamaton arvo kentälle %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "The file %s is not a valid host export: %s"
+msgstr "Tiedosto %s ei ole kelvollinen isäntien vienti: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to read the file %s: %s"
+msgstr "Tiedostoa %s ei voi lukea: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to write the file %s: %s"
+msgstr "Tiedostoa %s ei voi kirjoittaa: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "entry %d"
+msgstr "merkintä %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "line %d"
+msgstr "rivi %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "the column %s is missing"
+msgstr "sarake %s puuttuu"
+
+#: src/gcm4/core/exchange.py
+msgid "unsupported format or version"
+msgstr "muotoa tai versiota ei tueta"
+
+#: src/gcm4/core/menu.py
+msgid "Next tab"
+msgstr "Seuraava välilehti"
+
+#: src/gcm4/core/menu.py
+msgid "Previous tab"
+msgstr "Edellinen välilehti"
+
 #: src/gcm4/core/menu.py
 msgid "Search"
 msgstr "Hae"
@@ -2935,6 +2994,11 @@ msgstr "Asetuksia ei ladattu"
 #: src/gcm4/ui/main_window.py
 msgid "Home"
 msgstr "Koti"
+
+#: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Host not found: {hosts}"
+msgstr "Isäntää ei löytynyt: {hosts}"
 
 #: src/gcm4/ui/main_window.py
 msgid "Hosts and groups will appear in the left panel."
