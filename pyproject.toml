@@ -286,8 +286,12 @@ target-version = ["py310", "py311", "py312", "py313"]
 # vendorisés (SSH-Studio/, gtk-frdp/), ni les outils annexes (tools/,
 # scripts/). source = ["."] compte aussi, à 0 %, les modules qu'aucun test
 # n'importe : la mesure ne flatte pas la couverture réelle.
-source = ["."]
+source = [".", "src/gcm4"]
 branch = true
+# Chemins relatifs à la racine du dépôt (#163) : les données du job Qualité
+# (runner « maison ») et du job GTK4 (conteneur, autre chemin de checkout)
+# se fusionnent par `coverage combine`.
+relative_files = true
 omit = [
     "tests/*",
     "SSH-Studio/*",
