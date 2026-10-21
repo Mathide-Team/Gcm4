@@ -20,6 +20,8 @@ propre confirmation (#147).
 
 from __future__ import annotations
 
+from collections.abc import Sequence
+
 from gi.repository import Adw, Gdk, Gio, GLib, Gtk
 from loguru import logger
 
@@ -457,6 +459,35 @@ class MainWindow(Adw.ApplicationWindow):
         logger.debug(
             "restaurer_onglets: {} absent(s), {} sans plugin", len(absents), len(sans_plugin)
         )
+
+    def ouvrir_hotes(self, specs: Sequence[str]) -> None:
+        """Hôtes de la ligne de commande (``gcm4 groupe/nom…``, #154).
+
+        Chaque hôte trouvé est sélectionné dans l'arbre (groupes dépliés) ;
+        il est connecté seulement si un plugin gère son protocole. Hôte
+        inconnu : un seul message pour tous, pas d'erreur.
+
+        Args:
+            specs (Sequence[str]): Chemins ``groupe/sous-groupe/nom`` (``/``
+                en début ou en fin toléré).
+        """
+        logger.debug("ouvrir_hotes: {} hôte(s)", len(specs))
+        if self.config is None or not specs:
+            logger.debug("ouvrir_hotes: rien à faire")
+            return
+        absents: list[str] = []
+        for spec in specs:
+            hote = self.config.store.find(spec.strip("/"))
+            if hote is None:
+                absents.append(spec)
+                continue
+            if self.arbre is not None:
+                self.arbre.reveler(hote.path)
+            if self.registre.get(hote.protocol) is not None:
+                self.activate_action("win.connect-host", GLib.Variant.new_string(hote.path))
+        if absents:
+            self.notifier(_("Host not found: {hosts}").format(hosts=", ".join(absents)))
+        logger.debug("ouvrir_hotes: {} absent(s)", len(absents))
 
     def _on_search(self, _action: Gio.SimpleAction, _param: GLib.Variant | None) -> None:
         """Ctrl+F / Affichage > Rechercher : panneau affiché, curseur dans la recherche (#140)."""

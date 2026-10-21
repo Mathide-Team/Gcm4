@@ -2708,6 +2708,55 @@ msgstr "تعذّرت قراءة ملف الإعدادات %s: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "تعذّرت كتابة ملف الإعدادات %s: %s"
 
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: the host name is missing"
+msgstr "%s: اسم المضيف مفقود"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: too many cells"
+msgstr "%s: خلايا أكثر من اللازم"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: unexpected value for %s"
+msgstr "%s: قيمة غير متوقعة لـ %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "The file %s is not a valid host export: %s"
+msgstr "الملف %s ليس تصديرًا صالحًا للمضيفين: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to read the file %s: %s"
+msgstr "تعذّرت قراءة الملف %s: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to write the file %s: %s"
+msgstr "تعذّرت كتابة الملف %s: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "entry %d"
+msgstr "الإدخال %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "line %d"
+msgstr "السطر %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "the column %s is missing"
+msgstr "العمود %s مفقود"
+
+#: src/gcm4/core/exchange.py
+msgid "unsupported format or version"
+msgstr "تنسيق أو إصدار غير مدعوم"
+
 #: src/gcm4/core/menu.py
 msgid "Next tab"
 msgstr "اللسان التالي"
@@ -2940,6 +2989,11 @@ msgstr "لم يتم تحميل الإعدادات"
 #: src/gcm4/ui/main_window.py
 msgid "Home"
 msgstr "الرئيسية"
+
+#: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Host not found: {hosts}"
+msgstr "المضيف غير موجود: {hosts}"
 
 #: src/gcm4/ui/main_window.py
 msgid "Hosts and groups will appear in the left panel."

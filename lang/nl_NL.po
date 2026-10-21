@@ -2708,6 +2708,55 @@ msgstr "Kan het configuratiebestand %s niet lezen: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Kan het configuratiebestand %s niet schrijven: %s"
 
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: the host name is missing"
+msgstr "%s: de hostnaam ontbreekt"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: too many cells"
+msgstr "%s: te veel cellen"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: unexpected value for %s"
+msgstr "%s: onverwachte waarde voor %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "The file %s is not a valid host export: %s"
+msgstr "Het bestand %s is geen geldige export van hosts: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to read the file %s: %s"
+msgstr "Kan het bestand %s niet lezen: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to write the file %s: %s"
+msgstr "Kan het bestand %s niet schrijven: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "entry %d"
+msgstr "item %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "line %d"
+msgstr "regel %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "the column %s is missing"
+msgstr "de kolom %s ontbreekt"
+
+#: src/gcm4/core/exchange.py
+msgid "unsupported format or version"
+msgstr "niet-ondersteund formaat of niet-ondersteunde versie"
+
 #: src/gcm4/core/menu.py
 msgid "Next tab"
 msgstr "Volgend tabblad"
@@ -2940,6 +2989,11 @@ msgstr "Configuratie niet geladen"
 #: src/gcm4/ui/main_window.py
 msgid "Home"
 msgstr "Start"
+
+#: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Host not found: {hosts}"
+msgstr "Host niet gevonden: {hosts}"
 
 #: src/gcm4/ui/main_window.py
 msgid "Hosts and groups will appear in the left panel."

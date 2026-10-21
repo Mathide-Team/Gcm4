@@ -2708,6 +2708,55 @@ msgstr "无法读取配置文件 %s：%s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "无法写入配置文件 %s：%s"
 
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: the host name is missing"
+msgstr "%s：缺少主机名"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: too many cells"
+msgstr "%s：单元格过多"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: unexpected value for %s"
+msgstr "%s：%s 的值不正确"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "The file %s is not a valid host export: %s"
+msgstr "文件 %s 不是有效的主机导出文件：%s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to read the file %s: %s"
+msgstr "无法读取文件 %s：%s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to write the file %s: %s"
+msgstr "无法写入文件 %s：%s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "entry %d"
+msgstr "第 %d 项"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "line %d"
+msgstr "第 %d 行"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "the column %s is missing"
+msgstr "缺少列 %s"
+
+#: src/gcm4/core/exchange.py
+msgid "unsupported format or version"
+msgstr "不支持的格式或版本"
+
 #: src/gcm4/core/menu.py
 msgid "Next tab"
 msgstr "下一个标签页"
@@ -2940,6 +2989,11 @@ msgstr "未加载配置"
 #: src/gcm4/ui/main_window.py
 msgid "Home"
 msgstr "主页"
+
+#: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Host not found: {hosts}"
+msgstr "未找到主机：{hosts}"
 
 #: src/gcm4/ui/main_window.py
 msgid "Hosts and groups will appear in the left panel."

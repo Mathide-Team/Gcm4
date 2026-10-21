@@ -2708,6 +2708,55 @@ msgstr "Nem olvasható a(z) %s beállítófájl: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Nem írható a(z) %s beállítófájl: %s"
 
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: the host name is missing"
+msgstr "%s: hiányzik a gép neve"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: too many cells"
+msgstr "%s: túl sok cella"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: unexpected value for %s"
+msgstr "%s: váratlan érték ehhez: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "The file %s is not a valid host export: %s"
+msgstr "A(z) %s fájl nem érvényes gépexport: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to read the file %s: %s"
+msgstr "A(z) %s fájl nem olvasható: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to write the file %s: %s"
+msgstr "A(z) %s fájl nem írható: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "entry %d"
+msgstr "%d. bejegyzés"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "line %d"
+msgstr "%d. sor"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "the column %s is missing"
+msgstr "hiányzik a(z) %s oszlop"
+
+#: src/gcm4/core/exchange.py
+msgid "unsupported format or version"
+msgstr "nem támogatott formátum vagy verzió"
+
 #: src/gcm4/core/menu.py
 msgid "Next tab"
 msgstr "Következő lap"
@@ -2940,6 +2989,11 @@ msgstr "A beállítások nincsenek betöltve"
 #: src/gcm4/ui/main_window.py
 msgid "Home"
 msgstr "Kezdőlap"
+
+#: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Host not found: {hosts}"
+msgstr "A gép nem található: {hosts}"
 
 #: src/gcm4/ui/main_window.py
 msgid "Hosts and groups will appear in the left panel."
