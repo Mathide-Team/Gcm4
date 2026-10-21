@@ -328,6 +328,73 @@ jobs:
             exit 1
           fi
 
+  rocky9:
+    # Issue #223 : Rocky Linux 9 reste une cible (GTK 4.12, libadwaita 1.4,
+    # Python 3.9 et PyGObject 3.40 d'AppStream : python3.12 n'y a pas de
+    # PyGObject). Même vérification que le job Debian 12 : démarrage sous
+    # Xvfb, puis tests/gtk4 et tests/test_gcm4_*.py, aucun test sauté.
+    # --ignore-requires-python (gcm4 seulement, --no-deps) : pyproject exige
+    # encore Python >= 3.12, décision attendue sur #223 ; pytest, tomli et
+    # loguru sont installés normalement, dans des versions compatibles 3.9.
+    name: gcm4 sur Rocky Linux 9 (GTK 4.12, libadwaita 1.4, Python 3.9)
+    runs-on: ${{ fromJSON(vars.RUNS_ON_GTK4 || '"ubuntu-latest"') }}
+    container:
+      image: rockylinux/rockylinux:9
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: Paquets Rocky 9 (GTK 4.12, libadwaita 1.4, python3-gobject)
+        run: |
+          dnf -q -y install git python3 python3-gobject gtk4 libadwaita \
+            xorg-x11-server-Xvfb xorg-x11-xauth
+          rpm -q --qf '- %{NAME} %{VERSION}-%{RELEASE}\n' python3 python3-gobject \
+            gtk4 libadwaita | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Checkout du dépôt
+        uses: actions/checkout@v7
+
+      - name: gcm4 (mode éditable, Python 3.9 de Rocky 9)
+        run: |
+          python3 -m venv --system-site-packages /tmp/venv
+          /tmp/venv/bin/pip install -q pytest tomli "loguru>=0.7.3,<0.8"
+          /tmp/venv/bin/pip install -q --ignore-requires-python --no-deps -e .
+
+      # Écran 1280x1024x24 donné explicitement : le xvfb-run d'EL9 ouvre un
+      # écran 640x480, où GTK 4.12 réduit la fenêtre de 800x500 relue dans
+      # gcm4.conf (test_etat_restaure). Debian et Ubuntu ont 1280x1024x24 par
+      # défaut.
+      - name: Démarrage de gcm4 sous Xvfb (8 s, aucune exception)
+        run: |
+          code=0
+          timeout 8 xvfb-run -a -s "-screen 0 1280x1024x24" /tmp/venv/bin/gcm4 \
+            > /tmp/demarrage.txt 2>&1 || code=$?
+          cat /tmp/demarrage.txt
+          if [ "$code" != "124" ]; then
+            echo "::error::gcm4 s'est arrêté (code $code) au lieu de rester ouvert"
+            exit 1
+          fi
+          if grep -q 'Traceback' /tmp/demarrage.txt; then
+            echo "::error::exception Python au démarrage de gcm4 sur Rocky 9"
+            exit 1
+          fi
+
+      - name: Tests gcm4 sous Xvfb (tests/gtk4, tests/test_gcm4_*.py), aucun test sauté
+        env:
+          GCM_TESTS_GTK4: "1"
+        run: |
+          set -o pipefail
+          xvfb-run -a -s "-screen 0 1280x1024x24" /tmp/venv/bin/python -m pytest \
+            tests/gtk4 tests/test_gcm4_*.py -q -rs -p no:cacheprovider | tee /tmp/rocky9.txt
+          sautes=$(grep -c '^SKIPPED' /tmp/rocky9.txt || true)
+          echo "### Tests gcm4 sautés sur Rocky 9 : ${sautes}" >> "$GITHUB_STEP_SUMMARY"
+          if [ "${sautes}" != "0" ]; then
+            grep '^SKIPPED' /tmp/rocky9.txt | sed 's/^/- /' >> "$GITHUB_STEP_SUMMARY"
+            echo "::error::tests gcm4 sautés sur Rocky 9"
+            exit 1
+          fi
+
   documentation:
     # Règle commune à tous les dépôts (modèle Netcross #282, IAO #183) :
     # le nom du job reste « Construction (mkdocs build --strict) ».
