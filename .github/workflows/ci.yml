@@ -266,8 +266,13 @@ jobs:
 
       - name: Compilation de toutes les locales
         # Dans un dossier temporaire : les .mo suivis par git ne sont pas
-        # réécrits, mais chaque catalogue doit se compiler.
-        run: scripts/i18n-update.sh --compile "$RUNNER_TEMP/locale"
+        # réécrits, mais chaque catalogue doit se compiler. Dossier unique
+        # (mktemp) : sur un runner auto-hébergé, un « $RUNNER_TEMP/locale »
+        # resté d'un job précédent et non accessible faisait échouer ce job
+        # (« mkdir: Permission denied », runner « ubuntu », 20/10/2026).
+        # Dans $RUNNER_TEMP, vidé par le runner à la fin du job : rien ne
+        # s'accumule dans /tmp des machines du groupe maison.
+        run: scripts/i18n-update.sh --compile "$(mktemp -d -p "$RUNNER_TEMP")/locale"
 
       - name: Rapport de traduction (résumé du job)
         if: always()
@@ -349,6 +354,28 @@ jobs:
             exit 1
           fi
           echo "tests GTK4 : tous exécutés"
+
+  desktop:
+    # Issue #155 : lanceur (desktop-file-validate), métadonnées AppStream
+    # (appstreamcli validate) et tailles des icônes de data/. Conteneur
+    # Ubuntu comme le job GTK4 : les deux validateurs viennent des paquets.
+    name: Intégration au bureau
+    runs-on: ${{ fromJSON(vars.RUNS_ON_GTK4 || '"ubuntu-latest"') }}
+    container:
+      image: ubuntu:26.04
+
+    steps:
+      - name: desktop-file-utils et appstream
+        run: |
+          DEBIAN_FRONTEND=noninteractive apt-get update -qq
+          DEBIAN_FRONTEND=noninteractive apt-get install -y -qq \
+            git ca-certificates desktop-file-utils appstream
+
+      - name: Checkout du dépôt
+        uses: actions/checkout@v7
+
+      - name: Lanceur, métadonnées AppStream et icônes
+        run: scripts/check-desktop.sh
 
   documentation:
     # Règle commune à tous les dépôts (modèle Netcross #282, IAO #183) :
