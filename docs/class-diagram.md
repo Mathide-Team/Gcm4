@@ -1725,6 +1725,7 @@ classDiagram
         +focus_recherche() None
         +chemin_selectionne() str None
         +selectionner(chemin) bool
+        +reveler(chemin) bool
         +deposer(source, cible) bool
         +appliquer_couleurs() None
         +lignes_visibles() list~tuple~int, str~~
@@ -1742,6 +1743,7 @@ classDiagram
         +fermer_onglet(contenu) None
         +onglets_ouverts() list~str~
         +restaurer_onglets() None
+        +ouvrir_hotes(specs) None
         +etat_courant() window_state.WindowState
     }
     class MenuArbre {

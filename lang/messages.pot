@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME Connection Manager\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-20 20:59+0000\n"
+"POT-Creation-Date: 2026-10-21 19:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2859,6 +2859,11 @@ msgstr ""
 #: src/gcm4/ui/main_window.py
 #, python-brace-format
 msgid "Not restored, no extension for: {hosts}"
+msgstr ""
+
+#: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Host not found: {hosts}"
 msgstr ""
 
 #: src/gcm4/ui/main_window.py
