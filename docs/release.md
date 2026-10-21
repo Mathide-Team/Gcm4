@@ -93,8 +93,11 @@ Issue #157, même contenu que le .deb.
   catalogues marqués par langue (`%find_lang gcm-lang`) ; `.pyc` produits à
   la construction sur Fedora (`%py_byte_compile`). Les modules privés de
   `/usr/share/gcm4` ne génèrent aucun `python3dist(...)`.
-- Dépendances : `python3 >= 3.12`, `python3-gobject`, `gtk4`, `libadwaita`,
-  `python3-loguru` ; aucune de plugin.
+- Dépendances : `python3 >= 3.12`, `python3-gobject`, `gobject-introspection`,
+  `gtk4`, `libadwaita`, `python3-loguru` ; aucune de plugin.
+  `gobject-introspection` fournit le typelib `cairo-1.0` qu'exige celui de
+  GTK 4 : sans lui, `import Gtk 4.0` échoue sur Fedora 44 (ni `gtk4` ni
+  `python3-gobject` ne l'installent).
 - `make smoke-rpm` (`scripts/smoke-test-packages.sh rpm`) vérifie le contenu
   sans installer (`rpm -qpl`, `rpm -qpR`) ; `smoke-test-packages.sh rpm-dnf`
   vérifie le contenu puis installe avec dnf et reprend les vérifications du

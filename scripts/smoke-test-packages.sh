@@ -186,7 +186,7 @@ check_rpm_content() {
         grep -qx "/usr/share/locale/$loc/LC_MESSAGES/$DOMAIN.mo" <<<"$listing" || fail "rpm : catalogue $loc absent"
     done
     check_depends "$(rpm -qpR "$PKG" | sed -e 's/ *[<>=].*//' | grep -v '^rpmlib(' | grep -v '^/')" \
-        python3 python3-gobject gtk4 libadwaita python3-loguru
+        python3 python3-gobject gobject-introspection gtk4 libadwaita python3-loguru
     echo "rpm : contenu conforme ($(wc -l <<<"$listing") fichiers)"
 }
 

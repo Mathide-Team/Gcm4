@@ -19,9 +19,12 @@ from gcm4.core import chemins, cli, i18n, preferences
 from gcm4.core.i18n import _
 
 # Paquets système de PyGObject, GTK4 et libadwaita (D1 de #118).
+# Fedora : le typelib cairo-1.0, exigé par celui de GTK 4, est dans
+# gobject-introspection, que ni gtk4 ni python3-gobject n'installent
+# (constaté sur Fedora 44, #157).
 PAQUETS_GTK = {
     "debian": "python3-gi gir1.2-gtk-4.0 gir1.2-adw-1",
-    "fedora": "python3-gobject gtk4 libadwaita",
+    "fedora": "python3-gobject gobject-introspection gtk4 libadwaita",
     "arch": "python-gobject gtk4 libadwaita",
 }
 CODE_GTK_ABSENT = 3

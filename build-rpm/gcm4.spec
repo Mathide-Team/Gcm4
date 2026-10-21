@@ -20,8 +20,12 @@ Source0:        gcm4-%{version}.tar.gz
 # Base GTK4 sans aucun plugin (#126) : PyGObject, GTK 4 et libadwaita
 # (D1 de #118), loguru. Aucune dépendance de plugin (VTE, gtk-vnc, spice,
 # freerdp) : chaque plugin apporte les siennes dans son propre paquet.
+# gobject-introspection : seul paquet qui fournit le typelib cairo-1.0,
+# exigé par celui de GTK 4 ; ni gtk4 ni python3-gobject ne l'installent
+# (import de Gtk 4.0 en échec sur Fedora 44 sans lui, #157).
 Requires:       python3 >= 3.12
 Requires:       python3-gobject
+Requires:       gobject-introspection
 Requires:       gtk4
 Requires:       libadwaita
 Requires:       python3-loguru
