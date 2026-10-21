@@ -12,7 +12,9 @@
 # Paquet sans aucun plugin : voir debian/control.
 #
 # Prérequis (Debian 13, Ubuntu 24.04 ou plus récent) :
-#   apt-get install debhelper dh-python dpkg-dev gettext git python3-build python3-hatchling
+#   apt-get install build-essential debhelper dh-python dpkg-dev gettext git \
+#     python3-build python3-hatchling
+# (build-essential : exigé par dpkg-buildpackage, même pour un paquet « all »)
 #
 # Usage : build-deb/build.sh
 

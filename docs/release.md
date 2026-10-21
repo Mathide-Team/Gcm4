@@ -49,7 +49,7 @@ le .rpm (#157) et la traduction du lanceur et des métadonnées (#274).
 Issue #156, sur le modèle de Netcross.
 
 - `make deb-gcm4` (`build-deb/build.sh`, dpkg-buildpackage) produit
-  `build-deb/dist/gcm4_<version>_all.deb`. Prérequis : `debhelper dh-python
+  `build-deb/dist/gcm4_<version>_all.deb`. Prérequis : `build-essential debhelper dh-python
   dpkg-dev gettext git python3-build python3-hatchling`.
 - Version : celle de `pyproject.toml`, seule source ; `gcm4 --version` la lit
   dans le `.dist-info` du wheel installé et affiche donc la même.

@@ -300,7 +300,7 @@ jobs:
         run: |
           DEBIAN_FRONTEND=noninteractive apt-get update -qq
           DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommends \
-            git ca-certificates debhelper dh-python dpkg-dev gettext \
+            git ca-certificates build-essential debhelper dh-python dpkg-dev gettext \
             python3-build python3-hatchling
 
       - name: Checkout du dépôt
