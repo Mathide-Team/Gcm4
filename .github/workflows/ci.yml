@@ -193,8 +193,13 @@ jobs:
 
       - name: Compilation de toutes les locales
         # Dans un dossier temporaire : les .mo suivis par git ne sont pas
-        # réécrits, mais chaque catalogue doit se compiler.
-        run: scripts/i18n-update.sh --compile "$RUNNER_TEMP/locale"
+        # réécrits, mais chaque catalogue doit se compiler. Dossier unique
+        # (mktemp) : sur un runner auto-hébergé, un « $RUNNER_TEMP/locale »
+        # resté d'un job précédent et non accessible faisait échouer ce job
+        # (« mkdir: Permission denied », runner « ubuntu », 20/10/2026).
+        # Dans $RUNNER_TEMP, vidé par le runner à la fin du job : rien ne
+        # s'accumule dans /tmp des machines du groupe maison.
+        run: scripts/i18n-update.sh --compile "$(mktemp -d -p "$RUNNER_TEMP")/locale"
 
       - name: Rapport de traduction (résumé du job)
         if: always()
