@@ -136,8 +136,8 @@ class Gcm4Application(Adw.Application):
         logger.trace("_charger: {} octet(s)", len(css))
         if hasattr(fournisseur, "load_from_string"):  # GTK ≥ 4.12
             fournisseur.load_from_string(css)
-        else:  # GTK 4.8 (Debian 12)
-            fournisseur.load_from_data(css, -1)
+        else:  # GTK 4.8 (Debian 12) : un seul argument, des octets (#223)
+            fournisseur.load_from_data(css.encode("utf-8"))
         logger.trace("_charger: fait")
 
     def appliquer_police_arbre(self, description: str) -> None:

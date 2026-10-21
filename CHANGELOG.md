@@ -63,6 +63,13 @@
   agent (humain ou IA) travaillant sur le dépôt
 
 ### Fixed
+- gcm4 sur Debian 12 (GTK 4.8, libadwaita 1.2, #223) : le repli
+  `Gtk.CssProvider.load_from_data` passait deux arguments et une chaîne
+  (exception à chaque démarrage, CSS de l'arbre non chargé) ; il reçoit
+  maintenant des octets UTF-8. La fenêtre des préférences ne s'ouvrait pas
+  (`Adw.ActionRow.set_subtitle_selectable` exige libadwaita 1.3) ; l'appel est
+  conditionnel. Nouveau job CI « gcm4 sur Debian 12 » dans un conteneur
+  `debian:12` : démarrage sous Xvfb et tests gcm4, aucun test sauté
 - Push SNMP vers un équipement Huawei VRP échouait silencieusement
   (« Constructeur inconnu : huawei_vrp ») malgré sa présence dans le menu
   déroulant : driver `HuaweiVrpDriver` manquant côté résolution effective,
