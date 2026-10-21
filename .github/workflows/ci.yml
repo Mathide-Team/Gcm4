@@ -217,7 +217,7 @@ jobs:
           DEBIAN_FRONTEND=noninteractive apt-get update -qq
           DEBIAN_FRONTEND=noninteractive apt-get install -y -qq \
             git ca-certificates python3 python3-venv python3-gi \
-            gir1.2-gtk-4.0 gir1.2-adw-1 xvfb xauth
+            gir1.2-gtk-4.0 gir1.2-adw-1 xvfb xauth dbus-daemon
 
       - name: Checkout du dépôt
         uses: actions/checkout@v7

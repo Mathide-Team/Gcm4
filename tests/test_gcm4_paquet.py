@@ -102,6 +102,13 @@ def test_config_relative_rendue_absolue(tmp_path, monkeypatch):
     assert cli.parse_args(["-c", "conf"]).config_dir == str(tmp_path / "conf")
 
 
+def test_config_relative_au_dossier_donne(tmp_path):
+    """``cwd`` : ``-c`` relatif résolu dans le dossier d'un deuxième lancement (#275)."""
+    args = cli.parse_args(["-c", "conf"], home="/x", cwd=str(tmp_path))
+    assert args.config_dir == str(tmp_path / "conf")
+    assert cli.parse_args(["-c", "/abs"], cwd=str(tmp_path)).config_dir == "/abs"
+
+
 def test_hotes_et_debug():
     """Les arguments ``groupe/nom`` sont conservés, ``--debug`` reconnu."""
     args = cli.parse_args(["--debug", "lab/web", "prod/db"], home="/x")

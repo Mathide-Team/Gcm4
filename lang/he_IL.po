@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-20 21:19+0000\n"
+"POT-Creation-Date: 2026-10-21 06:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2818,6 +2818,11 @@ msgstr "הפתחה חייבת להיות מספר בין {min} ל־{max}."
 #: src/gcm4/core/validation.py
 msgid "The name must not contain «/»."
 msgstr "השם לא יכול להכיל „/”."
+
+#: src/gcm4/ui/application.py
+#, python-brace-format
+msgid "gcm4 is already running with another configuration folder: close it to use {requested}."
+msgstr "gcm4 כבר פועל עם תיקיית תצורה אחרת: יש לסגור אותו כדי להשתמש ב־{requested}."
 
 #: src/gcm4/ui/contexte.py
 #, python-brace-format

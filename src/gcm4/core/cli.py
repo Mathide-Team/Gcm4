@@ -44,19 +44,28 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def parse_args(
-    argv: list[str], home: str | None = None, environ: dict[str, str] | None = None
+    argv: list[str],
+    home: str | None = None,
+    environ: dict[str, str] | None = None,
+    cwd: str | None = None,
 ) -> argparse.Namespace:
     """Analyse ``argv`` (sans ``argv[0]``) ; ajoute ``config_dir`` et ``ancien_dossier``.
 
     ``config_dir`` (absolu) : ``-c/--config``, sinon ``$XDG_CONFIG_HOME/gcm4``
     (#99, remplace D3 de #118). ``ancien_dossier`` : ``~/.gcm`` à migrer si
     le dossier par défaut est utilisé, ``None`` avec ``-c``.
+
+    ``home``, ``environ`` et ``cwd`` (dossier courant, pour un ``-c``
+    relatif) décrivent le processus qui a lancé la commande ; par défaut,
+    le processus courant. Une instance déjà lancée les reçoit d'un deuxième
+    lancement (#275).
     """
     logger.debug("parse_args: {} argument(s)", len(argv))
     args = build_parser().parse_args(argv)
     maison = home or os.path.expanduser("~")
     if args.config:
-        args.config_dir = os.path.abspath(os.path.expanduser(args.config))
+        chemin = os.path.expanduser(args.config)
+        args.config_dir = os.path.abspath(os.path.join(cwd or os.getcwd(), chemin))
         args.ancien_dossier = None
     else:
         args.config_dir = os.path.abspath(chemins.dossier_par_defaut(maison, environ))

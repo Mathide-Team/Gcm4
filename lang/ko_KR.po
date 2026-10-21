@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-20 21:19+0000\n"
+"POT-Creation-Date: 2026-10-21 06:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2818,6 +2818,11 @@ msgstr "포트는 {min}에서 {max} 사이의 숫자여야 합니다."
 #: src/gcm4/core/validation.py
 msgid "The name must not contain «/»."
 msgstr "이름에 '/'를 사용할 수 없습니다."
+
+#: src/gcm4/ui/application.py
+#, python-brace-format
+msgid "gcm4 is already running with another configuration folder: close it to use {requested}."
+msgstr "gcm4가 이미 다른 설정 폴더로 실행 중입니다. {requested}을(를) 사용하려면 종료하세요."
 
 #: src/gcm4/ui/contexte.py
 #, python-brace-format
