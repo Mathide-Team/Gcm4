@@ -41,10 +41,44 @@ bureau ») valide le lanceur (`desktop-file-validate`, tout constat fait
 des icônes. `tests/test_integration_bureau.py` vérifie sans ces outils la
 cohérence entre fichiers, identifiant, nom affiché et version.
 
-Restent hors de cette issue : l'installation de ces fichiers par les
-paquets (#156, #157) et la traduction du lanceur et des métadonnées (#274).
+Le paquet .deb de la base les installe (#156, section suivante) ; restent
+le .rpm (#157) et la traduction du lanceur et des métadonnées (#274).
 
-## Paquets
+## Paquet .deb de la base GTK4
+
+Issue #156, sur le modèle de Netcross.
+
+- `make deb-gcm4` (`build-deb/build.sh`, dpkg-buildpackage) produit
+  `build-deb/dist/gcm4_<version>_all.deb`. Prérequis : `debhelper dh-python
+  dpkg-dev gettext git python3-build python3-hatchling`.
+- Version : celle de `pyproject.toml`, seule source ; `gcm4 --version` la lit
+  dans le `.dist-info` du wheel installé et affiche donc la même.
+- Contenu : le wheel de `pyproject.toml` (`src/gcm4` et les modules racine
+  `gcm4_core`, `logging_config`, `pyAES`) décompressé dans `/usr/share/gcm4`,
+  dossier privé (ces noms génériques n'ont rien à faire dans
+  `dist-packages`) ; le lanceur `/usr/bin/gcm4` ; le `.desktop`, le metainfo
+  et les icônes de `data/` ; un `.mo` par langue de `lang/LINGUAS` dans
+  `/usr/share/locale/<langue>/LC_MESSAGES/gcm-lang.mo`. Les `.pyc` sont
+  produits à l'installation (`py3compile`, dh_python3).
+- Dépendances : `python3 (>= 3.12)`, `python3-gi`, `gir1.2-gtk-4.0`,
+  `gir1.2-adw-1`, `python3-loguru`. **Aucune dépendance de plugin** (VTE,
+  gtk-vnc, spice, freerdp, expect, paramiko) : `tests/test_paquet_deb.py` et
+  le test de fumée le vérifient. `python3-loguru` n'est pas versionné :
+  Ubuntu 24.04 fournit la 0.7.2, avec laquelle la suite de tests passe et
+  gcm4 démarre (job « Paquets »).
+- `make smoke-deb` (`scripts/smoke-test-packages.sh deb`) installe le paquet
+  avec apt puis vérifie : dépendances, lanceur, `gcm4 --version`, import de
+  chaque module installé, fichiers du bureau, chargement réel de chaque
+  catalogue par `gcm4.core.i18n`, et démarrage sous Xvfb jusqu'à la fenêtre
+  principale, journal debug sans erreur. Il installe un paquet système : à
+  lancer dans un conteneur ou une machine de test. Sur une image minimale
+  (conteneurs Ubuntu), dpkg ignore les `.mo` : le script refuse de tester
+  tant que la règle `path-exclude` de `/etc/dpkg/dpkg.cfg.d/` est présente.
+- CI : « Paquet .deb (construction) » construit le paquet sur Ubuntu 26.04 ;
+  « Paquets (.deb, …) » l'installe dans des conteneurs propres Debian 13,
+  Ubuntu 24.04 et Ubuntu 26.04 et lance le test de fumée.
+
+## Paquets de l'application GTK3
 
 - `make deb`, `make rpm`, `make opensuse` (fpm) emballent l'arborescence
   produite par `make install` : tous les modules `.py` de la racine,

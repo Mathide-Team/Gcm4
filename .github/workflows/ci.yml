@@ -286,6 +286,78 @@ jobs:
       - name: Lanceur, métadonnées AppStream et icônes
         run: scripts/check-desktop.sh
 
+  packages-deb-build:
+    # Issue #156 : paquet .deb de la base GTK4 (build-deb/build.sh), construit
+    # une fois sur Ubuntu 26.04 puis installé par le job « Paquets » dans des
+    # conteneurs propres.
+    name: Paquet .deb (construction)
+    runs-on: ${{ fromJSON(vars.RUNS_ON_GTK4 || '"ubuntu-latest"') }}
+    container:
+      image: ubuntu:26.04
+
+    steps:
+      - name: Outils de construction Debian
+        run: |
+          DEBIAN_FRONTEND=noninteractive apt-get update -qq
+          DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommends \
+            git ca-certificates debhelper dh-python dpkg-dev gettext \
+            python3-build python3-hatchling
+
+      - name: Checkout du dépôt
+        uses: actions/checkout@v7
+
+      - name: Construction (build-deb/build.sh)
+        # Dépôt monté par le runner, propriétaire différent de root : git
+        # refuserait « git ls-files » (dubious ownership).
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          build-deb/build.sh
+
+      - name: Paquet en artefact
+        uses: actions/upload-artifact@v4
+        with:
+          name: paquet-deb-gcm4
+          path: build-deb/dist/gcm4_*_all.deb
+          if-no-files-found: error
+
+  packages-deb:
+    # Issue #156 : test de fumée du .deb installé (scripts/smoke-test-packages.sh)
+    # sur chaque distribution visée par D4 de #118 (Python 3.12 ou plus) :
+    # dépendances résolues par apt, --version, imports, bureau, traductions,
+    # démarrage réel sous Xvfb sans plugin.
+    name: Paquets (.deb, ${{ matrix.image }})
+    needs: packages-deb-build
+    runs-on: ${{ fromJSON(vars.RUNS_ON_GTK4 || '"ubuntu-latest"') }}
+    strategy:
+      fail-fast: false
+      matrix:
+        image: ["debian:13", "ubuntu:24.04", "ubuntu:26.04"]
+    container:
+      image: ${{ matrix.image }}
+
+    steps:
+      - name: Système propre, comme un poste de travail
+        # Les images Ubuntu sont « minimisées » : dpkg y ignore les .mo.
+        # Un poste de travail les installe ; sans cela le test des
+        # traductions vérifierait un système qui n'existe pas.
+        run: |
+          sed -i '/^path-exclude=\/usr\/share\/locale\//d' /etc/dpkg/dpkg.cfg.d/* 2>/dev/null || true
+          DEBIAN_FRONTEND=noninteractive apt-get update -qq
+          DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommends \
+            ca-certificates xvfb xauth dbus
+
+      - name: Checkout du dépôt
+        uses: actions/checkout@v7
+
+      - name: Paquet construit
+        uses: actions/download-artifact@v4
+        with:
+          name: paquet-deb-gcm4
+          path: dist
+
+      - name: Test de fumée du paquet installé
+        run: scripts/smoke-test-packages.sh deb dist/gcm4_*_all.deb
+
   documentation:
     # Règle commune à tous les dépôts (modèle Netcross #282, IAO #183) :
     # le nom du job reste « Construction (mkdocs build --strict) ».
