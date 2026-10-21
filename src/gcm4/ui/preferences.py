@@ -37,7 +37,9 @@ Lot 5b (#148) :
   exception du plugin est journalisée et affichée, sans fermer la fenêtre.
 
 Compatibilité : ``Gtk.FontDialogButton`` (GTK ≥ 4.10), sinon ``Gtk.FontButton`` ;
-``Gtk.FileLauncher`` (GTK ≥ 4.10), sinon ``Gio.AppInfo.launch_default_for_uri``.
+``Gtk.FileLauncher`` (GTK ≥ 4.10), sinon ``Gio.AppInfo.launch_default_for_uri`` ;
+chemin des journaux sélectionnable avec libadwaita ≥ 1.3 seulement
+(``set_subtitle_selectable``), le bouton « Ouvrir » reste disponible en 1.2.
 """
 
 from __future__ import annotations
@@ -378,7 +380,8 @@ class PreferencesWindow(Adw.PreferencesWindow):
         config_dir = getattr(args, "config_dir", None) or os.path.dirname(self.config_file)
         self.dossier_journaux = os.path.dirname(logging_config.app_log_path(config_dir))
         ligne = Adw.ActionRow(title=_("Log folder"), subtitle=self.dossier_journaux)
-        ligne.set_subtitle_selectable(True)
+        if hasattr(ligne, "set_subtitle_selectable"):  # libadwaita ≥ 1.3 (#223)
+            ligne.set_subtitle_selectable(True)
         self.bouton_journaux = Gtk.Button(label=_("Open"), valign=Gtk.Align.CENTER)
         self.bouton_journaux.connect("clicked", self._on_ouvrir_journaux)
         ligne.add_suffix(self.bouton_journaux)

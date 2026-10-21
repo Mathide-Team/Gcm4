@@ -363,6 +363,70 @@ jobs:
           fi
           echo "tests GTK4 : tous exécutés"
 
+  debian12:
+    # Issue #223 : Debian 12 reste une cible (GTK 4.8, libadwaita 1.2,
+    # Python 3.11, PyGObject 3.42). Ce job vérifie les replis GTK/libadwaita
+    # de src/gcm4/ui contre les vrais paquets Debian 12 : démarrage de gcm4
+    # sous Xvfb, puis tests/gtk4 et tests/test_gcm4_*.py, aucun test sauté.
+    # --ignore-requires-python : pyproject exige encore Python >= 3.12 ; la
+    # décision (abaisser requires-python) est la deuxième case de #223.
+    name: gcm4 sur Debian 12 (GTK 4.8, libadwaita 1.2)
+    runs-on: ${{ fromJSON(vars.RUNS_ON_GTK4 || '"ubuntu-latest"') }}
+    container:
+      image: debian:12
+    # Le sh de Debian 12 (dash 0.5.12) ne connaît pas « set -o pipefail ».
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: Paquets Debian 12 (GTK 4.8, libadwaita 1.2, python3-gi)
+        run: |
+          DEBIAN_FRONTEND=noninteractive apt-get update -qq
+          DEBIAN_FRONTEND=noninteractive apt-get install -y -qq \
+            git ca-certificates python3 python3-venv python3-gi \
+            gir1.2-gtk-4.0 gir1.2-adw-1 xvfb xauth
+          dpkg-query -W -f='- ${Package} ${Version}\n' python3 python3-gi \
+            gir1.2-gtk-4.0 gir1.2-adw-1 | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Checkout du dépôt
+        uses: actions/checkout@v7
+
+      - name: gcm4 (mode éditable, Python 3.11 de Debian 12)
+        run: |
+          python3 -m venv --system-site-packages /tmp/venv
+          /tmp/venv/bin/pip install -q --ignore-requires-python -e . pytest
+
+      - name: Démarrage de gcm4 sous Xvfb (8 s, aucune exception)
+        # timeout rend 124 si gcm4 tourne encore : c'est le résultat attendu.
+        run: |
+          code=0
+          timeout 8 xvfb-run -a /tmp/venv/bin/gcm4 > /tmp/demarrage.txt 2>&1 || code=$?
+          cat /tmp/demarrage.txt
+          if [ "$code" != "124" ]; then
+            echo "::error::gcm4 s'est arrêté (code $code) au lieu de rester ouvert"
+            exit 1
+          fi
+          if grep -q 'Traceback' /tmp/demarrage.txt; then
+            echo "::error::exception Python au démarrage de gcm4 sur Debian 12"
+            exit 1
+          fi
+
+      - name: Tests gcm4 sous Xvfb (tests/gtk4, tests/test_gcm4_*.py), aucun test sauté
+        env:
+          GCM_TESTS_GTK4: "1"
+        run: |
+          set -o pipefail
+          xvfb-run -a /tmp/venv/bin/python -m pytest tests/gtk4 tests/test_gcm4_*.py \
+            -q -rs -p no:cacheprovider | tee /tmp/debian12.txt
+          sautes=$(grep -c '^SKIPPED' /tmp/debian12.txt || true)
+          echo "### Tests gcm4 sautés sur Debian 12 : ${sautes}" >> "$GITHUB_STEP_SUMMARY"
+          if [ "${sautes}" != "0" ]; then
+            grep '^SKIPPED' /tmp/debian12.txt | sed 's/^/- /' >> "$GITHUB_STEP_SUMMARY"
+            echo "::error::tests gcm4 sautés sur Debian 12"
+            exit 1
+          fi
+
   desktop:
     # Issue #155 : lanceur (desktop-file-validate), métadonnées AppStream
     # (appstreamcli validate) et tailles des icônes de data/. Conteneur
