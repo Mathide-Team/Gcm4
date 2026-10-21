@@ -319,3 +319,11 @@ testpaths = ["tests"]
 python_files = ["test_*.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]
+# Issue #160 : marqueurs de dépendance externe (voir tests/conftest.py) ;
+# --strict-markers refuse un marqueur mal orthographié, qui ne serait
+# jamais vérifié.
+addopts = ["--strict-markers"]
+markers = [
+    "requires_gettext: a besoin de msgfmt ; échoue au lieu d'être sauté si GCM_TESTS_EXIGES contient gettext",
+    "requires_gtk4: a besoin de GTK4/libadwaita et d'un écran ; échoue au lieu d'être sauté si GCM_TESTS_EXIGES contient gtk4",
+]
