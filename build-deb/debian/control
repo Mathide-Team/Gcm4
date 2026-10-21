@@ -28,7 +28,7 @@ Depends: ${misc:Depends},
 Description: tabbed connection manager (GTK4 base, no protocol plugin)
  gcm4 organizes hosts in groups and opens their connections in tabs.
  .
- This package contains the GTK4 base only: host tree, host dialog,
- preferences, import and export, command line. It ships no connection
+ This package contains the GTK4 base only: host tree with groups and
+ search, host dialog, preferences, command line. It ships no connection
  plugin, so no connection can be opened until a plugin package (SSH,
  RDP, VNC...) is installed.
