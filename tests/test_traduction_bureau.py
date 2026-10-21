@@ -10,6 +10,7 @@ la vraie fusion : gettext est requis (installé dans le job Qualité).
 from __future__ import annotations
 
 import configparser
+import os
 import subprocess
 import tempfile
 import unittest
@@ -177,3 +178,50 @@ class TestExtraction(unittest.TestCase):
         smoke = (ROOT / "scripts" / "smoke-test-packages.sh").read_text(encoding="utf-8")
         self.assertIn("Comment\\[$code\\]=", smoke)
         self.assertIn("for code in fr zh_CN", smoke)
+
+
+class TestReglesIts(unittest.TestCase):
+    """Règles ITS AppStream fournies par le dépôt (lang/its).
+
+    Sans elles, le modèle dépendait de la machine : la règle intégrée à
+    gettext 0.23 n'extrait pas ``releases/release/description`` et un runner
+    sans règle *.metainfo.xml échouait (« cannot locate ITS rules »).
+    """
+
+    def test_regles_bien_formees_et_liees(self):
+        """metainfo.loc associe *.metainfo.xml à metainfo.its, présent à côté."""
+        dossier = ROOT / "lang" / "its"
+        regles = ET.parse(dossier / "metainfo.loc").getroot()
+        cibles = {
+            regle.get("pattern"): [doc.get("target") for doc in regle]
+            for regle in regles.iter("locatingRule")
+        }
+        self.assertEqual(cibles["*.metainfo.xml"], ["metainfo.its"])
+        its = ET.parse(dossier / "metainfo.its").getroot()
+        self.assertEqual(its.tag, "{http://www.w3.org/2005/11/its}rules")
+
+    def test_modele_identique_sans_regles_du_systeme(self):
+        """``--check`` passe quand les règles ITS du système sont masquées.
+
+        ``GETTEXTDATADIR`` pointe sur un dossier vide : la règle installée par
+        le paquet appstream (``/usr/share/gettext/its``) disparaît, seules
+        restent la règle intégrée à gettext et celles du dépôt, que le script
+        ajoute par ``GETTEXTDATADIRS``. Avec gettext 0.23, la règle intégrée
+        seule perd les notes de version et ``--check`` échoue.
+        """
+        with tempfile.TemporaryDirectory() as vide:
+            env = {
+                cle: valeur
+                for cle, valeur in os.environ.items()
+                if cle not in ("GETTEXTDATADIR", "GETTEXTDATADIRS")
+            }
+            env["GETTEXTDATADIR"] = vide
+            resultat = subprocess.run(
+                [str(ROOT / "scripts" / "i18n-update.sh"), "--check"],
+                capture_output=True,
+                text=True,
+                check=False,
+                env=env,
+            )
+        self.assertEqual(resultat.returncode, 0, resultat.stdout + resultat.stderr)
+        self.assertIn("catalogues à jour", resultat.stdout)

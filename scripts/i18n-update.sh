@@ -37,6 +37,12 @@ export LC_ALL=C.UTF-8
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 LANG_DIR="$ROOT/lang"
+# Règles ITS AppStream du dépôt (lang/its, #274) : xgettext et msgfmt --xml
+# les trouvent dans $GETTEXTDATADIRS/its. Sans elles, le résultat dépendait
+# de la machine : gettext 0.21 n'a pas de règle pour *.metainfo.xml (« cannot
+# locate ITS rules », sauf si le paquet appstream est installé) et la règle
+# intégrée à gettext 0.23 n'extrait pas les notes de version.
+export GETTEXTDATADIRS="$LANG_DIR${GETTEXTDATADIRS:+:$GETTEXTDATADIRS}"
 POT="$LANG_DIR/messages.pot"
 DOMAIN="${GCM_I18N_DOMAIN:-gcm-lang}"
 MODE="update"
@@ -93,7 +99,7 @@ generate_pot() {
         --msgid-bugs-address="https://github.com/Mathide-Team/Gcm4/issues" \
         --copyright-holder="Mathilde Deuscher" 2>"$TMP/xgettext.log")
     # Lanceur (clés traduisibles de la spécification desktop) et AppStream
-    # (règles ITS metainfo fournies par gettext).
+    # (règles ITS de lang/its, voir GETTEXTDATADIRS plus haut).
     # Ajoutées au même modèle (--join-existing), à la suite des chaînes
     # Python : une chaîne déjà présente (« Gnome Connection Manager »)
     # garde sa place et gagne la référence data/. Mêmes options d'en-tête,
