@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-19 12:52+0000\n"
+"POT-Creation-Date: 2026-10-20 22:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -151,7 +151,7 @@ msgstr "Kiểm tra cập nhật"
 msgid "Choose Group Color"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Circle around tabs when going to the previous/next tab"
 msgstr "Xoay vòng các tab khi chuyển đến tab trước/sau"
 
@@ -159,11 +159,13 @@ msgstr "Xoay vòng các tab khi chuyển đến tab trước/sau"
 msgid "Clear selection"
 msgstr "Xóa lựa chọn"
 
-#: gnome_connection_manager.py ssh_config_editor.py ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/main_window.py ssh_config_editor.py
+#: ssh_key_manager_dialog.py
 msgid "Close"
 msgstr "Đóng"
 
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py widgets.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/main_window.py widgets.py
 msgid "Close console"
 msgstr "Đóng console"
 
@@ -185,11 +187,11 @@ msgstr "Màu"
 msgid "Command"
 msgstr "Lệnh"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on close console"
 msgstr "Xác nhận khi đóng console"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on close console with middle click"
 msgstr "Xác nhận khi đóng console bằng nhấp chuột giữa"
 
@@ -255,7 +257,7 @@ msgstr "Delete:"
 msgid "Description"
 msgstr "Mô tả"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Disable alternating stripes in hosts window"
 msgstr "Tắt sọc xen kẽ trong cửa sổ host"
 
@@ -275,7 +277,7 @@ msgstr "Bạn có chắc muốn xóa tất cả host trong nhóm"
 msgid "Do you really want to remove host"
 msgstr "Bạn có chắc muốn xóa host"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Dynamic title"
 msgstr "Tiêu đề động"
 
@@ -738,7 +740,7 @@ msgstr ""
 msgid "Tip: use #P=password to send a password without keeping it in clear text in the command history"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Title"
 msgstr "Tiêu đề"
 
@@ -2706,6 +2708,63 @@ msgstr "Không thể đọc tệp cấu hình %s: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Không thể ghi tệp cấu hình %s: %s"
 
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: the host name is missing"
+msgstr "%s: thiếu tên máy chủ"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: too many cells"
+msgstr "%s: quá nhiều ô"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: unexpected value for %s"
+msgstr "%s: giá trị không mong đợi cho %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "The file %s is not a valid host export: %s"
+msgstr "Tệp %s không phải là bản xuất máy chủ hợp lệ: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to read the file %s: %s"
+msgstr "Không thể đọc tệp %s: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to write the file %s: %s"
+msgstr "Không thể ghi tệp %s: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "entry %d"
+msgstr "mục %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "line %d"
+msgstr "dòng %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "the column %s is missing"
+msgstr "thiếu cột %s"
+
+#: src/gcm4/core/exchange.py
+msgid "unsupported format or version"
+msgstr "định dạng hoặc phiên bản không được hỗ trợ"
+
+#: src/gcm4/core/menu.py
+msgid "Next tab"
+msgstr "Thẻ tiếp theo"
+
+#: src/gcm4/core/menu.py
+msgid "Previous tab"
+msgstr "Thẻ trước"
+
 #: src/gcm4/core/menu.py
 msgid "Search"
 msgstr "Tìm kiếm"
@@ -2930,6 +2989,11 @@ msgstr "Chưa tải cấu hình"
 #: src/gcm4/ui/main_window.py
 msgid "Home"
 msgstr "Trang chủ"
+
+#: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Host not found: {hosts}"
+msgstr "Không tìm thấy máy chủ: {hosts}"
 
 #: src/gcm4/ui/main_window.py
 msgid "Hosts and groups will appear in the left panel."
