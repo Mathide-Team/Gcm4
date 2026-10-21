@@ -157,6 +157,7 @@ files = [
     "tab_context_menu_core.py",
     "plugins/plugin_base.py",
     "plugins/ssh/core.py",
+    "plugins/telnet/core.py",
 ]
 ignore_missing_imports = true
 follow_imports = "silent"

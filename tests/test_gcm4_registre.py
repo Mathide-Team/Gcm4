@@ -220,10 +220,12 @@ def test_zero_plugin(monkeypatch):
 
 
 def test_dossier_source_du_depot():
-    """Depuis les sources, plugins/ du dépôt est trouvé ; aucun de ses dossiers n'a encore de gtk4.py."""
+    """Depuis les sources, plugins/ du dépôt est trouvé ; telnet y est candidat."""
     dossier = registre.dossier_source()
     assert dossier is not None and dossier.name == "plugins"
-    assert all(c.nom for c in registre.candidats_dossier(dossier))
+    candidats = registre.candidats_dossier(dossier)
+    assert "telnet" in [c.nom for c in candidats]
+    assert all(c.nom and c.source.endswith("gtk4.py") for c in candidats)
 
 
 def test_candidat_qui_n_est_pas_une_classe():
