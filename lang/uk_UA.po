@@ -2908,6 +2908,11 @@ msgstr "Порт має бути числом від {min} до {max}."
 msgid "The name must not contain «/»."
 msgstr "Назва не повинна містити «/»."
 
+#: src/gcm4/ui/application.py
+#, python-brace-format
+msgid "gcm4 is already running with another configuration folder: close it to use {requested}."
+msgstr "gcm4 уже запущено з іншою текою конфігурації: закрийте його, щоб використати {requested}."
+
 #: src/gcm4/ui/contexte.py
 #, python-brace-format
 msgid "Password for {target}"

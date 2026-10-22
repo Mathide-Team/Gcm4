@@ -40,7 +40,7 @@ flowchart TD
     g4 -->|1| g1
     g4 -->|5| g0
     g4 -->|1| g3
-    g5 -->|2| g0
+    g5 -->|3| g0
     g5 -->|2| g3
     g5 -->|53| g4
 ```
@@ -1352,7 +1352,7 @@ classDiagram
     class mod_gcm4_core_cli {
         <<module>>
         +build_parser() argparse.ArgumentParser
-        +parse_args(argv, home, environ) argparse.Namespace
+        +parse_args(argv, home, environ, cwd) argparse.Namespace
     }
     class mod_gcm4_core_comportement_onglets {
         <<module>>
@@ -1789,7 +1789,7 @@ classDiagram
 classDiagram
     class mod_gcm4_ui_application {
         <<module>>
-        +run(args) int
+        +run(args, argv) int
     }
     class Gcm4Application {
         <<Adw.Application>>
