@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-21 06:48+0000\n"
+"POT-Creation-Date: 2026-10-22 05:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,7 +36,7 @@ msgstr ""
 msgid "<span size=\"smaller\">CTRL+UP/CTRL+DOWN for history</span>"
 msgstr "<span size=\"smaller\">CTRL+FEL/CTRL+LE az előzményekhez</span>"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid ""
 "<span size='smaller'>Use ##D=milliseconds to add a delay.\n"
 "Ex: ##D=1000</span>"
@@ -57,11 +57,11 @@ msgstr "Új verzió érhető el: https://github.com/MathildeDec/gnome-connection
 msgid "A simple ssh connection manager for gnome"
 msgstr "Egyszerű SSH kapcsolatkezelő a Gnome-hoz"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "ASCII Backspace \t[Ctrl+H 0x08]"
 msgstr "ASCII Backspace \t[Ctrl+H 0x08]"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
 msgstr "ASCII Delete    \t[Ctrl+? 0x7F]"
 
@@ -89,7 +89,7 @@ msgstr "Bontás után"
 msgid "Always"
 msgstr "Mindig"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Automatic"
 msgstr "Automatikus"
 
@@ -97,7 +97,7 @@ msgstr "Automatikus"
 msgid "Background color:"
 msgstr "Háttérszín:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Backspace:"
 msgstr "Backspace:"
 
@@ -151,7 +151,7 @@ msgstr "Frissítések keresése"
 msgid "Choose Group Color"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Circle around tabs when going to the previous/next tab"
 msgstr "Körkörös navigáció a lapok között az előző/következő lapra lépéskor"
 
@@ -159,11 +159,13 @@ msgstr "Körkörös navigáció a lapok között az előző/következő lapra l�
 msgid "Clear selection"
 msgstr "Kijelölés törlése"
 
-#: gnome_connection_manager.py ssh_config_editor.py ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/main_window.py ssh_config_editor.py
+#: ssh_key_manager_dialog.py
 msgid "Close"
 msgstr "Bezárás"
 
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py widgets.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/main_window.py widgets.py
 msgid "Close console"
 msgstr "Konzol bezárása"
 
@@ -185,11 +187,11 @@ msgstr "Színek"
 msgid "Command"
 msgstr "Parancs"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on close console"
 msgstr "Megerősítés konzol bezárásakor"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on close console with middle click"
 msgstr "Megerősítés konzol bezárásakor középső kattintással"
 
@@ -243,11 +245,11 @@ msgstr "Adatbitek"
 msgid "Default colors"
 msgstr "Alapértelmezett színek"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Delete Sequence \t[@7]"
 msgstr "Delete sorozat \t[@7]"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Delete:"
 msgstr "Delete:"
 
@@ -255,7 +257,7 @@ msgstr "Delete:"
 msgid "Description"
 msgstr "Leírás"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Disable alternating stripes in hosts window"
 msgstr "Váltakozó csíkozás kikapcsolása a hosztok ablakában"
 
@@ -275,7 +277,7 @@ msgstr "Biztosan eltávolítja az összes hosztot a csoportból"
 msgid "Do you really want to remove host"
 msgstr "Biztosan eltávolítja a hosztot"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Dynamic title"
 msgstr "Dinamikus cím"
 
@@ -650,7 +652,7 @@ msgstr "Betűtípus kiválasztása"
 msgid "Select foreground color"
 msgstr "Előtérszín kiválasztása"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Send commands after login"
 msgstr "Parancsok küldése bejelentkezés után"
 
@@ -710,11 +712,11 @@ msgstr "Stop"
 msgid "System"
 msgstr "Rendszer"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "TERM"
 msgstr "TERM"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "TTY Erase"
 msgstr "TTY törlés"
 
@@ -738,7 +740,7 @@ msgstr ""
 msgid "Tip: use #P=password to send a password without keeping it in clear text in the command history"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Title"
 msgstr "Cím"
 
@@ -1441,7 +1443,7 @@ msgid "IPMI (SOL)"
 msgstr ""
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_spice.py
-#: plugins/plugin_vnc.py
+#: plugins/plugin_vnc.py plugins/telnet/gtk4.py
 msgid "Session ended"
 msgstr "A munkamenet véget ért"
 
@@ -2659,6 +2661,11 @@ msgid ""
 "The web console will open in the system browser."
 msgstr ""
 
+#: plugins/telnet/gtk4.py
+#, python-brace-format
+msgid "{program} not found"
+msgstr "A(z) {program} nem található"
+
 #: src/gcm4/app.py
 msgid "The old configuration is intact: fix the problem (permissions, disk space), then start gcm4 again."
 msgstr "A régi beállítások érintetlenek: hárítsa el a hibát (jogosultságok, lemezterület), majd indítsa újra a gcm4-et."
@@ -2705,6 +2712,63 @@ msgstr "Nem olvasható a(z) %s beállítófájl: %s"
 #, python-format
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Nem írható a(z) %s beállítófájl: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: the host name is missing"
+msgstr "%s: hiányzik a gép neve"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: too many cells"
+msgstr "%s: túl sok cella"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: unexpected value for %s"
+msgstr "%s: váratlan érték ehhez: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "The file %s is not a valid host export: %s"
+msgstr "A(z) %s fájl nem érvényes gépexport: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to read the file %s: %s"
+msgstr "A(z) %s fájl nem olvasható: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to write the file %s: %s"
+msgstr "A(z) %s fájl nem írható: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "entry %d"
+msgstr "%d. bejegyzés"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "line %d"
+msgstr "%d. sor"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "the column %s is missing"
+msgstr "hiányzik a(z) %s oszlop"
+
+#: src/gcm4/core/exchange.py
+msgid "unsupported format or version"
+msgstr "nem támogatott formátum vagy verzió"
+
+#: src/gcm4/core/menu.py
+msgid "Next tab"
+msgstr "Következő lap"
+
+#: src/gcm4/core/menu.py
+msgid "Previous tab"
+msgstr "Előző lap"
 
 #: src/gcm4/core/menu.py
 msgid "Search"

@@ -4,15 +4,45 @@ Issue #162.
 
 ## `make ci`
 
-Rejoue localement les étapes des jobs Qualité, Types et i18n de
-`.github/workflows/ci.yml`, dans le même ordre : ruff, flake8, format,
-imports circulaires, pytest avec couverture, mypy, validation et
-fraîcheur des catalogues. `tests/test_make_ci.py` échoue si une étape est
+Rejoue localement les étapes des jobs Qualité, Types, i18n, Intégration au
+bureau et documentation de `.github/workflows/ci.yml`, dans le même ordre :
+ruff, flake8, format, imports circulaires, pytest avec couverture, mypy,
+validation et fraîcheur des catalogues, lanceur et AppStream, MkDocs. `tests/test_make_ci.py` échoue si une étape est
 ajoutée à la CI sans l'être à `make ci`.
 
 Le hook pre-commit (`.pre-commit-config.yaml`, #90) reste plus léger
 (ruff, format, imports circulaires) : `make ci` est la vérification
 complète avant de pousser.
+
+## Intégration au bureau
+
+Issue #155. Fichiers de `data/`, nommés d'après l'identifiant de
+l'application (`APPLICATION_ID`, `io.github.MathildeDec.gcm4`) :
+
+- `io.github.MathildeDec.gcm4.desktop` : lanceur (`Exec=gcm4`) et action
+  « gcm4 (debug mode) » (`gcm4 --debug`). gcm4 est une application à
+  instance unique : tant que #275 (PR #277) n'est pas fusionnée, l'action
+  lancée alors que gcm4 tourne déjà présente la fenêtre existante sans
+  activer le mode debug ; ensuite, l'instance en cours passe en DEBUG.
+- `io.github.MathildeDec.gcm4.metainfo.xml` : métadonnées AppStream
+  (logithèques). La balise `<release>` suit la version de `pyproject.toml`.
+- `icons/hicolor/<taille>/apps/io.github.MathildeDec.gcm4.png` : 16 à 128
+  pixels, produites par `make icons` (`scripts/generer-icones.sh`) depuis
+  `icon.png` (128×128, jamais agrandie) et versionnées.
+
+`GLib.set_prgname(APPLICATION_ID)` (`Gcm4Application.__init__`) donne à la
+fenêtre la classe `io.github.MathildeDec.gcm4` (`WM_CLASS` sous X11,
+`app_id` sous Wayland) : c'est ce qui rattache la fenêtre à son lanceur
+(`StartupWMClass`). Sans cet appel, la classe était `python3`.
+
+`make check-desktop` (`scripts/check-desktop.sh`, job CI « Intégration au
+bureau ») valide le lanceur (`desktop-file-validate`, tout constat fait
+échouer), les métadonnées (`appstreamcli validate --no-net`) et les tailles
+des icônes. `tests/test_integration_bureau.py` vérifie sans ces outils la
+cohérence entre fichiers, identifiant, nom affiché et version.
+
+Restent hors de cette issue : l'installation de ces fichiers par les
+paquets (#156, #157) et la traduction du lanceur et des métadonnées (#274).
 
 ## Paquets
 

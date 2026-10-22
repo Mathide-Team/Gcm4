@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-21 06:48+0000\n"
+"POT-Creation-Date: 2026-10-22 05:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,7 +36,7 @@ msgstr ""
 msgid "<span size=\"smaller\">CTRL+UP/CTRL+DOWN for history</span>"
 msgstr "<span size=\"smaller\">ইতিহাসের জন্য CTRL+UP/CTRL+DOWN</span>"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid ""
 "<span size='smaller'>Use ##D=milliseconds to add a delay.\n"
 "Ex: ##D=1000</span>"
@@ -57,11 +57,11 @@ msgstr "একটি নতুন সংস্করণ উপলব্ধ: http
 msgid "A simple ssh connection manager for gnome"
 msgstr "Gnome-এর জন্য একটি সহজ SSH সংযোগ ম্যানেজার"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "ASCII Backspace \t[Ctrl+H 0x08]"
 msgstr "ASCII Backspace \t[Ctrl+H 0x08]"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
 msgstr "ASCII Delete    \t[Ctrl+? 0x7F]"
 
@@ -89,7 +89,7 @@ msgstr "সংযোগ বিচ্ছিন্নের পরে"
 msgid "Always"
 msgstr "সবসময়"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Automatic"
 msgstr "স্বয়ংক্রিয়"
 
@@ -97,7 +97,7 @@ msgstr "স্বয়ংক্রিয়"
 msgid "Background color:"
 msgstr "ব্যাকগ্রাউন্ড রঙ:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Backspace:"
 msgstr "Backspace:"
 
@@ -151,7 +151,7 @@ msgstr "আপডেট পরীক্ষা করুন"
 msgid "Choose Group Color"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Circle around tabs when going to the previous/next tab"
 msgstr "পূর্ববর্তী/পরবর্তী ট্যাবে যাওয়ার সময় ট্যাবের মধ্যে চক্রাকারে ঘুরুন"
 
@@ -159,11 +159,13 @@ msgstr "পূর্ববর্তী/পরবর্তী ট্যাবে 
 msgid "Clear selection"
 msgstr "নির্বাচন পরিষ্কার করুন"
 
-#: gnome_connection_manager.py ssh_config_editor.py ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/main_window.py ssh_config_editor.py
+#: ssh_key_manager_dialog.py
 msgid "Close"
 msgstr "বন্ধ করুন"
 
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py widgets.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/main_window.py widgets.py
 msgid "Close console"
 msgstr "কনসোল বন্ধ করুন"
 
@@ -185,11 +187,11 @@ msgstr "রঙ"
 msgid "Command"
 msgstr "কমান্ড"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on close console"
 msgstr "কনসোল বন্ধ করার সময় নিশ্চিত করুন"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on close console with middle click"
 msgstr "মধ্য-ক্লিকে কনসোল বন্ধ করার সময় নিশ্চিত করুন"
 
@@ -243,11 +245,11 @@ msgstr "ডেটা বিট"
 msgid "Default colors"
 msgstr "ডিফল্ট রঙ"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Delete Sequence \t[@7]"
 msgstr "ডিলিট সিকোয়েন্স \t[@7]"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Delete:"
 msgstr "Delete:"
 
@@ -255,7 +257,7 @@ msgstr "Delete:"
 msgid "Description"
 msgstr "বিবরণ"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Disable alternating stripes in hosts window"
 msgstr "হোস্ট উইন্ডোতে অল্টারনেটিং স্ট্রাইপ নিষ্ক্রিয় করুন"
 
@@ -275,7 +277,7 @@ msgstr "আপনি কি সত্যিই গ্রুপের সমস�
 msgid "Do you really want to remove host"
 msgstr "আপনি কি সত্যিই হোস্ট অপসারণ করতে চান"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Dynamic title"
 msgstr "ডায়নামিক শিরোনাম"
 
@@ -650,7 +652,7 @@ msgstr "ফন্ট নির্বাচন করুন"
 msgid "Select foreground color"
 msgstr "ফোরগ্রাউন্ড রঙ নির্বাচন করুন"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Send commands after login"
 msgstr "লগইনের পরে কমান্ড পাঠান"
 
@@ -710,11 +712,11 @@ msgstr "স্টপ"
 msgid "System"
 msgstr "সিস্টেম"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "TERM"
 msgstr "TERM"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "TTY Erase"
 msgstr "TTY মুছুন"
 
@@ -738,7 +740,7 @@ msgstr ""
 msgid "Tip: use #P=password to send a password without keeping it in clear text in the command history"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Title"
 msgstr "শিরোনাম"
 
@@ -1441,7 +1443,7 @@ msgid "IPMI (SOL)"
 msgstr ""
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_spice.py
-#: plugins/plugin_vnc.py
+#: plugins/plugin_vnc.py plugins/telnet/gtk4.py
 msgid "Session ended"
 msgstr "সেশন শেষ হয়েছে"
 
@@ -2659,6 +2661,11 @@ msgid ""
 "The web console will open in the system browser."
 msgstr ""
 
+#: plugins/telnet/gtk4.py
+#, python-brace-format
+msgid "{program} not found"
+msgstr "{program} খুঁজে পাওয়া যায়নি"
+
 #: src/gcm4/app.py
 msgid "The old configuration is intact: fix the problem (permissions, disk space), then start gcm4 again."
 msgstr "পুরোনো কনফিগারেশন অক্ষত আছে: সমস্যাটি (অনুমতি, ডিস্কের জায়গা) ঠিক করুন, তারপর gcm4 আবার চালু করুন।"
@@ -2705,6 +2712,63 @@ msgstr "কনফিগারেশন ফাইল %s পড়া যায়
 #, python-format
 msgid "Unable to write the configuration file %s: %s"
 msgstr "কনফিগারেশন ফাইল %s লেখা যায়নি: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: the host name is missing"
+msgstr "%s: হোস্টের নাম নেই"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: too many cells"
+msgstr "%s: অতিরিক্ত ঘর"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: unexpected value for %s"
+msgstr "%s: %s-এর জন্য অপ্রত্যাশিত মান"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "The file %s is not a valid host export: %s"
+msgstr "%s ফাইলটি বৈধ হোস্ট এক্সপোর্ট নয়: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to read the file %s: %s"
+msgstr "%s ফাইলটি পড়া যায়নি: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to write the file %s: %s"
+msgstr "%s ফাইলটি লেখা যায়নি: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "entry %d"
+msgstr "এন্ট্রি %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "line %d"
+msgstr "লাইন %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "the column %s is missing"
+msgstr "%s কলামটি নেই"
+
+#: src/gcm4/core/exchange.py
+msgid "unsupported format or version"
+msgstr "অসমর্থিত ফরম্যাট বা সংস্করণ"
+
+#: src/gcm4/core/menu.py
+msgid "Next tab"
+msgstr "পরবর্তী ট্যাব"
+
+#: src/gcm4/core/menu.py
+msgid "Previous tab"
+msgstr "পূর্ববর্তী ট্যাব"
 
 #: src/gcm4/core/menu.py
 msgid "Search"

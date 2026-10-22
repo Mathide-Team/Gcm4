@@ -73,6 +73,8 @@ def test_menu_actions_et_raccourcis():
         "app.preferences",
         "win.toggle-panel",
         "win.search",
+        "win.previous-tab",
+        "win.next-tab",
         "app.theme",
         "app.about",
     ]

@@ -29,7 +29,7 @@ FPM_COMMON = -s dir -n $(PKG_NAME) -v $(PKG_VERSION) -C $(TMPINSTALLDIR) \
 	--category net --url $(PKG_URL)
 
 # ── Cibles principales ────────────────────────────────────────────────────────
-.PHONY: all run-gtk4 deb rpm opensuse install translate i18n-update i18n-check i18n-report class-diagram ci test lint validate clean help docs
+.PHONY: all run-gtk4 deb rpm opensuse install translate i18n-update i18n-check i18n-report class-diagram ci check-desktop icons test lint validate clean help docs
 
 all:  test lint deb rpm opensuse translate validate
 
@@ -45,7 +45,9 @@ help:
 	@echo "  make i18n-report → taux de traduction par langue"
 	@echo "  make run-gtk4 → lance gcm4 (GTK4) dans .venv ; venv créé par bootstrap-dev.sh"
 	@echo "  make class-diagram → régénère docs/class-diagram.md"
-	@echo "  make ci       → rejoue les étapes des jobs Qualité, Types, i18n et documentation"
+	@echo "  make ci       → rejoue les étapes des jobs Qualité, Types, i18n, bureau et documentation"
+	@echo "  make check-desktop → valide lanceur, AppStream et icônes (data/)"
+	@echo "  make icons   → régénère data/icons/hicolor/ depuis icon.png"
 	@echo "  make docs     → construit la documentation MkDocs (site/, strict)"
 	@echo "  make test     → lance la suite pytest"
 	@echo "  make lint     → ruff + flake8"
@@ -178,12 +180,22 @@ ci:
 	uv run ruff format --check .
 	uvx pre-commit run --all-files --show-diff-on-failure
 	uv run python tools/check_circular_imports.py
-	uv run python -m pytest tests/ -q --cov --cov-report=term-missing:skip-covered
+	GCM_TESTS_EXIGES=gettext uv run python -m pytest tests/ -q -rs --cov --cov-report=term-missing:skip-covered
 	uv run coverage report --include='src/gcm4/core/*' --fail-under=95
 	uv run mypy
 	uv run python tools/validate_po.py lang/*.po
 	scripts/i18n-update.sh --check
+	scripts/check-desktop.sh
 	uvx --with mkdocs-material --with pymdown-extensions --from "mkdocs<2" mkdocs build --strict
+
+# ── Intégration au bureau (issue #155) ──
+# check-desktop : lanceur, AppStream et icônes (desktop-file-utils, appstream).
+# icons : régénère data/icons/hicolor/ depuis icon.png (ImageMagick).
+check-desktop:
+	scripts/check-desktop.sh
+
+icons:
+	scripts/generer-icones.sh
 
 # ── Documentation (MkDocs, issue #127) ──
 docs:
