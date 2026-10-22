@@ -188,10 +188,10 @@ class TestFumee(unittest.TestCase):
             ["debian:13", "ubuntu:24.04", "ubuntu:26.04"],
         )
 
-    def test_rpm_renvoie_a_son_issue(self):
-        """Le mode rpm n'est pas un succès vide : il échoue en citant #157."""
+    def test_mode_inconnu_refuse(self):
+        """Un mode inconnu n'est pas un succès vide."""
         resultat = subprocess.run(
-            ["bash", str(SMOKE), "rpm", "absent.rpm"], capture_output=True, text=True
+            ["bash", str(SMOKE), "msi", "absent.msi"], capture_output=True, text=True
         )
         self.assertNotEqual(resultat.returncode, 0)
-        self.assertIn("#157", resultat.stderr)
+        self.assertIn("mode inconnu", resultat.stderr)

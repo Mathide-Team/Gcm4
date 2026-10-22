@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-22 17:27+0000\n"
+"POT-Creation-Date: 2026-10-22 18:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,70 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: data/io.github.MathildeDec.gcm4.desktop
+msgid "Connection Manager"
+msgstr "সংযোগ ব্যবস্থাপক"
+
+#: data/io.github.MathildeDec.gcm4.desktop
+#: data/io.github.MathildeDec.gcm4.metainfo.xml gnome_connection_manager.py
+msgid "Gnome Connection Manager"
+msgstr "Gnome Connection Manager"
+
+#: data/io.github.MathildeDec.gcm4.desktop
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Organize your hosts and open their connections in tabs"
+msgstr "আপনার হোস্টগুলো সাজান এবং তাদের সংযোগ ট্যাবে খুলুন"
+
+#: data/io.github.MathildeDec.gcm4.desktop
+msgid "connection;remote;host;session;terminal;gcm4;"
+msgstr "সংযোগ;দূরবর্তী;হোস্ট;সেশন;টার্মিনাল;gcm4;"
+
+#: data/io.github.MathildeDec.gcm4.desktop
+msgid "gcm4 (debug mode)"
+msgstr "gcm4 (ডিবাগ মোড)"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Connection protocols provided by plugins"
+msgstr "সংযোগ প্রোটোকল এক্সটেনশন থেকে আসে"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml gnome_connection_manager.py
+#: src/gcm4/ui/host_dialog.py
+msgid "Edit Host"
+msgstr "হোস্ট সম্পাদনা করুন"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Gnome Connection Manager keeps your hosts in groups and opens each connection in a tab of a single window."
+msgstr "Gnome Connection Manager আপনার হোস্টগুলো গ্রুপে রাখে এবং প্রতিটি সংযোগ একটি উইন্ডোর একটি ট্যাবে খোলে।"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Groups and hosts in a searchable tree, with colors and drag and drop"
+msgstr "খোঁজা যায় এমন একটি ট্রিতে গ্রুপ ও হোস্ট, রং এবং টেনে এনে ছাড়ার সুবিধাসহ"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Groups and hosts in the main window"
+msgstr "প্রধান উইন্ডোতে গ্রুপ ও হোস্ট"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Host passwords stored encrypted"
+msgstr "হোস্টের পাসওয়ার্ড এনক্রিপ্ট করে সংরক্ষিত"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Last release of the GTK3 application; the GTK4 base is not released yet."
+msgstr "GTK3 অ্যাপ্লিকেশনের সর্বশেষ সংস্করণ; GTK4 ভিত্তি এখনও প্রকাশিত হয়নি।"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Open tabs restored at the next start"
+msgstr "পরের বার চালুর সময় খোলা ট্যাবগুলো পুনরুদ্ধার"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml gnome_connection_manager.py
+#: src/gcm4/core/menu.py src/gcm4/ui/preferences.py
+msgid "Settings"
+msgstr "সেটিংস"
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "The base application provides no protocol by itself: connections need the corresponding plugin."
+msgstr "মূল অ্যাপ্লিকেশন নিজে কোনো প্রোটোকল দেয় না: সংযোগের জন্য সংশ্লিষ্ট এক্সটেনশন প্রয়োজন।"
 
 #: gnome_connection_manager.py
 msgid "+ Add"
@@ -287,10 +351,6 @@ msgstr "ডায়নামিক শিরোনাম"
 msgid "Edit"
 msgstr "সম্পাদনা করুন"
 
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
-msgid "Edit Host"
-msgstr "হোস্ট সম্পাদনা করুন"
-
 #: gnome_connection_manager.py
 msgid "Enable Logging"
 msgstr "লগিং সক্ষম করুন"
@@ -376,10 +436,6 @@ msgstr ""
 #: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "General"
 msgstr "সাধারণ"
-
-#: gnome_connection_manager.py
-msgid "Gnome Connection Manager"
-msgstr "Gnome Connection Manager"
 
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
@@ -670,10 +726,6 @@ msgstr "সার্ভার তালিকা ওভাররাইট হব
 #| msgid "_Servers"
 msgid "Servers"
 msgstr "_সার্ভার"
-
-#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
-msgid "Settings"
-msgstr "সেটিংস"
 
 #: gnome_connection_manager.py
 #, python-brace-format

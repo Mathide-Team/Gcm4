@@ -41,8 +41,8 @@ bureau ») valide le lanceur (`desktop-file-validate`, tout constat fait
 des icônes. `tests/test_integration_bureau.py` vérifie sans ces outils la
 cohérence entre fichiers, identifiant, nom affiché et version.
 
-Le paquet .deb de la base les installe (#156, section suivante) ; restent
-le .rpm (#157) et la traduction du lanceur et des métadonnées (#274).
+Les paquets .deb et .rpm de la base les installent (#156, #157, sections
+suivantes) ; reste la traduction du lanceur et des métadonnées (#274).
 
 ## Paquet .deb de la base GTK4
 
@@ -77,6 +77,35 @@ Issue #156, sur le modèle de Netcross.
 - CI : « Paquet .deb (construction) » construit le paquet sur Ubuntu 26.04 ;
   « Paquets (.deb, …) » l'installe dans des conteneurs propres Debian 13,
   Ubuntu 24.04 et Ubuntu 26.04 et lance le test de fumée.
+
+## Paquet .rpm de la base GTK4
+
+Issue #157, même contenu que le .deb.
+
+- `make rpm-gcm4` (`build-rpm/build.sh`, `build-rpm/gcm4.spec`, rpmbuild)
+  produit `build-rpm/dist/gcm4-<version>-1.noarch.rpm`. Prérequis sur
+  Fedora : `rpm-build python3-rpm-macros gettext git python3-build
+  python3-hatchling` ; construction croisée possible sur Debian/Ubuntu avec
+  le paquet `rpm` (sans `.pyc` : les macros Python de Fedora manquent).
+- Version de `pyproject.toml`, passée au spec (`--define gcm4_version`).
+  `Release: 1` sans `%{?dist}` : un seul paquet noarch.
+- Même contenu que le .deb, lanceur commun (`build-deb/wrappers/gcm4`) ;
+  catalogues marqués par langue (`%find_lang gcm-lang`) ; `.pyc` produits à
+  la construction sur Fedora (`%py_byte_compile`). Les modules privés de
+  `/usr/share/gcm4` ne génèrent aucun `python3dist(...)`.
+- Dépendances : `python3 >= 3.12`, `python3-gobject`, `gobject-introspection`,
+  `gtk4`, `libadwaita`, `python3-loguru` ; aucune de plugin.
+  `gobject-introspection` fournit le typelib `cairo-1.0` qu'exige celui de
+  GTK 4 : sans lui, `import Gtk 4.0` échoue sur Fedora 44 (ni `gtk4` ni
+  `python3-gobject` ne l'installent).
+- `make smoke-rpm` (`scripts/smoke-test-packages.sh rpm`) vérifie le contenu
+  sans installer (`rpm -qpl`, `rpm -qpR`) ; `smoke-test-packages.sh rpm-dnf`
+  vérifie le contenu puis installe avec dnf et reprend les vérifications du
+  .deb, démarrage sous Xvfb compris. Les images Fedora n'installent que
+  l'anglais (`%_install_langs`) : le script refuse de tester tant que c'est
+  le cas.
+- CI : « Paquet .rpm (construction) » sur Fedora 44 ; « Paquets (.rpm, …) »
+  l'installe dans un conteneur Fedora 44 propre.
 
 ## Paquets de l'application GTK3
 

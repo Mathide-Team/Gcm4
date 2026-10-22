@@ -10,6 +10,8 @@ GTK3 vers GTK4.
 
 ## Par où commencer
 
+- **Essayer gcm4, la base GTK4** : [installation et premiers pas](guide/base-gtk4.md)
+  (paquets, premier lancement, limites sans plugin, signaler un bug).
 - **Utiliser Gcm4** : la [documentation utilisateur](guide/utilisateur.md),
   puis le [fichier de configuration](configuration.md).
 - **Changer de langue** : [Langue de l'interface](i18n.md).
