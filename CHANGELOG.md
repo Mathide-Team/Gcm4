@@ -10,6 +10,24 @@
 > session par session, dans `claude.md` (journal) et `features.md` (§4.1).
 
 ### Added
+- **gcm4, base GTK4** (#126, réécriture, paquet `src/gcm4`) : commande `gcm4`
+  et ligne de commande (#133) ; fenêtre GTK4/libadwaita, actions et À propos
+  (#134) ; thème clair/sombre/système (#135) ; modèle Host/Group sans GTK
+  (#136) ; lecture/écriture atomique de `gcm.conf`, clés inconnues
+  conservées (#137) ; mots de passe chiffrés compatibles GTK3 (#138) ;
+  dossier `~/.config/gcm4` avec migration non destructive depuis `~/.gcm`
+  (#99) ; arbre des groupes et hôtes (#139), recherche (#140),
+  glisser-déposer (#141), menus contextuels et suppression confirmée (#142) ;
+  dialogue d'hôte avec validation (#144, #145) et zone d'options fournie par
+  le plugin (#146) ; préférences Général, Apparence, Raccourcis,
+  Journalisation et Extensions (#147, #148) ; contrat plugin v1, découverte
+  isolée des erreurs et mode zéro plugin (#149, #150, #151) ; restauration
+  des onglets (#246) ; vérification des mises à jour avec accord explicite
+  (#245)
+- **Intégration bureau et paquets de gcm4** : lanceur `.desktop`, métadonnées
+  AppStream et icônes (#155) ; paquet `.deb` (Debian 13, Ubuntu 24.04+) (#156)
+  et paquet `.rpm` (Fedora) (#157), vérifiés par un test de fumée en CI ;
+  guide d'installation et de premiers pas `docs/guide/base-gtk4.md` (#158)
 - **Base GTK4 — `gcm4 groupe/nom…`** (#154) : les hôtes de la ligne de
   commande sont sélectionnés dans l'arbre au démarrage (groupes parents
   dépliés), connectés seulement si un plugin gère leur protocole ; hôte

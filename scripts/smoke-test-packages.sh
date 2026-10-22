@@ -10,7 +10,8 @@
 #         2. le lanceur /usr/bin/gcm4 (exécutable, /usr/bin/python3) ;
 #         3. « gcm4 --version » donne la version du paquet ;
 #         4. chaque module de /usr/share/gcm4 s'importe avec /usr/bin/python3 ;
-#         5. le lanceur .desktop, le metainfo et les icônes sont installés ;
+#         5. le lanceur .desktop, le metainfo (traduits) et les icônes sont
+#            installés ;
 #         6. un catalogue .mo par langue de lang/LINGUAS, réellement chargé
 #            par gcm4.core.i18n depuis /usr/share/locale ;
 #         7. gcm4 démarre sous Xvfb, présente sa fenêtre, et son journal
@@ -107,10 +108,18 @@ PY
     grep -qx 'Exec=gcm4' "$desktop" || fail "$desktop : Exec=gcm4 absent"
     grep -qx "Icon=$APP_ID" "$desktop" || fail "$desktop : Icon=$APP_ID absent"
     [ -f "/usr/share/metainfo/$APP_ID.metainfo.xml" ] || fail "metainfo absent"
+    # Traductions fusionnées par build.sh (#274) : langue seule (fr) et
+    # variante (zh_CN) dans le lanceur ; AppStream (étiquettes BCP 47 selon
+    # la version de gettext) vérifié sur fr.
+    for code in fr zh_CN; do
+        grep -q "^Comment\[$code\]=" "$desktop" || fail "$desktop : Comment[$code] absent"
+    done
+    grep -q '<summary xml:lang="fr">' "/usr/share/metainfo/$APP_ID.metainfo.xml" \
+        || fail "metainfo : summary xml:lang=fr absent"
     for s in "${ICON_SIZES[@]}"; do
         [ -f "/usr/share/icons/hicolor/$s/apps/$APP_ID.png" ] || fail "icône $s absente"
     done
-    echo "bureau : lanceur, metainfo et ${#ICON_SIZES[@]} icônes installés"
+    echo "bureau : lanceur et metainfo traduits, ${#ICON_SIZES[@]} icônes installés"
 
     # 6. traductions
     local n=0

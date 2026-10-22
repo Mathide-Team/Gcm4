@@ -47,6 +47,9 @@ mv "$STAGE_DIR"/*-"$VERSION"-py3-none-any.whl "$STAGE_DIR/gcm4-$VERSION-py3-none
 (cd "$REPO_ROOT" && git ls-files -z -- data LICENSE | xargs -0 cp --parents -t "$STAGE_DIR")
 cp "$REPO_ROOT/build-deb/wrappers/gcm4" "$STAGE_DIR/gcm4"
 "$REPO_ROOT/scripts/i18n-update.sh" --compile "$STAGE_DIR/locale"
+# Lanceur et métadonnées AppStream avec leurs traductions (#274) : remplacent
+# les fichiers anglais de data/ copiés plus haut.
+"$REPO_ROOT/scripts/i18n-update.sh" --desktop "$STAGE_DIR/data"
 
 tar czf "$TOPDIR/SOURCES/gcm4-$VERSION.tar.gz" -C "$BUILD_DIR" "gcm4-$VERSION"
 cp "$SCRIPT_DIR/gcm4.spec" "$TOPDIR/SPECS/"
