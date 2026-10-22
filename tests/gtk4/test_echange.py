@@ -89,7 +89,9 @@ def test_export_sans_mots_de_passe(app_fixture, tmp_path, monkeypatch, pomper):
     fenetre.activate_action("win.export-hosts", None)
     pomper()
     echange = fenetre.echange
-    assert isinstance(echange.dialogue, (Adw.Dialog, Adw.MessageDialog))
+    # Adw.AlertDialog (libadwaita ≥ 1.5), sinon Adw.MessageDialog (Debian 12 : 1.2).
+    attendu = Adw.AlertDialog if hasattr(Adw, "AlertDialog") else Adw.MessageDialog
+    assert isinstance(echange.dialogue, attendu)
     assert not echange.alerte_mots_de_passe.get_visible()
     _repondre(echange, "exporter", pomper)
     assert selecteur.appels == [(fichiers.ENREGISTRER, "Export servers", "gcm4-hosts.json")]
