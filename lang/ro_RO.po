@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-21 07:53+0000\n"
+"POT-Creation-Date: 2026-10-22 05:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -100,7 +100,7 @@ msgstr ""
 msgid "<span size=\"smaller\">CTRL+UP/CTRL+DOWN for history</span>"
 msgstr "<span size=\"smaller\">CTRL+SUS/CTRL+JOS pentru istoric</span>"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid ""
 "<span size='smaller'>Use ##D=milliseconds to add a delay.\n"
 "Ex: ##D=1000</span>"
@@ -121,11 +121,11 @@ msgstr "Este disponibilă o nouă versiune: https://github.com/MathildeDec/gnome
 msgid "A simple ssh connection manager for gnome"
 msgstr "Un manager simplu de conexiuni SSH pentru Gnome"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "ASCII Backspace \t[Ctrl+H 0x08]"
 msgstr "ASCII Backspace \t[Ctrl+H 0x08]"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
 msgstr "ASCII Delete    \t[Ctrl+? 0x7F]"
 
@@ -153,7 +153,7 @@ msgstr "După deconectare"
 msgid "Always"
 msgstr "Întotdeauna"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Automatic"
 msgstr "Automat"
 
@@ -161,7 +161,7 @@ msgstr "Automat"
 msgid "Background color:"
 msgstr "Culoare fundal:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Backspace:"
 msgstr "Backspace:"
 
@@ -215,7 +215,7 @@ msgstr "Verifică actualizări"
 msgid "Choose Group Color"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Circle around tabs when going to the previous/next tab"
 msgstr "Ciclează între file la trecerea la fila precedentă/următoare"
 
@@ -223,11 +223,13 @@ msgstr "Ciclează între file la trecerea la fila precedentă/următoare"
 msgid "Clear selection"
 msgstr "Șterge selecția"
 
-#: gnome_connection_manager.py ssh_config_editor.py ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/main_window.py ssh_config_editor.py
+#: ssh_key_manager_dialog.py
 msgid "Close"
 msgstr "Închide"
 
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py widgets.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/main_window.py widgets.py
 msgid "Close console"
 msgstr "Închide consola"
 
@@ -249,11 +251,11 @@ msgstr "Culori"
 msgid "Command"
 msgstr "Comandă"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on close console"
 msgstr "Confirmă la închiderea consolei"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on close console with middle click"
 msgstr "Confirmă la închiderea consolei cu clic mijloc"
 
@@ -307,11 +309,11 @@ msgstr "Biți de date"
 msgid "Default colors"
 msgstr "Culori implicite"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Delete Sequence \t[@7]"
 msgstr "Secvență Delete \t[@7]"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Delete:"
 msgstr "Delete:"
 
@@ -319,7 +321,7 @@ msgstr "Delete:"
 msgid "Description"
 msgstr "Descriere"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Disable alternating stripes in hosts window"
 msgstr "Dezactivează benzile alternante în fereastra hosturilor"
 
@@ -339,7 +341,7 @@ msgstr "Sigur doriți să eliminați toate hosturile din grup"
 msgid "Do you really want to remove host"
 msgstr "Sigur doriți să eliminați hostul"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Dynamic title"
 msgstr "Titlu dinamic"
 
@@ -706,7 +708,7 @@ msgstr "Selectează fontul"
 msgid "Select foreground color"
 msgstr "Selectează culoarea textului"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Send commands after login"
 msgstr "Trimite comenzi după autentificare"
 
@@ -762,11 +764,11 @@ msgstr "Stop"
 msgid "System"
 msgstr "Sistem"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "TERM"
 msgstr "TERM"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "TTY Erase"
 msgstr "Ștergere TTY"
 
@@ -790,7 +792,7 @@ msgstr ""
 msgid "Tip: use #P=password to send a password without keeping it in clear text in the command history"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Title"
 msgstr "Titlu"
 
@@ -1493,7 +1495,7 @@ msgid "IPMI (SOL)"
 msgstr ""
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_spice.py
-#: plugins/plugin_vnc.py
+#: plugins/plugin_vnc.py plugins/telnet/gtk4.py
 msgid "Session ended"
 msgstr "Sesiune încheiată"
 
@@ -2711,6 +2713,11 @@ msgid ""
 "The web console will open in the system browser."
 msgstr ""
 
+#: plugins/telnet/gtk4.py
+#, python-brace-format
+msgid "{program} not found"
+msgstr "{program} nu a fost găsit"
+
 #: src/gcm4/app.py
 msgid "The old configuration is intact: fix the problem (permissions, disk space), then start gcm4 again."
 msgstr "Configurația veche este intactă: remediați problema (permisiuni, spațiu pe disc), apoi porniți din nou gcm4."
@@ -2757,6 +2764,63 @@ msgstr "Nu se poate citi fișierul de configurare %s: %s"
 #, python-format
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Nu se poate scrie fișierul de configurare %s: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: the host name is missing"
+msgstr "%s: lipsește numele gazdei"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: too many cells"
+msgstr "%s: prea multe celule"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: unexpected value for %s"
+msgstr "%s: valoare neașteptată pentru %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "The file %s is not a valid host export: %s"
+msgstr "Fișierul %s nu este un export valid de gazde: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to read the file %s: %s"
+msgstr "Fișierul %s nu poate fi citit: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to write the file %s: %s"
+msgstr "Fișierul %s nu poate fi scris: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "entry %d"
+msgstr "intrarea %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "line %d"
+msgstr "linia %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "the column %s is missing"
+msgstr "lipsește coloana %s"
+
+#: src/gcm4/core/exchange.py
+msgid "unsupported format or version"
+msgstr "format sau versiune neacceptate"
+
+#: src/gcm4/core/menu.py
+msgid "Next tab"
+msgstr "Fila următoare"
+
+#: src/gcm4/core/menu.py
+msgid "Previous tab"
+msgstr "Fila precedentă"
 
 #: src/gcm4/core/menu.py
 msgid "Search"
@@ -2982,6 +3046,11 @@ msgstr "Configurația nu a fost încărcată"
 #: src/gcm4/ui/main_window.py
 msgid "Home"
 msgstr "Acasă"
+
+#: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Host not found: {hosts}"
+msgstr "Gazda nu a fost găsită: {hosts}"
 
 #: src/gcm4/ui/main_window.py
 msgid "Hosts and groups will appear in the left panel."

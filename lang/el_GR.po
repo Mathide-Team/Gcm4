@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-21 07:53+0000\n"
+"POT-Creation-Date: 2026-10-22 05:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -100,7 +100,7 @@ msgstr ""
 msgid "<span size=\"smaller\">CTRL+UP/CTRL+DOWN for history</span>"
 msgstr "<span size=\"smaller\">CTRL+ΕΠΑΝΩ/CTRL+ΚΑΤΩ για ιστορικό</span>"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid ""
 "<span size='smaller'>Use ##D=milliseconds to add a delay.\n"
 "Ex: ##D=1000</span>"
@@ -121,11 +121,11 @@ msgstr "Μια νέα έκδοση είναι διαθέσιμη: https://github
 msgid "A simple ssh connection manager for gnome"
 msgstr "Ένας απλός διαχειριστής συνδέσεων ssh για το Gnome"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "ASCII Backspace \t[Ctrl+H 0x08]"
 msgstr "ASCII Backspace \t[Ctrl+H 0x08]"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
 msgstr "ASCII Delete    \t[Ctrl+? 0x7F]"
 
@@ -153,7 +153,7 @@ msgstr "Μετά την αποσύνδεση"
 msgid "Always"
 msgstr "Πάντα"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Automatic"
 msgstr "Αυτόματο"
 
@@ -161,7 +161,7 @@ msgstr "Αυτόματο"
 msgid "Background color:"
 msgstr "Χρώμα φόντου:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Backspace:"
 msgstr "Backspace:"
 
@@ -215,7 +215,7 @@ msgstr "Έλεγχος για ενημερώσεις"
 msgid "Choose Group Color"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Circle around tabs when going to the previous/next tab"
 msgstr "Κυκλική περιήγηση στις καρτέλες κατά τη μετάβαση στην προηγούμενη/επόμενη καρτέλα"
 
@@ -223,11 +223,13 @@ msgstr "Κυκλική περιήγηση στις καρτέλες κατά τ�
 msgid "Clear selection"
 msgstr "Εκκαθάριση επιλογής"
 
-#: gnome_connection_manager.py ssh_config_editor.py ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/main_window.py ssh_config_editor.py
+#: ssh_key_manager_dialog.py
 msgid "Close"
 msgstr "Κλείσιμο"
 
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py widgets.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/main_window.py widgets.py
 msgid "Close console"
 msgstr "Κλείσιμο κονσόλας"
 
@@ -249,11 +251,11 @@ msgstr "Χρώματα"
 msgid "Command"
 msgstr "Εντολή"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on close console"
 msgstr "Επιβεβαίωση κατά το κλείσιμο της κονσόλας"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on close console with middle click"
 msgstr "Επιβεβαίωση κατά το κλείσιμο της κονσόλας με μεσαίο κλικ"
 
@@ -307,11 +309,11 @@ msgstr "Bits δεδομένων"
 msgid "Default colors"
 msgstr "Προεπιλεγμένα χρώματα"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Delete Sequence \t[@7]"
 msgstr "Ακολουθία Delete \t[@7]"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Delete:"
 msgstr "Delete:"
 
@@ -319,7 +321,7 @@ msgstr "Delete:"
 msgid "Description"
 msgstr "Περιγραφή"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Disable alternating stripes in hosts window"
 msgstr "Απενεργοποίηση εναλλασσόμενων λωρίδων στο παράθυρο κεντρικών υπολογιστών"
 
@@ -339,7 +341,7 @@ msgstr "Θέλετε πραγματικά να αφαιρέσετε όλους �
 msgid "Do you really want to remove host"
 msgstr "Θέλετε πραγματικά να αφαιρέσετε τον κεντρικό υπολογιστή"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Dynamic title"
 msgstr "Δυναμικός τίτλος"
 
@@ -706,7 +708,7 @@ msgstr "Επιλογή γραμματοσειράς"
 msgid "Select foreground color"
 msgstr "Επιλογή χρώματος προσκηνίου"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Send commands after login"
 msgstr "Αποστολή εντολών μετά τη σύνδεση"
 
@@ -762,11 +764,11 @@ msgstr "Διακοπή"
 msgid "System"
 msgstr "Συστήματος"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "TERM"
 msgstr "TERM"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "TTY Erase"
 msgstr "Διαγραφή TTY"
 
@@ -790,7 +792,7 @@ msgstr ""
 msgid "Tip: use #P=password to send a password without keeping it in clear text in the command history"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Title"
 msgstr "Τίτλος"
 
@@ -1493,7 +1495,7 @@ msgid "IPMI (SOL)"
 msgstr ""
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_spice.py
-#: plugins/plugin_vnc.py
+#: plugins/plugin_vnc.py plugins/telnet/gtk4.py
 msgid "Session ended"
 msgstr "Η συνεδρία έληξε"
 
@@ -2711,6 +2713,11 @@ msgid ""
 "The web console will open in the system browser."
 msgstr ""
 
+#: plugins/telnet/gtk4.py
+#, python-brace-format
+msgid "{program} not found"
+msgstr "Το {program} δεν βρέθηκε"
+
 #: src/gcm4/app.py
 msgid "The old configuration is intact: fix the problem (permissions, disk space), then start gcm4 again."
 msgstr "Οι παλιές ρυθμίσεις είναι ανέπαφες: διορθώστε το πρόβλημα (δικαιώματα, χώρος στον δίσκο) και εκκινήστε ξανά το gcm4."
@@ -2757,6 +2764,63 @@ msgstr "Δεν είναι δυνατή η ανάγνωση του αρχείου
 #, python-format
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Δεν είναι δυνατή η εγγραφή του αρχείου ρυθμίσεων %s: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: the host name is missing"
+msgstr "%s: λείπει το όνομα του κεντρικού υπολογιστή"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: too many cells"
+msgstr "%s: υπερβολικά πολλά κελιά"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: unexpected value for %s"
+msgstr "%s: μη αναμενόμενη τιμή για %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "The file %s is not a valid host export: %s"
+msgstr "Το αρχείο %s δεν είναι έγκυρη εξαγωγή κεντρικών υπολογιστών: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to read the file %s: %s"
+msgstr "Αδύνατη η ανάγνωση του αρχείου %s: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to write the file %s: %s"
+msgstr "Αδύνατη η εγγραφή του αρχείου %s: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "entry %d"
+msgstr "καταχώριση %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "line %d"
+msgstr "γραμμή %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "the column %s is missing"
+msgstr "λείπει η στήλη %s"
+
+#: src/gcm4/core/exchange.py
+msgid "unsupported format or version"
+msgstr "μη υποστηριζόμενη μορφή ή έκδοση"
+
+#: src/gcm4/core/menu.py
+msgid "Next tab"
+msgstr "Επόμενη καρτέλα"
+
+#: src/gcm4/core/menu.py
+msgid "Previous tab"
+msgstr "Προηγούμενη καρτέλα"
 
 #: src/gcm4/core/menu.py
 msgid "Search"
@@ -2982,6 +3046,11 @@ msgstr "Οι ρυθμίσεις δεν φορτώθηκαν"
 #: src/gcm4/ui/main_window.py
 msgid "Home"
 msgstr "Αρχική"
+
+#: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Host not found: {hosts}"
+msgstr "Ο κεντρικός υπολογιστής δεν βρέθηκε: {hosts}"
 
 #: src/gcm4/ui/main_window.py
 msgid "Hosts and groups will appear in the left panel."

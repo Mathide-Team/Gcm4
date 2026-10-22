@@ -125,7 +125,9 @@ files = [
     "src/gcm4/core/host_tree.py",
     "src/gcm4/core/replies.py",
     "src/gcm4/core/chiffrement.py",
+    "src/gcm4/core/comportement_onglets.py",
     "src/gcm4/core/deplacements.py",
+    "src/gcm4/core/exchange.py",
     "src/gcm4/core/cli.py",
     "src/gcm4/core/config.py",
     "src/gcm4/core/i18n.py",
@@ -155,6 +157,7 @@ files = [
     "tab_context_menu_core.py",
     "plugins/plugin_base.py",
     "plugins/ssh/core.py",
+    "plugins/telnet/core.py",
 ]
 ignore_missing_imports = true
 follow_imports = "silent"
@@ -286,8 +289,12 @@ target-version = ["py310", "py311", "py312", "py313"]
 # vendorisés (SSH-Studio/, gtk-frdp/), ni les outils annexes (tools/,
 # scripts/). source = ["."] compte aussi, à 0 %, les modules qu'aucun test
 # n'importe : la mesure ne flatte pas la couverture réelle.
-source = ["."]
+source = [".", "src/gcm4"]
 branch = true
+# Chemins relatifs à la racine du dépôt (#163) : les données du job Qualité
+# (runner « maison ») et du job GTK4 (conteneur, autre chemin de checkout)
+# se fusionnent par `coverage combine`.
+relative_files = true
 omit = [
     "tests/*",
     "SSH-Studio/*",
@@ -319,3 +326,11 @@ testpaths = ["tests"]
 python_files = ["test_*.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]
+# Issue #160 : marqueurs de dépendance externe (voir tests/conftest.py) ;
+# --strict-markers refuse un marqueur mal orthographié, qui ne serait
+# jamais vérifié.
+addopts = ["--strict-markers"]
+markers = [
+    "requires_gettext: a besoin de msgfmt ; échoue au lieu d'être sauté si GCM_TESTS_EXIGES contient gettext",
+    "requires_gtk4: a besoin de GTK4/libadwaita et d'un écran ; échoue au lieu d'être sauté si GCM_TESTS_EXIGES contient gtk4",
+]

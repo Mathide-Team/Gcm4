@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-21 07:53+0000\n"
+"POT-Creation-Date: 2026-10-22 05:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -100,7 +100,7 @@ msgstr ""
 msgid "<span size=\"smaller\">CTRL+UP/CTRL+DOWN for history</span>"
 msgstr "<span size=\"smaller\">CTRL+OMHOOG/CTRL+OMLAAG voor geschiedenis</span>"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid ""
 "<span size='smaller'>Use ##D=milliseconds to add a delay.\n"
 "Ex: ##D=1000</span>"
@@ -121,11 +121,11 @@ msgstr "Er is een nieuwe versie beschikbaar: https://github.com/MathildeDec/gnom
 msgid "A simple ssh connection manager for gnome"
 msgstr "Een eenvoudige ssh-verbindingsbeheerder voor Gnome"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "ASCII Backspace \t[Ctrl+H 0x08]"
 msgstr "ASCII Backspace \t[Ctrl+H 0x08]"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
 msgstr "ASCII Delete    \t[Ctrl+? 0x7F]"
 
@@ -153,7 +153,7 @@ msgstr "Na het verbreken"
 msgid "Always"
 msgstr "Altijd"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Automatic"
 msgstr "Automatisch"
 
@@ -161,7 +161,7 @@ msgstr "Automatisch"
 msgid "Background color:"
 msgstr "Achtergrondkleur:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Backspace:"
 msgstr "Backspace:"
 
@@ -215,7 +215,7 @@ msgstr "Controleren op updates"
 msgid "Choose Group Color"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Circle around tabs when going to the previous/next tab"
 msgstr "Rond door tabbladen bij vorige/volgende tabblad"
 
@@ -223,11 +223,13 @@ msgstr "Rond door tabbladen bij vorige/volgende tabblad"
 msgid "Clear selection"
 msgstr "Selectie wissen"
 
-#: gnome_connection_manager.py ssh_config_editor.py ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/main_window.py ssh_config_editor.py
+#: ssh_key_manager_dialog.py
 msgid "Close"
 msgstr "Sluiten"
 
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py widgets.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/main_window.py widgets.py
 msgid "Close console"
 msgstr "Console sluiten"
 
@@ -249,11 +251,11 @@ msgstr "Kleuren"
 msgid "Command"
 msgstr "Opdracht"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on close console"
 msgstr "Bevestigen bij sluiten console"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on close console with middle click"
 msgstr "Bevestigen bij sluiten console met middelklik"
 
@@ -307,11 +309,11 @@ msgstr "Databits"
 msgid "Default colors"
 msgstr "Standaardkleuren"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Delete Sequence \t[@7]"
 msgstr "Delete-reeks \t[@7]"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Delete:"
 msgstr "Delete:"
 
@@ -319,7 +321,7 @@ msgstr "Delete:"
 msgid "Description"
 msgstr "Beschrijving"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Disable alternating stripes in hosts window"
 msgstr "Afwisselende strepen in hostvenster uitschakelen"
 
@@ -339,7 +341,7 @@ msgstr "Wilt u alle hosts in groep echt verwijderen"
 msgid "Do you really want to remove host"
 msgstr "Wilt u host echt verwijderen"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Dynamic title"
 msgstr "Dynamische titel"
 
@@ -706,7 +708,7 @@ msgstr "Lettertype selecteren"
 msgid "Select foreground color"
 msgstr "Voorgrondkleur selecteren"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Send commands after login"
 msgstr "Opdrachten verzenden na inloggen"
 
@@ -762,11 +764,11 @@ msgstr "Stop"
 msgid "System"
 msgstr "Systeem"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "TERM"
 msgstr "TERM"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "TTY Erase"
 msgstr "TTY-wissen"
 
@@ -790,7 +792,7 @@ msgstr ""
 msgid "Tip: use #P=password to send a password without keeping it in clear text in the command history"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Title"
 msgstr "Titel"
 
@@ -1493,7 +1495,7 @@ msgid "IPMI (SOL)"
 msgstr ""
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_spice.py
-#: plugins/plugin_vnc.py
+#: plugins/plugin_vnc.py plugins/telnet/gtk4.py
 msgid "Session ended"
 msgstr "Sessie beëindigd"
 
@@ -2711,6 +2713,11 @@ msgid ""
 "The web console will open in the system browser."
 msgstr ""
 
+#: plugins/telnet/gtk4.py
+#, python-brace-format
+msgid "{program} not found"
+msgstr "{program} niet gevonden"
+
 #: src/gcm4/app.py
 msgid "The old configuration is intact: fix the problem (permissions, disk space), then start gcm4 again."
 msgstr "De oude configuratie is ongewijzigd: los het probleem op (rechten, schijfruimte) en start gcm4 opnieuw."
@@ -2757,6 +2764,63 @@ msgstr "Kan het configuratiebestand %s niet lezen: %s"
 #, python-format
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Kan het configuratiebestand %s niet schrijven: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: the host name is missing"
+msgstr "%s: de hostnaam ontbreekt"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: too many cells"
+msgstr "%s: te veel cellen"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: unexpected value for %s"
+msgstr "%s: onverwachte waarde voor %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "The file %s is not a valid host export: %s"
+msgstr "Het bestand %s is geen geldige export van hosts: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to read the file %s: %s"
+msgstr "Kan het bestand %s niet lezen: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to write the file %s: %s"
+msgstr "Kan het bestand %s niet schrijven: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "entry %d"
+msgstr "item %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "line %d"
+msgstr "regel %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "the column %s is missing"
+msgstr "de kolom %s ontbreekt"
+
+#: src/gcm4/core/exchange.py
+msgid "unsupported format or version"
+msgstr "niet-ondersteund formaat of niet-ondersteunde versie"
+
+#: src/gcm4/core/menu.py
+msgid "Next tab"
+msgstr "Volgend tabblad"
+
+#: src/gcm4/core/menu.py
+msgid "Previous tab"
+msgstr "Vorig tabblad"
 
 #: src/gcm4/core/menu.py
 msgid "Search"
@@ -2982,6 +3046,11 @@ msgstr "Configuratie niet geladen"
 #: src/gcm4/ui/main_window.py
 msgid "Home"
 msgstr "Start"
+
+#: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Host not found: {hosts}"
+msgstr "Host niet gevonden: {hosts}"
 
 #: src/gcm4/ui/main_window.py
 msgid "Hosts and groups will appear in the left panel."
