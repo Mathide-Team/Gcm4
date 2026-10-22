@@ -142,6 +142,7 @@ files = [
     "src/gcm4/core/preferences.py",
     "src/gcm4/core/raccourcis.py",
     "src/gcm4/core/registre.py",
+    "src/gcm4/core/terminal.py",
     "src/gcm4/core/theme.py",
     "src/gcm4/core/validation.py",
     "src/gcm4/core/window_state.py",

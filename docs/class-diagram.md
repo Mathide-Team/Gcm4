@@ -6,7 +6,7 @@
 > toute modification manuelle sera écrasée. Le régénérer avec `make class-diagram` ;
 > le job Qualité échoue s'il est périmé (`--check`).
 
-90 modules · 160 classes · 306 fonctions publiques de module.
+94 modules · 163 classes · 312 fonctions publiques de module.
 
 Conventions : `+` public, `-` privé (préfixe `_`) ; `list~str~` = `list[str]` ; `<<module>>`
 regroupe les fonctions publiques d'un module ; `<<…>>` sur une classe liste `dataclass` et les
@@ -32,7 +32,8 @@ flowchart TD
     g0 -->|1| g2
     g2 -->|58| g1
     g2 -->|4| g0
-    g2 -->|3| g4
+    g2 -->|10| g4
+    g2 -->|3| g5
     g3 -->|2| g0
     g3 -->|2| g4
     g3 -->|1| g5
@@ -41,7 +42,7 @@ flowchart TD
     g4 -->|1| g3
     g5 -->|3| g0
     g5 -->|2| g3
-    g5 -->|50| g4
+    g5 -->|53| g4
 ```
 
 ## Cœur (sans GTK)
@@ -788,6 +789,8 @@ classDiagram
 
 | Module | Fichier | Rôle |
 |---|---|---|
+| `plugins.local.core` | `plugins/local/core.py` | Logique du plugin local, sans GTK : shell à lancer et délai des commandes. |
+| `plugins.local.gtk4` | `plugins/local/gtk4.py` | Plugin local de gcm4 (contrat v1, ``docs/plugins.md``) : shell local dans un terminal VTE GTK4. |
 | `plugins.plugin_base` | `plugins/plugin_base.py` | Contrats plugin pour GCM. |
 | `plugins.plugin_export_csv` | `plugins/plugin_export_csv.py` | Outil « Export to CSV » (BatchPlugin) pour GCM. |
 | `plugins.plugin_export_json` | `plugins/plugin_export_json.py` | Outil « Export to JSON » (BatchPlugin) pour GCM. |
@@ -812,11 +815,26 @@ classDiagram
 | `plugins.pluginvnc2.vnc_tab` | `plugins/pluginvnc2/vnc_tab.py` | vnc_tab.py — Onglet VNC complet pour gnome-connection-manager (fork GTK4) |
 | `plugins.ssh` | `plugins/ssh/__init__.py` | Plugin SSH — dossier pilote de la migration GTK4 (découpage par plugin). |
 | `plugins.ssh.core` | `plugins/ssh/core.py` | Logique métier SSH de gcm4, zéro dépendance GTK — parsing de ``~/.ssh/config`` et migration/import des hôtes SSH de gcm.conf. |
-| `plugins.telnet.core` | `plugins/telnet/core.py` | Logique du plugin telnet, sans GTK : commande, environnement, commandes après connexion. |
+| `plugins.telnet.core` | `plugins/telnet/core.py` | Logique du plugin telnet, sans GTK : commande et délai des commandes après connexion. |
 | `plugins.telnet.gtk4` | `plugins/telnet/gtk4.py` | Plugin telnet de gcm4 (contrat v1, ``docs/plugins.md``) : terminal VTE GTK4. |
 
 ```mermaid
 classDiagram
+    class mod_plugins_local_core {
+        <<module>>
+        +shell(environ) str
+        +lancement(chemin) Lancement
+        +etapes(commandes) list~tuple~int, str~~
+    }
+    class LocalSession {
+        <<SessionTerminal>>
+    }
+    class plugins_local_gtk4_LocalPlugin {
+        +default_port(protocol) int None
+        +build_host_options_widget(host, options, changed) Gtk.Widget
+        +open(host) LocalSession
+    }
+    plugins_plugin_base_ConnectionPlugin <|-- plugins_local_gtk4_LocalPlugin
     class plugins_plugin_base_ConnectionPlugin {
         <<ABC>>
         +str protocol_id
@@ -983,13 +1001,13 @@ classDiagram
         <<Gtk.Box>>
         +connect_local() None
     }
-    class LocalPlugin {
+    class plugins_plugin_local_LocalPlugin {
         +build_tab(host, get_password) Gtk.Widget
         +build_edit_page() Gtk.Widget
         +load_host_fields(host) None
         +save_host_fields(host) None
     }
-    plugins_plugin_base_ConnectionPlugin <|-- LocalPlugin
+    plugins_plugin_base_ConnectionPlugin <|-- plugins_plugin_local_LocalPlugin
     class mod_plugins_plugin_netmiko_push {
         <<module>>
         +open_netmiko_tab(wmain) NetmikoTab
@@ -1242,20 +1260,10 @@ classDiagram
     class mod_plugins_telnet_core {
         <<module>>
         +lancement(adresse, port, utilisateur, mot_de_passe, parametres, telnet, expect, script) Lancement
-        +environnement(options) list~str~
-        +liaison(options, cle) int
-        +lire_commandes(brut) str
-        +ecrire_commandes(texte) str
-        +est_delai(ligne) bool
         +etapes(commandes) list~tuple~int, str~~
     }
-    class Lancement {
-        <<dataclass>>
-        +list~str~ argv
-        +str mot_de_passe
-    }
     class TelnetSession {
-        +close() None
+        <<SessionTerminal>>
     }
     class plugins_telnet_gtk4_TelnetPlugin {
         +default_port(protocol) int None
@@ -1307,6 +1315,7 @@ classDiagram
 | `gcm4.core.registre` | `src/gcm4/core/registre.py` | Découverte des plugins et isolation de leurs erreurs (#150), sans GTK. |
 | `gcm4.core.replies` | `src/gcm4/core/replies.py` | Groupes repliés de ``[window] collapsed-folders``, au format GTK3 (#139). |
 | `gcm4.core.sauvegarde` | `src/gcm4/core/sauvegarde.py` | Aperçu d'import, bilan et copie de la configuration, sans GTK (#153). |
+| `gcm4.core.terminal` | `src/gcm4/core/terminal.py` | Logique commune aux plugins terminal (telnet, local…), sans GTK (#295). |
 | `gcm4.core.theme` | `src/gcm4/core/theme.py` | Thème de la base GTK4, sans GTK (#135). |
 | `gcm4.core.validation` | `src/gcm4/core/validation.py` | Validation d'un hôte avant enregistrement, sans GTK (#144). |
 | `gcm4.core.window_state` | `src/gcm4/core/window_state.py` | Géométrie de la fenêtre principale, dans ``gcm4.conf`` (#134). |
@@ -1710,6 +1719,20 @@ classDiagram
         +avec_mots_de_passe(hosts) bool
         +enregistrer_sous(config_dir, dossier) list~Path~
     }
+    class mod_gcm4_core_terminal {
+        <<module>>
+        +environnement(options) list~str~
+        +liaison(options, cle) int
+        +lire_commandes(brut) str
+        +ecrire_commandes(texte) str
+        +est_delai(ligne) bool
+        +etapes(commandes, debut_ms) list~tuple~int, str~~
+    }
+    class Lancement {
+        <<dataclass>>
+        +list~str~ argv
+        +str mot_de_passe
+    }
     class mod_gcm4_core_theme {
         <<module>>
         +load_theme(config_file) str
@@ -1760,6 +1783,7 @@ classDiagram
 | `gcm4.ui.mises_a_jour` | `src/gcm4/ui/mises_a_jour.py` | Vérification des mises à jour au démarrage, côté interface (#245). |
 | `gcm4.ui.preferences` | `src/gcm4/ui/preferences.py` | Préférences de la base GTK4 : pages Général et Apparence (lot 5a, #147). |
 | `gcm4.ui.raccourcis` | `src/gcm4/ui/raccourcis.py` | Raccourcis modifiables (#247) : noms de touches GDK, saisie d'une combinaison. |
+| `gcm4.ui.terminal` | `src/gcm4/ui/terminal.py` | Terminal VTE GTK4 commun aux plugins terminal (telnet, local…), #295. |
 
 ```mermaid
 classDiagram
@@ -1879,5 +1903,13 @@ classDiagram
     class SaisieRaccourci {
         +proposer(keyval, etat) bool
         +repondre(reponse) None
+    }
+    class mod_gcm4_ui_terminal {
+        <<module>>
+        +rgba(texte) Gdk.RGBA None
+        +zone_options(options, changed) Gtk.Widget
+    }
+    class SessionTerminal {
+        +close() None
     }
 ```

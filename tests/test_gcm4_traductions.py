@@ -17,13 +17,34 @@ import pytest
 LANG = Path(__file__).resolve().parents[1] / "lang"
 
 
+def _champ(lignes: list[str], motcle: str) -> str | None:
+    r"""Valeur d'un champ ``msgid``/``msgstr``, entrées multilignes réassemblées.
+
+    Le format du dépôt est « une ligne » (--no-wrap) — sauf pour les chaînes
+    contenant des sauts de ligne réels, que gettext écrit forcément en
+    plusieurs morceaux (``msgid ""\n"suite…"``). Les morceaux bruts sont
+    concaténés tels quels : la comparaison pot/po reste exacte tant que les
+    deux fichiers ont la même coupure (msgmerge garantit celle du pot).
+    """
+    res: list[str] | None = None
+    for ligne in lignes:
+        if res is None:
+            if ligne.startswith(motcle + " "):
+                res = [ligne[len(motcle) + 1 :]]
+        elif ligne.startswith('"'):
+            res.append(ligne)
+        else:
+            break
+    return "".join(res) if res else None
+
+
 def _entrees(chemin: Path) -> dict[str, tuple[str, bool]]:
-    """Msgid → (msgstr, fuzzy) ; format du dépôt : msgid et msgstr sur une ligne."""
+    """Msgid → (msgstr, fuzzy)."""
     entrees: dict[str, tuple[str, bool]] = {}
     for bloc in chemin.read_text(encoding="utf-8").split("\n\n"):
         lignes = bloc.splitlines()
-        mid = next((ligne[6:] for ligne in lignes if ligne.startswith("msgid ")), None)
-        mstr = next((ligne[7:] for ligne in lignes if ligne.startswith("msgstr ")), None)
+        mid = _champ(lignes, "msgid")
+        mstr = _champ(lignes, "msgstr")
         if mid and mid != '""' and mstr is not None:
             fuzzy = any(ligne.startswith("#,") and "fuzzy" in ligne for ligne in lignes)
             entrees[mid] = (mstr, fuzzy)
@@ -39,7 +60,9 @@ def _msgids_gcm4() -> list[str]:
             ligne.startswith("#:") and ("src/gcm4/" in ligne or "data/" in ligne)
             for ligne in lignes
         ):
-            ids += [ligne[6:] for ligne in lignes if ligne.startswith("msgid ")]
+            mid = _champ(lignes, "msgid")
+            if mid:
+                ids.append(mid)
     return ids
 
 

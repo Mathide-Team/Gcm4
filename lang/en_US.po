@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-22 18:55+0000\n"
+"POT-Creation-Date: 2026-10-22 19:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -96,11 +96,13 @@ msgstr ""
 msgid "<span size=\"smaller\">CTRL+UP/CTRL+DOWN for history</span>"
 msgstr ""
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid ""
 "<span size='smaller'>Use ##D=milliseconds to add a delay.\n"
 "Ex: ##D=1000</span>"
 msgstr ""
+"<span size='smaller'>Use ##D=milliseconds to add a delay.\n"
+"Ex: ##D=1000</span>"
 
 #: gnome_connection_manager.py
 #, python-brace-format
@@ -115,13 +117,13 @@ msgstr ""
 msgid "A simple ssh connection manager for gnome"
 msgstr "A simple ssh connection manager for gnome"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "ASCII Backspace \t[Ctrl+H 0x08]"
-msgstr ""
+msgstr "ASCII Backspace \t[Ctrl+H 0x08]"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
-msgstr ""
+msgstr "ASCII Delete    \t[Ctrl+? 0x7F]"
 
 #: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "About"
@@ -147,17 +149,17 @@ msgstr "After disconnecting"
 msgid "Always"
 msgstr "Always"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "Automatic"
-msgstr ""
+msgstr "Automatic"
 
 #: gnome_connection_manager.py
 msgid "Background color:"
 msgstr ""
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "Backspace:"
-msgstr ""
+msgstr "Backspace:"
 
 #: gnome_connection_manager.py plugins/plugin_serial.py
 msgid "Baud rate"
@@ -300,13 +302,13 @@ msgstr ""
 msgid "Default colors"
 msgstr "Default colors"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "Delete Sequence \t[@7]"
-msgstr ""
+msgstr "Delete Sequence \t[@7]"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "Delete:"
-msgstr ""
+msgstr "Delete:"
 
 #: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Description"
@@ -685,9 +687,9 @@ msgstr "Select font"
 msgid "Select foreground color"
 msgstr ""
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "Send commands after login"
-msgstr ""
+msgstr "Send commands after login"
 
 #: gnome_connection_manager.py
 msgid "Send the command above to every checked host (same as pressing Enter)"
@@ -739,13 +741,13 @@ msgstr ""
 msgid "System"
 msgstr "System"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "TERM"
-msgstr ""
+msgstr "TERM"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "TTY Erase"
-msgstr ""
+msgstr "TTY Erase"
 
 #: gnome_connection_manager.py
 msgid "Template name"
@@ -889,6 +891,11 @@ msgstr ""
 
 #: key_picker_dialog.py
 msgid "⚙ Generate…"
+msgstr ""
+
+#: plugins/local/gtk4.py plugins/telnet/gtk4.py
+#, python-brace-format
+msgid "{program} not found"
 msgstr ""
 
 #: plugins/plugin_export_csv.py
@@ -1414,9 +1421,9 @@ msgid "IPMI (SOL)"
 msgstr ""
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_spice.py
-#: plugins/plugin_vnc.py plugins/telnet/gtk4.py
+#: plugins/plugin_vnc.py src/gcm4/ui/terminal.py
 msgid "Session ended"
-msgstr ""
+msgstr "Session ended"
 
 #: plugins/plugin_ipmisol.py
 msgid "ipmitool introuvable"
@@ -2565,11 +2572,6 @@ msgstr ""
 msgid ""
 "WebKitGTK unavailable (gir1.2-webkit2-4.1 package missing).\n"
 "The web console will open in the system browser."
-msgstr ""
-
-#: plugins/telnet/gtk4.py
-#, python-brace-format
-msgid "{program} not found"
 msgstr ""
 
 #: src/gcm4/app.py
