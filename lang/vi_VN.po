@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-22 15:31+0000\n"
+"POT-Creation-Date: 2026-10-22 17:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,8 +138,9 @@ msgstr "Không thể mở tệp nhật ký để viết"
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
-#: src/gcm4/ui/host_dialog.py src/gcm4/ui/main_window.py
-#: src/gcm4/ui/menu_arbre.py src/gcm4/ui/raccourcis.py utils.py widgets.py
+#: src/gcm4/ui/echange.py src/gcm4/ui/fichiers.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/main_window.py src/gcm4/ui/menu_arbre.py
+#: src/gcm4/ui/raccourcis.py utils.py widgets.py
 msgid "Cancel"
 msgstr "Hủy"
 
@@ -159,8 +160,8 @@ msgstr "Xoay vòng các tab khi chuyển đến tab trước/sau"
 msgid "Clear selection"
 msgstr "Xóa lựa chọn"
 
-#: gnome_connection_manager.py src/gcm4/ui/main_window.py ssh_config_editor.py
-#: ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/echange.py
+#: src/gcm4/ui/main_window.py ssh_config_editor.py ssh_key_manager_dialog.py
 msgid "Close"
 msgstr "Đóng"
 
@@ -322,11 +323,9 @@ msgstr ""
 msgid "Export Servers"
 msgstr "Xuất Server"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Export servers"
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/echange.py
 msgid "Export servers"
-msgstr "_Xuất server"
+msgstr "Xuất máy chủ"
 
 #: gnome_connection_manager.py plugins/plugin_export_csv.py
 msgid "Export to CSV"
@@ -421,11 +420,9 @@ msgstr "Tên host"
 msgid "Import Servers"
 msgstr "Nhập Server"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Import servers"
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/echange.py
 msgid "Import servers"
-msgstr "_Nhập server"
+msgstr "Nhập máy chủ"
 
 #: gnome_connection_manager.py
 #, fuzzy
@@ -2713,15 +2710,10 @@ msgstr "Không thể đọc tệp cấu hình %s: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Không thể ghi tệp cấu hình %s: %s"
 
-#: src/gcm4/core/echange_cli.py
+#: src/gcm4/core/echange_cli.py src/gcm4/ui/echange.py
 #, python-brace-format
 msgid "Hosts exported: {count} ({file})"
 msgstr "Máy chủ đã xuất: {count} ({file})"
-
-#: src/gcm4/core/echange_cli.py
-#, python-brace-format
-msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
-msgstr "Nhập {file}: thêm {added}, thay thế {replaced}, đổi tên {renamed}, bỏ qua {ignored}, nhóm mới {groups}"
 
 #: src/gcm4/core/exchange.py
 #, python-format
@@ -2748,7 +2740,7 @@ msgstr "Tệp %s không phải là bản xuất máy chủ hợp lệ: %s"
 msgid "Unable to read the file %s: %s"
 msgstr "Không thể đọc tệp %s: %s"
 
-#: src/gcm4/core/exchange.py
+#: src/gcm4/core/exchange.py src/gcm4/core/sauvegarde.py
 #, python-format
 msgid "Unable to write the file %s: %s"
 msgstr "Không thể ghi tệp %s: %s"
@@ -2779,6 +2771,10 @@ msgstr "Thẻ tiếp theo"
 #: src/gcm4/core/menu.py
 msgid "Previous tab"
 msgstr "Thẻ trước"
+
+#: src/gcm4/core/menu.py src/gcm4/ui/echange.py
+msgid "Save configuration as…"
+msgstr "Lưu cấu hình thành…"
 
 #: src/gcm4/core/menu.py
 msgid "Search"
@@ -2871,6 +2867,25 @@ msgstr "Giao thức '{protocol}' đã được '{other}' xử lý."
 msgid "{file} does not define PLUGIN."
 msgstr "{file} không định nghĩa PLUGIN."
 
+#: src/gcm4/core/sauvegarde.py
+msgid "Choose a folder other than the configuration folder."
+msgstr "Hãy chọn thư mục khác thư mục cấu hình."
+
+#: src/gcm4/core/sauvegarde.py
+#, python-brace-format
+msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
+msgstr "Nhập {file}: thêm {added}, thay thế {replaced}, đổi tên {renamed}, bỏ qua {ignored}, nhóm mới {groups}"
+
+#: src/gcm4/core/sauvegarde.py
+#, python-format
+msgid "No configuration to save yet: %s"
+msgstr "Chưa có cấu hình để lưu: %s"
+
+#: src/gcm4/core/sauvegarde.py
+#, python-brace-format
+msgid "{folder} already contains {file}."
+msgstr "{folder} đã chứa {file}."
+
 #: src/gcm4/core/validation.py
 #, python-brace-format
 msgid "A host named «{name}» already exists in this group."
@@ -2897,6 +2912,56 @@ msgstr "Tên không được chứa '/'."
 #, python-brace-format
 msgid "Password for {target}"
 msgstr "Mật khẩu cho {target}"
+
+#: src/gcm4/ui/echange.py
+#, python-brace-format
+msgid "Configuration saved to {folder}"
+msgstr "Đã lưu cấu hình vào {folder}"
+
+#: src/gcm4/ui/echange.py
+msgid "Export"
+msgstr "Xuất"
+
+#: src/gcm4/ui/echange.py
+#, python-brace-format
+msgid "Hosts in {file}: {count}, already present: {existing}"
+msgstr "Máy chủ trong {file}: {count}, đã có: {existing}"
+
+#: src/gcm4/ui/echange.py
+msgid "If a host already exists:"
+msgstr "Nếu máy chủ đã tồn tại:"
+
+#: src/gcm4/ui/echange.py
+msgid "Import"
+msgstr "Nhập"
+
+#: src/gcm4/ui/echange.py
+msgid "Include passwords (in clear text)"
+msgstr "Bao gồm mật khẩu (văn bản thuần)"
+
+#: src/gcm4/ui/echange.py
+msgid "JSON or CSV file, chosen by its extension."
+msgstr "Tệp JSON hoặc CSV, theo phần mở rộng."
+
+#: src/gcm4/ui/echange.py
+msgid "Keep the existing host"
+msgstr "Giữ máy chủ hiện có"
+
+#: src/gcm4/ui/echange.py
+msgid "Passwords will be written in clear text: keep this file safe."
+msgstr "Mật khẩu sẽ được ghi dưới dạng văn bản thuần: hãy giữ tệp này an toàn."
+
+#: src/gcm4/ui/echange.py
+msgid "Rename the imported host"
+msgstr "Đổi tên máy chủ được nhập"
+
+#: src/gcm4/ui/echange.py
+msgid "Replace the existing host"
+msgstr "Thay thế máy chủ hiện có"
+
+#: src/gcm4/ui/echange.py
+msgid "This file contains passwords in clear text."
+msgstr "Tệp này chứa mật khẩu dạng văn bản thuần."
 
 #: src/gcm4/ui/host_dialog.py
 msgid "Background color"

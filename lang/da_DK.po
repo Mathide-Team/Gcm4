@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-22 15:31+0000\n"
+"POT-Creation-Date: 2026-10-22 17:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,8 +138,9 @@ msgstr "Kan ikke åbne logfilen til skrivning"
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
-#: src/gcm4/ui/host_dialog.py src/gcm4/ui/main_window.py
-#: src/gcm4/ui/menu_arbre.py src/gcm4/ui/raccourcis.py utils.py widgets.py
+#: src/gcm4/ui/echange.py src/gcm4/ui/fichiers.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/main_window.py src/gcm4/ui/menu_arbre.py
+#: src/gcm4/ui/raccourcis.py utils.py widgets.py
 msgid "Cancel"
 msgstr "Annuller"
 
@@ -159,8 +160,8 @@ msgstr "Cirkulér mellem faner ved forrige/næste fane"
 msgid "Clear selection"
 msgstr "Ryd markering"
 
-#: gnome_connection_manager.py src/gcm4/ui/main_window.py ssh_config_editor.py
-#: ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/echange.py
+#: src/gcm4/ui/main_window.py ssh_config_editor.py ssh_key_manager_dialog.py
 msgid "Close"
 msgstr "Luk"
 
@@ -322,11 +323,9 @@ msgstr ""
 msgid "Export Servers"
 msgstr "Eksporter servere"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Export servers"
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/echange.py
 msgid "Export servers"
-msgstr "_Eksporter servere"
+msgstr "Eksportér servere"
 
 #: gnome_connection_manager.py plugins/plugin_export_csv.py
 msgid "Export to CSV"
@@ -421,11 +420,9 @@ msgstr "Værtsnavn"
 msgid "Import Servers"
 msgstr "Importer servere"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Import servers"
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/echange.py
 msgid "Import servers"
-msgstr "_Importer servere"
+msgstr "Importér servere"
 
 #: gnome_connection_manager.py
 #, fuzzy
@@ -2713,15 +2710,10 @@ msgstr "Kan ikke læse konfigurationsfilen %s: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Kan ikke skrive konfigurationsfilen %s: %s"
 
-#: src/gcm4/core/echange_cli.py
+#: src/gcm4/core/echange_cli.py src/gcm4/ui/echange.py
 #, python-brace-format
 msgid "Hosts exported: {count} ({file})"
 msgstr "Eksporterede værter: {count} ({file})"
-
-#: src/gcm4/core/echange_cli.py
-#, python-brace-format
-msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
-msgstr "Import af {file}: tilføjet {added}, erstattet {replaced}, omdøbt {renamed}, ignoreret {ignored}, nye grupper {groups}"
 
 #: src/gcm4/core/exchange.py
 #, python-format
@@ -2748,7 +2740,7 @@ msgstr "Filen %s er ikke en gyldig eksport af værter: %s"
 msgid "Unable to read the file %s: %s"
 msgstr "Kan ikke læse filen %s: %s"
 
-#: src/gcm4/core/exchange.py
+#: src/gcm4/core/exchange.py src/gcm4/core/sauvegarde.py
 #, python-format
 msgid "Unable to write the file %s: %s"
 msgstr "Kan ikke skrive filen %s: %s"
@@ -2779,6 +2771,10 @@ msgstr "Næste faneblad"
 #: src/gcm4/core/menu.py
 msgid "Previous tab"
 msgstr "Forrige faneblad"
+
+#: src/gcm4/core/menu.py src/gcm4/ui/echange.py
+msgid "Save configuration as…"
+msgstr "Gem konfiguration som…"
 
 #: src/gcm4/core/menu.py
 msgid "Search"
@@ -2871,6 +2867,25 @@ msgstr "Protokollen “{protocol}” håndteres allerede af “{other}”."
 msgid "{file} does not define PLUGIN."
 msgstr "{file} definerer ikke PLUGIN."
 
+#: src/gcm4/core/sauvegarde.py
+msgid "Choose a folder other than the configuration folder."
+msgstr "Vælg en anden mappe end konfigurationsmappen."
+
+#: src/gcm4/core/sauvegarde.py
+#, python-brace-format
+msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
+msgstr "Import af {file}: tilføjet {added}, erstattet {replaced}, omdøbt {renamed}, ignoreret {ignored}, nye grupper {groups}"
+
+#: src/gcm4/core/sauvegarde.py
+#, python-format
+msgid "No configuration to save yet: %s"
+msgstr "Ingen konfiguration at gemme endnu: %s"
+
+#: src/gcm4/core/sauvegarde.py
+#, python-brace-format
+msgid "{folder} already contains {file}."
+msgstr "{folder} indeholder allerede {file}."
+
 #: src/gcm4/core/validation.py
 #, python-brace-format
 msgid "A host named «{name}» already exists in this group."
@@ -2897,6 +2912,56 @@ msgstr "Navnet må ikke indeholde “/”."
 #, python-brace-format
 msgid "Password for {target}"
 msgstr "Adgangskode til {target}"
+
+#: src/gcm4/ui/echange.py
+#, python-brace-format
+msgid "Configuration saved to {folder}"
+msgstr "Konfiguration gemt i {folder}"
+
+#: src/gcm4/ui/echange.py
+msgid "Export"
+msgstr "Eksportér"
+
+#: src/gcm4/ui/echange.py
+#, python-brace-format
+msgid "Hosts in {file}: {count}, already present: {existing}"
+msgstr "Værter i {file}: {count}, findes allerede: {existing}"
+
+#: src/gcm4/ui/echange.py
+msgid "If a host already exists:"
+msgstr "Hvis en vært allerede findes:"
+
+#: src/gcm4/ui/echange.py
+msgid "Import"
+msgstr "Importér"
+
+#: src/gcm4/ui/echange.py
+msgid "Include passwords (in clear text)"
+msgstr "Medtag adgangskoder (i klartekst)"
+
+#: src/gcm4/ui/echange.py
+msgid "JSON or CSV file, chosen by its extension."
+msgstr "JSON- eller CSV-fil, valgt efter filtypen."
+
+#: src/gcm4/ui/echange.py
+msgid "Keep the existing host"
+msgstr "Behold den eksisterende vært"
+
+#: src/gcm4/ui/echange.py
+msgid "Passwords will be written in clear text: keep this file safe."
+msgstr "Adgangskoder skrives i klartekst: opbevar filen sikkert."
+
+#: src/gcm4/ui/echange.py
+msgid "Rename the imported host"
+msgstr "Omdøb den importerede vært"
+
+#: src/gcm4/ui/echange.py
+msgid "Replace the existing host"
+msgstr "Erstat den eksisterende vært"
+
+#: src/gcm4/ui/echange.py
+msgid "This file contains passwords in clear text."
+msgstr "Denne fil indeholder adgangskoder i klartekst."
 
 #: src/gcm4/ui/host_dialog.py
 msgid "Background color"

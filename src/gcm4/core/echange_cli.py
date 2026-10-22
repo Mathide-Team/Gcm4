@@ -18,7 +18,7 @@ from typing import TextIO
 
 from loguru import logger
 
-from gcm4.core import chemins
+from gcm4.core import chemins, sauvegarde
 from gcm4.core.chiffrement import ChiffrementGcm
 from gcm4.core.config import ConfigError, load_config, save_config
 from gcm4.core.exchange import Conflit, ExchangeError, exporter_fichier, importer_fichier
@@ -137,19 +137,7 @@ def executer(
             source = fichier
             rapport = importer_fichier(cfg.store, source, CONFLITS[args.on_conflict])
             save_config(conf, cfg, chiffrement)
-            print(
-                _(
-                    "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
-                ).format(
-                    file=source,
-                    added=len(rapport.ajoutes),
-                    replaced=len(rapport.remplaces),
-                    renamed=len(rapport.renommes),
-                    ignored=len(rapport.ignores),
-                    groups=len(rapport.groupes_crees),
-                ),
-                file=sortie,
-            )
+            print(sauvegarde.bilan(source, rapport), file=sortie)
     except (ConfigError, ExchangeError) as exc:  # ChiffrementError dérive de ConfigError
         logger.info("executer: {} {} impossible ({})", sens, fmt, exc)
         print(f"gcm4: {exc}", file=erreur)
