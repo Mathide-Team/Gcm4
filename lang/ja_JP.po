@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-21 20:13+0000\n"
+"POT-Creation-Date: 2026-10-22 05:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,7 +36,7 @@ msgstr ""
 msgid "<span size=\"smaller\">CTRL+UP/CTRL+DOWN for history</span>"
 msgstr "<span size=\"smaller\">履歴は CTRL+上/CTRL+下 で表示</span>"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid ""
 "<span size='smaller'>Use ##D=milliseconds to add a delay.\n"
 "Ex: ##D=1000</span>"
@@ -57,11 +57,11 @@ msgstr "新しいバージョンが利用可能です: https://github.com/Mathil
 msgid "A simple ssh connection manager for gnome"
 msgstr "Gnome 用のシンプルな SSH 接続マネージャー"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "ASCII Backspace \t[Ctrl+H 0x08]"
 msgstr "ASCII バックスペース \t[Ctrl+H 0x08]"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
 msgstr "ASCII デリート    \t[Ctrl+? 0x7F]"
 
@@ -89,7 +89,7 @@ msgstr "切断後"
 msgid "Always"
 msgstr "常に"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "Automatic"
 msgstr "自動"
 
@@ -97,7 +97,7 @@ msgstr "自動"
 msgid "Background color:"
 msgstr "背景色:"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "Backspace:"
 msgstr "バックスペース:"
 
@@ -245,11 +245,11 @@ msgstr "データビット"
 msgid "Default colors"
 msgstr "デフォルトの色"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "Delete Sequence \t[@7]"
 msgstr "削除シーケンス \t[@7]"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "Delete:"
 msgstr "デリート:"
 
@@ -652,7 +652,7 @@ msgstr "フォントを選択"
 msgid "Select foreground color"
 msgstr "文字色を選択"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "Send commands after login"
 msgstr "ログイン後にコマンドを送信"
 
@@ -712,11 +712,11 @@ msgstr "ストップ"
 msgid "System"
 msgstr "システム"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "TERM"
 msgstr "TERM"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "TTY Erase"
 msgstr "TTY消去"
 
@@ -1443,7 +1443,7 @@ msgid "IPMI (SOL)"
 msgstr ""
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_spice.py
-#: plugins/plugin_vnc.py plugins/telnet/gtk4.py
+#: plugins/plugin_vnc.py
 msgid "Session ended"
 msgstr "セッション終了"
 

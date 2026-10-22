@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-21 20:13+0000\n"
+"POT-Creation-Date: 2026-10-22 05:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,7 +36,7 @@ msgstr ""
 msgid "<span size=\"smaller\">CTRL+UP/CTRL+DOWN for history</span>"
 msgstr "<span size=\"smaller\">CTRL+SUS/CTRL+JOS pentru istoric</span>"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid ""
 "<span size='smaller'>Use ##D=milliseconds to add a delay.\n"
 "Ex: ##D=1000</span>"
@@ -57,11 +57,11 @@ msgstr "Este disponibilă o nouă versiune: https://github.com/MathildeDec/gnome
 msgid "A simple ssh connection manager for gnome"
 msgstr "Un manager simplu de conexiuni SSH pentru Gnome"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "ASCII Backspace \t[Ctrl+H 0x08]"
 msgstr "ASCII Backspace \t[Ctrl+H 0x08]"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
 msgstr "ASCII Delete    \t[Ctrl+? 0x7F]"
 
@@ -89,7 +89,7 @@ msgstr "După deconectare"
 msgid "Always"
 msgstr "Întotdeauna"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "Automatic"
 msgstr "Automat"
 
@@ -97,7 +97,7 @@ msgstr "Automat"
 msgid "Background color:"
 msgstr "Culoare fundal:"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "Backspace:"
 msgstr "Backspace:"
 
@@ -245,11 +245,11 @@ msgstr "Biți de date"
 msgid "Default colors"
 msgstr "Culori implicite"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "Delete Sequence \t[@7]"
 msgstr "Secvență Delete \t[@7]"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "Delete:"
 msgstr "Delete:"
 
@@ -652,7 +652,7 @@ msgstr "Selectează fontul"
 msgid "Select foreground color"
 msgstr "Selectează culoarea textului"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "Send commands after login"
 msgstr "Trimite comenzi după autentificare"
 
@@ -712,11 +712,11 @@ msgstr "Stop"
 msgid "System"
 msgstr "Sistem"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "TERM"
 msgstr "TERM"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "TTY Erase"
 msgstr "Ștergere TTY"
 
@@ -1443,7 +1443,7 @@ msgid "IPMI (SOL)"
 msgstr ""
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_spice.py
-#: plugins/plugin_vnc.py plugins/telnet/gtk4.py
+#: plugins/plugin_vnc.py
 msgid "Session ended"
 msgstr "Sesiune încheiată"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-21 20:13+0000\n"
+"POT-Creation-Date: 2026-10-22 05:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,7 +36,7 @@ msgstr ""
 msgid "<span size=\"smaller\">CTRL+UP/CTRL+DOWN for history</span>"
 msgstr "<span size=\"smaller\">CTRL+OP/CTRL+NED for historik</span>"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid ""
 "<span size='smaller'>Use ##D=milliseconds to add a delay.\n"
 "Ex: ##D=1000</span>"
@@ -57,11 +57,11 @@ msgstr "En ny version er tilgængelig: https://github.com/MathildeDec/gnome-conn
 msgid "A simple ssh connection manager for gnome"
 msgstr "En simpel ssh-forbindelsesmanager til Gnome"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "ASCII Backspace \t[Ctrl+H 0x08]"
 msgstr "ASCII Backspace \t[Ctrl+H 0x08]"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
 msgstr "ASCII Delete    \t[Ctrl+? 0x7F]"
 
@@ -89,7 +89,7 @@ msgstr "Efter afbrydelse"
 msgid "Always"
 msgstr "Altid"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "Automatic"
 msgstr "Automatisk"
 
@@ -97,7 +97,7 @@ msgstr "Automatisk"
 msgid "Background color:"
 msgstr "Baggrundsfarve:"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "Backspace:"
 msgstr "Backspace:"
 
@@ -245,11 +245,11 @@ msgstr "Databits"
 msgid "Default colors"
 msgstr "Standardfarver"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "Delete Sequence \t[@7]"
 msgstr "Delete-sekvens \t[@7]"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "Delete:"
 msgstr "Delete:"
 
@@ -652,7 +652,7 @@ msgstr "Vælg skrifttype"
 msgid "Select foreground color"
 msgstr "Vælg forgrundsfarve"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "Send commands after login"
 msgstr "Send kommandoer efter login"
 
@@ -712,11 +712,11 @@ msgstr "Stop"
 msgid "System"
 msgstr "System"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "TERM"
 msgstr "TERM"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "TTY Erase"
 msgstr "TTY-sletning"
 
@@ -1443,7 +1443,7 @@ msgid "IPMI (SOL)"
 msgstr ""
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_spice.py
-#: plugins/plugin_vnc.py plugins/telnet/gtk4.py
+#: plugins/plugin_vnc.py
 msgid "Session ended"
 msgstr "Session afsluttet"
 

@@ -6,7 +6,7 @@
 > toute modification manuelle sera écrasée. Le régénérer avec `make class-diagram` ;
 > le job Qualité échoue s'il est périmé (`--check`).
 
-84 modules · 157 classes · 284 fonctions publiques de module.
+84 modules · 156 classes · 279 fonctions publiques de module.
 
 Conventions : `+` public, `-` privé (préfixe `_`) ; `list~str~` = `list[str]` ; `<<module>>`
 regroupe les fonctions publiques d'un module ; `<<…>>` sur une classe liste `dataclass` et les
@@ -32,6 +32,7 @@ flowchart TD
     g0 -->|1| g2
     g2 -->|58| g1
     g2 -->|4| g0
+    g2 -->|4| g3
     g2 -->|3| g4
     g3 -->|2| g0
     g3 -->|2| g4
@@ -812,7 +813,7 @@ classDiagram
 | `plugins.pluginvnc2.vnc_tab` | `plugins/pluginvnc2/vnc_tab.py` | vnc_tab.py — Onglet VNC complet pour gnome-connection-manager (fork GTK4) |
 | `plugins.ssh` | `plugins/ssh/__init__.py` | Plugin SSH — dossier pilote de la migration GTK4 (découpage par plugin). |
 | `plugins.ssh.core` | `plugins/ssh/core.py` | Logique métier SSH de gcm4, zéro dépendance GTK — parsing de ``~/.ssh/config`` et migration/import des hôtes SSH de gcm.conf. |
-| `plugins.telnet.core` | `plugins/telnet/core.py` | Logique du plugin telnet, sans GTK : commande, environnement, commandes après connexion. |
+| `plugins.telnet.core` | `plugins/telnet/core.py` | Logique du plugin telnet, sans GTK : commande et délai des commandes après connexion. |
 | `plugins.telnet.gtk4` | `plugins/telnet/gtk4.py` | Plugin telnet de gcm4 (contrat v1, ``docs/plugins.md``) : terminal VTE GTK4. |
 
 ```mermaid
@@ -1242,20 +1243,10 @@ classDiagram
     class mod_plugins_telnet_core {
         <<module>>
         +lancement(adresse, port, utilisateur, mot_de_passe, parametres, telnet, expect, script) Lancement
-        +environnement(options) list~str~
-        +liaison(options, cle) int
-        +lire_commandes(brut) str
-        +ecrire_commandes(texte) str
-        +est_delai(ligne) bool
         +etapes(commandes) list~tuple~int, str~~
     }
-    class Lancement {
-        <<dataclass>>
-        +list~str~ argv
-        +str mot_de_passe
-    }
     class TelnetSession {
-        +close() None
+        <<SessionTerminal>>
     }
     class plugins_telnet_gtk4_TelnetPlugin {
         +default_port(protocol) int None

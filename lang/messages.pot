@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME Connection Manager\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-21 20:13+0000\n"
+"POT-Creation-Date: 2026-10-22 05:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -428,7 +428,7 @@ msgstr ""
 msgid "Enable Logging"
 msgstr ""
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "TERM"
 msgstr ""
 
@@ -511,11 +511,11 @@ msgstr ""
 msgid "Shell command run locally, in the background, right after this connection ends. Currently only triggered for terminal-based protocols (SSH/Telnet/Local/Serial/IPMI SOL). Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
 msgstr ""
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "Send commands after login"
 msgstr ""
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid ""
 "<span size='smaller'>Use ##D=milliseconds to add a delay.\n"
 "Ex: ##D=1000</span>"
@@ -545,31 +545,31 @@ msgstr ""
 msgid "Key sequences"
 msgstr ""
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "Backspace:"
 msgstr ""
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "Delete:"
 msgstr ""
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "Automatic"
 msgstr ""
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "ASCII Backspace \t[Ctrl+H 0x08]"
 msgstr ""
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
 msgstr ""
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "Delete Sequence \t[@7]"
 msgstr ""
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "TTY Erase"
 msgstr ""
 
@@ -1361,7 +1361,7 @@ msgid "Connecting…"
 msgstr ""
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_spice.py
-#: plugins/plugin_vnc.py plugins/telnet/gtk4.py
+#: plugins/plugin_vnc.py
 msgid "Session ended"
 msgstr ""
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-21 20:13+0000\n"
+"POT-Creation-Date: 2026-10-22 05:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,7 +36,7 @@ msgstr ""
 msgid "<span size=\"smaller\">CTRL+UP/CTRL+DOWN for history</span>"
 msgstr "<span size=\"smaller\">इतिहास के लिए CTRL+UP/CTRL+DOWN</span>"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid ""
 "<span size='smaller'>Use ##D=milliseconds to add a delay.\n"
 "Ex: ##D=1000</span>"
@@ -57,11 +57,11 @@ msgstr "एक नया संस्करण उपलब्ध है: https:
 msgid "A simple ssh connection manager for gnome"
 msgstr "Gnome के लिए एक सरल SSH कनेक्शन मैनेजर"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "ASCII Backspace \t[Ctrl+H 0x08]"
 msgstr "ASCII बैकस्पेस \t[Ctrl+H 0x08]"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
 msgstr "ASCII डिलीट    \t[Ctrl+? 0x7F]"
 
@@ -89,7 +89,7 @@ msgstr "डिस्कनेक्ट के बाद"
 msgid "Always"
 msgstr "हमेशा"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "Automatic"
 msgstr "ऑटोमैटिक"
 
@@ -97,7 +97,7 @@ msgstr "ऑटोमैटिक"
 msgid "Background color:"
 msgstr "पृष्ठभूमि रंग:"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "Backspace:"
 msgstr "बैकस्पेस:"
 
@@ -245,11 +245,11 @@ msgstr "डेटा बिट्स"
 msgid "Default colors"
 msgstr "डिफ़ॉल्ट रंग"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "Delete Sequence \t[@7]"
 msgstr "डिलीट सीक्वेंस \t[@7]"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "Delete:"
 msgstr "डिलीट:"
 
@@ -652,7 +652,7 @@ msgstr "फ़ॉन्ट चुनें"
 msgid "Select foreground color"
 msgstr "फ़ोरग्राउंड रंग चुनें"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "Send commands after login"
 msgstr "लॉगिन के बाद कमांड भेजें"
 
@@ -712,11 +712,11 @@ msgstr "स्टॉप"
 msgid "System"
 msgstr "सिस्टम"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "TERM"
 msgstr "TERM"
 
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: gnome_connection_manager.py
 msgid "TTY Erase"
 msgstr "TTY इरेज़"
 
@@ -1443,7 +1443,7 @@ msgid "IPMI (SOL)"
 msgstr ""
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_spice.py
-#: plugins/plugin_vnc.py plugins/telnet/gtk4.py
+#: plugins/plugin_vnc.py
 msgid "Session ended"
 msgstr "सत्र समाप्त हुआ"
 

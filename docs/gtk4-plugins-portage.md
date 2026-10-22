@@ -99,7 +99,10 @@ toutes les lignes suivantes.
 
 1. **telnet** : le plus petit plugin terminal. Il pose `Vte.Terminal` 3.91
    derrière le contrat v1, et un test sous Xvfb avec un vrai terminal.
-2. **local**, **ipmisol**, **serial** : même schéma.
+2. **local**, **ipmisol**, **serial** : même schéma. Avec local (#295), la
+   session VTE et la zone d'options de telnet passent dans `gcm4.ui.terminal`
+   et `gcm4.core.terminal` (`docs/plugins.md`), que les plugins suivants
+   réutilisent.
 3. **ssh** (#97, #180) : le plus gros ; il réutilise le terminal des étapes 1
    et 2.
 4. **web**.

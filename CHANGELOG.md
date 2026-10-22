@@ -10,6 +10,12 @@
 > session par session, dans `claude.md` (journal) et `features.md` (§4.1).
 
 ### Added
+- **Plugin local GTK4** (#295) : `plugins/local/` au contrat v1, shell de
+  l'utilisateur (`$SHELL`, sinon `/bin/sh`) dans un terminal VTE 3.91,
+  commandes après ouverture (700 ms, `##D=`), touches d'effacement, `TERM`
+  et couleurs de l'hôte. Session VTE et zone d'options communes aux plugins
+  terminal dans `gcm4.ui.terminal` et `gcm4.core.terminal` ; telnet les
+  utilise, sans changement de comportement
 - **Base GTK4 — `gcm4 groupe/nom…`** (#154) : les hôtes de la ligne de
   commande sont sélectionnés dans l'arbre au démarrage (groupes parents
   dépliés), connectés seulement si un plugin gère leur protocole ; hôte
