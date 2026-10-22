@@ -444,6 +444,8 @@ jobs:
     # loguru sont installés normalement, dans des versions compatibles 3.9.
     name: gcm4 sur Rocky Linux 9 (GTK 4.12, libadwaita 1.4, Python 3.9)
     runs-on: ${{ fromJSON(vars.RUNS_ON_GTK4 || '"ubuntu-latest"') }}
+    permissions:
+      contents: read
     container:
       image: rockylinux/rockylinux:9
     defaults:
@@ -525,7 +527,8 @@ jobs:
 
   desktop:
     # Issue #155 : lanceur (desktop-file-validate), métadonnées AppStream
-    # (appstreamcli validate) et tailles des icônes de data/. Conteneur
+    # (appstreamcli validate), sources et traduits (#274), et tailles des
+    # icônes de data/. Conteneur
     # Ubuntu comme le job GTK4 : les deux validateurs viennent des paquets.
     name: Intégration au bureau
     runs-on: ${{ fromJSON(vars.RUNS_ON_GTK4 || '"ubuntu-latest"') }}
@@ -533,11 +536,13 @@ jobs:
       image: ubuntu:26.04
 
     steps:
-      - name: desktop-file-utils et appstream
+      - name: desktop-file-utils, appstream et gettext
+        # gettext : scripts/check-desktop.sh valide aussi le lanceur et
+        # AppStream traduits (#274).
         run: |
           DEBIAN_FRONTEND=noninteractive apt-get update -qq
           DEBIAN_FRONTEND=noninteractive apt-get install -y -qq \
-            git ca-certificates desktop-file-utils appstream
+            git ca-certificates desktop-file-utils appstream gettext
 
       - name: Checkout du dépôt
         uses: actions/checkout@v7
@@ -616,6 +621,75 @@ jobs:
 
       - name: Test de fumée du paquet installé
         run: scripts/smoke-test-packages.sh deb dist/gcm4_*_all.deb
+
+  packages-rpm-build:
+    # Issue #157 : paquet .rpm de la base GTK4 (build-rpm/build.sh), construit
+    # sur Fedora (macros %find_lang et %py_byte_compile de la distribution)
+    # puis installé par le job « Paquets (.rpm, …) ».
+    name: Paquet .rpm (construction)
+    runs-on: ${{ fromJSON(vars.RUNS_ON_GTK4 || '"ubuntu-latest"') }}
+    container:
+      image: fedora:44
+
+    steps:
+      - name: Outils de construction RPM
+        run: |
+          dnf install -y -q git rpm-build python3-rpm-macros gettext findutils tar gzip \
+            python3-build python3-hatchling
+
+      - name: Checkout du dépôt
+        uses: actions/checkout@v7
+
+      - name: Construction (build-rpm/build.sh)
+        # Dépôt monté par le runner, propriétaire différent de root : git
+        # refuserait « git ls-files » (dubious ownership).
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          build-rpm/build.sh
+
+      - name: Paquet en artefact
+        uses: actions/upload-artifact@v4
+        with:
+          name: paquet-rpm-gcm4
+          path: build-rpm/dist/gcm4-*.noarch.rpm
+          if-no-files-found: error
+
+  packages-rpm:
+    # Issue #157 : contenu vérifié (rpm -qpl, rpm -qpR) puis installation avec
+    # dnf dans un conteneur propre et mêmes vérifications que le .deb.
+    name: Paquets (.rpm, ${{ matrix.image }})
+    needs: packages-rpm-build
+    runs-on: ${{ fromJSON(vars.RUNS_ON_GTK4 || '"ubuntu-latest"') }}
+    strategy:
+      fail-fast: false
+      matrix:
+        image: ["fedora:44"]
+    container:
+      image: ${{ matrix.image }}
+
+    steps:
+      - name: Système propre, comme un poste de travail
+        # Les images Fedora n'installent que l'anglais (%_install_langs) ;
+        # un poste de travail installe toutes les langues. GTK 4 charge
+        # libGLESv2 (libglvnd-gles) et le rendu logiciel de Mesa, présents
+        # sur tout poste Fedora mais pas dans l'image : sans eux, gcm4 avorte
+        # à la première fenêtre (« Couldn't open libGLESv2.so.2 »).
+        run: |
+          rm -f /etc/rpm/macros.image-language-conf
+          dnf install -y -q /usr/bin/xvfb-run /usr/bin/xauth /usr/bin/dbus-run-session \
+            /usr/bin/timeout findutils libglvnd-gles mesa-dri-drivers
+
+      - name: Checkout du dépôt
+        uses: actions/checkout@v7
+
+      - name: Paquet construit
+        uses: actions/download-artifact@v4
+        with:
+          name: paquet-rpm-gcm4
+          path: dist
+
+      - name: Test de fumée du paquet installé
+        run: scripts/smoke-test-packages.sh rpm-dnf dist/gcm4-*.noarch.rpm
 
   documentation:
     # Règle commune à tous les dépôts (modèle Netcross #282, IAO #183) :

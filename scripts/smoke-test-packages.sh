@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# scripts/smoke-test-packages.sh -- test de fumée du paquet gcm4 installé (#156).
+# scripts/smoke-test-packages.sh -- test de fumée des paquets gcm4 (#156, #157).
 #
 # Sur le modèle de Netcross : le paquet est vérifié tel que l'utilisateur le
 # reçoit, dans un système propre (conteneur du job « Paquets »).
@@ -10,21 +10,29 @@
 #         2. le lanceur /usr/bin/gcm4 (exécutable, /usr/bin/python3) ;
 #         3. « gcm4 --version » donne la version du paquet ;
 #         4. chaque module de /usr/share/gcm4 s'importe avec /usr/bin/python3 ;
-#         5. le lanceur .desktop, le metainfo et les icônes sont installés ;
+#         5. le lanceur .desktop, le metainfo (traduits) et les icônes sont
+#            installés ;
 #         6. un catalogue .mo par langue de lang/LINGUAS, réellement chargé
 #            par gcm4.core.i18n depuis /usr/share/locale ;
 #         7. gcm4 démarre sous Xvfb, présente sa fenêtre, et son journal
 #            debug ne contient ni erreur ni trace d'exception.
-#   rpm : paquet .rpm, issue #157.
+#   rpm : scripts/smoke-test-packages.sh rpm build-rpm/dist/gcm4-*.noarch.rpm
+#         contenu du paquet sans l'installer (rpm -qpl, rpm -qpR) : lanceur,
+#         modules, .dist-info, bureau, icônes, un .mo par langue, dépendances
+#         (aucune de plugin). Possible sur tout système qui a rpm.
+#   rpm-dnf : même vérification du contenu, puis installation avec dnf
+#         (Fedora, EL) et vérifications 2 à 7 du .deb.
 #
-# Prérequis du système de test : apt, xvfb (xvfb-run), dbus (dbus-run-session),
-# et aucune règle dpkg path-exclude sur /usr/share/locale (images minimales).
+# Prérequis du système de test (deb, rpm-dnf) : xvfb (xvfb-run), xauth, dbus
+# (dbus-run-session), et toutes les langues installées : aucune règle dpkg
+# path-exclude sur /usr/share/locale, %_install_langs non restreint (images
+# minimales de conteneur).
 # Sortie non nulle au premier écart.
 
 set -euo pipefail
 
-MODE="${1:?usage: $0 deb <paquet>}"
-PKG="${2:?usage: $0 deb <paquet>}"
+MODE="${1:?usage: $0 deb|rpm|rpm-dnf <paquet>}"
+PKG="${2:?usage: $0 deb|rpm|rpm-dnf <paquet>}"
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 APP_ID="io.github.MathildeDec.gcm4"
@@ -40,26 +48,22 @@ fail() { echo "ECHEC : $*" >&2; exit 1; }
 
 linguas() { sed -e 's/#.*//' -e 's/[[:space:]]//g' "$ROOT/lang/LINGUAS" | grep -v '^$'; }
 
-check_deb() {
-    local sudo="${SUDO-sudo}"
-    [ "$(id -u)" -eq 0 ] && sudo=""
-    # Images minimales (conteneurs Ubuntu) : dpkg y ignore les .mo, un poste
-    # de travail non. Le test 6 serait faux : on refuse de commencer.
-    if grep -hsE '^path-exclude=/usr/share/locale/' /etc/dpkg/dpkg.cfg.d/* | grep -q .; then
-        fail "dpkg exclut /usr/share/locale (système minimal) : retirer la règle path-exclude de /etc/dpkg/dpkg.cfg.d/ avant le test"
+# Dépendances déclarées (une par ligne, sans version) : aucune de plugin,
+# et celles de la base, sous le nom de la distribution.
+check_depends() {
+    local liste="$1"; shift
+    if grep -Eiq "$PLUGIN_DEPS_RE" <<<"$liste"; then
+        fail "dépendance de plugin dans le paquet de la base : $(tr '\n' ' ' <<<"$liste")"
     fi
-    $sudo env DEBIAN_FRONTEND=noninteractive apt-get install -y -qq "$(readlink -f "$PKG")" >/dev/null
-
-    # 1. dépendances
-    local depends
-    depends="$(dpkg-query -W -f='${Depends}' gcm4)"
-    if grep -Eiq "$PLUGIN_DEPS_RE" <<<"$depends"; then
-        fail "dépendance de plugin dans le paquet de la base : $depends"
-    fi
-    for d in python3-gi gir1.2-gtk-4.0 gir1.2-adw-1 python3-loguru; do
-        grep -Eq "(^|, )$d( |,|$)" <<<"$depends" || fail "dépendance $d absente : $depends"
+    for d in "$@"; do
+        grep -qx "$d" <<<"$liste" || fail "dépendance $d absente : $(tr '\n' ' ' <<<"$liste")"
     done
-    echo "dépendances : $depends"
+    echo "dépendances : $(tr '\n' ' ' <<<"$liste")"
+}
+
+# Vérifications 2 à 7, communes au .deb et au .rpm installés.
+check_installed() {
+    local version="$1"
 
     # 2. lanceur
     [ -x /usr/bin/gcm4 ] || fail "lanceur /usr/bin/gcm4 absent ou non exécutable"
@@ -67,9 +71,7 @@ check_deb() {
     command -v gcm4 >/dev/null || fail "gcm4 introuvable dans le PATH"
 
     # 3. version : celle du paquet, lue dans le .dist-info installé
-    local version attendu home
-    version="$(dpkg-query -W -f='${Version}' gcm4)"
-    attendu="gcm4 $version"
+    local attendu="gcm4 $version" home
     home="$(mktemp -d)"
     [ "$(HOME="$home" gcm4 --version)" = "$attendu" ] \
         || fail "gcm4 --version : « $(HOME="$home" gcm4 --version) » au lieu de « $attendu »"
@@ -123,10 +125,18 @@ PY
     grep -qx 'Exec=gcm4' "$desktop" || fail "$desktop : Exec=gcm4 absent"
     grep -qx "Icon=$APP_ID" "$desktop" || fail "$desktop : Icon=$APP_ID absent"
     [ -f "/usr/share/metainfo/$APP_ID.metainfo.xml" ] || fail "metainfo absent"
+    # Traductions fusionnées par build.sh (#274) : langue seule (fr) et
+    # variante (zh_CN) dans le lanceur ; AppStream (étiquettes BCP 47 selon
+    # la version de gettext) vérifié sur fr.
+    for code in fr zh_CN; do
+        grep -q "^Comment\[$code\]=" "$desktop" || fail "$desktop : Comment[$code] absent"
+    done
+    grep -q '<summary xml:lang="fr">' "/usr/share/metainfo/$APP_ID.metainfo.xml" \
+        || fail "metainfo : summary xml:lang=fr absent"
     for s in "${ICON_SIZES[@]}"; do
         [ -f "/usr/share/icons/hicolor/$s/apps/$APP_ID.png" ] || fail "icône $s absente"
     done
-    echo "bureau : lanceur, metainfo et ${#ICON_SIZES[@]} icônes installés"
+    echo "bureau : lanceur et metainfo traduits, ${#ICON_SIZES[@]} icônes installés"
 
     # 6. traductions
     local n=0
@@ -169,9 +179,65 @@ PY
     rm -rf "$home"
 }
 
+check_deb() {
+    local sudo="${SUDO-sudo}"
+    [ "$(id -u)" -eq 0 ] && sudo=""
+    # Images minimales (conteneurs Ubuntu) : dpkg y ignore les .mo, un poste
+    # de travail non. Le test 6 serait faux : on refuse de commencer.
+    if grep -hsE '^path-exclude=/usr/share/locale/' /etc/dpkg/dpkg.cfg.d/* | grep -q .; then
+        fail "dpkg exclut /usr/share/locale (système minimal) : retirer la règle path-exclude de /etc/dpkg/dpkg.cfg.d/ avant le test"
+    fi
+    $sudo env DEBIAN_FRONTEND=noninteractive apt-get install -y -qq "$(readlink -f "$PKG")" >/dev/null
+
+    # 1. dépendances
+    check_depends "$(dpkg-query -W -f='${Depends}' gcm4 | sed -e 's/ *([^)]*)//g' -e 's/, */\n/g')" \
+        python3 python3-gi gir1.2-gtk-4.0 gir1.2-adw-1 python3-loguru
+    check_installed "$(dpkg-query -W -f='${Version}' gcm4)"
+}
+
+# Contenu du .rpm, sans l'installer (possible sur tout système avec rpm).
+check_rpm_content() {
+    local listing
+    listing="$(rpm -qpl "$PKG")"
+    for f in /usr/bin/gcm4 "$PREFIX/gcm4/app.py" "$PREFIX/gcm4/ui/style.css" \
+        "$PREFIX/gcm4_core.py" "$PREFIX/logging_config.py" "$PREFIX/pyAES.py" \
+        "/usr/share/applications/$APP_ID.desktop" "/usr/share/metainfo/$APP_ID.metainfo.xml"; do
+        grep -qx "$f" <<<"$listing" || fail "rpm : $f absent"
+    done
+    grep -Eq "^$PREFIX/[^/]+\.dist-info/METADATA$" <<<"$listing" || fail "rpm : .dist-info absent (version de gcm4 --version)"
+    for s in "${ICON_SIZES[@]}"; do
+        grep -qx "/usr/share/icons/hicolor/$s/apps/$APP_ID.png" <<<"$listing" || fail "rpm : icône $s absente"
+    done
+    for loc in $(linguas); do
+        grep -qx "/usr/share/locale/$loc/LC_MESSAGES/$DOMAIN.mo" <<<"$listing" || fail "rpm : catalogue $loc absent"
+    done
+    check_depends "$(rpm -qpR "$PKG" | sed -e 's/ *[<>=].*//' | grep -v '^rpmlib(' | grep -v '^/')" \
+        python3 python3-gobject gobject-introspection gtk4 libadwaita python3-loguru
+    echo "rpm : contenu conforme ($(wc -l <<<"$listing") fichiers)"
+}
+
+# Installation avec dnf (Fedora, EL) puis mêmes vérifications que le .deb.
+check_rpm_dnf() {
+    check_rpm_content
+    local sudo="${SUDO-sudo}"
+    [ "$(id -u)" -eq 0 ] && sudo=""
+    # Images de conteneur : rpm n'y installe parfois que certaines langues
+    # (%_install_langs). Un poste de travail les installe toutes.
+    local langs
+    langs="$(rpm --eval '%{_install_langs}')"
+    case "$langs" in
+        all|"%{_install_langs}") ;;
+        *) fail "rpm n'installe que les langues « $langs » (système minimal) : retirer la définition de %_install_langs (/etc/rpm/) avant le test" ;;
+    esac
+    $sudo dnf install -y -q "$(readlink -f "$PKG")" >/dev/null
+    check_installed "$(rpm -q --qf '%{VERSION}' gcm4)"
+}
+
+
 case "$MODE" in
     deb) check_deb ;;
-    rpm) fail "paquet .rpm : issue #157" ;;
+    rpm) check_rpm_content ;;
+    rpm-dnf) check_rpm_dnf ;;
     *) fail "mode inconnu : $MODE" ;;
 esac
 echo "test de fumée $MODE : OK"
