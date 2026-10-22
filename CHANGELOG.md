@@ -88,6 +88,13 @@
   (`Adw.ActionRow.set_subtitle_selectable` exige libadwaita 1.3) ; l'appel est
   conditionnel. Nouveau job CI « gcm4 sur Debian 12 » dans un conteneur
   `debian:12` : démarrage sous Xvfb et tests gcm4, aucun test sauté
+- gcm4 sur Rocky Linux 9 (Python 3.9, GTK 4.12, libadwaita 1.4, #223) : le
+  code de `src/gcm4` ne démarrait pas en Python 3.9 (alias `X | None`
+  évalués à l'exécution dans `ui/dialogues.py` et `ui/host_dialog.py`,
+  `zip(strict=True)` dans `core/chiffrement.py`, `entry_points(group=...)`
+  dans `core/registre.py`) ; écrit pour Python 3.9 à 3.14, sans changer
+  `requires-python` (décision attendue sur #223). Nouveau job CI « gcm4 sur
+  Rocky Linux 9 » dans un conteneur `rockylinux/rockylinux:9`
 - Push SNMP vers un équipement Huawei VRP échouait silencieusement
   (« Constructeur inconnu : huawei_vrp ») malgré sa présence dans le menu
   déroulant : driver `HuaweiVrpDriver` manquant côté résolution effective,

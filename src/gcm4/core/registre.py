@@ -83,13 +83,31 @@ def dossier_source() -> Path | None:
     return resultat
 
 
+def _points_du_groupe() -> list[metadata.EntryPoint]:
+    """Points d'entrée du groupe :data:`GROUPE`, de Python 3.9 à 3.14.
+
+    ``entry_points(group=...)`` date de Python 3.10. En 3.9 (Rocky 9, #223),
+    ``entry_points()`` rend un ``dict`` groupe → points ; en 3.10 et 3.11, un
+    objet qui accepte aussi ``select(group=...)``.
+    """
+    logger.debug("_points_du_groupe: entrée")
+    tous: Any = metadata.entry_points()
+    if hasattr(tous, "select"):
+        points = list(tous.select(group=GROUPE))
+    else:
+        logger.trace("_points_du_groupe: API Python 3.9 (dict)")
+        points = list(tous.get(GROUPE, ()))
+    logger.debug("_points_du_groupe: {} point(s)", len(points))
+    return points
+
+
 def candidats_points_d_entree(
     points: Iterable[metadata.EntryPoint] | None = None,
 ) -> list[Candidat]:
     """Candidats du groupe :data:`GROUPE`, triés par nom."""
     logger.debug("candidats_points_d_entree: entrée")
     if points is None:
-        points = metadata.entry_points(group=GROUPE)
+        points = _points_du_groupe()
     resultat = [
         Candidat(nom=p.name, source=f"{p.value}", charger=p.load)
         for p in sorted(points, key=lambda p: p.name)
