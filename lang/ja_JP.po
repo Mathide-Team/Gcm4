@@ -139,7 +139,8 @@ msgstr "ログファイルを書き込み用に開けません"
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
 #: src/gcm4/ui/echange.py src/gcm4/ui/fichiers.py src/gcm4/ui/host_dialog.py
-#: src/gcm4/ui/main_window.py src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: src/gcm4/ui/main_window.py src/gcm4/ui/menu_arbre.py
+#: src/gcm4/ui/raccourcis.py utils.py widgets.py
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -3190,8 +3191,16 @@ msgid "Appearance"
 msgstr "外観"
 
 #: src/gcm4/ui/preferences.py
+msgid "Click a shortcut to change it, or press Backspace in the dialog to disable it."
+msgstr "ショートカットをクリックすると変更できます。ダイアログで Backspace を押すと無効になります。"
+
+#: src/gcm4/ui/preferences.py
 msgid "Default log level"
 msgstr "既定のログレベル"
+
+#: src/gcm4/ui/preferences.py src/gcm4/ui/raccourcis.py
+msgid "Disabled"
+msgstr "無効"
 
 #: src/gcm4/ui/preferences.py
 msgid "Error"
@@ -3256,6 +3265,36 @@ msgstr "システムのフォントを使用"
 #, python-brace-format
 msgid "Version {version}"
 msgstr "バージョン {version}"
+
+#: src/gcm4/ui/raccourcis.py
+#, python-brace-format
+msgid "Already used by “{action}”."
+msgstr "「{action}」で既に使用されています。"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Press a key combination"
+msgstr "キーの組み合わせを押してください"
+
+#: src/gcm4/ui/raccourcis.py
+#, python-brace-format
+msgid "Press the new shortcut for “{action}”, or Backspace to disable it."
+msgstr "「{action}」の新しいショートカットを押してください。Backspace を押すと無効になります。"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Reset to default"
+msgstr "デフォルトに戻す"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Set"
+msgstr "設定"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Set Shortcut"
+msgstr "ショートカットの設定"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Use Ctrl, Alt or Super with this key."
+msgstr "このキーには Ctrl、Alt、Super のいずれかを組み合わせてください。"
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format

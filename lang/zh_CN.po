@@ -139,7 +139,8 @@ msgstr "无法打开日志文件进行写入"
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
 #: src/gcm4/ui/echange.py src/gcm4/ui/fichiers.py src/gcm4/ui/host_dialog.py
-#: src/gcm4/ui/main_window.py src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: src/gcm4/ui/main_window.py src/gcm4/ui/menu_arbre.py
+#: src/gcm4/ui/raccourcis.py utils.py widgets.py
 msgid "Cancel"
 msgstr "取消"
 
@@ -3190,8 +3191,16 @@ msgid "Appearance"
 msgstr "外观"
 
 #: src/gcm4/ui/preferences.py
+msgid "Click a shortcut to change it, or press Backspace in the dialog to disable it."
+msgstr "点击快捷键可进行修改，或在对话框中按 Backspace 将其禁用。"
+
+#: src/gcm4/ui/preferences.py
 msgid "Default log level"
 msgstr "默认日志级别"
+
+#: src/gcm4/ui/preferences.py src/gcm4/ui/raccourcis.py
+msgid "Disabled"
+msgstr "已禁用"
 
 #: src/gcm4/ui/preferences.py
 msgid "Error"
@@ -3256,6 +3265,36 @@ msgstr "使用系统字体"
 #, python-brace-format
 msgid "Version {version}"
 msgstr "版本 {version}"
+
+#: src/gcm4/ui/raccourcis.py
+#, python-brace-format
+msgid "Already used by “{action}”."
+msgstr "已被“{action}”使用。"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Press a key combination"
+msgstr "请按下组合键"
+
+#: src/gcm4/ui/raccourcis.py
+#, python-brace-format
+msgid "Press the new shortcut for “{action}”, or Backspace to disable it."
+msgstr "请为“{action}”按下新的快捷键，或按 Backspace 将其禁用。"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Reset to default"
+msgstr "恢复默认"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Set"
+msgstr "设置"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Set Shortcut"
+msgstr "设置快捷键"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Use Ctrl, Alt or Super with this key."
+msgstr "请将此键与 Ctrl、Alt 或 Super 组合使用。"
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format

@@ -139,7 +139,8 @@ msgstr "Det går inte att öppna loggfilen för skrivning"
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
 #: src/gcm4/ui/echange.py src/gcm4/ui/fichiers.py src/gcm4/ui/host_dialog.py
-#: src/gcm4/ui/main_window.py src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: src/gcm4/ui/main_window.py src/gcm4/ui/menu_arbre.py
+#: src/gcm4/ui/raccourcis.py utils.py widgets.py
 msgid "Cancel"
 msgstr "Avbryt"
 
@@ -3190,8 +3191,16 @@ msgid "Appearance"
 msgstr "Utseende"
 
 #: src/gcm4/ui/preferences.py
+msgid "Click a shortcut to change it, or press Backspace in the dialog to disable it."
+msgstr "Klicka på en genväg för att ändra den, eller tryck på Backsteg i dialogrutan för att inaktivera den."
+
+#: src/gcm4/ui/preferences.py
 msgid "Default log level"
 msgstr "Standardloggnivå"
+
+#: src/gcm4/ui/preferences.py src/gcm4/ui/raccourcis.py
+msgid "Disabled"
+msgstr "Inaktiverad"
 
 #: src/gcm4/ui/preferences.py
 msgid "Error"
@@ -3256,6 +3265,36 @@ msgstr "Använd systemets typsnitt"
 #, python-brace-format
 msgid "Version {version}"
 msgstr "Version {version}"
+
+#: src/gcm4/ui/raccourcis.py
+#, python-brace-format
+msgid "Already used by “{action}”."
+msgstr "Används redan av ”{action}”."
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Press a key combination"
+msgstr "Tryck på en tangentkombination"
+
+#: src/gcm4/ui/raccourcis.py
+#, python-brace-format
+msgid "Press the new shortcut for “{action}”, or Backspace to disable it."
+msgstr "Tryck på den nya genvägen för ”{action}”, eller Backsteg för att inaktivera den."
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Reset to default"
+msgstr "Återställ standard"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Set"
+msgstr "Ange"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Set Shortcut"
+msgstr "Ange genväg"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Use Ctrl, Alt or Super with this key."
+msgstr "Använd Ctrl, Alt eller Super med den här tangenten."
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format

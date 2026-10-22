@@ -139,7 +139,8 @@ msgstr "Kan ikke åpne loggfilen for skriving"
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
 #: src/gcm4/ui/echange.py src/gcm4/ui/fichiers.py src/gcm4/ui/host_dialog.py
-#: src/gcm4/ui/main_window.py src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: src/gcm4/ui/main_window.py src/gcm4/ui/menu_arbre.py
+#: src/gcm4/ui/raccourcis.py utils.py widgets.py
 msgid "Cancel"
 msgstr "Avbryt"
 
@@ -3190,8 +3191,16 @@ msgid "Appearance"
 msgstr "Utseende"
 
 #: src/gcm4/ui/preferences.py
+msgid "Click a shortcut to change it, or press Backspace in the dialog to disable it."
+msgstr "Klikk på en hurtigtast for å endre den, eller trykk på Backspace i dialogen for å deaktivere den."
+
+#: src/gcm4/ui/preferences.py
 msgid "Default log level"
 msgstr "Standard loggnivå"
+
+#: src/gcm4/ui/preferences.py src/gcm4/ui/raccourcis.py
+msgid "Disabled"
+msgstr "Deaktivert"
 
 #: src/gcm4/ui/preferences.py
 msgid "Error"
@@ -3256,6 +3265,36 @@ msgstr "Bruk systemets skrift"
 #, python-brace-format
 msgid "Version {version}"
 msgstr "Versjon {version}"
+
+#: src/gcm4/ui/raccourcis.py
+#, python-brace-format
+msgid "Already used by “{action}”."
+msgstr "Brukes allerede av «{action}»."
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Press a key combination"
+msgstr "Trykk på en tastekombinasjon"
+
+#: src/gcm4/ui/raccourcis.py
+#, python-brace-format
+msgid "Press the new shortcut for “{action}”, or Backspace to disable it."
+msgstr "Trykk på den nye hurtigtasten for «{action}», eller Backspace for å deaktivere den."
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Reset to default"
+msgstr "Tilbakestill til standard"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Set"
+msgstr "Angi"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Set Shortcut"
+msgstr "Angi hurtigtast"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Use Ctrl, Alt or Super with this key."
+msgstr "Bruk Ctrl, Alt eller Super sammen med denne tasten."
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format

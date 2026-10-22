@@ -139,7 +139,8 @@ msgstr "쓰기용으로 로그 파일을 열 수 없습니다"
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
 #: src/gcm4/ui/echange.py src/gcm4/ui/fichiers.py src/gcm4/ui/host_dialog.py
-#: src/gcm4/ui/main_window.py src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: src/gcm4/ui/main_window.py src/gcm4/ui/menu_arbre.py
+#: src/gcm4/ui/raccourcis.py utils.py widgets.py
 msgid "Cancel"
 msgstr "취소"
 
@@ -3190,8 +3191,16 @@ msgid "Appearance"
 msgstr "모양"
 
 #: src/gcm4/ui/preferences.py
+msgid "Click a shortcut to change it, or press Backspace in the dialog to disable it."
+msgstr "바로 가기를 클릭하여 변경하거나, 대화 상자에서 Backspace를 눌러 사용하지 않도록 설정하십시오."
+
+#: src/gcm4/ui/preferences.py
 msgid "Default log level"
 msgstr "기본 로그 수준"
+
+#: src/gcm4/ui/preferences.py src/gcm4/ui/raccourcis.py
+msgid "Disabled"
+msgstr "사용 안 함"
 
 #: src/gcm4/ui/preferences.py
 msgid "Error"
@@ -3256,6 +3265,36 @@ msgstr "시스템 글꼴 사용"
 #, python-brace-format
 msgid "Version {version}"
 msgstr "버전 {version}"
+
+#: src/gcm4/ui/raccourcis.py
+#, python-brace-format
+msgid "Already used by “{action}”."
+msgstr "“{action}”에서 이미 사용 중입니다."
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Press a key combination"
+msgstr "키 조합을 누르십시오"
+
+#: src/gcm4/ui/raccourcis.py
+#, python-brace-format
+msgid "Press the new shortcut for “{action}”, or Backspace to disable it."
+msgstr "“{action}”의 새 바로 가기를 누르거나, Backspace를 눌러 사용하지 않도록 설정하십시오."
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Reset to default"
+msgstr "기본값으로 재설정"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Set"
+msgstr "설정"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Set Shortcut"
+msgstr "바로 가기 설정"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Use Ctrl, Alt or Super with this key."
+msgstr "이 키에는 Ctrl, Alt 또는 Super를 함께 사용하십시오."
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format

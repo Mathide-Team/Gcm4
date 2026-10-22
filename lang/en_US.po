@@ -133,7 +133,8 @@ msgstr ""
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
 #: src/gcm4/ui/echange.py src/gcm4/ui/fichiers.py src/gcm4/ui/host_dialog.py
-#: src/gcm4/ui/main_window.py src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: src/gcm4/ui/main_window.py src/gcm4/ui/menu_arbre.py
+#: src/gcm4/ui/raccourcis.py utils.py widgets.py
 msgid "Cancel"
 msgstr "Cancel"
 
@@ -3047,8 +3048,16 @@ msgid "Appearance"
 msgstr "Appearance"
 
 #: src/gcm4/ui/preferences.py
+msgid "Click a shortcut to change it, or press Backspace in the dialog to disable it."
+msgstr "Click a shortcut to change it, or press Backspace in the dialog to disable it."
+
+#: src/gcm4/ui/preferences.py
 msgid "Default log level"
 msgstr "Default log level"
+
+#: src/gcm4/ui/preferences.py src/gcm4/ui/raccourcis.py
+msgid "Disabled"
+msgstr "Disabled"
 
 #: src/gcm4/ui/preferences.py
 msgid "Error"
@@ -3113,6 +3122,36 @@ msgstr "Use system font"
 #, python-brace-format
 msgid "Version {version}"
 msgstr "Version {version}"
+
+#: src/gcm4/ui/raccourcis.py
+#, python-brace-format
+msgid "Already used by “{action}”."
+msgstr "Already used by “{action}”."
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Press a key combination"
+msgstr "Press a key combination"
+
+#: src/gcm4/ui/raccourcis.py
+#, python-brace-format
+msgid "Press the new shortcut for “{action}”, or Backspace to disable it."
+msgstr "Press the new shortcut for “{action}”, or Backspace to disable it."
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Reset to default"
+msgstr "Reset to default"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Set"
+msgstr "Set"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Set Shortcut"
+msgstr "Set Shortcut"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Use Ctrl, Alt or Super with this key."
+msgstr "Use Ctrl, Alt or Super with this key."
 
 #: ssh_config_editor.py
 #, python-brace-format

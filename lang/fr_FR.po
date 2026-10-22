@@ -139,7 +139,8 @@ msgstr "Impossible d'ouvrir le fichier de journal en écriture"
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
 #: src/gcm4/ui/echange.py src/gcm4/ui/fichiers.py src/gcm4/ui/host_dialog.py
-#: src/gcm4/ui/main_window.py src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: src/gcm4/ui/main_window.py src/gcm4/ui/menu_arbre.py
+#: src/gcm4/ui/raccourcis.py utils.py widgets.py
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -3190,8 +3191,16 @@ msgid "Appearance"
 msgstr "Apparence"
 
 #: src/gcm4/ui/preferences.py
+msgid "Click a shortcut to change it, or press Backspace in the dialog to disable it."
+msgstr "Cliquez sur un raccourci pour le modifier, ou appuyez sur Retour arrière dans la fenêtre de saisie pour le désactiver."
+
+#: src/gcm4/ui/preferences.py
 msgid "Default log level"
 msgstr "Niveau de journal par défaut"
+
+#: src/gcm4/ui/preferences.py src/gcm4/ui/raccourcis.py
+msgid "Disabled"
+msgstr "Désactivé"
 
 #: src/gcm4/ui/preferences.py
 msgid "Error"
@@ -3256,6 +3265,36 @@ msgstr "Utiliser la police du système"
 #, python-brace-format
 msgid "Version {version}"
 msgstr "Version {version}"
+
+#: src/gcm4/ui/raccourcis.py
+#, python-brace-format
+msgid "Already used by “{action}”."
+msgstr "Déjà utilisé par « {action} »."
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Press a key combination"
+msgstr "Appuyez sur une combinaison de touches"
+
+#: src/gcm4/ui/raccourcis.py
+#, python-brace-format
+msgid "Press the new shortcut for “{action}”, or Backspace to disable it."
+msgstr "Appuyez sur le nouveau raccourci pour « {action} », ou sur Retour arrière pour le désactiver."
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Reset to default"
+msgstr "Rétablir la valeur par défaut"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Set"
+msgstr "Définir"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Set Shortcut"
+msgstr "Définir le raccourci"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Use Ctrl, Alt or Super with this key."
+msgstr "Utilisez Ctrl, Alt ou Super avec cette touche."
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format

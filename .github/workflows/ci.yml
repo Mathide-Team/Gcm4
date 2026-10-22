@@ -7,6 +7,9 @@ name: CI
     branches: [main, dev]
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 # Issue #159 : un nouveau push sur la même branche ou PR annule le run
 # précédent, devenu obsolète.
 concurrency:

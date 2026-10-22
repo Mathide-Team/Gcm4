@@ -139,7 +139,8 @@ msgstr "ไม่สามารถเปิดไฟล์บันทึกเ
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
 #: src/gcm4/ui/echange.py src/gcm4/ui/fichiers.py src/gcm4/ui/host_dialog.py
-#: src/gcm4/ui/main_window.py src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: src/gcm4/ui/main_window.py src/gcm4/ui/menu_arbre.py
+#: src/gcm4/ui/raccourcis.py utils.py widgets.py
 msgid "Cancel"
 msgstr "ยกเลิก"
 
@@ -3190,8 +3191,16 @@ msgid "Appearance"
 msgstr "รูปลักษณ์"
 
 #: src/gcm4/ui/preferences.py
+msgid "Click a shortcut to change it, or press Backspace in the dialog to disable it."
+msgstr "คลิกทางลัดเพื่อเปลี่ยน หรือกด Backspace ในกล่องโต้ตอบเพื่อปิดใช้งาน"
+
+#: src/gcm4/ui/preferences.py
 msgid "Default log level"
 msgstr "ระดับล็อกเริ่มต้น"
+
+#: src/gcm4/ui/preferences.py src/gcm4/ui/raccourcis.py
+msgid "Disabled"
+msgstr "ปิดใช้งาน"
 
 #: src/gcm4/ui/preferences.py
 msgid "Error"
@@ -3256,6 +3265,36 @@ msgstr "ใช้แบบอักษรของระบบ"
 #, python-brace-format
 msgid "Version {version}"
 msgstr "รุ่น {version}"
+
+#: src/gcm4/ui/raccourcis.py
+#, python-brace-format
+msgid "Already used by “{action}”."
+msgstr "ถูกใช้โดย “{action}” แล้ว"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Press a key combination"
+msgstr "กดคีย์ผสม"
+
+#: src/gcm4/ui/raccourcis.py
+#, python-brace-format
+msgid "Press the new shortcut for “{action}”, or Backspace to disable it."
+msgstr "กดทางลัดใหม่สำหรับ “{action}” หรือกด Backspace เพื่อปิดใช้งาน"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Reset to default"
+msgstr "คืนค่าเริ่มต้น"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Set"
+msgstr "ตั้งค่า"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Set Shortcut"
+msgstr "ตั้งค่าทางลัด"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Use Ctrl, Alt or Super with this key."
+msgstr "ใช้ Ctrl, Alt หรือ Super ร่วมกับปุ่มนี้"
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format

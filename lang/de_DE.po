@@ -139,7 +139,8 @@ msgstr "Protokolldatei kann nicht zum Schreiben geöffnet werden"
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
 #: src/gcm4/ui/echange.py src/gcm4/ui/fichiers.py src/gcm4/ui/host_dialog.py
-#: src/gcm4/ui/main_window.py src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: src/gcm4/ui/main_window.py src/gcm4/ui/menu_arbre.py
+#: src/gcm4/ui/raccourcis.py utils.py widgets.py
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -3190,8 +3191,16 @@ msgid "Appearance"
 msgstr "Erscheinungsbild"
 
 #: src/gcm4/ui/preferences.py
+msgid "Click a shortcut to change it, or press Backspace in the dialog to disable it."
+msgstr "Klicken Sie auf eine Tastenkombination, um sie zu ändern, oder drücken Sie im Dialog die Rücktaste, um sie zu deaktivieren."
+
+#: src/gcm4/ui/preferences.py
 msgid "Default log level"
 msgstr "Standard-Protokollstufe"
+
+#: src/gcm4/ui/preferences.py src/gcm4/ui/raccourcis.py
+msgid "Disabled"
+msgstr "Deaktiviert"
 
 #: src/gcm4/ui/preferences.py
 msgid "Error"
@@ -3256,6 +3265,36 @@ msgstr "Systemschrift verwenden"
 #, python-brace-format
 msgid "Version {version}"
 msgstr "Version {version}"
+
+#: src/gcm4/ui/raccourcis.py
+#, python-brace-format
+msgid "Already used by “{action}”."
+msgstr "Bereits verwendet von „{action}“."
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Press a key combination"
+msgstr "Drücken Sie eine Tastenkombination"
+
+#: src/gcm4/ui/raccourcis.py
+#, python-brace-format
+msgid "Press the new shortcut for “{action}”, or Backspace to disable it."
+msgstr "Drücken Sie die neue Tastenkombination für „{action}“ oder die Rücktaste, um sie zu deaktivieren."
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Reset to default"
+msgstr "Auf Standard zurücksetzen"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Set"
+msgstr "Festlegen"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Set Shortcut"
+msgstr "Tastenkombination festlegen"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Use Ctrl, Alt or Super with this key."
+msgstr "Verwenden Sie Strg, Alt oder Super mit dieser Taste."
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format
