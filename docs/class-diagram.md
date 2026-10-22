@@ -6,7 +6,7 @@
 > toute modification manuelle sera écrasée. Le régénérer avec `make class-diagram` ;
 > le job Qualité échoue s'il est périmé (`--check`).
 
-82 modules · 154 classes · 277 fonctions publiques de module.
+85 modules · 157 classes · 287 fonctions publiques de module.
 
 Conventions : `+` public, `-` privé (préfixe `_`) ; `list~str~` = `list[str]` ; `<<module>>`
 regroupe les fonctions publiques d'un module ; `<<…>>` sur une classe liste `dataclass` et les
@@ -32,6 +32,7 @@ flowchart TD
     g0 -->|1| g2
     g2 -->|58| g1
     g2 -->|4| g0
+    g2 -->|3| g4
     g3 -->|2| g0
     g3 -->|2| g4
     g3 -->|1| g5
@@ -40,7 +41,7 @@ flowchart TD
     g4 -->|1| g3
     g5 -->|2| g0
     g5 -->|2| g3
-    g5 -->|37| g4
+    g5 -->|38| g4
 ```
 
 ## Cœur (sans GTK)
@@ -811,6 +812,8 @@ classDiagram
 | `plugins.pluginvnc2.vnc_tab` | `plugins/pluginvnc2/vnc_tab.py` | vnc_tab.py — Onglet VNC complet pour gnome-connection-manager (fork GTK4) |
 | `plugins.ssh` | `plugins/ssh/__init__.py` | Plugin SSH — dossier pilote de la migration GTK4 (découpage par plugin). |
 | `plugins.ssh.core` | `plugins/ssh/core.py` | Logique métier SSH de gcm4, zéro dépendance GTK — parsing de ``~/.ssh/config`` et migration/import des hôtes SSH de gcm.conf. |
+| `plugins.telnet.core` | `plugins/telnet/core.py` | Logique du plugin telnet, sans GTK : commande, environnement, commandes après connexion. |
+| `plugins.telnet.gtk4` | `plugins/telnet/gtk4.py` | Plugin telnet de gcm4 (contrat v1, ``docs/plugins.md``) : terminal VTE GTK4. |
 
 ```mermaid
 classDiagram
@@ -1098,13 +1101,13 @@ classDiagram
         <<Gtk.Box>>
         +connect_telnet() None
     }
-    class TelnetPlugin {
+    class plugins_plugin_telnet_TelnetPlugin {
         +build_tab(host, get_password) Gtk.Widget
         +build_edit_page() Gtk.Widget
         +load_host_fields(host) None
         +save_host_fields(host) None
     }
-    plugins_plugin_base_ConnectionPlugin <|-- TelnetPlugin
+    plugins_plugin_base_ConnectionPlugin <|-- plugins_plugin_telnet_TelnetPlugin
     class mod_plugins_plugin_vnc {
         <<module>>
         +get_plugin() VncPlugin
@@ -1236,6 +1239,30 @@ classDiagram
         +write(backup) None
         +validate() list~str~
     }
+    class mod_plugins_telnet_core {
+        <<module>>
+        +lancement(adresse, port, utilisateur, mot_de_passe, parametres, telnet, expect, script) Lancement
+        +environnement(options) list~str~
+        +liaison(options, cle) int
+        +lire_commandes(brut) str
+        +ecrire_commandes(texte) str
+        +est_delai(ligne) bool
+        +etapes(commandes) list~tuple~int, str~~
+    }
+    class Lancement {
+        <<dataclass>>
+        +list~str~ argv
+        +str mot_de_passe
+    }
+    class TelnetSession {
+        +close() None
+    }
+    class plugins_telnet_gtk4_TelnetPlugin {
+        +default_port(protocol) int None
+        +build_host_options_widget(host, options, changed) Gtk.Widget
+        +open(host) TelnetSession
+    }
+    plugins_plugin_base_ConnectionPlugin <|-- plugins_telnet_gtk4_TelnetPlugin
 ```
 
 ## gcm4
@@ -1262,6 +1289,7 @@ classDiagram
 | `gcm4.core.chemins` | `src/gcm4/core/chemins.py` | Emplacement de la configuration de gcm4 et migration depuis ``~/.gcm`` (#99). |
 | `gcm4.core.chiffrement` | `src/gcm4/core/chiffrement.py` | Mots de passe chiffrés de gcm4.conf, compatibles avec l'application GTK3 (#138). |
 | `gcm4.core.cli` | `src/gcm4/core/cli.py` | Ligne de commande de gcm4, analysée avant toute initialisation GTK (#133). |
+| `gcm4.core.comportement_onglets` | `src/gcm4/core/comportement_onglets.py` | Onglets et titre de la fenêtre : options de base reprises de Wconfig (#247), sans GTK. |
 | `gcm4.core.config` | `src/gcm4/core/config.py` | Lecture et écriture de ``~/.config/gcm4/gcm4.conf`` sans GTK (#137). |
 | `gcm4.core.deplacements` | `src/gcm4/core/deplacements.py` | Glisser-déposer dans l'arbre, validé sans GTK (#141). |
 | `gcm4.core.echange_cli` | `src/gcm4/core/echange_cli.py` | Import et export des hôtes en ligne de commande, sans fenêtre (#154). |
@@ -1314,6 +1342,12 @@ classDiagram
         <<module>>
         +build_parser() argparse.ArgumentParser
         +parse_args(argv, home, environ) argparse.Namespace
+    }
+    class mod_gcm4_core_comportement_onglets {
+        <<module>>
+        +voisin(courant, total, sens, boucler) int
+        +titre_application(app_title) str
+        +titre_fenetre(app_title, dynamique, onglet) str
     }
     class mod_gcm4_core_config {
         <<module>>
@@ -1598,6 +1632,12 @@ classDiagram
         +bool show_panel
         +str tree_font
         +str log_level
+        +bool confirm_close_tab
+        +bool confirm_close_tab_middle
+        +bool cycle_tabs
+        +bool disable_hosts_stripes
+        +bool update_title
+        +str app_title
     }
     class Raccourci {
         <<dataclass>>
@@ -1730,8 +1770,10 @@ classDiagram
         +recharger() None
         +chercher(texte) None
         +focus_recherche() None
+        +set_rayures(rayures) None
         +chemin_selectionne() str None
         +selectionner(chemin) bool
+        +reveler(chemin) bool
         +deposer(source, cible) bool
         +appliquer_couleurs() None
         +lignes_visibles() list~tuple~int, str~~
@@ -1746,9 +1788,14 @@ classDiagram
         +enregistrer_config() None
         +notifier(message) None
         +ajouter_onglet(titre, contenu, session) int
+        +demander_fermeture(contenu, milieu) None
+        +aller_onglet_voisin(sens) None
+        +maj_titre(page) None
+        +appliquer_options() None
         +fermer_onglet(contenu) None
         +onglets_ouverts() list~str~
         +restaurer_onglets() None
+        +ouvrir_hotes(specs) None
         +etat_courant() window_state.WindowState
     }
     class MenuArbre {

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-20 21:04+0000\n"
+"POT-Creation-Date: 2026-10-22 05:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,7 +36,7 @@ msgstr ""
 msgid "<span size=\"smaller\">CTRL+UP/CTRL+DOWN for history</span>"
 msgstr "<span size=\"smaller\">CTRL+بالا/CTRL+پایین برای تاریخچه</span>"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid ""
 "<span size='smaller'>Use ##D=milliseconds to add a delay.\n"
 "Ex: ##D=1000</span>"
@@ -57,11 +57,11 @@ msgstr "نسخه جدیدی موجود است: https://github.com/MathildeDec/gn
 msgid "A simple ssh connection manager for gnome"
 msgstr "یک مدیر اتصال SSH ساده برای Gnome"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "ASCII Backspace \t[Ctrl+H 0x08]"
 msgstr "بک‌اسپیس ASCII \t[Ctrl+H 0x08]"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
 msgstr "دیلیت ASCII    \t[Ctrl+? 0x7F]"
 
@@ -89,7 +89,7 @@ msgstr "پس از قطع اتصال"
 msgid "Always"
 msgstr "همیشه"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Automatic"
 msgstr "خودکار"
 
@@ -97,7 +97,7 @@ msgstr "خودکار"
 msgid "Background color:"
 msgstr "رنگ پس‌زمینه:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Backspace:"
 msgstr "بک‌اسپیس:"
 
@@ -151,7 +151,7 @@ msgstr "بررسی به‌روزرسانی‌ها"
 msgid "Choose Group Color"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Circle around tabs when going to the previous/next tab"
 msgstr "چرخش بین برگه‌ها هنگام رفتن به برگه قبلی/بعدی"
 
@@ -159,11 +159,13 @@ msgstr "چرخش بین برگه‌ها هنگام رفتن به برگه قبل
 msgid "Clear selection"
 msgstr "پاک کردن انتخاب"
 
-#: gnome_connection_manager.py ssh_config_editor.py ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/main_window.py ssh_config_editor.py
+#: ssh_key_manager_dialog.py
 msgid "Close"
 msgstr "بستن"
 
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py widgets.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/main_window.py widgets.py
 msgid "Close console"
 msgstr "بستن کنسول"
 
@@ -185,11 +187,11 @@ msgstr "رنگ‌ها"
 msgid "Command"
 msgstr "دستور"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on close console"
 msgstr "تأیید هنگام بستن کنسول"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on close console with middle click"
 msgstr "تأیید هنگام بستن کنسول با کلیک وسط"
 
@@ -243,11 +245,11 @@ msgstr "بیت‌های داده"
 msgid "Default colors"
 msgstr "رنگ‌های پیش‌فرض"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Delete Sequence \t[@7]"
 msgstr "توالی دیلیت \t[@7]"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Delete:"
 msgstr "دیلیت:"
 
@@ -255,7 +257,7 @@ msgstr "دیلیت:"
 msgid "Description"
 msgstr "توضیحات"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Disable alternating stripes in hosts window"
 msgstr "غیرفعال کردن نوارهای متناوب در پنجره میزبان‌ها"
 
@@ -275,7 +277,7 @@ msgstr "آیا واقعاً می‌خواهید همه میزبان‌های گ�
 msgid "Do you really want to remove host"
 msgstr "آیا واقعاً می‌خواهید میزبان را حذف کنید"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Dynamic title"
 msgstr "عنوان دینامیک"
 
@@ -650,7 +652,7 @@ msgstr "انتخاب فونت"
 msgid "Select foreground color"
 msgstr "انتخاب رنگ پیش‌زمینه"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Send commands after login"
 msgstr "ارسال دستورات پس از ورود"
 
@@ -710,11 +712,11 @@ msgstr "توقف"
 msgid "System"
 msgstr "سیستم"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "TERM"
 msgstr "TERM"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "TTY Erase"
 msgstr "حذف TTY"
 
@@ -738,7 +740,7 @@ msgstr ""
 msgid "Tip: use #P=password to send a password without keeping it in clear text in the command history"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Title"
 msgstr "عنوان"
 
@@ -1441,7 +1443,7 @@ msgid "IPMI (SOL)"
 msgstr ""
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_spice.py
-#: plugins/plugin_vnc.py
+#: plugins/plugin_vnc.py plugins/telnet/gtk4.py
 msgid "Session ended"
 msgstr "نشست پایان یافت"
 
@@ -2659,6 +2661,11 @@ msgid ""
 "The web console will open in the system browser."
 msgstr ""
 
+#: plugins/telnet/gtk4.py
+#, python-brace-format
+msgid "{program} not found"
+msgstr "{program} یافت نشد"
+
 #: src/gcm4/app.py
 msgid "The old configuration is intact: fix the problem (permissions, disk space), then start gcm4 again."
 msgstr "پیکربندی قدیمی دست‌نخورده است: مشکل (مجوزها، فضای دیسک) را برطرف کنید و سپس gcm4 را دوباره اجرا کنید."
@@ -2764,6 +2771,14 @@ msgstr "ستون %s وجود ندارد"
 #: src/gcm4/core/exchange.py
 msgid "unsupported format or version"
 msgstr "قالب یا نسخهٔ پشتیبانی‌نشده"
+
+#: src/gcm4/core/menu.py
+msgid "Next tab"
+msgstr "زبانه بعدی"
+
+#: src/gcm4/core/menu.py
+msgid "Previous tab"
+msgstr "زبانه قبلی"
 
 #: src/gcm4/core/menu.py
 msgid "Search"
@@ -2989,6 +3004,11 @@ msgstr "پیکربندی بارگذاری نشد"
 #: src/gcm4/ui/main_window.py
 msgid "Home"
 msgstr "خانه"
+
+#: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Host not found: {hosts}"
+msgstr "میزبان پیدا نشد: {hosts}"
 
 #: src/gcm4/ui/main_window.py
 msgid "Hosts and groups will appear in the left panel."

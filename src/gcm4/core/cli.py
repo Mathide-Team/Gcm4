@@ -37,7 +37,7 @@ def build_parser() -> argparse.ArgumentParser:
         "hotes",
         nargs="*",
         metavar="GROUPE/NOM",
-        help="hôtes à ouvrir au démarrage (pris en charge avec les plugins)",
+        help="hôtes à sélectionner au démarrage, connectés si un plugin gère leur protocole",
     )
     echange_cli.ajouter_arguments(parser)
     logger.debug("build_parser: prêt")

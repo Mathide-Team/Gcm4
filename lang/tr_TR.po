@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-20 21:04+0000\n"
+"POT-Creation-Date: 2026-10-22 05:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,7 +36,7 @@ msgstr ""
 msgid "<span size=\"smaller\">CTRL+UP/CTRL+DOWN for history</span>"
 msgstr "<span size=\"smaller\">Geçmiş için CTRL+YUKARI/CTRL+AŞAĞI</span>"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid ""
 "<span size='smaller'>Use ##D=milliseconds to add a delay.\n"
 "Ex: ##D=1000</span>"
@@ -57,11 +57,11 @@ msgstr "Yeni bir sürüm mevcut: https://github.com/MathildeDec/gnome-connection
 msgid "A simple ssh connection manager for gnome"
 msgstr "Gnome için basit bir ssh bağlantı yöneticisi"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "ASCII Backspace \t[Ctrl+H 0x08]"
 msgstr "ASCII Geri Tuşu \t[Ctrl+H 0x08]"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
 msgstr "ASCII Delete    \t[Ctrl+? 0x7F]"
 
@@ -89,7 +89,7 @@ msgstr "Bağlantı kesildikten sonra"
 msgid "Always"
 msgstr "Her zaman"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Automatic"
 msgstr "Otomatik"
 
@@ -97,7 +97,7 @@ msgstr "Otomatik"
 msgid "Background color:"
 msgstr "Arka plan rengi:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Backspace:"
 msgstr "Geri tuşu:"
 
@@ -151,7 +151,7 @@ msgstr "Güncellemeleri kontrol et"
 msgid "Choose Group Color"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Circle around tabs when going to the previous/next tab"
 msgstr "Önceki/sonraki sekmeye giderken sekmeler arasında döngü yap"
 
@@ -159,11 +159,13 @@ msgstr "Önceki/sonraki sekmeye giderken sekmeler arasında döngü yap"
 msgid "Clear selection"
 msgstr "Seçimi temizle"
 
-#: gnome_connection_manager.py ssh_config_editor.py ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/main_window.py ssh_config_editor.py
+#: ssh_key_manager_dialog.py
 msgid "Close"
 msgstr "Kapat"
 
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py widgets.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/main_window.py widgets.py
 msgid "Close console"
 msgstr "Konsolu kapat"
 
@@ -185,11 +187,11 @@ msgstr "Renkler"
 msgid "Command"
 msgstr "Komut"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on close console"
 msgstr "Konsolu kapatırken onayla"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on close console with middle click"
 msgstr "Orta tıklamayla konsolu kapatırken onayla"
 
@@ -243,11 +245,11 @@ msgstr "Veri bitleri"
 msgid "Default colors"
 msgstr "Varsayılan renkler"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Delete Sequence \t[@7]"
 msgstr "Silme Dizisi \t[@7]"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Delete:"
 msgstr "Delete:"
 
@@ -255,7 +257,7 @@ msgstr "Delete:"
 msgid "Description"
 msgstr "Açıklama"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Disable alternating stripes in hosts window"
 msgstr "Sunucu penceresinde alternatif şeritleri devre dışı bırak"
 
@@ -275,7 +277,7 @@ msgstr "Gruptaki tüm sunucuları kaldırmak istediğinizden emin misiniz"
 msgid "Do you really want to remove host"
 msgstr "Sunucuyu kaldırmak istediğinizden emin misiniz"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Dynamic title"
 msgstr "Dinamik başlık"
 
@@ -650,7 +652,7 @@ msgstr "Yazı tipi seç"
 msgid "Select foreground color"
 msgstr "Ön plan rengini seç"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Send commands after login"
 msgstr "Girişten sonra komut gönder"
 
@@ -710,11 +712,11 @@ msgstr "Durdurma"
 msgid "System"
 msgstr "Sistem"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "TERM"
 msgstr "TERM"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "TTY Erase"
 msgstr "TTY Silme"
 
@@ -738,7 +740,7 @@ msgstr ""
 msgid "Tip: use #P=password to send a password without keeping it in clear text in the command history"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Title"
 msgstr "Başlık"
 
@@ -1441,7 +1443,7 @@ msgid "IPMI (SOL)"
 msgstr ""
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_spice.py
-#: plugins/plugin_vnc.py
+#: plugins/plugin_vnc.py plugins/telnet/gtk4.py
 msgid "Session ended"
 msgstr "Oturum sona erdi"
 
@@ -2659,6 +2661,11 @@ msgid ""
 "The web console will open in the system browser."
 msgstr ""
 
+#: plugins/telnet/gtk4.py
+#, python-brace-format
+msgid "{program} not found"
+msgstr "{program} bulunamadı"
+
 #: src/gcm4/app.py
 msgid "The old configuration is intact: fix the problem (permissions, disk space), then start gcm4 again."
 msgstr "Eski yapılandırma bozulmadı: sorunu giderin (izinler, disk alanı), ardından gcm4'ü yeniden başlatın."
@@ -2764,6 +2771,14 @@ msgstr "%s sütunu eksik"
 #: src/gcm4/core/exchange.py
 msgid "unsupported format or version"
 msgstr "desteklenmeyen biçim veya sürüm"
+
+#: src/gcm4/core/menu.py
+msgid "Next tab"
+msgstr "Sonraki sekme"
+
+#: src/gcm4/core/menu.py
+msgid "Previous tab"
+msgstr "Önceki sekme"
 
 #: src/gcm4/core/menu.py
 msgid "Search"
@@ -2989,6 +3004,11 @@ msgstr "Yapılandırma yüklenmedi"
 #: src/gcm4/ui/main_window.py
 msgid "Home"
 msgstr "Ana sayfa"
+
+#: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Host not found: {hosts}"
+msgstr "Ana makine bulunamadı: {hosts}"
 
 #: src/gcm4/ui/main_window.py
 msgid "Hosts and groups will appear in the left panel."

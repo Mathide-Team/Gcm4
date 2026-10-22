@@ -6,7 +6,8 @@ Issue #128, reprise des mécanismes de Netcross (#224, #246).
 
 `[tool.coverage.run]` dans `pyproject.toml` :
 
-- **périmètre** : le code de l'application (`source = ["."]`), sans `tests/`, les sous-projets vendorisés (`SSH-Studio/`, `gtk-frdp/`), `tools/`, `scripts/`, `rdp/` et `vnc/`. Avec `source`, un module qu'aucun test n'importe compte pour 0 % au lieu d'être ignoré : la mesure ne flatte pas la couverture réelle ;
+- **périmètre** : le code de l'application (`source = [".", "src/gcm4"]`), sans `tests/`, les sous-projets vendorisés (`SSH-Studio/`, `gtk-frdp/`), `tools/`, `scripts/`, `rdp/` et `vnc/`. Avec `source`, un module qu'aucun test n'importe compte pour 0 % au lieu d'être ignoré : la mesure ne flatte pas la couverture réelle. `src/gcm4` est nommé à part (#163) : `src/` n'est pas un paquet Python, coverage.py n'y cherchait donc pas les modules jamais importés, et `src/gcm4/ui/` (que seul `tests/gtk4` importe) manquait du total du job Qualité au lieu d'y compter à 0 % ;
+- **chemins relatifs** (`relative_files = true`, #163) : les données du runner « maison » et du conteneur GTK4, aux chemins de checkout différents, se fusionnent ;
 - **branches** (`branch = true`) en plus des lignes : la couverture d'un `if` dont un seul côté est exécuté est comptée à moitié.
 
 ## Référence et seuil
@@ -43,11 +44,33 @@ bien sur un périmètre sous le seuil — `coverage report --include='src/gcm4/c
 --fail-under=95` sort en échec (« Coverage failure: total of 93.8 is less than
 fail-under=95.0 »).
 
+## Couverture combinée Qualité + GTK4 (issue #163)
+
+Le code d'interface `src/gcm4/ui/` n'est exécuté que par `tests/gtk4`, sous Xvfb, dans le job « Tests GTK4 (Xvfb) ». Les deux jobs mesurent la couverture et publient leurs données (artefacts `coverage-data-qualite`, `coverage-data-gtk4`) ; le job « Couverture combinée » les fusionne (`coverage combine`) :
+
+- le **seuil `fail_under`** s'applique au total combiné (`coverage report`, l'étape échoue dessous). Il reste aussi appliqué au total du seul job Qualité, requis par la protection de `dev` : le job combiné n'en fait pas encore partie (voir #278) ;
+- le **résumé du job** détaille, par périmètre (`src/gcm4/ui/`, `src/gcm4/core/`, `src/gcm4/`), la couverture du job Qualité seul, du job GTK4 seul et combinée (`scripts/couverture_combinee.py`) ;
+- `coverage-combinee.xml` est publié en artefact `coverage-report-combinee`.
+
+Les données fusionnées sont téléchargées dans un sous-dossier : coverage.py 7.16 fusionne puis supprime d'office les fichiers `.coverage.*` voisins du fichier de données à chaque rapport.
+
+Mesure (21/10/2026, `dev` + #163, 1178 tests hors GTK4, 88 tests GTK4) :
+
+| Périmètre | Qualité seul | GTK4 seul | Combiné |
+|---|---|---|---|
+| total | 26,6 % | — | 36,6 % |
+| `src/gcm4/ui/` | 0,0 % | 92,2 % | 92,2 % |
+| `src/gcm4/core/` | 99,5 % | 82,8 % | 99,5 % |
+| `src/gcm4/` | 47,0 % | 87,0 % | 95,4 % |
+
+Le total du job Qualité seul baisse (29,9 % → 26,6 %) parce que `src/gcm4/ui/` y compte désormais à 0 % au lieu d'être absent ; il reste au-dessus du seuil de 18 %.
+
 ## Où le voir
 
+- **job Couverture combinée** (`ci.yml`) : total fusionné Qualité + GTK4 et tableau par périmètre dans le résumé du job ;
 - **job Qualité** (`ci.yml`) : `pytest --cov`, rapport `term-missing` dans les logs, `coverage.xml` publié en artefact `coverage-report`. L'étape échoue sous le seuil ;
-- **commentaire de PR** (`pr-coverage.yml`, `scripts/pr_coverage_comment.py`) : chaque PR vers `dev` reçoit un commentaire unique, mis à jour à chaque push. Il donne la couverture de la base et de la PR, le delta, la ligne du cœur (`src/gcm4/core/`) et les fichiers dont la couverture baisse. La base est mesurée avec la configuration de la PR, pour comparer le même périmètre.
+- **commentaire de PR** (`pr-coverage.yml`, `scripts/pr_coverage_comment.py`) : chaque PR vers `dev` reçoit un commentaire unique, mis à jour à chaque push. Il donne la couverture de la base et de la PR, le delta, la ligne du cœur (`src/gcm4/core/`) et les fichiers dont la couverture baisse. La base est mesurée avec la configuration de la PR, pour comparer le même périmètre. Il ne mesure que la suite hors GTK4 : `src/gcm4/ui/` y figure à 0 % ; la couverture combinée est dans le résumé du job « Couverture combinée » (#278).
 
 ## Suite prévue
 
-- couverture du futur job GTK4 (Xvfb, #127) fusionnée avec `coverage combine`, pour que le code d'interface ne paraisse pas non couvert ;
+- rendre le job « Couverture combinée » requis sur `dev`, puis relever `fail_under` sur le total combiné (#278) ;

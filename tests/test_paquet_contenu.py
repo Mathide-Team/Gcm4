@@ -21,6 +21,8 @@ import unittest
 import warnings
 from pathlib import Path
 
+import pytest
+
 ROOT = Path(__file__).resolve().parent.parent
 APP = Path("usr/share/gnome-connection-manager")
 LOCAL_ROOTS = {p.stem for p in ROOT.glob("*.py")} | {"plugins"}
@@ -52,6 +54,7 @@ def _resolu(app: Path, module: str) -> bool:
     return False
 
 
+@pytest.mark.requires_gettext
 class TestContenuDuPaquet(unittest.TestCase):
     """Arborescence produite par ``make install``."""
 
