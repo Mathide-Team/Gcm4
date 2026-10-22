@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-21 06:00+0000\n"
+"POT-Creation-Date: 2026-10-22 05:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,7 +36,7 @@ msgstr ""
 msgid "<span size=\"smaller\">CTRL+UP/CTRL+DOWN for history</span>"
 msgstr "<span size=\"smaller\">CTRL+أعلى/CTRL+أسفل للسجل</span>"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid ""
 "<span size='smaller'>Use ##D=milliseconds to add a delay.\n"
 "Ex: ##D=1000</span>"
@@ -57,11 +57,11 @@ msgstr "يتوفر إصدار جديد: https://github.com/MathildeDec/gnome-con
 msgid "A simple ssh connection manager for gnome"
 msgstr "مدير اتصال SSH بسيط لـ Gnome"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "ASCII Backspace \t[Ctrl+H 0x08]"
 msgstr "مسافة للخلف ASCII \t[Ctrl+H 0x08]"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
 msgstr "حذف ASCII       \t[Ctrl+? 0x7F]"
 
@@ -89,7 +89,7 @@ msgstr "بعد قطع الاتصال"
 msgid "Always"
 msgstr "دائمًا"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Automatic"
 msgstr "تلقائي"
 
@@ -97,7 +97,7 @@ msgstr "تلقائي"
 msgid "Background color:"
 msgstr "لون الخلفية:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Backspace:"
 msgstr "مفتاح المسافة للخلف:"
 
@@ -245,11 +245,11 @@ msgstr "بتات البيانات"
 msgid "Default colors"
 msgstr "الألوان الافتراضية"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Delete Sequence \t[@7]"
 msgstr "تسلسل الحذف \t[@7]"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Delete:"
 msgstr "حذف:"
 
@@ -652,7 +652,7 @@ msgstr "تحديد الخط"
 msgid "Select foreground color"
 msgstr "تحديد لون المقدمة"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Send commands after login"
 msgstr "إرسال أوامر بعد تسجيل الدخول"
 
@@ -712,11 +712,11 @@ msgstr "التوقف"
 msgid "System"
 msgstr "النظام"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "TERM"
 msgstr "TERM"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "TTY Erase"
 msgstr "محو TTY"
 
@@ -1443,7 +1443,7 @@ msgid "IPMI (SOL)"
 msgstr ""
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_spice.py
-#: plugins/plugin_vnc.py
+#: plugins/plugin_vnc.py plugins/telnet/gtk4.py
 msgid "Session ended"
 msgstr "انتهت الجلسة"
 
@@ -2661,6 +2661,11 @@ msgid ""
 "The web console will open in the system browser."
 msgstr ""
 
+#: plugins/telnet/gtk4.py
+#, python-brace-format
+msgid "{program} not found"
+msgstr "لم يتم العثور على {program}"
+
 #: src/gcm4/app.py
 msgid "The old configuration is intact: fix the problem (permissions, disk space), then start gcm4 again."
 msgstr "الإعدادات القديمة سليمة: أصلح المشكلة (الأذونات، مساحة القرص) ثم شغّل gcm4 من جديد."
@@ -2707,6 +2712,55 @@ msgstr "تعذّرت قراءة ملف الإعدادات %s: %s"
 #, python-format
 msgid "Unable to write the configuration file %s: %s"
 msgstr "تعذّرت كتابة ملف الإعدادات %s: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: the host name is missing"
+msgstr "%s: اسم المضيف مفقود"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: too many cells"
+msgstr "%s: خلايا أكثر من اللازم"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: unexpected value for %s"
+msgstr "%s: قيمة غير متوقعة لـ %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "The file %s is not a valid host export: %s"
+msgstr "الملف %s ليس تصديرًا صالحًا للمضيفين: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to read the file %s: %s"
+msgstr "تعذّرت قراءة الملف %s: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to write the file %s: %s"
+msgstr "تعذّرت كتابة الملف %s: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "entry %d"
+msgstr "الإدخال %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "line %d"
+msgstr "السطر %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "the column %s is missing"
+msgstr "العمود %s مفقود"
+
+#: src/gcm4/core/exchange.py
+msgid "unsupported format or version"
+msgstr "تنسيق أو إصدار غير مدعوم"
 
 #: src/gcm4/core/menu.py
 msgid "Next tab"
@@ -2940,6 +2994,11 @@ msgstr "لم يتم تحميل الإعدادات"
 #: src/gcm4/ui/main_window.py
 msgid "Home"
 msgstr "الرئيسية"
+
+#: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Host not found: {hosts}"
+msgstr "المضيف غير موجود: {hosts}"
 
 #: src/gcm4/ui/main_window.py
 msgid "Hosts and groups will appear in the left panel."

@@ -330,6 +330,12 @@ make run-gtk4            # = uv run gcm4 ; make run-gtk4 ARGS="--debug"
   paquets à installer ; `make run-gtk4` refuse un `.venv` créé sans
   `--system-site-packages`.
 - Tests de l'interface : `GCM_TESTS_GTK4=1 xvfb-run -a uv run pytest tests/gtk4`.
+- Tests sautés (#160) : un test qui a besoin de gettext porte le marqueur
+  `requires_gettext`, ceux de `tests/gtk4` reçoivent `requires_gtk4`. Avec
+  `GCM_TESTS_EXIGES=gettext` (job Qualité, `make ci`) ou `GCM_TESTS_GTK4=1`
+  (job GTK4), un test marqué qui est sauté échoue ; sans ces variables, il
+  reste sauté et `pytest -rs` en donne la raison. `pytest -m requires_gettext`
+  ne lance que ces tests.
 
 ### Qualité du code
 

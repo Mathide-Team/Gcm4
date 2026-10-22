@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-21 06:00+0000\n"
+"POT-Creation-Date: 2026-10-22 05:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,7 +36,7 @@ msgstr ""
 msgid "<span size=\"smaller\">CTRL+UP/CTRL+DOWN for history</span>"
 msgstr "<span size=\"smaller\">CTRL+ВГОРУ/CTRL+ВНИЗ для історії</span>"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid ""
 "<span size='smaller'>Use ##D=milliseconds to add a delay.\n"
 "Ex: ##D=1000</span>"
@@ -57,11 +57,11 @@ msgstr "Доступна нова версія: https://github.com/MathildeDec/g
 msgid "A simple ssh connection manager for gnome"
 msgstr "Простий менеджер SSH-з'єднань для Gnome"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "ASCII Backspace \t[Ctrl+H 0x08]"
 msgstr "ASCII Backspace \t[Ctrl+H 0x08]"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
 msgstr "ASCII Delete    \t[Ctrl+? 0x7F]"
 
@@ -89,7 +89,7 @@ msgstr "Після від'єднання"
 msgid "Always"
 msgstr "Завжди"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Automatic"
 msgstr "Автоматично"
 
@@ -97,7 +97,7 @@ msgstr "Автоматично"
 msgid "Background color:"
 msgstr "Колір фону:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Backspace:"
 msgstr "Backspace:"
 
@@ -245,11 +245,11 @@ msgstr "Біти даних"
 msgid "Default colors"
 msgstr "Кольори за замовчуванням"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Delete Sequence \t[@7]"
 msgstr "Послідовність Delete \t[@7]"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Delete:"
 msgstr "Delete:"
 
@@ -652,7 +652,7 @@ msgstr "Вибрати шрифт"
 msgid "Select foreground color"
 msgstr "Вибрати колір тексту"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Send commands after login"
 msgstr "Надсилати команди після входу"
 
@@ -712,11 +712,11 @@ msgstr "Стоп"
 msgid "System"
 msgstr "Системна"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "TERM"
 msgstr "TERM"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "TTY Erase"
 msgstr "Очищення TTY"
 
@@ -1443,7 +1443,7 @@ msgid "IPMI (SOL)"
 msgstr ""
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_spice.py
-#: plugins/plugin_vnc.py
+#: plugins/plugin_vnc.py plugins/telnet/gtk4.py
 msgid "Session ended"
 msgstr "Сесію завершено"
 
@@ -2661,6 +2661,11 @@ msgid ""
 "The web console will open in the system browser."
 msgstr ""
 
+#: plugins/telnet/gtk4.py
+#, python-brace-format
+msgid "{program} not found"
+msgstr "Програму {program} не знайдено"
+
 #: src/gcm4/app.py
 msgid "The old configuration is intact: fix the problem (permissions, disk space), then start gcm4 again."
 msgstr "Стару конфігурацію не змінено: усуньте проблему (права доступу, місце на диску) і знову запустіть gcm4."
@@ -2707,6 +2712,55 @@ msgstr "Не вдалося прочитати файл конфігурації
 #, python-format
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Не вдалося записати файл конфігурації %s: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: the host name is missing"
+msgstr "%s: відсутня назва вузла"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: too many cells"
+msgstr "%s: забагато клітинок"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: unexpected value for %s"
+msgstr "%s: неочікуване значення для %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "The file %s is not a valid host export: %s"
+msgstr "Файл %s не є коректним експортом вузлів: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to read the file %s: %s"
+msgstr "Не вдалося прочитати файл %s: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to write the file %s: %s"
+msgstr "Не вдалося записати файл %s: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "entry %d"
+msgstr "запис %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "line %d"
+msgstr "рядок %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "the column %s is missing"
+msgstr "відсутній стовпець %s"
+
+#: src/gcm4/core/exchange.py
+msgid "unsupported format or version"
+msgstr "непідтримуваний формат або версія"
 
 #: src/gcm4/core/menu.py
 msgid "Next tab"
@@ -2940,6 +2994,11 @@ msgstr "Конфігурацію не завантажено"
 #: src/gcm4/ui/main_window.py
 msgid "Home"
 msgstr "Головна"
+
+#: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Host not found: {hosts}"
+msgstr "Вузол не знайдено: {hosts}"
 
 #: src/gcm4/ui/main_window.py
 msgid "Hosts and groups will appear in the left panel."

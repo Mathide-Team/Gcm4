@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-21 06:00+0000\n"
+"POT-Creation-Date: 2026-10-22 05:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,7 +36,7 @@ msgstr ""
 msgid "<span size=\"smaller\">CTRL+UP/CTRL+DOWN for history</span>"
 msgstr "<span size=\"smaller\">CTRL+LÊN/CTRL+XUỐNG để xem lịch sử</span>"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid ""
 "<span size='smaller'>Use ##D=milliseconds to add a delay.\n"
 "Ex: ##D=1000</span>"
@@ -57,11 +57,11 @@ msgstr "Có phiên bản mới: https://github.com/MathildeDec/gnome-connection-
 msgid "A simple ssh connection manager for gnome"
 msgstr "Trình quản lý kết nối ssh đơn giản cho Gnome"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "ASCII Backspace \t[Ctrl+H 0x08]"
 msgstr "ASCII Backspace \t[Ctrl+H 0x08]"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
 msgstr "ASCII Delete    \t[Ctrl+? 0x7F]"
 
@@ -89,7 +89,7 @@ msgstr "Sau khi ngắt kết nối"
 msgid "Always"
 msgstr "Luôn luôn"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Automatic"
 msgstr "Tự động"
 
@@ -97,7 +97,7 @@ msgstr "Tự động"
 msgid "Background color:"
 msgstr "Màu nền:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Backspace:"
 msgstr "Backspace:"
 
@@ -245,11 +245,11 @@ msgstr "Bit dữ liệu"
 msgid "Default colors"
 msgstr "Màu mặc định"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Delete Sequence \t[@7]"
 msgstr "Trình tự Delete \t[@7]"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Delete:"
 msgstr "Delete:"
 
@@ -652,7 +652,7 @@ msgstr "Chọn phông chữ"
 msgid "Select foreground color"
 msgstr "Chọn màu chữ"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Send commands after login"
 msgstr "Gửi lệnh sau khi đăng nhập"
 
@@ -712,11 +712,11 @@ msgstr "Stop"
 msgid "System"
 msgstr "Hệ thống"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "TERM"
 msgstr "TERM"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "TTY Erase"
 msgstr "Xóa TTY"
 
@@ -1443,7 +1443,7 @@ msgid "IPMI (SOL)"
 msgstr ""
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_spice.py
-#: plugins/plugin_vnc.py
+#: plugins/plugin_vnc.py plugins/telnet/gtk4.py
 msgid "Session ended"
 msgstr "Phiên đã kết thúc"
 
@@ -2661,6 +2661,11 @@ msgid ""
 "The web console will open in the system browser."
 msgstr ""
 
+#: plugins/telnet/gtk4.py
+#, python-brace-format
+msgid "{program} not found"
+msgstr "Không tìm thấy {program}"
+
 #: src/gcm4/app.py
 msgid "The old configuration is intact: fix the problem (permissions, disk space), then start gcm4 again."
 msgstr "Cấu hình cũ vẫn nguyên vẹn: hãy khắc phục sự cố (quyền truy cập, dung lượng đĩa), rồi khởi động lại gcm4."
@@ -2707,6 +2712,55 @@ msgstr "Không thể đọc tệp cấu hình %s: %s"
 #, python-format
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Không thể ghi tệp cấu hình %s: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: the host name is missing"
+msgstr "%s: thiếu tên máy chủ"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: too many cells"
+msgstr "%s: quá nhiều ô"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: unexpected value for %s"
+msgstr "%s: giá trị không mong đợi cho %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "The file %s is not a valid host export: %s"
+msgstr "Tệp %s không phải là bản xuất máy chủ hợp lệ: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to read the file %s: %s"
+msgstr "Không thể đọc tệp %s: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to write the file %s: %s"
+msgstr "Không thể ghi tệp %s: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "entry %d"
+msgstr "mục %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "line %d"
+msgstr "dòng %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "the column %s is missing"
+msgstr "thiếu cột %s"
+
+#: src/gcm4/core/exchange.py
+msgid "unsupported format or version"
+msgstr "định dạng hoặc phiên bản không được hỗ trợ"
 
 #: src/gcm4/core/menu.py
 msgid "Next tab"
@@ -2940,6 +2994,11 @@ msgstr "Chưa tải cấu hình"
 #: src/gcm4/ui/main_window.py
 msgid "Home"
 msgstr "Trang chủ"
+
+#: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Host not found: {hosts}"
+msgstr "Không tìm thấy máy chủ: {hosts}"
 
 #: src/gcm4/ui/main_window.py
 msgid "Hosts and groups will appear in the left panel."

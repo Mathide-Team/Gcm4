@@ -313,6 +313,24 @@ class HostTree(Gtk.Box):
         logger.debug("selectionner: non visible")
         return False
 
+    def reveler(self, chemin: str) -> bool:
+        """Déplie les groupes parents de ``chemin`` puis le sélectionne (``gcm4 groupe/nom``, #154).
+
+        Les groupes dépliés le restent (``Group.collapsed`` mis à jour comme
+        pour un clic sur la flèche).
+
+        Returns:
+            bool: ``True`` si la ligne est sélectionnée.
+        """
+        logger.debug("reveler: {!r}", chemin)
+        for groupe in ancetres(chemin):
+            ligne = self.ligne(groupe)
+            if ligne is not None and ligne.is_expandable() and not ligne.get_expanded():
+                ligne.set_expanded(True)
+        resultat = self.selectionner(chemin)
+        logger.debug("reveler: {}", resultat)
+        return resultat
+
     # --- glisser-déposer (#141) ---------------------------------------------
 
     @staticmethod
