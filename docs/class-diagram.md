@@ -6,7 +6,7 @@
 > toute modification manuelle sera écrasée. Le régénérer avec `make class-diagram` ;
 > le job Qualité échoue s'il est périmé (`--check`).
 
-84 modules · 156 classes · 279 fonctions publiques de module.
+89 modules · 160 classes · 293 fonctions publiques de module.
 
 Conventions : `+` public, `-` privé (préfixe `_`) ; `list~str~` = `list[str]` ; `<<module>>`
 regroupe les fonctions publiques d'un module ; `<<…>>` sur une classe liste `dataclass` et les
@@ -32,8 +32,8 @@ flowchart TD
     g0 -->|1| g2
     g2 -->|58| g1
     g2 -->|4| g0
-    g2 -->|4| g3
-    g2 -->|3| g4
+    g2 -->|10| g4
+    g2 -->|3| g5
     g3 -->|2| g0
     g3 -->|2| g4
     g3 -->|1| g5
@@ -42,7 +42,7 @@ flowchart TD
     g4 -->|1| g3
     g5 -->|2| g0
     g5 -->|2| g3
-    g5 -->|38| g4
+    g5 -->|41| g4
 ```
 
 ## Cœur (sans GTK)
@@ -789,6 +789,8 @@ classDiagram
 
 | Module | Fichier | Rôle |
 |---|---|---|
+| `plugins.local.core` | `plugins/local/core.py` | Logique du plugin local, sans GTK : shell à lancer et délai des commandes. |
+| `plugins.local.gtk4` | `plugins/local/gtk4.py` | Plugin local de gcm4 (contrat v1, ``docs/plugins.md``) : shell local dans un terminal VTE GTK4. |
 | `plugins.plugin_base` | `plugins/plugin_base.py` | Contrats plugin pour GCM. |
 | `plugins.plugin_export_csv` | `plugins/plugin_export_csv.py` | Outil « Export to CSV » (BatchPlugin) pour GCM. |
 | `plugins.plugin_export_json` | `plugins/plugin_export_json.py` | Outil « Export to JSON » (BatchPlugin) pour GCM. |
@@ -818,6 +820,21 @@ classDiagram
 
 ```mermaid
 classDiagram
+    class mod_plugins_local_core {
+        <<module>>
+        +shell(environ) str
+        +lancement(chemin) Lancement
+        +etapes(commandes) list~tuple~int, str~~
+    }
+    class LocalSession {
+        <<SessionTerminal>>
+    }
+    class plugins_local_gtk4_LocalPlugin {
+        +default_port(protocol) int None
+        +build_host_options_widget(host, options, changed) Gtk.Widget
+        +open(host) LocalSession
+    }
+    plugins_plugin_base_ConnectionPlugin <|-- plugins_local_gtk4_LocalPlugin
     class plugins_plugin_base_ConnectionPlugin {
         <<ABC>>
         +str protocol_id
@@ -984,13 +1001,13 @@ classDiagram
         <<Gtk.Box>>
         +connect_local() None
     }
-    class LocalPlugin {
+    class plugins_plugin_local_LocalPlugin {
         +build_tab(host, get_password) Gtk.Widget
         +build_edit_page() Gtk.Widget
         +load_host_fields(host) None
         +save_host_fields(host) None
     }
-    plugins_plugin_base_ConnectionPlugin <|-- LocalPlugin
+    plugins_plugin_base_ConnectionPlugin <|-- plugins_plugin_local_LocalPlugin
     class mod_plugins_plugin_netmiko_push {
         <<module>>
         +open_netmiko_tab(wmain) NetmikoTab
@@ -1283,6 +1300,7 @@ classDiagram
 | `gcm4.core.comportement_onglets` | `src/gcm4/core/comportement_onglets.py` | Onglets et titre de la fenêtre : options de base reprises de Wconfig (#247), sans GTK. |
 | `gcm4.core.config` | `src/gcm4/core/config.py` | Lecture et écriture de ``~/.config/gcm4/gcm4.conf`` sans GTK (#137). |
 | `gcm4.core.deplacements` | `src/gcm4/core/deplacements.py` | Glisser-déposer dans l'arbre, validé sans GTK (#141). |
+| `gcm4.core.echange_cli` | `src/gcm4/core/echange_cli.py` | Import et export des hôtes en ligne de commande, sans fenêtre (#154). |
 | `gcm4.core.exchange` | `src/gcm4/core/exchange.py` | Import et export des hôtes en CSV et JSON, sans GTK (#152). |
 | `gcm4.core.host_tree` | `src/gcm4/core/host_tree.py` | Arbre des groupes et des hôtes, sans GTK (#139). |
 | `gcm4.core.i18n` | `src/gcm4/core/i18n.py` | Traductions de gcm4 : domaine gettext ``gcm-lang`` de l'application GTK3. |
@@ -1295,6 +1313,7 @@ classDiagram
 | `gcm4.core.preferences` | `src/gcm4/core/preferences.py` | Préférences générales de la base GTK4, sans GTK (lot 5a, #147). |
 | `gcm4.core.registre` | `src/gcm4/core/registre.py` | Découverte des plugins et isolation de leurs erreurs (#150), sans GTK. |
 | `gcm4.core.replies` | `src/gcm4/core/replies.py` | Groupes repliés de ``[window] collapsed-folders``, au format GTK3 (#139). |
+| `gcm4.core.terminal` | `src/gcm4/core/terminal.py` | Logique commune aux plugins terminal (telnet, local…), sans GTK (#295). |
 | `gcm4.core.theme` | `src/gcm4/core/theme.py` | Thème de la base GTK4, sans GTK (#135). |
 | `gcm4.core.validation` | `src/gcm4/core/validation.py` | Validation d'un hôte avant enregistrement, sans GTK (#144). |
 | `gcm4.core.window_state` | `src/gcm4/core/window_state.py` | Géométrie de la fenêtre principale, dans ``gcm4.conf`` (#134). |
@@ -1399,6 +1418,12 @@ classDiagram
         +est_groupe() bool
         +chemin() str
         +nouveau_chemin() str
+    }
+    class mod_gcm4_core_echange_cli {
+        <<module>>
+        +ajouter_arguments(parser) None
+        +demande(args) tuple~str, str, str~ None
+        +executer(args, sortie, erreur) int None
     }
     class mod_gcm4_core_exchange {
         <<module>>
@@ -1664,6 +1689,20 @@ classDiagram
         +lire_replies(valeur, groupes) set~str~
         +ecrire_replies(replies, groupes) str
     }
+    class mod_gcm4_core_terminal {
+        <<module>>
+        +environnement(options) list~str~
+        +liaison(options, cle) int
+        +lire_commandes(brut) str
+        +ecrire_commandes(texte) str
+        +est_delai(ligne) bool
+        +etapes(commandes, debut_ms) list~tuple~int, str~~
+    }
+    class Lancement {
+        <<dataclass>>
+        +list~str~ argv
+        +str mot_de_passe
+    }
     class mod_gcm4_core_theme {
         <<module>>
         +load_theme(config_file) str
@@ -1711,6 +1750,7 @@ classDiagram
 | `gcm4.ui.menu_arbre` | `src/gcm4/ui/menu_arbre.py` | Menu contextuel, actions, raccourcis et activation de l'arbre (#142). |
 | `gcm4.ui.mises_a_jour` | `src/gcm4/ui/mises_a_jour.py` | Vérification des mises à jour au démarrage, côté interface (#245). |
 | `gcm4.ui.preferences` | `src/gcm4/ui/preferences.py` | Préférences de la base GTK4 : pages Général et Apparence (lot 5a, #147). |
+| `gcm4.ui.terminal` | `src/gcm4/ui/terminal.py` | Terminal VTE GTK4 commun aux plugins terminal (telnet, local…), #295. |
 
 ```mermaid
 classDiagram
@@ -1806,4 +1846,12 @@ classDiagram
     }
     class PreferencesWindow
     PreferencesWindow <|-- PreferencesWindow
+    class mod_gcm4_ui_terminal {
+        <<module>>
+        +rgba(texte) Gdk.RGBA None
+        +zone_options(options, changed) Gtk.Widget
+    }
+    class SessionTerminal {
+        +close() None
+    }
 ```

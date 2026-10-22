@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-22 05:35+0000\n"
+"POT-Creation-Date: 2026-10-22 17:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,7 +36,7 @@ msgstr ""
 msgid "<span size=\"smaller\">CTRL+UP/CTRL+DOWN for history</span>"
 msgstr "<span size=\"smaller\">使用 CTRL+上/CTRL+下 浏览历史记录</span>"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid ""
 "<span size='smaller'>Use ##D=milliseconds to add a delay.\n"
 "Ex: ##D=1000</span>"
@@ -57,11 +57,11 @@ msgstr "有新版本可用：https://github.com/MathildeDec/gnome-connection-man
 msgid "A simple ssh connection manager for gnome"
 msgstr "一个简单的 Gnome SSH 连接管理器"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "ASCII Backspace \t[Ctrl+H 0x08]"
 msgstr "ASCII 退格键 \t[Ctrl+H 0x08]"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
 msgstr "ASCII 删除    \t[Ctrl+? 0x7F]"
 
@@ -89,7 +89,7 @@ msgstr "断开连接后"
 msgid "Always"
 msgstr "总是"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "Automatic"
 msgstr "自动"
 
@@ -97,7 +97,7 @@ msgstr "自动"
 msgid "Background color:"
 msgstr "背景颜色："
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "Backspace:"
 msgstr "退格键："
 
@@ -245,11 +245,11 @@ msgstr "数据位"
 msgid "Default colors"
 msgstr "默认颜色"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "Delete Sequence \t[@7]"
 msgstr "删除序列 \t[@7]"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "Delete:"
 msgstr "删除键："
 
@@ -652,7 +652,7 @@ msgstr "选择字体"
 msgid "Select foreground color"
 msgstr "选择前景颜色"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "Send commands after login"
 msgstr "登录后发送命令"
 
@@ -712,11 +712,11 @@ msgstr "停止位"
 msgid "System"
 msgstr "跟随系统"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "TERM"
 msgstr "TERM"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "TTY Erase"
 msgstr "TTY 擦除"
 
@@ -871,6 +871,11 @@ msgstr ""
 #: key_picker_dialog.py
 msgid "⚙ Generate…"
 msgstr ""
+
+#: plugins/local/gtk4.py plugins/telnet/gtk4.py
+#, python-brace-format
+msgid "{program} not found"
+msgstr "未找到 {program}"
 
 #: plugins/plugin_export_csv.py
 #, python-brace-format
@@ -1443,7 +1448,7 @@ msgid "IPMI (SOL)"
 msgstr ""
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_spice.py
-#: plugins/plugin_vnc.py
+#: plugins/plugin_vnc.py src/gcm4/ui/terminal.py
 msgid "Session ended"
 msgstr "会话已结束"
 
@@ -2661,11 +2666,6 @@ msgid ""
 "The web console will open in the system browser."
 msgstr ""
 
-#: plugins/telnet/gtk4.py
-#, python-brace-format
-msgid "{program} not found"
-msgstr "未找到 {program}"
-
 #: src/gcm4/app.py
 msgid "The old configuration is intact: fix the problem (permissions, disk space), then start gcm4 again."
 msgstr "旧配置保持不变：请解决问题（权限、磁盘空间）后重新启动 gcm4。"
@@ -2712,6 +2712,16 @@ msgstr "无法读取配置文件 %s：%s"
 #, python-format
 msgid "Unable to write the configuration file %s: %s"
 msgstr "无法写入配置文件 %s：%s"
+
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Hosts exported: {count} ({file})"
+msgstr "已导出主机：{count}（{file}）"
+
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
+msgstr "导入 {file}：新增 {added}，替换 {replaced}，重命名 {renamed}，忽略 {ignored}，新建分组 {groups}"
 
 #: src/gcm4/core/exchange.py
 #, python-format

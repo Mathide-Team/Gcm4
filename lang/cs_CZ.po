@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-22 05:35+0000\n"
+"POT-Creation-Date: 2026-10-22 17:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,7 +36,7 @@ msgstr ""
 msgid "<span size=\"smaller\">CTRL+UP/CTRL+DOWN for history</span>"
 msgstr "<span size=\"smaller\">CTRL+NAHORU/CTRL+DOLŮ pro historii</span>"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid ""
 "<span size='smaller'>Use ##D=milliseconds to add a delay.\n"
 "Ex: ##D=1000</span>"
@@ -57,11 +57,11 @@ msgstr "Je k dispozici nová verze: https://github.com/MathildeDec/gnome-connect
 msgid "A simple ssh connection manager for gnome"
 msgstr "Jednoduchý správce SSH připojení pro Gnome"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "ASCII Backspace \t[Ctrl+H 0x08]"
 msgstr "ASCII Backspace \t[Ctrl+H 0x08]"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
 msgstr "ASCII Delete    \t[Ctrl+? 0x7F]"
 
@@ -89,7 +89,7 @@ msgstr "Po odpojení"
 msgid "Always"
 msgstr "Vždy"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "Automatic"
 msgstr "Automaticky"
 
@@ -97,7 +97,7 @@ msgstr "Automaticky"
 msgid "Background color:"
 msgstr "Barva pozadí:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "Backspace:"
 msgstr "Backspace:"
 
@@ -245,11 +245,11 @@ msgstr "Datové bity"
 msgid "Default colors"
 msgstr "Výchozí barvy"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "Delete Sequence \t[@7]"
 msgstr "Sekvence Delete \t[@7]"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "Delete:"
 msgstr "Delete:"
 
@@ -652,7 +652,7 @@ msgstr "Vybrat písmo"
 msgid "Select foreground color"
 msgstr "Vybrat barvu popředí"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "Send commands after login"
 msgstr "Odeslat příkazy po přihlášení"
 
@@ -712,11 +712,11 @@ msgstr "Stop"
 msgid "System"
 msgstr "Systémový"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "TERM"
 msgstr "TERM"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "TTY Erase"
 msgstr "Vymazání TTY"
 
@@ -871,6 +871,11 @@ msgstr ""
 #: key_picker_dialog.py
 msgid "⚙ Generate…"
 msgstr ""
+
+#: plugins/local/gtk4.py plugins/telnet/gtk4.py
+#, python-brace-format
+msgid "{program} not found"
+msgstr "Program {program} nebyl nalezen"
 
 #: plugins/plugin_export_csv.py
 #, python-brace-format
@@ -1443,7 +1448,7 @@ msgid "IPMI (SOL)"
 msgstr ""
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_spice.py
-#: plugins/plugin_vnc.py
+#: plugins/plugin_vnc.py src/gcm4/ui/terminal.py
 msgid "Session ended"
 msgstr "Relace skončila"
 
@@ -2661,11 +2666,6 @@ msgid ""
 "The web console will open in the system browser."
 msgstr ""
 
-#: plugins/telnet/gtk4.py
-#, python-brace-format
-msgid "{program} not found"
-msgstr "Program {program} nebyl nalezen"
-
 #: src/gcm4/app.py
 msgid "The old configuration is intact: fix the problem (permissions, disk space), then start gcm4 again."
 msgstr "Původní konfigurace zůstala nedotčena: odstraňte problém (oprávnění, místo na disku) a spusťte gcm4 znovu."
@@ -2712,6 +2712,16 @@ msgstr "Nelze přečíst konfigurační soubor %s: %s"
 #, python-format
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Nelze zapsat konfigurační soubor %s: %s"
+
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Hosts exported: {count} ({file})"
+msgstr "Exportovaní hostitelé: {count} ({file})"
+
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
+msgstr "Import {file}: přidáno {added}, nahrazeno {replaced}, přejmenováno {renamed}, přeskočeno {ignored}, nové skupiny {groups}"
 
 #: src/gcm4/core/exchange.py
 #, python-format

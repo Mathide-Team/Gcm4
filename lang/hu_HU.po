@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-22 05:35+0000\n"
+"POT-Creation-Date: 2026-10-22 17:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,7 +36,7 @@ msgstr ""
 msgid "<span size=\"smaller\">CTRL+UP/CTRL+DOWN for history</span>"
 msgstr "<span size=\"smaller\">CTRL+FEL/CTRL+LE az előzményekhez</span>"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid ""
 "<span size='smaller'>Use ##D=milliseconds to add a delay.\n"
 "Ex: ##D=1000</span>"
@@ -57,11 +57,11 @@ msgstr "Új verzió érhető el: https://github.com/MathildeDec/gnome-connection
 msgid "A simple ssh connection manager for gnome"
 msgstr "Egyszerű SSH kapcsolatkezelő a Gnome-hoz"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "ASCII Backspace \t[Ctrl+H 0x08]"
 msgstr "ASCII Backspace \t[Ctrl+H 0x08]"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
 msgstr "ASCII Delete    \t[Ctrl+? 0x7F]"
 
@@ -89,7 +89,7 @@ msgstr "Bontás után"
 msgid "Always"
 msgstr "Mindig"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "Automatic"
 msgstr "Automatikus"
 
@@ -97,7 +97,7 @@ msgstr "Automatikus"
 msgid "Background color:"
 msgstr "Háttérszín:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "Backspace:"
 msgstr "Backspace:"
 
@@ -245,11 +245,11 @@ msgstr "Adatbitek"
 msgid "Default colors"
 msgstr "Alapértelmezett színek"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "Delete Sequence \t[@7]"
 msgstr "Delete sorozat \t[@7]"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "Delete:"
 msgstr "Delete:"
 
@@ -652,7 +652,7 @@ msgstr "Betűtípus kiválasztása"
 msgid "Select foreground color"
 msgstr "Előtérszín kiválasztása"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "Send commands after login"
 msgstr "Parancsok küldése bejelentkezés után"
 
@@ -712,11 +712,11 @@ msgstr "Stop"
 msgid "System"
 msgstr "Rendszer"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "TERM"
 msgstr "TERM"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "TTY Erase"
 msgstr "TTY törlés"
 
@@ -871,6 +871,11 @@ msgstr ""
 #: key_picker_dialog.py
 msgid "⚙ Generate…"
 msgstr ""
+
+#: plugins/local/gtk4.py plugins/telnet/gtk4.py
+#, python-brace-format
+msgid "{program} not found"
+msgstr "A(z) {program} nem található"
 
 #: plugins/plugin_export_csv.py
 #, python-brace-format
@@ -1443,7 +1448,7 @@ msgid "IPMI (SOL)"
 msgstr ""
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_spice.py
-#: plugins/plugin_vnc.py
+#: plugins/plugin_vnc.py src/gcm4/ui/terminal.py
 msgid "Session ended"
 msgstr "A munkamenet véget ért"
 
@@ -2661,11 +2666,6 @@ msgid ""
 "The web console will open in the system browser."
 msgstr ""
 
-#: plugins/telnet/gtk4.py
-#, python-brace-format
-msgid "{program} not found"
-msgstr "A(z) {program} nem található"
-
 #: src/gcm4/app.py
 msgid "The old configuration is intact: fix the problem (permissions, disk space), then start gcm4 again."
 msgstr "A régi beállítások érintetlenek: hárítsa el a hibát (jogosultságok, lemezterület), majd indítsa újra a gcm4-et."
@@ -2712,6 +2712,16 @@ msgstr "Nem olvasható a(z) %s beállítófájl: %s"
 #, python-format
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Nem írható a(z) %s beállítófájl: %s"
+
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Hosts exported: {count} ({file})"
+msgstr "Exportált gépek: {count} ({file})"
+
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
+msgstr "{file} importálása: hozzáadva {added}, lecserélve {replaced}, átnevezve {renamed}, kihagyva {ignored}, új csoportok {groups}"
 
 #: src/gcm4/core/exchange.py
 #, python-format

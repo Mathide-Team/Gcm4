@@ -30,8 +30,8 @@ def _ini(dossier) -> configparser.RawConfigParser:
 
 def _onglets(fenetre, *titres) -> list[Gtk.Widget]:
     contenus = [Gtk.Label(label=t) for t in titres]
-    for titre, contenu in zip(titres, contenus, strict=True):
-        fenetre.ajouter_onglet(titre, contenu)
+    for rang, titre in enumerate(titres):  # pas de zip(strict=True) : Python 3.9 (#223)
+        fenetre.ajouter_onglet(titre, contenus[rang])
     return contenus
 
 

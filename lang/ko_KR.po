@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-22 05:35+0000\n"
+"POT-Creation-Date: 2026-10-22 17:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,7 +36,7 @@ msgstr ""
 msgid "<span size=\"smaller\">CTRL+UP/CTRL+DOWN for history</span>"
 msgstr "<span size=\"smaller\">기록은 CTRL+위/CTRL+아래</span>"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid ""
 "<span size='smaller'>Use ##D=milliseconds to add a delay.\n"
 "Ex: ##D=1000</span>"
@@ -57,11 +57,11 @@ msgstr "새 버전을 사용할 수 있습니다: https://github.com/MathildeDec
 msgid "A simple ssh connection manager for gnome"
 msgstr "Gnome용 간단한 SSH 연결 관리자"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "ASCII Backspace \t[Ctrl+H 0x08]"
 msgstr "ASCII 백스페이스 \t[Ctrl+H 0x08]"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
 msgstr "ASCII 삭제    \t[Ctrl+? 0x7F]"
 
@@ -89,7 +89,7 @@ msgstr "연결 끊은 후"
 msgid "Always"
 msgstr "항상"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "Automatic"
 msgstr "자동"
 
@@ -97,7 +97,7 @@ msgstr "자동"
 msgid "Background color:"
 msgstr "배경색:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "Backspace:"
 msgstr "백스페이스:"
 
@@ -245,11 +245,11 @@ msgstr "데이터 비트"
 msgid "Default colors"
 msgstr "기본 색상"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "Delete Sequence \t[@7]"
 msgstr "삭제 시퀀스 \t[@7]"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "Delete:"
 msgstr "삭제:"
 
@@ -652,7 +652,7 @@ msgstr "글꼴 선택"
 msgid "Select foreground color"
 msgstr "전경색 선택"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "Send commands after login"
 msgstr "로그인 후 명령 보내기"
 
@@ -712,11 +712,11 @@ msgstr "정지"
 msgid "System"
 msgstr "시스템"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "TERM"
 msgstr "TERM"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "TTY Erase"
 msgstr "TTY 지우기"
 
@@ -871,6 +871,11 @@ msgstr ""
 #: key_picker_dialog.py
 msgid "⚙ Generate…"
 msgstr ""
+
+#: plugins/local/gtk4.py plugins/telnet/gtk4.py
+#, python-brace-format
+msgid "{program} not found"
+msgstr "{program}을(를) 찾을 수 없음"
 
 #: plugins/plugin_export_csv.py
 #, python-brace-format
@@ -1443,7 +1448,7 @@ msgid "IPMI (SOL)"
 msgstr ""
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_spice.py
-#: plugins/plugin_vnc.py
+#: plugins/plugin_vnc.py src/gcm4/ui/terminal.py
 msgid "Session ended"
 msgstr "세션 종료됨"
 
@@ -2661,11 +2666,6 @@ msgid ""
 "The web console will open in the system browser."
 msgstr ""
 
-#: plugins/telnet/gtk4.py
-#, python-brace-format
-msgid "{program} not found"
-msgstr "{program}을(를) 찾을 수 없음"
-
 #: src/gcm4/app.py
 msgid "The old configuration is intact: fix the problem (permissions, disk space), then start gcm4 again."
 msgstr "이전 설정은 그대로 남아 있습니다. 문제(권한, 디스크 공간)를 해결한 뒤 gcm4를 다시 시작하세요."
@@ -2712,6 +2712,16 @@ msgstr "설정 파일 %s을(를) 읽을 수 없습니다: %s"
 #, python-format
 msgid "Unable to write the configuration file %s: %s"
 msgstr "설정 파일 %s에 쓸 수 없습니다: %s"
+
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Hosts exported: {count} ({file})"
+msgstr "내보낸 호스트: {count} ({file})"
+
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
+msgstr "{file} 가져오기: 추가 {added}, 교체 {replaced}, 이름 변경 {renamed}, 무시 {ignored}, 새 그룹 {groups}"
 
 #: src/gcm4/core/exchange.py
 #, python-format

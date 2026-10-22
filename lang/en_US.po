@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-22 05:35+0000\n"
+"POT-Creation-Date: 2026-10-22 17:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,7 +32,7 @@ msgstr ""
 msgid "<span size=\"smaller\">CTRL+UP/CTRL+DOWN for history</span>"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid ""
 "<span size='smaller'>Use ##D=milliseconds to add a delay.\n"
 "Ex: ##D=1000</span>"
@@ -51,11 +51,11 @@ msgstr ""
 msgid "A simple ssh connection manager for gnome"
 msgstr "A simple ssh connection manager for gnome"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "ASCII Backspace \t[Ctrl+H 0x08]"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
 msgstr ""
 
@@ -83,7 +83,7 @@ msgstr "After disconnecting"
 msgid "Always"
 msgstr "Always"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "Automatic"
 msgstr ""
 
@@ -91,7 +91,7 @@ msgstr ""
 msgid "Background color:"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "Backspace:"
 msgstr ""
 
@@ -235,11 +235,11 @@ msgstr ""
 msgid "Default colors"
 msgstr "Default colors"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "Delete Sequence \t[@7]"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "Delete:"
 msgstr ""
 
@@ -628,7 +628,7 @@ msgstr "Select font"
 msgid "Select foreground color"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "Send commands after login"
 msgstr ""
 
@@ -686,11 +686,11 @@ msgstr ""
 msgid "System"
 msgstr "System"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "TERM"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "TTY Erase"
 msgstr ""
 
@@ -836,6 +836,11 @@ msgstr ""
 
 #: key_picker_dialog.py
 msgid "⚙ Generate…"
+msgstr ""
+
+#: plugins/local/gtk4.py plugins/telnet/gtk4.py
+#, python-brace-format
+msgid "{program} not found"
 msgstr ""
 
 #: plugins/plugin_export_csv.py
@@ -1361,7 +1366,7 @@ msgid "IPMI (SOL)"
 msgstr ""
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_spice.py
-#: plugins/plugin_vnc.py
+#: plugins/plugin_vnc.py src/gcm4/ui/terminal.py
 msgid "Session ended"
 msgstr ""
 
@@ -2514,11 +2519,6 @@ msgid ""
 "The web console will open in the system browser."
 msgstr ""
 
-#: plugins/telnet/gtk4.py
-#, python-brace-format
-msgid "{program} not found"
-msgstr ""
-
 #: src/gcm4/app.py
 msgid "The old configuration is intact: fix the problem (permissions, disk space), then start gcm4 again."
 msgstr "The old configuration is intact: fix the problem (permissions, disk space), then start gcm4 again."
@@ -2565,6 +2565,16 @@ msgstr "Unable to read the configuration file %s: %s"
 #, python-format
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Unable to write the configuration file %s: %s"
+
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Hosts exported: {count} ({file})"
+msgstr "Hosts exported: {count} ({file})"
+
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
+msgstr "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
 
 #: src/gcm4/core/exchange.py
 #, python-format
