@@ -14,7 +14,11 @@ import sys
 from pathlib import Path
 
 import pytest
-import tomllib
+
+if sys.version_info >= (3, 11):
+    import tomllib
+else:  # Python 3.9 de Rocky 9 (#223) : même API, paquet tomli
+    import tomli as tomllib
 
 import gcm4
 from gcm4 import app
