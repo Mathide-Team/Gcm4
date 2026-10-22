@@ -2960,6 +2960,11 @@ msgstr "পোর্ট {min} থেকে {max}-এর মধ্যে এক�
 msgid "The name must not contain «/»."
 msgstr "নামে '/' থাকতে পারবে না।"
 
+#: src/gcm4/ui/application.py
+#, python-brace-format
+msgid "gcm4 is already running with another configuration folder: close it to use {requested}."
+msgstr "gcm4 ইতিমধ্যে অন্য একটি কনফিগারেশন ফোল্ডার নিয়ে চলছে: {requested} ব্যবহার করতে এটি বন্ধ করুন।"
+
 #: src/gcm4/ui/contexte.py
 #, python-brace-format
 msgid "Password for {target}"

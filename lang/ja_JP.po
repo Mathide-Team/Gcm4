@@ -2960,6 +2960,11 @@ msgstr "ポートは {min} から {max} までの数値で指定してくださ�
 msgid "The name must not contain «/»."
 msgstr "名前に「/」は使えません。"
 
+#: src/gcm4/ui/application.py
+#, python-brace-format
+msgid "gcm4 is already running with another configuration folder: close it to use {requested}."
+msgstr "gcm4 は別の設定フォルダーですでに実行中です。{requested} を使うには終了してください。"
+
 #: src/gcm4/ui/contexte.py
 #, python-brace-format
 msgid "Password for {target}"

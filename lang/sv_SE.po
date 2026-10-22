@@ -2960,6 +2960,11 @@ msgstr "Porten måste vara ett tal mellan {min} och {max}."
 msgid "The name must not contain «/»."
 msgstr "Namnet får inte innehålla ”/”."
 
+#: src/gcm4/ui/application.py
+#, python-brace-format
+msgid "gcm4 is already running with another configuration folder: close it to use {requested}."
+msgstr "gcm4 körs redan med en annan konfigurationsmapp: stäng det för att använda {requested}."
+
 #: src/gcm4/ui/contexte.py
 #, python-brace-format
 msgid "Password for {target}"

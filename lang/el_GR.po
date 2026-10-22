@@ -2960,6 +2960,11 @@ msgstr "Η θύρα πρέπει να είναι αριθμός από {min} έ�
 msgid "The name must not contain «/»."
 msgstr "Το όνομα δεν πρέπει να περιέχει «/»."
 
+#: src/gcm4/ui/application.py
+#, python-brace-format
+msgid "gcm4 is already running with another configuration folder: close it to use {requested}."
+msgstr "Το gcm4 εκτελείται ήδη με άλλον φάκελο ρυθμίσεων: κλείστε το για να χρησιμοποιήσετε το {requested}."
+
 #: src/gcm4/ui/contexte.py
 #, python-brace-format
 msgid "Password for {target}"

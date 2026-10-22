@@ -2960,6 +2960,11 @@ msgstr "端口必须是 {min} 到 {max} 之间的数字。"
 msgid "The name must not contain «/»."
 msgstr "名称不能包含“/”。"
 
+#: src/gcm4/ui/application.py
+#, python-brace-format
+msgid "gcm4 is already running with another configuration folder: close it to use {requested}."
+msgstr "gcm4 已在使用另一个配置文件夹运行：请关闭它以使用 {requested}。"
+
 #: src/gcm4/ui/contexte.py
 #, python-brace-format
 msgid "Password for {target}"

@@ -2960,6 +2960,11 @@ msgstr "พอร์ตต้องเป็นตัวเลขระหว่
 msgid "The name must not contain «/»."
 msgstr "ชื่อต้องไม่มี '/'"
 
+#: src/gcm4/ui/application.py
+#, python-brace-format
+msgid "gcm4 is already running with another configuration folder: close it to use {requested}."
+msgstr "gcm4 กำลังทำงานอยู่แล้วด้วยโฟลเดอร์การตั้งค่าอื่น: ปิดก่อนเพื่อใช้ {requested}"
+
 #: src/gcm4/ui/contexte.py
 #, python-brace-format
 msgid "Password for {target}"

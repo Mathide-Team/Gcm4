@@ -535,6 +535,29 @@ effacée par un enregistrement du modèle.
 | `build_preferences_tab` | — | protocole | plugin.build_preferences_page (#148) |
 | `SerialTemplatesTab` | — | protocole | plugin série |
 
+### 2.12 Instance unique et deuxième lancement (gcm4, #275)
+
+`Gcm4Application` est à instance unique (`DRAPEAUX` :
+`HANDLES_COMMAND_LINE | SEND_ENVIRONMENT`). `gcm4.ui.application.run`
+transmet les arguments bruts à `Gio.Application.run` : si gcm4 tourne déjà,
+le deuxième processus envoie sa ligne de commande, son dossier courant et
+son environnement à l'instance en cours, qui l'analyse avec
+`gcm4.core.cli.parse_args(..., home, environ, cwd)` (`-c` relatif et
+`$XDG_CONFIG_HOME` pris dans le contexte du deuxième lancement) :
+
+| Deuxième lancement | Effet dans l'instance en cours | Code de sortie |
+|---|---|---|
+| `gcm4 --debug` (action « debug mode » du lanceur) | niveau DEBUG à chaud (`logging_config.enable_debug`), `args.debug` vrai pour Préférences > Journalisation | 0 |
+| `gcm4 groupe/nom…` | fenêtre présentée, hôtes sélectionnés (`MainWindow.ouvrir_hotes`, #154) | 0 |
+| autre dossier de configuration (`-c` ou `$XDG_CONFIG_HOME`) | rien ; message sur la sortie d'erreur du deuxième lancement | 5 (`CODE_AUTRE_CONFIG`) |
+| ligne refusée par l'analyseur (appel D-Bus forgé seulement) | rien | 2 (`CODE_REFUS`) |
+
+Le message du refus est écrit par le deuxième processus :
+`Gio.ApplicationCommandLine.printerr` n'est pas accessible par
+introspection et `printerr_literal` demande GLib 2.80. Tests :
+`tests/gtk4/test_deuxieme_lancement.py` (ligne simulée, puis vrais
+processus sur un `dbus-daemon` privé).
+
 ## 3. Arborescence détaillée (fichiers, classes, dépendances)
 
 ```

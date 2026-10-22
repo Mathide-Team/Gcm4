@@ -2960,6 +2960,11 @@ msgstr "הפתחה חייבת להיות מספר בין {min} ל־{max}."
 msgid "The name must not contain «/»."
 msgstr "השם לא יכול להכיל „/”."
 
+#: src/gcm4/ui/application.py
+#, python-brace-format
+msgid "gcm4 is already running with another configuration folder: close it to use {requested}."
+msgstr "gcm4 כבר פועל עם תיקיית תצורה אחרת: יש לסגור אותו כדי להשתמש ב־{requested}."
+
 #: src/gcm4/ui/contexte.py
 #, python-brace-format
 msgid "Password for {target}"
