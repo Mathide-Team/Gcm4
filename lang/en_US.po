@@ -37,6 +37,8 @@ msgid ""
 "<span size='smaller'>Use ##D=milliseconds to add a delay.\n"
 "Ex: ##D=1000</span>"
 msgstr ""
+"<span size='smaller'>Use ##D=milliseconds to add a delay.\n"
+"Ex: ##D=1000</span>"
 
 #: gnome_connection_manager.py
 #, python-brace-format
@@ -53,11 +55,11 @@ msgstr "A simple ssh connection manager for gnome"
 
 #: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "ASCII Backspace \t[Ctrl+H 0x08]"
-msgstr ""
+msgstr "ASCII Backspace \t[Ctrl+H 0x08]"
 
 #: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
-msgstr ""
+msgstr "ASCII Delete    \t[Ctrl+? 0x7F]"
 
 #: gnome_connection_manager.py src/gcm4/core/menu.py
 msgid "About"
@@ -85,7 +87,7 @@ msgstr "Always"
 
 #: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "Automatic"
-msgstr ""
+msgstr "Automatic"
 
 #: gnome_connection_manager.py
 msgid "Background color:"
@@ -93,7 +95,7 @@ msgstr ""
 
 #: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "Backspace:"
-msgstr ""
+msgstr "Backspace:"
 
 #: gnome_connection_manager.py plugins/plugin_serial.py
 msgid "Baud rate"
@@ -237,11 +239,11 @@ msgstr "Default colors"
 
 #: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "Delete Sequence \t[@7]"
-msgstr ""
+msgstr "Delete Sequence \t[@7]"
 
 #: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "Delete:"
-msgstr ""
+msgstr "Delete:"
 
 #: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "Description"
@@ -630,7 +632,7 @@ msgstr ""
 
 #: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "Send commands after login"
-msgstr ""
+msgstr "Send commands after login"
 
 #: gnome_connection_manager.py
 msgid "Send the command above to every checked host (same as pressing Enter)"
@@ -688,11 +690,11 @@ msgstr "System"
 
 #: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "TERM"
-msgstr ""
+msgstr "TERM"
 
 #: gnome_connection_manager.py src/gcm4/ui/terminal.py
 msgid "TTY Erase"
-msgstr ""
+msgstr "TTY Erase"
 
 #: gnome_connection_manager.py
 msgid "Template name"
@@ -1368,7 +1370,7 @@ msgstr ""
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_spice.py
 #: plugins/plugin_vnc.py src/gcm4/ui/terminal.py
 msgid "Session ended"
-msgstr ""
+msgstr "Session ended"
 
 #: plugins/plugin_ipmisol.py
 msgid "ipmitool introuvable"
