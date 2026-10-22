@@ -1,0 +1,104 @@
+# Import et export des hôtes (CSV, JSON)
+
+Format des fichiers lus et écrits par `src/gcm4/core/exchange.py` (issue
+#152). Le module est en code pur : l'interface GTK4 (menu Fichier, lot 7b)
+ne fait que choisir le fichier, la politique de conflit et afficher le
+rapport.
+
+## Format JSON, version 1
+
+```json
+{
+  "format": "gcm4-hosts",
+  "version": 1,
+  "hosts": [
+    {
+      "group": "PROD/eu",
+      "name": "api",
+      "description": "",
+      "host": "api.example.org",
+      "user": "admin",
+      "port": "2222",
+      "protocol": "ssh",
+      "font_color": "",
+      "back_color": "",
+      "extra_params": "",
+      "auto_close_tab": "",
+      "workspace": "False",
+      "pre_connect_command": "",
+      "post_connect_command": "",
+      "keep_alive": "30",
+      "commands": "uptime\nwho",
+      "other_protocol_options": {"rdp": {"rdp_cert_ignore": "True"}}
+    }
+  ]
+}
+```
+
+- `format` et `version` sont obligatoires ; une autre valeur est refusée
+  (« format ou version non pris en charge »). Toute évolution
+  incompatible du schéma incrémente `version`.
+- **Champs communs** (toujours présents, dans cet ordre) : `group`
+  (chemin `a/b`, vide = racine), `name` (obligatoire), `description`,
+  `host`, `user`, `port`, `protocol`, `font_color`, `back_color`,
+  `extra_params`, `auto_close_tab`, `workspace`, `pre_connect_command`,
+  `post_connect_command`.
+- **Options du protocole de l'hôte** : à plat, sous le nom de colonne de
+  l'export GTK3 (`keep_alive`, `compressionLevel`, `backspace_key`,
+  `delete_key`) ; les autres gardent leur clé de `gcm4.conf`. `commands`
+  contient de vrais retours à la ligne (écrits `\n` dans `gcm4.conf`).
+  Aucune option n'est interprétée : c'est le plugin du protocole qui le
+  fait.
+- `other_protocol_options` (facultatif) : options déjà saisies pour
+  d'autres protocoles (`{protocole: {clé: valeur}}`), pour un aller-retour
+  sans perte.
+- `password` : **absent par défaut**. Présent seulement si l'export est
+  demandé avec « inclure les mots de passe (en clair) » ; il est alors
+  repris à l'import.
+- Valeurs : texte. À l'import, nombres, booléens et `null` sont acceptés
+  et convertis en texte ; une liste ou un objet (hors
+  `other_protocol_options`) est une erreur.
+
+## Format CSV
+
+Même contenu, une ligne par hôte, UTF-8 (BOM de tableur accepté). En-tête :
+champs communs, `password` si demandé, toutes les options rencontrées, puis
+`other_protocol_options` (texte JSON) si un hôte en a. Toutes les lignes
+partageant les mêmes colonnes, **une cellule d'option vide vaut « option
+absente »**. Lecture stricte : un guillemet non fermé ou une cellule en
+trop est une erreur.
+
+## Exports de l'application GTK3
+
+Les deux formats GTK3 s'importent sans perte :
+
+- CSV GTK3 : mêmes colonnes que ci-dessus (colonnes `type`, `x11`,
+  `agent`… et champs des plugins rangés dans les options du protocole) ;
+- JSON GTK3 : simple liste d'objets à plat, sans `format` ni `version`.
+
+Différences voulues avec l'import GTK3 : un groupe vide reste à la racine
+(GTK3 le plaçait dans `IMPORT`), un protocole absent reste vide (GTK3
+supposait `ssh`), et un doublon peut être renommé ou remplacer l'existant
+au lieu d'être toujours ignoré.
+
+## Conflits et rapport
+
+Un hôte dont le nom existe déjà dans son groupe (y compris un doublon à
+l'intérieur du fichier) est, au choix :
+
+| Politique | Effet |
+|---|---|
+| ignorer (défaut) | l'hôte existant est gardé |
+| renommer | l'hôte importé devient `nom (2)`, `nom (3)`… |
+| remplacer | l'hôte importé prend la place de l'existant (même rang) |
+
+Le rapport liste les hôtes ajoutés, remplacés, renommés (ancien → nouveau
+chemin), ignorés, et les groupes créés.
+
+## Garanties
+
+- Fichier illisible ou mal formé : **rien n'est importé**, la configuration
+  n'est pas modifiée ; le message (traduit) indique la ligne (CSV) ou
+  l'entrée (JSON) fautive.
+- Fichier exporté : permissions `0600` (il peut contenir des mots de
+  passe).
