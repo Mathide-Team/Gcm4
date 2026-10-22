@@ -15,7 +15,7 @@ from loguru import logger
 
 import gcm4_core
 import logging_config
-from gcm4.core import chemins, cli, i18n, preferences
+from gcm4.core import chemins, cli, echange_cli, i18n, preferences
 from gcm4.core.i18n import _
 
 # Paquets système de PyGObject, GTK4 et libadwaita (D1 de #118).
@@ -61,6 +61,11 @@ def main(argv: list[str] | None = None) -> int:
         preference = preferences.load_preferences(chemins.fichier_conf(args.config_dir))
         niveau, _source = preferences.niveau_journal(False, preference.log_level, os.environ)
         logging_config.configure_logging(niveau or None, config_dir=args.config_dir, force=True)
+    # Import/export sans fenêtre (#154) : avant GTK, scriptable sans display.
+    code_echange = echange_cli.executer(args)
+    if code_echange is not None:
+        logger.debug("main: sortie {} (import/export)", code_echange)
+        return code_echange
     try:
         from gcm4.ui import application
     except (ImportError, ValueError) as exc:
