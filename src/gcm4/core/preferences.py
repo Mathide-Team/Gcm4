@@ -116,7 +116,7 @@ INVENTAIRE: tuple[OptionWconfig, ...] = (
         "shortcuts",
         "shortcuts/*",
         BASE,
-        "page Raccourcis (#148, lecture seule ; édition : issue de suivi)",
+        "page Raccourcis (#148) ; fenêtre modifiable (#247) ; terminal : plugin terminal",
     ),
     OptionWconfig("custom commands", "shortcuts/*", TERMINAL, "plugin terminal"),
     # Onglets ajoutés par les plugins et modèles série
@@ -269,6 +269,17 @@ def niveau_journal(
     return niveau, "preferences"
 
 
+def libelles_actions() -> dict[str, str]:
+    """Action du menu principal -> libellé (msgid) ; action sans entrée : son nom."""
+    logger.debug("libelles_actions: entrée")
+    libelles = {
+        e.action: e.libelle for sm in menu.MENU_PRINCIPAL for sec in sm.sections for e in sec
+    }
+    resultat = {action: libelles.get(action, action) for action in menu.RACCOURCIS}
+    logger.debug("libelles_actions: {}", len(resultat))
+    return resultat
+
+
 @dataclass(frozen=True)
 class Raccourci:
     """Raccourci clavier de la base, affiché dans Préférences > Raccourcis."""
@@ -279,6 +290,8 @@ class Raccourci:
     libelle: str
     #: :data:`FENETRE` ou :data:`ARBRE`.
     portee: str
+    #: Action modifiable (``win.next-tab``…) ; ``None`` : raccourci de l'arbre, fixe.
+    action: str | None = None
 
 
 FENETRE = "fenetre"
@@ -293,15 +306,19 @@ RACCOURCIS_ARBRE: tuple[tuple[str, str], ...] = (
 )
 
 
-def raccourcis() -> list[Raccourci]:
-    """Raccourcis de la base : ceux du menu principal puis ceux de l'arbre."""
+def raccourcis(effectifs: Mapping[str, tuple[str, ...]] | None = None) -> list[Raccourci]:
+    """Raccourcis de la base : ceux du menu principal puis ceux de l'arbre.
+
+    Args:
+        effectifs (Mapping[str, tuple[str, ...]] | None): Accélérateurs posés
+            (``gcm4.core.raccourcis.effectifs``) ; ``None`` : valeurs par défaut.
+    """
     logger.debug("raccourcis: entrée")
-    libelles = {
-        e.action: e.libelle for sm in menu.MENU_PRINCIPAL for sec in sm.sections for e in sec
-    }
+    libelles = libelles_actions()
+    poses = menu.RACCOURCIS if effectifs is None else effectifs
     resultat = [
-        Raccourci(touches, libelles.get(action, action), FENETRE)
-        for action, touches in menu.RACCOURCIS.items()
+        Raccourci(tuple(poses.get(action, defaut)), libelles[action], FENETRE, action)
+        for action, defaut in menu.RACCOURCIS.items()
     ]
     resultat += [
         Raccourci(tuple(declencheur.split("|")), libelle, ARBRE)

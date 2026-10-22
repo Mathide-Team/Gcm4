@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME Connection Manager\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-22 05:28+0000\n"
+"POT-Creation-Date: 2026-10-22 17:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -246,7 +246,8 @@ msgstr ""
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
 #: src/gcm4/ui/echange.py src/gcm4/ui/fichiers.py src/gcm4/ui/host_dialog.py
-#: src/gcm4/ui/main_window.py src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: src/gcm4/ui/main_window.py src/gcm4/ui/menu_arbre.py
+#: src/gcm4/ui/raccourcis.py utils.py widgets.py
 msgid "Cancel"
 msgstr ""
 
@@ -3058,6 +3059,19 @@ msgid "Main window"
 msgstr ""
 
 #: src/gcm4/ui/preferences.py
+msgid "Click a shortcut to change it, or press Backspace in the dialog to disable it."
+msgstr ""
+
+#: src/gcm4/ui/preferences.py src/gcm4/ui/raccourcis.py
+msgid "Disabled"
+msgstr ""
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Preferences not saved: {error}"
+msgstr ""
+
+#: src/gcm4/ui/preferences.py
 msgid "Logging"
 msgstr ""
 
@@ -3104,9 +3118,34 @@ msgstr ""
 msgid "Unable to open the folder: {error}"
 msgstr ""
 
-#: src/gcm4/ui/preferences.py
+#: src/gcm4/ui/raccourcis.py
+msgid "Press a key combination"
+msgstr ""
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Reset to default"
+msgstr ""
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Set"
+msgstr ""
+
+#: src/gcm4/ui/raccourcis.py
 #, python-brace-format
-msgid "Preferences not saved: {error}"
+msgid "Press the new shortcut for “{action}”, or Backspace to disable it."
+msgstr ""
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Set Shortcut"
+msgstr ""
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Use Ctrl, Alt or Super with this key."
+msgstr ""
+
+#: src/gcm4/ui/raccourcis.py
+#, python-brace-format
+msgid "Already used by “{action}”."
 msgstr ""
 
 #: ssh_config_editor.py

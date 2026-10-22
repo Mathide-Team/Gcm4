@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-22 05:28+0000\n"
+"POT-Creation-Date: 2026-10-22 17:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -139,7 +139,8 @@ msgstr "فایل گزارش برای نوشتن باز نمی‌شود"
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
 #: src/gcm4/ui/echange.py src/gcm4/ui/fichiers.py src/gcm4/ui/host_dialog.py
-#: src/gcm4/ui/main_window.py src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: src/gcm4/ui/main_window.py src/gcm4/ui/menu_arbre.py
+#: src/gcm4/ui/raccourcis.py utils.py widgets.py
 msgid "Cancel"
 msgstr "لغو"
 
@@ -3185,8 +3186,16 @@ msgid "Appearance"
 msgstr "ظاهر"
 
 #: src/gcm4/ui/preferences.py
+msgid "Click a shortcut to change it, or press Backspace in the dialog to disable it."
+msgstr "برای تغییر یک میانبر روی آن کلیک کنید، یا برای غیرفعال کردن آن در پنجرهٔ گفت‌وگو Backspace را فشار دهید."
+
+#: src/gcm4/ui/preferences.py
 msgid "Default log level"
 msgstr "سطح پیش‌فرض گزارش"
+
+#: src/gcm4/ui/preferences.py src/gcm4/ui/raccourcis.py
+msgid "Disabled"
+msgstr "غیرفعال"
 
 #: src/gcm4/ui/preferences.py
 msgid "Error"
@@ -3251,6 +3260,36 @@ msgstr "استفاده از قلم سیستم"
 #, python-brace-format
 msgid "Version {version}"
 msgstr "نسخه {version}"
+
+#: src/gcm4/ui/raccourcis.py
+#, python-brace-format
+msgid "Already used by “{action}”."
+msgstr "از قبل توسط «{action}» استفاده شده است."
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Press a key combination"
+msgstr "یک ترکیب کلید را فشار دهید"
+
+#: src/gcm4/ui/raccourcis.py
+#, python-brace-format
+msgid "Press the new shortcut for “{action}”, or Backspace to disable it."
+msgstr "میانبر جدید «{action}» را فشار دهید، یا برای غیرفعال کردن آن Backspace را بزنید."
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Reset to default"
+msgstr "بازگرداندن پیش‌فرض"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Set"
+msgstr "تنظیم"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Set Shortcut"
+msgstr "تنظیم میانبر"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Use Ctrl, Alt or Super with this key."
+msgstr "با این کلید از Ctrl، Alt یا Super استفاده کنید."
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format
