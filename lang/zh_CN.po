@@ -50,8 +50,12 @@ msgid "A group named '{src_leaf}' already exists in '{dest_full}'."
 msgstr ""
 
 #: gnome_connection_manager.py
-msgid "A new version is available: https://github.com/MathildeDec/gnome-connection-manager/releases"
-msgstr "有新版本可用：https://github.com/MathildeDec/gnome-connection-manager/releases"
+msgid ""
+"A new version is available: https://github.com/MathildeDec/gnome-connection-"
+"manager/releases"
+msgstr ""
+"有新版本可用：https://github.com/MathildeDec/gnome-connection-manager/"
+"releases"
 
 #: gnome_connection_manager.py src/gcm4/ui/application.py
 msgid "A simple ssh connection manager for gnome"
@@ -530,7 +534,8 @@ msgid "Next match"
 msgstr ""
 
 #: gnome_connection_manager.py
-msgid "No hosts in the workspace yet — check \"Workspace\" in Edit Host to add one"
+msgid ""
+"No hosts in the workspace yet — check \"Workspace\" in Edit Host to add one"
 msgstr ""
 
 #: gnome_connection_manager.py
@@ -680,13 +685,22 @@ msgstr "设置"
 
 #: gnome_connection_manager.py
 #, python-brace-format
-msgid "Shell command run locally, in the background, right after this connection ends. Currently only triggered for terminal-based protocols (SSH/Telnet/Local/Serial/IPMI SOL). Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
+msgid ""
+"Shell command run locally, in the background, right after this connection "
+"ends. Currently only triggered for terminal-based protocols (SSH/Telnet/"
+"Local/Serial/IPMI SOL). Leave blank to disable. Placeholders: {name} "
+"{address} {group} {protocol}"
 msgstr ""
 
 #: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 #, python-brace-format
-msgid "Shell command run locally, in the background, right before this connection opens (any protocol). Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
-msgstr "在此连接打开前立即在本地后台运行的 Shell 命令（任意协议）。留空则禁用。占位符：{name} {address} {group} {protocol}"
+msgid ""
+"Shell command run locally, in the background, right before this connection "
+"opens (any protocol). Leave blank to disable. Placeholders: {name} {address} "
+"{group} {protocol}"
+msgstr ""
+"在此连接打开前立即在本地后台运行的 Shell 命令（任意协议）。留空则禁用。占位"
+"符：{name} {address} {group} {protocol}"
 
 #: gnome_connection_manager.py
 msgid "Shortcut"
@@ -737,7 +751,9 @@ msgstr ""
 "Copyright © 2012 Renzo Bertuzzi L. <kuthulu@gmail.com> - 智利"
 
 #: gnome_connection_manager.py
-msgid "Tip: use #P=password to send a password without keeping it in clear text in the command history"
+msgid ""
+"Tip: use #P=password to send a password without keeping it in clear text in "
+"the command history"
 msgstr ""
 
 #: gnome_connection_manager.py src/gcm4/ui/preferences.py
@@ -805,7 +821,8 @@ msgid ""
 "\n"
 "{details}\n"
 "\n"
-"L'application continue de fonctionner normalement sans eux. Détails complets dans le journal de l'application."
+"L'application continue de fonctionner normalement sans eux. Détails complets "
+"dans le journal de l'application."
 msgstr ""
 
 #: gnome_connection_manager.py
@@ -837,7 +854,9 @@ msgid "Key name"
 msgstr "虚拟机名称"
 
 #: key_picker_dialog.py
-msgid "Keys found in <b>~/.ssh/</b> — select one (or several with Ctrl/Shift-click) then click <i>Use</i>:"
+msgid ""
+"Keys found in <b>~/.ssh/</b> — select one (or several with Ctrl/Shift-click) "
+"then click <i>Use</i>:"
 msgstr ""
 
 #: key_picker_dialog.py
@@ -964,7 +983,9 @@ msgid "<b>Connection types to import:</b>"
 msgstr "<b>要导入的连接类型：</b>"
 
 #: plugins/plugin_import_libvirt.py
-msgid "<i>Applies only to the Libvirt import plugin. Can still be overridden per import run.</i>"
+msgid ""
+"<i>Applies only to the Libvirt import plugin. Can still be overridden per "
+"import run.</i>"
 msgstr ""
 
 #: plugins/plugin_import_libvirt.py plugins/plugin_import_proxmox.py
@@ -982,8 +1003,12 @@ msgid "Detected libvirt URI"
 msgstr "检测到的 libvirt URI"
 
 #: plugins/plugin_import_libvirt.py
-msgid "Ex: 192.168.105.41 | root@192.168.105.41 | qemu+ssh://root@192.168.105.41/system"
-msgstr "例：192.168.105.41 | root@192.168.105.41 | qemu+ssh://root@192.168.105.41/system"
+msgid ""
+"Ex: 192.168.105.41 | root@192.168.105.41 | qemu+ssh://root@192.168.105.41/"
+"system"
+msgstr ""
+"例：192.168.105.41 | root@192.168.105.41 | qemu+ssh://root@192.168.105.41/"
+"system"
 
 #: plugins/plugin_import_libvirt.py plugins/plugin_import_proxmox.py
 msgid "Hypervisor SSH user:"
@@ -1058,16 +1083,24 @@ msgid "Proto"
 msgstr "协议"
 
 #: plugins/plugin_import_libvirt.py plugins/plugin_import_proxmox.py
-msgid "RDP  (probe port 3389 from hypervisor via nc/nmap - skipped if port is closed)"
+msgid ""
+"RDP  (probe port 3389 from hypervisor via nc/nmap - skipped if port is "
+"closed)"
 msgstr "RDP（通过 nc/nmap 从虚拟机管理程序探测端口 3389 - 如果端口关闭则跳过）"
 
 #: plugins/plugin_import_libvirt.py
-msgid "SPICE  (virt-viewer --connect qemu+ssh://... vm - SSH tunnel handled automatically)"
+msgid ""
+"SPICE  (virt-viewer --connect qemu+ssh://... vm - SSH tunnel handled "
+"automatically)"
 msgstr "SPICE（virt-viewer --connect qemu+ssh://... vm - 自动处理 SSH 隧道）"
 
 #: plugins/plugin_import_libvirt.py plugins/plugin_import_proxmox.py
-msgid "SSH  (ProxyJump -J via hypervisor when VM IP is known, otherwise hypervisor shell + -t ssh user@vm)"
-msgstr "SSH（已知虚拟机 IP 时通过虚拟机管理程序使用 ProxyJump -J，否则使用虚拟机管理程序 shell + -t ssh user@vm）"
+msgid ""
+"SSH  (ProxyJump -J via hypervisor when VM IP is known, otherwise hypervisor "
+"shell + -t ssh user@vm)"
+msgstr ""
+"SSH（已知虚拟机 IP 时通过虚拟机管理程序使用 ProxyJump -J，否则使用虚拟机管理"
+"程序 shell + -t ssh user@vm）"
 
 #: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
 #: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
@@ -1110,8 +1143,12 @@ msgstr "虚拟机名称"
 
 #: plugins/plugin_import_libvirt.py plugins/plugin_import_proxmox.py
 #, fuzzy
-#| msgid "RDP  (probe port 3389 from hypervisor via nc/nmap - skipped if port is closed)"
-msgid "VNC  (probe port 5900 from hypervisor via nc/nmap - skipped if port is closed)"
+#| msgid ""
+#| "RDP  (probe port 3389 from hypervisor via nc/nmap - skipped if port is "
+#| "closed)"
+msgid ""
+"VNC  (probe port 5900 from hypervisor via nc/nmap - skipped if port is "
+"closed)"
 msgstr "RDP（通过 nc/nmap 从虚拟机管理程序探测端口 3389 - 如果端口关闭则跳过）"
 
 #: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
@@ -1166,9 +1203,11 @@ msgstr "🔍  扫描虚拟机管理程序"
 #: plugins/plugin_import_ovirt.py
 #, python-brace-format
 msgid ""
-"Could not reach '{vm}' directly, via the oVirt engine, or via its hypervisor.\n"
+"Could not reach '{vm}' directly, via the oVirt engine, or via its "
+"hypervisor.\n"
 "\n"
-"Enter either a direct target — \"ip\" or \"ip:port\" — or a jump proxy — \"-J user@jumphost[:port] target_ip\".\n"
+"Enter either a direct target — \"ip\" or \"ip:port\" — or a jump proxy — \"-"
+"J user@jumphost[:port] target_ip\".\n"
 "Leave empty to skip this VM."
 msgstr ""
 
@@ -1188,8 +1227,11 @@ msgstr "从 libvirt 导入"
 
 #: plugins/plugin_import_ovirt.py
 msgid ""
-"Note: IP resolution requires the oVirt guest agent to be installed in each VM.\n"
-"Reachability is tested automatically (direct, then jump proxy via the engine, then via the VM's hypervisor) — if all three fail, you will be asked for a manual route per VM during the scan."
+"Note: IP resolution requires the oVirt guest agent to be installed in each "
+"VM.\n"
+"Reachability is tested automatically (direct, then jump proxy via the "
+"engine, then via the VM's hypervisor) — if all three fail, you will be asked "
+"for a manual route per VM during the scan."
 msgstr ""
 
 #: plugins/plugin_import_ovirt.py
@@ -1216,7 +1258,10 @@ msgid "Unreachable VM: {vm}"
 msgstr ""
 
 #: plugins/plugin_import_ovirt.py
-msgid "Used only as a fallback when a VM is not directly reachable: SSH user for jump-proxy attempts via the engine machine or the VM's hypervisor, and default SSH user for the VMs themselves (non-Windows guests)."
+msgid ""
+"Used only as a fallback when a VM is not directly reachable: SSH user for "
+"jump-proxy attempts via the engine machine or the VM's hypervisor, and "
+"default SSH user for the VMs themselves (non-Windows guests)."
 msgstr ""
 
 #: plugins/plugin_import_ovirt.py
@@ -1239,7 +1284,9 @@ msgid "🔍  Scan oVirt engine"
 msgstr ""
 
 #: plugins/plugin_import_proxmox.py
-msgid "<i>Applies only to the Proxmox import plugin. Can still be overridden per import run.</i>"
+msgid ""
+"<i>Applies only to the Proxmox import plugin. Can still be overridden per "
+"import run.</i>"
 msgstr ""
 
 #: plugins/plugin_import_proxmox.py
@@ -1285,7 +1332,8 @@ msgid "Proxmox targets:"
 msgstr "添加 Proxmox 目标："
 
 #: plugins/plugin_import_proxmox.py
-msgid "SPICE  (vga:qxl required — ticket generated at connection time via pvesh)"
+msgid ""
+"SPICE  (vga:qxl required — ticket generated at connection time via pvesh)"
 msgstr ""
 
 #: plugins/plugin_import_proxmox.py
@@ -1336,7 +1384,9 @@ msgid "{n} connection(s) imported from PuTTY."
 msgstr ""
 
 #: plugins/plugin_import_virtualbox.py
-msgid "<i>Applies only to the VirtualBox import plugin. Can still be overridden per import run.</i>"
+msgid ""
+"<i>Applies only to the VirtualBox import plugin. Can still be overridden per "
+"import run.</i>"
 msgstr ""
 
 #: plugins/plugin_import_virtualbox.py
@@ -1368,14 +1418,21 @@ msgid "No host selected."
 msgstr "未选择 URI。"
 
 #: plugins/plugin_import_virtualbox.py
-msgid "RDP  (native VirtualBox VRDE if enabled, otherwise guest port 3389 probe)"
+msgid ""
+"RDP  (native VirtualBox VRDE if enabled, otherwise guest port 3389 probe)"
 msgstr ""
 
 #: plugins/plugin_import_virtualbox.py
 #, fuzzy
-#| msgid "SSH  (ProxyJump -J via hypervisor when VM IP is known, otherwise hypervisor shell + -t ssh user@vm)"
-msgid "SSH  (ProxyJump -J via host when VM IP is known, otherwise host shell + -t ssh user@vm)"
-msgstr "SSH（已知虚拟机 IP 时通过虚拟机管理程序使用 ProxyJump -J，否则使用虚拟机管理程序 shell + -t ssh user@vm）"
+#| msgid ""
+#| "SSH  (ProxyJump -J via hypervisor when VM IP is known, otherwise "
+#| "hypervisor shell + -t ssh user@vm)"
+msgid ""
+"SSH  (ProxyJump -J via host when VM IP is known, otherwise host shell + -t "
+"ssh user@vm)"
+msgstr ""
+"SSH（已知虚拟机 IP 时通过虚拟机管理程序使用 ProxyJump -J，否则使用虚拟机管理"
+"程序 shell + -t ssh user@vm）"
 
 #: plugins/plugin_import_virtualbox.py
 msgid "Used as default user in the VirtualBox import dialog."
@@ -1699,7 +1756,9 @@ msgstr ""
 
 #: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
 #, python-brace-format
-msgid "Total : {total}  |  OK : {ok}  |  Rejetés : {rejected}  |  Échecs : {failed}  |  Ignorés : {skipped}"
+msgid ""
+"Total : {total}  |  OK : {ok}  |  Rejetés : {rejected}  |  Échecs : "
+"{failed}  |  Ignorés : {skipped}"
 msgstr ""
 
 #: plugins/plugin_netmiko_push.py
@@ -2114,7 +2173,10 @@ msgid "Écrire snmp_profiles.ini sur disque"
 msgstr ""
 
 #: plugins/plugin_snmp_push.py
-msgid "⚠ L'équipement doit pouvoir joindre ce serveur pour aller chercher le fichier de configuration. Les paramètres de transfert (protocole, credentials) doivent être configurés à part."
+msgid ""
+"⚠ L'équipement doit pouvoir joindre ce serveur pour aller chercher le "
+"fichier de configuration. Les paramètres de transfert (protocole, "
+"credentials) doivent être configurés à part."
 msgstr ""
 
 #: plugins/plugin_snmp_push.py
@@ -2298,7 +2360,9 @@ msgid "Compression (-C)"
 msgstr "压缩"
 
 #: plugins/plugin_ssh.py
-msgid "Connections will be added to the « ssh_config » group, with name = host = SSH alias."
+msgid ""
+"Connections will be added to the « ssh_config » group, with name = host = "
+"SSH alias."
 msgstr ""
 
 #: plugins/plugin_ssh.py ssh_config_editor.py
@@ -2325,7 +2389,9 @@ msgstr "额外参数"
 
 #: plugins/plugin_ssh.py
 #, python-format
-msgid "Host «%s» is already managed by a ssh_config file — it cannot be moved a 2nd time."
+msgid ""
+"Host «%s» is already managed by a ssh_config file — it cannot be moved a 2nd "
+"time."
 msgstr ""
 
 #: plugins/plugin_ssh.py
@@ -2399,7 +2465,8 @@ msgstr ""
 
 #: plugins/plugin_ssh.py
 #, python-format
-msgid "Migration done — moved: %d, skipped: %d, already managed: %d, errors: %d"
+msgid ""
+"Migration done — moved: %d, skipped: %d, already managed: %d, errors: %d"
 msgstr ""
 
 #: plugins/plugin_ssh.py
@@ -2422,7 +2489,9 @@ msgstr ""
 #, python-format
 msgid ""
 "Move all SSH hosts from gcm.conf to the SHARED file %s?\n"
-"This will be usable by every user of this machine and requires root privileges (a polkit prompt may appear). A timestamped backup of both files will be created."
+"This will be usable by every user of this machine and requires root "
+"privileges (a polkit prompt may appear). A timestamped backup of both files "
+"will be created."
 msgstr ""
 
 #: plugins/plugin_ssh.py
@@ -2440,7 +2509,9 @@ msgstr ""
 #, python-format
 msgid ""
 "Move host «%s» from gcm.conf to the SHARED file %s?\n"
-"This will be usable by every user of this machine and requires root privileges (a polkit prompt may appear). A timestamped backup of both files will be created."
+"This will be usable by every user of this machine and requires root "
+"privileges (a polkit prompt may appear). A timestamped backup of both files "
+"will be created."
 msgstr ""
 
 #: plugins/plugin_ssh.py
@@ -2459,7 +2530,8 @@ msgstr ""
 #, python-format
 msgid ""
 "Personal: only for you, ~/.ssh/config.\n"
-"Shared: visible and usable by every user of this machine (team bastion), %s — requires root privileges."
+"Shared: visible and usable by every user of this machine (team bastion), %s "
+"— requires root privileges."
 msgstr ""
 
 #: plugins/plugin_ssh.py
@@ -2555,13 +2627,15 @@ msgstr ""
 #: plugins/plugin_ssh.py
 msgid ""
 "ssh_config_editor module not found.\n"
-"Make sure ssh_config_editor.py and ssh_config_parser.py are in the same directory as gnome_connection_manager.py."
+"Make sure ssh_config_editor.py and ssh_config_parser.py are in the same "
+"directory as gnome_connection_manager.py."
 msgstr ""
 
 #: plugins/plugin_ssh.py
 msgid ""
 "ssh_key_manager_dialog module not found.\n"
-"Make sure ssh_key_manager_dialog.py is in the same directory as gnome_connection_manager.py."
+"Make sure ssh_key_manager_dialog.py is in the same directory as "
+"gnome_connection_manager.py."
 msgstr ""
 
 #: plugins/plugin_ssh.py
@@ -2616,7 +2690,9 @@ msgid "xfreerdp not found"
 msgstr "未找到 xfreerdp"
 
 #: plugins/plugin_web.py
-msgid "BMC web console (iLO, iDRAC, IMM…) or any web interface (Proxmox, switch, TrueNAS…)"
+msgid ""
+"BMC web console (iLO, iDRAC, IMM…) or any web interface (Proxmox, switch, "
+"TrueNAS…)"
 msgstr ""
 
 #: plugins/plugin_web.py
@@ -2667,7 +2743,9 @@ msgid "{program} not found"
 msgstr "未找到 {program}"
 
 #: src/gcm4/app.py
-msgid "The old configuration is intact: fix the problem (permissions, disk space), then start gcm4 again."
+msgid ""
+"The old configuration is intact: fix the problem (permissions, disk space), "
+"then start gcm4 again."
 msgstr "旧配置保持不变：请解决问题（权限、磁盘空间）后重新启动 gcm4。"
 
 #: src/gcm4/app.py
@@ -2681,7 +2759,8 @@ msgstr "某个已保存的密码已损坏。"
 
 #: src/gcm4/core/chiffrement.py
 #, python-format
-msgid "The encryption key %s is missing: the stored passwords cannot be decrypted."
+msgid ""
+"The encryption key %s is missing: the stored passwords cannot be decrypted."
 msgstr "缺少加密密钥 %s：无法解密已保存的密码。"
 
 #: src/gcm4/core/chiffrement.py
@@ -2817,7 +2896,9 @@ msgstr "未实现：{methods}。"
 
 #: src/gcm4/core/plugins.py
 #, python-brace-format
-msgid "It implements plugin API version {found}; this application supports version {expected}."
+msgid ""
+"It implements plugin API version {found}; this application supports version "
+"{expected}."
 msgstr "它实现的是插件 API 版本 {found}；本应用支持版本 {expected}。"
 
 #: src/gcm4/core/plugins.py
@@ -2885,7 +2966,9 @@ msgstr "名称不能包含“/”。"
 
 #: src/gcm4/ui/application.py
 #, python-brace-format
-msgid "gcm4 is already running with another configuration folder: close it to use {requested}."
+msgid ""
+"gcm4 is already running with another configuration folder: close it to use "
+"{requested}."
 msgstr "gcm4 已在使用另一个配置文件夹运行：请关闭它以使用 {requested}。"
 
 #: src/gcm4/ui/contexte.py
@@ -2942,7 +3025,9 @@ msgid "No extension handles this protocol: its options are kept."
 msgstr "没有扩展处理此协议：其选项将被保留。"
 
 #: src/gcm4/ui/host_dialog.py
-msgid "No extension is installed for this protocol: its options are kept and cannot be modified."
+msgid ""
+"No extension is installed for this protocol: its options are kept and cannot "
+"be modified."
 msgstr "此协议未安装任何扩展：其选项将被保留，但无法修改。"
 
 #: src/gcm4/ui/host_dialog.py
@@ -2959,8 +3044,13 @@ msgstr "协议选项"
 
 #: src/gcm4/ui/host_dialog.py
 #, python-brace-format
-msgid "Shell command run locally, in the background, right after this connection ends, by the protocols that support it. Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
-msgstr "在此连接结束后立即由支持的协议在本地后台运行的 Shell 命令。留空则禁用。占位符：{name} {address} {group} {protocol}"
+msgid ""
+"Shell command run locally, in the background, right after this connection "
+"ends, by the protocols that support it. Leave blank to disable. "
+"Placeholders: {name} {address} {group} {protocol}"
+msgstr ""
+"在此连接结束后立即由支持的协议在本地后台运行的 Shell 命令。留空则禁用。占位"
+"符：{name} {address} {group} {protocol}"
 
 #: src/gcm4/ui/host_dialog.py
 msgid "The changes to this host have not been saved."
@@ -3011,7 +3101,9 @@ msgstr "主机和分组将显示在左侧面板中。"
 
 #: src/gcm4/ui/main_window.py
 #, python-brace-format
-msgid "No extension handles the protocol «{protocol}». Install it to open this connection."
+msgid ""
+"No extension handles the protocol «{protocol}». Install it to open this "
+"connection."
 msgstr "没有扩展处理协议“{protocol}”。请安装后再打开此连接。"
 
 #: src/gcm4/ui/main_window.py
@@ -3064,7 +3156,9 @@ msgstr "分组名称"
 
 #: src/gcm4/ui/menu_arbre.py
 #, python-brace-format
-msgid "It contains {hosts} host(s) and {groups} subgroup(s), which will be removed too."
+msgid ""
+"It contains {hosts} host(s) and {groups} subgroup(s), which will be removed "
+"too."
 msgstr "其中包含 {hosts} 个主机和 {groups} 个子分组，它们也将被删除。"
 
 #: src/gcm4/ui/menu_arbre.py
@@ -3095,8 +3189,13 @@ msgid "Allow"
 msgstr "允许"
 
 #: src/gcm4/ui/mises_a_jour.py
-msgid "At startup, Gnome Connection Manager can ask GitHub (api.github.com) whether a newer version has been published. You can change this later in the preferences."
-msgstr "启动时，Gnome Connection Manager 可以询问 GitHub (api.github.com) 是否发布了更新的版本。之后可以在首选项中更改此设置。"
+msgid ""
+"At startup, Gnome Connection Manager can ask GitHub (api.github.com) whether "
+"a newer version has been published. You can change this later in the "
+"preferences."
+msgstr ""
+"启动时，Gnome Connection Manager 可以询问 GitHub (api.github.com) 是否发布了"
+"更新的版本。之后可以在首选项中更改此设置。"
 
 #: src/gcm4/ui/mises_a_jour.py
 msgid "Check for updates?"
@@ -3318,7 +3417,9 @@ msgid "LogLevel"
 msgstr ""
 
 #: ssh_config_editor.py
-msgid "Multiple values possible: separate them with commas (one line per value in the file)"
+msgid ""
+"Multiple values possible: separate them with commas (one line per value in "
+"the file)"
 msgstr ""
 
 #: ssh_config_editor.py
@@ -3616,7 +3717,9 @@ msgid "CA signing failed: {err}"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
-msgid "CA signing timed out — CA key may require a passphrase (unsupported non-interactively)"
+msgid ""
+"CA signing timed out — CA key may require a passphrase (unsupported non-"
+"interactively)"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
@@ -3905,7 +4008,8 @@ msgid "No authorized_keys entry selected"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
-msgid "No candidate hosts found in ~/.ssh/config (and no GCM host list wired in)"
+msgid ""
+"No candidate hosts found in ~/.ssh/config (and no GCM host list wired in)"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
@@ -3993,7 +4097,8 @@ msgstr ""
 #, python-brace-format
 msgid ""
 "Permanently delete the CA key pair <b>{name}</b>?\n"
-"Certificates already signed by this CA will no longer be trustable to verify.\n"
+"Certificates already signed by this CA will no longer be trustable to "
+"verify.\n"
 "<b>This cannot be undone.</b>"
 msgstr ""
 
@@ -4224,7 +4329,9 @@ msgid "ssh-add failed: {err}"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
-msgid "ssh-add timed out — the key may require a passphrase (no terminal available here)"
+msgid ""
+"ssh-add timed out — the key may require a passphrase (no terminal available "
+"here)"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
@@ -4428,6 +4535,20 @@ msgstr "垂直分割"
 #: widgets.py
 msgid "Unsplit all consoles"
 msgstr "取消所有控制台的分割"
+
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Hosts exported: {count} ({file})"
+msgstr "已导出主机：{count}（{file}）"
+
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid ""
+"Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, "
+"ignored {ignored}, new groups {groups}"
+msgstr ""
+"导入 {file}：新增 {added}，替换 {replaced}，重命名 {renamed}，忽略 "
+"{ignored}，新建分组 {groups}"
 
 #~ msgid "Colors and Keys"
 #~ msgstr "颜色与按键"

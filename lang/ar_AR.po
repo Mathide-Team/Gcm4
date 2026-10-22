@@ -16,7 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
 
 #: gnome_connection_manager.py
 msgid "+ Add"
@@ -50,8 +51,12 @@ msgid "A group named '{src_leaf}' already exists in '{dest_full}'."
 msgstr ""
 
 #: gnome_connection_manager.py
-msgid "A new version is available: https://github.com/MathildeDec/gnome-connection-manager/releases"
-msgstr "يتوفر إصدار جديد: https://github.com/MathildeDec/gnome-connection-manager/releases"
+msgid ""
+"A new version is available: https://github.com/MathildeDec/gnome-connection-"
+"manager/releases"
+msgstr ""
+"يتوفر إصدار جديد: https://github.com/MathildeDec/gnome-connection-manager/"
+"releases"
 
 #: gnome_connection_manager.py src/gcm4/ui/application.py
 msgid "A simple ssh connection manager for gnome"
@@ -530,7 +535,8 @@ msgid "Next match"
 msgstr ""
 
 #: gnome_connection_manager.py
-msgid "No hosts in the workspace yet — check \"Workspace\" in Edit Host to add one"
+msgid ""
+"No hosts in the workspace yet — check \"Workspace\" in Edit Host to add one"
 msgstr ""
 
 #: gnome_connection_manager.py
@@ -680,13 +686,22 @@ msgstr "الإعدادات"
 
 #: gnome_connection_manager.py
 #, python-brace-format
-msgid "Shell command run locally, in the background, right after this connection ends. Currently only triggered for terminal-based protocols (SSH/Telnet/Local/Serial/IPMI SOL). Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
+msgid ""
+"Shell command run locally, in the background, right after this connection "
+"ends. Currently only triggered for terminal-based protocols (SSH/Telnet/"
+"Local/Serial/IPMI SOL). Leave blank to disable. Placeholders: {name} "
+"{address} {group} {protocol}"
 msgstr ""
 
 #: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 #, python-brace-format
-msgid "Shell command run locally, in the background, right before this connection opens (any protocol). Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
-msgstr "أمر صدفة يُشغَّل محليًا في الخلفية قبيل فتح هذا الاتصال (أي بروتوكول). اتركه فارغًا للتعطيل. العناصر النائبة: {name} {address} {group} {protocol}"
+msgid ""
+"Shell command run locally, in the background, right before this connection "
+"opens (any protocol). Leave blank to disable. Placeholders: {name} {address} "
+"{group} {protocol}"
+msgstr ""
+"أمر صدفة يُشغَّل محليًا في الخلفية قبيل فتح هذا الاتصال (أي بروتوكول). اتركه "
+"فارغًا للتعطيل. العناصر النائبة: {name} {address} {group} {protocol}"
 
 #: gnome_connection_manager.py
 msgid "Shortcut"
@@ -737,7 +752,9 @@ msgstr ""
 "Copyright © 2012 Renzo Bertuzzi L. <kuthulu@gmail.com> - تشيلي"
 
 #: gnome_connection_manager.py
-msgid "Tip: use #P=password to send a password without keeping it in clear text in the command history"
+msgid ""
+"Tip: use #P=password to send a password without keeping it in clear text in "
+"the command history"
 msgstr ""
 
 #: gnome_connection_manager.py src/gcm4/ui/preferences.py
@@ -805,7 +822,8 @@ msgid ""
 "\n"
 "{details}\n"
 "\n"
-"L'application continue de fonctionner normalement sans eux. Détails complets dans le journal de l'application."
+"L'application continue de fonctionner normalement sans eux. Détails complets "
+"dans le journal de l'application."
 msgstr ""
 
 #: gnome_connection_manager.py
@@ -837,7 +855,9 @@ msgid "Key name"
 msgstr "اسم الجهاز الافتراضي"
 
 #: key_picker_dialog.py
-msgid "Keys found in <b>~/.ssh/</b> — select one (or several with Ctrl/Shift-click) then click <i>Use</i>:"
+msgid ""
+"Keys found in <b>~/.ssh/</b> — select one (or several with Ctrl/Shift-click) "
+"then click <i>Use</i>:"
 msgstr ""
 
 #: key_picker_dialog.py
@@ -964,7 +984,9 @@ msgid "<b>Connection types to import:</b>"
 msgstr "<b>أنواع الاتصال المراد استيرادها:</b>"
 
 #: plugins/plugin_import_libvirt.py
-msgid "<i>Applies only to the Libvirt import plugin. Can still be overridden per import run.</i>"
+msgid ""
+"<i>Applies only to the Libvirt import plugin. Can still be overridden per "
+"import run.</i>"
 msgstr ""
 
 #: plugins/plugin_import_libvirt.py plugins/plugin_import_proxmox.py
@@ -982,8 +1004,12 @@ msgid "Detected libvirt URI"
 msgstr "تم اكتشاف عنوان URI لـ libvirt"
 
 #: plugins/plugin_import_libvirt.py
-msgid "Ex: 192.168.105.41 | root@192.168.105.41 | qemu+ssh://root@192.168.105.41/system"
-msgstr "مثال: 192.168.105.41 | root@192.168.105.41 | qemu+ssh://root@192.168.105.41/system"
+msgid ""
+"Ex: 192.168.105.41 | root@192.168.105.41 | qemu+ssh://root@192.168.105.41/"
+"system"
+msgstr ""
+"مثال: 192.168.105.41 | root@192.168.105.41 | qemu+ssh://root@192.168.105.41/"
+"system"
 
 #: plugins/plugin_import_libvirt.py plugins/plugin_import_proxmox.py
 msgid "Hypervisor SSH user:"
@@ -1058,16 +1084,28 @@ msgid "Proto"
 msgstr "البروتوكول"
 
 #: plugins/plugin_import_libvirt.py plugins/plugin_import_proxmox.py
-msgid "RDP  (probe port 3389 from hypervisor via nc/nmap - skipped if port is closed)"
-msgstr "RDP  (فحص المنفذ 3389 من المحاكي الافتراضي عبر nc/nmap - يتم التجاوز إذا كان المنفذ مغلقًا)"
+msgid ""
+"RDP  (probe port 3389 from hypervisor via nc/nmap - skipped if port is "
+"closed)"
+msgstr ""
+"RDP  (فحص المنفذ 3389 من المحاكي الافتراضي عبر nc/nmap - يتم التجاوز إذا كان "
+"المنفذ مغلقًا)"
 
 #: plugins/plugin_import_libvirt.py
-msgid "SPICE  (virt-viewer --connect qemu+ssh://... vm - SSH tunnel handled automatically)"
-msgstr "SPICE  (virt-viewer --connect qemu+ssh://... vm - يتم التعامل مع نفق SSH تلقائيًا)"
+msgid ""
+"SPICE  (virt-viewer --connect qemu+ssh://... vm - SSH tunnel handled "
+"automatically)"
+msgstr ""
+"SPICE  (virt-viewer --connect qemu+ssh://... vm - يتم التعامل مع نفق SSH "
+"تلقائيًا)"
 
 #: plugins/plugin_import_libvirt.py plugins/plugin_import_proxmox.py
-msgid "SSH  (ProxyJump -J via hypervisor when VM IP is known, otherwise hypervisor shell + -t ssh user@vm)"
-msgstr "SSH  (ProxyJump -J عبر المحاكي الافتراضي عندما يكون عنوان IP للجهاز الافتراضي معروفًا، وإلا فاستخدام واجهة المحاكي + -t ssh user@vm)"
+msgid ""
+"SSH  (ProxyJump -J via hypervisor when VM IP is known, otherwise hypervisor "
+"shell + -t ssh user@vm)"
+msgstr ""
+"SSH  (ProxyJump -J عبر المحاكي الافتراضي عندما يكون عنوان IP للجهاز "
+"الافتراضي معروفًا، وإلا فاستخدام واجهة المحاكي + -t ssh user@vm)"
 
 #: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
 #: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
@@ -1110,9 +1148,15 @@ msgstr "اسم الجهاز الافتراضي"
 
 #: plugins/plugin_import_libvirt.py plugins/plugin_import_proxmox.py
 #, fuzzy
-#| msgid "RDP  (probe port 3389 from hypervisor via nc/nmap - skipped if port is closed)"
-msgid "VNC  (probe port 5900 from hypervisor via nc/nmap - skipped if port is closed)"
-msgstr "RDP  (فحص المنفذ 3389 من المحاكي الافتراضي عبر nc/nmap - يتم التجاوز إذا كان المنفذ مغلقًا)"
+#| msgid ""
+#| "RDP  (probe port 3389 from hypervisor via nc/nmap - skipped if port is "
+#| "closed)"
+msgid ""
+"VNC  (probe port 5900 from hypervisor via nc/nmap - skipped if port is "
+"closed)"
+msgstr ""
+"RDP  (فحص المنفذ 3389 من المحاكي الافتراضي عبر nc/nmap - يتم التجاوز إذا كان "
+"المنفذ مغلقًا)"
 
 #: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
 #: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
@@ -1166,9 +1210,11 @@ msgstr "🔍  فحص المحاكيات الافتراضية"
 #: plugins/plugin_import_ovirt.py
 #, python-brace-format
 msgid ""
-"Could not reach '{vm}' directly, via the oVirt engine, or via its hypervisor.\n"
+"Could not reach '{vm}' directly, via the oVirt engine, or via its "
+"hypervisor.\n"
 "\n"
-"Enter either a direct target — \"ip\" or \"ip:port\" — or a jump proxy — \"-J user@jumphost[:port] target_ip\".\n"
+"Enter either a direct target — \"ip\" or \"ip:port\" — or a jump proxy — \"-"
+"J user@jumphost[:port] target_ip\".\n"
 "Leave empty to skip this VM."
 msgstr ""
 
@@ -1188,8 +1234,11 @@ msgstr "استيراد من libvirt"
 
 #: plugins/plugin_import_ovirt.py
 msgid ""
-"Note: IP resolution requires the oVirt guest agent to be installed in each VM.\n"
-"Reachability is tested automatically (direct, then jump proxy via the engine, then via the VM's hypervisor) — if all three fail, you will be asked for a manual route per VM during the scan."
+"Note: IP resolution requires the oVirt guest agent to be installed in each "
+"VM.\n"
+"Reachability is tested automatically (direct, then jump proxy via the "
+"engine, then via the VM's hypervisor) — if all three fail, you will be asked "
+"for a manual route per VM during the scan."
 msgstr ""
 
 #: plugins/plugin_import_ovirt.py
@@ -1216,7 +1265,10 @@ msgid "Unreachable VM: {vm}"
 msgstr ""
 
 #: plugins/plugin_import_ovirt.py
-msgid "Used only as a fallback when a VM is not directly reachable: SSH user for jump-proxy attempts via the engine machine or the VM's hypervisor, and default SSH user for the VMs themselves (non-Windows guests)."
+msgid ""
+"Used only as a fallback when a VM is not directly reachable: SSH user for "
+"jump-proxy attempts via the engine machine or the VM's hypervisor, and "
+"default SSH user for the VMs themselves (non-Windows guests)."
 msgstr ""
 
 #: plugins/plugin_import_ovirt.py
@@ -1239,7 +1291,9 @@ msgid "🔍  Scan oVirt engine"
 msgstr ""
 
 #: plugins/plugin_import_proxmox.py
-msgid "<i>Applies only to the Proxmox import plugin. Can still be overridden per import run.</i>"
+msgid ""
+"<i>Applies only to the Proxmox import plugin. Can still be overridden per "
+"import run.</i>"
 msgstr ""
 
 #: plugins/plugin_import_proxmox.py
@@ -1285,7 +1339,8 @@ msgid "Proxmox targets:"
 msgstr "إضافة هدف Proxmox:"
 
 #: plugins/plugin_import_proxmox.py
-msgid "SPICE  (vga:qxl required — ticket generated at connection time via pvesh)"
+msgid ""
+"SPICE  (vga:qxl required — ticket generated at connection time via pvesh)"
 msgstr ""
 
 #: plugins/plugin_import_proxmox.py
@@ -1336,7 +1391,9 @@ msgid "{n} connection(s) imported from PuTTY."
 msgstr ""
 
 #: plugins/plugin_import_virtualbox.py
-msgid "<i>Applies only to the VirtualBox import plugin. Can still be overridden per import run.</i>"
+msgid ""
+"<i>Applies only to the VirtualBox import plugin. Can still be overridden per "
+"import run.</i>"
 msgstr ""
 
 #: plugins/plugin_import_virtualbox.py
@@ -1368,14 +1425,21 @@ msgid "No host selected."
 msgstr "لم يتم تحديد عنوان URI."
 
 #: plugins/plugin_import_virtualbox.py
-msgid "RDP  (native VirtualBox VRDE if enabled, otherwise guest port 3389 probe)"
+msgid ""
+"RDP  (native VirtualBox VRDE if enabled, otherwise guest port 3389 probe)"
 msgstr ""
 
 #: plugins/plugin_import_virtualbox.py
 #, fuzzy
-#| msgid "SSH  (ProxyJump -J via hypervisor when VM IP is known, otherwise hypervisor shell + -t ssh user@vm)"
-msgid "SSH  (ProxyJump -J via host when VM IP is known, otherwise host shell + -t ssh user@vm)"
-msgstr "SSH  (ProxyJump -J عبر المحاكي الافتراضي عندما يكون عنوان IP للجهاز الافتراضي معروفًا، وإلا فاستخدام واجهة المحاكي + -t ssh user@vm)"
+#| msgid ""
+#| "SSH  (ProxyJump -J via hypervisor when VM IP is known, otherwise "
+#| "hypervisor shell + -t ssh user@vm)"
+msgid ""
+"SSH  (ProxyJump -J via host when VM IP is known, otherwise host shell + -t "
+"ssh user@vm)"
+msgstr ""
+"SSH  (ProxyJump -J عبر المحاكي الافتراضي عندما يكون عنوان IP للجهاز "
+"الافتراضي معروفًا، وإلا فاستخدام واجهة المحاكي + -t ssh user@vm)"
 
 #: plugins/plugin_import_virtualbox.py
 msgid "Used as default user in the VirtualBox import dialog."
@@ -1699,7 +1763,9 @@ msgstr ""
 
 #: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
 #, python-brace-format
-msgid "Total : {total}  |  OK : {ok}  |  Rejetés : {rejected}  |  Échecs : {failed}  |  Ignorés : {skipped}"
+msgid ""
+"Total : {total}  |  OK : {ok}  |  Rejetés : {rejected}  |  Échecs : "
+"{failed}  |  Ignorés : {skipped}"
 msgstr ""
 
 #: plugins/plugin_netmiko_push.py
@@ -2114,7 +2180,10 @@ msgid "Écrire snmp_profiles.ini sur disque"
 msgstr ""
 
 #: plugins/plugin_snmp_push.py
-msgid "⚠ L'équipement doit pouvoir joindre ce serveur pour aller chercher le fichier de configuration. Les paramètres de transfert (protocole, credentials) doivent être configurés à part."
+msgid ""
+"⚠ L'équipement doit pouvoir joindre ce serveur pour aller chercher le "
+"fichier de configuration. Les paramètres de transfert (protocole, "
+"credentials) doivent être configurés à part."
 msgstr ""
 
 #: plugins/plugin_snmp_push.py
@@ -2298,7 +2367,9 @@ msgid "Compression (-C)"
 msgstr "الضغط"
 
 #: plugins/plugin_ssh.py
-msgid "Connections will be added to the « ssh_config » group, with name = host = SSH alias."
+msgid ""
+"Connections will be added to the « ssh_config » group, with name = host = "
+"SSH alias."
 msgstr ""
 
 #: plugins/plugin_ssh.py ssh_config_editor.py
@@ -2325,7 +2396,9 @@ msgstr "وسائط إضافية"
 
 #: plugins/plugin_ssh.py
 #, python-format
-msgid "Host «%s» is already managed by a ssh_config file — it cannot be moved a 2nd time."
+msgid ""
+"Host «%s» is already managed by a ssh_config file — it cannot be moved a 2nd "
+"time."
 msgstr ""
 
 #: plugins/plugin_ssh.py
@@ -2399,7 +2472,8 @@ msgstr ""
 
 #: plugins/plugin_ssh.py
 #, python-format
-msgid "Migration done — moved: %d, skipped: %d, already managed: %d, errors: %d"
+msgid ""
+"Migration done — moved: %d, skipped: %d, already managed: %d, errors: %d"
 msgstr ""
 
 #: plugins/plugin_ssh.py
@@ -2422,7 +2496,9 @@ msgstr ""
 #, python-format
 msgid ""
 "Move all SSH hosts from gcm.conf to the SHARED file %s?\n"
-"This will be usable by every user of this machine and requires root privileges (a polkit prompt may appear). A timestamped backup of both files will be created."
+"This will be usable by every user of this machine and requires root "
+"privileges (a polkit prompt may appear). A timestamped backup of both files "
+"will be created."
 msgstr ""
 
 #: plugins/plugin_ssh.py
@@ -2440,7 +2516,9 @@ msgstr ""
 #, python-format
 msgid ""
 "Move host «%s» from gcm.conf to the SHARED file %s?\n"
-"This will be usable by every user of this machine and requires root privileges (a polkit prompt may appear). A timestamped backup of both files will be created."
+"This will be usable by every user of this machine and requires root "
+"privileges (a polkit prompt may appear). A timestamped backup of both files "
+"will be created."
 msgstr ""
 
 #: plugins/plugin_ssh.py
@@ -2459,7 +2537,8 @@ msgstr ""
 #, python-format
 msgid ""
 "Personal: only for you, ~/.ssh/config.\n"
-"Shared: visible and usable by every user of this machine (team bastion), %s — requires root privileges."
+"Shared: visible and usable by every user of this machine (team bastion), %s "
+"— requires root privileges."
 msgstr ""
 
 #: plugins/plugin_ssh.py
@@ -2555,13 +2634,15 @@ msgstr ""
 #: plugins/plugin_ssh.py
 msgid ""
 "ssh_config_editor module not found.\n"
-"Make sure ssh_config_editor.py and ssh_config_parser.py are in the same directory as gnome_connection_manager.py."
+"Make sure ssh_config_editor.py and ssh_config_parser.py are in the same "
+"directory as gnome_connection_manager.py."
 msgstr ""
 
 #: plugins/plugin_ssh.py
 msgid ""
 "ssh_key_manager_dialog module not found.\n"
-"Make sure ssh_key_manager_dialog.py is in the same directory as gnome_connection_manager.py."
+"Make sure ssh_key_manager_dialog.py is in the same directory as "
+"gnome_connection_manager.py."
 msgstr ""
 
 #: plugins/plugin_ssh.py
@@ -2616,7 +2697,9 @@ msgid "xfreerdp not found"
 msgstr "xfreerdp غير موجود"
 
 #: plugins/plugin_web.py
-msgid "BMC web console (iLO, iDRAC, IMM…) or any web interface (Proxmox, switch, TrueNAS…)"
+msgid ""
+"BMC web console (iLO, iDRAC, IMM…) or any web interface (Proxmox, switch, "
+"TrueNAS…)"
 msgstr ""
 
 #: plugins/plugin_web.py
@@ -2667,8 +2750,12 @@ msgid "{program} not found"
 msgstr "لم يتم العثور على {program}"
 
 #: src/gcm4/app.py
-msgid "The old configuration is intact: fix the problem (permissions, disk space), then start gcm4 again."
-msgstr "الإعدادات القديمة سليمة: أصلح المشكلة (الأذونات، مساحة القرص) ثم شغّل gcm4 من جديد."
+msgid ""
+"The old configuration is intact: fix the problem (permissions, disk space), "
+"then start gcm4 again."
+msgstr ""
+"الإعدادات القديمة سليمة: أصلح المشكلة (الأذونات، مساحة القرص) ثم شغّل gcm4 من "
+"جديد."
 
 #: src/gcm4/app.py
 #, python-brace-format
@@ -2681,7 +2768,8 @@ msgstr "إحدى كلمات المرور المحفوظة تالفة."
 
 #: src/gcm4/core/chiffrement.py
 #, python-format
-msgid "The encryption key %s is missing: the stored passwords cannot be decrypted."
+msgid ""
+"The encryption key %s is missing: the stored passwords cannot be decrypted."
 msgstr "مفتاح التشفير %s مفقود: لا يمكن فك تشفير كلمات المرور المحفوظة."
 
 #: src/gcm4/core/chiffrement.py
@@ -2817,8 +2905,12 @@ msgstr "لا ينفّذ: {methods}."
 
 #: src/gcm4/core/plugins.py
 #, python-brace-format
-msgid "It implements plugin API version {found}; this application supports version {expected}."
-msgstr "ينفّذ الإصدار {found} من واجهة الإضافات، بينما يدعم هذا التطبيق الإصدار {expected}."
+msgid ""
+"It implements plugin API version {found}; this application supports version "
+"{expected}."
+msgstr ""
+"ينفّذ الإصدار {found} من واجهة الإضافات، بينما يدعم هذا التطبيق الإصدار "
+"{expected}."
 
 #: src/gcm4/core/plugins.py
 msgid "It is not a connection plugin."
@@ -2885,7 +2977,9 @@ msgstr "يجب ألا يحتوي الاسم على «/»."
 
 #: src/gcm4/ui/application.py
 #, python-brace-format
-msgid "gcm4 is already running with another configuration folder: close it to use {requested}."
+msgid ""
+"gcm4 is already running with another configuration folder: close it to use "
+"{requested}."
 msgstr "gcm4 قيد التشغيل بالفعل بمجلد إعدادات آخر: أغلقه لاستخدام {requested}."
 
 #: src/gcm4/ui/contexte.py
@@ -2942,8 +3036,12 @@ msgid "No extension handles this protocol: its options are kept."
 msgstr "لا يوجد امتداد يدعم هذا البروتوكول: تُحفظ خياراته كما هي."
 
 #: src/gcm4/ui/host_dialog.py
-msgid "No extension is installed for this protocol: its options are kept and cannot be modified."
-msgstr "لا توجد أي إضافة مثبّتة لهذا البروتوكول: يتم الاحتفاظ بخياراته دون إمكانية تعديلها."
+msgid ""
+"No extension is installed for this protocol: its options are kept and cannot "
+"be modified."
+msgstr ""
+"لا توجد أي إضافة مثبّتة لهذا البروتوكول: يتم الاحتفاظ بخياراته دون إمكانية "
+"تعديلها."
 
 #: src/gcm4/ui/host_dialog.py
 msgid "No extension is installed."
@@ -2959,8 +3057,14 @@ msgstr "خيارات البروتوكول"
 
 #: src/gcm4/ui/host_dialog.py
 #, python-brace-format
-msgid "Shell command run locally, in the background, right after this connection ends, by the protocols that support it. Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
-msgstr "أمر صدفة يُشغَّل محليًا في الخلفية فور انتهاء هذا الاتصال، في البروتوكولات التي تدعم ذلك. اتركه فارغًا للتعطيل. العناصر النائبة: {name} {address} {group} {protocol}"
+msgid ""
+"Shell command run locally, in the background, right after this connection "
+"ends, by the protocols that support it. Leave blank to disable. "
+"Placeholders: {name} {address} {group} {protocol}"
+msgstr ""
+"أمر صدفة يُشغَّل محليًا في الخلفية فور انتهاء هذا الاتصال، في البروتوكولات التي "
+"تدعم ذلك. اتركه فارغًا للتعطيل. العناصر النائبة: {name} {address} {group} "
+"{protocol}"
 
 #: src/gcm4/ui/host_dialog.py
 msgid "The changes to this host have not been saved."
@@ -3011,7 +3115,9 @@ msgstr "ستظهر المضيفات والمجموعات في اللوحة ال�
 
 #: src/gcm4/ui/main_window.py
 #, python-brace-format
-msgid "No extension handles the protocol «{protocol}». Install it to open this connection."
+msgid ""
+"No extension handles the protocol «{protocol}». Install it to open this "
+"connection."
 msgstr "لا توجد إضافة تتولى البروتوكول «{protocol}». ثبّتها لفتح هذا الاتصال."
 
 #: src/gcm4/ui/main_window.py
@@ -3064,7 +3170,9 @@ msgstr "اسم المجموعة"
 
 #: src/gcm4/ui/menu_arbre.py
 #, python-brace-format
-msgid "It contains {hosts} host(s) and {groups} subgroup(s), which will be removed too."
+msgid ""
+"It contains {hosts} host(s) and {groups} subgroup(s), which will be removed "
+"too."
 msgstr "تحتوي على {hosts} مضيف و{groups} مجموعة فرعية، وستُحذف أيضًا."
 
 #: src/gcm4/ui/menu_arbre.py
@@ -3095,8 +3203,14 @@ msgid "Allow"
 msgstr "السماح"
 
 #: src/gcm4/ui/mises_a_jour.py
-msgid "At startup, Gnome Connection Manager can ask GitHub (api.github.com) whether a newer version has been published. You can change this later in the preferences."
-msgstr "عند بدء التشغيل، يمكن لـ Gnome Connection Manager أن يسأل GitHub (api.github.com) عمّا إذا كان قد نُشر إصدار أحدث. يمكنك تغيير ذلك لاحقًا في التفضيلات."
+msgid ""
+"At startup, Gnome Connection Manager can ask GitHub (api.github.com) whether "
+"a newer version has been published. You can change this later in the "
+"preferences."
+msgstr ""
+"عند بدء التشغيل، يمكن لـ Gnome Connection Manager أن يسأل GitHub "
+"(api.github.com) عمّا إذا كان قد نُشر إصدار أحدث. يمكنك تغيير ذلك لاحقًا في "
+"التفضيلات."
 
 #: src/gcm4/ui/mises_a_jour.py
 msgid "Check for updates?"
@@ -3318,7 +3432,9 @@ msgid "LogLevel"
 msgstr ""
 
 #: ssh_config_editor.py
-msgid "Multiple values possible: separate them with commas (one line per value in the file)"
+msgid ""
+"Multiple values possible: separate them with commas (one line per value in "
+"the file)"
 msgstr ""
 
 #: ssh_config_editor.py
@@ -3616,7 +3732,9 @@ msgid "CA signing failed: {err}"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
-msgid "CA signing timed out — CA key may require a passphrase (unsupported non-interactively)"
+msgid ""
+"CA signing timed out — CA key may require a passphrase (unsupported non-"
+"interactively)"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
@@ -3905,7 +4023,8 @@ msgid "No authorized_keys entry selected"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
-msgid "No candidate hosts found in ~/.ssh/config (and no GCM host list wired in)"
+msgid ""
+"No candidate hosts found in ~/.ssh/config (and no GCM host list wired in)"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
@@ -3993,7 +4112,8 @@ msgstr ""
 #, python-brace-format
 msgid ""
 "Permanently delete the CA key pair <b>{name}</b>?\n"
-"Certificates already signed by this CA will no longer be trustable to verify.\n"
+"Certificates already signed by this CA will no longer be trustable to "
+"verify.\n"
 "<b>This cannot be undone.</b>"
 msgstr ""
 
@@ -4224,7 +4344,9 @@ msgid "ssh-add failed: {err}"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
-msgid "ssh-add timed out — the key may require a passphrase (no terminal available here)"
+msgid ""
+"ssh-add timed out — the key may require a passphrase (no terminal available "
+"here)"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
@@ -4428,6 +4550,20 @@ msgstr "تقسيم عمودي"
 #: widgets.py
 msgid "Unsplit all consoles"
 msgstr "إلغاء تقسيم جميع وحدات التحكم"
+
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Hosts exported: {count} ({file})"
+msgstr "المضيفون المُصدَّرون: {count} ({file})"
+
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid ""
+"Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, "
+"ignored {ignored}, new groups {groups}"
+msgstr ""
+"استيراد {file}: أُضيف {added}، استُبدل {replaced}، أُعيدت تسمية {renamed}، "
+"تُجوهل {ignored}، مجموعات جديدة {groups}"
 
 #~ msgid "Colors and Keys"
 #~ msgstr "الألوان والمفاتيح"

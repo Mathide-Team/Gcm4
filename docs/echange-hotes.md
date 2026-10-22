@@ -102,3 +102,30 @@ chemin), ignorés, et les groupes créés.
   l'entrée (JSON) fautive.
 - Fichier exporté : permissions `0600` (il peut contenir des mots de
   passe).
+
+## Ligne de commande (sans fenêtre)
+
+Scriptable sans display (cron, SSH, test de paquet), sans charger GTK
+(issue #154) :
+
+```bash
+gcm4 --export-json hotes.json                     # tous les hôtes, sans mot de passe
+gcm4 --export-csv hotes.csv --include-passwords   # mots de passe EN CLAIR
+gcm4 --import-json hotes.json                     # conflits ignorés (défaut)
+gcm4 --import-csv hotes.csv --on-conflict rename  # ou replace
+gcm4 -c /autre/dossier --export-json sauvegarde   # → sauvegarde.json
+```
+
+- Une seule option d'import ou d'export à la fois ; gcm4 s'arrête ensuite
+  sans ouvrir de fenêtre.
+- L'extension du format est ajoutée si elle manque (`--export-csv x.json`
+  écrit `x.json.csv`).
+- Bilan sur la sortie standard (« Hôtes exportés : 3 (…) », « Import de … :
+  ajoutés 2, remplacés 0, renommés 1, ignorés 0, nouveaux groupes 1 ») ;
+  code de sortie `0`.
+- Erreur (configuration illisible, fichier mal formé, clé de chiffrement) :
+  message sur la sortie d'erreur, code de sortie `5`, `gcm4.conf` non
+  modifié. Une option mal utilisée donne le code `2` (argparse).
+- À l'import, `gcm4.conf` est réécrit (mots de passe chiffrés, copie
+  `gcm4.conf.bak`). Ne pas importer pendant que l'interface tourne sur la
+  même configuration : elle réécrirait le fichier avec son propre état.

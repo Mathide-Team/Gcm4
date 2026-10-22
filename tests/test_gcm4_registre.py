@@ -212,7 +212,7 @@ def test_ordre_deterministe(module):
 
 def test_zero_plugin(monkeypatch):
     """Aucun point d'entrée ni dossier source : registre vide, rien ne lève."""
-    monkeypatch.setattr(registre.metadata, "entry_points", lambda group: [])
+    monkeypatch.setattr(registre.metadata, "entry_points", lambda: {})
     monkeypatch.setattr(registre, "dossier_source", lambda: None)
     reg = decouvrir(_contextes()[0])
     assert reg.plugins() == [] and reg.protocols() == [] and reg.get("ssh") is None
@@ -291,3 +291,42 @@ def test_echec_retire_tout_le_paquet(tmp_path, init, gtk4):
         assert sys.modules["gcm4_plugin_casse_autre"] is sys
     finally:
         del sys.modules["gcm4_plugin_casse_autre"]
+
+
+class _EntryPoints310:
+    """Imite ``metadata.entry_points()`` de Python ≥ 3.10 (méthode ``select``)."""
+
+    def __init__(self, points):
+        self._points = points
+
+    def select(self, *, group):
+        """Points du groupe demandé."""
+        return [p for p in self._points if p.group == group]
+
+
+def _point_de_groupe(nom, groupe):
+    """Point d'entrée ``nom`` du groupe ``groupe`` (valeur factice)."""
+    return metadata.EntryPoint(nom, f"module_{nom}:Plugin", groupe)
+
+
+def test_points_d_entree_api_python_310(monkeypatch):
+    """Python ≥ 3.10 : ``select(group=...)`` ; les autres groupes sont ignorés."""
+    points = [_point_de_groupe("b", registre.GROUPE), _point_de_groupe("x", "autre.groupe")]
+    points.append(_point_de_groupe("a", registre.GROUPE))
+    monkeypatch.setattr(registre.metadata, "entry_points", lambda: _EntryPoints310(points))
+    assert [c.nom for c in registre.candidats_points_d_entree()] == ["a", "b"]
+
+
+def test_points_d_entree_api_python_39(monkeypatch):
+    """Python 3.9 (Rocky 9, #223) : ``entry_points()`` rend un dict groupe → points."""
+    par_groupe = {
+        registre.GROUPE: (
+            _point_de_groupe("b", registre.GROUPE),
+            _point_de_groupe("a", registre.GROUPE),
+        ),
+        "autre.groupe": (_point_de_groupe("x", "autre.groupe"),),
+    }
+    monkeypatch.setattr(registre.metadata, "entry_points", lambda: par_groupe)
+    assert [c.nom for c in registre.candidats_points_d_entree()] == ["a", "b"]
+    monkeypatch.setattr(registre.metadata, "entry_points", lambda: {})
+    assert registre.candidats_points_d_entree() == []

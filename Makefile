@@ -29,7 +29,7 @@ FPM_COMMON = -s dir -n $(PKG_NAME) -v $(PKG_VERSION) -C $(TMPINSTALLDIR) \
 	--category net --url $(PKG_URL)
 
 # ── Cibles principales ────────────────────────────────────────────────────────
-.PHONY: all run-gtk4 deb rpm opensuse install translate i18n-update i18n-check i18n-report class-diagram ci check-desktop icons test lint validate clean help docs
+.PHONY: all run-gtk4 deb deb-gcm4 smoke-deb rpm opensuse install translate i18n-update i18n-check i18n-report class-diagram ci check-desktop icons test lint validate clean help docs
 
 all:  test lint deb rpm opensuse translate validate
 
@@ -37,6 +37,8 @@ help:
 	@echo "Cibles disponibles :"
 	@echo "  make          → deb + rpm (défaut)"
 	@echo "  make deb      → paquet .deb (Debian/Ubuntu)"
+	@echo "  make deb-gcm4 → paquet .deb de la base GTK4 (build-deb/dist/gcm4_*.deb)"
+	@echo "  make smoke-deb → installe ce paquet (sudo apt) et le vérifie"
 	@echo "  make rpm      → paquet .rpm (Fedora/RHEL/CentOS)"
 	@echo "  make opensuse → paquet .rpm (openSUSE — dépendances zypper)"
 	@echo "  make translate → compile tous les .po → .mo"
@@ -123,6 +125,16 @@ deb:
 		--deb-priority optional \
 		usr
 	@echo "\033[92mOK: $(PKG_DEB)\033[0m"
+
+# ── Paquet .deb de la base GTK4 (#156) ───────────────────────────────────────
+# build-deb/build.sh (dpkg-buildpackage) : paquet gcm4, sans aucun plugin.
+# smoke-deb l'installe avec apt (sudo) puis le vérifie, comme le job
+# « Paquets » de la CI : à lancer dans un conteneur ou une machine de test.
+deb-gcm4:
+	build-deb/build.sh
+
+smoke-deb:
+	scripts/smoke-test-packages.sh deb $(wildcard build-deb/dist/gcm4_*_all.deb)
 
 # ── Paquet .rpm (Fedora / RHEL / CentOS) ─────────────────────────────────────
 rpm:

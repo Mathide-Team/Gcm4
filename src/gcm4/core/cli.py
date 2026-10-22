@@ -13,7 +13,7 @@ from loguru import logger
 
 import logging_config
 from gcm4 import __version__
-from gcm4.core import chemins
+from gcm4.core import chemins, echange_cli
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -39,6 +39,7 @@ def build_parser() -> argparse.ArgumentParser:
         metavar="GROUPE/NOM",
         help="hôtes à sélectionner au démarrage, connectés si un plugin gère leur protocole",
     )
+    echange_cli.ajouter_arguments(parser)
     logger.debug("build_parser: prêt")
     return parser
 

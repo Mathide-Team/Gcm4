@@ -30,7 +30,8 @@ msgid ""
 msgstr ""
 "<i>Kattintson duplán egy cellára a szerkesztéshez.\n"
 "Fájlformátum: <tt>[serial_templates]</tt> a <tt>gcm.conf</tt>-ban\n"
-"<tt>Eszközöm = 9600,n,n,8,1</tt>  (baud,folyamvezérlés,paritás,bitek,stop)</i>"
+"<tt>Eszközöm = 9600,n,n,8,1</tt>  (baud,folyamvezérlés,paritás,bitek,stop)</"
+"i>"
 
 #: gnome_connection_manager.py
 msgid "<span size=\"smaller\">CTRL+UP/CTRL+DOWN for history</span>"
@@ -41,7 +42,8 @@ msgid ""
 "<span size='smaller'>Use ##D=milliseconds to add a delay.\n"
 "Ex: ##D=1000</span>"
 msgstr ""
-"<span size='smaller'>Késleltetés hozzáadásához használja a ##D=milliszekundum formátumot.\n"
+"<span size='smaller'>Késleltetés hozzáadásához használja a "
+"##D=milliszekundum formátumot.\n"
 "Pl.: ##D=1000</span>"
 
 #: gnome_connection_manager.py
@@ -50,8 +52,12 @@ msgid "A group named '{src_leaf}' already exists in '{dest_full}'."
 msgstr ""
 
 #: gnome_connection_manager.py
-msgid "A new version is available: https://github.com/MathildeDec/gnome-connection-manager/releases"
-msgstr "Új verzió érhető el: https://github.com/MathildeDec/gnome-connection-manager/releases"
+msgid ""
+"A new version is available: https://github.com/MathildeDec/gnome-connection-"
+"manager/releases"
+msgstr ""
+"Új verzió érhető el: https://github.com/MathildeDec/gnome-connection-manager/"
+"releases"
 
 #: gnome_connection_manager.py src/gcm4/ui/application.py
 msgid "A simple ssh connection manager for gnome"
@@ -205,7 +211,8 @@ msgstr "Folyamatos VTE lap naplózási mód"
 
 #: gnome_connection_manager.py
 msgid "Continuous log mode is active and cannot be disabled per tab."
-msgstr "A folyamatos naplózási mód aktív, és lapszintenként nem kapcsolható ki."
+msgstr ""
+"A folyamatos naplózási mód aktív, és lapszintenként nem kapcsolható ki."
 
 #: gnome_connection_manager.py widgets.py
 msgid "Copy"
@@ -530,7 +537,8 @@ msgid "Next match"
 msgstr ""
 
 #: gnome_connection_manager.py
-msgid "No hosts in the workspace yet — check \"Workspace\" in Edit Host to add one"
+msgid ""
+"No hosts in the workspace yet — check \"Workspace\" in Edit Host to add one"
 msgstr ""
 
 #: gnome_connection_manager.py
@@ -680,13 +688,23 @@ msgstr "Beállítások"
 
 #: gnome_connection_manager.py
 #, python-brace-format
-msgid "Shell command run locally, in the background, right after this connection ends. Currently only triggered for terminal-based protocols (SSH/Telnet/Local/Serial/IPMI SOL). Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
+msgid ""
+"Shell command run locally, in the background, right after this connection "
+"ends. Currently only triggered for terminal-based protocols (SSH/Telnet/"
+"Local/Serial/IPMI SOL). Leave blank to disable. Placeholders: {name} "
+"{address} {group} {protocol}"
 msgstr ""
 
 #: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 #, python-brace-format
-msgid "Shell command run locally, in the background, right before this connection opens (any protocol). Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
-msgstr "Helyben, a háttérben, közvetlenül a kapcsolat megnyitása előtt futó parancs (bármely protokoll). Hagyja üresen a kikapcsoláshoz. Helyőrzők: {name} {address} {group} {protocol}"
+msgid ""
+"Shell command run locally, in the background, right before this connection "
+"opens (any protocol). Leave blank to disable. Placeholders: {name} {address} "
+"{group} {protocol}"
+msgstr ""
+"Helyben, a háttérben, közvetlenül a kapcsolat megnyitása előtt futó parancs "
+"(bármely protokoll). Hagyja üresen a kikapcsoláshoz. Helyőrzők: {name} "
+"{address} {group} {protocol}"
 
 #: gnome_connection_manager.py
 msgid "Shortcut"
@@ -737,7 +755,9 @@ msgstr ""
 "Copyright © 2012 Renzo Bertuzzi L. <kuthulu@gmail.com> - Chile"
 
 #: gnome_connection_manager.py
-msgid "Tip: use #P=password to send a password without keeping it in clear text in the command history"
+msgid ""
+"Tip: use #P=password to send a password without keeping it in clear text in "
+"the command history"
 msgstr ""
 
 #: gnome_connection_manager.py src/gcm4/ui/preferences.py
@@ -746,7 +766,8 @@ msgstr "Cím"
 
 #: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
 msgid "To create subgroups use format group1/group2/group3"
-msgstr "Alcsoportok létrehozásához használja a csoport1/csoport2/csoport3 formátumot"
+msgstr ""
+"Alcsoportok létrehozásához használja a csoport1/csoport2/csoport3 formátumot"
 
 #: gnome_connection_manager.py
 msgid "Transparency"
@@ -805,7 +826,8 @@ msgid ""
 "\n"
 "{details}\n"
 "\n"
-"L'application continue de fonctionner normalement sans eux. Détails complets dans le journal de l'application."
+"L'application continue de fonctionner normalement sans eux. Détails complets "
+"dans le journal de l'application."
 msgstr ""
 
 #: gnome_connection_manager.py
@@ -837,7 +859,9 @@ msgid "Key name"
 msgstr "VM neve"
 
 #: key_picker_dialog.py
-msgid "Keys found in <b>~/.ssh/</b> — select one (or several with Ctrl/Shift-click) then click <i>Use</i>:"
+msgid ""
+"Keys found in <b>~/.ssh/</b> — select one (or several with Ctrl/Shift-click) "
+"then click <i>Use</i>:"
 msgstr ""
 
 #: key_picker_dialog.py
@@ -964,7 +988,9 @@ msgid "<b>Connection types to import:</b>"
 msgstr "<b>Importálandó kapcsolattípusok:</b>"
 
 #: plugins/plugin_import_libvirt.py
-msgid "<i>Applies only to the Libvirt import plugin. Can still be overridden per import run.</i>"
+msgid ""
+"<i>Applies only to the Libvirt import plugin. Can still be overridden per "
+"import run.</i>"
 msgstr ""
 
 #: plugins/plugin_import_libvirt.py plugins/plugin_import_proxmox.py
@@ -982,8 +1008,12 @@ msgid "Detected libvirt URI"
 msgstr "Észlelt libvirt URI"
 
 #: plugins/plugin_import_libvirt.py
-msgid "Ex: 192.168.105.41 | root@192.168.105.41 | qemu+ssh://root@192.168.105.41/system"
-msgstr "Pl.: 192.168.105.41 | root@192.168.105.41 | qemu+ssh://root@192.168.105.41/system"
+msgid ""
+"Ex: 192.168.105.41 | root@192.168.105.41 | qemu+ssh://root@192.168.105.41/"
+"system"
+msgstr ""
+"Pl.: 192.168.105.41 | root@192.168.105.41 | qemu+ssh://root@192.168.105.41/"
+"system"
 
 #: plugins/plugin_import_libvirt.py plugins/plugin_import_proxmox.py
 msgid "Hypervisor SSH user:"
@@ -1030,7 +1060,8 @@ msgstr "Nincs kiválasztott URI."
 #: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
 #: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
 msgid "No connection to import (all already exist or none selected)."
-msgstr "Nincs importálandó kapcsolat (mind már létezik, vagy semmi nincs kijelölve)."
+msgstr ""
+"Nincs importálandó kapcsolat (mind már létezik, vagy semmi nincs kijelölve)."
 
 #: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
 #: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
@@ -1058,16 +1089,28 @@ msgid "Proto"
 msgstr "Proto"
 
 #: plugins/plugin_import_libvirt.py plugins/plugin_import_proxmox.py
-msgid "RDP  (probe port 3389 from hypervisor via nc/nmap - skipped if port is closed)"
-msgstr "RDP  (3389-os port ellenőrzése a hipervizorról nc/nmap segítségével - kihagyva, ha a port zárva van)"
+msgid ""
+"RDP  (probe port 3389 from hypervisor via nc/nmap - skipped if port is "
+"closed)"
+msgstr ""
+"RDP  (3389-os port ellenőrzése a hipervizorról nc/nmap segítségével - "
+"kihagyva, ha a port zárva van)"
 
 #: plugins/plugin_import_libvirt.py
-msgid "SPICE  (virt-viewer --connect qemu+ssh://... vm - SSH tunnel handled automatically)"
-msgstr "SPICE  (virt-viewer --connect qemu+ssh://... vm - az SSH tunnel automatikusan kezelve)"
+msgid ""
+"SPICE  (virt-viewer --connect qemu+ssh://... vm - SSH tunnel handled "
+"automatically)"
+msgstr ""
+"SPICE  (virt-viewer --connect qemu+ssh://... vm - az SSH tunnel "
+"automatikusan kezelve)"
 
 #: plugins/plugin_import_libvirt.py plugins/plugin_import_proxmox.py
-msgid "SSH  (ProxyJump -J via hypervisor when VM IP is known, otherwise hypervisor shell + -t ssh user@vm)"
-msgstr "SSH  (ProxyJump -J a hipervizoron keresztül, ha a VM IP-je ismert, egyébként hipervizor shell + -t ssh felhasználó@vm)"
+msgid ""
+"SSH  (ProxyJump -J via hypervisor when VM IP is known, otherwise hypervisor "
+"shell + -t ssh user@vm)"
+msgstr ""
+"SSH  (ProxyJump -J a hipervizoron keresztül, ha a VM IP-je ismert, egyébként "
+"hipervizor shell + -t ssh felhasználó@vm)"
 
 #: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
 #: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
@@ -1110,9 +1153,15 @@ msgstr "VM neve"
 
 #: plugins/plugin_import_libvirt.py plugins/plugin_import_proxmox.py
 #, fuzzy
-#| msgid "RDP  (probe port 3389 from hypervisor via nc/nmap - skipped if port is closed)"
-msgid "VNC  (probe port 5900 from hypervisor via nc/nmap - skipped if port is closed)"
-msgstr "RDP  (3389-os port ellenőrzése a hipervizorról nc/nmap segítségével - kihagyva, ha a port zárva van)"
+#| msgid ""
+#| "RDP  (probe port 3389 from hypervisor via nc/nmap - skipped if port is "
+#| "closed)"
+msgid ""
+"VNC  (probe port 5900 from hypervisor via nc/nmap - skipped if port is "
+"closed)"
+msgstr ""
+"RDP  (3389-os port ellenőrzése a hipervizorról nc/nmap segítségével - "
+"kihagyva, ha a port zárva van)"
 
 #: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
 #: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
@@ -1166,9 +1215,11 @@ msgstr "🔍  Hipervizorok keresése"
 #: plugins/plugin_import_ovirt.py
 #, python-brace-format
 msgid ""
-"Could not reach '{vm}' directly, via the oVirt engine, or via its hypervisor.\n"
+"Could not reach '{vm}' directly, via the oVirt engine, or via its "
+"hypervisor.\n"
 "\n"
-"Enter either a direct target — \"ip\" or \"ip:port\" — or a jump proxy — \"-J user@jumphost[:port] target_ip\".\n"
+"Enter either a direct target — \"ip\" or \"ip:port\" — or a jump proxy — \"-"
+"J user@jumphost[:port] target_ip\".\n"
 "Leave empty to skip this VM."
 msgstr ""
 
@@ -1188,8 +1239,11 @@ msgstr "Importálás libvirtből"
 
 #: plugins/plugin_import_ovirt.py
 msgid ""
-"Note: IP resolution requires the oVirt guest agent to be installed in each VM.\n"
-"Reachability is tested automatically (direct, then jump proxy via the engine, then via the VM's hypervisor) — if all three fail, you will be asked for a manual route per VM during the scan."
+"Note: IP resolution requires the oVirt guest agent to be installed in each "
+"VM.\n"
+"Reachability is tested automatically (direct, then jump proxy via the "
+"engine, then via the VM's hypervisor) — if all three fail, you will be asked "
+"for a manual route per VM during the scan."
 msgstr ""
 
 #: plugins/plugin_import_ovirt.py
@@ -1216,7 +1270,10 @@ msgid "Unreachable VM: {vm}"
 msgstr ""
 
 #: plugins/plugin_import_ovirt.py
-msgid "Used only as a fallback when a VM is not directly reachable: SSH user for jump-proxy attempts via the engine machine or the VM's hypervisor, and default SSH user for the VMs themselves (non-Windows guests)."
+msgid ""
+"Used only as a fallback when a VM is not directly reachable: SSH user for "
+"jump-proxy attempts via the engine machine or the VM's hypervisor, and "
+"default SSH user for the VMs themselves (non-Windows guests)."
 msgstr ""
 
 #: plugins/plugin_import_ovirt.py
@@ -1239,7 +1296,9 @@ msgid "🔍  Scan oVirt engine"
 msgstr ""
 
 #: plugins/plugin_import_proxmox.py
-msgid "<i>Applies only to the Proxmox import plugin. Can still be overridden per import run.</i>"
+msgid ""
+"<i>Applies only to the Proxmox import plugin. Can still be overridden per "
+"import run.</i>"
 msgstr ""
 
 #: plugins/plugin_import_proxmox.py
@@ -1285,7 +1344,8 @@ msgid "Proxmox targets:"
 msgstr "Proxmox cél hozzáadása:"
 
 #: plugins/plugin_import_proxmox.py
-msgid "SPICE  (vga:qxl required — ticket generated at connection time via pvesh)"
+msgid ""
+"SPICE  (vga:qxl required — ticket generated at connection time via pvesh)"
 msgstr ""
 
 #: plugins/plugin_import_proxmox.py
@@ -1336,7 +1396,9 @@ msgid "{n} connection(s) imported from PuTTY."
 msgstr ""
 
 #: plugins/plugin_import_virtualbox.py
-msgid "<i>Applies only to the VirtualBox import plugin. Can still be overridden per import run.</i>"
+msgid ""
+"<i>Applies only to the VirtualBox import plugin. Can still be overridden per "
+"import run.</i>"
 msgstr ""
 
 #: plugins/plugin_import_virtualbox.py
@@ -1368,14 +1430,21 @@ msgid "No host selected."
 msgstr "Nincs kiválasztott URI."
 
 #: plugins/plugin_import_virtualbox.py
-msgid "RDP  (native VirtualBox VRDE if enabled, otherwise guest port 3389 probe)"
+msgid ""
+"RDP  (native VirtualBox VRDE if enabled, otherwise guest port 3389 probe)"
 msgstr ""
 
 #: plugins/plugin_import_virtualbox.py
 #, fuzzy
-#| msgid "SSH  (ProxyJump -J via hypervisor when VM IP is known, otherwise hypervisor shell + -t ssh user@vm)"
-msgid "SSH  (ProxyJump -J via host when VM IP is known, otherwise host shell + -t ssh user@vm)"
-msgstr "SSH  (ProxyJump -J a hipervizoron keresztül, ha a VM IP-je ismert, egyébként hipervizor shell + -t ssh felhasználó@vm)"
+#| msgid ""
+#| "SSH  (ProxyJump -J via hypervisor when VM IP is known, otherwise "
+#| "hypervisor shell + -t ssh user@vm)"
+msgid ""
+"SSH  (ProxyJump -J via host when VM IP is known, otherwise host shell + -t "
+"ssh user@vm)"
+msgstr ""
+"SSH  (ProxyJump -J a hipervizoron keresztül, ha a VM IP-je ismert, egyébként "
+"hipervizor shell + -t ssh felhasználó@vm)"
 
 #: plugins/plugin_import_virtualbox.py
 msgid "Used as default user in the VirtualBox import dialog."
@@ -1699,7 +1768,9 @@ msgstr ""
 
 #: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
 #, python-brace-format
-msgid "Total : {total}  |  OK : {ok}  |  Rejetés : {rejected}  |  Échecs : {failed}  |  Ignorés : {skipped}"
+msgid ""
+"Total : {total}  |  OK : {ok}  |  Rejetés : {rejected}  |  Échecs : "
+"{failed}  |  Ignorés : {skipped}"
 msgstr ""
 
 #: plugins/plugin_netmiko_push.py
@@ -2114,7 +2185,10 @@ msgid "Écrire snmp_profiles.ini sur disque"
 msgstr ""
 
 #: plugins/plugin_snmp_push.py
-msgid "⚠ L'équipement doit pouvoir joindre ce serveur pour aller chercher le fichier de configuration. Les paramètres de transfert (protocole, credentials) doivent être configurés à part."
+msgid ""
+"⚠ L'équipement doit pouvoir joindre ce serveur pour aller chercher le "
+"fichier de configuration. Les paramètres de transfert (protocole, "
+"credentials) doivent être configurés à part."
 msgstr ""
 
 #: plugins/plugin_snmp_push.py
@@ -2298,7 +2372,9 @@ msgid "Compression (-C)"
 msgstr "Tömörítés"
 
 #: plugins/plugin_ssh.py
-msgid "Connections will be added to the « ssh_config » group, with name = host = SSH alias."
+msgid ""
+"Connections will be added to the « ssh_config » group, with name = host = "
+"SSH alias."
 msgstr ""
 
 #: plugins/plugin_ssh.py ssh_config_editor.py
@@ -2325,7 +2401,9 @@ msgstr "További argumentumok"
 
 #: plugins/plugin_ssh.py
 #, python-format
-msgid "Host «%s» is already managed by a ssh_config file — it cannot be moved a 2nd time."
+msgid ""
+"Host «%s» is already managed by a ssh_config file — it cannot be moved a 2nd "
+"time."
 msgstr ""
 
 #: plugins/plugin_ssh.py
@@ -2399,7 +2477,8 @@ msgstr ""
 
 #: plugins/plugin_ssh.py
 #, python-format
-msgid "Migration done — moved: %d, skipped: %d, already managed: %d, errors: %d"
+msgid ""
+"Migration done — moved: %d, skipped: %d, already managed: %d, errors: %d"
 msgstr ""
 
 #: plugins/plugin_ssh.py
@@ -2422,7 +2501,9 @@ msgstr ""
 #, python-format
 msgid ""
 "Move all SSH hosts from gcm.conf to the SHARED file %s?\n"
-"This will be usable by every user of this machine and requires root privileges (a polkit prompt may appear). A timestamped backup of both files will be created."
+"This will be usable by every user of this machine and requires root "
+"privileges (a polkit prompt may appear). A timestamped backup of both files "
+"will be created."
 msgstr ""
 
 #: plugins/plugin_ssh.py
@@ -2440,7 +2521,9 @@ msgstr ""
 #, python-format
 msgid ""
 "Move host «%s» from gcm.conf to the SHARED file %s?\n"
-"This will be usable by every user of this machine and requires root privileges (a polkit prompt may appear). A timestamped backup of both files will be created."
+"This will be usable by every user of this machine and requires root "
+"privileges (a polkit prompt may appear). A timestamped backup of both files "
+"will be created."
 msgstr ""
 
 #: plugins/plugin_ssh.py
@@ -2459,7 +2542,8 @@ msgstr ""
 #, python-format
 msgid ""
 "Personal: only for you, ~/.ssh/config.\n"
-"Shared: visible and usable by every user of this machine (team bastion), %s — requires root privileges."
+"Shared: visible and usable by every user of this machine (team bastion), %s "
+"— requires root privileges."
 msgstr ""
 
 #: plugins/plugin_ssh.py
@@ -2555,13 +2639,15 @@ msgstr ""
 #: plugins/plugin_ssh.py
 msgid ""
 "ssh_config_editor module not found.\n"
-"Make sure ssh_config_editor.py and ssh_config_parser.py are in the same directory as gnome_connection_manager.py."
+"Make sure ssh_config_editor.py and ssh_config_parser.py are in the same "
+"directory as gnome_connection_manager.py."
 msgstr ""
 
 #: plugins/plugin_ssh.py
 msgid ""
 "ssh_key_manager_dialog module not found.\n"
-"Make sure ssh_key_manager_dialog.py is in the same directory as gnome_connection_manager.py."
+"Make sure ssh_key_manager_dialog.py is in the same directory as "
+"gnome_connection_manager.py."
 msgstr ""
 
 #: plugins/plugin_ssh.py
@@ -2616,7 +2702,9 @@ msgid "xfreerdp not found"
 msgstr "xfreerdp nem található"
 
 #: plugins/plugin_web.py
-msgid "BMC web console (iLO, iDRAC, IMM…) or any web interface (Proxmox, switch, TrueNAS…)"
+msgid ""
+"BMC web console (iLO, iDRAC, IMM…) or any web interface (Proxmox, switch, "
+"TrueNAS…)"
 msgstr ""
 
 #: plugins/plugin_web.py
@@ -2667,8 +2755,12 @@ msgid "{program} not found"
 msgstr "A(z) {program} nem található"
 
 #: src/gcm4/app.py
-msgid "The old configuration is intact: fix the problem (permissions, disk space), then start gcm4 again."
-msgstr "A régi beállítások érintetlenek: hárítsa el a hibát (jogosultságok, lemezterület), majd indítsa újra a gcm4-et."
+msgid ""
+"The old configuration is intact: fix the problem (permissions, disk space), "
+"then start gcm4 again."
+msgstr ""
+"A régi beállítások érintetlenek: hárítsa el a hibát (jogosultságok, "
+"lemezterület), majd indítsa újra a gcm4-et."
 
 #: src/gcm4/app.py
 #, python-brace-format
@@ -2681,8 +2773,10 @@ msgstr "Egy tárolt jelszó sérült."
 
 #: src/gcm4/core/chiffrement.py
 #, python-format
-msgid "The encryption key %s is missing: the stored passwords cannot be decrypted."
-msgstr "Hiányzik a(z) %s titkosítási kulcs: a tárolt jelszavak nem fejthetők vissza."
+msgid ""
+"The encryption key %s is missing: the stored passwords cannot be decrypted."
+msgstr ""
+"Hiányzik a(z) %s titkosítási kulcs: a tárolt jelszavak nem fejthetők vissza."
 
 #: src/gcm4/core/chiffrement.py
 #, python-format
@@ -2691,7 +2785,8 @@ msgstr "Nem hozható létre a(z) %s titkosítási kulcs: %s"
 
 #: src/gcm4/core/chiffrement.py
 msgid "Unable to decrypt the stored passwords: wrong or replaced .gcm4.key."
-msgstr "A tárolt jelszavak nem fejthetők vissza: a .gcm4.key hibás vagy lecserélték."
+msgstr ""
+"A tárolt jelszavak nem fejthetők vissza: a .gcm4.key hibás vagy lecserélték."
 
 #: src/gcm4/core/chiffrement.py
 #, python-format
@@ -2817,8 +2912,12 @@ msgstr "Nem valósítja meg: {methods}."
 
 #: src/gcm4/core/plugins.py
 #, python-brace-format
-msgid "It implements plugin API version {found}; this application supports version {expected}."
-msgstr "A bővítmény-API {found}. verzióját valósítja meg; ez az alkalmazás a(z) {expected}. verziót támogatja."
+msgid ""
+"It implements plugin API version {found}; this application supports version "
+"{expected}."
+msgstr ""
+"A bővítmény-API {found}. verzióját valósítja meg; ez az alkalmazás a(z) "
+"{expected}. verziót támogatja."
 
 #: src/gcm4/core/plugins.py
 msgid "It is not a connection plugin."
@@ -2885,8 +2984,12 @@ msgstr "A név nem tartalmazhat „/” karaktert."
 
 #: src/gcm4/ui/application.py
 #, python-brace-format
-msgid "gcm4 is already running with another configuration folder: close it to use {requested}."
-msgstr "A gcm4 már fut egy másik beállítási mappával: zárja be a(z) {requested} használatához."
+msgid ""
+"gcm4 is already running with another configuration folder: close it to use "
+"{requested}."
+msgstr ""
+"A gcm4 már fut egy másik beállítási mappával: zárja be a(z) {requested} "
+"használatához."
 
 #: src/gcm4/ui/contexte.py
 #, python-brace-format
@@ -2939,11 +3042,16 @@ msgstr "Új gép"
 
 #: src/gcm4/ui/host_dialog.py
 msgid "No extension handles this protocol: its options are kept."
-msgstr "Egyik bővítmény sem kezeli ezt a protokollt: a beállításai megmaradnak."
+msgstr ""
+"Egyik bővítmény sem kezeli ezt a protokollt: a beállításai megmaradnak."
 
 #: src/gcm4/ui/host_dialog.py
-msgid "No extension is installed for this protocol: its options are kept and cannot be modified."
-msgstr "Ehhez a protokollhoz nincs telepített bővítmény: beállításai megmaradnak, de nem módosíthatók."
+msgid ""
+"No extension is installed for this protocol: its options are kept and cannot "
+"be modified."
+msgstr ""
+"Ehhez a protokollhoz nincs telepített bővítmény: beállításai megmaradnak, de "
+"nem módosíthatók."
 
 #: src/gcm4/ui/host_dialog.py
 msgid "No extension is installed."
@@ -2959,8 +3067,14 @@ msgstr "Protokollbeállítások"
 
 #: src/gcm4/ui/host_dialog.py
 #, python-brace-format
-msgid "Shell command run locally, in the background, right after this connection ends, by the protocols that support it. Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
-msgstr "Helyben, a háttérben, közvetlenül a kapcsolat vége után futó parancs azoknál a protokolloknál, amelyek támogatják. Hagyja üresen a kikapcsoláshoz. Helyőrzők: {name} {address} {group} {protocol}"
+msgid ""
+"Shell command run locally, in the background, right after this connection "
+"ends, by the protocols that support it. Leave blank to disable. "
+"Placeholders: {name} {address} {group} {protocol}"
+msgstr ""
+"Helyben, a háttérben, közvetlenül a kapcsolat vége után futó parancs azoknál "
+"a protokolloknál, amelyek támogatják. Hagyja üresen a kikapcsoláshoz. "
+"Helyőrzők: {name} {address} {group} {protocol}"
 
 #: src/gcm4/ui/host_dialog.py
 msgid "The changes to this host have not been saved."
@@ -3011,8 +3125,12 @@ msgstr "A gépek és csoportok a bal oldali panelen jelennek meg."
 
 #: src/gcm4/ui/main_window.py
 #, python-brace-format
-msgid "No extension handles the protocol «{protocol}». Install it to open this connection."
-msgstr "Egyetlen bővítmény sem kezeli a(z) „{protocol}” protokollt. Telepítse a kapcsolat megnyitásához."
+msgid ""
+"No extension handles the protocol «{protocol}». Install it to open this "
+"connection."
+msgstr ""
+"Egyetlen bővítmény sem kezeli a(z) „{protocol}” protokollt. Telepítse a "
+"kapcsolat megnyitásához."
 
 #: src/gcm4/ui/main_window.py
 #, python-brace-format
@@ -3064,7 +3182,9 @@ msgstr "Csoport neve"
 
 #: src/gcm4/ui/menu_arbre.py
 #, python-brace-format
-msgid "It contains {hosts} host(s) and {groups} subgroup(s), which will be removed too."
+msgid ""
+"It contains {hosts} host(s) and {groups} subgroup(s), which will be removed "
+"too."
 msgstr "{hosts} gépet és {groups} alcsoportot tartalmaz, ezek is törlődnek."
 
 #: src/gcm4/ui/menu_arbre.py
@@ -3095,8 +3215,14 @@ msgid "Allow"
 msgstr "Engedélyezés"
 
 #: src/gcm4/ui/mises_a_jour.py
-msgid "At startup, Gnome Connection Manager can ask GitHub (api.github.com) whether a newer version has been published. You can change this later in the preferences."
-msgstr "Indításkor a Gnome Connection Manager megkérdezheti a GitHubot (api.github.com), hogy megjelent-e újabb verzió. Ezt később a beállításokban módosíthatja."
+msgid ""
+"At startup, Gnome Connection Manager can ask GitHub (api.github.com) whether "
+"a newer version has been published. You can change this later in the "
+"preferences."
+msgstr ""
+"Indításkor a Gnome Connection Manager megkérdezheti a GitHubot "
+"(api.github.com), hogy megjelent-e újabb verzió. Ezt később a beállításokban "
+"módosíthatja."
 
 #: src/gcm4/ui/mises_a_jour.py
 msgid "Check for updates?"
@@ -3318,7 +3444,9 @@ msgid "LogLevel"
 msgstr ""
 
 #: ssh_config_editor.py
-msgid "Multiple values possible: separate them with commas (one line per value in the file)"
+msgid ""
+"Multiple values possible: separate them with commas (one line per value in "
+"the file)"
 msgstr ""
 
 #: ssh_config_editor.py
@@ -3616,7 +3744,9 @@ msgid "CA signing failed: {err}"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
-msgid "CA signing timed out — CA key may require a passphrase (unsupported non-interactively)"
+msgid ""
+"CA signing timed out — CA key may require a passphrase (unsupported non-"
+"interactively)"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
@@ -3905,7 +4035,8 @@ msgid "No authorized_keys entry selected"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
-msgid "No candidate hosts found in ~/.ssh/config (and no GCM host list wired in)"
+msgid ""
+"No candidate hosts found in ~/.ssh/config (and no GCM host list wired in)"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
@@ -3993,7 +4124,8 @@ msgstr ""
 #, python-brace-format
 msgid ""
 "Permanently delete the CA key pair <b>{name}</b>?\n"
-"Certificates already signed by this CA will no longer be trustable to verify.\n"
+"Certificates already signed by this CA will no longer be trustable to "
+"verify.\n"
 "<b>This cannot be undone.</b>"
 msgstr ""
 
@@ -4224,7 +4356,9 @@ msgid "ssh-add failed: {err}"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
-msgid "ssh-add timed out — the key may require a passphrase (no terminal available here)"
+msgid ""
+"ssh-add timed out — the key may require a passphrase (no terminal available "
+"here)"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
@@ -4429,6 +4563,20 @@ msgstr "Felosztás V"
 msgid "Unsplit all consoles"
 msgstr "Az összes konzol felosztásának megszüntetése"
 
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Hosts exported: {count} ({file})"
+msgstr "Exportált gépek: {count} ({file})"
+
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid ""
+"Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, "
+"ignored {ignored}, new groups {groups}"
+msgstr ""
+"{file} importálása: hozzáadva {added}, lecserélve {replaced}, átnevezve "
+"{renamed}, kihagyva {ignored}, új csoportok {groups}"
+
 #~ msgid "Colors and Keys"
 #~ msgstr "Színek és billentyűk"
 
@@ -4444,7 +4592,8 @@ msgstr "Az összes konzol felosztásának megszüntetése"
 #~ "9: max"
 
 #~ msgid "Connect to selected host or all hosts in selected group"
-#~ msgstr "Csatlakozás a kijelölt hoszthoz vagy a kijelölt csoport összes hosztjához"
+#~ msgstr ""
+#~ "Csatlakozás a kijelölt hoszthoz vagy a kijelölt csoport összes hosztjához"
 
 #~ msgid "Create dynamic port forwarding"
 #~ msgstr "Dinamikus port továbbítás létrehozása"
