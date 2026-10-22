@@ -34,7 +34,8 @@ def main(argv: list[str] | None = None) -> int:
     # Journalisation configurée avant tout : niveau de GCM_LOG_LEVEL /
     # GCM_DEBUG, sans quoi loguru écrirait du DEBUG sur stderr par défaut.
     logging_config.configure_logging()
-    args = cli.parse_args(sys.argv[1:] if argv is None else argv)
+    argv = sys.argv[1:] if argv is None else argv
+    args = cli.parse_args(argv)
     i18n.install()
     # Avant le journal permanent (config_dir/log) : il créerait le dossier et
     # bloquerait la copie de ~/.gcm (#99).
@@ -80,6 +81,6 @@ def main(argv: list[str] | None = None) -> int:
         )
         logger.debug("main: sortie {} (GTK absent)", CODE_GTK_ABSENT)
         return CODE_GTK_ABSENT
-    code = application.run(args)
+    code = application.run(args, argv)
     logger.debug("main: sortie {}", code)
     return code

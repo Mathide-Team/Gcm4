@@ -306,7 +306,7 @@ jobs:
           DEBIAN_FRONTEND=noninteractive apt-get update -qq
           DEBIAN_FRONTEND=noninteractive apt-get install -y -qq \
             git ca-certificates python3 python3-venv python3-gi \
-            gir1.2-gtk-4.0 gir1.2-adw-1 gir1.2-vte-3.91 expect xvfb xauth
+            gir1.2-gtk-4.0 gir1.2-adw-1 gir1.2-vte-3.91 expect xvfb xauth dbus-daemon
 
       - name: Checkout du dépôt
         uses: actions/checkout@v7
@@ -453,8 +453,10 @@ jobs:
     steps:
       - name: Paquets Rocky 9 (GTK 4.12, libadwaita 1.4, python3-gobject)
         run: |
+          # dbus-daemon : bus privé du test de second lancement
+          # (tests/gtk4/test_deuxieme_lancement.py, fixture bus_prive).
           dnf -q -y install git python3 python3-gobject gtk4 libadwaita \
-            xorg-x11-server-Xvfb xorg-x11-xauth
+            xorg-x11-server-Xvfb xorg-x11-xauth dbus-daemon
           rpm -q --qf '- %{NAME} %{VERSION}-%{RELEASE}\n' python3 python3-gobject \
             gtk4 libadwaita | tee -a "$GITHUB_STEP_SUMMARY"
 

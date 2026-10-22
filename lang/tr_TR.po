@@ -2908,6 +2908,11 @@ msgstr "Bağlantı noktası {min} ile {max} arasında bir sayı olmalıdır."
 msgid "The name must not contain «/»."
 msgstr "Ad '/' içermemelidir."
 
+#: src/gcm4/ui/application.py
+#, python-brace-format
+msgid "gcm4 is already running with another configuration folder: close it to use {requested}."
+msgstr "gcm4 zaten başka bir yapılandırma klasörüyle çalışıyor: {requested} klasörünü kullanmak için kapatın."
+
 #: src/gcm4/ui/contexte.py
 #, python-brace-format
 msgid "Password for {target}"

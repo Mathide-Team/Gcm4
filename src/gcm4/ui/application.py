@@ -4,13 +4,15 @@ from __future__ import annotations
 
 import argparse
 import os
+import sys
 from collections.abc import Iterable
 
 from gi.repository import Adw, Gdk, Gio, GLib, Gtk
 from loguru import logger
 
+import logging_config
 from gcm4 import __version__
-from gcm4.core import chemins, theme
+from gcm4.core import chemins, cli, theme
 from gcm4.core import preferences as prefs_core
 from gcm4.core import raccourcis as raccourcis_core
 from gcm4.core.config import ConfigError
@@ -28,6 +30,13 @@ SITE = "https://github.com/Mathilde-Team/Gcm4"
 NOM_AFFICHE = "Gnome Connection Manager"
 #: Règles CSS encore utiles de l'ancienne interface (audit dans le fichier).
 STYLE_CSS = os.path.join(os.path.dirname(__file__), "style.css")
+#: Instance unique ; un deuxième lancement transmet sa ligne de commande, son
+#: dossier courant et son environnement à l'instance en cours (#275).
+DRAPEAUX = Gio.ApplicationFlags.HANDLES_COMMAND_LINE | Gio.ApplicationFlags.SEND_ENVIRONMENT
+#: Codes de sortie d'un deuxième lancement refusé par l'instance en cours :
+#: ligne de commande invalide, autre dossier de configuration (#275).
+CODE_REFUS = 2
+CODE_AUTRE_CONFIG = 5
 #: Icônes du dépôt (#155), utilisées quand gcm4 tourne depuis les sources ;
 #: une fois installées (#156, #157), le thème hicolor du système les fournit.
 ICONES_DEPOT = os.path.join(os.path.dirname(__file__), "..", "..", "..", "data", "icons")
@@ -47,7 +56,8 @@ class Gcm4Application(Adw.Application):
 
         Args:
             args: options de ``gcm4.core.cli`` (``config_dir``, ``debug``, ``hotes``).
-            flags: drapeaux ``Gio`` ; par défaut ``HANDLES_COMMAND_LINE``.
+            flags: drapeaux ``Gio`` ; par défaut ``HANDLES_COMMAND_LINE`` et
+                ``SEND_ENVIRONMENT`` (environnement d'un deuxième lancement, #275).
             candidats: plugins à charger ; par défaut, points d'entrée puis
                 dossier source (``gcm4.core.registre``). Les tests y passent
                 le plugin démo.
@@ -60,7 +70,7 @@ class Gcm4Application(Adw.Application):
         GLib.set_application_name(NOM_AFFICHE)
         super().__init__(
             application_id=APPLICATION_ID,
-            flags=Gio.ApplicationFlags.HANDLES_COMMAND_LINE if flags is None else flags,
+            flags=DRAPEAUX if flags is None else flags,
         )
         self.args = args
         self._candidats = None if candidats is None else list(candidats)
@@ -201,12 +211,80 @@ class Gcm4Application(Adw.Application):
         self._charger(self.css_couleurs, theme.colors_css(couleurs))
         logger.debug("set_group_colors: fait")
 
-    def _on_command_line(self, _app: Adw.Application, _ligne: Gio.ApplicationCommandLine) -> int:
-        """Ligne de commande (déjà analysée) : active la fenêtre, y compris d'une 2e instance."""
-        logger.debug("_on_command_line: entrée")
+    def _on_command_line(self, _app: Adw.Application, ligne: Gio.ApplicationCommandLine) -> int:
+        """Ligne de commande : premier lancement ou deuxième lancement transmis (#275).
+
+        Au premier lancement, ``self.args`` contient déjà les options
+        analysées par ``gcm4.app.main`` : la fenêtre est seulement activée.
+        Un deuxième lancement est analysé dans le contexte de son processus
+        (dossier courant, environnement) et appliqué à l'instance en cours :
+        ``--debug`` passe le journal au niveau DEBUG, ``groupe/nom``
+        sélectionne les hôtes. Un autre dossier de configuration est refusé
+        (``CODE_AUTRE_CONFIG``, message affiché par :func:`run`) plutôt
+        qu'ignoré.
+
+        Args:
+            _app (Adw.Application): L'application (``self``).
+            ligne (Gio.ApplicationCommandLine): Ligne de commande reçue.
+
+        Returns:
+            int: Code de sortie du lancement qui a transmis la ligne.
+        """
+        logger.debug("_on_command_line: entrée (distante={})", ligne.get_is_remote())
+        if not ligne.get_is_remote():
+            self.activate()
+            logger.debug("_on_command_line: sortie 0 (premier lancement)")
+            return 0
+        demande = self._analyser_ligne_distante(ligne)
+        if demande is None:
+            logger.debug("_on_command_line: sortie {} (ligne invalide)", CODE_REFUS)
+            return CODE_REFUS
+        if demande.config_dir != self.args.config_dir:
+            logger.warning(
+                "_on_command_line: dossier {} refusé, instance lancée avec {}",
+                demande.config_dir,
+                self.args.config_dir,
+            )
+            # Message écrit par le deuxième lancement (run) : printerr n'est
+            # pas accessible par introspection et printerr_literal date de GLib 2.80.
+            logger.debug("_on_command_line: sortie {} (autre configuration)", CODE_AUTRE_CONFIG)
+            return CODE_AUTRE_CONFIG
+        if demande.debug and not self.args.debug:
+            self.args.debug = True
+            logging_config.enable_debug(config_dir=self.args.config_dir)
+            logger.info("_on_command_line: mode debug activé par un deuxième lancement")
         self.activate()
-        logger.debug("_on_command_line: sortie 0")
+        principale = next((f for f in self.get_windows() if isinstance(f, MainWindow)), None)
+        if principale is not None:
+            principale.ouvrir_hotes(demande.hotes)
+        logger.debug("_on_command_line: sortie 0 ({} hôte(s))", len(demande.hotes))
         return 0
+
+    @staticmethod
+    def _analyser_ligne_distante(ligne: Gio.ApplicationCommandLine) -> argparse.Namespace | None:
+        """Options d'un deuxième lancement, analysées avec son dossier et son environnement.
+
+        Args:
+            ligne (Gio.ApplicationCommandLine): Ligne de commande transmise.
+
+        Returns:
+            argparse.Namespace | None: Options de ``gcm4.core.cli``, ``None``
+            si la ligne est refusée par l'analyseur (le deuxième lancement
+            l'a déjà validée : seul un appel D-Bus forgé y arrive).
+        """
+        logger.debug("_analyser_ligne_distante: entrée")
+        arguments = list(ligne.get_arguments() or [])[1:]
+        logger.debug("_analyser_ligne_distante: {} argument(s)", len(arguments))
+        environ = dict(v.partition("=")[::2] for v in (ligne.get_environ() or []))
+        try:
+            demande = cli.parse_args(
+                arguments, home=environ.get("HOME"), environ=environ, cwd=ligne.get_cwd()
+            )
+        except SystemExit:
+            logger.warning("_analyser_ligne_distante: ligne refusée {}", arguments)
+            return None
+        logger.debug("_analyser_ligne_distante: config_dir={}", demande.config_dir)
+        return demande
 
     def _on_activate(self, _app: Adw.Application) -> None:
         """Présente la fenêtre principale, créée au premier appel."""
@@ -280,9 +358,28 @@ class Gcm4Application(Adw.Application):
         logger.debug("_on_preferences: présentée")
 
 
-def run(args: argparse.Namespace) -> int:
-    """Exécute la boucle GTK ; les arguments sont déjà analysés (pas de reparse)."""
+def run(args: argparse.Namespace, argv: list[str] | None = None) -> int:
+    """Exécute la boucle GTK.
+
+    Args:
+        args (argparse.Namespace): Options déjà analysées (``gcm4.core.cli``).
+        argv (list[str] | None): Arguments bruts (sans ``argv[0]``), transmis
+            à l'instance en cours si gcm4 est déjà lancé (#275).
+
+    Returns:
+        int: Code de sortie du processus.
+    """
     logger.debug("run: entrée")
-    code = Gcm4Application(args).run([])
+    application = Gcm4Application(args)
+    code = application.run(["gcm4", *(argv or [])])
+    # Seul un deuxième lancement reçoit ce code (celui de l'instance en cours).
+    if code == CODE_AUTRE_CONFIG:
+        print(
+            _(
+                "gcm4 is already running with another configuration folder: "
+                "close it to use {requested}."
+            ).format(requested=args.config_dir),
+            file=sys.stderr,
+        )
     logger.debug("run: sortie {}", code)
     return int(code)
