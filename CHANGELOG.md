@@ -10,7 +10,7 @@
 > session par session, dans `claude.md` (journal) et `features.md` (§4.1).
 
 ### Added
-- **Seuil de couverture sur le total combiné, palier 1 vers 95 %** (#278, #293) : le job « Couverture combinée » (Qualité + GTK4) devient requis sur `dev` (`.github/branch-protection/dev.json`). Le seuil global n'est plus appliqué au job Qualité seul, qui passe `--cov-fail-under=0`, comme `make ci`. `fail_under` passe de 18 à 41 (mesure combinée du 22/10/2026 : 41,7 %). Le commentaire de couverture des PR précise son périmètre (sans `src/gcm4/ui/`) et ne compare plus ce total partiel au seuil.
+- **Journalisation SOCLE §8, lot 1** (#294) : logger loguru dans les 11 modules qui n'en avaient pas (`MODULES_SANS_LOGGER` vide). Les 6 nouveaux `*_core.py` se mettent en sourdine à l'import et sont ajoutés à `CORE_MODULES` (#130). 23 `except` hérités journalisent désormais le type et le message de l'exception (191 → 168) ; l'`except:` nu de `models.HostUtils.get_val` devient `except BaseException as exc:`, sémantique inchangée. Traces d'entrée et de sortie ajoutées dans ces modules : référence de l'audit 1042 → 970. Les valeurs ne sont journalisées que pour les modules sans données sensibles. Dans `pyAES.py`, seules les fonctions par opération ou par bloc sont tracées, pas les primitives de ronde.
 - **gcm4, base GTK4** (#126, réécriture, paquet `src/gcm4`) : commande `gcm4`
   et ligne de commande (#133) ; fenêtre GTK4/libadwaita, actions et À propos
   (#134) ; thème clair/sombre/système (#135) ; modèle Host/Group sans GTK
