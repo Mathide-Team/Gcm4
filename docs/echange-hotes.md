@@ -129,3 +129,28 @@ gcm4 -c /autre/dossier --export-json sauvegarde   # → sauvegarde.json
 - À l'import, `gcm4.conf` est réécrit (mots de passe chiffrés, copie
   `gcm4.conf.bak`). Ne pas importer pendant que l'interface tourne sur la
   même configuration : elle réécrirait le fichier avec son propre état.
+
+## Menu Fichier (interface)
+
+Issue #153 (`src/gcm4/ui/echange.py`, travail fait par
+`src/gcm4/core/exchange.py` et `src/gcm4/core/sauvegarde.py`) :
+
+- **Importer des serveurs** : choix d'un fichier `.json` ou `.csv`
+  (`Gtk.FileDialog`, `Gtk.FileChooserNative` avant GTK 4.10), puis un
+  aperçu : nombre d'hôtes du fichier et combien existent déjà, choix de la
+  stratégie (garder l'hôte existant, renommer l'hôte importé en `nom (2)`,
+  remplacer l'hôte existant) avec le bilan prévu mis à jour à chaque choix.
+  Un fichier contenant des mots de passe (en clair) affiche un
+  avertissement. « Importer » enregistre `gcm4.conf` (mots de passe
+  chiffrés), recharge l'arbre et affiche le bilan final ; « Annuler » ne
+  change rien. Fichier mal formé : message, aucun aperçu.
+- **Exporter des serveurs** : case « Inclure les mots de passe (en clair) »,
+  décochée par défaut ; cochée, un avertissement reste visible tant qu'elle
+  l'est. Le format suit l'extension du fichier choisi (`.json` ajouté sinon).
+- **Enregistrer la configuration sous…** : copie `gcm4.conf` et `.gcm4.key`
+  (la clé est nécessaire pour relire les mots de passe) dans le dossier
+  choisi, en `0600`. Rien n'est écrasé : un dossier qui contient déjà l'un
+  des deux fichiers, ou le dossier de configuration lui-même, est refusé.
+
+Importer et exporter sont désactivés quand `gcm4.conf` n'a pas pu être lu ;
+la copie reste possible pour sauvegarder le fichier avant de le réparer.

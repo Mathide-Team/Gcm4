@@ -5,6 +5,9 @@
 d'accueil. Taille et largeur du panneau restaurées depuis ``gcm4.conf`` et
 enregistrées à la fermeture.
 
+Menu Fichier (#153) : import/export des hôtes et copie de la configuration,
+dans :mod:`gcm4.ui.echange`.
+
 Connexions (#151) : ``win.connect-host`` demande au registre des plugins
 le plugin du protocole de l'hôte. Sans plugin, un message le dit ; sinon
 sa session devient un onglet, fermée par le bouton de l'onglet ou à la
@@ -33,6 +36,7 @@ from gcm4.core.plugins import Session
 from gcm4.core.registre import PluginRegistry
 from gcm4.core.replies import ecrire_replies
 from gcm4.ui import dialogues
+from gcm4.ui.echange import Echange
 from gcm4.ui.host_tree import HostTree
 
 LARGEUR_DEFAUT = 1000
@@ -162,6 +166,8 @@ class MainWindow(Adw.ApplicationWindow):
         recherche.connect("activate", self._on_search)
         recherche.set_enabled(self.arbre is not None)  # configuration illisible : rien à chercher
         self.add_action(recherche)
+        #: Fichier > importer, exporter, enregistrer la configuration sous (#153).
+        self.echange = Echange(self)
         for nom, sens in (
             ("previous-tab", comportement_onglets.PRECEDENT),
             ("next-tab", comportement_onglets.SUIVANT),

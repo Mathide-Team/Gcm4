@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-22 05:24+0000\n"
+"POT-Creation-Date: 2026-10-22 05:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,8 +138,8 @@ msgstr "쓰기용으로 로그 파일을 열 수 없습니다"
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
-#: src/gcm4/ui/host_dialog.py src/gcm4/ui/main_window.py
-#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: src/gcm4/ui/echange.py src/gcm4/ui/fichiers.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/main_window.py src/gcm4/ui/menu_arbre.py utils.py widgets.py
 msgid "Cancel"
 msgstr "취소"
 
@@ -159,8 +159,8 @@ msgstr "이전/다음 탭으로 이동할 때 탭을 순환"
 msgid "Clear selection"
 msgstr "선택 해제"
 
-#: gnome_connection_manager.py src/gcm4/ui/main_window.py ssh_config_editor.py
-#: ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/echange.py
+#: src/gcm4/ui/main_window.py ssh_config_editor.py ssh_key_manager_dialog.py
 msgid "Close"
 msgstr "닫기"
 
@@ -322,11 +322,9 @@ msgstr ""
 msgid "Export Servers"
 msgstr "서버 내보내기"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Export servers"
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/echange.py
 msgid "Export servers"
-msgstr "서버 _내보내기"
+msgstr "서버 내보내기"
 
 #: gnome_connection_manager.py plugins/plugin_export_csv.py
 msgid "Export to CSV"
@@ -421,11 +419,9 @@ msgstr "호스트 이름"
 msgid "Import Servers"
 msgstr "서버 가져오기"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Import servers"
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/echange.py
 msgid "Import servers"
-msgstr "서버 _가져오기"
+msgstr "서버 가져오기"
 
 #: gnome_connection_manager.py
 #, fuzzy
@@ -2713,15 +2709,10 @@ msgstr "설정 파일 %s을(를) 읽을 수 없습니다: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "설정 파일 %s에 쓸 수 없습니다: %s"
 
-#: src/gcm4/core/echange_cli.py
+#: src/gcm4/core/echange_cli.py src/gcm4/ui/echange.py
 #, python-brace-format
 msgid "Hosts exported: {count} ({file})"
 msgstr "내보낸 호스트: {count} ({file})"
-
-#: src/gcm4/core/echange_cli.py
-#, python-brace-format
-msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
-msgstr "{file} 가져오기: 추가 {added}, 교체 {replaced}, 이름 변경 {renamed}, 무시 {ignored}, 새 그룹 {groups}"
 
 #: src/gcm4/core/exchange.py
 #, python-format
@@ -2748,7 +2739,7 @@ msgstr "%s 파일은 올바른 호스트 내보내기가 아닙니다: %s"
 msgid "Unable to read the file %s: %s"
 msgstr "%s 파일을 읽을 수 없습니다: %s"
 
-#: src/gcm4/core/exchange.py
+#: src/gcm4/core/exchange.py src/gcm4/core/sauvegarde.py
 #, python-format
 msgid "Unable to write the file %s: %s"
 msgstr "%s 파일을 쓸 수 없습니다: %s"
@@ -2779,6 +2770,10 @@ msgstr "다음 탭"
 #: src/gcm4/core/menu.py
 msgid "Previous tab"
 msgstr "이전 탭"
+
+#: src/gcm4/core/menu.py src/gcm4/ui/echange.py
+msgid "Save configuration as…"
+msgstr "다른 이름으로 구성 저장…"
 
 #: src/gcm4/core/menu.py
 msgid "Search"
@@ -2871,6 +2866,25 @@ msgstr "'{protocol}' 프로토콜은 이미 '{other}'이(가) 처리합니다."
 msgid "{file} does not define PLUGIN."
 msgstr "{file}에 PLUGIN이 정의되어 있지 않습니다."
 
+#: src/gcm4/core/sauvegarde.py
+msgid "Choose a folder other than the configuration folder."
+msgstr "구성 폴더가 아닌 다른 폴더를 선택하세요."
+
+#: src/gcm4/core/sauvegarde.py
+#, python-brace-format
+msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
+msgstr "{file} 가져오기: 추가 {added}, 교체 {replaced}, 이름 변경 {renamed}, 무시 {ignored}, 새 그룹 {groups}"
+
+#: src/gcm4/core/sauvegarde.py
+#, python-format
+msgid "No configuration to save yet: %s"
+msgstr "아직 저장할 구성이 없습니다: %s"
+
+#: src/gcm4/core/sauvegarde.py
+#, python-brace-format
+msgid "{folder} already contains {file}."
+msgstr "{folder}에 이미 {file}이(가) 있습니다."
+
 #: src/gcm4/core/validation.py
 #, python-brace-format
 msgid "A host named «{name}» already exists in this group."
@@ -2897,6 +2911,56 @@ msgstr "이름에 '/'를 사용할 수 없습니다."
 #, python-brace-format
 msgid "Password for {target}"
 msgstr "{target}의 비밀번호"
+
+#: src/gcm4/ui/echange.py
+#, python-brace-format
+msgid "Configuration saved to {folder}"
+msgstr "구성을 {folder}에 저장했습니다"
+
+#: src/gcm4/ui/echange.py
+msgid "Export"
+msgstr "내보내기"
+
+#: src/gcm4/ui/echange.py
+#, python-brace-format
+msgid "Hosts in {file}: {count}, already present: {existing}"
+msgstr "{file}의 호스트: {count}, 이미 있음: {existing}"
+
+#: src/gcm4/ui/echange.py
+msgid "If a host already exists:"
+msgstr "호스트가 이미 있으면:"
+
+#: src/gcm4/ui/echange.py
+msgid "Import"
+msgstr "가져오기"
+
+#: src/gcm4/ui/echange.py
+msgid "Include passwords (in clear text)"
+msgstr "암호 포함 (평문)"
+
+#: src/gcm4/ui/echange.py
+msgid "JSON or CSV file, chosen by its extension."
+msgstr "JSON 또는 CSV 파일 (확장자로 결정)."
+
+#: src/gcm4/ui/echange.py
+msgid "Keep the existing host"
+msgstr "기존 호스트 유지"
+
+#: src/gcm4/ui/echange.py
+msgid "Passwords will be written in clear text: keep this file safe."
+msgstr "암호가 평문으로 기록됩니다: 이 파일을 안전하게 보관하세요."
+
+#: src/gcm4/ui/echange.py
+msgid "Rename the imported host"
+msgstr "가져온 호스트 이름 변경"
+
+#: src/gcm4/ui/echange.py
+msgid "Replace the existing host"
+msgstr "기존 호스트 교체"
+
+#: src/gcm4/ui/echange.py
+msgid "This file contains passwords in clear text."
+msgstr "이 파일에는 평문 암호가 들어 있습니다."
 
 #: src/gcm4/ui/host_dialog.py
 msgid "Background color"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-22 05:24+0000\n"
+"POT-Creation-Date: 2026-10-22 05:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,8 +138,8 @@ msgstr "Protokolldatei kann nicht zum Schreiben geöffnet werden"
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
-#: src/gcm4/ui/host_dialog.py src/gcm4/ui/main_window.py
-#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: src/gcm4/ui/echange.py src/gcm4/ui/fichiers.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/main_window.py src/gcm4/ui/menu_arbre.py utils.py widgets.py
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -159,8 +159,8 @@ msgstr "Beim Wechsel zum vorherigen/nächsten Tab zyklisch durchlaufen"
 msgid "Clear selection"
 msgstr "Auswahl löschen"
 
-#: gnome_connection_manager.py src/gcm4/ui/main_window.py ssh_config_editor.py
-#: ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/echange.py
+#: src/gcm4/ui/main_window.py ssh_config_editor.py ssh_key_manager_dialog.py
 msgid "Close"
 msgstr "Schließen"
 
@@ -322,11 +322,9 @@ msgstr ""
 msgid "Export Servers"
 msgstr "Server exportieren"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Export servers"
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/echange.py
 msgid "Export servers"
-msgstr "Server e_xportieren"
+msgstr "Server exportieren"
 
 #: gnome_connection_manager.py plugins/plugin_export_csv.py
 msgid "Export to CSV"
@@ -421,11 +419,9 @@ msgstr "Hostname"
 msgid "Import Servers"
 msgstr "Server importieren"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Import servers"
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/echange.py
 msgid "Import servers"
-msgstr "Server _importieren"
+msgstr "Server importieren"
 
 #: gnome_connection_manager.py
 #, fuzzy
@@ -2713,15 +2709,10 @@ msgstr "Die Konfigurationsdatei %s kann nicht gelesen werden: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Die Konfigurationsdatei %s kann nicht geschrieben werden: %s"
 
-#: src/gcm4/core/echange_cli.py
+#: src/gcm4/core/echange_cli.py src/gcm4/ui/echange.py
 #, python-brace-format
 msgid "Hosts exported: {count} ({file})"
 msgstr "Exportierte Hosts: {count} ({file})"
-
-#: src/gcm4/core/echange_cli.py
-#, python-brace-format
-msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
-msgstr "Import von {file}: hinzugefügt {added}, ersetzt {replaced}, umbenannt {renamed}, ignoriert {ignored}, neue Gruppen {groups}"
 
 #: src/gcm4/core/exchange.py
 #, python-format
@@ -2748,7 +2739,7 @@ msgstr "Die Datei %s ist kein gültiger Host-Export: %s"
 msgid "Unable to read the file %s: %s"
 msgstr "Die Datei %s kann nicht gelesen werden: %s"
 
-#: src/gcm4/core/exchange.py
+#: src/gcm4/core/exchange.py src/gcm4/core/sauvegarde.py
 #, python-format
 msgid "Unable to write the file %s: %s"
 msgstr "Die Datei %s kann nicht geschrieben werden: %s"
@@ -2779,6 +2770,10 @@ msgstr "Nächster Reiter"
 #: src/gcm4/core/menu.py
 msgid "Previous tab"
 msgstr "Vorheriger Reiter"
+
+#: src/gcm4/core/menu.py src/gcm4/ui/echange.py
+msgid "Save configuration as…"
+msgstr "Konfiguration speichern unter…"
 
 #: src/gcm4/core/menu.py
 msgid "Search"
@@ -2871,6 +2866,25 @@ msgstr "Das Protokoll „{protocol}“ wird bereits von „{other}“ verarbeite
 msgid "{file} does not define PLUGIN."
 msgstr "{file} definiert PLUGIN nicht."
 
+#: src/gcm4/core/sauvegarde.py
+msgid "Choose a folder other than the configuration folder."
+msgstr "Wählen Sie einen anderen Ordner als den Konfigurationsordner."
+
+#: src/gcm4/core/sauvegarde.py
+#, python-brace-format
+msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
+msgstr "Import von {file}: hinzugefügt {added}, ersetzt {replaced}, umbenannt {renamed}, ignoriert {ignored}, neue Gruppen {groups}"
+
+#: src/gcm4/core/sauvegarde.py
+#, python-format
+msgid "No configuration to save yet: %s"
+msgstr "Noch keine Konfiguration zum Speichern: %s"
+
+#: src/gcm4/core/sauvegarde.py
+#, python-brace-format
+msgid "{folder} already contains {file}."
+msgstr "{folder} enthält bereits {file}."
+
 #: src/gcm4/core/validation.py
 #, python-brace-format
 msgid "A host named «{name}» already exists in this group."
@@ -2897,6 +2911,56 @@ msgstr "Der Name darf kein „/“ enthalten."
 #, python-brace-format
 msgid "Password for {target}"
 msgstr "Passwort für {target}"
+
+#: src/gcm4/ui/echange.py
+#, python-brace-format
+msgid "Configuration saved to {folder}"
+msgstr "Konfiguration gespeichert in {folder}"
+
+#: src/gcm4/ui/echange.py
+msgid "Export"
+msgstr "Exportieren"
+
+#: src/gcm4/ui/echange.py
+#, python-brace-format
+msgid "Hosts in {file}: {count}, already present: {existing}"
+msgstr "Hosts in {file}: {count}, bereits vorhanden: {existing}"
+
+#: src/gcm4/ui/echange.py
+msgid "If a host already exists:"
+msgstr "Wenn ein Host bereits existiert:"
+
+#: src/gcm4/ui/echange.py
+msgid "Import"
+msgstr "Importieren"
+
+#: src/gcm4/ui/echange.py
+msgid "Include passwords (in clear text)"
+msgstr "Passwörter einschließen (im Klartext)"
+
+#: src/gcm4/ui/echange.py
+msgid "JSON or CSV file, chosen by its extension."
+msgstr "JSON- oder CSV-Datei, nach Dateiendung gewählt."
+
+#: src/gcm4/ui/echange.py
+msgid "Keep the existing host"
+msgstr "Vorhandenen Host behalten"
+
+#: src/gcm4/ui/echange.py
+msgid "Passwords will be written in clear text: keep this file safe."
+msgstr "Passwörter werden im Klartext geschrieben: Datei sicher aufbewahren."
+
+#: src/gcm4/ui/echange.py
+msgid "Rename the imported host"
+msgstr "Importierten Host umbenennen"
+
+#: src/gcm4/ui/echange.py
+msgid "Replace the existing host"
+msgstr "Vorhandenen Host ersetzen"
+
+#: src/gcm4/ui/echange.py
+msgid "This file contains passwords in clear text."
+msgstr "Diese Datei enthält Passwörter im Klartext."
 
 #: src/gcm4/ui/host_dialog.py
 msgid "Background color"
