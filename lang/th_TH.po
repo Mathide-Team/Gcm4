@@ -2765,6 +2765,16 @@ msgstr "ไม่สามารถอ่านไฟล์การตั้ง
 msgid "Unable to write the configuration file %s: %s"
 msgstr "ไม่สามารถเขียนไฟล์การตั้งค่า %s: %s"
 
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Hosts exported: {count} ({file})"
+msgstr "โฮสต์ที่ส่งออก: {count} ({file})"
+
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
+msgstr "นำเข้า {file}: เพิ่ม {added}, แทนที่ {replaced}, เปลี่ยนชื่อ {renamed}, ข้าม {ignored}, กลุ่มใหม่ {groups}"
+
 #: src/gcm4/core/exchange.py
 #, python-format
 msgid "%s: the host name is missing"

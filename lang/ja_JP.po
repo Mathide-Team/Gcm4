@@ -2765,6 +2765,16 @@ msgstr "設定ファイル %s を読み込めません: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "設定ファイル %s に書き込めません: %s"
 
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Hosts exported: {count} ({file})"
+msgstr "エクスポートしたホスト: {count} ({file})"
+
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
+msgstr "{file} のインポート: 追加 {added}、置換 {replaced}、名前変更 {renamed}、無視 {ignored}、新しいグループ {groups}"
+
 #: src/gcm4/core/exchange.py
 #, python-format
 msgid "%s: the host name is missing"

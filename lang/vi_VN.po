@@ -2765,6 +2765,16 @@ msgstr "Không thể đọc tệp cấu hình %s: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Không thể ghi tệp cấu hình %s: %s"
 
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Hosts exported: {count} ({file})"
+msgstr "Máy chủ đã xuất: {count} ({file})"
+
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
+msgstr "Nhập {file}: thêm {added}, thay thế {replaced}, đổi tên {renamed}, bỏ qua {ignored}, nhóm mới {groups}"
+
 #: src/gcm4/core/exchange.py
 #, python-format
 msgid "%s: the host name is missing"

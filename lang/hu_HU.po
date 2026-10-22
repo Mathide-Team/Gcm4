@@ -2765,6 +2765,16 @@ msgstr "Nem olvasható a(z) %s beállítófájl: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Nem írható a(z) %s beállítófájl: %s"
 
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Hosts exported: {count} ({file})"
+msgstr "Exportált gépek: {count} ({file})"
+
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
+msgstr "{file} importálása: hozzáadva {added}, lecserélve {replaced}, átnevezve {renamed}, kihagyva {ignored}, új csoportok {groups}"
+
 #: src/gcm4/core/exchange.py
 #, python-format
 msgid "%s: the host name is missing"

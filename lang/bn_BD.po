@@ -2765,6 +2765,16 @@ msgstr "কনফিগারেশন ফাইল %s পড়া যায়
 msgid "Unable to write the configuration file %s: %s"
 msgstr "কনফিগারেশন ফাইল %s লেখা যায়নি: %s"
 
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Hosts exported: {count} ({file})"
+msgstr "রপ্তানি করা হোস্ট: {count} ({file})"
+
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
+msgstr "{file} আমদানি: যোগ {added}, প্রতিস্থাপিত {replaced}, নাম বদল {renamed}, উপেক্ষিত {ignored}, নতুন গ্রুপ {groups}"
+
 #: src/gcm4/core/exchange.py
 #, python-format
 msgid "%s: the host name is missing"

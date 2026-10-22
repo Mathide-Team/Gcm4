@@ -2765,6 +2765,16 @@ msgstr "Δεν είναι δυνατή η ανάγνωση του αρχείου
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Δεν είναι δυνατή η εγγραφή του αρχείου ρυθμίσεων %s: %s"
 
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Hosts exported: {count} ({file})"
+msgstr "Κεντρικοί υπολογιστές που εξήχθησαν: {count} ({file})"
+
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
+msgstr "Εισαγωγή του {file}: προστέθηκαν {added}, αντικαταστάθηκαν {replaced}, μετονομάστηκαν {renamed}, αγνοήθηκαν {ignored}, νέες ομάδες {groups}"
+
 #: src/gcm4/core/exchange.py
 #, python-format
 msgid "%s: the host name is missing"

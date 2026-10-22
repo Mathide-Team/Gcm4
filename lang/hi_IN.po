@@ -2765,6 +2765,16 @@ msgstr "कॉन्फ़िगरेशन फ़ाइल %s पढ़ी न
 msgid "Unable to write the configuration file %s: %s"
 msgstr "कॉन्फ़िगरेशन फ़ाइल %s लिखी नहीं जा सकी: %s"
 
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Hosts exported: {count} ({file})"
+msgstr "निर्यात किए गए होस्ट: {count} ({file})"
+
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
+msgstr "{file} का आयात: जोड़े गए {added}, बदले गए {replaced}, नाम बदले गए {renamed}, छोड़े गए {ignored}, नए समूह {groups}"
+
 #: src/gcm4/core/exchange.py
 #, python-format
 msgid "%s: the host name is missing"

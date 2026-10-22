@@ -2765,6 +2765,16 @@ msgstr "Nie można odczytać pliku konfiguracyjnego %s: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Nie można zapisać pliku konfiguracyjnego %s: %s"
 
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Hosts exported: {count} ({file})"
+msgstr "Wyeksportowane hosty: {count} ({file})"
+
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
+msgstr "Import {file}: dodano {added}, zastąpiono {replaced}, zmieniono nazwę {renamed}, pominięto {ignored}, nowe grupy {groups}"
+
 #: src/gcm4/core/exchange.py
 #, python-format
 msgid "%s: the host name is missing"

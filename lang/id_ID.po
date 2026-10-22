@@ -2765,6 +2765,16 @@ msgstr "Tidak dapat membaca berkas konfigurasi %s: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Tidak dapat menulis berkas konfigurasi %s: %s"
 
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Hosts exported: {count} ({file})"
+msgstr "Host yang diekspor: {count} ({file})"
+
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
+msgstr "Impor {file}: ditambah {added}, diganti {replaced}, diubah nama {renamed}, diabaikan {ignored}, grup baru {groups}"
+
 #: src/gcm4/core/exchange.py
 #, python-format
 msgid "%s: the host name is missing"

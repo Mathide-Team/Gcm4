@@ -2765,6 +2765,16 @@ msgstr "Kan het configuratiebestand %s niet lezen: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Kan het configuratiebestand %s niet schrijven: %s"
 
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Hosts exported: {count} ({file})"
+msgstr "Geëxporteerde hosts: {count} ({file})"
+
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
+msgstr "Import van {file}: toegevoegd {added}, vervangen {replaced}, hernoemd {renamed}, genegeerd {ignored}, nieuwe groepen {groups}"
+
 #: src/gcm4/core/exchange.py
 #, python-format
 msgid "%s: the host name is missing"

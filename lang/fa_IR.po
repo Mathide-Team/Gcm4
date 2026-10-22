@@ -2765,6 +2765,16 @@ msgstr "خواندن فایل پیکربندی %s ممکن نیست: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "نوشتن فایل پیکربندی %s ممکن نیست: %s"
 
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Hosts exported: {count} ({file})"
+msgstr "میزبان‌های برون‌بری‌شده: {count} ({file})"
+
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
+msgstr "درون‌بری {file}: افزوده {added}، جایگزین {replaced}، تغییر نام {renamed}، نادیده {ignored}، گروه‌های جدید {groups}"
+
 #: src/gcm4/core/exchange.py
 #, python-format
 msgid "%s: the host name is missing"

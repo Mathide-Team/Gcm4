@@ -17,9 +17,72 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: gnome_connection_manager.py data/io.github.MathildeDec.gcm4.desktop
-#: data/io.github.MathildeDec.gcm4.metainfo.xml
+#: data/io.github.MathildeDec.gcm4.desktop
+msgid "Connection Manager"
+msgstr ""
+
+#: data/io.github.MathildeDec.gcm4.desktop
+#: data/io.github.MathildeDec.gcm4.metainfo.xml gnome_connection_manager.py
 msgid "Gnome Connection Manager"
+msgstr ""
+
+#: data/io.github.MathildeDec.gcm4.desktop
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Organize your hosts and open their connections in tabs"
+msgstr ""
+
+#: data/io.github.MathildeDec.gcm4.desktop
+msgid "connection;remote;host;session;terminal;gcm4;"
+msgstr ""
+
+#: data/io.github.MathildeDec.gcm4.desktop
+msgid "gcm4 (debug mode)"
+msgstr ""
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Connection protocols provided by plugins"
+msgstr ""
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml gnome_connection_manager.py
+#: src/gcm4/ui/host_dialog.py
+msgid "Edit Host"
+msgstr ""
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Gnome Connection Manager keeps your hosts in groups and opens each connection in a tab of a single window."
+msgstr ""
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Groups and hosts in a searchable tree, with colors and drag and drop"
+msgstr ""
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Groups and hosts in the main window"
+msgstr ""
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Host passwords stored encrypted"
+msgstr ""
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Last release of the GTK3 application; the GTK4 base is not released yet."
+msgstr ""
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "Open tabs restored at the next start"
+msgstr ""
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml gnome_connection_manager.py
+#: src/gcm4/core/menu.py src/gcm4/ui/preferences.py
+msgid "Settings"
+msgstr ""
+
+#: data/io.github.MathildeDec.gcm4.metainfo.xml
+msgid "The base application provides no protocol by itself: connections need the corresponding plugin."
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "+ Add"
 msgstr ""
 
 #: gnome_connection_manager.py
@@ -30,208 +93,13 @@ msgid ""
 msgstr ""
 
 #: gnome_connection_manager.py
-msgid "Template name"
+msgid "<span size=\"smaller\">CTRL+UP/CTRL+DOWN for history</span>"
 msgstr ""
 
-#: gnome_connection_manager.py plugins/plugin_serial.py
-msgid "Baud rate"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Flow"
-msgstr ""
-
-#: gnome_connection_manager.py plugins/plugin_serial.py
-msgid "Parity"
-msgstr ""
-
-#: gnome_connection_manager.py plugins/plugin_serial.py
-msgid "Data bits"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Stop"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "+ Add"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "− Remove"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Restore defaults"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Serial Templates"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "New template"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/ui/main_window.py
-msgid "Menu"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Previous match"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Next match"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "search..."
-msgstr ""
-
-#: gnome_connection_manager.py widgets.py
-msgid "Rename tab"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Enter new name"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Continuous log mode is active and cannot be disabled per tab."
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Save buffer as"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Import servers"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Imports"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Export servers"
-msgstr ""
-
-#: gnome_connection_manager.py plugins/plugin_export_csv.py
-msgid "Export to CSV…"
-msgstr ""
-
-#: gnome_connection_manager.py plugins/plugin_export_json.py
-msgid "Export to JSON…"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Exports"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/main_window.py
-msgid "Quit"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/core/menu.py
-msgid "File"
-msgstr ""
-
-#: gnome_connection_manager.py widgets.py
-msgid "Copy"
-msgstr ""
-
-#: gnome_connection_manager.py widgets.py
-msgid "Paste"
-msgstr ""
-
-#: gnome_connection_manager.py widgets.py
-msgid "Copy and Paste"
-msgstr ""
-
-#: gnome_connection_manager.py widgets.py
-msgid "Select all"
-msgstr ""
-
-#: gnome_connection_manager.py widgets.py
-msgid "Copy all"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Custom commands…"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
-#: data/io.github.MathildeDec.gcm4.metainfo.xml
-msgid "Settings"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/core/menu.py
-#: src/gcm4/core/menu_arbre.py widgets.py
-msgid "Edit"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
-msgid "Show Panel"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/core/menu.py
-msgid "View"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Cluster…"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Open Workspace"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/core/menu.py
-msgid "About"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/core/menu.py
-msgid "Help"
-msgstr ""
-
-#: gnome_connection_manager.py plugins/plugin_export_csv.py
-msgid "Export to CSV"
-msgstr ""
-
-#: gnome_connection_manager.py
-#, python-brace-format
-msgid "CSV export error: {e}"
-msgstr ""
-
-#: gnome_connection_manager.py
-#, python-brace-format
-msgid "{count} connection(s) exported to {filename}."
-msgstr ""
-
-#: gnome_connection_manager.py plugins/plugin_export_json.py
-msgid "Export to JSON"
-msgstr ""
-
-#: gnome_connection_manager.py
-#, python-brace-format
-msgid "JSON export error: {e}"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Can't open log file for writting"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Error connecting to server"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Servers"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Invalid entry in configuration file"
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
+msgid ""
+"<span size='smaller'>Use ##D=milliseconds to add a delay.\n"
+"Ex: ##D=1000</span>"
 msgstr ""
 
 #: gnome_connection_manager.py
@@ -240,7 +108,88 @@ msgid "A group named '{src_leaf}' already exists in '{dest_full}'."
 msgstr ""
 
 #: gnome_connection_manager.py
-msgid "Save as"
+msgid "A new version is available: https://github.com/MathildeDec/gnome-connection-manager/releases"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/ui/application.py
+msgid "A simple ssh connection manager for gnome"
+msgstr ""
+
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
+msgid "ASCII Backspace \t[Ctrl+H 0x08]"
+msgstr ""
+
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
+msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/core/menu.py
+msgid "About"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Action"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Activate"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/core/menu_arbre.py widgets.py
+msgid "Add Host"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+msgid "After disconnecting"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+msgid "Always"
+msgstr ""
+
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
+msgid "Automatic"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Background color:"
+msgstr ""
+
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
+msgid "Backspace:"
+msgstr ""
+
+#: gnome_connection_manager.py plugins/plugin_serial.py
+msgid "Baud rate"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+msgid "Before connecting"
+msgstr ""
+
+#: gnome_connection_manager.py ssh_config_editor.py
+msgid "Browse existing SSH keys in ~/.ssh/"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Browse filesystem for a private key file"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Buffer size"
+msgstr ""
+
+#: gnome_connection_manager.py
+#, python-brace-format
+msgid "CSV export error: {e}"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Can't open file for writting"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Can't open log file for writting"
 msgstr ""
 
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
@@ -252,25 +201,151 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py utils.py
-msgid "Save"
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
+msgid "Check updates"
 msgstr ""
 
 #: gnome_connection_manager.py
-msgid "Can't open file for writting"
+msgid "Choose Group Color"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
+msgid "Circle around tabs when going to the previous/next tab"
 msgstr ""
 
 #: gnome_connection_manager.py
-msgid "There are"
+msgid "Clear selection"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/ui/main_window.py ssh_config_editor.py
+#: ssh_key_manager_dialog.py
+msgid "Close"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/main_window.py widgets.py
+msgid "Close console"
 msgstr ""
 
 #: gnome_connection_manager.py
-msgid "open consoles, exit anyway?"
+msgid "Cluster"
 msgstr ""
 
-#: gnome_connection_manager.py plugins/plugin_import_putty.py
-#: src/gcm4/ui/mises_a_jour.py src/gcm4/ui/preferences.py utils.py
-msgid "Open"
+#: gnome_connection_manager.py
+msgid "Cluster…"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Colors"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Command"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
+msgid "Confirm on close console"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
+msgid "Confirm on close console with middle click"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
+msgid "Confirm on exit"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Continuous VTE tab logging mode"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Continuous log mode is active and cannot be disabled per tab."
+msgstr ""
+
+#: gnome_connection_manager.py widgets.py
+msgid "Copy"
+msgstr ""
+
+#: gnome_connection_manager.py widgets.py
+msgid "Copy all"
+msgstr ""
+
+#: gnome_connection_manager.py widgets.py
+msgid "Copy and Paste"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Copy selection to clipboard"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Custom Commands"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Custom commands…"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
+msgid "Dark"
+msgstr ""
+
+#: gnome_connection_manager.py plugins/plugin_serial.py
+msgid "Data bits"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+msgid "Default colors"
+msgstr ""
+
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
+msgid "Delete Sequence \t[@7]"
+msgstr ""
+
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
+msgid "Delete:"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+msgid "Description"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
+msgid "Disable alternating stripes in hosts window"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Disable desktop notifications when a terminal disconnects"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Disable keyboard shortcuts in terminals (pass every key through)"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Do you really want to remove all hosts in group"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Do you really want to remove host"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
+msgid "Dynamic title"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/core/menu.py
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Edit"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Enable Logging"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Enter new name"
 msgstr ""
 
 #: gnome_connection_manager.py
@@ -278,47 +353,81 @@ msgid "Enter password"
 msgstr ""
 
 #: gnome_connection_manager.py
-msgid "Import Servers"
+msgid "Enter the text to send to consoles: "
 msgstr ""
 
 #: gnome_connection_manager.py
-msgid "Invalid password"
+msgid "Error connecting to server"
 msgstr ""
 
 #: gnome_connection_manager.py
-msgid "Server list will be overwritten, continue?"
+msgid "Error saving host. Description"
 msgstr ""
 
 #: gnome_connection_manager.py
-msgid "Invalid file"
+msgid "Execute"
 msgstr ""
 
 #: gnome_connection_manager.py
 msgid "Export Servers"
 msgstr ""
 
-#: gnome_connection_manager.py src/gcm4/core/menu_arbre.py widgets.py
-msgid "Add Host"
+#: gnome_connection_manager.py
+msgid "Export servers"
+msgstr ""
+
+#: gnome_connection_manager.py plugins/plugin_export_csv.py
+msgid "Export to CSV"
+msgstr ""
+
+#: gnome_connection_manager.py plugins/plugin_export_csv.py
+msgid "Export to CSV…"
+msgstr ""
+
+#: gnome_connection_manager.py plugins/plugin_export_json.py
+msgid "Export to JSON"
+msgstr ""
+
+#: gnome_connection_manager.py plugins/plugin_export_json.py
+msgid "Export to JSON…"
 msgstr ""
 
 #: gnome_connection_manager.py
-msgid "Group name:"
+msgid "Exports"
 msgstr ""
 
 #: gnome_connection_manager.py
-msgid "New host"
+msgid "Fields group, name and host are required"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/core/menu.py
+msgid "File"
 msgstr ""
 
 #: gnome_connection_manager.py
-msgid "Do you really want to remove host"
+msgid "Flow"
 msgstr ""
 
 #: gnome_connection_manager.py
-msgid "Do you really want to remove all hosts in group"
+msgid "Font:"
 msgstr ""
 
-#: gnome_connection_manager.py src/gcm4/ui/menu_arbre.py
-msgid "New Group"
+#: gnome_connection_manager.py
+msgid "Foreground color:"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "GTK Theme:"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
+msgid "General"
+msgstr ""
+
+#: gnome_connection_manager.py plugins/plugin_import_libvirt.py
+#: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
+#: plugins/plugin_import_virtualbox.py src/gcm4/ui/host_dialog.py
+msgid "Group"
 msgstr ""
 
 #: gnome_connection_manager.py
@@ -327,20 +436,70 @@ msgid "Group '{full_name}' already exists."
 msgstr ""
 
 #: gnome_connection_manager.py
-msgid "New name:"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/ui/menu_arbre.py
-msgid "Rename Group"
-msgstr ""
-
-#: gnome_connection_manager.py
 #, python-brace-format
 msgid "Group '{new_full}' already exists."
 msgstr ""
 
 #: gnome_connection_manager.py
-msgid "Choose Group Color"
+msgid "Group name:"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/core/menu.py
+msgid "Help"
+msgstr ""
+
+#: gnome_connection_manager.py plugins/plugin_ssh.py src/gcm4/ui/host_dialog.py
+#: ssh_config_editor.py ssh_key_manager_dialog.py
+msgid "Host"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Host name"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Import Servers"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Import servers"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Imports"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+msgid "Include this host in the workspace (Tools > Open Workspace)"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Invalid entry in configuration file"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Invalid file"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Invalid password"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Invalid port"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Invert selection"
+msgstr ""
+
+#: gnome_connection_manager.py
+#, python-brace-format
+msgid "JSON export error: {e}"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Key sequences"
 msgstr ""
 
 #: gnome_connection_manager.py
@@ -351,6 +510,316 @@ msgid ""
 "Cause : {error}\n"
 "\n"
 "Détails complets dans le journal de l'application."
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+msgid "Leave blank for passwordless/public key authentication"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
+msgid "Light"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Log local console sessions"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Logs path"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/ui/main_window.py
+msgid "Menu"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+#: ssh_key_manager_dialog.py
+msgid "Name"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+msgid "Never"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/ui/menu_arbre.py
+msgid "New Group"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "New host"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "New name:"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "New template"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Next match"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "No hosts in the workspace yet — check \"Workspace\" in Edit Host to add one"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "No open consoles"
+msgstr ""
+
+#: gnome_connection_manager.py plugins/plugin_netmiko_push.py
+#: plugins/plugin_snmp_push.py plugins/plugin_spice.py widgets.py
+msgid "OK"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+msgid "Only on clean exit"
+msgstr ""
+
+#: gnome_connection_manager.py plugins/plugin_import_putty.py
+#: src/gcm4/ui/mises_a_jour.py src/gcm4/ui/preferences.py utils.py
+msgid "Open"
+msgstr ""
+
+#: gnome_connection_manager.py ssh_config_editor.py
+msgid "Open SSH Key Manager (generate / import / delete)"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Open Workspace"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Open local console on startup"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Overrides the global \"Close console\" preference for this host only"
+msgstr ""
+
+#: gnome_connection_manager.py plugins/plugin_serial.py
+msgid "Parity"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/ui/contexte.py
+#: src/gcm4/ui/host_dialog.py
+msgid "Password"
+msgstr ""
+
+#: gnome_connection_manager.py widgets.py
+msgid "Paste"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Paste on right click"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py ssh_config_editor.py
+msgid "Port"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Previous match"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Private key"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Project's Homepage"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/main_window.py
+msgid "Quit"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/ui/menu_arbre.py
+msgid "Rename Group"
+msgstr ""
+
+#: gnome_connection_manager.py widgets.py
+msgid "Rename tab"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Restore defaults"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
+msgid "Restore open tabs from the previous session on startup"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py utils.py
+msgid "Save"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Save as"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Save buffer as"
+msgstr ""
+
+#: gnome_connection_manager.py widgets.py
+msgid "Select all"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Select background color"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Select consoles to use:"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
+msgid "Select font"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Select foreground color"
+msgstr ""
+
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
+msgid "Send commands after login"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Send the command above to every checked host (same as pressing Enter)"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Serial Templates"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Server list will be overwritten, continue?"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Servers"
+msgstr ""
+
+#: gnome_connection_manager.py
+#, python-brace-format
+msgid "Shell command run locally, in the background, right after this connection ends. Currently only triggered for terminal-based protocols (SSH/Telnet/Local/Serial/IPMI SOL). Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+#, python-brace-format
+msgid "Shell command run locally, in the background, right before this connection opens (any protocol). Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Shortcut"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
+msgid "Shortcuts"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
+msgid "Show Panel"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Standard Commands"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Stop"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
+msgid "System"
+msgstr ""
+
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
+msgid "TERM"
+msgstr ""
+
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
+msgid "TTY Erase"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Template name"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "There are"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid ""
+"This is gnome-connection-manager, written and maintained by\n"
+"Copyright © 2012 Renzo Bertuzzi L. <kuthulu@gmail.com> - Chile"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Tip: use #P=password to send a password without keeping it in clear text in the command history"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
+msgid "Title"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+msgid "To create subgroups use format group1/group2/group3"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Transparency"
+msgstr ""
+
+#: gnome_connection_manager.py key_picker_dialog.py plugins/plugin_ssh.py
+#: ssh_config_editor.py ssh_key_manager_dialog.py
+msgid "Type"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Use default fixed width font"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+msgid "Use global preference"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py ssh_config_editor.py
+msgid "User"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/core/menu.py
+msgid "View"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "Word separator"
+msgstr ""
+
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+msgid "Workspace"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "already exists for group"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "open consoles, exit anyway?"
+msgstr ""
+
+#: gnome_connection_manager.py
+msgid "search..."
+msgstr ""
+
+#: gnome_connection_manager.py
+#, python-brace-format
+msgid "{count} connection(s) exported to {filename}."
 msgstr ""
 
 #: gnome_connection_manager.py
@@ -364,112 +833,7 @@ msgid ""
 msgstr ""
 
 #: gnome_connection_manager.py
-msgid "No open consoles"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Cluster"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "No hosts in the workspace yet — check \"Workspace\" in Edit Host to add one"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
-#: data/io.github.MathildeDec.gcm4.metainfo.xml
-msgid "Edit Host"
-msgstr ""
-
-#: gnome_connection_manager.py plugins/plugin_netmiko_push.py
-#: plugins/plugin_snmp_push.py plugins/plugin_spice.py widgets.py
-msgid "OK"
-msgstr ""
-
-#: gnome_connection_manager.py plugins/plugin_import_libvirt.py
-#: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
-#: plugins/plugin_import_virtualbox.py src/gcm4/ui/host_dialog.py
-msgid "Group"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
-#: ssh_key_manager_dialog.py
-msgid "Name"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
-msgid "Description"
-msgstr ""
-
-#: gnome_connection_manager.py plugins/plugin_ssh.py src/gcm4/ui/host_dialog.py
-#: ssh_config_editor.py ssh_key_manager_dialog.py
-msgid "Host"
-msgstr ""
-
-#: gnome_connection_manager.py key_picker_dialog.py plugins/plugin_ssh.py
-#: ssh_config_editor.py ssh_key_manager_dialog.py
-msgid "Type"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py ssh_config_editor.py
-msgid "Port"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py ssh_config_editor.py
-msgid "User"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/ui/contexte.py
-#: src/gcm4/ui/host_dialog.py
-msgid "Password"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Private key"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Enable Logging"
-msgstr ""
-
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
-msgid "TERM"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
-#: src/gcm4/ui/main_window.py widgets.py
-msgid "Close console"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
-msgid "Workspace"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
-msgid "Before connecting"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
-msgid "After disconnecting"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
-msgid "To create subgroups use format group1/group2/group3"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
-msgid "Leave blank for passwordless/public key authentication"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Browse filesystem for a private key file"
-msgstr ""
-
-#: gnome_connection_manager.py ssh_config_editor.py
-msgid "🔑 Pick…"
-msgstr ""
-
-#: gnome_connection_manager.py ssh_config_editor.py
-msgid "Browse existing SSH keys in ~/.ssh/"
+msgid "− Remove"
 msgstr ""
 
 #: gnome_connection_manager.py ssh_config_editor.py
@@ -477,322 +841,29 @@ msgid "⚙"
 msgstr ""
 
 #: gnome_connection_manager.py ssh_config_editor.py
-msgid "Open SSH Key Manager (generate / import / delete)"
+msgid "🔑 Pick…"
 msgstr ""
 
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
-msgid "Use global preference"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
-msgid "Never"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
-msgid "Always"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
-msgid "Only on clean exit"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Overrides the global \"Close console\" preference for this host only"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
-msgid "Include this host in the workspace (Tools > Open Workspace)"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
-#, python-brace-format
-msgid "Shell command run locally, in the background, right before this connection opens (any protocol). Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
-msgstr ""
-
-#: gnome_connection_manager.py
-#, python-brace-format
-msgid "Shell command run locally, in the background, right after this connection ends. Currently only triggered for terminal-based protocols (SSH/Telnet/Local/Serial/IPMI SOL). Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
-msgstr ""
-
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
-msgid "Send commands after login"
-msgstr ""
-
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
+#: key_picker_dialog.py
 msgid ""
-"<span size='smaller'>Use ##D=milliseconds to add a delay.\n"
-"Ex: ##D=1000</span>"
+"<i>No SSH key found in ~/.ssh/.\n"
+"Click <b>Generate…</b> to create one.</i>"
 msgstr ""
 
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
-msgid "Default colors"
+#: key_picker_dialog.py ssh_key_manager_dialog.py
+msgid "Fingerprint"
 msgstr ""
 
-#: gnome_connection_manager.py
-msgid "Foreground color:"
+#: key_picker_dialog.py
+msgid "Key name"
 msgstr ""
 
-#: gnome_connection_manager.py
-msgid "Background color:"
+#: key_picker_dialog.py
+msgid "Keys found in <b>~/.ssh/</b> — select one (or several with Ctrl/Shift-click) then click <i>Use</i>:"
 msgstr ""
 
-#: gnome_connection_manager.py
-msgid "Select foreground color"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Select background color"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Key sequences"
-msgstr ""
-
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
-msgid "Backspace:"
-msgstr ""
-
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
-msgid "Delete:"
-msgstr ""
-
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
-msgid "Automatic"
-msgstr ""
-
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
-msgid "ASCII Backspace \t[Ctrl+H 0x08]"
-msgstr ""
-
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
-msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
-msgstr ""
-
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
-msgid "Delete Sequence \t[@7]"
-msgstr ""
-
-#: gnome_connection_manager.py plugins/telnet/gtk4.py
-msgid "TTY Erase"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Fields group, name and host are required"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Invalid port"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Host name"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "already exists for group"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Error saving host. Description"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid ""
-"This is gnome-connection-manager, written and maintained by\n"
-"Copyright © 2012 Renzo Bertuzzi L. <kuthulu@gmail.com> - Chile"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/ui/application.py
-msgid "A simple ssh connection manager for gnome"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Project's Homepage"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/ui/preferences.py
-msgid "General"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Colors"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Use default fixed width font"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Font:"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/ui/preferences.py
-msgid "Shortcuts"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Standard Commands"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Custom Commands"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Word separator"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Buffer size"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Transparency"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Logs path"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Continuous VTE tab logging mode"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Open local console on startup"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Log local console sessions"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Paste on right click"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Copy selection to clipboard"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/ui/preferences.py
-msgid "Confirm on close console"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/ui/preferences.py
-msgid "Confirm on close console with middle click"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/ui/preferences.py
-msgid "Circle around tabs when going to the previous/next tab"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Disable keyboard shortcuts in terminals (pass every key through)"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Disable desktop notifications when a terminal disconnects"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/ui/preferences.py
-msgid "Restore open tabs from the previous session on startup"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/ui/preferences.py
-msgid "Confirm on exit"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/ui/preferences.py
-msgid "Check updates"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/ui/preferences.py
-msgid "Disable alternating stripes in hosts window"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/ui/preferences.py
-msgid "Dynamic title"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/ui/preferences.py
-msgid "Title"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "GTK Theme:"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
-msgid "System"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
-msgid "Light"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/preferences.py
-msgid "Dark"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Action"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Shortcut"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Command"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/ui/preferences.py
-msgid "Select font"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Execute"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Send the command above to every checked host (same as pressing Enter)"
-msgstr ""
-
-#: gnome_connection_manager.py src/gcm4/ui/main_window.py ssh_config_editor.py
-#: ssh_key_manager_dialog.py
-msgid "Close"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Select consoles to use:"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Clear selection"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Invert selection"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Enter the text to send to consoles: "
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Tip: use #P=password to send a password without keeping it in clear text in the command history"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "<span size=\"smaller\">CTRL+UP/CTRL+DOWN for history</span>"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "Activate"
-msgstr ""
-
-#: gnome_connection_manager.py
-msgid "A new version is available: https://github.com/MathildeDec/gnome-connection-manager/releases"
+#: key_picker_dialog.py
+msgid "Permissions"
 msgstr ""
 
 #: key_picker_dialog.py
@@ -804,33 +875,7 @@ msgid "_Cancel"
 msgstr ""
 
 #: key_picker_dialog.py
-msgid "⚙ Generate…"
-msgstr ""
-
-#: key_picker_dialog.py
 msgid "_Use"
-msgstr ""
-
-#: key_picker_dialog.py
-msgid "Keys found in <b>~/.ssh/</b> — select one (or several with Ctrl/Shift-click) then click <i>Use</i>:"
-msgstr ""
-
-#: key_picker_dialog.py
-msgid "Key name"
-msgstr ""
-
-#: key_picker_dialog.py ssh_key_manager_dialog.py
-msgid "Fingerprint"
-msgstr ""
-
-#: key_picker_dialog.py
-msgid "Permissions"
-msgstr ""
-
-#: key_picker_dialog.py
-msgid ""
-"<i>No SSH key found in ~/.ssh/.\n"
-"Click <b>Generate…</b> to create one.</i>"
 msgstr ""
 
 #: key_picker_dialog.py
@@ -839,6 +884,10 @@ msgstr ""
 
 #: key_picker_dialog.py
 msgid "public"
+msgstr ""
+
+#: key_picker_dialog.py
+msgid "⚙ Generate…"
 msgstr ""
 
 #: plugins/plugin_export_csv.py
@@ -857,7 +906,8 @@ msgid "JSON export error: {exc}"
 msgstr ""
 
 #: plugins/plugin_import_csv.py
-msgid "Import from CSV…"
+#, python-brace-format
+msgid "CSV import error: {exc}"
 msgstr ""
 
 #: plugins/plugin_import_csv.py
@@ -865,8 +915,7 @@ msgid "Import from CSV"
 msgstr ""
 
 #: plugins/plugin_import_csv.py
-#, python-brace-format
-msgid "CSV import error: {exc}"
+msgid "Import from CSV…"
 msgstr ""
 
 #: plugins/plugin_import_csv.py
@@ -879,11 +928,11 @@ msgid "{n} connection(s) imported from CSV."
 msgstr ""
 
 #: plugins/plugin_import_json.py
-msgid "Import from JSON…"
+msgid "Import from JSON"
 msgstr ""
 
 #: plugins/plugin_import_json.py
-msgid "Import from JSON"
+msgid "Import from JSON…"
 msgstr ""
 
 #: plugins/plugin_import_json.py
@@ -900,80 +949,6 @@ msgstr ""
 msgid "{n} connection(s) imported from JSON."
 msgstr ""
 
-#: plugins/plugin_import_libvirt.py plugins/plugin_import_proxmox.py
-#: plugins/plugin_import_virtualbox.py
-msgid "Default SSH user (VMs):"
-msgstr ""
-
-#: plugins/plugin_import_libvirt.py
-msgid "Used as default user in the Libvirt import dialog."
-msgstr ""
-
-#: plugins/plugin_import_libvirt.py
-msgid "<i>Applies only to the Libvirt import plugin. Can still be overridden per import run.</i>"
-msgstr ""
-
-#: plugins/plugin_import_libvirt.py
-msgid "Libvirt"
-msgstr ""
-
-#: plugins/plugin_import_libvirt.py
-msgid "Import from libvirt"
-msgstr ""
-
-#: plugins/plugin_import_libvirt.py plugins/plugin_import_proxmox.py
-msgid "Hypervisor SSH user:"
-msgstr ""
-
-#: plugins/plugin_import_libvirt.py
-msgid "Hypervisors (virt-manager / dconf):"
-msgstr ""
-
-#: plugins/plugin_import_libvirt.py
-msgid "Detected libvirt URI"
-msgstr ""
-
-#: plugins/plugin_import_libvirt.py
-msgid "Ex: 192.168.105.41 | root@192.168.105.41 | qemu+ssh://root@192.168.105.41/system"
-msgstr ""
-
-#: plugins/plugin_import_libvirt.py plugins/plugin_import_proxmox.py
-#: plugins/plugin_import_virtualbox.py plugins/plugin_ssh.py
-msgid "Add"
-msgstr ""
-
-#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
-#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
-msgid "<b>Connection types to import:</b>"
-msgstr ""
-
-#: plugins/plugin_import_libvirt.py plugins/plugin_import_proxmox.py
-msgid "SSH  (ProxyJump -J via hypervisor when VM IP is known, otherwise hypervisor shell + -t ssh user@vm)"
-msgstr ""
-
-#: plugins/plugin_import_libvirt.py
-msgid "SPICE  (virt-viewer --connect qemu+ssh://... vm - SSH tunnel handled automatically)"
-msgstr ""
-
-#: plugins/plugin_import_libvirt.py plugins/plugin_import_proxmox.py
-msgid "RDP  (probe port 3389 from hypervisor via nc/nmap - skipped if port is closed)"
-msgstr ""
-
-#: plugins/plugin_import_libvirt.py plugins/plugin_import_proxmox.py
-msgid "VNC  (probe port 5900 from hypervisor via nc/nmap - skipped if port is closed)"
-msgstr ""
-
-#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
-#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
-#: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_spice.py
-#: plugins/plugin_vnc.py plugins/plugin_web.py
-msgid "Waiting…"
-msgstr ""
-
-#: plugins/plugin_import_libvirt.py
-msgid "🔍  Scan Libvirt hypervisors"
-msgstr ""
-
 #: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
 #: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
@@ -988,28 +963,43 @@ msgstr ""
 
 #: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
 #: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
-msgid "Overwrite existing connections with the same name and protocol"
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "3. Résultats"
 msgstr ""
 
 #: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
 #: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
-msgid "✓ Check all"
+msgid "<b>Connection types to import:</b>"
 msgstr ""
 
-#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
-#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
-msgid "✗ Uncheck all"
+#: plugins/plugin_import_libvirt.py
+msgid "<i>Applies only to the Libvirt import plugin. Can still be overridden per import run.</i>"
 msgstr ""
 
-#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
-#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
-msgid "Proto"
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_proxmox.py
+#: plugins/plugin_import_virtualbox.py plugins/plugin_ssh.py
+msgid "Add"
 msgstr ""
 
-#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
-#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
-#: plugins/plugin_spice.py
-msgid "VM name"
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_proxmox.py
+#: plugins/plugin_import_virtualbox.py
+msgid "Default SSH user (VMs):"
+msgstr ""
+
+#: plugins/plugin_import_libvirt.py
+msgid "Detected libvirt URI"
+msgstr ""
+
+#: plugins/plugin_import_libvirt.py
+msgid "Ex: 192.168.105.41 | root@192.168.105.41 | qemu+ssh://root@192.168.105.41/system"
+msgstr ""
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_proxmox.py
+msgid "Hypervisor SSH user:"
+msgstr ""
+
+#: plugins/plugin_import_libvirt.py
+msgid "Hypervisors (virt-manager / dconf):"
 msgstr ""
 
 #: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
@@ -1017,9 +1007,8 @@ msgstr ""
 msgid "IP / Host"
 msgstr ""
 
-#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
-#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
-msgid "State"
+#: plugins/plugin_import_libvirt.py
+msgid "Import from libvirt"
 msgstr ""
 
 #: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
@@ -1027,20 +1016,12 @@ msgstr ""
 msgid "Imported"
 msgstr ""
 
-#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
-#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
-msgid "⬇  Import selected"
+#: plugins/plugin_import_libvirt.py
+msgid "Invalid libvirt target."
 msgstr ""
 
-#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
-#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
-#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-msgid "3. Résultats"
-msgstr ""
-
-#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
-#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
-msgid "✕  Close"
+#: plugins/plugin_import_libvirt.py
+msgid "Libvirt"
 msgstr ""
 
 #: plugins/plugin_import_libvirt.py
@@ -1050,13 +1031,66 @@ msgid ""
 msgstr ""
 
 #: plugins/plugin_import_libvirt.py
-msgid "Invalid libvirt target."
+msgid "No URI selected."
+msgstr ""
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
+#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
+msgid "No connection to import (all already exist or none selected)."
+msgstr ""
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
+#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
+msgid "No connection type selected."
+msgstr ""
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
+#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
+msgid "No host imported."
+msgstr ""
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
+#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
+msgid "No new host (duplicates ignored)."
+msgstr ""
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
+#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
+msgid "Overwrite existing connections with the same name and protocol"
+msgstr ""
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
+#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
+msgid "Proto"
+msgstr ""
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_proxmox.py
+msgid "RDP  (probe port 3389 from hypervisor via nc/nmap - skipped if port is closed)"
+msgstr ""
+
+#: plugins/plugin_import_libvirt.py
+msgid "SPICE  (virt-viewer --connect qemu+ssh://... vm - SSH tunnel handled automatically)"
+msgstr ""
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_proxmox.py
+msgid "SSH  (ProxyJump -J via hypervisor when VM IP is known, otherwise hypervisor shell + -t ssh user@vm)"
+msgstr ""
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
+#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
+#, python-brace-format
+msgid "Scan failed: {exc}"
+msgstr ""
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
+#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
+msgid "State"
 msgstr ""
 
 #: plugins/plugin_import_libvirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_virtualbox.py
 #, python-brace-format
-msgid "Target already present: {uri}"
+msgid "Target added automatically: {pending_uri}"
 msgstr ""
 
 #: plugins/plugin_import_libvirt.py plugins/plugin_import_proxmox.py
@@ -1068,42 +1102,28 @@ msgstr ""
 #: plugins/plugin_import_libvirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_virtualbox.py
 #, python-brace-format
-msgid "Target added automatically: {pending_uri}"
+msgid "Target already present: {uri}"
 msgstr ""
 
 #: plugins/plugin_import_libvirt.py
-msgid "No URI selected."
+msgid "Used as default user in the Libvirt import dialog."
 msgstr ""
 
 #: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
 #: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
-msgid "No connection type selected."
+#: plugins/plugin_spice.py
+msgid "VM name"
+msgstr ""
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_proxmox.py
+msgid "VNC  (probe port 5900 from hypervisor via nc/nmap - skipped if port is closed)"
 msgstr ""
 
 #: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
 #: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
-#, python-brace-format
-msgid "Scan failed: {exc}"
-msgstr ""
-
-#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
-#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
-msgid "🔄  Rescan"
-msgstr ""
-
-#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
-#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
-msgid "No connection to import (all already exist or none selected)."
-msgstr ""
-
-#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
-#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
-msgid "✓ Imported"
-msgstr ""
-
-#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
-#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
-msgid "No host imported."
+#: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_spice.py
+#: plugins/plugin_vnc.py plugins/plugin_web.py
+msgid "Waiting…"
 msgstr ""
 
 #: plugins/plugin_import_libvirt.py
@@ -1113,12 +1133,36 @@ msgstr ""
 
 #: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
 #: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
-msgid "No new host (duplicates ignored)."
+msgid "✓ Check all"
 msgstr ""
 
-#: plugins/plugin_import_ovirt.py
-#, python-brace-format
-msgid "Unreachable VM: {vm}"
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
+#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
+msgid "✓ Imported"
+msgstr ""
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
+#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
+msgid "✕  Close"
+msgstr ""
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
+#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
+msgid "✗ Uncheck all"
+msgstr ""
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
+#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
+msgid "⬇  Import selected"
+msgstr ""
+
+#: plugins/plugin_import_libvirt.py plugins/plugin_import_ovirt.py
+#: plugins/plugin_import_proxmox.py plugins/plugin_import_virtualbox.py
+msgid "🔄  Rescan"
+msgstr ""
+
+#: plugins/plugin_import_libvirt.py
+msgid "🔍  Scan Libvirt hypervisors"
 msgstr ""
 
 #: plugins/plugin_import_ovirt.py
@@ -1131,7 +1175,7 @@ msgid ""
 msgstr ""
 
 #: plugins/plugin_import_ovirt.py
-msgid "Import from oVirt"
+msgid "Engine URL is required."
 msgstr ""
 
 #: plugins/plugin_import_ovirt.py
@@ -1139,31 +1183,7 @@ msgid "Engine URL:"
 msgstr ""
 
 #: plugins/plugin_import_ovirt.py
-msgid "Username:"
-msgstr ""
-
-#: plugins/plugin_import_ovirt.py
-msgid "Password:"
-msgstr ""
-
-#: plugins/plugin_import_ovirt.py
-msgid "SSH user (engine/hypervisor jump):"
-msgstr ""
-
-#: plugins/plugin_import_ovirt.py
-msgid "Used only as a fallback when a VM is not directly reachable: SSH user for jump-proxy attempts via the engine machine or the VM's hypervisor, and default SSH user for the VMs themselves (non-Windows guests)."
-msgstr ""
-
-#: plugins/plugin_import_ovirt.py
-msgid "Verify TLS certificate"
-msgstr ""
-
-#: plugins/plugin_import_ovirt.py
-msgid "SSH  (direct — oVirt VMs are usually directly routable)"
-msgstr ""
-
-#: plugins/plugin_import_ovirt.py
-msgid "RDP  (Windows guests only — port 3389 probed via the resolved route)"
+msgid "Import from oVirt"
 msgstr ""
 
 #: plugins/plugin_import_ovirt.py
@@ -1173,11 +1193,36 @@ msgid ""
 msgstr ""
 
 #: plugins/plugin_import_ovirt.py
-msgid "🔍  Scan oVirt engine"
+msgid "Password:"
 msgstr ""
 
 #: plugins/plugin_import_ovirt.py
-msgid "Engine URL is required."
+msgid "RDP  (Windows guests only — port 3389 probed via the resolved route)"
+msgstr ""
+
+#: plugins/plugin_import_ovirt.py
+msgid "SSH  (direct — oVirt VMs are usually directly routable)"
+msgstr ""
+
+#: plugins/plugin_import_ovirt.py
+msgid "SSH user (engine/hypervisor jump):"
+msgstr ""
+
+#: plugins/plugin_import_ovirt.py
+#, python-brace-format
+msgid "Unreachable VM: {vm}"
+msgstr ""
+
+#: plugins/plugin_import_ovirt.py
+msgid "Used only as a fallback when a VM is not directly reachable: SSH user for jump-proxy attempts via the engine machine or the VM's hypervisor, and default SSH user for the VMs themselves (non-Windows guests)."
+msgstr ""
+
+#: plugins/plugin_import_ovirt.py
+msgid "Username:"
+msgstr ""
+
+#: plugins/plugin_import_ovirt.py
+msgid "Verify TLS certificate"
 msgstr ""
 
 #: plugins/plugin_import_ovirt.py
@@ -1185,28 +1230,12 @@ msgstr ""
 msgid "{n} connection(s) imported from oVirt."
 msgstr ""
 
-#: plugins/plugin_import_proxmox.py
-msgid "Used as default user in the Proxmox import dialog."
+#: plugins/plugin_import_ovirt.py
+msgid "🔍  Scan oVirt engine"
 msgstr ""
 
 #: plugins/plugin_import_proxmox.py
 msgid "<i>Applies only to the Proxmox import plugin. Can still be overridden per import run.</i>"
-msgstr ""
-
-#: plugins/plugin_import_proxmox.py
-msgid "Proxmox"
-msgstr ""
-
-#: plugins/plugin_import_proxmox.py
-msgid "Import from Proxmox"
-msgstr ""
-
-#: plugins/plugin_import_proxmox.py
-msgid "Proxmox targets:"
-msgstr ""
-
-#: plugins/plugin_import_proxmox.py
-msgid "Proxmox target (qemu+ssh://user@host/system)"
 msgstr ""
 
 #: plugins/plugin_import_proxmox.py
@@ -1218,11 +1247,15 @@ msgid "Ex: 192.168.105.41 | root@192.168.105.41 | root@192.168.105.41:22"
 msgstr ""
 
 #: plugins/plugin_import_proxmox.py
-msgid "SPICE  (vga:qxl required — ticket generated at connection time via pvesh)"
+msgid "Import from Proxmox"
 msgstr ""
 
 #: plugins/plugin_import_proxmox.py
-msgid "🔍  Scan Proxmox hosts"
+msgid "Invalid Proxmox target."
+msgstr ""
+
+#: plugins/plugin_import_proxmox.py
+msgid "No Proxmox target selected."
 msgstr ""
 
 #: plugins/plugin_import_proxmox.py
@@ -1232,7 +1265,19 @@ msgid ""
 msgstr ""
 
 #: plugins/plugin_import_proxmox.py
-msgid "Invalid Proxmox target."
+msgid "Proxmox"
+msgstr ""
+
+#: plugins/plugin_import_proxmox.py
+msgid "Proxmox target (qemu+ssh://user@host/system)"
+msgstr ""
+
+#: plugins/plugin_import_proxmox.py
+msgid "Proxmox targets:"
+msgstr ""
+
+#: plugins/plugin_import_proxmox.py
+msgid "SPICE  (vga:qxl required — ticket generated at connection time via pvesh)"
 msgstr ""
 
 #: plugins/plugin_import_proxmox.py
@@ -1240,7 +1285,7 @@ msgid "Scanning…"
 msgstr ""
 
 #: plugins/plugin_import_proxmox.py
-msgid "No Proxmox target selected."
+msgid "Used as default user in the Proxmox import dialog."
 msgstr ""
 
 #: plugins/plugin_import_proxmox.py
@@ -1248,17 +1293,12 @@ msgstr ""
 msgid "{n} connection(s) imported from Proxmox."
 msgstr ""
 
+#: plugins/plugin_import_proxmox.py
+msgid "🔍  Scan Proxmox hosts"
+msgstr ""
+
 #: plugins/plugin_import_putty.py
 msgid "Import from PuTTY sessions…"
-msgstr ""
-
-#: plugins/plugin_import_putty.py
-msgid "Select PuTTY sessions folder"
-msgstr ""
-
-#: plugins/plugin_import_putty.py
-#, python-brace-format
-msgid "PuTTY import error: {exc}"
 msgstr ""
 
 #: plugins/plugin_import_putty.py
@@ -1267,7 +1307,11 @@ msgstr ""
 
 #: plugins/plugin_import_putty.py
 #, python-brace-format
-msgid "{n} connection(s) imported from PuTTY."
+msgid "PuTTY import error: {exc}"
+msgstr ""
+
+#: plugins/plugin_import_putty.py
+msgid "Select PuTTY sessions folder"
 msgstr ""
 
 #: plugins/plugin_import_putty.py
@@ -1275,8 +1319,9 @@ msgstr ""
 msgid "{count} session(s) ignored (unsupported protocol or missing host)."
 msgstr ""
 
-#: plugins/plugin_import_virtualbox.py
-msgid "Used as default user in the VirtualBox import dialog."
+#: plugins/plugin_import_putty.py
+#, python-brace-format
+msgid "{n} connection(s) imported from PuTTY."
 msgstr ""
 
 #: plugins/plugin_import_virtualbox.py
@@ -1284,11 +1329,7 @@ msgid "<i>Applies only to the VirtualBox import plugin. Can still be overridden 
 msgstr ""
 
 #: plugins/plugin_import_virtualbox.py
-msgid "VirtualBox"
-msgstr ""
-
-#: plugins/plugin_import_virtualbox.py
-msgid "Import from VirtualBox"
+msgid "Add a VirtualBox host:"
 msgstr ""
 
 #: plugins/plugin_import_virtualbox.py
@@ -1296,37 +1337,7 @@ msgid "Host SSH user:"
 msgstr ""
 
 #: plugins/plugin_import_virtualbox.py
-msgid "VirtualBox hosts:"
-msgstr ""
-
-#: plugins/plugin_import_virtualbox.py
-msgid "VirtualBox host (user@host[:port])"
-msgstr ""
-
-#: plugins/plugin_import_virtualbox.py
-msgid "Add a VirtualBox host:"
-msgstr ""
-
-#: plugins/plugin_import_virtualbox.py
-msgid "SSH  (ProxyJump -J via host when VM IP is known, otherwise host shell + -t ssh user@vm)"
-msgstr ""
-
-#: plugins/plugin_import_virtualbox.py
-msgid "RDP  (native VirtualBox VRDE if enabled, otherwise guest port 3389 probe)"
-msgstr ""
-
-#: plugins/plugin_import_virtualbox.py
-msgid "VNC  (probe port 5900 in the guest — off by default)"
-msgstr ""
-
-#: plugins/plugin_import_virtualbox.py
-msgid "🔍  Scan VirtualBox hosts"
-msgstr ""
-
-#: plugins/plugin_import_virtualbox.py
-msgid ""
-"VirtualBox has no central registry (unlike virt-manager/dconf).\n"
-"Add your hosts manually below."
+msgid "Import from VirtualBox"
 msgstr ""
 
 #: plugins/plugin_import_virtualbox.py
@@ -1338,8 +1349,46 @@ msgid "No host selected."
 msgstr ""
 
 #: plugins/plugin_import_virtualbox.py
+msgid "RDP  (native VirtualBox VRDE if enabled, otherwise guest port 3389 probe)"
+msgstr ""
+
+#: plugins/plugin_import_virtualbox.py
+msgid "SSH  (ProxyJump -J via host when VM IP is known, otherwise host shell + -t ssh user@vm)"
+msgstr ""
+
+#: plugins/plugin_import_virtualbox.py
+msgid "Used as default user in the VirtualBox import dialog."
+msgstr ""
+
+#: plugins/plugin_import_virtualbox.py
+msgid "VNC  (probe port 5900 in the guest — off by default)"
+msgstr ""
+
+#: plugins/plugin_import_virtualbox.py
+msgid "VirtualBox"
+msgstr ""
+
+#: plugins/plugin_import_virtualbox.py
+msgid ""
+"VirtualBox has no central registry (unlike virt-manager/dconf).\n"
+"Add your hosts manually below."
+msgstr ""
+
+#: plugins/plugin_import_virtualbox.py
+msgid "VirtualBox host (user@host[:port])"
+msgstr ""
+
+#: plugins/plugin_import_virtualbox.py
+msgid "VirtualBox hosts:"
+msgstr ""
+
+#: plugins/plugin_import_virtualbox.py
 #, python-brace-format
 msgid "{n} connection(s) imported from VirtualBox."
+msgstr ""
+
+#: plugins/plugin_import_virtualbox.py
+msgid "🔍  Scan VirtualBox hosts"
 msgstr ""
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_serial.py
@@ -1350,17 +1399,17 @@ msgid "Connect"
 msgstr ""
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_serial.py
+#: plugins/plugin_spice.py plugins/plugin_vnc.py plugins/plugin_web.py
+msgid "Connecting…"
+msgstr ""
+
+#: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_serial.py
 #: plugins/plugin_spice.py plugins/plugin_vnc.py widgets.py
 msgid "Disconnect"
 msgstr ""
 
 #: plugins/plugin_ipmisol.py
-msgid "ipmitool introuvable"
-msgstr ""
-
-#: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_serial.py
-#: plugins/plugin_spice.py plugins/plugin_vnc.py plugins/plugin_web.py
-msgid "Connecting…"
+msgid "IPMI (SOL)"
 msgstr ""
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_spice.py
@@ -1369,87 +1418,56 @@ msgid "Session ended"
 msgstr ""
 
 #: plugins/plugin_ipmisol.py
-msgid "IPMI (SOL)"
+msgid "ipmitool introuvable"
 msgstr ""
 
 #: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-msgid "Rejeté"
-msgstr ""
-
-#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-msgid "Échec"
-msgstr ""
-
-#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-msgid "Ignoré"
-msgstr ""
-
-#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-msgid "En attente"
-msgstr ""
-
-#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-msgid "En cours"
+#, python-brace-format
+msgid "0 / {n}"
 msgstr ""
 
 #: plugins/plugin_netmiko_push.py
-msgid "Netmiko"
+msgid "Afficher les mots de passe"
 msgstr ""
 
 #: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-msgid "Inventaire (CSV) :"
+msgid "Annuler l'envoi"
 msgstr ""
 
 #: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-msgid "Gabarit de configuration :"
+msgid "Aucune exécution pour le moment."
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Aucune ligne cochée."
 msgstr ""
 
 #: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
 msgid "Charger l'inventaire"
 msgstr ""
 
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Chargez d'abord un inventaire."
+msgstr ""
+
 #: plugins/plugin_netmiko_push.py
-msgid "Profils de connexion (constructeur, identifiants…)"
+msgid "Choisissez d'abord un fichier profiles.ini."
 msgstr ""
 
 #: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-msgid "Envoyer"
+msgid "Choisissez l'inventaire CSV et le gabarit."
 msgstr ""
 
-#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-msgid "Ligne"
+#: plugins/plugin_netmiko_push.py
+msgid "Choisissez un constructeur et un modèle."
 msgstr ""
 
-#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-msgid "IP / hôte"
-msgstr ""
-
-#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-msgid "Profil"
-msgstr ""
-
-#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-msgid "Variables"
+#: plugins/plugin_netmiko_push.py
+msgid "Commande de sauvegarde (optionnel, ex. 'save force') :"
 msgstr ""
 
 #: plugins/plugin_netmiko_push.py
 msgid "Connexions en parallèle :"
-msgstr ""
-
-#: plugins/plugin_netmiko_push.py
-msgid "Sauvegarder la configuration après envoi"
-msgstr ""
-
-#: plugins/plugin_netmiko_push.py
-msgid "Valider (à blanc, sans se connecter)"
-msgstr ""
-
-#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-msgid "Lancer le déploiement →"
-msgstr ""
-
-#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-msgid "Nom"
 msgstr ""
 
 #: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
@@ -1457,43 +1475,95 @@ msgid "Constructeur"
 msgstr ""
 
 #: plugins/plugin_netmiko_push.py
-msgid "device_type"
+msgid "Constructeur :"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Durée (s)"
 msgstr ""
 
 #: plugins/plugin_netmiko_push.py
-msgid "Utilisateur"
+msgid "Déploiement Netmiko…"
 msgstr ""
 
 #: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-msgid "Nouveau"
+msgid "Détail"
 msgstr ""
 
 #: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-msgid "Supprimer"
+msgid "En attente"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "En attente : 0"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+#, python-brace-format
+msgid "En attente : {n}"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "En cours"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Enregistrer ce profil"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Envoyer"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+#, python-brace-format
+msgid "Erreur d'écriture : {e}"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+#, python-brace-format
+msgid "Erreur de chargement : {e}"
 msgstr ""
 
 #: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
 msgid "Fichier :"
 msgstr ""
 
-#: plugins/plugin_netmiko_push.py
-msgid "profiles.ini"
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Gabarit de configuration :"
 msgstr ""
 
 #: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-msgid "Nom du profil (= colonne 'type'/'profile' du CSV) :"
+msgid "IP / hôte"
 msgstr ""
 
-#: plugins/plugin_netmiko_push.py
-msgid "Constructeur :"
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Ignoré"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+#, python-brace-format
+msgid "Impossible de lire le journal : {e}"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Inventaire (CSV) :"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Lancer le déploiement →"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Le profil doit avoir un nom."
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Ligne"
 msgstr ""
 
 #: plugins/plugin_netmiko_push.py
 msgid "Modèle / device_type netmiko :"
-msgstr ""
-
-#: plugins/plugin_netmiko_push.py
-msgid "Utilisateur :"
 msgstr ""
 
 #: plugins/plugin_netmiko_push.py
@@ -1505,40 +1575,40 @@ msgid "Mot de passe enable (si applicable) :"
 msgstr ""
 
 #: plugins/plugin_netmiko_push.py
-msgid "Afficher les mots de passe"
+msgid "Netmiko"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Nom"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Nom du profil (= colonne 'type'/'profile' du CSV) :"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Nouveau"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "OK : 0"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+#, python-brace-format
+msgid "OK : {n}"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Ouvrir le dossier des journaux"
 msgstr ""
 
 #: plugins/plugin_netmiko_push.py
 msgid "Port :"
 msgstr ""
 
-#: plugins/plugin_netmiko_push.py
-msgid "Timeout (s) :"
-msgstr ""
-
-#: plugins/plugin_netmiko_push.py
-msgid "Commande de sauvegarde (optionnel, ex. 'save force') :"
-msgstr ""
-
 #: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-msgid "Enregistrer ce profil"
-msgstr ""
-
-#: plugins/plugin_netmiko_push.py
-msgid "Écrire profiles.ini sur disque"
-msgstr ""
-
-#: plugins/plugin_netmiko_push.py
-#, python-brace-format
-msgid "Profils chargés depuis {p}"
-msgstr ""
-
-#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-msgid "Le profil doit avoir un nom."
-msgstr ""
-
-#: plugins/plugin_netmiko_push.py
-msgid "Choisissez un constructeur et un modèle."
+msgid "Profil"
 msgstr ""
 
 #: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
@@ -1547,7 +1617,12 @@ msgid "Profil '{n}' mis à jour (en mémoire)."
 msgstr ""
 
 #: plugins/plugin_netmiko_push.py
-msgid "Choisissez d'abord un fichier profiles.ini."
+#, python-brace-format
+msgid "Profils chargés depuis {p}"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py
+msgid "Profils de connexion (constructeur, identifiants…)"
 msgstr ""
 
 #: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
@@ -1556,17 +1631,75 @@ msgid "Profils écrits dans {p}"
 msgstr ""
 
 #: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-#, python-brace-format
-msgid "Erreur d'écriture : {e}"
+msgid "Rejeté"
 msgstr ""
 
 #: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-msgid "Choisissez l'inventaire CSV et le gabarit."
+msgid "Rejetés : 0"
 msgstr ""
 
 #: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
 #, python-brace-format
-msgid "Erreur de chargement : {e}"
+msgid "Rejetés : {n}"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py
+msgid "Sauvegarder la configuration après envoi"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Statut"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Supprimer"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py
+msgid "Timeout (s) :"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+#, python-brace-format
+msgid "Total : {total}  |  OK : {ok}  |  Rejetés : {rejected}  |  Échecs : {failed}  |  Ignorés : {skipped}"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py
+msgid "Utilisateur"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py
+msgid "Utilisateur :"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+#, python-brace-format
+msgid "Validation : {ok} prêt(s), {err} en erreur."
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py
+msgid "Valider (à blanc, sans se connecter)"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Variables"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "Voir les résultats →"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py
+msgid "device_type"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py
+msgid "profiles.ini"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+#, python-brace-format
+msgid "{d} / {n}"
 msgstr ""
 
 #: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
@@ -1575,12 +1708,29 @@ msgid "{n} hôte(s) chargé(s) depuis {csv}."
 msgstr ""
 
 #: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-#, python-brace-format
-msgid "⚠ Variables absentes du CSV : {v}"
+msgid "Échec"
 msgstr ""
 
 #: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-msgid "Chargez d'abord un inventaire."
+msgid "Échecs : 0"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+#, python-brace-format
+msgid "Échecs : {n}"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py
+msgid "Écrire profiles.ini sur disque"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+msgid "← Nouveau déploiement"
+msgstr ""
+
+#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
+#, python-brace-format
+msgid "⚠ Variables absentes du CSV : {v}"
 msgstr ""
 
 #: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
@@ -1593,105 +1743,24 @@ msgstr ""
 msgid "⚠ variables manquantes : {v}"
 msgstr ""
 
-#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-#, python-brace-format
-msgid "Validation : {ok} prêt(s), {err} en erreur."
+#: plugins/plugin_rdp.py plugins/plugin_vnc.py
+msgid "Authentication failed"
 msgstr ""
 
-#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-msgid "OK : 0"
+#: plugins/plugin_rdp.py
+msgid "Custom…"
 msgstr ""
 
-#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-msgid "Rejetés : 0"
+#: plugins/plugin_rdp.py
+msgid "Domain"
 msgstr ""
 
-#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-msgid "Échecs : 0"
+#: plugins/plugin_rdp.py
+msgid "Dynamic resolution"
 msgstr ""
 
-#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-msgid "En attente : 0"
-msgstr ""
-
-#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-msgid "Statut"
-msgstr ""
-
-#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-msgid "Détail"
-msgstr ""
-
-#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-msgid "Durée (s)"
-msgstr ""
-
-#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-msgid "Annuler l'envoi"
-msgstr ""
-
-#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-msgid "Voir les résultats →"
-msgstr ""
-
-#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-msgid "Aucune ligne cochée."
-msgstr ""
-
-#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-#, python-brace-format
-msgid "0 / {n}"
-msgstr ""
-
-#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-#, python-brace-format
-msgid "{d} / {n}"
-msgstr ""
-
-#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-#, python-brace-format
-msgid "OK : {n}"
-msgstr ""
-
-#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-#, python-brace-format
-msgid "Rejetés : {n}"
-msgstr ""
-
-#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-#, python-brace-format
-msgid "Échecs : {n}"
-msgstr ""
-
-#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-#, python-brace-format
-msgid "En attente : {n}"
-msgstr ""
-
-#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-msgid "Aucune exécution pour le moment."
-msgstr ""
-
-#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-msgid "Ouvrir le dossier des journaux"
-msgstr ""
-
-#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-msgid "← Nouveau déploiement"
-msgstr ""
-
-#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-#, python-brace-format
-msgid "Total : {total}  |  OK : {ok}  |  Rejetés : {rejected}  |  Échecs : {failed}  |  Ignorés : {skipped}"
-msgstr ""
-
-#: plugins/plugin_netmiko_push.py plugins/plugin_snmp_push.py
-#, python-brace-format
-msgid "Impossible de lire le journal : {e}"
-msgstr ""
-
-#: plugins/plugin_netmiko_push.py
-msgid "Déploiement Netmiko…"
+#: plugins/plugin_rdp.py plugins/plugin_spice.py
+msgid "Error: could not mount the ISO"
 msgstr ""
 
 #: plugins/plugin_rdp.py
@@ -1700,35 +1769,11 @@ msgid "Error: {msg}"
 msgstr ""
 
 #: plugins/plugin_rdp.py plugins/plugin_vnc.py
-msgid "Authentication failed"
-msgstr ""
-
-#: plugins/plugin_rdp.py plugins/plugin_spice.py
-msgid "Error: could not mount the ISO"
-msgstr ""
-
-#: plugins/plugin_rdp.py plugins/plugin_vnc.py
 msgid "Fullscreen"
 msgstr ""
 
 #: plugins/plugin_rdp.py
-msgid "Custom…"
-msgstr ""
-
-#: plugins/plugin_rdp.py
-msgid "RDP"
-msgstr ""
-
-#: plugins/plugin_rdp.py
-msgid "Domain"
-msgstr ""
-
-#: plugins/plugin_rdp.py
 msgid "Geometry"
-msgstr ""
-
-#: plugins/plugin_rdp.py
-msgid "Width"
 msgstr ""
 
 #: plugins/plugin_rdp.py
@@ -1740,7 +1785,7 @@ msgid "Ignore certificate errors"
 msgstr ""
 
 #: plugins/plugin_rdp.py
-msgid "Dynamic resolution"
+msgid "RDP"
 msgstr ""
 
 #: plugins/plugin_rdp.py
@@ -1759,44 +1804,15 @@ msgstr ""
 msgid "Shared folder path"
 msgstr ""
 
-#: plugins/plugin_serial.py
-msgid "Even"
+#: plugins/plugin_rdp.py
+msgid "Width"
 msgstr ""
 
 #: plugins/plugin_serial.py
-msgid "None"
-msgstr ""
-
-#: plugins/plugin_serial.py
-msgid "Odd"
-msgstr ""
-
-#: plugins/plugin_serial.py
-msgid "XON/XOFF (software)"
-msgstr ""
-
-#: plugins/plugin_serial.py
-msgid "RTS/CTS (hardware)"
-msgstr ""
-
-#: plugins/plugin_serial.py
-msgid "DTR/DSR"
-msgstr ""
-
-#: plugins/plugin_serial.py
-msgid "— custom —"
-msgstr ""
-
-#: plugins/plugin_serial.py
-msgid "Cisco IOS (9600 8N1)"
-msgstr ""
-
-#: plugins/plugin_serial.py
-msgid "H3C/HPE Comware (9600 8N1)"
-msgstr ""
-
-#: plugins/plugin_serial.py
-msgid "Juniper (9600 8N1)"
+msgid ""
+"Additional raw options passed to the binary\n"
+"Ex: --logfile /tmp/serial.log  (picocom)\n"
+"     -o -x  (minicom)"
 msgstr ""
 
 #: plugins/plugin_serial.py
@@ -1808,27 +1824,15 @@ msgid "BMC/iDRAC (115200 8N1)"
 msgstr ""
 
 #: plugins/plugin_serial.py
-msgid "Serial port:"
-msgstr ""
-
-#: plugins/plugin_serial.py
-msgid "Ex : /dev/ttyUSB0, /dev/ttyS0, /dev/ttyACM0"
-msgstr ""
-
-#: plugins/plugin_serial.py
 msgid "Baud rate:"
 msgstr ""
 
 #: plugins/plugin_serial.py
-msgid "Transmission speed in baud"
+msgid "Cisco IOS (9600 8N1)"
 msgstr ""
 
 #: plugins/plugin_serial.py
-msgid "Template:"
-msgstr ""
-
-#: plugins/plugin_serial.py
-msgid "Load vendor-recommended serial settings"
+msgid "DTR/DSR"
 msgstr ""
 
 #: plugins/plugin_serial.py
@@ -1836,23 +1840,15 @@ msgid "Data bits:"
 msgstr ""
 
 #: plugins/plugin_serial.py
-msgid "Number of data bits per byte (8 = standard)"
+msgid "Even"
 msgstr ""
 
 #: plugins/plugin_serial.py
-msgid "Parity:"
+msgid "Ex : /dev/ttyUSB0, /dev/ttyS0, /dev/ttyACM0"
 msgstr ""
 
 #: plugins/plugin_serial.py
-msgid "Parity bit: None (N) = standard, Even (E), Odd (O)"
-msgstr ""
-
-#: plugins/plugin_serial.py
-msgid "Stop bits:"
-msgstr ""
-
-#: plugins/plugin_serial.py
-msgid "Stop bits: 1 = standard, 2 = RS-485 / legacy hardware"
+msgid "Flow control"
 msgstr ""
 
 #: plugins/plugin_serial.py
@@ -1868,15 +1864,40 @@ msgid ""
 "  DSR/DTR = legacy hardware"
 msgstr ""
 
-#: plugins/plugin_serial.py plugins/plugin_vnc.py
-msgid "xfreerdp options:"
+#: plugins/plugin_serial.py
+msgid "H3C/HPE Comware (9600 8N1)"
 msgstr ""
 
 #: plugins/plugin_serial.py
-msgid ""
-"Additional raw options passed to the binary\n"
-"Ex: --logfile /tmp/serial.log  (picocom)\n"
-"     -o -x  (minicom)"
+msgid "Juniper (9600 8N1)"
+msgstr ""
+
+#: plugins/plugin_serial.py
+msgid "Load vendor-recommended serial settings"
+msgstr ""
+
+#: plugins/plugin_serial.py
+msgid "None"
+msgstr ""
+
+#: plugins/plugin_serial.py
+msgid "Number of data bits per byte (8 = standard)"
+msgstr ""
+
+#: plugins/plugin_serial.py
+msgid "Odd"
+msgstr ""
+
+#: plugins/plugin_serial.py
+msgid "Parity bit: None (N) = standard, Even (E), Odd (O)"
+msgstr ""
+
+#: plugins/plugin_serial.py
+msgid "Parity:"
+msgstr ""
+
+#: plugins/plugin_serial.py
+msgid "RTS/CTS (hardware)"
 msgstr ""
 
 #: plugins/plugin_serial.py
@@ -1884,7 +1905,7 @@ msgid "Serial"
 msgstr ""
 
 #: plugins/plugin_serial.py
-msgid "Template"
+msgid "Serial port:"
 msgstr ""
 
 #: plugins/plugin_serial.py
@@ -1892,67 +1913,39 @@ msgid "Stop bits"
 msgstr ""
 
 #: plugins/plugin_serial.py
-msgid "Flow control"
+msgid "Stop bits:"
+msgstr ""
+
+#: plugins/plugin_serial.py
+msgid "Stop bits: 1 = standard, 2 = RS-485 / legacy hardware"
+msgstr ""
+
+#: plugins/plugin_serial.py
+msgid "Template"
+msgstr ""
+
+#: plugins/plugin_serial.py
+msgid "Template:"
 msgstr ""
 
 #: plugins/plugin_serial.py
 msgid "Tool"
 msgstr ""
 
-#: plugins/plugin_snmp_push.py
-msgid "Push SNMP"
+#: plugins/plugin_serial.py
+msgid "Transmission speed in baud"
 msgstr ""
 
-#: plugins/plugin_snmp_push.py
-msgid "Profils SNMP (constructeur, identifiants…)"
+#: plugins/plugin_serial.py
+msgid "XON/XOFF (software)"
 msgstr ""
 
-#: plugins/plugin_snmp_push.py
-msgid "Serveur de dépôt du fichier (SFTP / FTP / TFTP)"
+#: plugins/plugin_serial.py plugins/plugin_vnc.py
+msgid "xfreerdp options:"
 msgstr ""
 
-#: plugins/plugin_snmp_push.py
-msgid "Envois en parallèle :"
-msgstr ""
-
-#: plugins/plugin_snmp_push.py
-msgid "Valider (à blanc, sans envoyer)"
-msgstr ""
-
-#: plugins/plugin_snmp_push.py
-msgid "SNMP"
-msgstr ""
-
-#: plugins/plugin_snmp_push.py
-msgid "snmp_profiles.ini"
-msgstr ""
-
-#: plugins/plugin_snmp_push.py
-msgid "Constructeur (driver de push SNMP) :"
-msgstr ""
-
-#: plugins/plugin_snmp_push.py
-msgid "Version SNMP :"
-msgstr ""
-
-#: plugins/plugin_snmp_push.py
-msgid "Communauté (v2c, en écriture — jamais 'public') :"
-msgstr ""
-
-#: plugins/plugin_snmp_push.py
-msgid "Utilisateur USM (v3) :"
-msgstr ""
-
-#: plugins/plugin_snmp_push.py
-msgid "(aucune)"
-msgstr ""
-
-#: plugins/plugin_snmp_push.py
-msgid "Protocole d'authentification (v3) :"
-msgstr ""
-
-#: plugins/plugin_snmp_push.py
-msgid "Clé d'authentification (v3) :"
+#: plugins/plugin_serial.py
+msgid "— custom —"
 msgstr ""
 
 #: plugins/plugin_snmp_push.py
@@ -1960,11 +1953,7 @@ msgid "(aucun)"
 msgstr ""
 
 #: plugins/plugin_snmp_push.py
-msgid "Protocole de confidentialité (v3) :"
-msgstr ""
-
-#: plugins/plugin_snmp_push.py
-msgid "Clé de confidentialité (v3) :"
+msgid "(aucune)"
 msgstr ""
 
 #: plugins/plugin_snmp_push.py
@@ -1972,15 +1961,35 @@ msgid "Afficher les secrets"
 msgstr ""
 
 #: plugins/plugin_snmp_push.py
-msgid "Port SNMP :"
+msgid "Choisissez d'abord un fichier snmp_profiles.ini."
 msgstr ""
 
 #: plugins/plugin_snmp_push.py
-msgid "Timeout requête SNMP (s) :"
+msgid "Choisissez un constructeur."
 msgstr ""
 
 #: plugins/plugin_snmp_push.py
-msgid "Écrire snmp_profiles.ini sur disque"
+msgid "Clé d'authentification (v3) :"
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "Clé de confidentialité (v3) :"
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "Communauté (v2c, en écriture — jamais 'public') :"
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "Constructeur (driver de push SNMP) :"
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "Déploiement SNMP…"
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "Envois en parallèle :"
 msgstr ""
 
 #: plugins/plugin_snmp_push.py
@@ -1988,7 +1997,11 @@ msgid "IP du serveur de dépôt (TFTP/FTP/SFTP) :"
 msgstr ""
 
 #: plugins/plugin_snmp_push.py
-msgid "⚠ L'équipement doit pouvoir joindre ce serveur pour aller chercher le fichier de configuration. Les paramètres de transfert (protocole, credentials) doivent être configurés à part."
+msgid "Port SNMP :"
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "Profils SNMP (constructeur, identifiants…)"
 msgstr ""
 
 #: plugins/plugin_snmp_push.py
@@ -1997,27 +2010,55 @@ msgid "Profils SNMP chargés depuis {p}"
 msgstr ""
 
 #: plugins/plugin_snmp_push.py
-msgid "Choisissez un constructeur."
+msgid "Protocole d'authentification (v3) :"
 msgstr ""
 
 #: plugins/plugin_snmp_push.py
-msgid "Choisissez d'abord un fichier snmp_profiles.ini."
+msgid "Protocole de confidentialité (v3) :"
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "Push SNMP"
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "SNMP"
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "Serveur de dépôt du fichier (SFTP / FTP / TFTP)"
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "Timeout requête SNMP (s) :"
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "Utilisateur USM (v3) :"
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "Valider (à blanc, sans envoyer)"
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "Version SNMP :"
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "snmp_profiles.ini"
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "Écrire snmp_profiles.ini sur disque"
+msgstr ""
+
+#: plugins/plugin_snmp_push.py
+msgid "⚠ L'équipement doit pouvoir joindre ce serveur pour aller chercher le fichier de configuration. Les paramètres de transfert (protocole, credentials) doivent être configurés à part."
 msgstr ""
 
 #: plugins/plugin_snmp_push.py
 msgid "⚠ Renseignez le serveur de dépôt avant de lancer."
-msgstr ""
-
-#: plugins/plugin_snmp_push.py
-msgid "Déploiement SNMP…"
-msgstr ""
-
-#: plugins/plugin_spice.py
-msgid "USB devices…"
-msgstr ""
-
-#: plugins/plugin_spice.py
-msgid "remote-viewer options:"
 msgstr ""
 
 #: plugins/plugin_spice.py
@@ -2028,54 +2069,7 @@ msgid ""
 msgstr ""
 
 #: plugins/plugin_spice.py
-msgid "Error: Proxmox node and VMID required"
-msgstr ""
-
-#: plugins/plugin_spice.py
-#, python-brace-format
-msgid "SSH error: {exc}"
-msgstr ""
-
-#: plugins/plugin_spice.py
-#, python-brace-format
-msgid "SPICE ticket error: {out}"
-msgstr ""
-
-#: plugins/plugin_spice.py
-msgid "Error: libvirt URI required"
-msgstr ""
-
-#: plugins/plugin_spice.py
-msgid "Error: VM name required"
-msgstr ""
-
-#: plugins/plugin_spice.py
-#, python-brace-format
-msgid "libvirt error: {exc}"
-msgstr ""
-
-#: plugins/plugin_spice.py
-#, python-brace-format
-msgid "VM introuvable : {vm}"
-msgstr ""
-
-#: plugins/plugin_spice.py
-#, python-brace-format
-msgid "libvirt XML parsing error: {exc}"
-msgstr ""
-
-#: plugins/plugin_spice.py
-#, python-brace-format
-msgid "No SPICE console for {vm}"
-msgstr ""
-
-#: plugins/plugin_spice.py
-#, python-brace-format
-msgid "SPICE disabled for {vm}"
-msgstr ""
-
-#: plugins/plugin_spice.py
-msgid "remote-viewer not found"
+msgid "CA certificate"
 msgstr ""
 
 #: plugins/plugin_spice.py
@@ -2083,20 +2077,11 @@ msgid "Configuration SPICE invalide"
 msgstr ""
 
 #: plugins/plugin_spice.py
+msgid "Direct URI"
+msgstr ""
+
+#: plugins/plugin_spice.py
 msgid "Drag and drop a file here to send it to the VM (requires spice-vdagent)"
-msgstr ""
-
-#: plugins/plugin_spice.py
-#, python-brace-format
-msgid "USB devices — {host}"
-msgstr ""
-
-#: plugins/plugin_spice.py
-msgid "Fermer"
-msgstr ""
-
-#: plugins/plugin_spice.py
-msgid "Error launching viewer"
 msgstr ""
 
 #: plugins/plugin_spice.py plugins/plugin_vnc.py
@@ -2105,31 +2090,28 @@ msgid "Ended (code {rc})"
 msgstr ""
 
 #: plugins/plugin_spice.py
-msgid "SPICE"
+msgid "Error launching viewer"
 msgstr ""
 
 #: plugins/plugin_spice.py
-msgid "Direct URI"
+msgid "Error: Proxmox node and VMID required"
 msgstr ""
 
 #: plugins/plugin_spice.py
-msgid "Via libvirt"
+msgid "Error: VM name required"
 msgstr ""
 
 #: plugins/plugin_spice.py
-msgid "Via Proxmox"
+msgid "Error: libvirt URI required"
 msgstr ""
 
 #: plugins/plugin_spice.py
-msgid "CA certificate"
+msgid "Fermer"
 msgstr ""
 
 #: plugins/plugin_spice.py
-msgid "TLS port"
-msgstr ""
-
-#: plugins/plugin_spice.py
-msgid "libvirt URI"
+#, python-brace-format
+msgid "No SPICE console for {vm}"
 msgstr ""
 
 #: plugins/plugin_spice.py
@@ -2137,7 +2119,22 @@ msgid "Proxmox node"
 msgstr ""
 
 #: plugins/plugin_spice.py
-msgid "VMID"
+msgid "SPICE"
+msgstr ""
+
+#: plugins/plugin_spice.py
+#, python-brace-format
+msgid "SPICE disabled for {vm}"
+msgstr ""
+
+#: plugins/plugin_spice.py
+#, python-brace-format
+msgid "SPICE ticket error: {out}"
+msgstr ""
+
+#: plugins/plugin_spice.py
+#, python-brace-format
+msgid "SSH error: {exc}"
 msgstr ""
 
 #: plugins/plugin_spice.py
@@ -2148,8 +2145,64 @@ msgstr ""
 msgid "Share audio"
 msgstr ""
 
+#: plugins/plugin_spice.py
+msgid "TLS port"
+msgstr ""
+
+#: plugins/plugin_spice.py
+#, python-brace-format
+msgid "USB devices — {host}"
+msgstr ""
+
+#: plugins/plugin_spice.py
+msgid "USB devices…"
+msgstr ""
+
+#: plugins/plugin_spice.py
+#, python-brace-format
+msgid "VM introuvable : {vm}"
+msgstr ""
+
+#: plugins/plugin_spice.py
+msgid "VMID"
+msgstr ""
+
+#: plugins/plugin_spice.py
+msgid "Via Proxmox"
+msgstr ""
+
+#: plugins/plugin_spice.py
+msgid "Via libvirt"
+msgstr ""
+
+#: plugins/plugin_spice.py
+msgid "libvirt URI"
+msgstr ""
+
+#: plugins/plugin_spice.py
+#, python-brace-format
+msgid "libvirt XML parsing error: {exc}"
+msgstr ""
+
+#: plugins/plugin_spice.py
+#, python-brace-format
+msgid "libvirt error: {exc}"
+msgstr ""
+
+#: plugins/plugin_spice.py
+msgid "remote-viewer not found"
+msgstr ""
+
+#: plugins/plugin_spice.py
+msgid "remote-viewer options:"
+msgstr ""
+
 #: plugins/plugin_ssh.py
-msgid "Bastion host(s) to hop through, e.g. user@bastion"
+msgid "Advanced"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+msgid "Agent forwarding (-A)"
 msgstr ""
 
 #: plugins/plugin_ssh.py
@@ -2157,15 +2210,7 @@ msgid "Arbitrary command to reach the target, e.g. via corkscrew or nc"
 msgstr ""
 
 #: plugins/plugin_ssh.py
-msgid "yes / no / accept-new"
-msgstr ""
-
-#: plugins/plugin_ssh.py
-msgid "Seconds before giving up on the connection"
-msgstr ""
-
-#: plugins/plugin_ssh.py ssh_config_editor.py
-msgid "yes / no / force / auto"
+msgid "Bastion host(s) to hop through, e.g. user@bastion"
 msgstr ""
 
 #: plugins/plugin_ssh.py
@@ -2173,23 +2218,72 @@ msgid "Command to run instead of a shell"
 msgstr ""
 
 #: plugins/plugin_ssh.py
-msgid "yes / no / ask / auto"
+msgid "Compression (-C)"
 msgstr ""
 
 #: plugins/plugin_ssh.py
-msgid "e.g. 10m, or yes"
-msgstr ""
-
-#: plugins/plugin_ssh.py
-msgid "yes / no"
-msgstr ""
-
-#: plugins/plugin_ssh.py
-msgid "QUIET / ERROR / INFO / VERBOSE / DEBUG…"
+msgid "Connections will be added to the « ssh_config » group, with name = host = SSH alias."
 msgstr ""
 
 #: plugins/plugin_ssh.py ssh_config_editor.py
-msgid "yes / no / ask / confirm"
+msgid "Dynamic"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+msgid "Dynamic / SOCKS (-D)"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+msgid "Edit SSH config"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+msgid "Edit ~/.ssh/config…"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+msgid "Extra ssh args"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+#, python-format
+msgid "Host «%s» is already managed by a ssh_config file — it cannot be moved a 2nd time."
+msgstr ""
+
+#: plugins/plugin_ssh.py
+#, python-format
+msgid "Host «%s» moved to %s."
+msgstr ""
+
+#: plugins/plugin_ssh.py
+#, python-format
+msgid "Host «%s» was not migrated (not an SSH host?)."
+msgstr ""
+
+#: plugins/plugin_ssh.py
+#, python-format
+msgid "Import done — imported: %d, already present: %d, errors: %d"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+#, python-format
+msgid "Import failed: %s"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+msgid "Import from ssh_config…"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+msgid "Import from which file?"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+msgid "Keep alive (seconds)"
+msgstr ""
+
+#: plugins/plugin_ssh.py ssh_config_editor.py
+msgid "Local"
 msgstr ""
 
 #: plugins/plugin_ssh.py ssh_config_editor.py
@@ -2197,11 +2291,133 @@ msgid "Local (-L)"
 msgstr ""
 
 #: plugins/plugin_ssh.py ssh_config_editor.py
-msgid "Remote (-R)"
+msgid "Local Port"
 msgstr ""
 
 #: plugins/plugin_ssh.py
-msgid "Dynamic / SOCKS (-D)"
+msgid "Local mount point"
+msgstr ""
+
+#: plugins/plugin_ssh.py ssh_config_editor.py
+msgid "Local target host"
+msgstr ""
+
+#: plugins/plugin_ssh.py ssh_config_editor.py
+msgid "Local target port"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+msgid "Manage SSH Keys…"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+#, python-format
+msgid "Migration done — moved: %d, skipped: %d, already managed: %d, errors: %d"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+#, python-format
+msgid "Migration failed: %s"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+msgid "Mount remote filesystem via SSHFS on connect"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+#, python-format
+msgid ""
+"Move all SSH hosts from gcm.conf to %s?\n"
+"A backup of both files will be created."
+msgstr ""
+
+#: plugins/plugin_ssh.py
+#, python-format
+msgid ""
+"Move all SSH hosts from gcm.conf to the SHARED file %s?\n"
+"This will be usable by every user of this machine and requires root privileges (a polkit prompt may appear). A timestamped backup of both files will be created."
+msgstr ""
+
+#: plugins/plugin_ssh.py
+msgid "Move all to ssh_config…"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+#, python-format
+msgid ""
+"Move host «%s» from gcm.conf to %s?\n"
+"A backup of both files will be created."
+msgstr ""
+
+#: plugins/plugin_ssh.py
+#, python-format
+msgid ""
+"Move host «%s» from gcm.conf to the SHARED file %s?\n"
+"This will be usable by every user of this machine and requires root privileges (a polkit prompt may appear). A timestamped backup of both files will be created."
+msgstr ""
+
+#: plugins/plugin_ssh.py
+msgid "Move to ssh_config…"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+msgid "Personal (me)"
+msgstr ""
+
+#: plugins/plugin_ssh.py ssh_config_editor.py
+msgid "Personal (~/.ssh/config)"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+#, python-format
+msgid ""
+"Personal: only for you, ~/.ssh/config.\n"
+"Shared: visible and usable by every user of this machine (team bastion), %s — requires root privileges."
+msgstr ""
+
+#: plugins/plugin_ssh.py
+msgid "Port forwarding"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+msgid "QUIET / ERROR / INFO / VERBOSE / DEBUG…"
+msgstr ""
+
+#: plugins/plugin_ssh.py ssh_config_editor.py
+msgid "Remote"
+msgstr ""
+
+#: plugins/plugin_ssh.py ssh_config_editor.py
+msgid "Remote (-R)"
+msgstr ""
+
+#: plugins/plugin_ssh.py ssh_config_editor.py
+msgid "Remote Host"
+msgstr ""
+
+#: plugins/plugin_ssh.py ssh_config_editor.py
+msgid "Remote Port"
+msgstr ""
+
+#: plugins/plugin_ssh.py ssh_config_editor.py
+msgid "Remote listen port"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+msgid "Remote path"
+msgstr ""
+
+#: plugins/plugin_ssh.py src/gcm4/core/menu_arbre.py
+#: src/gcm4/core/preferences.py src/gcm4/ui/menu_arbre.py widgets.py
+msgid "Remove"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+msgid "SSH"
+msgstr ""
+
+#: plugins/plugin_ssh.py ssh_key_manager_dialog.py
+msgid "SSH Key Manager"
 msgstr ""
 
 #: plugins/plugin_ssh.py
@@ -2214,23 +2430,23 @@ msgid ""
 msgstr ""
 
 #: plugins/plugin_ssh.py
-msgid "SSH"
-msgstr ""
-
-#: plugins/plugin_ssh.py
-msgid "Advanced"
-msgstr ""
-
-#: plugins/plugin_ssh.py
-msgid "Port forwarding"
-msgstr ""
-
-#: plugins/plugin_ssh.py
 msgid "SSHFS"
 msgstr ""
 
 #: plugins/plugin_ssh.py
-msgid "Keep alive (seconds)"
+msgid "Seconds before giving up on the connection"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+msgid "Shared"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+msgid "Shared (everyone)"
+msgstr ""
+
+#: plugins/plugin_ssh.py
+msgid "Which file?"
 msgstr ""
 
 #: plugins/plugin_ssh.py
@@ -2238,88 +2454,7 @@ msgid "X11 forwarding (-X)"
 msgstr ""
 
 #: plugins/plugin_ssh.py
-msgid "Agent forwarding (-A)"
-msgstr ""
-
-#: plugins/plugin_ssh.py
-msgid "Compression (-C)"
-msgstr ""
-
-#: plugins/plugin_ssh.py
-msgid "Extra ssh args"
-msgstr ""
-
-#: plugins/plugin_ssh.py ssh_config_editor.py
-msgid "Local Port"
-msgstr ""
-
-#: plugins/plugin_ssh.py ssh_config_editor.py
-msgid "Remote Host"
-msgstr ""
-
-#: plugins/plugin_ssh.py ssh_config_editor.py
-msgid "Remote Port"
-msgstr ""
-
-#: plugins/plugin_ssh.py src/gcm4/core/menu_arbre.py
-#: src/gcm4/core/preferences.py src/gcm4/ui/menu_arbre.py widgets.py
-msgid "Remove"
-msgstr ""
-
-#: plugins/plugin_ssh.py ssh_config_editor.py
-msgid "Local"
-msgstr ""
-
-#: plugins/plugin_ssh.py ssh_config_editor.py
-msgid "Remote"
-msgstr ""
-
-#: plugins/plugin_ssh.py ssh_config_editor.py
-msgid "Remote listen port"
-msgstr ""
-
-#: plugins/plugin_ssh.py ssh_config_editor.py
-msgid "Local target host"
-msgstr ""
-
-#: plugins/plugin_ssh.py ssh_config_editor.py
-msgid "Local target port"
-msgstr ""
-
-#: plugins/plugin_ssh.py ssh_config_editor.py
-msgid "Dynamic"
-msgstr ""
-
-#: plugins/plugin_ssh.py
-msgid "Mount remote filesystem via SSHFS on connect"
-msgstr ""
-
-#: plugins/plugin_ssh.py
-msgid "Remote path"
-msgstr ""
-
-#: plugins/plugin_ssh.py
-msgid "Local mount point"
-msgstr ""
-
-#: plugins/plugin_ssh.py
-msgid "Edit ~/.ssh/config…"
-msgstr ""
-
-#: plugins/plugin_ssh.py
-msgid "Move all to ssh_config…"
-msgstr ""
-
-#: plugins/plugin_ssh.py
-msgid "Import from ssh_config…"
-msgstr ""
-
-#: plugins/plugin_ssh.py
-msgid "Manage SSH Keys…"
-msgstr ""
-
-#: plugins/plugin_ssh.py
-msgid "Move to ssh_config…"
+msgid "e.g. 10m, or yes"
 msgstr ""
 
 #: plugins/plugin_ssh.py
@@ -2329,115 +2464,29 @@ msgid ""
 msgstr ""
 
 #: plugins/plugin_ssh.py
-msgid "Edit SSH config"
-msgstr ""
-
-#: plugins/plugin_ssh.py
 msgid ""
 "ssh_key_manager_dialog module not found.\n"
 "Make sure ssh_key_manager_dialog.py is in the same directory as gnome_connection_manager.py."
 msgstr ""
 
-#: plugins/plugin_ssh.py ssh_key_manager_dialog.py
-msgid "SSH Key Manager"
+#: plugins/plugin_ssh.py
+msgid "yes / no"
 msgstr ""
 
 #: plugins/plugin_ssh.py
-msgid "Which file?"
+msgid "yes / no / accept-new"
 msgstr ""
 
 #: plugins/plugin_ssh.py
-#, python-format
-msgid ""
-"Personal: only for you, ~/.ssh/config.\n"
-"Shared: visible and usable by every user of this machine (team bastion), %s — requires root privileges."
-msgstr ""
-
-#: plugins/plugin_ssh.py
-msgid "Shared (everyone)"
-msgstr ""
-
-#: plugins/plugin_ssh.py
-msgid "Personal (me)"
-msgstr ""
-
-#: plugins/plugin_ssh.py
-#, python-format
-msgid ""
-"Move all SSH hosts from gcm.conf to the SHARED file %s?\n"
-"This will be usable by every user of this machine and requires root privileges (a polkit prompt may appear). A timestamped backup of both files will be created."
-msgstr ""
-
-#: plugins/plugin_ssh.py
-#, python-format
-msgid ""
-"Move all SSH hosts from gcm.conf to %s?\n"
-"A backup of both files will be created."
-msgstr ""
-
-#: plugins/plugin_ssh.py
-#, python-format
-msgid "Migration failed: %s"
-msgstr ""
-
-#: plugins/plugin_ssh.py
-#, python-format
-msgid "Migration done — moved: %d, skipped: %d, already managed: %d, errors: %d"
-msgstr ""
-
-#: plugins/plugin_ssh.py
-#, python-format
-msgid ""
-"Move host «%s» from gcm.conf to the SHARED file %s?\n"
-"This will be usable by every user of this machine and requires root privileges (a polkit prompt may appear). A timestamped backup of both files will be created."
-msgstr ""
-
-#: plugins/plugin_ssh.py
-#, python-format
-msgid ""
-"Move host «%s» from gcm.conf to %s?\n"
-"A backup of both files will be created."
-msgstr ""
-
-#: plugins/plugin_ssh.py
-#, python-format
-msgid "Host «%s» moved to %s."
-msgstr ""
-
-#: plugins/plugin_ssh.py
-#, python-format
-msgid "Host «%s» is already managed by a ssh_config file — it cannot be moved a 2nd time."
-msgstr ""
-
-#: plugins/plugin_ssh.py
-#, python-format
-msgid "Host «%s» was not migrated (not an SSH host?)."
-msgstr ""
-
-#: plugins/plugin_ssh.py
-msgid "Import from which file?"
-msgstr ""
-
-#: plugins/plugin_ssh.py
-msgid "Connections will be added to the « ssh_config » group, with name = host = SSH alias."
-msgstr ""
-
-#: plugins/plugin_ssh.py
-msgid "Shared"
+msgid "yes / no / ask / auto"
 msgstr ""
 
 #: plugins/plugin_ssh.py ssh_config_editor.py
-msgid "Personal (~/.ssh/config)"
+msgid "yes / no / ask / confirm"
 msgstr ""
 
-#: plugins/plugin_ssh.py
-#, python-format
-msgid "Import failed: %s"
-msgstr ""
-
-#: plugins/plugin_ssh.py
-#, python-format
-msgid "Import done — imported: %d, already present: %d, errors: %d"
+#: plugins/plugin_ssh.py ssh_config_editor.py
+msgid "yes / no / force / auto"
 msgstr ""
 
 #: plugins/plugin_vnc.py
@@ -2447,12 +2496,16 @@ msgid ""
 "E.g.: {example}"
 msgstr ""
 
-#: plugins/plugin_vnc.py
-msgid "xfreerdp not found"
+#: plugins/plugin_vnc.py src/gcm4/ui/host_dialog.py
+msgid "Display"
 msgstr ""
 
 #: plugins/plugin_vnc.py
 msgid "VNC"
+msgstr ""
+
+#: plugins/plugin_vnc.py
+msgid "View only"
 msgstr ""
 
 #: plugins/plugin_vnc.py
@@ -2463,42 +2516,8 @@ msgstr ""
 msgid "e.g. 0 for :0, leave empty for default"
 msgstr ""
 
-#: plugins/plugin_vnc.py src/gcm4/ui/host_dialog.py
-msgid "Display"
-msgstr ""
-
 #: plugins/plugin_vnc.py
-msgid "View only"
-msgstr ""
-
-#: plugins/plugin_web.py
-msgid "URL not configured"
-msgstr ""
-
-#: plugins/plugin_web.py
-msgid ""
-"WebKitGTK unavailable (gir1.2-webkit2-4.1 package missing).\n"
-"The web console will open in the system browser."
-msgstr ""
-
-#: plugins/plugin_web.py
-msgid "Error: URL not configured"
-msgstr ""
-
-#: plugins/plugin_web.py
-msgid "Opened in the system browser"
-msgstr ""
-
-#: plugins/plugin_web.py
-msgid "Error: could not open the URL"
-msgstr ""
-
-#: plugins/plugin_web.py
-msgid "Web"
-msgstr ""
-
-#: plugins/plugin_web.py
-msgid "URL"
+msgid "xfreerdp not found"
 msgstr ""
 
 #: plugins/plugin_web.py
@@ -2506,7 +2525,19 @@ msgid "BMC web console (iLO, iDRAC, IMM…) or any web interface (Proxmox, switc
 msgstr ""
 
 #: plugins/plugin_web.py
-msgid "Useful for self-signed certificates on BMC interfaces"
+msgid "Error: URL not configured"
+msgstr ""
+
+#: plugins/plugin_web.py
+msgid "Error: could not open the URL"
+msgstr ""
+
+#: plugins/plugin_web.py
+msgid "Opened in the system browser"
+msgstr ""
+
+#: plugins/plugin_web.py
+msgid "URL"
 msgstr ""
 
 #: plugins/plugin_web.py
@@ -2517,9 +2548,31 @@ msgstr ""
 msgid "URL is required."
 msgstr ""
 
+#: plugins/plugin_web.py
+msgid "URL not configured"
+msgstr ""
+
+#: plugins/plugin_web.py
+msgid "Useful for self-signed certificates on BMC interfaces"
+msgstr ""
+
+#: plugins/plugin_web.py
+msgid "Web"
+msgstr ""
+
+#: plugins/plugin_web.py
+msgid ""
+"WebKitGTK unavailable (gir1.2-webkit2-4.1 package missing).\n"
+"The web console will open in the system browser."
+msgstr ""
+
 #: plugins/telnet/gtk4.py
 #, python-brace-format
 msgid "{program} not found"
+msgstr ""
+
+#: src/gcm4/app.py
+msgid "The old configuration is intact: fix the problem (permissions, disk space), then start gcm4 again."
 msgstr ""
 
 #: src/gcm4/app.py
@@ -2527,21 +2580,8 @@ msgstr ""
 msgid "gcm4: unable to copy the configuration {old} to {new} ({error})."
 msgstr ""
 
-#: src/gcm4/app.py
-msgid "The old configuration is intact: fix the problem (permissions, disk space), then start gcm4 again."
-msgstr ""
-
 #: src/gcm4/core/chiffrement.py
 msgid "A stored password is corrupted."
-msgstr ""
-
-#: src/gcm4/core/chiffrement.py
-msgid "Unable to decrypt the stored passwords: wrong or replaced .gcm4.key."
-msgstr ""
-
-#: src/gcm4/core/chiffrement.py
-#, python-format
-msgid "Unable to read the encryption key %s: %s"
 msgstr ""
 
 #: src/gcm4/core/chiffrement.py
@@ -2554,9 +2594,13 @@ msgstr ""
 msgid "Unable to create the encryption key %s: %s"
 msgstr ""
 
-#: src/gcm4/core/config.py
+#: src/gcm4/core/chiffrement.py
+msgid "Unable to decrypt the stored passwords: wrong or replaced .gcm4.key."
+msgstr ""
+
+#: src/gcm4/core/chiffrement.py
 #, python-format
-msgid "Unable to read the configuration file %s: %s"
+msgid "Unable to read the encryption key %s: %s"
 msgstr ""
 
 #: src/gcm4/core/config.py
@@ -2566,36 +2610,27 @@ msgstr ""
 
 #: src/gcm4/core/config.py
 #, python-format
+msgid "Unable to read the configuration file %s: %s"
+msgstr ""
+
+#: src/gcm4/core/config.py
+#, python-format
 msgid "Unable to write the configuration file %s: %s"
 msgstr ""
 
-#: src/gcm4/core/exchange.py
-#, python-format
-msgid "%s: unexpected value for %s"
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Hosts exported: {count} ({file})"
+msgstr ""
+
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
 msgstr ""
 
 #: src/gcm4/core/exchange.py
 #, python-format
 msgid "%s: the host name is missing"
-msgstr ""
-
-#: src/gcm4/core/exchange.py
-msgid "unsupported format or version"
-msgstr ""
-
-#: src/gcm4/core/exchange.py
-#, python-format
-msgid "entry %d"
-msgstr ""
-
-#: src/gcm4/core/exchange.py
-#, python-format
-msgid "the column %s is missing"
-msgstr ""
-
-#: src/gcm4/core/exchange.py
-#, python-format
-msgid "line %d"
 msgstr ""
 
 #: src/gcm4/core/exchange.py
@@ -2605,7 +2640,7 @@ msgstr ""
 
 #: src/gcm4/core/exchange.py
 #, python-format
-msgid "Unable to read the file %s: %s"
+msgid "%s: unexpected value for %s"
 msgstr ""
 
 #: src/gcm4/core/exchange.py
@@ -2615,11 +2650,35 @@ msgstr ""
 
 #: src/gcm4/core/exchange.py
 #, python-format
+msgid "Unable to read the file %s: %s"
+msgstr ""
+
+#: src/gcm4/core/exchange.py
+#, python-format
 msgid "Unable to write the file %s: %s"
 msgstr ""
 
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "entry %d"
+msgstr ""
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "line %d"
+msgstr ""
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "the column %s is missing"
+msgstr ""
+
+#: src/gcm4/core/exchange.py
+msgid "unsupported format or version"
+msgstr ""
+
 #: src/gcm4/core/menu.py
-msgid "Search"
+msgid "Next tab"
 msgstr ""
 
 #: src/gcm4/core/menu.py
@@ -2627,19 +2686,7 @@ msgid "Previous tab"
 msgstr ""
 
 #: src/gcm4/core/menu.py
-msgid "Next tab"
-msgstr ""
-
-#: src/gcm4/core/menu_arbre.py widgets.py
-msgid "Copy Address"
-msgstr ""
-
-#: src/gcm4/core/menu_arbre.py widgets.py
-msgid "New Group…"
-msgstr ""
-
-#: src/gcm4/core/menu_arbre.py widgets.py
-msgid "Rename Group…"
+msgid "Search"
 msgstr ""
 
 #: src/gcm4/core/menu_arbre.py widgets.py
@@ -2647,7 +2694,11 @@ msgid "Choose Color…"
 msgstr ""
 
 #: src/gcm4/core/menu_arbre.py widgets.py
-msgid "Reset Color"
+msgid "Collapse all"
+msgstr ""
+
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Copy Address"
 msgstr ""
 
 #: src/gcm4/core/menu_arbre.py src/gcm4/ui/host_dialog.py widgets.py
@@ -2659,20 +2710,15 @@ msgid "Expand all"
 msgstr ""
 
 #: src/gcm4/core/menu_arbre.py widgets.py
-msgid "Collapse all"
+msgid "New Group…"
 msgstr ""
 
-#: src/gcm4/core/plugins.py
-msgid "It is not a connection plugin."
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Rename Group…"
 msgstr ""
 
-#: src/gcm4/core/plugins.py
-#, python-brace-format
-msgid "It implements plugin API version {found}; this application supports version {expected}."
-msgstr ""
-
-#: src/gcm4/core/plugins.py
-msgid "Its name must be a non-empty lowercase identifier."
+#: src/gcm4/core/menu_arbre.py widgets.py
+msgid "Reset Color"
 msgstr ""
 
 #: src/gcm4/core/plugins.py
@@ -2682,6 +2728,19 @@ msgstr ""
 #: src/gcm4/core/plugins.py
 #, python-brace-format
 msgid "It does not implement: {methods}."
+msgstr ""
+
+#: src/gcm4/core/plugins.py
+#, python-brace-format
+msgid "It implements plugin API version {found}; this application supports version {expected}."
+msgstr ""
+
+#: src/gcm4/core/plugins.py
+msgid "It is not a connection plugin."
+msgstr ""
+
+#: src/gcm4/core/plugins.py
+msgid "Its name must be a non-empty lowercase identifier."
 msgstr ""
 
 #: src/gcm4/core/preferences.py
@@ -2694,7 +2753,7 @@ msgstr ""
 
 #: src/gcm4/core/registre.py
 #, python-brace-format
-msgid "{file} does not define PLUGIN."
+msgid "A plugin with the same name is already loaded from {source}."
 msgstr ""
 
 #: src/gcm4/core/registre.py
@@ -2709,25 +2768,12 @@ msgstr ""
 
 #: src/gcm4/core/registre.py
 #, python-brace-format
-msgid "A plugin with the same name is already loaded from {source}."
+msgid "Protocol «{protocol}» is already handled by «{other}»."
 msgstr ""
 
 #: src/gcm4/core/registre.py
 #, python-brace-format
-msgid "Protocol «{protocol}» is already handled by «{other}»."
-msgstr ""
-
-#: src/gcm4/core/validation.py
-#, python-brace-format
-msgid "Port must be a number between {min} and {max}."
-msgstr ""
-
-#: src/gcm4/core/validation.py
-msgid "A name is required."
-msgstr ""
-
-#: src/gcm4/core/validation.py
-msgid "The name must not contain «/»."
+msgid "{file} does not define PLUGIN."
 msgstr ""
 
 #: src/gcm4/core/validation.py
@@ -2736,40 +2782,25 @@ msgid "A host named «{name}» already exists in this group."
 msgstr ""
 
 #: src/gcm4/core/validation.py
+msgid "A name is required."
+msgstr ""
+
+#: src/gcm4/core/validation.py
 msgid "An address is required."
+msgstr ""
+
+#: src/gcm4/core/validation.py
+#, python-brace-format
+msgid "Port must be a number between {min} and {max}."
+msgstr ""
+
+#: src/gcm4/core/validation.py
+msgid "The name must not contain «/»."
 msgstr ""
 
 #: src/gcm4/ui/contexte.py
 #, python-brace-format
 msgid "Password for {target}"
-msgstr ""
-
-#: src/gcm4/ui/host_dialog.py
-msgid "New Host"
-msgstr ""
-
-#: src/gcm4/ui/host_dialog.py
-msgid "Connection"
-msgstr ""
-
-#: src/gcm4/ui/host_dialog.py
-msgid "Protocol"
-msgstr ""
-
-#: src/gcm4/ui/host_dialog.py
-msgid "No extension handles this protocol: its options are kept."
-msgstr ""
-
-#: src/gcm4/ui/host_dialog.py
-msgid "No extension is installed."
-msgstr ""
-
-#: src/gcm4/ui/host_dialog.py
-msgid "Protocol options"
-msgstr ""
-
-#: src/gcm4/ui/host_dialog.py
-msgid "Foreground color"
 msgstr ""
 
 #: src/gcm4/ui/host_dialog.py
@@ -2781,12 +2812,15 @@ msgid "Commands"
 msgstr ""
 
 #: src/gcm4/ui/host_dialog.py
-#, python-brace-format
-msgid "Shell command run locally, in the background, right after this connection ends, by the protocols that support it. Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
+msgid "Connection"
 msgstr ""
 
 #: src/gcm4/ui/host_dialog.py
-msgid "Extra parameters"
+msgid "Discard"
+msgstr ""
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Discard changes?"
 msgstr ""
 
 #: src/gcm4/ui/host_dialog.py
@@ -2798,15 +2832,11 @@ msgid "Existing groups"
 msgstr ""
 
 #: src/gcm4/ui/host_dialog.py
-msgid "No extension is installed for this protocol: its options are kept and cannot be modified."
+msgid "Extra parameters"
 msgstr ""
 
 #: src/gcm4/ui/host_dialog.py
-msgid "Discard changes?"
-msgstr ""
-
-#: src/gcm4/ui/host_dialog.py
-msgid "The changes to this host have not been saved."
+msgid "Foreground color"
 msgstr ""
 
 #: src/gcm4/ui/host_dialog.py
@@ -2814,15 +2844,41 @@ msgid "Keep Editing"
 msgstr ""
 
 #: src/gcm4/ui/host_dialog.py
-msgid "Discard"
+msgid "New Host"
+msgstr ""
+
+#: src/gcm4/ui/host_dialog.py
+msgid "No extension handles this protocol: its options are kept."
+msgstr ""
+
+#: src/gcm4/ui/host_dialog.py
+msgid "No extension is installed for this protocol: its options are kept and cannot be modified."
+msgstr ""
+
+#: src/gcm4/ui/host_dialog.py
+msgid "No extension is installed."
+msgstr ""
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Protocol"
+msgstr ""
+
+#: src/gcm4/ui/host_dialog.py
+msgid "Protocol options"
+msgstr ""
+
+#: src/gcm4/ui/host_dialog.py
+#, python-brace-format
+msgid "Shell command run locally, in the background, right after this connection ends, by the protocols that support it. Leave blank to disable. Placeholders: {name} {address} {group} {protocol}"
+msgstr ""
+
+#: src/gcm4/ui/host_dialog.py
+msgid "The changes to this host have not been saved."
 msgstr ""
 
 #: src/gcm4/ui/host_tree.py
-msgid "Search hosts"
-msgstr ""
-
-#: src/gcm4/ui/host_tree.py
-msgid "No matching hosts"
+#, python-brace-format
+msgid "An item with this name already exists in '{group}'."
 msgstr ""
 
 #: src/gcm4/ui/host_tree.py src/gcm4/ui/preferences.py
@@ -2831,24 +2887,23 @@ msgstr ""
 
 #: src/gcm4/ui/host_tree.py
 #, python-brace-format
-msgid "An item with this name already exists in '{group}'."
+msgid "Move not saved: {error}"
 msgstr ""
 
 #: src/gcm4/ui/host_tree.py
-#, python-brace-format
-msgid "Move not saved: {error}"
+msgid "No matching hosts"
+msgstr ""
+
+#: src/gcm4/ui/host_tree.py
+msgid "Search hosts"
+msgstr ""
+
+#: src/gcm4/ui/main_window.py
+msgid "Close tab"
 msgstr ""
 
 #: src/gcm4/ui/main_window.py
 msgid "Configuration not loaded"
-msgstr ""
-
-#: src/gcm4/ui/main_window.py
-msgid "Welcome to Gnome Connection Manager"
-msgstr ""
-
-#: src/gcm4/ui/main_window.py
-msgid "Hosts and groups will appear in the left panel."
 msgstr ""
 
 #: src/gcm4/ui/main_window.py
@@ -2857,16 +2912,16 @@ msgstr ""
 
 #: src/gcm4/ui/main_window.py
 #, python-brace-format
-msgid "No extension handles the protocol «{protocol}». Install it to open this connection."
+msgid "Host not found: {hosts}"
+msgstr ""
+
+#: src/gcm4/ui/main_window.py
+msgid "Hosts and groups will appear in the left panel."
 msgstr ""
 
 #: src/gcm4/ui/main_window.py
 #, python-brace-format
-msgid "Unable to open «{host}»: {error}"
-msgstr ""
-
-#: src/gcm4/ui/main_window.py
-msgid "Close tab"
+msgid "No extension handles the protocol «{protocol}». Install it to open this connection."
 msgstr ""
 
 #: src/gcm4/ui/main_window.py
@@ -2880,8 +2935,7 @@ msgid "Not restored, no extension for: {hosts}"
 msgstr ""
 
 #: src/gcm4/ui/main_window.py
-#, python-brace-format
-msgid "Host not found: {hosts}"
+msgid "Open connections will be closed."
 msgstr ""
 
 #: src/gcm4/ui/main_window.py
@@ -2889,7 +2943,16 @@ msgid "Quit anyway?"
 msgstr ""
 
 #: src/gcm4/ui/main_window.py
-msgid "Open connections will be closed."
+#, python-brace-format
+msgid "Unable to open «{host}»: {error}"
+msgstr ""
+
+#: src/gcm4/ui/main_window.py
+msgid "Welcome to Gnome Connection Manager"
+msgstr ""
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "Address copied"
 msgstr ""
 
 #: src/gcm4/ui/menu_arbre.py
@@ -2898,7 +2961,7 @@ msgid "Changes not saved: {error}"
 msgstr ""
 
 #: src/gcm4/ui/menu_arbre.py
-msgid "Address copied"
+msgid "Create"
 msgstr ""
 
 #: src/gcm4/ui/menu_arbre.py
@@ -2911,15 +2974,12 @@ msgstr ""
 
 #: src/gcm4/ui/menu_arbre.py
 #, python-brace-format
+msgid "It contains {hosts} host(s) and {groups} subgroup(s), which will be removed too."
+msgstr ""
+
+#: src/gcm4/ui/menu_arbre.py
+#, python-brace-format
 msgid "Parent group: {parent}"
-msgstr ""
-
-#: src/gcm4/ui/menu_arbre.py
-msgid "Create"
-msgstr ""
-
-#: src/gcm4/ui/menu_arbre.py
-msgid "Rename"
 msgstr ""
 
 #: src/gcm4/ui/menu_arbre.py
@@ -2928,21 +2988,20 @@ msgid "Remove group «{name}»?"
 msgstr ""
 
 #: src/gcm4/ui/menu_arbre.py
-msgid "This cannot be undone."
-msgstr ""
-
-#: src/gcm4/ui/menu_arbre.py
-#, python-brace-format
-msgid "It contains {hosts} host(s) and {groups} subgroup(s), which will be removed too."
-msgstr ""
-
-#: src/gcm4/ui/menu_arbre.py
 #, python-brace-format
 msgid "Remove host «{name}»?"
 msgstr ""
 
+#: src/gcm4/ui/menu_arbre.py
+msgid "Rename"
+msgstr ""
+
+#: src/gcm4/ui/menu_arbre.py
+msgid "This cannot be undone."
+msgstr ""
+
 #: src/gcm4/ui/mises_a_jour.py
-msgid "Check for updates?"
+msgid "Allow"
 msgstr ""
 
 #: src/gcm4/ui/mises_a_jour.py
@@ -2950,11 +3009,11 @@ msgid "At startup, Gnome Connection Manager can ask GitHub (api.github.com) whet
 msgstr ""
 
 #: src/gcm4/ui/mises_a_jour.py
-msgid "No"
+msgid "Check for updates?"
 msgstr ""
 
 #: src/gcm4/ui/mises_a_jour.py
-msgid "Allow"
+msgid "No"
 msgstr ""
 
 #: src/gcm4/ui/mises_a_jour.py
@@ -2967,48 +3026,7 @@ msgid "Appearance"
 msgstr ""
 
 #: src/gcm4/ui/preferences.py
-msgid "Theme"
-msgstr ""
-
-#: src/gcm4/ui/preferences.py
-msgid "Use system font"
-msgstr ""
-
-#: src/gcm4/ui/preferences.py
-msgid "Tree font"
-msgstr ""
-
-#: src/gcm4/ui/preferences.py
-msgid "Main window"
-msgstr ""
-
-#: src/gcm4/ui/preferences.py
-msgid "Logging"
-msgstr ""
-
-#: src/gcm4/ui/preferences.py
 msgid "Default log level"
-msgstr ""
-
-#: src/gcm4/ui/preferences.py
-msgid "Overridden for this session by --debug or GCM_LOG_LEVEL."
-msgstr ""
-
-#: src/gcm4/ui/preferences.py
-msgid "Log folder"
-msgstr ""
-
-#: src/gcm4/ui/preferences.py
-msgid "Extensions"
-msgstr ""
-
-#: src/gcm4/ui/preferences.py
-msgid "No extension found."
-msgstr ""
-
-#: src/gcm4/ui/preferences.py
-#, python-brace-format
-msgid "Version {version}"
 msgstr ""
 
 #: src/gcm4/ui/preferences.py
@@ -3016,7 +3034,36 @@ msgid "Error"
 msgstr ""
 
 #: src/gcm4/ui/preferences.py
+msgid "Extensions"
+msgstr ""
+
+#: src/gcm4/ui/preferences.py
 msgid "Loaded"
+msgstr ""
+
+#: src/gcm4/ui/preferences.py
+msgid "Log folder"
+msgstr ""
+
+#: src/gcm4/ui/preferences.py
+msgid "Logging"
+msgstr ""
+
+#: src/gcm4/ui/preferences.py
+msgid "Main window"
+msgstr ""
+
+#: src/gcm4/ui/preferences.py
+msgid "No extension found."
+msgstr ""
+
+#: src/gcm4/ui/preferences.py
+msgid "Overridden for this session by --debug or GCM_LOG_LEVEL."
+msgstr ""
+
+#: src/gcm4/ui/preferences.py
+#, python-brace-format
+msgid "Preferences not saved: {error}"
 msgstr ""
 
 #: src/gcm4/ui/preferences.py
@@ -3025,17 +3072,57 @@ msgid "Preferences page unavailable: {error}"
 msgstr ""
 
 #: src/gcm4/ui/preferences.py
+msgid "Theme"
+msgstr ""
+
+#: src/gcm4/ui/preferences.py
+msgid "Tree font"
+msgstr ""
+
+#: src/gcm4/ui/preferences.py
 #, python-brace-format
 msgid "Unable to open the folder: {error}"
 msgstr ""
 
 #: src/gcm4/ui/preferences.py
+msgid "Use system font"
+msgstr ""
+
+#: src/gcm4/ui/preferences.py
 #, python-brace-format
-msgid "Preferences not saved: {error}"
+msgid "Version {version}"
 msgstr ""
 
 #: ssh_config_editor.py
-msgid "Shared — bastion, all users (/etc/ssh/ssh_config.d/config_gcm.conf)"
+#, python-brace-format
+msgid ""
+"\n"
+"Exit code: {rc}"
+msgstr ""
+
+#: ssh_config_editor.py
+#, python-brace-format
+msgid ""
+"\n"
+"[Error: {exc}]"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid ""
+"\n"
+"[Timeout after 10 s]"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "(no output)\n"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "Add a new empty host"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "AddKeysToAgent"
 msgstr ""
 
 #: ssh_config_editor.py
@@ -3043,31 +3130,7 @@ msgid "Alias(es)"
 msgstr ""
 
 #: ssh_config_editor.py
-msgid "HostName"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "IdentityFile"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "ProxyJump"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "ProxyCommand"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "ForwardAgent"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "ServerAliveInterval"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "ServerAliveCountMax"
+msgid "At least one alias is required"
 msgstr ""
 
 #: ssh_config_editor.py
@@ -3075,23 +3138,7 @@ msgid "Compression"
 msgstr ""
 
 #: ssh_config_editor.py
-msgid "StrictHostKeyChecking"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "UserKnownHostsFile"
-msgstr ""
-
-#: ssh_config_editor.py
 msgid "ConnectTimeout"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "RequestTTY"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "RemoteCommand"
 msgstr ""
 
 #: ssh_config_editor.py
@@ -3103,156 +3150,8 @@ msgid "ControlPersist"
 msgstr ""
 
 #: ssh_config_editor.py
-msgid "PubkeyAuthentication"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "PasswordAuthentication"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "IdentitiesOnly"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "LogLevel"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "AddKeysToAgent"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "ex : web1 ou web1 web1.example.com"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "ex : 192.168.1.10 ou example.com"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "ex : root"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "ex : 22"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "ex : ~/.ssh/id_ed25519, ~/.ssh/id_rsa"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "ex : user@bastion.example.com, user@server1.example.com"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "ex : ssh -W %h:%p bastion, ou corkscrew proxy 8080 %h %p"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "yes ou no"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "ex : 60"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "ex : 3"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "yes / no / ask / accept-new"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "ex : ~/.ssh/known_hosts"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "ex : 10"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "ex : tmux attach || tmux new"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "auto / yes / no"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "ex : 10m"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "QUIET/ERROR/INFO/VERBOSE/DEBUG"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "Edit SSH config (personal + shared)"
-msgstr ""
-
-#: ssh_config_editor.py
 #, python-brace-format
-msgid "{path} does not exist yet — it will be created when saving."
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "Visual"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "Raw / Diff"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "✕ Cancel"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "💾 Save"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "Filter hosts…"
-msgstr ""
-
-#: ssh_config_editor.py ssh_key_manager_dialog.py
-msgid "＋ Add"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "Add a new empty host"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "✕ Remove"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "Remove selected host"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "⚡ Test"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "Test SSH connection to selected host"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "File:"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "Multiple values possible: separate them with commas (one line per value in the file)"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "Copy ssh cmd"
+msgid "Copied: {cmd}"
 msgstr ""
 
 #: ssh_config_editor.py
@@ -3260,27 +3159,7 @@ msgid "Copy full ssh command to clipboard"
 msgstr ""
 
 #: ssh_config_editor.py
-msgid "← Select or create a host"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "Redirection de port"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "Properties"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "Dynamic (SOCKS)"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "Enter remote host"
-msgstr ""
-
-#: ssh_config_editor.py
-msgid "Edit raw ssh_config — changes here override the Visual tab on Save."
+msgid "Copy ssh cmd"
 msgstr ""
 
 #: ssh_config_editor.py
@@ -3288,15 +3167,51 @@ msgid "Diff (original → current):"
 msgstr ""
 
 #: ssh_config_editor.py
-msgid "⟳ Refresh diff"
+msgid "Dynamic (SOCKS)"
 msgstr ""
 
 #: ssh_config_editor.py
-msgid "At least one alias is required"
+msgid "Edit SSH config (personal + shared)"
 msgstr ""
 
 #: ssh_config_editor.py
-msgid "Port must be an integer between 1 and 65535"
+msgid "Edit raw ssh_config — changes here override the Visual tab on Save."
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "Enter remote host"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "File:"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "Filter hosts…"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "ForwardAgent"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "HostName"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "IdentitiesOnly"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "IdentityFile"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "LogLevel"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "Multiple values possible: separate them with commas (one line per value in the file)"
 msgstr ""
 
 #: ssh_config_editor.py
@@ -3304,7 +3219,51 @@ msgid "No changes."
 msgstr ""
 
 #: ssh_config_editor.py
+msgid "PasswordAuthentication"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "Port must be an integer between 1 and 65535"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "Properties"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "ProxyCommand"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "ProxyJump"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "PubkeyAuthentication"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "QUIET/ERROR/INFO/VERBOSE/DEBUG"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "Raw / Diff"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "Redirection de port"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "RemoteCommand"
+msgstr ""
+
+#: ssh_config_editor.py
 msgid "Remove host?"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "Remove selected host"
 msgstr ""
 
 #: ssh_config_editor.py
@@ -3313,13 +3272,7 @@ msgid "Remove «{alias}» from {path}?"
 msgstr ""
 
 #: ssh_config_editor.py
-#, python-brace-format
-msgid "Copied: {cmd}"
-msgstr ""
-
-#: ssh_config_editor.py
-#, python-brace-format
-msgid "Test connection — {alias}"
+msgid "RequestTTY"
 msgstr ""
 
 #: ssh_config_editor.py
@@ -3330,361 +3283,133 @@ msgid ""
 msgstr ""
 
 #: ssh_config_editor.py
-msgid "(no output)\n"
+msgid "ServerAliveCountMax"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "ServerAliveInterval"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "Shared — bastion, all users (/etc/ssh/ssh_config.d/config_gcm.conf)"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "StrictHostKeyChecking"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "Test SSH connection to selected host"
 msgstr ""
 
 #: ssh_config_editor.py
 #, python-brace-format
-msgid ""
-"\n"
-"Exit code: {rc}"
+msgid "Test connection — {alias}"
 msgstr ""
 
 #: ssh_config_editor.py
-msgid ""
-"\n"
-"[Timeout after 10 s]"
+msgid "UserKnownHostsFile"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "Visual"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "auto / yes / no"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "ex : 10"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "ex : 10m"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "ex : 192.168.1.10 ou example.com"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "ex : 22"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "ex : 3"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "ex : 60"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "ex : root"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "ex : ssh -W %h:%p bastion, ou corkscrew proxy 8080 %h %p"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "ex : tmux attach || tmux new"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "ex : user@bastion.example.com, user@server1.example.com"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "ex : web1 ou web1 web1.example.com"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "ex : ~/.ssh/id_ed25519, ~/.ssh/id_rsa"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "ex : ~/.ssh/known_hosts"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "yes / no / ask / accept-new"
+msgstr ""
+
+#: ssh_config_editor.py
+msgid "yes ou no"
 msgstr ""
 
 #: ssh_config_editor.py
 #, python-brace-format
-msgid ""
-"\n"
-"[Error: {exc}]"
+msgid "{path} does not exist yet — it will be created when saving."
 msgstr ""
 
-#: ssh_key_manager_dialog.py
-msgid "unknown CA"
+#: ssh_config_editor.py
+msgid "← Select or create a host"
 msgstr ""
 
-#: ssh_key_manager_dialog.py
-msgid "forever"
+#: ssh_config_editor.py
+msgid "⚡ Test"
 msgstr ""
 
-#: ssh_key_manager_dialog.py
-#, python-brace-format
-msgid "until {end}"
+#: ssh_config_editor.py
+msgid "✕ Cancel"
 msgstr ""
 
-#: ssh_key_manager_dialog.py
-msgid "(hashed)"
+#: ssh_config_editor.py
+msgid "✕ Remove"
 msgstr ""
 
-#: ssh_key_manager_dialog.py
-msgid "local machine"
+#: ssh_config_editor.py
+msgid "⟳ Refresh diff"
 msgstr ""
 
-#: ssh_key_manager_dialog.py
-msgid "Connection timed out"
+#: ssh_config_editor.py ssh_key_manager_dialog.py
+msgid "＋ Add"
 msgstr ""
 
-#: ssh_key_manager_dialog.py
-msgid "SSH connection failed"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Generate SSH Key"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "⚙ Generate"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Key type:"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "RSA size:"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "File name:"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Saved in ~/.ssh/ — leave blank for default name"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Comment:"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Passphrase:"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "(empty = no passphrase)"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Keys are saved in <b>~/.ssh/</b> with permissions 600."
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-#, python-brace-format
-msgid "Sign with designated CA ({name})"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Certificate identity:"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Principals (comma-separated):"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Validity:"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "ssh-keygen -V syntax, e.g. +52w (1 year), +30d, or 'always:forever'"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Add Authorized Key"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "_Add"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Paste the full public key line (options, type, base64 key, comment):"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-#, python-brace-format
-msgid "Known Hosts Test — {n}/{total} found on {target}"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "_Close"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Found"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Info (matching known_hosts line)"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Rename Key"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "_Rename"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-#, python-brace-format
-msgid "New name for {name}:"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-#, python-brace-format
-msgid "Change Passphrase — {name}"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "_Change"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Current passphrase:"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "(empty if none)"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "New passphrase:"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "(empty = remove passphrase)"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Confirm new passphrase:"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-#, python-brace-format
-msgid "Public Key — {name}"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "⎘ Copy to clipboard"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Private keys"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Orphan Public keys"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Known Hosts"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Authorized Keys"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Remote target (Known Hosts / Authorized Keys):"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "user@host or root@host[:port]"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "🔌 Connect"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "🏠 Local"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Signing CA:"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "🔏 Designate"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Choose an existing local key pair as the signing CA"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "⬆ Import CA"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Import an external CA key pair into ~/.ssh/ and designate it"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "🗑 Delete CA"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Permanently delete the designated CA key pair"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Generate a new SSH key pair (ssh-keygen)"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "↑ Import"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Import an existing private key file into ~/.ssh/"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "⎘ Copy public key"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Copy the public key content to clipboard"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "👁 View public key"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Show the full public key content in a dedicated window"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "✎ Rename"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Rename this key (and its .pub / certificate, if any)"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "🔒 Passphrase"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Change the passphrase of this private key (ssh-keygen -p)"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "🔑 Agent"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Load/unload this key in ssh-agent (ssh-add / ssh-add -d)"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "📂 Reveal"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Open ~/.ssh/ in the file manager"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "🗑 Delete"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Permanently delete the selected key"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "⟳ Refresh"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "⎘ Copy fingerprint"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "🧪 Test known hosts"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Check ~/.ssh/config (and GCM hosts, if wired in) against known_hosts"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Created"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Validity"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Signed by"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Perms"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Orphan Public key"
+#: ssh_config_editor.py
+msgid "💾 Save"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
@@ -3692,38 +3417,19 @@ msgid "#"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
-msgid "Hashed"
+msgid "(empty = no passphrase)"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
-msgid "Enabled"
+msgid "(empty = remove passphrase)"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
-msgid "Comment"
+msgid "(empty if none)"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
-msgid "Invalid target — expected user@host or user@host:port"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-#, python-brace-format
-msgid "Testing connection to {t}…"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-#, python-brace-format
-msgid "Connection failed: {err}"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-#, python-brace-format
-msgid "Connected to {t} — Known Hosts / Authorized Keys now read from there"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Switched back to local machine"
+msgid "(hashed)"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
@@ -3731,33 +3437,26 @@ msgid "(none — keys are generated unsigned)"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
-msgid "Designate Signing CA"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "_Designate"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Select the private key file, not the .pub file"
+#, python-brace-format
+msgid "A certificate named {name} already exists"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
 #, python-brace-format
-msgid "No matching .pub file found next to {name} — cannot use as CA"
+msgid "A file named {name} already exists"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Add Authorized Key"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
 #, python-brace-format
-msgid "Designated CA: {name}"
+msgid "Add {name} to ssh-agent?"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
-msgid "Import CA Private Key"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "_Import"
+msgid "Added to ssh-agent"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
@@ -3765,13 +3464,17 @@ msgid "All files"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
-#, python-brace-format
-msgid "No matching .pub file found next to {name} — cannot import as CA"
+msgid "Authorized Keys"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
 #, python-brace-format
-msgid "File {name} already exists in ~/.ssh/ — overwrite?"
+msgid "CA deleted: {name}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "CA deletion failed: {err}"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
@@ -3785,107 +3488,12 @@ msgid "CA imported and designated: {name}"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
-msgid "No CA currently designated"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-#, python-brace-format
-msgid ""
-"Permanently delete the CA key pair <b>{name}</b>?\n"
-"Certificates already signed by this CA will no longer be trustable to verify.\n"
-"<b>This cannot be undone.</b>"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-#, python-brace-format
-msgid "CA deletion failed: {err}"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-#, python-brace-format
-msgid "CA deleted: {name}"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "~/.ssh/ not found — no keys loaded"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-#, python-brace-format
-msgid "{priv} private key(s), {pub} Orphan Public key(s) loaded from ~/.ssh/"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-#, python-brace-format
-msgid "Key generated: {name}"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "ssh-keygen not found — install openssh-client"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-#, python-brace-format
-msgid "ssh-keygen failed: {err}"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-#, python-brace-format
-msgid "Generation failed: {err}"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "No CA designated — key generated unsigned"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "CA signing timed out — CA key may require a passphrase (unsupported non-interactively)"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
 #, python-brace-format
 msgid "CA signing failed: {err}"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
-#, python-brace-format
-msgid "Key signed by CA {ca} (identity={id})"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Import Private Key"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-#, python-brace-format
-msgid "Key imported: {name}"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-#, python-brace-format
-msgid "Import failed: {err}"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "No Public key available for selected entry"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-#, python-brace-format
-msgid "Public key file not found: {p}"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Public key copied to clipboard"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Clipboard unavailable — key content logged"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-#, python-brace-format
-msgid "Copy failed: {err}"
+msgid "CA signing timed out — CA key may require a passphrase (unsupported non-interactively)"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
@@ -3895,9 +3503,198 @@ msgstr ""
 
 #: ssh_key_manager_dialog.py
 #, python-brace-format
-msgid ""
-"Permanently delete <b>{name}</b> (and its Orphan Public key if present)?\n"
-"<b>This cannot be undone.</b>"
+msgid "Cannot read public key: {err}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Certificate identity:"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "Change Passphrase — {name}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Change the passphrase of this private key (ssh-keygen -p)"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Check ~/.ssh/config (and GCM hosts, if wired in) against known_hosts"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Choose an existing local key pair as the signing CA"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Clipboard unavailable — key content logged"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Comment"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Comment:"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Confirm new passphrase:"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "Connected to {t} — Known Hosts / Authorized Keys now read from there"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "Connection failed: {err}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Connection timed out"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "Copy failed: {err}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Copy the public key content to clipboard"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Created"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Current passphrase:"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "Delete failed: {err}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Designate Signing CA"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "Designated CA: {name}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Disable"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Enabled"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Entry not found (file may have changed) — refreshing"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Failed to add key"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "Failed to add to agent (passphrase required?): {err}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "Failed to remove from agent: {err}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Failed to update authorized_keys"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Failed to update known_hosts"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "File changed on disk — refreshing"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "File name:"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "File {name} already exists in ~/.ssh/ — overwrite?"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Fingerprint copied to clipboard"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Found"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Generate SSH Key"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Generate a new SSH key pair (ssh-keygen)"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "Generation failed: {err}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Hashed"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Import CA Private Key"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Import Private Key"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Import an existing private key file into ~/.ssh/"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Import an external CA key pair into ~/.ssh/ and designate it"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "Import failed: {err}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Info (matching known_hosts line)"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Invalid name — must not contain a path separator"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Invalid target — expected user@host or user@host:port"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Key added to authorized_keys"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
@@ -3907,16 +3704,75 @@ msgstr ""
 
 #: ssh_key_manager_dialog.py
 #, python-brace-format
-msgid "Delete failed: {err}"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "No public key available for selected entry"
+msgid "Key generated: {name}"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
 #, python-brace-format
-msgid "Cannot read public key: {err}"
+msgid "Key imported: {name}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "Key signed by CA {ca} (identity={id})"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Key type:"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Keys are saved in <b>~/.ssh/</b> with permissions 600."
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Known Hosts"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "Known Hosts Test — {n}/{total} found on {target}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Load/unload this key in ssh-agent (ssh-add / ssh-add -d)"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "New name for {name}:"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "New passphrase and confirmation do not match"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "New passphrase:"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "No CA currently designated"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "No CA designated — key generated unsigned"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "No Public key available for selected entry"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "No authorized_keys entry selected"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "No candidate hosts found in ~/.ssh/config (and no GCM host list wired in)"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "No fingerprint available for this entry"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
@@ -3924,31 +3780,17 @@ msgid "No key selected"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
-msgid "Invalid name — must not contain a path separator"
+msgid "No known_hosts entry selected"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
 #, python-brace-format
-msgid "A file named {name} already exists"
+msgid "No matching .pub file found next to {name} — cannot import as CA"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
 #, python-brace-format
-msgid "A certificate named {name} already exists"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Nothing to rename"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-#, python-brace-format
-msgid "Rename failed: {err}"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-#, python-brace-format
-msgid "Renamed {old} to {new}"
+msgid "No matching .pub file found next to {name} — cannot use as CA"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
@@ -3956,7 +3798,27 @@ msgid "No private key selected"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
-msgid "New passphrase and confirmation do not match"
+msgid "No public key available for selected entry"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "No public key available to identify this key in the agent"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Nothing to rename"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Open ~/.ssh/ in the file manager"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Orphan Public key"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Orphan Public keys"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
@@ -3970,106 +3832,64 @@ msgid "Passphrase changed for {name}"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
-msgid "No public key available to identify this key in the agent"
+msgid "Passphrase:"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Paste the full public key line (options, type, base64 key, comment):"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
 #, python-brace-format
-msgid "Remove {name} from ssh-agent?"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-#, python-brace-format
-msgid "ssh-add failed: {err}"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Removed from ssh-agent"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-#, python-brace-format
-msgid "Failed to remove from agent: {err}"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-#, python-brace-format
-msgid "Add {name} to ssh-agent?"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "ssh-add timed out — the key may require a passphrase (no terminal available here)"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Added to ssh-agent"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-#, python-brace-format
-msgid "Failed to add to agent (passphrase required?): {err}"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-#, python-brace-format
-msgid "known_hosts not found on {t}"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-#, python-brace-format
-msgid "{n} known_hosts entries loaded from {t}"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "No known_hosts entry selected"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Fingerprint copied to clipboard"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "No fingerprint available for this entry"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "No candidate hosts found in ~/.ssh/config (and no GCM host list wired in)"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
 msgid ""
-"Remove this known_hosts entry?\n"
+"Permanently delete <b>{name}</b> (and its Orphan Public key if present)?\n"
 "<b>This cannot be undone.</b>"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
-msgid "remove a known_hosts entry"
+#, python-brace-format
+msgid ""
+"Permanently delete the CA key pair <b>{name}</b>?\n"
+"Certificates already signed by this CA will no longer be trustable to verify.\n"
+"<b>This cannot be undone.</b>"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
-msgid "Entry not found (file may have changed) — refreshing"
+msgid "Permanently delete the designated CA key pair"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
-msgid "Failed to update known_hosts"
+msgid "Permanently delete the selected key"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
-msgid "known_hosts entry removed"
+msgid "Perms"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Principals (comma-separated):"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Private keys"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
 #, python-brace-format
-msgid "authorized_keys not found on {t}"
+msgid "Public Key — {name}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Public key copied to clipboard"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
 #, python-brace-format
-msgid "{n} authorized_keys entries loaded from {t}"
+msgid "Public key file not found: {p}"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
-msgid "Disable"
+msgid "RSA size:"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
@@ -4077,44 +3897,7 @@ msgid "Re-enable"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
-#, python-brace-format
-msgid "{action} this authorized_keys entry?"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "enable/disable an authorized_keys entry"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "File changed on disk — refreshing"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Failed to update authorized_keys"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "authorized_keys entry updated"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "This does not look like a valid public key line"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "add a key to authorized_keys"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Failed to add key"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "Key added to authorized_keys"
-msgstr ""
-
-#: ssh_key_manager_dialog.py
-msgid "No authorized_keys entry selected"
+msgid "Remote target (Known Hosts / Authorized Keys):"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
@@ -4124,11 +3907,235 @@ msgid ""
 msgstr ""
 
 #: ssh_key_manager_dialog.py
-msgid "remove an authorized_keys entry"
+msgid ""
+"Remove this known_hosts entry?\n"
+"<b>This cannot be undone.</b>"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "Remove {name} from ssh-agent?"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Removed from ssh-agent"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Rename Key"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "Rename failed: {err}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Rename this key (and its .pub / certificate, if any)"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "Renamed {old} to {new}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "SSH connection failed"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Saved in ~/.ssh/ — leave blank for default name"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Select the private key file, not the .pub file"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Show the full public key content in a dedicated window"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "Sign with designated CA ({name})"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Signed by"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Signing CA:"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Switched back to local machine"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "Testing connection to {t}…"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "This does not look like a valid public key line"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Validity"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "Validity:"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "_Add"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "_Change"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "_Close"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "_Designate"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "_Import"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "_Rename"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "add a key to authorized_keys"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
 msgid "authorized_keys entry removed"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "authorized_keys entry updated"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "authorized_keys not found on {t}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "enable/disable an authorized_keys entry"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "forever"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "known_hosts entry removed"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "known_hosts not found on {t}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "local machine"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "remove a known_hosts entry"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "remove an authorized_keys entry"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "ssh-add failed: {err}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "ssh-add timed out — the key may require a passphrase (no terminal available here)"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "ssh-keygen -V syntax, e.g. +52w (1 year), +30d, or 'always:forever'"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "ssh-keygen failed: {err}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "ssh-keygen not found — install openssh-client"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "unknown CA"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "until {end}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "user@host or root@host[:port]"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "{action} this authorized_keys entry?"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "{n} authorized_keys entries loaded from {t}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "{n} known_hosts entries loaded from {t}"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+#, python-brace-format
+msgid "{priv} private key(s), {pub} Orphan Public key(s) loaded from ~/.ssh/"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "~/.ssh/ not found — no keys loaded"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "↑ Import"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "⎘ Copy fingerprint"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "⎘ Copy public key"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "⎘ Copy to clipboard"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "⚙ Generate"
 msgstr ""
 
 #: ssh_key_manager_dialog.py
@@ -4139,20 +4146,61 @@ msgid ""
 "<b>Are you sure?</b>"
 msgstr ""
 
-#: widgets.py
-msgid "Special keys"
+#: ssh_key_manager_dialog.py
+msgid "✎ Rename"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "⟳ Refresh"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "⬆ Import CA"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "🏠 Local"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "👁 View public key"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "📂 Reveal"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "🔌 Connect"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "🔏 Designate"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "🔑 Agent"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "🔒 Passphrase"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "🗑 Delete"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "🗑 Delete CA"
+msgstr ""
+
+#: ssh_key_manager_dialog.py
+msgid "🧪 Test known hosts"
 msgstr ""
 
 #: widgets.py
-msgid "Reset console"
-msgstr ""
-
-#: widgets.py
-msgid "Reset and Clear console"
-msgstr ""
-
-#: widgets.py
-msgid "Reconnect to host"
+#, python-format
+msgid "%s has disconnected."
 msgstr ""
 
 #: widgets.py
@@ -4160,7 +4208,35 @@ msgid "Clone console"
 msgstr ""
 
 #: widgets.py
+msgid "Connection closed"
+msgstr ""
+
+#: widgets.py
+msgid "Custom commands"
+msgstr ""
+
+#: widgets.py
 msgid "Enable logging"
+msgstr ""
+
+#: widgets.py
+msgid "Reconnect to host"
+msgstr ""
+
+#: widgets.py
+msgid "Reset and Clear console"
+msgstr ""
+
+#: widgets.py
+msgid "Reset console"
+msgstr ""
+
+#: widgets.py
+msgid "Save buffer to file"
+msgstr ""
+
+#: widgets.py
+msgid "Special keys"
 msgstr ""
 
 #: widgets.py
@@ -4173,70 +4249,4 @@ msgstr ""
 
 #: widgets.py
 msgid "Unsplit all consoles"
-msgstr ""
-
-#: widgets.py
-msgid "Save buffer to file"
-msgstr ""
-
-#: widgets.py
-msgid "Custom commands"
-msgstr ""
-
-#: widgets.py
-#, python-format
-msgid "%s has disconnected."
-msgstr ""
-
-#: widgets.py
-msgid "Connection closed"
-msgstr ""
-
-#: data/io.github.MathildeDec.gcm4.desktop
-msgid "Connection Manager"
-msgstr ""
-
-#: data/io.github.MathildeDec.gcm4.desktop
-#: data/io.github.MathildeDec.gcm4.metainfo.xml
-msgid "Organize your hosts and open their connections in tabs"
-msgstr ""
-
-#: data/io.github.MathildeDec.gcm4.desktop
-msgid "connection;remote;host;session;terminal;gcm4;"
-msgstr ""
-
-#: data/io.github.MathildeDec.gcm4.desktop
-msgid "gcm4 (debug mode)"
-msgstr ""
-
-#: data/io.github.MathildeDec.gcm4.metainfo.xml
-msgid "Gnome Connection Manager keeps your hosts in groups and opens each connection in a tab of a single window."
-msgstr ""
-
-#: data/io.github.MathildeDec.gcm4.metainfo.xml
-msgid "Groups and hosts in a searchable tree, with colors and drag and drop"
-msgstr ""
-
-#: data/io.github.MathildeDec.gcm4.metainfo.xml
-msgid "Open tabs restored at the next start"
-msgstr ""
-
-#: data/io.github.MathildeDec.gcm4.metainfo.xml
-msgid "Host passwords stored encrypted"
-msgstr ""
-
-#: data/io.github.MathildeDec.gcm4.metainfo.xml
-msgid "Connection protocols provided by plugins"
-msgstr ""
-
-#: data/io.github.MathildeDec.gcm4.metainfo.xml
-msgid "The base application provides no protocol by itself: connections need the corresponding plugin."
-msgstr ""
-
-#: data/io.github.MathildeDec.gcm4.metainfo.xml
-msgid "Groups and hosts in the main window"
-msgstr ""
-
-#: data/io.github.MathildeDec.gcm4.metainfo.xml
-msgid "Last release of the GTK3 application; the GTK4 base is not released yet."
 msgstr ""

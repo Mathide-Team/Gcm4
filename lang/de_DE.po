@@ -2765,6 +2765,16 @@ msgstr "Die Konfigurationsdatei %s kann nicht gelesen werden: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Die Konfigurationsdatei %s kann nicht geschrieben werden: %s"
 
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Hosts exported: {count} ({file})"
+msgstr "Exportierte Hosts: {count} ({file})"
+
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
+msgstr "Import von {file}: hinzugefügt {added}, ersetzt {replaced}, umbenannt {renamed}, ignoriert {ignored}, neue Gruppen {groups}"
+
 #: src/gcm4/core/exchange.py
 #, python-format
 msgid "%s: the host name is missing"

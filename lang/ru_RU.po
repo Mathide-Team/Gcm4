@@ -2765,6 +2765,16 @@ msgstr "Не удалось прочитать файл конфигурации
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Не удалось записать файл конфигурации %s: %s"
 
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Hosts exported: {count} ({file})"
+msgstr "Экспортировано узлов: {count} ({file})"
+
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
+msgstr "Импорт {file}: добавлено {added}, заменено {replaced}, переименовано {renamed}, пропущено {ignored}, новых групп {groups}"
+
 #: src/gcm4/core/exchange.py
 #, python-format
 msgid "%s: the host name is missing"

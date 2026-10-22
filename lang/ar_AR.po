@@ -2765,6 +2765,16 @@ msgstr "تعذّرت قراءة ملف الإعدادات %s: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "تعذّرت كتابة ملف الإعدادات %s: %s"
 
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Hosts exported: {count} ({file})"
+msgstr "المضيفون المُصدَّرون: {count} ({file})"
+
+#: src/gcm4/core/echange_cli.py
+#, python-brace-format
+msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
+msgstr "استيراد {file}: أُضيف {added}، استُبدل {replaced}، أُعيدت تسمية {renamed}، تُجوهل {ignored}، مجموعات جديدة {groups}"
+
 #: src/gcm4/core/exchange.py
 #, python-format
 msgid "%s: the host name is missing"
