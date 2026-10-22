@@ -16,7 +16,7 @@ LANG = Path(__file__).resolve().parents[1] / "lang"
 
 
 def _champ(lignes: list[str], motcle: str) -> str | None:
-    """Valeur d'un champ ``msgid``/``msgstr``, entrées multilignes réassemblées.
+    r"""Valeur d'un champ ``msgid``/``msgstr``, entrées multilignes réassemblées.
 
     Le format du dépôt est « une ligne » (--no-wrap) — sauf pour les chaînes
     contenant des sauts de ligne réels, que gettext écrit forcément en
