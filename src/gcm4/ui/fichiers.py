@@ -9,8 +9,6 @@ annule.
 
 from __future__ import annotations
 
-from collections.abc import Callable
-
 from gi.repository import Gio, GLib, Gtk
 from loguru import logger
 
@@ -22,7 +20,11 @@ ENREGISTRER = "enregistrer"
 DOSSIER = "dossier"
 
 #: Rappel : chemin choisi, ou ``None`` (annulé, ou fichier non local).
-Rappel = Callable[[str | None], None]
+#: Alias en chaîne : jamais évalué à l'exécution — « str | None » (PEP 604,
+#: exigé par ruff) casserait le démarrage sous Python 3.9 du job
+#: « gcm4 sur Rocky Linux 9 », et ``from __future__ import annotations``
+#: ne protège que les annotations, pas les assignations de module.
+Rappel = "Callable[[str | None], None]"
 
 #: (libellé du filtre, motifs) des fichiers d'échange d'hôtes.
 FILTRES: tuple[tuple[str, tuple[str, ...]], ...] = (
