@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-22 05:21+0000\n"
+"POT-Creation-Date: 2026-10-22 17:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,8 +138,8 @@ msgstr "লগ ফাইল লেখার জন্য খোলা যাচ�
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
-#: src/gcm4/ui/host_dialog.py src/gcm4/ui/main_window.py
-#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: src/gcm4/ui/echange.py src/gcm4/ui/fichiers.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/main_window.py src/gcm4/ui/menu_arbre.py utils.py widgets.py
 msgid "Cancel"
 msgstr "বাতিল"
 
@@ -159,8 +159,8 @@ msgstr "পূর্ববর্তী/পরবর্তী ট্যাবে 
 msgid "Clear selection"
 msgstr "নির্বাচন পরিষ্কার করুন"
 
-#: gnome_connection_manager.py src/gcm4/ui/main_window.py ssh_config_editor.py
-#: ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/echange.py
+#: src/gcm4/ui/main_window.py ssh_config_editor.py ssh_key_manager_dialog.py
 msgid "Close"
 msgstr "বন্ধ করুন"
 
@@ -322,11 +322,9 @@ msgstr ""
 msgid "Export Servers"
 msgstr "সার্ভার এক্সপোর্ট করুন"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Export servers"
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/echange.py
 msgid "Export servers"
-msgstr "_সার্ভার এক্সপোর্ট করুন"
+msgstr "সার্ভার রপ্তানি"
 
 #: gnome_connection_manager.py plugins/plugin_export_csv.py
 msgid "Export to CSV"
@@ -421,11 +419,9 @@ msgstr "হোস্টের নাম"
 msgid "Import Servers"
 msgstr "সার্ভার আমদানি করুন"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Import servers"
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/echange.py
 msgid "Import servers"
-msgstr "_সার্ভার আমদানি করুন"
+msgstr "সার্ভার আমদানি"
 
 #: gnome_connection_manager.py
 #, fuzzy
@@ -2713,15 +2709,10 @@ msgstr "কনফিগারেশন ফাইল %s পড়া যায়
 msgid "Unable to write the configuration file %s: %s"
 msgstr "কনফিগারেশন ফাইল %s লেখা যায়নি: %s"
 
-#: src/gcm4/core/echange_cli.py
+#: src/gcm4/core/echange_cli.py src/gcm4/ui/echange.py
 #, python-brace-format
 msgid "Hosts exported: {count} ({file})"
 msgstr "রপ্তানি করা হোস্ট: {count} ({file})"
-
-#: src/gcm4/core/echange_cli.py
-#, python-brace-format
-msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
-msgstr "{file} আমদানি: যোগ {added}, প্রতিস্থাপিত {replaced}, নাম বদল {renamed}, উপেক্ষিত {ignored}, নতুন গ্রুপ {groups}"
 
 #: src/gcm4/core/exchange.py
 #, python-format
@@ -2748,7 +2739,7 @@ msgstr "%s ফাইলটি বৈধ হোস্ট এক্সপোর্
 msgid "Unable to read the file %s: %s"
 msgstr "%s ফাইলটি পড়া যায়নি: %s"
 
-#: src/gcm4/core/exchange.py
+#: src/gcm4/core/exchange.py src/gcm4/core/sauvegarde.py
 #, python-format
 msgid "Unable to write the file %s: %s"
 msgstr "%s ফাইলটি লেখা যায়নি: %s"
@@ -2779,6 +2770,10 @@ msgstr "পরবর্তী ট্যাব"
 #: src/gcm4/core/menu.py
 msgid "Previous tab"
 msgstr "পূর্ববর্তী ট্যাব"
+
+#: src/gcm4/core/menu.py src/gcm4/ui/echange.py
+msgid "Save configuration as…"
+msgstr "কনফিগারেশন এভাবে সংরক্ষণ…"
 
 #: src/gcm4/core/menu.py
 msgid "Search"
@@ -2871,6 +2866,25 @@ msgstr "'{protocol}' প্রোটোকল ইতিমধ্যে '{other}'
 msgid "{file} does not define PLUGIN."
 msgstr "{file} PLUGIN সংজ্ঞায়িত করে না।"
 
+#: src/gcm4/core/sauvegarde.py
+msgid "Choose a folder other than the configuration folder."
+msgstr "কনফিগারেশন ফোল্ডার ছাড়া অন্য একটি ফোল্ডার বেছে নিন।"
+
+#: src/gcm4/core/sauvegarde.py
+#, python-brace-format
+msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
+msgstr "{file} আমদানি: যোগ {added}, প্রতিস্থাপিত {replaced}, নাম বদল {renamed}, উপেক্ষিত {ignored}, নতুন গ্রুপ {groups}"
+
+#: src/gcm4/core/sauvegarde.py
+#, python-format
+msgid "No configuration to save yet: %s"
+msgstr "সংরক্ষণের মতো কোনো কনফিগারেশন এখনো নেই: %s"
+
+#: src/gcm4/core/sauvegarde.py
+#, python-brace-format
+msgid "{folder} already contains {file}."
+msgstr "{folder}-এ ইতিমধ্যে {file} আছে।"
+
 #: src/gcm4/core/validation.py
 #, python-brace-format
 msgid "A host named «{name}» already exists in this group."
@@ -2902,6 +2916,56 @@ msgstr "gcm4 ইতিমধ্যে অন্য একটি কনফিগ�
 #, python-brace-format
 msgid "Password for {target}"
 msgstr "{target}-এর পাসওয়ার্ড"
+
+#: src/gcm4/ui/echange.py
+#, python-brace-format
+msgid "Configuration saved to {folder}"
+msgstr "কনফিগারেশন {folder}-এ সংরক্ষিত"
+
+#: src/gcm4/ui/echange.py
+msgid "Export"
+msgstr "রপ্তানি"
+
+#: src/gcm4/ui/echange.py
+#, python-brace-format
+msgid "Hosts in {file}: {count}, already present: {existing}"
+msgstr "{file}-এ হোস্ট: {count}, আগে থেকেই আছে: {existing}"
+
+#: src/gcm4/ui/echange.py
+msgid "If a host already exists:"
+msgstr "হোস্ট আগে থেকেই থাকলে:"
+
+#: src/gcm4/ui/echange.py
+msgid "Import"
+msgstr "আমদানি"
+
+#: src/gcm4/ui/echange.py
+msgid "Include passwords (in clear text)"
+msgstr "পাসওয়ার্ড অন্তর্ভুক্ত করুন (সাধারণ লেখায়)"
+
+#: src/gcm4/ui/echange.py
+msgid "JSON or CSV file, chosen by its extension."
+msgstr "JSON বা CSV ফাইল, এক্সটেনশন দেখে নির্বাচিত।"
+
+#: src/gcm4/ui/echange.py
+msgid "Keep the existing host"
+msgstr "বিদ্যমান হোস্ট রাখুন"
+
+#: src/gcm4/ui/echange.py
+msgid "Passwords will be written in clear text: keep this file safe."
+msgstr "পাসওয়ার্ড সাধারণ লেখায় লেখা হবে: এই ফাইলটি নিরাপদে রাখুন।"
+
+#: src/gcm4/ui/echange.py
+msgid "Rename the imported host"
+msgstr "আমদানি করা হোস্টের নাম বদলান"
+
+#: src/gcm4/ui/echange.py
+msgid "Replace the existing host"
+msgstr "বিদ্যমান হোস্ট প্রতিস্থাপন করুন"
+
+#: src/gcm4/ui/echange.py
+msgid "This file contains passwords in clear text."
+msgstr "এই ফাইলে সাধারণ লেখায় পাসওয়ার্ড আছে।"
 
 #: src/gcm4/ui/host_dialog.py
 msgid "Background color"

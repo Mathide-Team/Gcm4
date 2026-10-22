@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-22 05:21+0000\n"
+"POT-Creation-Date: 2026-10-22 17:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,8 +138,8 @@ msgstr "Не удалось открыть файл журнала для зап
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
-#: src/gcm4/ui/host_dialog.py src/gcm4/ui/main_window.py
-#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: src/gcm4/ui/echange.py src/gcm4/ui/fichiers.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/main_window.py src/gcm4/ui/menu_arbre.py utils.py widgets.py
 msgid "Cancel"
 msgstr "Отмена"
 
@@ -159,8 +159,8 @@ msgstr "Циклически переключаться между вкладк�
 msgid "Clear selection"
 msgstr "Очистить выделение"
 
-#: gnome_connection_manager.py src/gcm4/ui/main_window.py ssh_config_editor.py
-#: ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/echange.py
+#: src/gcm4/ui/main_window.py ssh_config_editor.py ssh_key_manager_dialog.py
 msgid "Close"
 msgstr "Закрыть"
 
@@ -322,11 +322,9 @@ msgstr ""
 msgid "Export Servers"
 msgstr "Экспорт серверов"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Export servers"
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/echange.py
 msgid "Export servers"
-msgstr "_Экспорт серверов"
+msgstr "Экспорт серверов"
 
 #: gnome_connection_manager.py plugins/plugin_export_csv.py
 msgid "Export to CSV"
@@ -421,11 +419,9 @@ msgstr "Имя хоста"
 msgid "Import Servers"
 msgstr "Импорт серверов"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Import servers"
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/echange.py
 msgid "Import servers"
-msgstr "_Импорт серверов"
+msgstr "Импорт серверов"
 
 #: gnome_connection_manager.py
 #, fuzzy
@@ -2713,15 +2709,10 @@ msgstr "Не удалось прочитать файл конфигурации
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Не удалось записать файл конфигурации %s: %s"
 
-#: src/gcm4/core/echange_cli.py
+#: src/gcm4/core/echange_cli.py src/gcm4/ui/echange.py
 #, python-brace-format
 msgid "Hosts exported: {count} ({file})"
 msgstr "Экспортировано узлов: {count} ({file})"
-
-#: src/gcm4/core/echange_cli.py
-#, python-brace-format
-msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
-msgstr "Импорт {file}: добавлено {added}, заменено {replaced}, переименовано {renamed}, пропущено {ignored}, новых групп {groups}"
 
 #: src/gcm4/core/exchange.py
 #, python-format
@@ -2748,7 +2739,7 @@ msgstr "Файл %s не является допустимым экспорто�
 msgid "Unable to read the file %s: %s"
 msgstr "Не удалось прочитать файл %s: %s"
 
-#: src/gcm4/core/exchange.py
+#: src/gcm4/core/exchange.py src/gcm4/core/sauvegarde.py
 #, python-format
 msgid "Unable to write the file %s: %s"
 msgstr "Не удалось записать файл %s: %s"
@@ -2779,6 +2770,10 @@ msgstr "Следующая вкладка"
 #: src/gcm4/core/menu.py
 msgid "Previous tab"
 msgstr "Предыдущая вкладка"
+
+#: src/gcm4/core/menu.py src/gcm4/ui/echange.py
+msgid "Save configuration as…"
+msgstr "Сохранить конфигурацию как…"
 
 #: src/gcm4/core/menu.py
 msgid "Search"
@@ -2871,6 +2866,25 @@ msgstr "Протокол «{protocol}» уже обрабатывается мо
 msgid "{file} does not define PLUGIN."
 msgstr "{file} не определяет PLUGIN."
 
+#: src/gcm4/core/sauvegarde.py
+msgid "Choose a folder other than the configuration folder."
+msgstr "Выберите папку, отличную от папки конфигурации."
+
+#: src/gcm4/core/sauvegarde.py
+#, python-brace-format
+msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
+msgstr "Импорт {file}: добавлено {added}, заменено {replaced}, переименовано {renamed}, пропущено {ignored}, новых групп {groups}"
+
+#: src/gcm4/core/sauvegarde.py
+#, python-format
+msgid "No configuration to save yet: %s"
+msgstr "Пока нечего сохранять: %s"
+
+#: src/gcm4/core/sauvegarde.py
+#, python-brace-format
+msgid "{folder} already contains {file}."
+msgstr "{folder} уже содержит {file}."
+
 #: src/gcm4/core/validation.py
 #, python-brace-format
 msgid "A host named «{name}» already exists in this group."
@@ -2902,6 +2916,56 @@ msgstr "gcm4 уже запущен с другой папкой конфигур
 #, python-brace-format
 msgid "Password for {target}"
 msgstr "Пароль для {target}"
+
+#: src/gcm4/ui/echange.py
+#, python-brace-format
+msgid "Configuration saved to {folder}"
+msgstr "Конфигурация сохранена в {folder}"
+
+#: src/gcm4/ui/echange.py
+msgid "Export"
+msgstr "Экспорт"
+
+#: src/gcm4/ui/echange.py
+#, python-brace-format
+msgid "Hosts in {file}: {count}, already present: {existing}"
+msgstr "Узлов в {file}: {count}, уже существуют: {existing}"
+
+#: src/gcm4/ui/echange.py
+msgid "If a host already exists:"
+msgstr "Если узел уже существует:"
+
+#: src/gcm4/ui/echange.py
+msgid "Import"
+msgstr "Импорт"
+
+#: src/gcm4/ui/echange.py
+msgid "Include passwords (in clear text)"
+msgstr "Включить пароли (открытым текстом)"
+
+#: src/gcm4/ui/echange.py
+msgid "JSON or CSV file, chosen by its extension."
+msgstr "Файл JSON или CSV, по расширению."
+
+#: src/gcm4/ui/echange.py
+msgid "Keep the existing host"
+msgstr "Оставить существующий узел"
+
+#: src/gcm4/ui/echange.py
+msgid "Passwords will be written in clear text: keep this file safe."
+msgstr "Пароли будут записаны открытым текстом: храните этот файл в надёжном месте."
+
+#: src/gcm4/ui/echange.py
+msgid "Rename the imported host"
+msgstr "Переименовать импортируемый узел"
+
+#: src/gcm4/ui/echange.py
+msgid "Replace the existing host"
+msgstr "Заменить существующий узел"
+
+#: src/gcm4/ui/echange.py
+msgid "This file contains passwords in clear text."
+msgstr "Этот файл содержит пароли открытым текстом."
 
 #: src/gcm4/ui/host_dialog.py
 msgid "Background color"

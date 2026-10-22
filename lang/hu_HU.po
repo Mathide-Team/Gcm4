@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-22 05:21+0000\n"
+"POT-Creation-Date: 2026-10-22 17:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,8 +138,8 @@ msgstr "A naplófájl írásra nem nyitható meg"
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
-#: src/gcm4/ui/host_dialog.py src/gcm4/ui/main_window.py
-#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: src/gcm4/ui/echange.py src/gcm4/ui/fichiers.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/main_window.py src/gcm4/ui/menu_arbre.py utils.py widgets.py
 msgid "Cancel"
 msgstr "Mégse"
 
@@ -159,8 +159,8 @@ msgstr "Körkörös navigáció a lapok között az előző/következő lapra l�
 msgid "Clear selection"
 msgstr "Kijelölés törlése"
 
-#: gnome_connection_manager.py src/gcm4/ui/main_window.py ssh_config_editor.py
-#: ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/echange.py
+#: src/gcm4/ui/main_window.py ssh_config_editor.py ssh_key_manager_dialog.py
 msgid "Close"
 msgstr "Bezárás"
 
@@ -322,11 +322,9 @@ msgstr ""
 msgid "Export Servers"
 msgstr "Szerverek exportálása"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Export servers"
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/echange.py
 msgid "Export servers"
-msgstr "Szerverek _exportálása"
+msgstr "Kiszolgálók exportálása"
 
 #: gnome_connection_manager.py plugins/plugin_export_csv.py
 msgid "Export to CSV"
@@ -421,11 +419,9 @@ msgstr "Hoszt neve"
 msgid "Import Servers"
 msgstr "Szerverek importálása"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Import servers"
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/echange.py
 msgid "Import servers"
-msgstr "Szerverek _importálása"
+msgstr "Kiszolgálók importálása"
 
 #: gnome_connection_manager.py
 #, fuzzy
@@ -2713,15 +2709,10 @@ msgstr "Nem olvasható a(z) %s beállítófájl: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Nem írható a(z) %s beállítófájl: %s"
 
-#: src/gcm4/core/echange_cli.py
+#: src/gcm4/core/echange_cli.py src/gcm4/ui/echange.py
 #, python-brace-format
 msgid "Hosts exported: {count} ({file})"
 msgstr "Exportált gépek: {count} ({file})"
-
-#: src/gcm4/core/echange_cli.py
-#, python-brace-format
-msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
-msgstr "{file} importálása: hozzáadva {added}, lecserélve {replaced}, átnevezve {renamed}, kihagyva {ignored}, új csoportok {groups}"
 
 #: src/gcm4/core/exchange.py
 #, python-format
@@ -2748,7 +2739,7 @@ msgstr "A(z) %s fájl nem érvényes gépexport: %s"
 msgid "Unable to read the file %s: %s"
 msgstr "A(z) %s fájl nem olvasható: %s"
 
-#: src/gcm4/core/exchange.py
+#: src/gcm4/core/exchange.py src/gcm4/core/sauvegarde.py
 #, python-format
 msgid "Unable to write the file %s: %s"
 msgstr "A(z) %s fájl nem írható: %s"
@@ -2779,6 +2770,10 @@ msgstr "Következő lap"
 #: src/gcm4/core/menu.py
 msgid "Previous tab"
 msgstr "Előző lap"
+
+#: src/gcm4/core/menu.py src/gcm4/ui/echange.py
+msgid "Save configuration as…"
+msgstr "Beállítások mentése másként…"
 
 #: src/gcm4/core/menu.py
 msgid "Search"
@@ -2871,6 +2866,25 @@ msgstr "A(z) „{protocol}” protokollt már a(z) „{other}” kezeli."
 msgid "{file} does not define PLUGIN."
 msgstr "A(z) {file} nem határozza meg a PLUGIN változót."
 
+#: src/gcm4/core/sauvegarde.py
+msgid "Choose a folder other than the configuration folder."
+msgstr "Válasszon a beállítások mappájától eltérő mappát."
+
+#: src/gcm4/core/sauvegarde.py
+#, python-brace-format
+msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
+msgstr "{file} importálása: hozzáadva {added}, lecserélve {replaced}, átnevezve {renamed}, kihagyva {ignored}, új csoportok {groups}"
+
+#: src/gcm4/core/sauvegarde.py
+#, python-format
+msgid "No configuration to save yet: %s"
+msgstr "Még nincs menthető beállítás: %s"
+
+#: src/gcm4/core/sauvegarde.py
+#, python-brace-format
+msgid "{folder} already contains {file}."
+msgstr "{folder} már tartalmazza ezt: {file}."
+
 #: src/gcm4/core/validation.py
 #, python-brace-format
 msgid "A host named «{name}» already exists in this group."
@@ -2902,6 +2916,56 @@ msgstr "A gcm4 már fut egy másik beállítási mappával: zárja be a(z) {requ
 #, python-brace-format
 msgid "Password for {target}"
 msgstr "Jelszó ehhez: {target}"
+
+#: src/gcm4/ui/echange.py
+#, python-brace-format
+msgid "Configuration saved to {folder}"
+msgstr "Beállítások mentve ide: {folder}"
+
+#: src/gcm4/ui/echange.py
+msgid "Export"
+msgstr "Exportálás"
+
+#: src/gcm4/ui/echange.py
+#, python-brace-format
+msgid "Hosts in {file}: {count}, already present: {existing}"
+msgstr "Gépek itt: {file}: {count}, már létező: {existing}"
+
+#: src/gcm4/ui/echange.py
+msgid "If a host already exists:"
+msgstr "Ha a gép már létezik:"
+
+#: src/gcm4/ui/echange.py
+msgid "Import"
+msgstr "Importálás"
+
+#: src/gcm4/ui/echange.py
+msgid "Include passwords (in clear text)"
+msgstr "Jelszavak belefoglalása (olvasható formában)"
+
+#: src/gcm4/ui/echange.py
+msgid "JSON or CSV file, chosen by its extension."
+msgstr "JSON vagy CSV fájl, a kiterjesztés alapján."
+
+#: src/gcm4/ui/echange.py
+msgid "Keep the existing host"
+msgstr "A meglévő gép megtartása"
+
+#: src/gcm4/ui/echange.py
+msgid "Passwords will be written in clear text: keep this file safe."
+msgstr "A jelszavak olvasható formában kerülnek a fájlba: tartsa biztonságban."
+
+#: src/gcm4/ui/echange.py
+msgid "Rename the imported host"
+msgstr "Az importált gép átnevezése"
+
+#: src/gcm4/ui/echange.py
+msgid "Replace the existing host"
+msgstr "A meglévő gép cseréje"
+
+#: src/gcm4/ui/echange.py
+msgid "This file contains passwords in clear text."
+msgstr "Ez a fájl olvasható jelszavakat tartalmaz."
 
 #: src/gcm4/ui/host_dialog.py
 msgid "Background color"

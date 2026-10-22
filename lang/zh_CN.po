@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-22 05:21+0000\n"
+"POT-Creation-Date: 2026-10-22 17:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,8 +138,8 @@ msgstr "无法打开日志文件进行写入"
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
-#: src/gcm4/ui/host_dialog.py src/gcm4/ui/main_window.py
-#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: src/gcm4/ui/echange.py src/gcm4/ui/fichiers.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/main_window.py src/gcm4/ui/menu_arbre.py utils.py widgets.py
 msgid "Cancel"
 msgstr "取消"
 
@@ -159,8 +159,8 @@ msgstr "切换到上一个/下一个标签时循环切换"
 msgid "Clear selection"
 msgstr "清除选择"
 
-#: gnome_connection_manager.py src/gcm4/ui/main_window.py ssh_config_editor.py
-#: ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/echange.py
+#: src/gcm4/ui/main_window.py ssh_config_editor.py ssh_key_manager_dialog.py
 msgid "Close"
 msgstr "关闭"
 
@@ -322,11 +322,9 @@ msgstr ""
 msgid "Export Servers"
 msgstr "导出服务器"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Export servers"
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/echange.py
 msgid "Export servers"
-msgstr "_导出服务器"
+msgstr "导出服务器"
 
 #: gnome_connection_manager.py plugins/plugin_export_csv.py
 msgid "Export to CSV"
@@ -421,11 +419,9 @@ msgstr "主机名"
 msgid "Import Servers"
 msgstr "导入服务器"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Import servers"
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/echange.py
 msgid "Import servers"
-msgstr "_导入服务器"
+msgstr "导入服务器"
 
 #: gnome_connection_manager.py
 #, fuzzy
@@ -2713,15 +2709,10 @@ msgstr "无法读取配置文件 %s：%s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "无法写入配置文件 %s：%s"
 
-#: src/gcm4/core/echange_cli.py
+#: src/gcm4/core/echange_cli.py src/gcm4/ui/echange.py
 #, python-brace-format
 msgid "Hosts exported: {count} ({file})"
 msgstr "已导出主机：{count}（{file}）"
-
-#: src/gcm4/core/echange_cli.py
-#, python-brace-format
-msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
-msgstr "导入 {file}：新增 {added}，替换 {replaced}，重命名 {renamed}，忽略 {ignored}，新建分组 {groups}"
 
 #: src/gcm4/core/exchange.py
 #, python-format
@@ -2748,7 +2739,7 @@ msgstr "文件 %s 不是有效的主机导出文件：%s"
 msgid "Unable to read the file %s: %s"
 msgstr "无法读取文件 %s：%s"
 
-#: src/gcm4/core/exchange.py
+#: src/gcm4/core/exchange.py src/gcm4/core/sauvegarde.py
 #, python-format
 msgid "Unable to write the file %s: %s"
 msgstr "无法写入文件 %s：%s"
@@ -2779,6 +2770,10 @@ msgstr "下一个标签页"
 #: src/gcm4/core/menu.py
 msgid "Previous tab"
 msgstr "上一个标签页"
+
+#: src/gcm4/core/menu.py src/gcm4/ui/echange.py
+msgid "Save configuration as…"
+msgstr "配置另存为…"
 
 #: src/gcm4/core/menu.py
 msgid "Search"
@@ -2871,6 +2866,25 @@ msgstr "协议“{protocol}”已由“{other}”处理。"
 msgid "{file} does not define PLUGIN."
 msgstr "{file} 未定义 PLUGIN。"
 
+#: src/gcm4/core/sauvegarde.py
+msgid "Choose a folder other than the configuration folder."
+msgstr "请选择配置文件夹以外的文件夹。"
+
+#: src/gcm4/core/sauvegarde.py
+#, python-brace-format
+msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
+msgstr "导入 {file}：新增 {added}，替换 {replaced}，重命名 {renamed}，忽略 {ignored}，新建分组 {groups}"
+
+#: src/gcm4/core/sauvegarde.py
+#, python-format
+msgid "No configuration to save yet: %s"
+msgstr "尚无可保存的配置：%s"
+
+#: src/gcm4/core/sauvegarde.py
+#, python-brace-format
+msgid "{folder} already contains {file}."
+msgstr "{folder} 已包含 {file}。"
+
 #: src/gcm4/core/validation.py
 #, python-brace-format
 msgid "A host named «{name}» already exists in this group."
@@ -2902,6 +2916,56 @@ msgstr "gcm4 已在使用另一个配置文件夹运行：请关闭它以使用 
 #, python-brace-format
 msgid "Password for {target}"
 msgstr "{target} 的密码"
+
+#: src/gcm4/ui/echange.py
+#, python-brace-format
+msgid "Configuration saved to {folder}"
+msgstr "配置已保存到 {folder}"
+
+#: src/gcm4/ui/echange.py
+msgid "Export"
+msgstr "导出"
+
+#: src/gcm4/ui/echange.py
+#, python-brace-format
+msgid "Hosts in {file}: {count}, already present: {existing}"
+msgstr "{file} 中的主机：{count}，已存在：{existing}"
+
+#: src/gcm4/ui/echange.py
+msgid "If a host already exists:"
+msgstr "如果主机已存在："
+
+#: src/gcm4/ui/echange.py
+msgid "Import"
+msgstr "导入"
+
+#: src/gcm4/ui/echange.py
+msgid "Include passwords (in clear text)"
+msgstr "包含密码（明文）"
+
+#: src/gcm4/ui/echange.py
+msgid "JSON or CSV file, chosen by its extension."
+msgstr "JSON 或 CSV 文件，按扩展名区分。"
+
+#: src/gcm4/ui/echange.py
+msgid "Keep the existing host"
+msgstr "保留现有主机"
+
+#: src/gcm4/ui/echange.py
+msgid "Passwords will be written in clear text: keep this file safe."
+msgstr "密码将以明文写入：请妥善保管此文件。"
+
+#: src/gcm4/ui/echange.py
+msgid "Rename the imported host"
+msgstr "重命名导入的主机"
+
+#: src/gcm4/ui/echange.py
+msgid "Replace the existing host"
+msgstr "替换现有主机"
+
+#: src/gcm4/ui/echange.py
+msgid "This file contains passwords in clear text."
+msgstr "此文件包含明文密码。"
 
 #: src/gcm4/ui/host_dialog.py
 msgid "Background color"
