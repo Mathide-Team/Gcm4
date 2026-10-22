@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-22 17:09+0000\n"
+"POT-Creation-Date: 2026-10-22 18:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,8 +138,9 @@ msgstr "ログファイルを書き込み用に開けません"
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
-#: src/gcm4/ui/host_dialog.py src/gcm4/ui/main_window.py
-#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: src/gcm4/ui/echange.py src/gcm4/ui/fichiers.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/main_window.py src/gcm4/ui/menu_arbre.py
+#: src/gcm4/ui/raccourcis.py utils.py widgets.py
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -159,8 +160,8 @@ msgstr "前後のタブへ移動する際にタブを循環する"
 msgid "Clear selection"
 msgstr "選択をクリア"
 
-#: gnome_connection_manager.py src/gcm4/ui/main_window.py ssh_config_editor.py
-#: ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/echange.py
+#: src/gcm4/ui/main_window.py ssh_config_editor.py ssh_key_manager_dialog.py
 msgid "Close"
 msgstr "閉じる"
 
@@ -322,11 +323,9 @@ msgstr ""
 msgid "Export Servers"
 msgstr "サーバーをエクスポート"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Export servers"
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/echange.py
 msgid "Export servers"
-msgstr "サーバーを_エクスポート"
+msgstr "サーバーをエクスポート"
 
 #: gnome_connection_manager.py plugins/plugin_export_csv.py
 msgid "Export to CSV"
@@ -421,11 +420,9 @@ msgstr "ホスト名"
 msgid "Import Servers"
 msgstr "サーバーをインポート"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Import servers"
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/echange.py
 msgid "Import servers"
-msgstr "サーバーを_インポート"
+msgstr "サーバーをインポート"
 
 #: gnome_connection_manager.py
 #, fuzzy
@@ -2713,15 +2710,10 @@ msgstr "設定ファイル %s を読み込めません: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "設定ファイル %s に書き込めません: %s"
 
-#: src/gcm4/core/echange_cli.py
+#: src/gcm4/core/echange_cli.py src/gcm4/ui/echange.py
 #, python-brace-format
 msgid "Hosts exported: {count} ({file})"
 msgstr "エクスポートしたホスト: {count} ({file})"
-
-#: src/gcm4/core/echange_cli.py
-#, python-brace-format
-msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
-msgstr "{file} のインポート: 追加 {added}、置換 {replaced}、名前変更 {renamed}、無視 {ignored}、新しいグループ {groups}"
 
 #: src/gcm4/core/exchange.py
 #, python-format
@@ -2748,7 +2740,7 @@ msgstr "ファイル %s は有効なホストのエクスポートではあり�
 msgid "Unable to read the file %s: %s"
 msgstr "ファイル %s を読み込めません: %s"
 
-#: src/gcm4/core/exchange.py
+#: src/gcm4/core/exchange.py src/gcm4/core/sauvegarde.py
 #, python-format
 msgid "Unable to write the file %s: %s"
 msgstr "ファイル %s に書き込めません: %s"
@@ -2779,6 +2771,10 @@ msgstr "次のタブ"
 #: src/gcm4/core/menu.py
 msgid "Previous tab"
 msgstr "前のタブ"
+
+#: src/gcm4/core/menu.py src/gcm4/ui/echange.py
+msgid "Save configuration as…"
+msgstr "設定に名前を付けて保存…"
 
 #: src/gcm4/core/menu.py
 msgid "Search"
@@ -2871,6 +2867,25 @@ msgstr "プロトコル「{protocol}」は既に「{other}」が扱っていま�
 msgid "{file} does not define PLUGIN."
 msgstr "{file} に PLUGIN が定義されていません。"
 
+#: src/gcm4/core/sauvegarde.py
+msgid "Choose a folder other than the configuration folder."
+msgstr "設定フォルダー以外のフォルダーを選択してください。"
+
+#: src/gcm4/core/sauvegarde.py
+#, python-brace-format
+msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
+msgstr "{file} のインポート: 追加 {added}、置換 {replaced}、名前変更 {renamed}、無視 {ignored}、新しいグループ {groups}"
+
+#: src/gcm4/core/sauvegarde.py
+#, python-format
+msgid "No configuration to save yet: %s"
+msgstr "保存する設定がまだありません: %s"
+
+#: src/gcm4/core/sauvegarde.py
+#, python-brace-format
+msgid "{folder} already contains {file}."
+msgstr "{folder} には既に {file} があります。"
+
 #: src/gcm4/core/validation.py
 #, python-brace-format
 msgid "A host named «{name}» already exists in this group."
@@ -2897,6 +2912,56 @@ msgstr "名前に「/」は使えません。"
 #, python-brace-format
 msgid "Password for {target}"
 msgstr "{target} のパスワード"
+
+#: src/gcm4/ui/echange.py
+#, python-brace-format
+msgid "Configuration saved to {folder}"
+msgstr "設定を {folder} に保存しました"
+
+#: src/gcm4/ui/echange.py
+msgid "Export"
+msgstr "エクスポート"
+
+#: src/gcm4/ui/echange.py
+#, python-brace-format
+msgid "Hosts in {file}: {count}, already present: {existing}"
+msgstr "{file} のホスト: {count}、既存: {existing}"
+
+#: src/gcm4/ui/echange.py
+msgid "If a host already exists:"
+msgstr "ホストが既に存在する場合:"
+
+#: src/gcm4/ui/echange.py
+msgid "Import"
+msgstr "インポート"
+
+#: src/gcm4/ui/echange.py
+msgid "Include passwords (in clear text)"
+msgstr "パスワードを含める (平文)"
+
+#: src/gcm4/ui/echange.py
+msgid "JSON or CSV file, chosen by its extension."
+msgstr "JSON または CSV ファイル (拡張子で判断)。"
+
+#: src/gcm4/ui/echange.py
+msgid "Keep the existing host"
+msgstr "既存のホストを残す"
+
+#: src/gcm4/ui/echange.py
+msgid "Passwords will be written in clear text: keep this file safe."
+msgstr "パスワードは平文で書き込まれます。このファイルは安全に保管してください。"
+
+#: src/gcm4/ui/echange.py
+msgid "Rename the imported host"
+msgstr "インポートしたホストの名前を変更"
+
+#: src/gcm4/ui/echange.py
+msgid "Replace the existing host"
+msgstr "既存のホストを置き換える"
+
+#: src/gcm4/ui/echange.py
+msgid "This file contains passwords in clear text."
+msgstr "このファイルには平文のパスワードが含まれています。"
 
 #: src/gcm4/ui/host_dialog.py
 msgid "Background color"
@@ -3121,8 +3186,16 @@ msgid "Appearance"
 msgstr "外観"
 
 #: src/gcm4/ui/preferences.py
+msgid "Click a shortcut to change it, or press Backspace in the dialog to disable it."
+msgstr "ショートカットをクリックすると変更できます。ダイアログで Backspace を押すと無効になります。"
+
+#: src/gcm4/ui/preferences.py
 msgid "Default log level"
 msgstr "既定のログレベル"
+
+#: src/gcm4/ui/preferences.py src/gcm4/ui/raccourcis.py
+msgid "Disabled"
+msgstr "無効"
 
 #: src/gcm4/ui/preferences.py
 msgid "Error"
@@ -3187,6 +3260,36 @@ msgstr "システムのフォントを使用"
 #, python-brace-format
 msgid "Version {version}"
 msgstr "バージョン {version}"
+
+#: src/gcm4/ui/raccourcis.py
+#, python-brace-format
+msgid "Already used by “{action}”."
+msgstr "「{action}」で既に使用されています。"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Press a key combination"
+msgstr "キーの組み合わせを押してください"
+
+#: src/gcm4/ui/raccourcis.py
+#, python-brace-format
+msgid "Press the new shortcut for “{action}”, or Backspace to disable it."
+msgstr "「{action}」の新しいショートカットを押してください。Backspace を押すと無効になります。"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Reset to default"
+msgstr "デフォルトに戻す"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Set"
+msgstr "設定"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Set Shortcut"
+msgstr "ショートカットの設定"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Use Ctrl, Alt or Super with this key."
+msgstr "このキーには Ctrl、Alt、Super のいずれかを組み合わせてください。"
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format

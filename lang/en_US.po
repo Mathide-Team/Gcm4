@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-22 17:09+0000\n"
+"POT-Creation-Date: 2026-10-22 18:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -134,8 +134,9 @@ msgstr ""
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
-#: src/gcm4/ui/host_dialog.py src/gcm4/ui/main_window.py
-#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: src/gcm4/ui/echange.py src/gcm4/ui/fichiers.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/main_window.py src/gcm4/ui/menu_arbre.py
+#: src/gcm4/ui/raccourcis.py utils.py widgets.py
 msgid "Cancel"
 msgstr "Cancel"
 
@@ -155,8 +156,8 @@ msgstr "Circle around tabs when going to the previous/next tab"
 msgid "Clear selection"
 msgstr ""
 
-#: gnome_connection_manager.py src/gcm4/ui/main_window.py ssh_config_editor.py
-#: ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/echange.py
+#: src/gcm4/ui/main_window.py ssh_config_editor.py ssh_key_manager_dialog.py
 msgid "Close"
 msgstr "Close"
 
@@ -314,9 +315,9 @@ msgstr ""
 msgid "Export Servers"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/echange.py
 msgid "Export servers"
-msgstr ""
+msgstr "Export servers"
 
 #: gnome_connection_manager.py plugins/plugin_export_csv.py
 msgid "Export to CSV"
@@ -407,9 +408,9 @@ msgstr ""
 msgid "Import Servers"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/echange.py
 msgid "Import servers"
-msgstr ""
+msgstr "Import servers"
 
 #: gnome_connection_manager.py
 msgid "Imports"
@@ -2568,15 +2569,10 @@ msgstr "Unable to read the configuration file %s: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Unable to write the configuration file %s: %s"
 
-#: src/gcm4/core/echange_cli.py
+#: src/gcm4/core/echange_cli.py src/gcm4/ui/echange.py
 #, python-brace-format
 msgid "Hosts exported: {count} ({file})"
 msgstr "Hosts exported: {count} ({file})"
-
-#: src/gcm4/core/echange_cli.py
-#, python-brace-format
-msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
-msgstr "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
 
 #: src/gcm4/core/exchange.py
 #, python-format
@@ -2603,7 +2599,7 @@ msgstr "The file %s is not a valid host export: %s"
 msgid "Unable to read the file %s: %s"
 msgstr "Unable to read the file %s: %s"
 
-#: src/gcm4/core/exchange.py
+#: src/gcm4/core/exchange.py src/gcm4/core/sauvegarde.py
 #, python-format
 msgid "Unable to write the file %s: %s"
 msgstr "Unable to write the file %s: %s"
@@ -2634,6 +2630,10 @@ msgstr "Next tab"
 #: src/gcm4/core/menu.py
 msgid "Previous tab"
 msgstr "Previous tab"
+
+#: src/gcm4/core/menu.py src/gcm4/ui/echange.py
+msgid "Save configuration as…"
+msgstr "Save configuration as…"
 
 #: src/gcm4/core/menu.py
 msgid "Search"
@@ -2726,6 +2726,25 @@ msgstr "Protocol «{protocol}» is already handled by «{other}»."
 msgid "{file} does not define PLUGIN."
 msgstr "{file} does not define PLUGIN."
 
+#: src/gcm4/core/sauvegarde.py
+msgid "Choose a folder other than the configuration folder."
+msgstr "Choose a folder other than the configuration folder."
+
+#: src/gcm4/core/sauvegarde.py
+#, python-brace-format
+msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
+msgstr "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
+
+#: src/gcm4/core/sauvegarde.py
+#, python-format
+msgid "No configuration to save yet: %s"
+msgstr "No configuration to save yet: %s"
+
+#: src/gcm4/core/sauvegarde.py
+#, python-brace-format
+msgid "{folder} already contains {file}."
+msgstr "{folder} already contains {file}."
+
 #: src/gcm4/core/validation.py
 #, python-brace-format
 msgid "A host named «{name}» already exists in this group."
@@ -2752,6 +2771,56 @@ msgstr "The name must not contain «/»."
 #, python-brace-format
 msgid "Password for {target}"
 msgstr "Password for {target}"
+
+#: src/gcm4/ui/echange.py
+#, python-brace-format
+msgid "Configuration saved to {folder}"
+msgstr "Configuration saved to {folder}"
+
+#: src/gcm4/ui/echange.py
+msgid "Export"
+msgstr "Export"
+
+#: src/gcm4/ui/echange.py
+#, python-brace-format
+msgid "Hosts in {file}: {count}, already present: {existing}"
+msgstr "Hosts in {file}: {count}, already present: {existing}"
+
+#: src/gcm4/ui/echange.py
+msgid "If a host already exists:"
+msgstr "If a host already exists:"
+
+#: src/gcm4/ui/echange.py
+msgid "Import"
+msgstr "Import"
+
+#: src/gcm4/ui/echange.py
+msgid "Include passwords (in clear text)"
+msgstr "Include passwords (in clear text)"
+
+#: src/gcm4/ui/echange.py
+msgid "JSON or CSV file, chosen by its extension."
+msgstr "JSON or CSV file, chosen by its extension."
+
+#: src/gcm4/ui/echange.py
+msgid "Keep the existing host"
+msgstr "Keep the existing host"
+
+#: src/gcm4/ui/echange.py
+msgid "Passwords will be written in clear text: keep this file safe."
+msgstr "Passwords will be written in clear text: keep this file safe."
+
+#: src/gcm4/ui/echange.py
+msgid "Rename the imported host"
+msgstr "Rename the imported host"
+
+#: src/gcm4/ui/echange.py
+msgid "Replace the existing host"
+msgstr "Replace the existing host"
+
+#: src/gcm4/ui/echange.py
+msgid "This file contains passwords in clear text."
+msgstr "This file contains passwords in clear text."
 
 #: src/gcm4/ui/host_dialog.py
 msgid "Background color"
@@ -2976,8 +3045,16 @@ msgid "Appearance"
 msgstr "Appearance"
 
 #: src/gcm4/ui/preferences.py
+msgid "Click a shortcut to change it, or press Backspace in the dialog to disable it."
+msgstr "Click a shortcut to change it, or press Backspace in the dialog to disable it."
+
+#: src/gcm4/ui/preferences.py
 msgid "Default log level"
 msgstr "Default log level"
+
+#: src/gcm4/ui/preferences.py src/gcm4/ui/raccourcis.py
+msgid "Disabled"
+msgstr "Disabled"
 
 #: src/gcm4/ui/preferences.py
 msgid "Error"
@@ -3042,6 +3119,36 @@ msgstr "Use system font"
 #, python-brace-format
 msgid "Version {version}"
 msgstr "Version {version}"
+
+#: src/gcm4/ui/raccourcis.py
+#, python-brace-format
+msgid "Already used by “{action}”."
+msgstr "Already used by “{action}”."
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Press a key combination"
+msgstr "Press a key combination"
+
+#: src/gcm4/ui/raccourcis.py
+#, python-brace-format
+msgid "Press the new shortcut for “{action}”, or Backspace to disable it."
+msgstr "Press the new shortcut for “{action}”, or Backspace to disable it."
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Reset to default"
+msgstr "Reset to default"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Set"
+msgstr "Set"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Set Shortcut"
+msgstr "Set Shortcut"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Use Ctrl, Alt or Super with this key."
+msgstr "Use Ctrl, Alt or Super with this key."
 
 #: ssh_config_editor.py
 #, python-brace-format

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-22 17:09+0000\n"
+"POT-Creation-Date: 2026-10-22 18:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,8 +138,9 @@ msgstr "Nu se poate deschide fișierul de jurnal pentru scriere"
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
-#: src/gcm4/ui/host_dialog.py src/gcm4/ui/main_window.py
-#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: src/gcm4/ui/echange.py src/gcm4/ui/fichiers.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/main_window.py src/gcm4/ui/menu_arbre.py
+#: src/gcm4/ui/raccourcis.py utils.py widgets.py
 msgid "Cancel"
 msgstr "Anulează"
 
@@ -159,8 +160,8 @@ msgstr "Ciclează între file la trecerea la fila precedentă/următoare"
 msgid "Clear selection"
 msgstr "Șterge selecția"
 
-#: gnome_connection_manager.py src/gcm4/ui/main_window.py ssh_config_editor.py
-#: ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/echange.py
+#: src/gcm4/ui/main_window.py ssh_config_editor.py ssh_key_manager_dialog.py
 msgid "Close"
 msgstr "Închide"
 
@@ -322,11 +323,9 @@ msgstr ""
 msgid "Export Servers"
 msgstr "Exportă servere"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Export servers"
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/echange.py
 msgid "Export servers"
-msgstr "_Exportă servere"
+msgstr "Exportă servere"
 
 #: gnome_connection_manager.py plugins/plugin_export_csv.py
 msgid "Export to CSV"
@@ -421,11 +420,9 @@ msgstr "Nume host"
 msgid "Import Servers"
 msgstr "Importă servere"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Import servers"
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/echange.py
 msgid "Import servers"
-msgstr "_Importă servere"
+msgstr "Importă servere"
 
 #: gnome_connection_manager.py
 #, fuzzy
@@ -2713,15 +2710,10 @@ msgstr "Nu se poate citi fișierul de configurare %s: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Nu se poate scrie fișierul de configurare %s: %s"
 
-#: src/gcm4/core/echange_cli.py
+#: src/gcm4/core/echange_cli.py src/gcm4/ui/echange.py
 #, python-brace-format
 msgid "Hosts exported: {count} ({file})"
 msgstr "Gazde exportate: {count} ({file})"
-
-#: src/gcm4/core/echange_cli.py
-#, python-brace-format
-msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
-msgstr "Importul {file}: adăugate {added}, înlocuite {replaced}, redenumite {renamed}, ignorate {ignored}, grupuri noi {groups}"
 
 #: src/gcm4/core/exchange.py
 #, python-format
@@ -2748,7 +2740,7 @@ msgstr "Fișierul %s nu este un export valid de gazde: %s"
 msgid "Unable to read the file %s: %s"
 msgstr "Fișierul %s nu poate fi citit: %s"
 
-#: src/gcm4/core/exchange.py
+#: src/gcm4/core/exchange.py src/gcm4/core/sauvegarde.py
 #, python-format
 msgid "Unable to write the file %s: %s"
 msgstr "Fișierul %s nu poate fi scris: %s"
@@ -2779,6 +2771,10 @@ msgstr "Fila următoare"
 #: src/gcm4/core/menu.py
 msgid "Previous tab"
 msgstr "Fila precedentă"
+
+#: src/gcm4/core/menu.py src/gcm4/ui/echange.py
+msgid "Save configuration as…"
+msgstr "Salvează configurația ca…"
 
 #: src/gcm4/core/menu.py
 msgid "Search"
@@ -2871,6 +2867,25 @@ msgstr "Protocolul „{protocol}” este deja gestionat de „{other}”."
 msgid "{file} does not define PLUGIN."
 msgstr "{file} nu definește PLUGIN."
 
+#: src/gcm4/core/sauvegarde.py
+msgid "Choose a folder other than the configuration folder."
+msgstr "Alegeți alt dosar decât dosarul configurației."
+
+#: src/gcm4/core/sauvegarde.py
+#, python-brace-format
+msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
+msgstr "Importul {file}: adăugate {added}, înlocuite {replaced}, redenumite {renamed}, ignorate {ignored}, grupuri noi {groups}"
+
+#: src/gcm4/core/sauvegarde.py
+#, python-format
+msgid "No configuration to save yet: %s"
+msgstr "Încă nu există o configurație de salvat: %s"
+
+#: src/gcm4/core/sauvegarde.py
+#, python-brace-format
+msgid "{folder} already contains {file}."
+msgstr "{folder} conține deja {file}."
+
 #: src/gcm4/core/validation.py
 #, python-brace-format
 msgid "A host named «{name}» already exists in this group."
@@ -2897,6 +2912,56 @@ msgstr "Numele nu poate conține „/”."
 #, python-brace-format
 msgid "Password for {target}"
 msgstr "Parolă pentru {target}"
+
+#: src/gcm4/ui/echange.py
+#, python-brace-format
+msgid "Configuration saved to {folder}"
+msgstr "Configurația a fost salvată în {folder}"
+
+#: src/gcm4/ui/echange.py
+msgid "Export"
+msgstr "Exportă"
+
+#: src/gcm4/ui/echange.py
+#, python-brace-format
+msgid "Hosts in {file}: {count}, already present: {existing}"
+msgstr "Gazde în {file}: {count}, deja existente: {existing}"
+
+#: src/gcm4/ui/echange.py
+msgid "If a host already exists:"
+msgstr "Dacă o gazdă există deja:"
+
+#: src/gcm4/ui/echange.py
+msgid "Import"
+msgstr "Importă"
+
+#: src/gcm4/ui/echange.py
+msgid "Include passwords (in clear text)"
+msgstr "Include parolele (în clar)"
+
+#: src/gcm4/ui/echange.py
+msgid "JSON or CSV file, chosen by its extension."
+msgstr "Fișier JSON sau CSV, după extensie."
+
+#: src/gcm4/ui/echange.py
+msgid "Keep the existing host"
+msgstr "Păstrează gazda existentă"
+
+#: src/gcm4/ui/echange.py
+msgid "Passwords will be written in clear text: keep this file safe."
+msgstr "Parolele vor fi scrise în clar: păstrați acest fișier în siguranță."
+
+#: src/gcm4/ui/echange.py
+msgid "Rename the imported host"
+msgstr "Redenumește gazda importată"
+
+#: src/gcm4/ui/echange.py
+msgid "Replace the existing host"
+msgstr "Înlocuiește gazda existentă"
+
+#: src/gcm4/ui/echange.py
+msgid "This file contains passwords in clear text."
+msgstr "Acest fișier conține parole în clar."
 
 #: src/gcm4/ui/host_dialog.py
 msgid "Background color"
@@ -3121,8 +3186,16 @@ msgid "Appearance"
 msgstr "Aspect"
 
 #: src/gcm4/ui/preferences.py
+msgid "Click a shortcut to change it, or press Backspace in the dialog to disable it."
+msgstr "Faceți clic pe o comandă rapidă pentru a o modifica sau apăsați Backspace în fereastra de dialog pentru a o dezactiva."
+
+#: src/gcm4/ui/preferences.py
 msgid "Default log level"
 msgstr "Nivel implicit al jurnalului"
+
+#: src/gcm4/ui/preferences.py src/gcm4/ui/raccourcis.py
+msgid "Disabled"
+msgstr "Dezactivată"
 
 #: src/gcm4/ui/preferences.py
 msgid "Error"
@@ -3187,6 +3260,36 @@ msgstr "Folosește fontul sistemului"
 #, python-brace-format
 msgid "Version {version}"
 msgstr "Versiunea {version}"
+
+#: src/gcm4/ui/raccourcis.py
+#, python-brace-format
+msgid "Already used by “{action}”."
+msgstr "Folosită deja de „{action}”."
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Press a key combination"
+msgstr "Apăsați o combinație de taste"
+
+#: src/gcm4/ui/raccourcis.py
+#, python-brace-format
+msgid "Press the new shortcut for “{action}”, or Backspace to disable it."
+msgstr "Apăsați noua comandă rapidă pentru „{action}” sau Backspace pentru a o dezactiva."
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Reset to default"
+msgstr "Restabilește valoarea implicită"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Set"
+msgstr "Setează"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Set Shortcut"
+msgstr "Setează comanda rapidă"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Use Ctrl, Alt or Super with this key."
+msgstr "Folosiți Ctrl, Alt sau Super cu această tastă."
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format

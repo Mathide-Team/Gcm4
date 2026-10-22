@@ -69,6 +69,9 @@ def test_menu_actions_et_raccourcis():
     """Le menu de la base n'utilise que des actions app.* et win.* ; chaque raccourci vise une action du menu."""
     actions = menu.actions_du_menu()
     assert actions == [
+        "win.import-hosts",
+        "win.export-hosts",
+        "win.save-config-as",
         "app.quit",
         "app.preferences",
         "win.toggle-panel",

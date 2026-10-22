@@ -471,10 +471,28 @@ le contenu des pages). `disable-hosts-stripes` retire l'alternance de fond
 de l'arbre ; `update-title` ajoute le titre de l'onglet courant au titre de
 la fenêtre (« titre - onglet ») ; `app-title` remplace le nom de
 l'application (vide, ou égal au nom que GTK3 y écrit par défaut : nom de
-l'application). Ces options sont appliquées tout de suite. L'édition des
-raccourcis reste à faire (issue de suivi).
+l'application). Ces options sont appliquées tout de suite.
 
-Lot 5b (#148) : pages Raccourcis (lecture seule, depuis
+Raccourcis modifiables (#247, `gcm4.core.raccourcis`, `gcm4.ui.raccourcis`) :
+les six raccourcis de la fenêtre (`gcm4.core.menu.RACCOURCIS`) se changent
+dans la page Raccourcis. Un clic sur la ligne ouvre « Set Shortcut » : la
+combinaison pressée est lue en phase de capture (accélérateurs de
+l'application suspendus pendant la saisie, Ctrl+Q n'y quitte pas) ; Échap
+annule, Entrée valide, Retour arrière désactive. Une combinaison déjà prise
+par une autre action ou par l'arbre des hôtes est refusée, ainsi qu'une
+touche ordinaire sans Ctrl, Alt ni Super (F1–F35 et touches multimédia
+acceptées seules). Stockage : `[shortcuts]`, format de GTK3
+(`CTRL+SHIFT+TAB`, nom GDK 3 en majuscules) ; `console_previous` et
+`console_next` sont partagées avec GTK3, et leur valeur par défaut GTK3 vaut
+« par défaut » (les deux raccourcis de gcm4) ; les autres actions ont des
+clés `gcm4_…` que GTK3 ignore. Valeur vide : désactivé ; clé absente
+(« Reset to default ») : défauts ; valeur illisible : défauts et
+avertissement. Les autres clés de la section (terminal, commandes
+personnalisées) ne sont ni lues ni modifiées, et `save_config` reprend la
+section du fichier telle quelle. Les raccourcis de l'arbre restent fixes
+(posés par l'arbre, pas par l'application).
+
+Lot 5b (#148) : pages Raccourcis (lecture seule à l'origine, depuis
 `gcm4.core.preferences.raccourcis()`, même source que les raccourcis posés
 par l'application et l'arbre), Journalisation et Extensions. Nouvelle clé
 `[options] log-level` (`TRACE`…`ERROR`, défaut `INFO`) ; priorité : `--debug`,
@@ -512,7 +530,7 @@ effacée par un enregistrement du modèle.
 | `FONT` | `options/font` | terminal | plugin terminal (police VTE) |
 | `THEME_MODE` | `window/theme-mode` | base | page Apparence (#147) |
 | `DARK_MODE` | `window/dark-mode` | base | écrite avec theme-mode (#135) |
-| `shortcuts` | `shortcuts/*` | base | page Raccourcis (#148, lecture seule ; édition : issue de suivi) |
+| `shortcuts` | `shortcuts/*` | base | page Raccourcis (#148) ; fenêtre modifiable (#247) ; terminal : plugin terminal |
 | `custom commands` | `shortcuts/*` | terminal | plugin terminal |
 | `build_preferences_tab` | — | protocole | plugin.build_preferences_page (#148) |
 | `SerialTemplatesTab` | — | protocole | plugin série |

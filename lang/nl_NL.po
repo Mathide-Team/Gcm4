@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-22 17:09+0000\n"
+"POT-Creation-Date: 2026-10-22 18:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,8 +138,9 @@ msgstr "Kan logbestand niet openen om te schrijven"
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
-#: src/gcm4/ui/host_dialog.py src/gcm4/ui/main_window.py
-#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: src/gcm4/ui/echange.py src/gcm4/ui/fichiers.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/main_window.py src/gcm4/ui/menu_arbre.py
+#: src/gcm4/ui/raccourcis.py utils.py widgets.py
 msgid "Cancel"
 msgstr "Annuleren"
 
@@ -159,8 +160,8 @@ msgstr "Rond door tabbladen bij vorige/volgende tabblad"
 msgid "Clear selection"
 msgstr "Selectie wissen"
 
-#: gnome_connection_manager.py src/gcm4/ui/main_window.py ssh_config_editor.py
-#: ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/echange.py
+#: src/gcm4/ui/main_window.py ssh_config_editor.py ssh_key_manager_dialog.py
 msgid "Close"
 msgstr "Sluiten"
 
@@ -322,11 +323,9 @@ msgstr ""
 msgid "Export Servers"
 msgstr "Servers exporteren"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Export servers"
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/echange.py
 msgid "Export servers"
-msgstr "Servers _exporteren"
+msgstr "Servers exporteren"
 
 #: gnome_connection_manager.py plugins/plugin_export_csv.py
 msgid "Export to CSV"
@@ -421,11 +420,9 @@ msgstr "Hostnaam"
 msgid "Import Servers"
 msgstr "Servers importeren"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Import servers"
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/echange.py
 msgid "Import servers"
-msgstr "Servers _importeren"
+msgstr "Servers importeren"
 
 #: gnome_connection_manager.py
 #, fuzzy
@@ -2713,15 +2710,10 @@ msgstr "Kan het configuratiebestand %s niet lezen: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Kan het configuratiebestand %s niet schrijven: %s"
 
-#: src/gcm4/core/echange_cli.py
+#: src/gcm4/core/echange_cli.py src/gcm4/ui/echange.py
 #, python-brace-format
 msgid "Hosts exported: {count} ({file})"
 msgstr "Geëxporteerde hosts: {count} ({file})"
-
-#: src/gcm4/core/echange_cli.py
-#, python-brace-format
-msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
-msgstr "Import van {file}: toegevoegd {added}, vervangen {replaced}, hernoemd {renamed}, genegeerd {ignored}, nieuwe groepen {groups}"
 
 #: src/gcm4/core/exchange.py
 #, python-format
@@ -2748,7 +2740,7 @@ msgstr "Het bestand %s is geen geldige export van hosts: %s"
 msgid "Unable to read the file %s: %s"
 msgstr "Kan het bestand %s niet lezen: %s"
 
-#: src/gcm4/core/exchange.py
+#: src/gcm4/core/exchange.py src/gcm4/core/sauvegarde.py
 #, python-format
 msgid "Unable to write the file %s: %s"
 msgstr "Kan het bestand %s niet schrijven: %s"
@@ -2779,6 +2771,10 @@ msgstr "Volgend tabblad"
 #: src/gcm4/core/menu.py
 msgid "Previous tab"
 msgstr "Vorig tabblad"
+
+#: src/gcm4/core/menu.py src/gcm4/ui/echange.py
+msgid "Save configuration as…"
+msgstr "Configuratie opslaan als…"
 
 #: src/gcm4/core/menu.py
 msgid "Search"
@@ -2871,6 +2867,25 @@ msgstr "Protocol ‘{protocol}’ wordt al afgehandeld door ‘{other}’."
 msgid "{file} does not define PLUGIN."
 msgstr "{file} definieert geen PLUGIN."
 
+#: src/gcm4/core/sauvegarde.py
+msgid "Choose a folder other than the configuration folder."
+msgstr "Kies een andere map dan de configuratiemap."
+
+#: src/gcm4/core/sauvegarde.py
+#, python-brace-format
+msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
+msgstr "Import van {file}: toegevoegd {added}, vervangen {replaced}, hernoemd {renamed}, genegeerd {ignored}, nieuwe groepen {groups}"
+
+#: src/gcm4/core/sauvegarde.py
+#, python-format
+msgid "No configuration to save yet: %s"
+msgstr "Nog geen configuratie om op te slaan: %s"
+
+#: src/gcm4/core/sauvegarde.py
+#, python-brace-format
+msgid "{folder} already contains {file}."
+msgstr "{folder} bevat al {file}."
+
 #: src/gcm4/core/validation.py
 #, python-brace-format
 msgid "A host named «{name}» already exists in this group."
@@ -2897,6 +2912,56 @@ msgstr "De naam mag geen ‘/’ bevatten."
 #, python-brace-format
 msgid "Password for {target}"
 msgstr "Wachtwoord voor {target}"
+
+#: src/gcm4/ui/echange.py
+#, python-brace-format
+msgid "Configuration saved to {folder}"
+msgstr "Configuratie opgeslagen in {folder}"
+
+#: src/gcm4/ui/echange.py
+msgid "Export"
+msgstr "Exporteren"
+
+#: src/gcm4/ui/echange.py
+#, python-brace-format
+msgid "Hosts in {file}: {count}, already present: {existing}"
+msgstr "Hosts in {file}: {count}, al aanwezig: {existing}"
+
+#: src/gcm4/ui/echange.py
+msgid "If a host already exists:"
+msgstr "Als een host al bestaat:"
+
+#: src/gcm4/ui/echange.py
+msgid "Import"
+msgstr "Importeren"
+
+#: src/gcm4/ui/echange.py
+msgid "Include passwords (in clear text)"
+msgstr "Wachtwoorden meenemen (in platte tekst)"
+
+#: src/gcm4/ui/echange.py
+msgid "JSON or CSV file, chosen by its extension."
+msgstr "JSON- of CSV-bestand, gekozen op extensie."
+
+#: src/gcm4/ui/echange.py
+msgid "Keep the existing host"
+msgstr "Bestaande host behouden"
+
+#: src/gcm4/ui/echange.py
+msgid "Passwords will be written in clear text: keep this file safe."
+msgstr "Wachtwoorden worden in platte tekst geschreven: bewaar dit bestand veilig."
+
+#: src/gcm4/ui/echange.py
+msgid "Rename the imported host"
+msgstr "Geïmporteerde host hernoemen"
+
+#: src/gcm4/ui/echange.py
+msgid "Replace the existing host"
+msgstr "Bestaande host vervangen"
+
+#: src/gcm4/ui/echange.py
+msgid "This file contains passwords in clear text."
+msgstr "Dit bestand bevat wachtwoorden in platte tekst."
 
 #: src/gcm4/ui/host_dialog.py
 msgid "Background color"
@@ -3121,8 +3186,16 @@ msgid "Appearance"
 msgstr "Uiterlijk"
 
 #: src/gcm4/ui/preferences.py
+msgid "Click a shortcut to change it, or press Backspace in the dialog to disable it."
+msgstr "Klik op een sneltoets om deze te wijzigen, of druk in het dialoogvenster op Backspace om deze uit te schakelen."
+
+#: src/gcm4/ui/preferences.py
 msgid "Default log level"
 msgstr "Standaard logniveau"
+
+#: src/gcm4/ui/preferences.py src/gcm4/ui/raccourcis.py
+msgid "Disabled"
+msgstr "Uitgeschakeld"
 
 #: src/gcm4/ui/preferences.py
 msgid "Error"
@@ -3187,6 +3260,36 @@ msgstr "Systeemlettertype gebruiken"
 #, python-brace-format
 msgid "Version {version}"
 msgstr "Versie {version}"
+
+#: src/gcm4/ui/raccourcis.py
+#, python-brace-format
+msgid "Already used by “{action}”."
+msgstr "Al in gebruik door ‘{action}’."
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Press a key combination"
+msgstr "Druk op een toetscombinatie"
+
+#: src/gcm4/ui/raccourcis.py
+#, python-brace-format
+msgid "Press the new shortcut for “{action}”, or Backspace to disable it."
+msgstr "Druk op de nieuwe sneltoets voor ‘{action}’, of op Backspace om deze uit te schakelen."
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Reset to default"
+msgstr "Standaardwaarde herstellen"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Set"
+msgstr "Instellen"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Set Shortcut"
+msgstr "Sneltoets instellen"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Use Ctrl, Alt or Super with this key."
+msgstr "Gebruik Ctrl, Alt of Super met deze toets."
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format

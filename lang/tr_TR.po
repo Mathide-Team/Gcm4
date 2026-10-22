@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-22 17:09+0000\n"
+"POT-Creation-Date: 2026-10-22 18:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,8 +138,9 @@ msgstr "Günlük dosyası yazma için açılamıyor"
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
-#: src/gcm4/ui/host_dialog.py src/gcm4/ui/main_window.py
-#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: src/gcm4/ui/echange.py src/gcm4/ui/fichiers.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/main_window.py src/gcm4/ui/menu_arbre.py
+#: src/gcm4/ui/raccourcis.py utils.py widgets.py
 msgid "Cancel"
 msgstr "İptal"
 
@@ -159,8 +160,8 @@ msgstr "Önceki/sonraki sekmeye giderken sekmeler arasında döngü yap"
 msgid "Clear selection"
 msgstr "Seçimi temizle"
 
-#: gnome_connection_manager.py src/gcm4/ui/main_window.py ssh_config_editor.py
-#: ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/echange.py
+#: src/gcm4/ui/main_window.py ssh_config_editor.py ssh_key_manager_dialog.py
 msgid "Close"
 msgstr "Kapat"
 
@@ -322,11 +323,9 @@ msgstr ""
 msgid "Export Servers"
 msgstr "Sunucuları Dışa Aktar"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Export servers"
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/echange.py
 msgid "Export servers"
-msgstr "Sunucuları _Dışa Aktar"
+msgstr "Sunucuları dışa aktar"
 
 #: gnome_connection_manager.py plugins/plugin_export_csv.py
 msgid "Export to CSV"
@@ -421,11 +420,9 @@ msgstr "Sunucu adı"
 msgid "Import Servers"
 msgstr "Sunucuları İçe Aktar"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Import servers"
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/echange.py
 msgid "Import servers"
-msgstr "Sunucuları _İçe Aktar"
+msgstr "Sunucuları içe aktar"
 
 #: gnome_connection_manager.py
 #, fuzzy
@@ -2713,15 +2710,10 @@ msgstr "%s yapılandırma dosyası okunamıyor: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "%s yapılandırma dosyası yazılamıyor: %s"
 
-#: src/gcm4/core/echange_cli.py
+#: src/gcm4/core/echange_cli.py src/gcm4/ui/echange.py
 #, python-brace-format
 msgid "Hosts exported: {count} ({file})"
 msgstr "Dışa aktarılan ana makineler: {count} ({file})"
-
-#: src/gcm4/core/echange_cli.py
-#, python-brace-format
-msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
-msgstr "{file} içe aktarımı: eklenen {added}, değiştirilen {replaced}, yeniden adlandırılan {renamed}, yok sayılan {ignored}, yeni gruplar {groups}"
 
 #: src/gcm4/core/exchange.py
 #, python-format
@@ -2748,7 +2740,7 @@ msgstr "%s dosyası geçerli bir ana makine dışa aktarımı değil: %s"
 msgid "Unable to read the file %s: %s"
 msgstr "%s dosyası okunamıyor: %s"
 
-#: src/gcm4/core/exchange.py
+#: src/gcm4/core/exchange.py src/gcm4/core/sauvegarde.py
 #, python-format
 msgid "Unable to write the file %s: %s"
 msgstr "%s dosyası yazılamıyor: %s"
@@ -2779,6 +2771,10 @@ msgstr "Sonraki sekme"
 #: src/gcm4/core/menu.py
 msgid "Previous tab"
 msgstr "Önceki sekme"
+
+#: src/gcm4/core/menu.py src/gcm4/ui/echange.py
+msgid "Save configuration as…"
+msgstr "Yapılandırmayı farklı kaydet…"
 
 #: src/gcm4/core/menu.py
 msgid "Search"
@@ -2871,6 +2867,25 @@ msgstr "'{protocol}' protokolü zaten '{other}' tarafından işleniyor."
 msgid "{file} does not define PLUGIN."
 msgstr "{file} PLUGIN tanımlamıyor."
 
+#: src/gcm4/core/sauvegarde.py
+msgid "Choose a folder other than the configuration folder."
+msgstr "Yapılandırma klasöründen farklı bir klasör seçin."
+
+#: src/gcm4/core/sauvegarde.py
+#, python-brace-format
+msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
+msgstr "{file} içe aktarımı: eklenen {added}, değiştirilen {replaced}, yeniden adlandırılan {renamed}, yok sayılan {ignored}, yeni gruplar {groups}"
+
+#: src/gcm4/core/sauvegarde.py
+#, python-format
+msgid "No configuration to save yet: %s"
+msgstr "Henüz kaydedilecek yapılandırma yok: %s"
+
+#: src/gcm4/core/sauvegarde.py
+#, python-brace-format
+msgid "{folder} already contains {file}."
+msgstr "{folder} zaten {file} içeriyor."
+
 #: src/gcm4/core/validation.py
 #, python-brace-format
 msgid "A host named «{name}» already exists in this group."
@@ -2897,6 +2912,56 @@ msgstr "Ad '/' içermemelidir."
 #, python-brace-format
 msgid "Password for {target}"
 msgstr "{target} için parola"
+
+#: src/gcm4/ui/echange.py
+#, python-brace-format
+msgid "Configuration saved to {folder}"
+msgstr "Yapılandırma {folder} konumuna kaydedildi"
+
+#: src/gcm4/ui/echange.py
+msgid "Export"
+msgstr "Dışa aktar"
+
+#: src/gcm4/ui/echange.py
+#, python-brace-format
+msgid "Hosts in {file}: {count}, already present: {existing}"
+msgstr "{file} içindeki ana makineler: {count}, zaten var: {existing}"
+
+#: src/gcm4/ui/echange.py
+msgid "If a host already exists:"
+msgstr "Ana makine zaten varsa:"
+
+#: src/gcm4/ui/echange.py
+msgid "Import"
+msgstr "İçe aktar"
+
+#: src/gcm4/ui/echange.py
+msgid "Include passwords (in clear text)"
+msgstr "Parolaları dahil et (düz metin)"
+
+#: src/gcm4/ui/echange.py
+msgid "JSON or CSV file, chosen by its extension."
+msgstr "Uzantısına göre JSON veya CSV dosyası."
+
+#: src/gcm4/ui/echange.py
+msgid "Keep the existing host"
+msgstr "Mevcut ana makineyi koru"
+
+#: src/gcm4/ui/echange.py
+msgid "Passwords will be written in clear text: keep this file safe."
+msgstr "Parolalar düz metin olarak yazılacak: bu dosyayı güvenli saklayın."
+
+#: src/gcm4/ui/echange.py
+msgid "Rename the imported host"
+msgstr "İçe aktarılan ana makineyi yeniden adlandır"
+
+#: src/gcm4/ui/echange.py
+msgid "Replace the existing host"
+msgstr "Mevcut ana makineyi değiştir"
+
+#: src/gcm4/ui/echange.py
+msgid "This file contains passwords in clear text."
+msgstr "Bu dosya düz metin parolalar içeriyor."
 
 #: src/gcm4/ui/host_dialog.py
 msgid "Background color"
@@ -3121,8 +3186,16 @@ msgid "Appearance"
 msgstr "Görünüm"
 
 #: src/gcm4/ui/preferences.py
+msgid "Click a shortcut to change it, or press Backspace in the dialog to disable it."
+msgstr "Değiştirmek için bir kısayola tıklayın veya devre dışı bırakmak için iletişim kutusunda Geri tuşuna basın."
+
+#: src/gcm4/ui/preferences.py
 msgid "Default log level"
 msgstr "Varsayılan günlük düzeyi"
+
+#: src/gcm4/ui/preferences.py src/gcm4/ui/raccourcis.py
+msgid "Disabled"
+msgstr "Devre dışı"
 
 #: src/gcm4/ui/preferences.py
 msgid "Error"
@@ -3187,6 +3260,36 @@ msgstr "Sistem yazı tipini kullan"
 #, python-brace-format
 msgid "Version {version}"
 msgstr "Sürüm {version}"
+
+#: src/gcm4/ui/raccourcis.py
+#, python-brace-format
+msgid "Already used by “{action}”."
+msgstr "Zaten “{action}” tarafından kullanılıyor."
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Press a key combination"
+msgstr "Bir tuş bileşimine basın"
+
+#: src/gcm4/ui/raccourcis.py
+#, python-brace-format
+msgid "Press the new shortcut for “{action}”, or Backspace to disable it."
+msgstr "“{action}” için yeni kısayola basın veya devre dışı bırakmak için Geri tuşuna basın."
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Reset to default"
+msgstr "Varsayılana sıfırla"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Set"
+msgstr "Ayarla"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Set Shortcut"
+msgstr "Kısayolu Ayarla"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Use Ctrl, Alt or Super with this key."
+msgstr "Bu tuşla birlikte Ctrl, Alt veya Super kullanın."
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format
