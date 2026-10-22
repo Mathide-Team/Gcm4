@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-22 05:26+0000\n"
+"POT-Creation-Date: 2026-10-22 18:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -202,8 +202,9 @@ msgstr "लॉग फ़ाइल को लिखने के लिए नह
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
-#: src/gcm4/ui/host_dialog.py src/gcm4/ui/main_window.py
-#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: src/gcm4/ui/echange.py src/gcm4/ui/fichiers.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/main_window.py src/gcm4/ui/menu_arbre.py
+#: src/gcm4/ui/raccourcis.py utils.py widgets.py
 msgid "Cancel"
 msgstr "रद्द करें"
 
@@ -223,8 +224,8 @@ msgstr "पिछले/अगले टैब पर जाते समय ट
 msgid "Clear selection"
 msgstr "चयन साफ़ करें"
 
-#: gnome_connection_manager.py src/gcm4/ui/main_window.py ssh_config_editor.py
-#: ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/echange.py
+#: src/gcm4/ui/main_window.py ssh_config_editor.py ssh_key_manager_dialog.py
 msgid "Close"
 msgstr "बंद करें"
 
@@ -382,11 +383,9 @@ msgstr ""
 msgid "Export Servers"
 msgstr "सर्वर निर्यात करें"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Export servers"
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/echange.py
 msgid "Export servers"
-msgstr "_सर्वर निर्यात करें"
+msgstr "सर्वर निर्यात करें"
 
 #: gnome_connection_manager.py plugins/plugin_export_csv.py
 msgid "Export to CSV"
@@ -477,11 +476,9 @@ msgstr "होस्ट नाम"
 msgid "Import Servers"
 msgstr "सर्वर आयात करें"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Import servers"
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/echange.py
 msgid "Import servers"
-msgstr "_सर्वर आयात करें"
+msgstr "सर्वर आयात करें"
 
 #: gnome_connection_manager.py
 #, fuzzy
@@ -2765,15 +2762,10 @@ msgstr "कॉन्फ़िगरेशन फ़ाइल %s पढ़ी न
 msgid "Unable to write the configuration file %s: %s"
 msgstr "कॉन्फ़िगरेशन फ़ाइल %s लिखी नहीं जा सकी: %s"
 
-#: src/gcm4/core/echange_cli.py
+#: src/gcm4/core/echange_cli.py src/gcm4/ui/echange.py
 #, python-brace-format
 msgid "Hosts exported: {count} ({file})"
 msgstr "निर्यात किए गए होस्ट: {count} ({file})"
-
-#: src/gcm4/core/echange_cli.py
-#, python-brace-format
-msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
-msgstr "{file} का आयात: जोड़े गए {added}, बदले गए {replaced}, नाम बदले गए {renamed}, छोड़े गए {ignored}, नए समूह {groups}"
 
 #: src/gcm4/core/exchange.py
 #, python-format
@@ -2800,7 +2792,7 @@ msgstr "फ़ाइल %s मान्य होस्ट निर्यात
 msgid "Unable to read the file %s: %s"
 msgstr "फ़ाइल %s पढ़ी नहीं जा सकी: %s"
 
-#: src/gcm4/core/exchange.py
+#: src/gcm4/core/exchange.py src/gcm4/core/sauvegarde.py
 #, python-format
 msgid "Unable to write the file %s: %s"
 msgstr "फ़ाइल %s लिखी नहीं जा सकी: %s"
@@ -2831,6 +2823,10 @@ msgstr "अगला टैब"
 #: src/gcm4/core/menu.py
 msgid "Previous tab"
 msgstr "पिछला टैब"
+
+#: src/gcm4/core/menu.py src/gcm4/ui/echange.py
+msgid "Save configuration as…"
+msgstr "कॉन्फ़िगरेशन इस रूप में सहेजें…"
 
 #: src/gcm4/core/menu.py
 msgid "Search"
@@ -2923,6 +2919,25 @@ msgstr "प्रोटोकॉल '{protocol}' पहले से '{other}' �
 msgid "{file} does not define PLUGIN."
 msgstr "{file} में PLUGIN परिभाषित नहीं है।"
 
+#: src/gcm4/core/sauvegarde.py
+msgid "Choose a folder other than the configuration folder."
+msgstr "कॉन्फ़िगरेशन फ़ोल्डर के अलावा कोई अन्य फ़ोल्डर चुनें।"
+
+#: src/gcm4/core/sauvegarde.py
+#, python-brace-format
+msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
+msgstr "{file} का आयात: जोड़े गए {added}, बदले गए {replaced}, नाम बदले गए {renamed}, छोड़े गए {ignored}, नए समूह {groups}"
+
+#: src/gcm4/core/sauvegarde.py
+#, python-format
+msgid "No configuration to save yet: %s"
+msgstr "सहेजने के लिए अभी कोई कॉन्फ़िगरेशन नहीं: %s"
+
+#: src/gcm4/core/sauvegarde.py
+#, python-brace-format
+msgid "{folder} already contains {file}."
+msgstr "{folder} में पहले से {file} है।"
+
 #: src/gcm4/core/validation.py
 #, python-brace-format
 msgid "A host named «{name}» already exists in this group."
@@ -2949,6 +2964,56 @@ msgstr "नाम में '/' नहीं होना चाहिए।"
 #, python-brace-format
 msgid "Password for {target}"
 msgstr "{target} के लिए पासवर्ड"
+
+#: src/gcm4/ui/echange.py
+#, python-brace-format
+msgid "Configuration saved to {folder}"
+msgstr "कॉन्फ़िगरेशन {folder} में सहेजा गया"
+
+#: src/gcm4/ui/echange.py
+msgid "Export"
+msgstr "निर्यात करें"
+
+#: src/gcm4/ui/echange.py
+#, python-brace-format
+msgid "Hosts in {file}: {count}, already present: {existing}"
+msgstr "{file} में होस्ट: {count}, पहले से मौजूद: {existing}"
+
+#: src/gcm4/ui/echange.py
+msgid "If a host already exists:"
+msgstr "यदि होस्ट पहले से मौजूद है:"
+
+#: src/gcm4/ui/echange.py
+msgid "Import"
+msgstr "आयात करें"
+
+#: src/gcm4/ui/echange.py
+msgid "Include passwords (in clear text)"
+msgstr "पासवर्ड शामिल करें (सादे पाठ में)"
+
+#: src/gcm4/ui/echange.py
+msgid "JSON or CSV file, chosen by its extension."
+msgstr "JSON या CSV फ़ाइल, एक्सटेंशन के अनुसार।"
+
+#: src/gcm4/ui/echange.py
+msgid "Keep the existing host"
+msgstr "मौजूदा होस्ट रखें"
+
+#: src/gcm4/ui/echange.py
+msgid "Passwords will be written in clear text: keep this file safe."
+msgstr "पासवर्ड सादे पाठ में लिखे जाएंगे: इस फ़ाइल को सुरक्षित रखें।"
+
+#: src/gcm4/ui/echange.py
+msgid "Rename the imported host"
+msgstr "आयातित होस्ट का नाम बदलें"
+
+#: src/gcm4/ui/echange.py
+msgid "Replace the existing host"
+msgstr "मौजूदा होस्ट बदलें"
+
+#: src/gcm4/ui/echange.py
+msgid "This file contains passwords in clear text."
+msgstr "इस फ़ाइल में सादे पाठ में पासवर्ड हैं।"
 
 #: src/gcm4/ui/host_dialog.py
 msgid "Background color"
@@ -3173,8 +3238,16 @@ msgid "Appearance"
 msgstr "दिखावट"
 
 #: src/gcm4/ui/preferences.py
+msgid "Click a shortcut to change it, or press Backspace in the dialog to disable it."
+msgstr "किसी शॉर्टकट को बदलने के लिए उस पर क्लिक करें, या उसे अक्षम करने के लिए संवाद में Backspace दबाएँ।"
+
+#: src/gcm4/ui/preferences.py
 msgid "Default log level"
 msgstr "डिफ़ॉल्ट लॉग स्तर"
+
+#: src/gcm4/ui/preferences.py src/gcm4/ui/raccourcis.py
+msgid "Disabled"
+msgstr "अक्षम"
 
 #: src/gcm4/ui/preferences.py
 msgid "Error"
@@ -3239,6 +3312,36 @@ msgstr "सिस्टम फ़ॉन्ट का उपयोग करे�
 #, python-brace-format
 msgid "Version {version}"
 msgstr "संस्करण {version}"
+
+#: src/gcm4/ui/raccourcis.py
+#, python-brace-format
+msgid "Already used by “{action}”."
+msgstr "पहले से “{action}” द्वारा उपयोग में है।"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Press a key combination"
+msgstr "कोई कुंजी संयोजन दबाएँ"
+
+#: src/gcm4/ui/raccourcis.py
+#, python-brace-format
+msgid "Press the new shortcut for “{action}”, or Backspace to disable it."
+msgstr "“{action}” के लिए नया शॉर्टकट दबाएँ, या उसे अक्षम करने के लिए Backspace दबाएँ।"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Reset to default"
+msgstr "डिफ़ॉल्ट पर रीसेट करें"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Set"
+msgstr "सेट करें"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Set Shortcut"
+msgstr "शॉर्टकट सेट करें"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Use Ctrl, Alt or Super with this key."
+msgstr "इस कुंजी के साथ Ctrl, Alt या Super का उपयोग करें।"
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format

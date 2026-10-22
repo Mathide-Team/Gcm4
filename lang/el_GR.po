@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-22 05:26+0000\n"
+"POT-Creation-Date: 2026-10-22 18:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -202,8 +202,9 @@ msgstr "Δεν είναι δυνατό το άνοιγμα του αρχείου
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
-#: src/gcm4/ui/host_dialog.py src/gcm4/ui/main_window.py
-#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: src/gcm4/ui/echange.py src/gcm4/ui/fichiers.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/main_window.py src/gcm4/ui/menu_arbre.py
+#: src/gcm4/ui/raccourcis.py utils.py widgets.py
 msgid "Cancel"
 msgstr "Ακύρωση"
 
@@ -223,8 +224,8 @@ msgstr "Κυκλική περιήγηση στις καρτέλες κατά τ�
 msgid "Clear selection"
 msgstr "Εκκαθάριση επιλογής"
 
-#: gnome_connection_manager.py src/gcm4/ui/main_window.py ssh_config_editor.py
-#: ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/echange.py
+#: src/gcm4/ui/main_window.py ssh_config_editor.py ssh_key_manager_dialog.py
 msgid "Close"
 msgstr "Κλείσιμο"
 
@@ -382,11 +383,9 @@ msgstr ""
 msgid "Export Servers"
 msgstr "Εξαγωγή Διακομιστών"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Export servers"
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/echange.py
 msgid "Export servers"
-msgstr "_Εξαγωγή διακομιστών"
+msgstr "Εξαγωγή διακομιστών"
 
 #: gnome_connection_manager.py plugins/plugin_export_csv.py
 msgid "Export to CSV"
@@ -477,11 +476,9 @@ msgstr "Όνομα κεντρικού υπολογιστή"
 msgid "Import Servers"
 msgstr "Εισαγωγή Διακομιστών"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Import servers"
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/echange.py
 msgid "Import servers"
-msgstr "_Εισαγωγή διακομιστών"
+msgstr "Εισαγωγή διακομιστών"
 
 #: gnome_connection_manager.py
 #, fuzzy
@@ -2765,15 +2762,10 @@ msgstr "Δεν είναι δυνατή η ανάγνωση του αρχείου
 msgid "Unable to write the configuration file %s: %s"
 msgstr "Δεν είναι δυνατή η εγγραφή του αρχείου ρυθμίσεων %s: %s"
 
-#: src/gcm4/core/echange_cli.py
+#: src/gcm4/core/echange_cli.py src/gcm4/ui/echange.py
 #, python-brace-format
 msgid "Hosts exported: {count} ({file})"
 msgstr "Κεντρικοί υπολογιστές που εξήχθησαν: {count} ({file})"
-
-#: src/gcm4/core/echange_cli.py
-#, python-brace-format
-msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
-msgstr "Εισαγωγή του {file}: προστέθηκαν {added}, αντικαταστάθηκαν {replaced}, μετονομάστηκαν {renamed}, αγνοήθηκαν {ignored}, νέες ομάδες {groups}"
 
 #: src/gcm4/core/exchange.py
 #, python-format
@@ -2800,7 +2792,7 @@ msgstr "Το αρχείο %s δεν είναι έγκυρη εξαγωγή κε�
 msgid "Unable to read the file %s: %s"
 msgstr "Αδύνατη η ανάγνωση του αρχείου %s: %s"
 
-#: src/gcm4/core/exchange.py
+#: src/gcm4/core/exchange.py src/gcm4/core/sauvegarde.py
 #, python-format
 msgid "Unable to write the file %s: %s"
 msgstr "Αδύνατη η εγγραφή του αρχείου %s: %s"
@@ -2831,6 +2823,10 @@ msgstr "Επόμενη καρτέλα"
 #: src/gcm4/core/menu.py
 msgid "Previous tab"
 msgstr "Προηγούμενη καρτέλα"
+
+#: src/gcm4/core/menu.py src/gcm4/ui/echange.py
+msgid "Save configuration as…"
+msgstr "Αποθήκευση ρυθμίσεων ως…"
 
 #: src/gcm4/core/menu.py
 msgid "Search"
@@ -2923,6 +2919,25 @@ msgstr "Το πρωτόκολλο «{protocol}» το χειρίζεται ήδ�
 msgid "{file} does not define PLUGIN."
 msgstr "Το {file} δεν ορίζει PLUGIN."
 
+#: src/gcm4/core/sauvegarde.py
+msgid "Choose a folder other than the configuration folder."
+msgstr "Επιλέξτε φάκελο διαφορετικό από τον φάκελο ρυθμίσεων."
+
+#: src/gcm4/core/sauvegarde.py
+#, python-brace-format
+msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
+msgstr "Εισαγωγή του {file}: προστέθηκαν {added}, αντικαταστάθηκαν {replaced}, μετονομάστηκαν {renamed}, αγνοήθηκαν {ignored}, νέες ομάδες {groups}"
+
+#: src/gcm4/core/sauvegarde.py
+#, python-format
+msgid "No configuration to save yet: %s"
+msgstr "Δεν υπάρχουν ακόμη ρυθμίσεις για αποθήκευση: %s"
+
+#: src/gcm4/core/sauvegarde.py
+#, python-brace-format
+msgid "{folder} already contains {file}."
+msgstr "Το {folder} περιέχει ήδη το {file}."
+
 #: src/gcm4/core/validation.py
 #, python-brace-format
 msgid "A host named «{name}» already exists in this group."
@@ -2949,6 +2964,56 @@ msgstr "Το όνομα δεν πρέπει να περιέχει «/»."
 #, python-brace-format
 msgid "Password for {target}"
 msgstr "Κωδικός για {target}"
+
+#: src/gcm4/ui/echange.py
+#, python-brace-format
+msgid "Configuration saved to {folder}"
+msgstr "Οι ρυθμίσεις αποθηκεύτηκαν στο {folder}"
+
+#: src/gcm4/ui/echange.py
+msgid "Export"
+msgstr "Εξαγωγή"
+
+#: src/gcm4/ui/echange.py
+#, python-brace-format
+msgid "Hosts in {file}: {count}, already present: {existing}"
+msgstr "Κεντρικοί υπολογιστές στο {file}: {count}, ήδη υπάρχοντες: {existing}"
+
+#: src/gcm4/ui/echange.py
+msgid "If a host already exists:"
+msgstr "Αν ο κεντρικός υπολογιστής υπάρχει ήδη:"
+
+#: src/gcm4/ui/echange.py
+msgid "Import"
+msgstr "Εισαγωγή"
+
+#: src/gcm4/ui/echange.py
+msgid "Include passwords (in clear text)"
+msgstr "Συμπερίληψη κωδικών (σε απλό κείμενο)"
+
+#: src/gcm4/ui/echange.py
+msgid "JSON or CSV file, chosen by its extension."
+msgstr "Αρχείο JSON ή CSV, ανάλογα με την επέκταση."
+
+#: src/gcm4/ui/echange.py
+msgid "Keep the existing host"
+msgstr "Διατήρηση του υπάρχοντος κεντρικού υπολογιστή"
+
+#: src/gcm4/ui/echange.py
+msgid "Passwords will be written in clear text: keep this file safe."
+msgstr "Οι κωδικοί θα γραφτούν σε απλό κείμενο: φυλάξτε το αρχείο με ασφάλεια."
+
+#: src/gcm4/ui/echange.py
+msgid "Rename the imported host"
+msgstr "Μετονομασία του εισαγόμενου κεντρικού υπολογιστή"
+
+#: src/gcm4/ui/echange.py
+msgid "Replace the existing host"
+msgstr "Αντικατάσταση του υπάρχοντος κεντρικού υπολογιστή"
+
+#: src/gcm4/ui/echange.py
+msgid "This file contains passwords in clear text."
+msgstr "Αυτό το αρχείο περιέχει κωδικούς σε απλό κείμενο."
 
 #: src/gcm4/ui/host_dialog.py
 msgid "Background color"
@@ -3173,8 +3238,16 @@ msgid "Appearance"
 msgstr "Εμφάνιση"
 
 #: src/gcm4/ui/preferences.py
+msgid "Click a shortcut to change it, or press Backspace in the dialog to disable it."
+msgstr "Κάντε κλικ σε μια συντόμευση για να την αλλάξετε ή πατήστε Backspace στο παράθυρο διαλόγου για να την απενεργοποιήσετε."
+
+#: src/gcm4/ui/preferences.py
 msgid "Default log level"
 msgstr "Προεπιλεγμένο επίπεδο καταγραφής"
+
+#: src/gcm4/ui/preferences.py src/gcm4/ui/raccourcis.py
+msgid "Disabled"
+msgstr "Απενεργοποιημένη"
 
 #: src/gcm4/ui/preferences.py
 msgid "Error"
@@ -3239,6 +3312,36 @@ msgstr "Χρήση γραμματοσειράς συστήματος"
 #, python-brace-format
 msgid "Version {version}"
 msgstr "Έκδοση {version}"
+
+#: src/gcm4/ui/raccourcis.py
+#, python-brace-format
+msgid "Already used by “{action}”."
+msgstr "Χρησιμοποιείται ήδη από «{action}»."
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Press a key combination"
+msgstr "Πατήστε έναν συνδυασμό πλήκτρων"
+
+#: src/gcm4/ui/raccourcis.py
+#, python-brace-format
+msgid "Press the new shortcut for “{action}”, or Backspace to disable it."
+msgstr "Πατήστε τη νέα συντόμευση για «{action}» ή Backspace για να την απενεργοποιήσετε."
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Reset to default"
+msgstr "Επαναφορά προεπιλογής"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Set"
+msgstr "Ορισμός"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Set Shortcut"
+msgstr "Ορισμός συντόμευσης"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Use Ctrl, Alt or Super with this key."
+msgstr "Χρησιμοποιήστε Ctrl, Alt ή Super με αυτό το πλήκτρο."
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format

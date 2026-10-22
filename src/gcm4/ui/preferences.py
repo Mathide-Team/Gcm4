@@ -50,11 +50,13 @@ from gi.repository import Adw, Gio, GLib, Gtk, Pango
 from loguru import logger
 
 import logging_config
-from gcm4.core import comportement_onglets
+from gcm4.core import comportement_onglets, menu
 from gcm4.core import preferences as prefs_core
+from gcm4.core import raccourcis as raccourcis_core
 from gcm4.core.config import ConfigError
 from gcm4.core.i18n import N_, _
 from gcm4.ui import mises_a_jour
+from gcm4.ui import raccourcis as raccourcis_ui
 
 #: Modes du thème, dans l'ordre de la liste déroulante.
 MODES = ("system", "light", "dark")
@@ -337,8 +339,24 @@ class PreferencesWindow(Adw.PreferencesWindow):
         self._appliquer()
         logger.debug("_on_titre: {!r}", valeur)
 
+    def _raccourcis_effectifs(self) -> dict[str, tuple[str, ...]]:
+        """Accélérateurs de la fenêtre : ceux de l'application, sinon relus dans le fichier."""
+        logger.debug("_raccourcis_effectifs: entrée")
+        lire = getattr(self.application, "raccourcis_effectifs", None)
+        if callable(lire):
+            resultat: dict[str, tuple[str, ...]] = lire()
+        else:
+            section = raccourcis_core.lire(self.config_file)
+            resultat = raccourcis_core.effectifs(section, raccourcis_ui.resoudre)
+        logger.debug("_raccourcis_effectifs: {} action(s)", len(resultat))
+        return resultat
+
     def _page_raccourcis(self) -> Adw.PreferencesPage:
-        """Page Raccourcis : raccourcis de la base, en lecture."""
+        """Page Raccourcis : ceux de la fenêtre se modifient (#247), ceux de l'arbre sont fixes.
+
+        Les raccourcis de l'arbre des hôtes sont posés par l'arbre lui-même
+        (``menu_arbre``) et non par l'application : ils restent en lecture.
+        """
         logger.debug("_page_raccourcis: entrée")
         page = Adw.PreferencesPage(
             title=_("Shortcuts"), icon_name="preferences-desktop-keyboard-shortcuts-symbolic"
@@ -347,18 +365,98 @@ class PreferencesWindow(Adw.PreferencesWindow):
             prefs_core.FENETRE: Adw.PreferencesGroup(title=_("Main window")),
             prefs_core.ARBRE: Adw.PreferencesGroup(title=_("Hosts")),
         }
+        groupes[prefs_core.FENETRE].set_description(
+            _("Click a shortcut to change it, or press Backspace in the dialog to disable it.")
+        )
         self.lignes_raccourcis: list[Adw.ActionRow] = []
-        for raccourci in prefs_core.raccourcis():
+        self.touches_raccourcis: dict[str, Gtk.Label] = {}
+        self.saisie: raccourcis_ui.SaisieRaccourci | None = None  # dialogue ouvert (tests)
+        for raccourci in prefs_core.raccourcis(self._raccourcis_effectifs()):
             ligne = Adw.ActionRow(title=_(raccourci.libelle))
-            touches = Gtk.Label(label=libelle_touches(raccourci.touches))
+            touches = Gtk.Label(label=self._libelle_raccourci(raccourci.touches))
             touches.add_css_class("dim-label")
             ligne.add_suffix(touches)
+            if raccourci.action is not None:
+                ligne.set_activatable(True)
+                ligne.connect("activated", self._on_raccourci, raccourci.action)
+                self.touches_raccourcis[raccourci.action] = touches
             groupes[raccourci.portee].add(ligne)
             self.lignes_raccourcis.append(ligne)
         for groupe in groupes.values():
             page.add(groupe)
         logger.debug("_page_raccourcis: {} raccourci(s)", len(self.lignes_raccourcis))
         return page
+
+    @staticmethod
+    def _libelle_raccourci(touches: tuple[str, ...]) -> str:
+        """Libellé des touches ; aucune : « Disabled »."""
+        logger.trace("_libelle_raccourci: {}", touches)
+        return libelle_touches(touches) if touches else _("Disabled")
+
+    def _suspendre_raccourcis(self, suspendre: bool) -> None:
+        """Pendant la saisie, retire les accélérateurs de l'application (Ctrl+Q ne quitte pas).
+
+        Rétablis ensuite depuis le fichier (``appliquer_raccourcis``).
+        """
+        logger.debug("_suspendre_raccourcis: {}", suspendre)
+        appliquer = getattr(self.application, "appliquer_raccourcis", None)
+        if not callable(appliquer):
+            logger.debug("_suspendre_raccourcis: application sans raccourcis modifiables")
+            return
+        if suspendre:
+            for action in menu.RACCOURCIS:
+                self.application.set_accels_for_action(action, [])
+        else:
+            appliquer()
+        logger.debug("_suspendre_raccourcis: fait")
+
+    def _on_raccourci(self, _ligne: Adw.ActionRow, action: str) -> None:
+        """Ligne d'un raccourci de la fenêtre activée : dialogue de saisie."""
+        logger.debug("_on_raccourci: {}", action)
+        if (
+            self.saisie is not None
+            and not self.saisie.traite
+            and self.saisie.dialogue.get_mapped()
+        ):
+            logger.debug("_on_raccourci: saisie déjà ouverte")
+            return
+        actuels = self._raccourcis_effectifs()
+        section = raccourcis_core.lire(self.config_file)
+
+        def rappel(reponse: str, combinaison: raccourcis_core.Combinaison | None) -> None:
+            logger.debug("_on_raccourci.rappel: {} {}", reponse, combinaison)
+            self._enregistrer_raccourci(action, reponse, combinaison)
+            logger.debug("_on_raccourci.rappel: fait")
+
+        self._suspendre_raccourcis(True)
+        self.saisie = raccourcis_ui.SaisieRaccourci(
+            self, action, actuels, raccourcis_core.personnalise(section, action), rappel
+        )
+        self.saisie.dialogue.connect("response", lambda *_a: self._suspendre_raccourcis(False))
+        logger.debug("_on_raccourci: dialogue ouvert")
+
+    def _enregistrer_raccourci(
+        self, action: str, reponse: str, combinaison: raccourcis_core.Combinaison | None
+    ) -> None:
+        """Écrit ``[shortcuts]`` (« set » ou « reset »), réapplique, met la ligne à jour."""
+        logger.debug("_enregistrer_raccourci: {} {}", action, reponse)
+        try:
+            if reponse == "reset":
+                raccourcis_core.reinitialiser(self.config_file, action)
+            else:
+                raccourcis_core.enregistrer(self.config_file, action, combinaison)
+        except ConfigError as exc:
+            logger.warning("_enregistrer_raccourci: {} non enregistré ({})", action, exc)
+            self.erreur = str(exc)
+            message = _("Preferences not saved: {error}").format(error=exc)
+            if hasattr(self, "add_toast"):
+                self.add_toast(Adw.Toast(title=message, timeout=5))
+            logger.debug("_enregistrer_raccourci: échec signalé")
+            return
+        self._suspendre_raccourcis(False)
+        effectifs = self._raccourcis_effectifs()
+        self.touches_raccourcis[action].set_label(self._libelle_raccourci(effectifs[action]))
+        logger.debug("_enregistrer_raccourci: {}", effectifs[action])
 
     def _page_journalisation(self) -> Adw.PreferencesPage:
         """Page Journalisation : niveau par défaut et dossier des journaux."""

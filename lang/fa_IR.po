@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-22 05:26+0000\n"
+"POT-Creation-Date: 2026-10-22 18:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -202,8 +202,9 @@ msgstr "فایل گزارش برای نوشتن باز نمی‌شود"
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
 #: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
-#: src/gcm4/ui/host_dialog.py src/gcm4/ui/main_window.py
-#: src/gcm4/ui/menu_arbre.py utils.py widgets.py
+#: src/gcm4/ui/echange.py src/gcm4/ui/fichiers.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/main_window.py src/gcm4/ui/menu_arbre.py
+#: src/gcm4/ui/raccourcis.py utils.py widgets.py
 msgid "Cancel"
 msgstr "لغو"
 
@@ -223,8 +224,8 @@ msgstr "چرخش بین برگه‌ها هنگام رفتن به برگه قبل
 msgid "Clear selection"
 msgstr "پاک کردن انتخاب"
 
-#: gnome_connection_manager.py src/gcm4/ui/main_window.py ssh_config_editor.py
-#: ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/echange.py
+#: src/gcm4/ui/main_window.py ssh_config_editor.py ssh_key_manager_dialog.py
 msgid "Close"
 msgstr "بستن"
 
@@ -382,11 +383,9 @@ msgstr ""
 msgid "Export Servers"
 msgstr "صدور سرورها"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Export servers"
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/echange.py
 msgid "Export servers"
-msgstr "_صدور سرورها"
+msgstr "برون‌بری سرورها"
 
 #: gnome_connection_manager.py plugins/plugin_export_csv.py
 msgid "Export to CSV"
@@ -477,11 +476,9 @@ msgstr "نام میزبان"
 msgid "Import Servers"
 msgstr "وارد کردن سرورها"
 
-#: gnome_connection_manager.py
-#, fuzzy
-#| msgid "_Import servers"
+#: gnome_connection_manager.py src/gcm4/core/menu.py src/gcm4/ui/echange.py
 msgid "Import servers"
-msgstr "_وارد کردن سرورها"
+msgstr "درون‌بری سرورها"
 
 #: gnome_connection_manager.py
 #, fuzzy
@@ -2765,15 +2762,10 @@ msgstr "خواندن فایل پیکربندی %s ممکن نیست: %s"
 msgid "Unable to write the configuration file %s: %s"
 msgstr "نوشتن فایل پیکربندی %s ممکن نیست: %s"
 
-#: src/gcm4/core/echange_cli.py
+#: src/gcm4/core/echange_cli.py src/gcm4/ui/echange.py
 #, python-brace-format
 msgid "Hosts exported: {count} ({file})"
 msgstr "میزبان‌های برون‌بری‌شده: {count} ({file})"
-
-#: src/gcm4/core/echange_cli.py
-#, python-brace-format
-msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
-msgstr "درون‌بری {file}: افزوده {added}، جایگزین {replaced}، تغییر نام {renamed}، نادیده {ignored}، گروه‌های جدید {groups}"
 
 #: src/gcm4/core/exchange.py
 #, python-format
@@ -2800,7 +2792,7 @@ msgstr "پرونده %s یک برون‌بری معتبر میزبان‌ها ن
 msgid "Unable to read the file %s: %s"
 msgstr "خواندن پرونده %s ممکن نیست: %s"
 
-#: src/gcm4/core/exchange.py
+#: src/gcm4/core/exchange.py src/gcm4/core/sauvegarde.py
 #, python-format
 msgid "Unable to write the file %s: %s"
 msgstr "نوشتن پرونده %s ممکن نیست: %s"
@@ -2831,6 +2823,10 @@ msgstr "زبانه بعدی"
 #: src/gcm4/core/menu.py
 msgid "Previous tab"
 msgstr "زبانه قبلی"
+
+#: src/gcm4/core/menu.py src/gcm4/ui/echange.py
+msgid "Save configuration as…"
+msgstr "ذخیرهٔ پیکربندی با نام…"
 
 #: src/gcm4/core/menu.py
 msgid "Search"
@@ -2923,6 +2919,25 @@ msgstr "پروتکل «{protocol}» را «{other}» مدیریت می‌کند.
 msgid "{file} does not define PLUGIN."
 msgstr "{file} متغیر PLUGIN را تعریف نمی‌کند."
 
+#: src/gcm4/core/sauvegarde.py
+msgid "Choose a folder other than the configuration folder."
+msgstr "پوشه‌ای غیر از پوشهٔ پیکربندی انتخاب کنید."
+
+#: src/gcm4/core/sauvegarde.py
+#, python-brace-format
+msgid "Import of {file}: added {added}, replaced {replaced}, renamed {renamed}, ignored {ignored}, new groups {groups}"
+msgstr "درون‌بری {file}: افزوده {added}، جایگزین {replaced}، تغییر نام {renamed}، نادیده {ignored}، گروه‌های جدید {groups}"
+
+#: src/gcm4/core/sauvegarde.py
+#, python-format
+msgid "No configuration to save yet: %s"
+msgstr "هنوز پیکربندی‌ای برای ذخیره نیست: %s"
+
+#: src/gcm4/core/sauvegarde.py
+#, python-brace-format
+msgid "{folder} already contains {file}."
+msgstr "{folder} از قبل {file} را دارد."
+
 #: src/gcm4/core/validation.py
 #, python-brace-format
 msgid "A host named «{name}» already exists in this group."
@@ -2949,6 +2964,56 @@ msgstr "نام نباید «/» داشته باشد."
 #, python-brace-format
 msgid "Password for {target}"
 msgstr "گذرواژه برای {target}"
+
+#: src/gcm4/ui/echange.py
+#, python-brace-format
+msgid "Configuration saved to {folder}"
+msgstr "پیکربندی در {folder} ذخیره شد"
+
+#: src/gcm4/ui/echange.py
+msgid "Export"
+msgstr "برون‌بری"
+
+#: src/gcm4/ui/echange.py
+#, python-brace-format
+msgid "Hosts in {file}: {count}, already present: {existing}"
+msgstr "میزبان‌ها در {file}: {count}، از قبل موجود: {existing}"
+
+#: src/gcm4/ui/echange.py
+msgid "If a host already exists:"
+msgstr "اگر میزبان از قبل وجود دارد:"
+
+#: src/gcm4/ui/echange.py
+msgid "Import"
+msgstr "درون‌بری"
+
+#: src/gcm4/ui/echange.py
+msgid "Include passwords (in clear text)"
+msgstr "گنجاندن گذرواژه‌ها (به‌صورت متن ساده)"
+
+#: src/gcm4/ui/echange.py
+msgid "JSON or CSV file, chosen by its extension."
+msgstr "پروندهٔ JSON یا CSV، بر اساس پسوند."
+
+#: src/gcm4/ui/echange.py
+msgid "Keep the existing host"
+msgstr "نگه‌داشتن میزبان موجود"
+
+#: src/gcm4/ui/echange.py
+msgid "Passwords will be written in clear text: keep this file safe."
+msgstr "گذرواژه‌ها به‌صورت متن ساده نوشته می‌شوند: این پرونده را امن نگه دارید."
+
+#: src/gcm4/ui/echange.py
+msgid "Rename the imported host"
+msgstr "تغییر نام میزبان درون‌بری‌شده"
+
+#: src/gcm4/ui/echange.py
+msgid "Replace the existing host"
+msgstr "جایگزینی میزبان موجود"
+
+#: src/gcm4/ui/echange.py
+msgid "This file contains passwords in clear text."
+msgstr "این پرونده گذرواژه‌هایی به‌صورت متن ساده دارد."
 
 #: src/gcm4/ui/host_dialog.py
 msgid "Background color"
@@ -3173,8 +3238,16 @@ msgid "Appearance"
 msgstr "ظاهر"
 
 #: src/gcm4/ui/preferences.py
+msgid "Click a shortcut to change it, or press Backspace in the dialog to disable it."
+msgstr "برای تغییر یک میانبر روی آن کلیک کنید، یا برای غیرفعال کردن آن در پنجرهٔ گفت‌وگو Backspace را فشار دهید."
+
+#: src/gcm4/ui/preferences.py
 msgid "Default log level"
 msgstr "سطح پیش‌فرض گزارش"
+
+#: src/gcm4/ui/preferences.py src/gcm4/ui/raccourcis.py
+msgid "Disabled"
+msgstr "غیرفعال"
 
 #: src/gcm4/ui/preferences.py
 msgid "Error"
@@ -3239,6 +3312,36 @@ msgstr "استفاده از قلم سیستم"
 #, python-brace-format
 msgid "Version {version}"
 msgstr "نسخه {version}"
+
+#: src/gcm4/ui/raccourcis.py
+#, python-brace-format
+msgid "Already used by “{action}”."
+msgstr "از قبل توسط «{action}» استفاده شده است."
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Press a key combination"
+msgstr "یک ترکیب کلید را فشار دهید"
+
+#: src/gcm4/ui/raccourcis.py
+#, python-brace-format
+msgid "Press the new shortcut for “{action}”, or Backspace to disable it."
+msgstr "میانبر جدید «{action}» را فشار دهید، یا برای غیرفعال کردن آن Backspace را بزنید."
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Reset to default"
+msgstr "بازگرداندن پیش‌فرض"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Set"
+msgstr "تنظیم"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Set Shortcut"
+msgstr "تنظیم میانبر"
+
+#: src/gcm4/ui/raccourcis.py
+msgid "Use Ctrl, Alt or Super with this key."
+msgstr "با این کلید از Ctrl، Alt یا Super استفاده کنید."
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format

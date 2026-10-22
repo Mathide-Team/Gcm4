@@ -41,6 +41,11 @@
   `gcm4 --export-json|--export-csv|--import-json|--import-csv FICHIER`,
   `--on-conflict ignore|rename|replace`, `--include-passwords` ; sans
   fenêtre ni display, code de sortie 5 en cas d'erreur
+- **Base GTK4 — import/export depuis le menu Fichier** (#153) :
+  importer (aperçu, stratégie de conflit, bilan final), exporter
+  (avertissement quand les mots de passe sont inclus), enregistrer la
+  configuration sous (`gcm4.conf` + `.gcm4.key`) ; `Gtk.FileDialog` avec
+  repli `Gtk.FileChooserNative` avant GTK 4.10
 - **Architecture à plugins** (#107) : `Host` générique sans champ codé en dur
   par protocole, `PluginRegistry`/`BatchPluginRegistry` avec autoload et
   injection de contexte (`bind_app()`), menu contextuel peuplé dynamiquement

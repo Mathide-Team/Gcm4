@@ -259,7 +259,7 @@ def test_titre_par_defaut_ecrit_par_gtk3(tmp_path):
 
 
 def test_options_247_classees_page_preferences():
-    """Les six options de #247 ne renvoient plus à une « issue de suivi »."""
+    """Les six options et l'édition des raccourcis (#247) ne renvoient plus à une « issue de suivi »."""
     options = {
         "CONFIRM_ON_CLOSE_TAB",
         "CONFIRM_ON_CLOSE_TAB_MIDDLE",
@@ -267,6 +267,7 @@ def test_options_247_classees_page_preferences():
         "DISABLE_HOSTS_STRIPES",
         "UPDATE_TITLE",
         "APP_TITLE",
+        "shortcuts",
     }
     assert {o.nom for o in p.INVENTAIRE if "#247" in o.destination} == options
     assert all("issue de suivi" not in o.destination for o in p.INVENTAIRE if o.nom in options)
