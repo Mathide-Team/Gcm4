@@ -80,7 +80,18 @@ check_deb() {
 import importlib, pathlib, sys
 root = pathlib.Path(sys.argv[1])
 sys.path.insert(0, str(root))
-mods, errors = [], []
+
+# Modules à dépendance optionnelle : leur import peut légitimement échouer
+# si la dépendance n'est pas installée. D1 de #118 : le paquet de base
+# n'embarque pas les dépendances des plugins ; #223 : VTE GTK4 (Vte-3.91)
+# est absent de Rocky Linux 9 et 10 — l'import de gcm4.ui.terminal échoue
+# alors dans le plugin, signalé en erreur dans Préférences > Extensions,
+# sans empêcher gcm4 de démarrer (la base ne l'importe jamais). La
+# fonctionnalité est couverte ailleurs : job GTK4 (tests/gtk4/
+# test_plugin_local.py, VTE installé).
+OPTIONNELS = {"gcm4.ui.terminal": "VTE GTK4 (Vte-3.91), absent du paquet de base (D1 #118, #223)"}
+
+mods, errors, optionnels = [], [], []
 for py in sorted(root.rglob("*.py")):
     rel = py.relative_to(root).with_suffix("")
     name = ".".join(rel.parts[:-1] if rel.name == "__init__" else rel.parts)
@@ -90,10 +101,16 @@ for py in sorted(root.rglob("*.py")):
     try:
         module = importlib.import_module(name)
     except Exception as exc:  # noqa: BLE001 -- on veut tout lister
+        if name in OPTIONNELS:
+            optionnels.append(f"{name}: {OPTIONNELS[name]}")
+            continue
         errors.append(f"{name}: {exc!r}")
         continue
     if not str(getattr(module, "__file__", "")).startswith(str(root)):
         errors.append(f"{name}: importé depuis {module.__file__}, hors de {root}")
+if optionnels:
+    print("modules optionnels non importés (attendu sans leur dépendance) :")
+    print("  " + "\n  ".join(optionnels))
 if errors:
     print("\n".join(errors), file=sys.stderr)
     sys.exit(f"imports : {len(errors)} module(s) en échec sur {len(mods)}")
