@@ -202,7 +202,10 @@ def libelle(combinaison: Combinaison | None) -> str:
 
 
 #: Rappel du dialogue : ("set", combinaison ou None pour désactiver) ou ("reset", None).
-RappelSaisie = Callable[[str, Combinaison | None], None]
+#: Union entre guillemets : jamais évaluée à l'exécution — le Python 3.9 du
+#: job « gcm4 sur Rocky Linux 9 » ne connaît pas « X | None » hors annotation
+#: (même style que « Resolveur » dans gcm4/core/raccourcis.py).
+RappelSaisie = Callable[[str, "Combinaison | None"], None]
 
 
 class SaisieRaccourci:
