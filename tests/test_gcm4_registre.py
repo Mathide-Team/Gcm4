@@ -220,10 +220,12 @@ def test_zero_plugin(monkeypatch):
 
 
 def test_dossier_source_du_depot():
-    """Depuis les sources, plugins/ du dépôt est trouvé ; aucun de ses dossiers n'a encore de gtk4.py."""
+    """Depuis les sources, plugins/ du dépôt est trouvé ; telnet y est candidat."""
     dossier = registre.dossier_source()
     assert dossier is not None and dossier.name == "plugins"
-    assert all(c.nom for c in registre.candidats_dossier(dossier))
+    candidats = registre.candidats_dossier(dossier)
+    assert "telnet" in [c.nom for c in candidats]
+    assert all(c.nom and c.source.endswith("gtk4.py") for c in candidats)
 
 
 def test_candidat_qui_n_est_pas_une_classe():
@@ -235,9 +237,60 @@ def test_candidat_qui_n_est_pas_une_classe():
 
 def test_importer_fichier_sans_spec(tmp_path, monkeypatch):
     """Spec introuvable : ImportError transformée en erreur du plugin."""
-    monkeypatch.setattr(registre.importlib.util, "spec_from_file_location", lambda *a: None)
+    monkeypatch.setattr(registre.importlib.util, "spec_from_file_location", lambda *a, **k: None)
     with pytest.raises(ImportError):
         registre._importer_fichier("x", tmp_path / "gtk4.py")
+    (tmp_path / "__init__.py").write_text("", encoding="utf-8")
+    with pytest.raises(ImportError):
+        registre._importer_fichier("x", tmp_path / "gtk4.py")
+    assert "gcm4_plugin_x" not in sys.modules
+
+
+@pytest.mark.parametrize("avec_init", [False, True])
+def test_gtk4_importe_son_core(tmp_path, module, avec_init):
+    """Le dossier est un paquet : ``from . import core`` marche, avec ou sans ``__init__.py``."""
+    dossier = tmp_path / "plugins" / "voisin"
+    dossier.mkdir(parents=True)
+    (dossier / "core.py").write_text("VALEUR = 42\n", encoding="utf-8")
+    (dossier / "gtk4.py").write_text(
+        f"from . import core\nfrom {module} import Alpha as PLUGIN\nLU = core.VALEUR\n",
+        encoding="utf-8",
+    )
+    if avec_init:
+        (dossier / "__init__.py").write_text("INIT = True\n", encoding="utf-8")
+    try:
+        assert registre._importer_fichier("voisin", dossier / "gtk4.py").name == "alpha"
+        assert sys.modules["gcm4_plugin_voisin.gtk4"].LU == 42
+        assert sys.modules["gcm4_plugin_voisin.core"].VALEUR == 42
+        assert sys.modules["gcm4_plugin_voisin"].__path__ == [str(dossier)]
+        assert getattr(sys.modules["gcm4_plugin_voisin"], "INIT", False) is avec_init
+    finally:
+        registre._oublier_paquet("gcm4_plugin_voisin")
+
+
+@pytest.mark.parametrize(
+    ("init", "gtk4"),
+    [
+        ("", "from . import core\nraise RuntimeError('gtk4')\n"),
+        ("raise RuntimeError('init')\n", "X = 1\n"),
+    ],
+)
+def test_echec_retire_tout_le_paquet(tmp_path, init, gtk4):
+    """Import manqué (dans gtk4.py ou __init__.py) : ni le paquet ni core ne restent chargés."""
+    dossier = tmp_path / "casse"
+    dossier.mkdir()
+    (dossier / "__init__.py").write_text(init, encoding="utf-8")
+    (dossier / "core.py").write_text("", encoding="utf-8")
+    (dossier / "gtk4.py").write_text(gtk4, encoding="utf-8")
+    with pytest.raises(RuntimeError):
+        registre._importer_fichier("casse", dossier / "gtk4.py")
+    assert not [n for n in sys.modules if n.startswith("gcm4_plugin_casse")]
+    sys.modules["gcm4_plugin_casse_autre"] = sys
+    try:
+        registre._oublier_paquet("gcm4_plugin_casse")
+        assert sys.modules["gcm4_plugin_casse_autre"] is sys
+    finally:
+        del sys.modules["gcm4_plugin_casse_autre"]
 
 
 class _EntryPoints310:

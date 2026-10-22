@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-19 12:52+0000\n"
+"POT-Creation-Date: 2026-10-21 20:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,7 +36,7 @@ msgstr ""
 msgid "<span size=\"smaller\">CTRL+UP/CTRL+DOWN for history</span>"
 msgstr "<span size=\"smaller\">使用 CTRL+上/CTRL+下 浏览历史记录</span>"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid ""
 "<span size='smaller'>Use ##D=milliseconds to add a delay.\n"
 "Ex: ##D=1000</span>"
@@ -57,11 +57,11 @@ msgstr "有新版本可用：https://github.com/MathildeDec/gnome-connection-man
 msgid "A simple ssh connection manager for gnome"
 msgstr "一个简单的 Gnome SSH 连接管理器"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "ASCII Backspace \t[Ctrl+H 0x08]"
 msgstr "ASCII 退格键 \t[Ctrl+H 0x08]"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
 msgstr "ASCII 删除    \t[Ctrl+? 0x7F]"
 
@@ -89,7 +89,7 @@ msgstr "断开连接后"
 msgid "Always"
 msgstr "总是"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Automatic"
 msgstr "自动"
 
@@ -97,7 +97,7 @@ msgstr "自动"
 msgid "Background color:"
 msgstr "背景颜色："
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Backspace:"
 msgstr "退格键："
 
@@ -151,7 +151,7 @@ msgstr "检查更新"
 msgid "Choose Group Color"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Circle around tabs when going to the previous/next tab"
 msgstr "切换到上一个/下一个标签时循环切换"
 
@@ -159,11 +159,13 @@ msgstr "切换到上一个/下一个标签时循环切换"
 msgid "Clear selection"
 msgstr "清除选择"
 
-#: gnome_connection_manager.py ssh_config_editor.py ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/main_window.py ssh_config_editor.py
+#: ssh_key_manager_dialog.py
 msgid "Close"
 msgstr "关闭"
 
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py widgets.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/main_window.py widgets.py
 msgid "Close console"
 msgstr "关闭控制台"
 
@@ -185,11 +187,11 @@ msgstr "颜色"
 msgid "Command"
 msgstr "命令"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on close console"
 msgstr "关闭控制台时确认"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on close console with middle click"
 msgstr "使用鼠标中键关闭控制台时确认"
 
@@ -243,11 +245,11 @@ msgstr "数据位"
 msgid "Default colors"
 msgstr "默认颜色"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Delete Sequence \t[@7]"
 msgstr "删除序列 \t[@7]"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Delete:"
 msgstr "删除键："
 
@@ -255,7 +257,7 @@ msgstr "删除键："
 msgid "Description"
 msgstr "描述"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Disable alternating stripes in hosts window"
 msgstr "禁用主机窗口中的交替条纹"
 
@@ -275,7 +277,7 @@ msgstr "您确实要删除该组中的所有主机吗"
 msgid "Do you really want to remove host"
 msgstr "您确实要删除主机吗"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Dynamic title"
 msgstr "动态标题"
 
@@ -650,7 +652,7 @@ msgstr "选择字体"
 msgid "Select foreground color"
 msgstr "选择前景颜色"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Send commands after login"
 msgstr "登录后发送命令"
 
@@ -710,11 +712,11 @@ msgstr "停止位"
 msgid "System"
 msgstr "跟随系统"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "TERM"
 msgstr "TERM"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "TTY Erase"
 msgstr "TTY 擦除"
 
@@ -738,7 +740,7 @@ msgstr ""
 msgid "Tip: use #P=password to send a password without keeping it in clear text in the command history"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Title"
 msgstr "标题"
 
@@ -1441,7 +1443,7 @@ msgid "IPMI (SOL)"
 msgstr ""
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_spice.py
-#: plugins/plugin_vnc.py
+#: plugins/plugin_vnc.py plugins/telnet/gtk4.py
 msgid "Session ended"
 msgstr "会话已结束"
 
@@ -2659,6 +2661,11 @@ msgid ""
 "The web console will open in the system browser."
 msgstr ""
 
+#: plugins/telnet/gtk4.py
+#, python-brace-format
+msgid "{program} not found"
+msgstr "未找到 {program}"
+
 #: src/gcm4/app.py
 msgid "The old configuration is intact: fix the problem (permissions, disk space), then start gcm4 again."
 msgstr "旧配置保持不变：请解决问题（权限、磁盘空间）后重新启动 gcm4。"
@@ -2705,6 +2712,63 @@ msgstr "无法读取配置文件 %s：%s"
 #, python-format
 msgid "Unable to write the configuration file %s: %s"
 msgstr "无法写入配置文件 %s：%s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: the host name is missing"
+msgstr "%s：缺少主机名"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: too many cells"
+msgstr "%s：单元格过多"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: unexpected value for %s"
+msgstr "%s：%s 的值不正确"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "The file %s is not a valid host export: %s"
+msgstr "文件 %s 不是有效的主机导出文件：%s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to read the file %s: %s"
+msgstr "无法读取文件 %s：%s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to write the file %s: %s"
+msgstr "无法写入文件 %s：%s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "entry %d"
+msgstr "第 %d 项"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "line %d"
+msgstr "第 %d 行"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "the column %s is missing"
+msgstr "缺少列 %s"
+
+#: src/gcm4/core/exchange.py
+msgid "unsupported format or version"
+msgstr "不支持的格式或版本"
+
+#: src/gcm4/core/menu.py
+msgid "Next tab"
+msgstr "下一个标签页"
+
+#: src/gcm4/core/menu.py
+msgid "Previous tab"
+msgstr "上一个标签页"
 
 #: src/gcm4/core/menu.py
 msgid "Search"
@@ -2930,6 +2994,11 @@ msgstr "未加载配置"
 #: src/gcm4/ui/main_window.py
 msgid "Home"
 msgstr "主页"
+
+#: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Host not found: {hosts}"
+msgstr "未找到主机：{hosts}"
 
 #: src/gcm4/ui/main_window.py
 msgid "Hosts and groups will appear in the left panel."

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-19 12:52+0000\n"
+"POT-Creation-Date: 2026-10-21 20:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,7 +36,7 @@ msgstr ""
 msgid "<span size=\"smaller\">CTRL+UP/CTRL+DOWN for history</span>"
 msgstr "<span size=\"smaller\">CTRL+ขึ้น/CTRL+ลง สำหรับประวัติ</span>"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid ""
 "<span size='smaller'>Use ##D=milliseconds to add a delay.\n"
 "Ex: ##D=1000</span>"
@@ -57,11 +57,11 @@ msgstr "มีเวอร์ชันใหม่พร้อมใช้งา
 msgid "A simple ssh connection manager for gnome"
 msgstr "ตัวจัดการการเชื่อมต่อ SSH แบบง่ายสำหรับ Gnome"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "ASCII Backspace \t[Ctrl+H 0x08]"
 msgstr "ASCII Backspace \t[Ctrl+H 0x08]"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
 msgstr "ASCII Delete    \t[Ctrl+? 0x7F]"
 
@@ -89,7 +89,7 @@ msgstr "หลังตัดการเชื่อมต่อ"
 msgid "Always"
 msgstr "เสมอ"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Automatic"
 msgstr "อัตโนมัติ"
 
@@ -97,7 +97,7 @@ msgstr "อัตโนมัติ"
 msgid "Background color:"
 msgstr "สีพื้นหลัง:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Backspace:"
 msgstr "Backspace:"
 
@@ -151,7 +151,7 @@ msgstr "ตรวจสอบการอัปเดต"
 msgid "Choose Group Color"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Circle around tabs when going to the previous/next tab"
 msgstr "วนรอบแท็บเมื่อไปยังแท็บก่อนหน้า/ถัดไป"
 
@@ -159,11 +159,13 @@ msgstr "วนรอบแท็บเมื่อไปยังแท็บก
 msgid "Clear selection"
 msgstr "ล้างการเลือก"
 
-#: gnome_connection_manager.py ssh_config_editor.py ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/main_window.py ssh_config_editor.py
+#: ssh_key_manager_dialog.py
 msgid "Close"
 msgstr "ปิด"
 
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py widgets.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/main_window.py widgets.py
 msgid "Close console"
 msgstr "ปิดคอนโซล"
 
@@ -185,11 +187,11 @@ msgstr "สี"
 msgid "Command"
 msgstr "คำสั่ง"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on close console"
 msgstr "ยืนยันเมื่อปิดคอนโซล"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on close console with middle click"
 msgstr "ยืนยันเมื่อปิดคอนโซลด้วยคลิกกลาง"
 
@@ -243,11 +245,11 @@ msgstr "บิตข้อมูล"
 msgid "Default colors"
 msgstr "สีเริ่มต้น"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Delete Sequence \t[@7]"
 msgstr "ลำดับ Delete \t[@7]"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Delete:"
 msgstr "Delete:"
 
@@ -255,7 +257,7 @@ msgstr "Delete:"
 msgid "Description"
 msgstr "คำอธิบาย"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Disable alternating stripes in hosts window"
 msgstr "ปิดใช้งานแถบสีสลับในหน้าต่างโฮสต์"
 
@@ -275,7 +277,7 @@ msgstr "คุณต้องการลบโฮสต์ทั้งหมด
 msgid "Do you really want to remove host"
 msgstr "คุณต้องการลบโฮสต์จริงหรือไม่"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Dynamic title"
 msgstr "ชื่อแบบไดนามิก"
 
@@ -650,7 +652,7 @@ msgstr "เลือกแบบอักษร"
 msgid "Select foreground color"
 msgstr "เลือกสีพื้นหน้า"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Send commands after login"
 msgstr "ส่งคำสั่งหลังจากเข้าสู่ระบบ"
 
@@ -710,11 +712,11 @@ msgstr "หยุด"
 msgid "System"
 msgstr "ตามระบบ"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "TERM"
 msgstr "TERM"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "TTY Erase"
 msgstr "ลบ TTY"
 
@@ -738,7 +740,7 @@ msgstr ""
 msgid "Tip: use #P=password to send a password without keeping it in clear text in the command history"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Title"
 msgstr "ชื่อเรื่อง"
 
@@ -1441,7 +1443,7 @@ msgid "IPMI (SOL)"
 msgstr ""
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_spice.py
-#: plugins/plugin_vnc.py
+#: plugins/plugin_vnc.py plugins/telnet/gtk4.py
 msgid "Session ended"
 msgstr "เซสชันสิ้นสุดลง"
 
@@ -2659,6 +2661,11 @@ msgid ""
 "The web console will open in the system browser."
 msgstr ""
 
+#: plugins/telnet/gtk4.py
+#, python-brace-format
+msgid "{program} not found"
+msgstr "ไม่พบ {program}"
+
 #: src/gcm4/app.py
 msgid "The old configuration is intact: fix the problem (permissions, disk space), then start gcm4 again."
 msgstr "การตั้งค่าเดิมยังอยู่ครบ: แก้ไขปัญหา (สิทธิ์การเข้าถึง พื้นที่ดิสก์) แล้วเปิด gcm4 อีกครั้ง"
@@ -2705,6 +2712,63 @@ msgstr "ไม่สามารถอ่านไฟล์การตั้ง
 #, python-format
 msgid "Unable to write the configuration file %s: %s"
 msgstr "ไม่สามารถเขียนไฟล์การตั้งค่า %s: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: the host name is missing"
+msgstr "%s: ไม่มีชื่อโฮสต์"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: too many cells"
+msgstr "%s: มีเซลล์มากเกินไป"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "%s: unexpected value for %s"
+msgstr "%s: ค่าที่ไม่คาดคิดสำหรับ %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "The file %s is not a valid host export: %s"
+msgstr "ไฟล์ %s ไม่ใช่การส่งออกโฮสต์ที่ถูกต้อง: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to read the file %s: %s"
+msgstr "ไม่สามารถอ่านไฟล์ %s: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "Unable to write the file %s: %s"
+msgstr "ไม่สามารถเขียนไฟล์ %s: %s"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "entry %d"
+msgstr "รายการ %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "line %d"
+msgstr "บรรทัด %d"
+
+#: src/gcm4/core/exchange.py
+#, python-format
+msgid "the column %s is missing"
+msgstr "ไม่มีคอลัมน์ %s"
+
+#: src/gcm4/core/exchange.py
+msgid "unsupported format or version"
+msgstr "ไม่รองรับรูปแบบหรือรุ่นนี้"
+
+#: src/gcm4/core/menu.py
+msgid "Next tab"
+msgstr "แท็บถัดไป"
+
+#: src/gcm4/core/menu.py
+msgid "Previous tab"
+msgstr "แท็บก่อนหน้า"
 
 #: src/gcm4/core/menu.py
 msgid "Search"
@@ -2930,6 +2994,11 @@ msgstr "ไม่ได้โหลดการตั้งค่า"
 #: src/gcm4/ui/main_window.py
 msgid "Home"
 msgstr "หน้าแรก"
+
+#: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Host not found: {hosts}"
+msgstr "ไม่พบโฮสต์: {hosts}"
 
 #: src/gcm4/ui/main_window.py
 msgid "Hosts and groups will appear in the left panel."

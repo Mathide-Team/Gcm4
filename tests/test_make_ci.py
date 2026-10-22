@@ -46,10 +46,16 @@ class TestMakeCi(unittest.TestCase):
         self.assertEqual(manquantes, [], "ajouter ces commandes à la cible ci du Makefile")
 
     def test_tests_avec_couverture(self):
-        """La suite tourne avec la couverture, comme le job Qualité."""
-        self.assertIn("uv run python -m pytest tests/ -q", CI)
+        """La suite tourne avec la couverture et gettext exigé, comme le job Qualité (#160)."""
+        self.assertIn("uv run python -m pytest tests/ -q -rs", CI)
+        self.assertIn('GCM_TESTS_EXIGES: "gettext"', CI)
         self.assertTrue(
-            any(c.startswith("uv run python -m pytest tests/ -q --cov") for c in recette("ci"))
+            any(
+                c.startswith(
+                    "GCM_TESTS_EXIGES=gettext uv run python -m pytest tests/ -q -rs --cov"
+                )
+                for c in recette("ci")
+            )
         )
 
     def test_cible_declaree_et_documentee(self):
