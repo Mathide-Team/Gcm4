@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-20 21:13+0000\n"
+"POT-Creation-Date: 2026-10-22 05:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,7 +36,7 @@ msgstr ""
 msgid "<span size=\"smaller\">CTRL+UP/CTRL+DOWN for history</span>"
 msgstr "<span size=\"smaller\">CTRL+CIMA/CTRL+BAIXO para histórico</span>"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid ""
 "<span size='smaller'>Use ##D=milliseconds to add a delay.\n"
 "Ex: ##D=1000</span>"
@@ -57,11 +57,11 @@ msgstr "Uma nova versão está disponível: https://github.com/MathildeDec/gnome
 msgid "A simple ssh connection manager for gnome"
 msgstr "Um gerenciador simples de conexões SSH para o Gnome"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "ASCII Backspace \t[Ctrl+H 0x08]"
 msgstr "ASCII Backspace \t[Ctrl+H 0x08]"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "ASCII Delete    \t[Ctrl+? 0x7F]"
 msgstr "ASCII Delete    \t[Ctrl+? 0x7F]"
 
@@ -89,7 +89,7 @@ msgstr "Após desconectar"
 msgid "Always"
 msgstr "Sempre"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Automatic"
 msgstr "Automático"
 
@@ -97,7 +97,7 @@ msgstr "Automático"
 msgid "Background color:"
 msgstr "Cor de fundo:"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Backspace:"
 msgstr "Backspace:"
 
@@ -151,7 +151,7 @@ msgstr "Verificar atualizações"
 msgid "Choose Group Color"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Circle around tabs when going to the previous/next tab"
 msgstr "Circular pelas abas ao ir para a aba anterior/seguinte"
 
@@ -159,12 +159,13 @@ msgstr "Circular pelas abas ao ir para a aba anterior/seguinte"
 msgid "Clear selection"
 msgstr "Limpar seleção"
 
-#: gnome_connection_manager.py src/gcm4/ui/echange.py ssh_config_editor.py
-#: ssh_key_manager_dialog.py
+#: gnome_connection_manager.py src/gcm4/ui/echange.py
+#: src/gcm4/ui/main_window.py ssh_config_editor.py ssh_key_manager_dialog.py
 msgid "Close"
 msgstr "Fechar"
 
-#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py widgets.py
+#: gnome_connection_manager.py src/gcm4/ui/host_dialog.py
+#: src/gcm4/ui/main_window.py widgets.py
 msgid "Close console"
 msgstr "Fechar console"
 
@@ -186,11 +187,11 @@ msgstr "Cores"
 msgid "Command"
 msgstr "Comando"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on close console"
 msgstr "Confirmar ao fechar console"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Confirm on close console with middle click"
 msgstr "Confirmar ao fechar console com clique do botão do meio"
 
@@ -244,11 +245,11 @@ msgstr "Bits de dados"
 msgid "Default colors"
 msgstr "Cores padrão"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Delete Sequence \t[@7]"
 msgstr "Sequência Delete \t[@7]"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Delete:"
 msgstr "Delete:"
 
@@ -256,7 +257,7 @@ msgstr "Delete:"
 msgid "Description"
 msgstr "Descrição"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Disable alternating stripes in hosts window"
 msgstr "Desativar listras alternadas na janela de hosts"
 
@@ -276,7 +277,7 @@ msgstr "Você realmente deseja remover todos os hosts no grupo"
 msgid "Do you really want to remove host"
 msgstr "Você realmente deseja remover o host"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Dynamic title"
 msgstr "Título dinâmico"
 
@@ -647,7 +648,7 @@ msgstr "Selecionar fonte"
 msgid "Select foreground color"
 msgstr "Selecionar cor do texto"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "Send commands after login"
 msgstr "Enviar comandos após o login"
 
@@ -707,11 +708,11 @@ msgstr "Parada"
 msgid "System"
 msgstr "Sistema"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "TERM"
 msgstr "TERM"
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py plugins/telnet/gtk4.py
 msgid "TTY Erase"
 msgstr "Apagar TTY"
 
@@ -735,7 +736,7 @@ msgstr ""
 msgid "Tip: use #P=password to send a password without keeping it in clear text in the command history"
 msgstr ""
 
-#: gnome_connection_manager.py
+#: gnome_connection_manager.py src/gcm4/ui/preferences.py
 msgid "Title"
 msgstr "Título"
 
@@ -1438,7 +1439,7 @@ msgid "IPMI (SOL)"
 msgstr ""
 
 #: plugins/plugin_ipmisol.py plugins/plugin_rdp.py plugins/plugin_spice.py
-#: plugins/plugin_vnc.py
+#: plugins/plugin_vnc.py plugins/telnet/gtk4.py
 msgid "Session ended"
 msgstr "Sessão encerrada"
 
@@ -2656,6 +2657,11 @@ msgid ""
 "The web console will open in the system browser."
 msgstr ""
 
+#: plugins/telnet/gtk4.py
+#, python-brace-format
+msgid "{program} not found"
+msgstr "{program} não encontrado"
+
 #: src/gcm4/app.py
 msgid "The old configuration is intact: fix the problem (permissions, disk space), then start gcm4 again."
 msgstr "A configuração antiga está intacta: corrija o problema (permissões, espaço em disco) e inicie o gcm4 novamente."
@@ -2756,6 +2762,14 @@ msgstr "a coluna %s está ausente"
 #: src/gcm4/core/exchange.py
 msgid "unsupported format or version"
 msgstr "formato ou versão não suportados"
+
+#: src/gcm4/core/menu.py
+msgid "Next tab"
+msgstr "Próxima aba"
+
+#: src/gcm4/core/menu.py
+msgid "Previous tab"
+msgstr "Aba anterior"
 
 #: src/gcm4/core/menu.py src/gcm4/ui/echange.py
 msgid "Save configuration as…"
@@ -3054,6 +3068,11 @@ msgstr "Configuração não carregada"
 #: src/gcm4/ui/main_window.py
 msgid "Home"
 msgstr "Início"
+
+#: src/gcm4/ui/main_window.py
+#, python-brace-format
+msgid "Host not found: {hosts}"
+msgstr "Host não encontrado: {hosts}"
 
 #: src/gcm4/ui/main_window.py
 msgid "Hosts and groups will appear in the left panel."

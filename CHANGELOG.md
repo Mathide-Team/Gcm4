@@ -10,6 +10,10 @@
 > session par session, dans `claude.md` (journal) et `features.md` (§4.1).
 
 ### Added
+- **Base GTK4 — `gcm4 groupe/nom…`** (#154) : les hôtes de la ligne de
+  commande sont sélectionnés dans l'arbre au démarrage (groupes parents
+  dépliés), connectés seulement si un plugin gère leur protocole ; hôte
+  inconnu signalé par un seul message
 - **Base GTK4 — import/export CSV et JSON sans GTK** (#152) :
   `src/gcm4/core/exchange.py`, schéma JSON versionné (`gcm4-hosts`, v1,
   `docs/echange-hotes.md`), mots de passe exclus sauf demande explicite,
@@ -77,6 +81,13 @@
   agent (humain ou IA) travaillant sur le dépôt
 
 ### Fixed
+- gcm4 sur Debian 12 (GTK 4.8, libadwaita 1.2, #223) : le repli
+  `Gtk.CssProvider.load_from_data` passait deux arguments et une chaîne
+  (exception à chaque démarrage, CSS de l'arbre non chargé) ; il reçoit
+  maintenant des octets UTF-8. La fenêtre des préférences ne s'ouvrait pas
+  (`Adw.ActionRow.set_subtitle_selectable` exige libadwaita 1.3) ; l'appel est
+  conditionnel. Nouveau job CI « gcm4 sur Debian 12 » dans un conteneur
+  `debian:12` : démarrage sous Xvfb et tests gcm4, aucun test sauté
 - Push SNMP vers un équipement Huawei VRP échouait silencieusement
   (« Constructeur inconnu : huawei_vrp ») malgré sa présence dans le menu
   déroulant : driver `HuaweiVrpDriver` manquant côté résolution effective,
