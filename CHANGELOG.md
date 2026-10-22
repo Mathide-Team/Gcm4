@@ -10,6 +10,48 @@
 > session par session, dans `claude.md` (journal) et `features.md` (§4.1).
 
 ### Added
+- **gcm4, base GTK4** (#126, réécriture, paquet `src/gcm4`) : commande `gcm4`
+  et ligne de commande (#133) ; fenêtre GTK4/libadwaita, actions et À propos
+  (#134) ; thème clair/sombre/système (#135) ; modèle Host/Group sans GTK
+  (#136) ; lecture/écriture atomique de `gcm.conf`, clés inconnues
+  conservées (#137) ; mots de passe chiffrés compatibles GTK3 (#138) ;
+  dossier `~/.config/gcm4` avec migration non destructive depuis `~/.gcm`
+  (#99) ; arbre des groupes et hôtes (#139), recherche (#140),
+  glisser-déposer (#141), menus contextuels et suppression confirmée (#142) ;
+  dialogue d'hôte avec validation (#144, #145) et zone d'options fournie par
+  le plugin (#146) ; préférences Général, Apparence, Raccourcis,
+  Journalisation et Extensions (#147, #148) ; contrat plugin v1, découverte
+  isolée des erreurs et mode zéro plugin (#149, #150, #151) ; restauration
+  des onglets (#246) ; vérification des mises à jour avec accord explicite
+  (#245)
+- **Intégration bureau et paquets de gcm4** : lanceur `.desktop`, métadonnées
+  AppStream et icônes (#155) ; paquet `.deb` (Debian 13, Ubuntu 24.04+) (#156)
+  et paquet `.rpm` (Fedora) (#157), vérifiés par un test de fumée en CI ;
+  guide d'installation et de premiers pas `docs/guide/base-gtk4.md` (#158)
+- **Plugin local GTK4** (#295) : `plugins/local/` au contrat v1, shell de
+  l'utilisateur (`$SHELL`, sinon `/bin/sh`) dans un terminal VTE 3.91,
+  commandes après ouverture (700 ms, `##D=`), touches d'effacement, `TERM`
+  et couleurs de l'hôte. Session VTE et zone d'options communes aux plugins
+  terminal dans `gcm4.ui.terminal` et `gcm4.core.terminal` ; telnet les
+  utilise, sans changement de comportement
+- **Base GTK4 — `gcm4 groupe/nom…`** (#154) : les hôtes de la ligne de
+  commande sont sélectionnés dans l'arbre au démarrage (groupes parents
+  dépliés), connectés seulement si un plugin gère leur protocole ; hôte
+  inconnu signalé par un seul message
+- **Base GTK4 — import/export CSV et JSON sans GTK** (#152) :
+  `src/gcm4/core/exchange.py`, schéma JSON versionné (`gcm4-hosts`, v1,
+  `docs/echange-hotes.md`), mots de passe exclus sauf demande explicite,
+  conflits ignorer / renommer / remplacer avec rapport, fichier mal formé
+  sans aucune modification de la configuration ; exports GTK3 acceptés
+- **Base GTK4 — import/export en ligne de commande** (#154) :
+  `gcm4 --export-json|--export-csv|--import-json|--import-csv FICHIER`,
+  `--on-conflict ignore|rename|replace`, `--include-passwords` ; sans
+  fenêtre ni display, code de sortie 5 en cas d'erreur
+- **Base GTK4 — import/export depuis le menu Fichier** (#153) :
+  importer (aperçu, stratégie de conflit, bilan final), exporter
+  (avertissement quand les mots de passe sont inclus), enregistrer la
+  configuration sous (`gcm4.conf` + `.gcm4.key`) ; `Gtk.FileDialog` avec
+  repli `Gtk.FileChooserNative` avant GTK 4.10
 - **Architecture à plugins** (#107) : `Host` générique sans champ codé en dur
   par protocole, `PluginRegistry`/`BatchPluginRegistry` avec autoload et
   injection de contexte (`bind_app()`), menu contextuel peuplé dynamiquement
@@ -63,6 +105,20 @@
   agent (humain ou IA) travaillant sur le dépôt
 
 ### Fixed
+- gcm4 sur Debian 12 (GTK 4.8, libadwaita 1.2, #223) : le repli
+  `Gtk.CssProvider.load_from_data` passait deux arguments et une chaîne
+  (exception à chaque démarrage, CSS de l'arbre non chargé) ; il reçoit
+  maintenant des octets UTF-8. La fenêtre des préférences ne s'ouvrait pas
+  (`Adw.ActionRow.set_subtitle_selectable` exige libadwaita 1.3) ; l'appel est
+  conditionnel. Nouveau job CI « gcm4 sur Debian 12 » dans un conteneur
+  `debian:12` : démarrage sous Xvfb et tests gcm4, aucun test sauté
+- gcm4 sur Rocky Linux 9 (Python 3.9, GTK 4.12, libadwaita 1.4, #223) : le
+  code de `src/gcm4` ne démarrait pas en Python 3.9 (alias `X | None`
+  évalués à l'exécution dans `ui/dialogues.py` et `ui/host_dialog.py`,
+  `zip(strict=True)` dans `core/chiffrement.py`, `entry_points(group=...)`
+  dans `core/registre.py`) ; écrit pour Python 3.9 à 3.14, sans changer
+  `requires-python` (décision attendue sur #223). Nouveau job CI « gcm4 sur
+  Rocky Linux 9 » dans un conteneur `rockylinux/rockylinux:9`
 - Push SNMP vers un équipement Huawei VRP échouait silencieusement
   (« Constructeur inconnu : huawei_vrp ») malgré sa présence dans le menu
   déroulant : driver `HuaweiVrpDriver` manquant côté résolution effective,
