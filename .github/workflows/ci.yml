@@ -433,7 +433,8 @@ jobs:
 
   desktop:
     # Issue #155 : lanceur (desktop-file-validate), métadonnées AppStream
-    # (appstreamcli validate) et tailles des icônes de data/. Conteneur
+    # (appstreamcli validate), sources et traduits (#274), et tailles des
+    # icônes de data/. Conteneur
     # Ubuntu comme le job GTK4 : les deux validateurs viennent des paquets.
     name: Intégration au bureau
     runs-on: ${{ fromJSON(vars.RUNS_ON_GTK4 || '"ubuntu-latest"') }}
@@ -441,11 +442,13 @@ jobs:
       image: ubuntu:26.04
 
     steps:
-      - name: desktop-file-utils et appstream
+      - name: desktop-file-utils, appstream et gettext
+        # gettext : scripts/check-desktop.sh valide aussi le lanceur et
+        # AppStream traduits (#274).
         run: |
           DEBIAN_FRONTEND=noninteractive apt-get update -qq
           DEBIAN_FRONTEND=noninteractive apt-get install -y -qq \
-            git ca-certificates desktop-file-utils appstream
+            git ca-certificates desktop-file-utils appstream gettext
 
       - name: Checkout du dépôt
         uses: actions/checkout@v7

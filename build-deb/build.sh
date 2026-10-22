@@ -45,6 +45,9 @@ cp -r "$SCRIPT_DIR/debian" "$SCRIPT_DIR/wrappers" "$BUILD_DIR/"
 # /usr/share/locale/<langue>/LC_MESSAGES/gcm-lang.mo : gcm4.core.i18n les y
 # cherche (sys.prefix/share/locale).
 "$REPO_ROOT/scripts/i18n-update.sh" --compile "$BUILD_DIR/locale"
+# Lanceur et métadonnées AppStream avec leurs traductions (#274) : remplacent
+# les fichiers anglais de data/ copiés plus haut.
+"$REPO_ROOT/scripts/i18n-update.sh" --desktop "$BUILD_DIR/data"
 
 # debian/changelog : une entrée, la version de pyproject.toml.
 cat > "$BUILD_DIR/debian/changelog" <<CHANGELOG
