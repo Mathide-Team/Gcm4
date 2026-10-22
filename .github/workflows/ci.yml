@@ -90,9 +90,12 @@ jobs:
       - name: Tests (pytest + couverture)
         # Toute la suite, y compris tests/test_gcm.py (réintégré, issue #112 :
         # stubs gi complétés et tests resynchronisés avec plugins/).
-        # Couverture (issue #128) : périmètre et seuil bloquant (fail_under)
-        # lus dans [tool.coverage.*] de pyproject.toml. L'étape échoue si la
-        # couverture totale passe sous le seuil.
+        # Couverture (issue #128) : périmètre lu dans [tool.coverage.*] de
+        # pyproject.toml. Le seuil global (fail_under) ne s'applique PLUS ici
+        # (--cov-fail-under=0, issue #278) : ce job n'exécute pas src/gcm4/ui/,
+        # son total sous-estime la couverture réelle. Il est appliqué au total
+        # combiné Qualité + GTK4 par le job « Couverture combinée », requis
+        # sur dev. Le seuil du cœur (étape suivante) reste appliqué ici.
         # Issue #160 : -rs liste chaque test sauté et sa raison ; la sortie
         # est relue par l'étape suivante. Ce job installe gettext :
         # GCM_TESTS_EXIGES fait échouer tout test requires_gettext sauté
@@ -103,11 +106,12 @@ jobs:
           set -o pipefail
           uv run python -m pytest tests/ -q -rs \
             --cov --cov-report=term-missing:skip-covered --cov-report=xml \
+            --cov-fail-under=0 \
             | tee /tmp/pytest.txt
 
       - name: Seuil séparé du cœur (src/gcm4/core/, issue #164)
         # La base doit naître très couverte : second contrôle bloquant à 95 %
-        # sur le cœur, indépendant du seuil global (fail_under = 18). Même
+        # sur le cœur, indépendant du seuil global (fail_under, total combiné). Même
         # valeur que SEUIL_COEUR de scripts/pr_coverage_comment.py et que
         # docs/quality/seuil-couverture.md. Bloquant sans dérogation : toute
         # PR vers dev contient le cœur (il est dans la base), y compris une

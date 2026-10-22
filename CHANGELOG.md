@@ -10,6 +10,7 @@
 > session par session, dans `claude.md` (journal) et `features.md` (§4.1).
 
 ### Added
+- **Seuil de couverture sur le total combiné, palier 1 vers 95 %** (#278, #293) : le job « Couverture combinée » (Qualité + GTK4) devient requis sur `dev` (`.github/branch-protection/dev.json`). Le seuil global n'est plus appliqué au job Qualité seul, qui passe `--cov-fail-under=0`, comme `make ci`. `fail_under` passe de 18 à 41 (mesure combinée du 22/10/2026 : 41,7 %). Le commentaire de couverture des PR précise son périmètre (sans `src/gcm4/ui/`) et ne compare plus ce total partiel au seuil.
 - **gcm4, base GTK4** (#126, réécriture, paquet `src/gcm4`) : commande `gcm4`
   et ligne de commande (#133) ; fenêtre GTK4/libadwaita, actions et À propos
   (#134) ; thème clair/sombre/système (#135) ; modèle Host/Group sans GTK
