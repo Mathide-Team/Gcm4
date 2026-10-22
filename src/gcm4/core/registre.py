@@ -5,7 +5,8 @@ Sources, dans cet ordre (``docs/plugins.md``, « Installation et découverte »)
 1. points d'entrée ``importlib.metadata`` du groupe :data:`GROUPE`, triés
    par nom ;
 2. en mode source seulement, ``plugins/<nom>/gtk4.py`` du dépôt (variable
-   ``PLUGIN``), triés par nom de dossier.
+   ``PLUGIN``), triés par nom de dossier ; le dossier est importé comme le
+   paquet ``gcm4_plugin_<nom>``, ``gtk4.py`` peut donc importer ``core.py``.
 
 Chaque candidat devient un :class:`EtatPlugin`. Un plugin qui lève à l'import
 ou à l'initialisation, incompatible (:func:`gcm4.core.plugins.incompatibilite`),
@@ -18,6 +19,7 @@ continuent, et le démarrage aussi. Les plugins chargés sont rangés par
 from __future__ import annotations
 
 import functools
+import importlib.machinery
 import importlib.util
 import sys
 from collections.abc import Callable, Iterable
@@ -96,19 +98,53 @@ def candidats_points_d_entree(
     return resultat
 
 
+def _oublier_paquet(paquet: str) -> None:
+    """Retire ``paquet`` et ses sous-modules de ``sys.modules`` (import manqué)."""
+    logger.debug("_oublier_paquet: {}", paquet)
+    for nom in [n for n in sys.modules if n == paquet or n.startswith(paquet + ".")]:
+        del sys.modules[nom]
+    logger.debug("_oublier_paquet: fait")
+
+
 def _importer_fichier(nom: str, chemin: Path) -> Any:
-    """Importe ``chemin`` comme module ``gcm4_plugin_<nom>`` et rend sa variable ``PLUGIN``."""
+    """Importe ``chemin`` comme ``gcm4_plugin_<nom>.gtk4`` et rend sa variable ``PLUGIN``.
+
+    Le dossier du plugin devient le paquet ``gcm4_plugin_<nom>`` (son
+    ``__init__.py`` est exécuté s'il existe) : ``gtk4.py`` peut ainsi importer
+    ses voisins, par exemple ``from . import core`` (découpage
+    ``core.py``/``gtk4.py``, #73). Si l'import échoue, le paquet et tout ce
+    qu'il a déjà chargé sont retirés de ``sys.modules``.
+    """
     logger.debug("_importer_fichier: {}", chemin)
-    spec = importlib.util.spec_from_file_location(f"gcm4_plugin_{nom}", chemin)
-    if spec is None or spec.loader is None:
-        raise ImportError(str(chemin))
-    module = importlib.util.module_from_spec(spec)
-    sys.modules[spec.name] = module
+    paquet = f"gcm4_plugin_{nom}"
+    dossier = chemin.parent
+    init = dossier / "__init__.py"
+    if init.is_file():
+        spec_paquet = importlib.util.spec_from_file_location(
+            paquet, init, submodule_search_locations=[str(dossier)]
+        )
+        if spec_paquet is None or spec_paquet.loader is None:
+            raise ImportError(str(init))
+    else:
+        spec_paquet = importlib.machinery.ModuleSpec(paquet, None, is_package=True)
+        spec_paquet.submodule_search_locations = [str(dossier)]
+    # Lu avant module_from_spec, qui pose un chargeur d'espace de noms
+    # (sans effet) sur un paquet sans __init__.py.
+    chargeur = spec_paquet.loader
+    module_paquet = importlib.util.module_from_spec(spec_paquet)
+    sys.modules[paquet] = module_paquet
     try:
+        if chargeur is not None:
+            chargeur.exec_module(module_paquet)
+        spec = importlib.util.spec_from_file_location(f"{paquet}.{chemin.stem}", chemin)
+        if spec is None or spec.loader is None:
+            raise ImportError(str(chemin))
+        module = importlib.util.module_from_spec(spec)
+        sys.modules[spec.name] = module
         spec.loader.exec_module(module)
     except BaseException:
-        logger.debug("_importer_fichier: échec, module retiré")
-        del sys.modules[spec.name]
+        logger.debug("_importer_fichier: échec, paquet retiré")
+        _oublier_paquet(paquet)
         raise
     if not hasattr(module, "PLUGIN"):
         raise AttributeError(_("{file} does not define PLUGIN.").format(file=chemin.name))
