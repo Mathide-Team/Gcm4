@@ -441,6 +441,8 @@ jobs:
     # loguru sont installés normalement, dans des versions compatibles 3.9.
     name: gcm4 sur Rocky Linux 9 (GTK 4.12, libadwaita 1.4, Python 3.9)
     runs-on: ${{ fromJSON(vars.RUNS_ON_GTK4 || '"ubuntu-latest"') }}
+    permissions:
+      contents: read
     container:
       image: rockylinux/rockylinux:9
     defaults:
