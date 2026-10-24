@@ -36,7 +36,7 @@ Changelog = "https://github.com/MathildeDec/gnome-connection-manager/blob/main/C
 #   - netmiko    : push de config en masse (netmiko_bulk_core.py, plugin_netmiko_push.py)
 #   - paramiko   : SPICE via libvirt, dépôt SFTP du push SNMP/inventaire
 #                  (plugin_spice.py, snmp_bulk_core.py, hypervisor_import_common.py,
-#                  tools/*.py)
+#                  tools/*.py), plugin sftp de gcm4 (plugins/sftp/, #75)
 #   - libvirt    : import de VM SPICE via libvirt-python (plugin_spice.py)
 #   - vnc        : plugin_vnc.py (import top-level de Cryptodome pour
 #                  l'authentification VNC/DES) — nécessite en plus le
@@ -81,8 +81,7 @@ dev = [
     "pytest-cov>=5.0.0",
     "mypy>=1.11",
     "pyyaml>=6.0",
-    # Serveur SFTP local de tests/test_snmp_bulk_transferts.py (#74) ;
-    # meme borne que l'extra paramiko ci-dessus.
+    # Serveurs SFTP locaux des tests (#74, #75).
     "paramiko>=3.4.0",
 ]
 
@@ -164,6 +163,7 @@ files = [
     "tab_context_menu_core.py",
     "plugins/plugin_base.py",
     "plugins/ssh/core.py",
+    "plugins/sftp/core.py",
     "plugins/telnet/core.py",
 ]
 ignore_missing_imports = true
