@@ -6,7 +6,7 @@
 > toute modification manuelle sera écrasée. Le régénérer avec `make class-diagram` ;
 > le job Qualité échoue s'il est périmé (`--check`).
 
-94 modules · 163 classes · 316 fonctions publiques de module.
+96 modules · 172 classes · 325 fonctions publiques de module.
 
 Conventions : `+` public, `-` privé (préfixe `_`) ; `list~str~` = `list[str]` ; `<<module>>`
 regroupe les fonctions publiques d'un module ; `<<…>>` sur une classe liste `dataclass` et les
@@ -32,7 +32,7 @@ flowchart TD
     g0 -->|1| g2
     g2 -->|58| g1
     g2 -->|4| g0
-    g2 -->|10| g4
+    g2 -->|15| g4
     g2 -->|3| g5
     g3 -->|2| g0
     g3 -->|2| g4
@@ -822,6 +822,8 @@ classDiagram
 | `plugins.plugin_vnc` | `plugins/plugin_vnc.py` | Plugin de connexion VNC (GtkVnc.Display natif, ou fallback subprocess). |
 | `plugins.plugin_web` | `plugins/plugin_web.py` | Plugin de connexion Web (console BMC HTML5 : iLO/iDRAC/IMM, ou toute URL). |
 | `plugins.pluginvnc2.vnc_tab` | `plugins/pluginvnc2/vnc_tab.py` | vnc_tab.py — Onglet VNC complet pour gnome-connection-manager (fork GTK4) |
+| `plugins.sftp.core` | `plugins/sftp/core.py` | Logique du plugin SFTP (#75), sans GTK : connexion, navigation, transferts. |
+| `plugins.sftp.gtk4` | `plugins/sftp/gtk4.py` | Plugin SFTP de gcm4 (contrat v1, ``docs/plugins.md``) : navigateur de fichiers distant (#75). |
 | `plugins.ssh` | `plugins/ssh/__init__.py` | Plugin SSH — dossier pilote de la migration GTK4 (découpage par plugin). |
 | `plugins.ssh.core` | `plugins/ssh/core.py` | Logique métier SSH de gcm4, zéro dépendance GTK — parsing de ``~/.ssh/config`` et migration/import des hôtes SSH de gcm.conf. |
 | `plugins.telnet.core` | `plugins/telnet/core.py` | Logique du plugin telnet, sans GTK : commande et délai des commandes après connexion. |
@@ -1219,6 +1221,82 @@ classDiagram
         <<Gtk.Box>>
         +close()
     }
+    class mod_plugins_sftp_core {
+        <<module>>
+        +empreinte(cle) str
+        +nom_known_hosts(hote, port) str
+        +known_hosts_defaut() Path
+        +ajouter_cle_connue(fichier, nom, cle) None
+        +parent(chemin) str
+        +joindre(dossier, nom) str
+        +nom_valide(nom) bool
+        +taille_lisible(octets) str
+        +destination_libre(dossier, nom) Path
+    }
+    class plugins_sftp_core_Entree {
+        <<dataclass>>
+        +str nom
+        +str chemin
+        +int taille
+        +int modifie
+        +bool dossier
+        +bool lien
+        +int mode
+        +droits() str
+    }
+    class ErreurSftp {
+        <<Exception>>
+    }
+    class AuthentificationRefusee
+    ErreurSftp <|-- AuthentificationRefusee
+    class CleHoteInconnue
+    ErreurSftp <|-- CleHoteInconnue
+    class CleHoteChangee
+    ErreurSftp <|-- CleHoteChangee
+    class _Refuser {
+        <<paramiko.MissingHostKeyPolicy>>
+        +missing_host_key(client, hostname, key) None
+    }
+    class ConnexionSftp {
+        +nom() str
+        +ouverte() bool
+        +ouvrir(mot_de_passe, fichier_cle, delai) str
+        +normaliser(chemin) str
+        +lister(dossier) list~Entree~
+        +telecharger(distant, local, progression) Path
+        +envoyer(local, dossier, progression) str
+        +creer_dossier(dossier, nom) str
+        +renommer(entree, nom) str
+        +supprimer(entree) None
+        +fermer() None
+    }
+    class SessionSftp {
+        +selection() core.Entree None
+        +selectionner(nom) bool
+        +aller(chemin) None
+        +monter() None
+        +actualiser() None
+        +activer(entree) None
+        +telecharger_selection() None
+        +telecharger(entree) None
+        +choisir_envois() None
+        +envoyer(chemins) None
+        +demander_dossier() None
+        +creer_dossier(nom) None
+        +demander_renommage() None
+        +renommer(entree, nom) None
+        +demander_suppression() None
+        +supprimer(entree) None
+        +close() None
+    }
+    class SftpPlugin {
+        +default_port(protocol) int None
+        +default_options(protocol) dict~str, str~
+        +validate_options(protocol, options) list~FieldError~
+        +build_host_options_widget(host, options, changed) Gtk.Widget
+        +open(host) SessionSftp
+    }
+    plugins_plugin_base_ConnectionPlugin <|-- SftpPlugin
     class mod_plugins_ssh_core {
         <<module>>
         +is_shared_target(path) bool
@@ -1492,7 +1570,7 @@ classDiagram
         <<module>>
         +actions_du_menu() list~str~
     }
-    class Entree {
+    class gcm4_core_menu_Entree {
         <<dataclass>>
         +str libelle
         +str action

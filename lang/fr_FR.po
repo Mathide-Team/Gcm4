@@ -213,10 +213,10 @@ msgstr "Impossible d'ouvrir le fichier de journal en écriture"
 #: gnome_connection_manager.py plugins/plugin_import_libvirt.py
 #: plugins/plugin_import_ovirt.py plugins/plugin_import_proxmox.py
 #: plugins/plugin_import_putty.py plugins/plugin_import_virtualbox.py
-#: plugins/plugin_spice.py plugins/plugin_ssh.py src/gcm4/ui/contexte.py
-#: src/gcm4/ui/echange.py src/gcm4/ui/fichiers.py src/gcm4/ui/host_dialog.py
-#: src/gcm4/ui/main_window.py src/gcm4/ui/menu_arbre.py
-#: src/gcm4/ui/raccourcis.py utils.py widgets.py
+#: plugins/plugin_spice.py plugins/plugin_ssh.py plugins/sftp/gtk4.py
+#: src/gcm4/ui/contexte.py src/gcm4/ui/echange.py src/gcm4/ui/fichiers.py
+#: src/gcm4/ui/host_dialog.py src/gcm4/ui/main_window.py
+#: src/gcm4/ui/menu_arbre.py src/gcm4/ui/raccourcis.py utils.py widgets.py
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -1871,9 +1871,9 @@ msgstr ""
 msgid "⚠ variables manquantes : {v}"
 msgstr ""
 
-#: plugins/plugin_rdp.py plugins/plugin_vnc.py
+#: plugins/plugin_rdp.py plugins/plugin_vnc.py plugins/sftp/gtk4.py
 msgid "Authentication failed"
-msgstr ""
+msgstr "Échec de l'authentification"
 
 #: plugins/plugin_rdp.py
 msgid "Custom…"
@@ -2751,6 +2751,208 @@ msgid ""
 "The web console will open in the system browser."
 msgstr ""
 
+#: plugins/sftp/core.py
+msgid "B"
+msgstr "o"
+
+#: plugins/sftp/core.py
+msgid "GiB"
+msgstr "Gio"
+
+#: plugins/sftp/core.py
+msgid "KiB"
+msgstr "Kio"
+
+#: plugins/sftp/core.py
+msgid "MiB"
+msgstr "Mio"
+
+#: plugins/sftp/gtk4.py
+msgid "Authentication cancelled"
+msgstr "Authentification annulée"
+
+#: plugins/sftp/gtk4.py
+msgid "Authentication cancelled."
+msgstr "Authentification annulée."
+
+#: plugins/sftp/gtk4.py
+msgid "Busy, try again when the current operation is finished"
+msgstr "Occupé, réessayez à la fin de l'opération en cours"
+
+#: plugins/sftp/gtk4.py
+#, python-brace-format
+msgid "Connecting to {host}…"
+msgstr "Connexion à {host}…"
+
+#: plugins/sftp/gtk4.py
+#, python-brace-format
+msgid "Connection failed: {error}"
+msgstr "Échec de la connexion : {error}"
+
+#: plugins/sftp/gtk4.py src/gcm4/ui/menu_arbre.py
+msgid "Create"
+msgstr "Créer"
+
+#: plugins/sftp/gtk4.py
+#, python-brace-format
+msgid "Creating {name}…"
+msgstr "Création de {name}…"
+
+#: plugins/sftp/gtk4.py
+msgid "Delete"
+msgstr "Supprimer"
+
+#: plugins/sftp/gtk4.py
+#, python-brace-format
+msgid "Delete the empty folder {name}?"
+msgstr "Supprimer le dossier vide {name} ?"
+
+#: plugins/sftp/gtk4.py
+#, python-brace-format
+msgid "Delete {name}?"
+msgstr "Supprimer {name} ?"
+
+#: plugins/sftp/gtk4.py
+#, python-brace-format
+msgid "Deleting {name}…"
+msgstr "Suppression de {name}…"
+
+#: plugins/sftp/gtk4.py
+msgid "Download"
+msgstr "Télécharger"
+
+#: plugins/sftp/gtk4.py
+#, python-brace-format
+msgid "Downloaded to {path}"
+msgstr "Téléchargé dans {path}"
+
+#: plugins/sftp/gtk4.py
+#, python-brace-format
+msgid "Downloading {name}…"
+msgstr "Téléchargement de {name}…"
+
+#: plugins/sftp/gtk4.py
+#, python-brace-format
+msgid "Error: {error}"
+msgstr "Erreur : {error}"
+
+#: plugins/sftp/gtk4.py
+msgid "File not found"
+msgstr "Fichier introuvable"
+
+#: plugins/sftp/gtk4.py
+#, python-brace-format
+msgid "Folders not uploaded: {names}"
+msgstr "Dossiers non envoyés : {names}"
+
+#: plugins/sftp/gtk4.py
+msgid "Home folder"
+msgstr "Dossier d'accueil"
+
+#: plugins/sftp/gtk4.py
+#, python-brace-format
+msgid "Host key of {host} has changed (fingerprint {fingerprint}). Connection refused: check the server, then remove the old key from {file}."
+msgstr "La clé d'hôte de {host} a changé (empreinte {fingerprint}). Connexion refusée : vérifiez le serveur, puis retirez l'ancienne clé de {file}."
+
+#: plugins/sftp/gtk4.py
+#, python-brace-format
+msgid "Invalid name: {name}"
+msgstr "Nom invalide : {name}"
+
+#: plugins/sftp/gtk4.py
+#, python-brace-format
+msgid "Listing {path}…"
+msgstr "Lecture de {path}…"
+
+#: plugins/sftp/gtk4.py
+msgid "New folder"
+msgstr "Nouveau dossier"
+
+#: plugins/sftp/gtk4.py
+msgid "New folder name:"
+msgstr "Nom du nouveau dossier :"
+
+#: plugins/sftp/gtk4.py
+msgid "No address"
+msgstr "Aucune adresse"
+
+#: plugins/sftp/gtk4.py
+msgid "Nothing to upload (folders are not uploaded)"
+msgstr "Rien à envoyer (les dossiers ne sont pas envoyés)"
+
+#: plugins/sftp/gtk4.py
+msgid "Parent folder"
+msgstr "Dossier parent"
+
+#: plugins/sftp/gtk4.py
+msgid "Private key file:"
+msgstr "Fichier de clé privée :"
+
+#: plugins/sftp/gtk4.py
+msgid "Refresh"
+msgstr "Actualiser"
+
+#: plugins/sftp/gtk4.py
+msgid "Remote folder"
+msgstr "Dossier distant"
+
+#: plugins/sftp/gtk4.py
+msgid "Remote folder:"
+msgstr "Dossier distant :"
+
+#: plugins/sftp/gtk4.py src/gcm4/ui/menu_arbre.py
+msgid "Rename"
+msgstr "Renommer"
+
+#: plugins/sftp/gtk4.py
+#, python-brace-format
+msgid "Rename {name} to:"
+msgstr "Renommer {name} en :"
+
+#: plugins/sftp/gtk4.py
+#, python-brace-format
+msgid "Renaming {name}…"
+msgstr "Renommage de {name}…"
+
+#: plugins/sftp/gtk4.py
+msgid "Retry"
+msgstr "Réessayer"
+
+#: plugins/sftp/gtk4.py
+msgid "SSH agent and ~/.ssh keys"
+msgstr "Agent SSH et clés de ~/.ssh"
+
+#: plugins/sftp/gtk4.py
+#, python-brace-format
+msgid ""
+"The authenticity of host {host} can't be established.\n"
+"Key fingerprint is {fingerprint}. Trust it and add it to {file}?"
+msgstr ""
+"L'authenticité de l'hôte {host} ne peut pas être établie.\n"
+"L'empreinte de la clé est {fingerprint}. Lui faire confiance et l'ajouter à {file} ?"
+
+#: plugins/sftp/gtk4.py
+msgid "Trust and connect"
+msgstr "Faire confiance et se connecter"
+
+#: plugins/sftp/gtk4.py
+msgid "Unknown host key"
+msgstr "Clé d'hôte inconnue"
+
+#: plugins/sftp/gtk4.py
+msgid "Upload files"
+msgstr "Envoyer des fichiers"
+
+#: plugins/sftp/gtk4.py
+#, python-brace-format
+msgid "Uploading {count} file(s)…"
+msgstr "Envoi de {count} fichier(s)…"
+
+#: plugins/sftp/gtk4.py
+#, python-brace-format
+msgid "{path}: {count} items"
+msgstr "{path} : {count} éléments"
+
 #: src/gcm4/app.py
 msgid "The old configuration is intact: fix the problem (permissions, disk space), then start gcm4 again."
 msgstr "L'ancienne configuration est intacte : corrigez le problème (droits, espace disque), puis relancez gcm4."
@@ -3214,10 +3416,6 @@ msgid "Changes not saved: {error}"
 msgstr "Modifications non enregistrées : {error}"
 
 #: src/gcm4/ui/menu_arbre.py
-msgid "Create"
-msgstr "Créer"
-
-#: src/gcm4/ui/menu_arbre.py
 msgid "Group color"
 msgstr "Couleur du groupe"
 
@@ -3244,10 +3442,6 @@ msgstr "Supprimer le groupe « {name} » ?"
 #, python-brace-format
 msgid "Remove host «{name}»?"
 msgstr "Supprimer l'hôte « {name} » ?"
-
-#: src/gcm4/ui/menu_arbre.py
-msgid "Rename"
-msgstr "Renommer"
 
 #: src/gcm4/ui/menu_arbre.py
 msgid "This cannot be undone."

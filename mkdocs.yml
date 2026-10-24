@@ -57,6 +57,7 @@ nav:
   - Accueil: index.md
   - Guide utilisateur:
       - "gcm4 (GTK4) : installation et premiers pas": guide/base-gtk4.md
+      - "gcm4 : navigateur de fichiers SFTP": guide/sftp.md
       - Documentation utilisateur: guide/utilisateur.md
       - Fichier de configuration: configuration.md
       - Import et export des hôtes: echange-hotes.md
