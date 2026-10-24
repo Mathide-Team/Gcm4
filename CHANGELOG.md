@@ -10,6 +10,7 @@
 > session par session, dans `claude.md` (journal) et `features.md` (§4.1).
 
 ### Added
+- **Cluster : commandes favorites** (#84) : liste déroulante « Favoris » dans le dialogue Cluster, distincte de l'historique, avec boutons Ajouter/Retirer ; favoris par défaut `df`, `apt update`, `updatedb`, persistés dans `[cluster_favorites]` de `gcm.conf` ; commande contenant `#P=` refusée
 - **Journalisation SOCLE §8, lot 1** (#294) : logger loguru dans les 11 modules qui n'en avaient pas (`MODULES_SANS_LOGGER` vide). Les 6 nouveaux `*_core.py` se mettent en sourdine à l'import et sont ajoutés à `CORE_MODULES` (#130). 23 `except` hérités journalisent désormais le type et le message de l'exception (191 → 168) ; l'`except:` nu de `models.HostUtils.get_val` devient `except BaseException as exc:`, sémantique inchangée. Traces d'entrée et de sortie ajoutées dans ces modules : référence de l'audit 1042 → 970. Les valeurs ne sont journalisées que pour les modules sans données sensibles. Dans `pyAES.py`, seules les fonctions par opération ou par bloc sont tracées, pas les primitives de ronde.
 - **gcm4, base GTK4** (#126, réécriture, paquet `src/gcm4`) : commande `gcm4`
   et ligne de commande (#133) ; fenêtre GTK4/libadwaita, actions et À propos
