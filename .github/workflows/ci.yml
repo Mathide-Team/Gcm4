@@ -323,8 +323,9 @@ jobs:
             "asyncvnc2 @ git+https://github.com/Mathide-Team/AsyncVnc4@26be75f0582acffbf2a5cd8ea4175f5e40759db3"
 
       - name: gcm4 (paquet src/gcm4, mode éditable)
+        # paramiko : plugin sftp (#75), testé contre un serveur paramiko local.
         run: |
-          /tmp/venv/bin/pip install -q -e . pytest pytest-cov
+          /tmp/venv/bin/pip install -q -e . pytest pytest-cov "paramiko>=3.4.0,<5"
 
       - name: Tests de l'interface gcm4 sous Xvfb (tests/gtk4), aucun test sauté
         # GCM_TESTS_GTK4=1 : tests/gtk4/conftest.py collecte toujours ces
@@ -406,7 +407,8 @@ jobs:
       - name: gcm4 (mode éditable, Python 3.11 de Debian 12)
         run: |
           python3 -m venv --system-site-packages /tmp/venv
-          /tmp/venv/bin/pip install -q --ignore-requires-python -e . pytest
+          /tmp/venv/bin/pip install -q --ignore-requires-python -e . pytest \
+            "paramiko>=3.4.0,<5"
 
       - name: Démarrage de gcm4 sous Xvfb (8 s, aucune exception)
         # timeout rend 124 si gcm4 tourne encore : c'est le résultat attendu.
@@ -472,7 +474,7 @@ jobs:
       - name: gcm4 (mode éditable, Python 3.9 de Rocky 9)
         run: |
           python3 -m venv --system-site-packages /tmp/venv
-          /tmp/venv/bin/pip install -q pytest tomli "loguru>=0.7.3,<0.8"
+          /tmp/venv/bin/pip install -q pytest tomli "loguru>=0.7.3,<0.8" "paramiko>=3.4.0,<5"
           /tmp/venv/bin/pip install -q --ignore-requires-python --no-deps -e .
 
       # Écran 1280x1024x24 donné explicitement : le xvfb-run d'EL9 ouvre un
