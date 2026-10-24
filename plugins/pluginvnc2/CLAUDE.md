@@ -41,7 +41,9 @@ pour tester de la logique pure (`HostKeyStore`, `VncConnectionInfo`). Voir
 
 ## État courant
 
-- 155 tests, tous verts via le stub `tests/gtk_stub/` (voir Commandes de
+- 160 tests, tous verts sous Xvfb ; via le stub `tests/gtk_stub/`, 159
+  verts et 1 sauté (`requires_real_asyncvnc2` : bout en bout contre le
+  vrai asyncvnc2, que le stub n'implémente pas ; voir Commandes de
   qualité). Sans GTK4 installé, `pytest tests/` sans le `PYTHONPATH`
   du stub les collecte mais les SKIP tous — pas un échec caché.
 - 24 sessions de développement documentées dans `docs/sessions/`
