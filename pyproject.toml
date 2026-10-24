@@ -81,6 +81,9 @@ dev = [
     "pytest-cov>=5.0.0",
     "mypy>=1.11",
     "pyyaml>=6.0",
+    # Serveur SFTP local de tests/test_snmp_bulk_transferts.py (#74) ;
+    # meme borne que l'extra paramiko ci-dessus.
+    "paramiko>=3.4.0",
 ]
 
 # ─── import-linter (issue #174) ─────────────────────────────────────────────
