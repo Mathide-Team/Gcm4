@@ -6,7 +6,7 @@
 > toute modification manuelle sera écrasée. Le régénérer avec `make class-diagram` ;
 > le job Qualité échoue s'il est périmé (`--check`).
 
-96 modules · 172 classes · 321 fonctions publiques de module.
+96 modules · 172 classes · 323 fonctions publiques de module.
 
 Conventions : `+` public, `-` privé (préfixe `_`) ; `list~str~` = `list[str]` ; `<<module>>`
 regroupe les fonctions publiques d'un module ; `<<…>>` sur une classe liste `dataclass` et les
@@ -1801,6 +1801,8 @@ classDiagram
         <<module>>
         +environnement(options) list~str~
         +liaison(options, cle) int
+        +encodage(options) str
+        +encoder(texte, nom) bytes
         +lire_commandes(brut) str
         +ecrire_commandes(texte) str
         +est_delai(ligne) bool
