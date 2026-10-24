@@ -138,17 +138,16 @@ def test_send_power_action_rejects_unknown_action():
 
 
 @requires_gtk4
-def test_dead_connection_is_logged_not_raised():
+def test_dead_connection_is_logged_not_raised(monkeypatch):
+    import vnc_tab
+
     display = make_test_display(100, 100, 100, 100)
     display.client = FakeXvpClient(fail=True)
     messages = []
-    from loguru import logger
-
-    ident = logger.add(lambda m: messages.append(str(m)), level="WARNING")
-    try:
-        asyncio.run(display._send_power_action("reset"))
-    finally:
-        logger.remove(ident)
+    # Pas de puits loguru ajouté ici (règle tests/test_loguru_only.py) :
+    # on intercepte l'appel au logger du module.
+    monkeypatch.setattr(vnc_tab.logger, "warning", lambda msg, **kw: messages.append(msg.format(**kw)))
+    asyncio.run(display._send_power_action("reset"))
     assert any("échec action=reset" in m for m in messages)
 
 
