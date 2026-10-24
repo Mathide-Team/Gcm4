@@ -72,7 +72,7 @@
 | #100 | Multi-sélection hôtes | Faible |
 | #83 | Icône system tray | Faible |
 | #84 | Cluster liste déroulante | Faible |
-| #85 | Charset dynamique | Faible |
+| #85 | Charset dynamique : encodage par hôte des onglets terminal gcm4 (PR en relecture) | Faible |
 | #86 | Aide contextuelle | Faible |
 | #87 | Tests orphelins | Faible |
 | #80 | Notifications desktop | Faible |

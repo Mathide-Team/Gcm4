@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/Mathide-Team/Gcm4/issues\n"
-"POT-Creation-Date: 2026-10-24 09:09+0000\n"
+"POT-Creation-Date: 2026-10-24 09:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3563,6 +3563,19 @@ msgstr "바로 가기 설정"
 #: src/gcm4/ui/raccourcis.py
 msgid "Use Ctrl, Alt or Super with this key."
 msgstr "이 키에는 Ctrl, Alt 또는 Super를 함께 사용하십시오."
+
+#: src/gcm4/ui/terminal.py
+msgid "Character encoding of the remote system; UTF-8 if unsure."
+msgstr "원격 시스템의 문자 인코딩입니다. 잘 모르면 UTF-8을 선택하세요."
+
+#: src/gcm4/ui/terminal.py
+#, python-brace-format
+msgid "Encoding {name} is not available, UTF-8 is used."
+msgstr "인코딩 {name}을(를) 사용할 수 없어 UTF-8을 사용합니다."
+
+#: src/gcm4/ui/terminal.py
+msgid "Encoding:"
+msgstr "인코딩:"
 
 #: ssh_config_editor.py
 #, fuzzy, python-brace-format
