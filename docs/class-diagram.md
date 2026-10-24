@@ -6,7 +6,7 @@
 > toute modification manuelle sera écrasée. Le régénérer avec `make class-diagram` ;
 > le job Qualité échoue s'il est périmé (`--check`).
 
-96 modules · 172 classes · 321 fonctions publiques de module.
+96 modules · 172 classes · 322 fonctions publiques de module.
 
 Conventions : `+` public, `-` privé (préfixe `_`) ; `list~str~` = `list[str]` ; `<<module>>`
 regroupe les fonctions publiques d'un module ; `<<…>>` sur une classe liste `dataclass` et les
@@ -1167,6 +1167,7 @@ classDiagram
     class mod_plugins_pluginvnc2_vnc_tab {
         <<module>>
         +build_vnc_tab_label(tab) Gtk.Box
+        +parse_demo_args(args)
     }
     class HostKeyStore {
         +get(host, port) Optional~rsa.RSAPublicKey~
@@ -1188,6 +1189,8 @@ classDiagram
         +bool pin_host_key
         +bool sync_clipboard
         +bool invert_scroll
+        +bool websocket
+        +str ws_path
     }
     class VncStatus {
         <<enum.Enum>>
