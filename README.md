@@ -31,6 +31,7 @@ ajouter un protocole n'implique pas de modifier le cœur de l'application.
 | **Série** | picocom / minicom / screen | Port série RS-232/RS-485 avec **11 templates constructeurs** |
 | **Telnet** | telnet / expect | Sessions Telnet classiques |
 | **Local** | shell | Terminal local |
+| **SFTP** (gcm4) | paramiko | Navigateur de fichiers distant : navigation, téléchargement, envoi, glisser-déposer (`docs/guide/sftp.md`) |
 | **IPMI SOL** | ipmitool | Console BMC Serial-over-LAN (iLO/iDRAC/IMM…) |
 | **Web** | vue HTML5 intégrée | Visualiseur console BMC (iLO/iDRAC/IMM) ou n'importe quelle URL |
 
