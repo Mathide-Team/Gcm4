@@ -135,6 +135,7 @@
   réelles — voir `docs/gcm4-rename.md` §4, `docs/sessions/session-30.md`
 
 ### Changed
+- **Journalisation des `except` hérités, lot 2** (#294) : les 13 `except` sans trace de `snmp_bulk_core.py` nomment désormais l'hôte et la cause (warning pour un SET, un walk ou une lecture d'état en échec, debug pour un repli normal) ; retours inchangés, fichier retiré de `EXCEPT_SANS_JOURNAL`. Tests `tests/test_snmp_bulk_except_294.py`
 - **Renommage du projet décidé : GCM → gcm4** (2026-08-29), pour marquer la
   génération GTK4 — pas encore effectif dans le code (module principal,
   domaine i18n, `.desktop`, packaging, chemin `~/.gcm/gcm.conf`) ; voir

@@ -38,7 +38,8 @@ try:
         EasySNMPNoSuchObjectError,
         EasySNMPTimeoutError,
     )
-except ImportError:
+except ImportError as exc:
+    logger.debug("easysnmp.exceptions incomplet ({}), import de repli", exc)
     from easysnmp import Session
     from easysnmp.exceptions import (
         EasySNMPError,
@@ -426,6 +427,7 @@ class SnmpDriver:
             self._session(host).set_multiple(oid_values)
             return True, "OK"
         except (EasySNMPTimeoutError, EasySNMPError) as exc:
+            logger.warning("SNMP SET vers {} échoué : {}", host, exc)
             return False, str(exc)
 
     def _get(self, host: str, oid: str) -> tuple[bool, str]:
@@ -448,6 +450,7 @@ class SnmpDriver:
             EasySNMPNoSuchInstanceError,
             EasySNMPError,
         ) as exc:
+            logger.debug("SNMP GET {} sur {} échoué : {}", oid, host, exc)
             return False, str(exc)
 
     def push(
@@ -539,6 +542,7 @@ class H3cComwareDriver(SnmpDriver):
             try:
                 rows = session.walk(f"{self.RESULT_BASE}.2")
             except (EasySNMPTimeoutError, EasySNMPError) as exc:
+                logger.warning("walk OperateResultTable sur {} échoué : {}", host, exc)
                 return False, f"walk OperateResultTable échoué: {exc}"
 
             match_row = None
@@ -547,7 +551,10 @@ class H3cComwareDriver(SnmpDriver):
                     if int(row.value) == op_idx:
                         match_row = row.oid_index
                         break
-                except (ValueError, TypeError):
+                except (ValueError, TypeError) as exc:
+                    logger.debug(
+                        "ligne OperateResultTable ignorée (OptIndex {!r}) : {}", row.value, exc
+                    )
                     continue
 
             if match_row is not None:
@@ -567,10 +574,13 @@ class H3cComwareDriver(SnmpDriver):
                             EasySNMPError,
                             EasySNMPNoSuchObjectError,
                             EasySNMPNoSuchInstanceError,
-                        ):
-                            pass
+                        ) as exc:
+                            logger.debug(
+                                "raison d'échec illisible pour la ligne {} : {}", match_row, exc
+                            )
                         return False, detail
                 except (EasySNMPError, ValueError) as exc:
+                    logger.warning("lecture de State sur {} échouée : {}", host, exc)
                     return False, f"erreur lecture State: {exc}"
 
             time.sleep(self.poll_interval)
@@ -639,7 +649,8 @@ class CiscoConfigCopyDriver(SnmpDriver):
 
             try:
                 state = int(state_str)
-            except ValueError:
+            except ValueError as exc:
+                logger.warning("state invalide {!r} : {}", state_str, exc)
                 return False, f"state invalide: {state_str}"
 
             if state == self._STATE_SUCCESSFUL:
@@ -745,6 +756,7 @@ class HuaweiVrpDriver(SnmpDriver):
             try:
                 rows = session.walk(f"{self.RESULT_BASE}.2")  # colonne OptIndex
             except (EasySNMPTimeoutError, EasySNMPError) as exc:
+                logger.warning("walk OperateResultTable sur {} échoué : {}", host, exc)
                 return False, f"walk OperateResultTable échoué: {exc}"
 
             match_row = None
@@ -753,7 +765,10 @@ class HuaweiVrpDriver(SnmpDriver):
                     if int(row.value) == op_idx:
                         match_row = row.oid_index
                         break
-                except (ValueError, TypeError):
+                except (ValueError, TypeError) as exc:
+                    logger.debug(
+                        "ligne OperateResultTable ignorée (OptIndex {!r}) : {}", row.value, exc
+                    )
                     continue
 
             if match_row is not None:
@@ -773,10 +788,13 @@ class HuaweiVrpDriver(SnmpDriver):
                             EasySNMPError,
                             EasySNMPNoSuchObjectError,
                             EasySNMPNoSuchInstanceError,
-                        ):
-                            pass
+                        ) as exc:
+                            logger.debug(
+                                "raison d'échec illisible pour la ligne {} : {}", match_row, exc
+                            )
                         return False, detail
                 except (EasySNMPError, ValueError) as exc:
+                    logger.warning("lecture de State sur {} échouée : {}", host, exc)
                     return False, f"erreur lecture State: {exc}"
 
             time.sleep(self.poll_interval)
@@ -851,8 +869,8 @@ def push_to_device(
     log_path = log_dir / f"{row.line_no}_{row.ip}.log"
     try:
         log_path.write_text(f"{status}: {detail}\n", encoding="utf-8")
-    except OSError:
-        pass
+    except OSError as exc:
+        logger.warning("journal de poussée {} non écrit : {}", log_path, exc)
 
     return PushResult(
         row=row,
