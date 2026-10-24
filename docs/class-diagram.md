@@ -1188,6 +1188,7 @@ classDiagram
         +bool pin_host_key
         +bool sync_clipboard
         +bool invert_scroll
+        +Optional~str~ tls_ca_file
     }
     class VncStatus {
         <<enum.Enum>>
