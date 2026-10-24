@@ -135,6 +135,7 @@
   réelles — voir `docs/gcm4-rename.md` §4, `docs/sessions/session-30.md`
 
 ### Changed
+- **Journalisation des `except` hérités, lot 1** (#294) : les 22 `except` sans trace de `plugins/ssh/core.py` et de `tools/` (`libvirt_inventory.py`, `ssh_deploy.py`, `validate_xml_json.py`) nomment désormais la cause (debug pour un repli normal, warning quand une donnée est ignorée, error avant de relancer). Les replis eux-mêmes ne changent pas ; ces fichiers sortent de `EXCEPT_SANS_JOURNAL`. Tests `tests/test_except_journalises_294.py`
 - **Renommage du projet décidé : GCM → gcm4** (2026-08-29), pour marquer la
   génération GTK4 — pas encore effectif dans le code (module principal,
   domaine i18n, `.desktop`, packaging, chemin `~/.gcm/gcm.conf`) ; voir
