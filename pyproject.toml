@@ -35,7 +35,8 @@ Changelog = "https://github.com/MathildeDec/gnome-connection-manager/blob/main/C
 # (message "n outil(s)/plugin(s) n'ont pas pu se charger" au démarrage) :
 #   - netmiko    : push de config en masse (netmiko_bulk_core.py, plugin_netmiko_push.py)
 #   - paramiko   : SPICE via libvirt, push SNMP/inventaire (plugin_spice.py,
-#                  snmp_push_core.py, hypervisor_import_common.py, tools/*.py)
+#                  snmp_push_core.py, hypervisor_import_common.py, tools/*.py),
+#                  plugin sftp de gcm4 (plugins/sftp/, #75)
 #   - libvirt    : import de VM SPICE via libvirt-python (plugin_spice.py)
 #   - vnc        : plugin_vnc.py (import top-level de Cryptodome pour
 #                  l'authentification VNC/DES) — nécessite en plus le
@@ -80,6 +81,7 @@ dev = [
     "pytest-cov>=5.0.0",
     "mypy>=1.11",
     "pyyaml>=6.0",
+    "paramiko>=3.4.0",
 ]
 
 # ─── import-linter (issue #174) ─────────────────────────────────────────────
@@ -161,6 +163,7 @@ files = [
     "tab_context_menu_core.py",
     "plugins/plugin_base.py",
     "plugins/ssh/core.py",
+    "plugins/sftp/core.py",
     "plugins/telnet/core.py",
 ]
 ignore_missing_imports = true
@@ -314,10 +317,13 @@ omit = [
 precision = 1
 show_missing = true
 skip_covered = false
-# Seuil bloquant : voir docs/quality/seuil-couverture.md. Ne s'applique
-# qu'aux exécutions avec --cov (la CI). Relever ce chiffre quand la base
-# monte, ne jamais le baisser pour faire passer une PR.
-fail_under = 18
+# Seuil bloquant : voir docs/quality/seuil-couverture.md. Appliqué au total
+# COMBINÉ Qualité + GTK4 (job « Couverture combinée », requis sur dev,
+# issue #278) ; le job Qualité seul passe --cov-fail-under=0. Palier 1 de
+# #293 : mesure combinée de dev au 22/10/2026 (41,7 %) arrondie à l'entier
+# inférieur. Relever ce chiffre quand la base monte, ne jamais le baisser
+# pour faire passer une PR. Cible de l'équipe : 95 % (Mathilde-Team/.github#9).
+fail_under = 41
 exclude_lines = [
     "pragma: no cover",
     "if TYPE_CHECKING:",
